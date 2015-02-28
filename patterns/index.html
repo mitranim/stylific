@@ -7,7 +7,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
-    <link rel="stylesheet" type="text/css" href="/css/docs.css">
+    <link rel="stylesheet" type="text/css" href="/stylific/css/docs.css">
+    <base href="/stylific/">
   </head>
 
   <body>
@@ -18,18 +19,18 @@
   <input type="checkbox" id="navbar-dropdown">
   <label for="navbar-dropdown"></label>
   <!-- Links -->
-  <a  href="/">Overview</a>
-  <a  href="/components/">Components</a>
-  <a  href="/color-system/">Colour System</a>
-  <a class="active" href="/patterns/">Patterns</a>
-  <a  href="/configuration/">Configuration</a>
+  <a  href="">Overview</a>
+  <a  href="components/">Components</a>
+  <a  href="color-system/">Colour System</a>
+  <a class="active" href="patterns/">Patterns</a>
+  <a  href="configuration/">Configuration</a>
   <sf-dropdown>
     <label class="justify-center">Examples</label>
     <sf-dropdown-list class="text-left">
-      <a  href="/examples/active-switch.html">active-switch</a>
-      <a  href="/examples/navbar-demo.html">navbar demo</a>
-      <a  href="/examples/footer.html">footer</a>
-      <a  href="/examples/grid-demo.html">grid demo</a>
+      <a  href="examples/active-switch.html">active-switch</a>
+      <a  href="examples/navbar-demo.html">navbar demo</a>
+      <a  href="examples/footer.html">footer</a>
+      <a  href="examples/grid-demo.html">grid demo</a>
     </sf-dropdown-list>
   </sf-dropdown>
 </sf-navbar>
@@ -50,12 +51,12 @@
 <div style="margin: 0"><doc-toc class="success">
   <input checked id="toc-toggle" type="checkbox">
   <label for="toc-toggle"></label>
-  <a href="#overview">Overview</a>
-  <a href="#component-oriented">Component Oriented</a>
-  <a href="#css-hacks-js">CSS Hacks &gt; JS</a>
-  <a href="#flexbox-positioning">Flexbox Positioning</a>
-  <a href="#flexible-units">Flexible Units</a>
-  <a href="#whitespace">Whitespace</a>
+  <a href="patterns/#overview">Overview</a>
+  <a href="patterns/#component-oriented">Component Oriented</a>
+  <a href="patterns/#css-hacks-js">CSS Hacks &gt; JS</a>
+  <a href="patterns/#flexbox-positioning">Flexbox Positioning</a>
+  <a href="patterns/#flexible-units">Flexible Units</a>
+  <a href="patterns/#whitespace">Whitespace</a>
 </doc-toc></div>
 
 <h1 id="overview">Overview</h1>
@@ -74,8 +75,8 @@ components or angular directives, because you will already have the tags and
 styles in place. You can begin by styling your website statically, then
 effortlessly convert individual elements into web components.</p>
 <p>The library also defines each component’s styles as a single LESS mixin, making
-it trivial to <a href="/configuration/#subclassing-components">subclass</a> and
-<a href="/configuration/#extending-components">extend</a> them.</p>
+it trivial to <a href="configuration/#subclassing-components">subclass</a> and
+<a href="configuration/#extending-components">extend</a> them.</p>
 <h1 id="css-hacks-js">CSS Hacks &gt; JS</h1>
 <p>I love JavaScript as much as everybody else, but requiring the visitor to run a
 complex program to enable the basic UI is just ridiculous. If something can be
@@ -84,7 +85,7 @@ everyone, and enables the UI for security-minded people who disallow JS.</p>
 <p>CSS2-CSS3 features like transitions, <code>:checked</code>, <code>:target</code>, sibling selectors,
 <code>:not</code>, pseudo-elements, media queries, flexbox, and others obviate the need for
 JavaScript for many elements that used to be impossible to implement without it.
-See <a href="/components/">Components</a> for basic examples.</p>
+See <a href="components/">Components</a> for basic examples.</p>
 <p>Choose the right tool for your use case, don’t bang the JS hammer on everything.</p>
 <h1 id="flexbox-positioning">Flexbox Positioning</h1>
 <p>The flexbox specification solves problems that used to demand convoluted
@@ -136,7 +137,7 @@ size.</p>
     <sf-footer>
   <sf-footer-body>
     <span>2015 © <a href="https://github.com/Mitranim">Mitranim</a></span>
-    <a href="#"><strong>⥣</strong></a>
+    <a class="pointer" onclick="scrollTo(0, 0)"><strong>⥣</strong></a>
   </sf-footer-body>
 </sf-footer>
 

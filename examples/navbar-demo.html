@@ -7,7 +7,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
-    <link rel="stylesheet" type="text/css" href="/css/docs.css">
+    <link rel="stylesheet" type="text/css" href="/stylific/css/docs.css">
+    <base href="/stylific/">
   </head>
 
   <body>
@@ -18,18 +19,18 @@
   <input type="checkbox" id="navbar-dropdown">
   <label for="navbar-dropdown"></label>
   <!-- Links -->
-  <a  href="/">Overview</a>
-  <a  href="/components/">Components</a>
-  <a  href="/color-system/">Colour System</a>
-  <a  href="/patterns/">Patterns</a>
-  <a  href="/configuration/">Configuration</a>
+  <a  href="">Overview</a>
+  <a  href="components/">Components</a>
+  <a  href="color-system/">Colour System</a>
+  <a  href="patterns/">Patterns</a>
+  <a  href="configuration/">Configuration</a>
   <sf-dropdown>
     <label class="justify-center">Examples</label>
     <sf-dropdown-list class="text-left">
-      <a  href="/examples/active-switch.html">active-switch</a>
-      <a class="active" href="/examples/navbar-demo.html">navbar demo</a>
-      <a  href="/examples/footer.html">footer</a>
-      <a  href="/examples/grid-demo.html">grid demo</a>
+      <a  href="examples/active-switch.html">active-switch</a>
+      <a class="active" href="examples/navbar-demo.html">navbar demo</a>
+      <a  href="examples/footer.html">footer</a>
+      <a  href="examples/grid-demo.html">grid demo</a>
     </sf-dropdown-list>
   </sf-dropdown>
 </sf-navbar>
@@ -48,7 +49,7 @@
 
 <h1 id="description">Description</h1>
 <p>Demonstrates folding and folded <code>sf-navbar</code>.</p>
-<p>Back to <a href="/components/#sf-navbar">Components#sf-navbar</a>.</p>
+<p>Back to <a href="components/#sf-navbar">Components#sf-navbar</a>.</p>
 <h1 id="automatic-folding">Automatic Folding</h1>
 <p><code>sf-navbar</code> can automatically fold on narrow displays, grouping extra elements
 into a sliding dropdown. The media breakpoint is configurable, and so is the
@@ -69,11 +70,11 @@ folding in effect.</p>
   <sf-navbar class="orange">
     <input id="demo-sf-navbar" type="checkbox">
     <label for="demo-sf-navbar"></label>
-    <a href="#home">Home</a>
-    <a class="active" href="#robots">Robots</a>
-    <a href="#medical-cybernetics">Medical Cybernetics</a>
-    <a href="#partners">Partners</a>
-    <a href="#achievements">Achievements</a>
+    <a href="examples/navbar-demo.html#home">Home</a>
+    <a class="active" href="examples/navbar-demo.html#robots">Robots</a>
+    <a href="examples/navbar-demo.html#medical-cybernetics">Medical Cybernetics</a>
+    <a href="examples/navbar-demo.html#partners">Partners</a>
+    <a href="examples/navbar-demo.html#achievements">Achievements</a>
   </sf-navbar>
 </doc-demo></div>
 
@@ -93,11 +94,11 @@ fold, regardless of the viewport width.</p>
   <sf-navbar class="success" sf-fold>
     <input id="demo-sf-navbar-fold" type="checkbox">
     <label for="demo-sf-navbar-fold"></label>
-    <a href="#home">Home</a>
-    <a class="active" href="#robots">Robots</a>
-    <a href="#medical-cybernetics">Medical Cybernetics</a>
-    <a href="#partners">Partners</a>
-    <a href="#achievements">Achievements</a>
+    <a href="examples/navbar-demo.html#home">Home</a>
+    <a class="active" href="examples/navbar-demo.html#robots">Robots</a>
+    <a href="examples/navbar-demo.html#medical-cybernetics">Medical Cybernetics</a>
+    <a href="examples/navbar-demo.html#partners">Partners</a>
+    <a href="examples/navbar-demo.html#achievements">Achievements</a>
   </sf-navbar>
 </doc-demo></div>
 
@@ -109,7 +110,7 @@ fold, regardless of the viewport width.</p>
     <sf-footer>
   <sf-footer-body>
     <span>2015 © <a href="https://github.com/Mitranim">Mitranim</a></span>
-    <a href="#"><strong>⥣</strong></a>
+    <a class="pointer" onclick="scrollTo(0, 0)"><strong>⥣</strong></a>
   </sf-footer-body>
 </sf-footer>
 

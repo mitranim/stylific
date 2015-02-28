@@ -7,7 +7,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
-    <link rel="stylesheet" type="text/css" href="/css/docs.css">
+    <link rel="stylesheet" type="text/css" href="/stylific/css/docs.css">
+    <base href="/stylific/">
   </head>
 
   <body>
@@ -18,18 +19,18 @@
   <input type="checkbox" id="navbar-dropdown">
   <label for="navbar-dropdown"></label>
   <!-- Links -->
-  <a class="active" href="/">Overview</a>
-  <a  href="/components/">Components</a>
-  <a  href="/color-system/">Colour System</a>
-  <a  href="/patterns/">Patterns</a>
-  <a  href="/configuration/">Configuration</a>
+  <a class="active" href="">Overview</a>
+  <a  href="components/">Components</a>
+  <a  href="color-system/">Colour System</a>
+  <a  href="patterns/">Patterns</a>
+  <a  href="configuration/">Configuration</a>
   <sf-dropdown>
     <label class="justify-center">Examples</label>
     <sf-dropdown-list class="text-left">
-      <a  href="/examples/active-switch.html">active-switch</a>
-      <a  href="/examples/navbar-demo.html">navbar demo</a>
-      <a  href="/examples/footer.html">footer</a>
-      <a  href="/examples/grid-demo.html">grid demo</a>
+      <a  href="examples/active-switch.html">active-switch</a>
+      <a  href="examples/navbar-demo.html">navbar demo</a>
+      <a  href="examples/footer.html">footer</a>
+      <a  href="examples/grid-demo.html">grid demo</a>
     </sf-dropdown-list>
   </sf-dropdown>
 </sf-navbar>
@@ -69,7 +70,7 @@ In fact, it’s much more modest in scope than the styles of any moderately size
 website. It exists to provide a good starting point for new projects, and
 showcase the advantages of exploiting modern CSS standards.</p>
 <h2 id="a-demo-please-">A Demo Please?</h2>
-<p>This website is a live demo. See <a href="/components/">Components</a> for an overview of
+<p>This website is a live demo. See <a href="components/">Components</a> for an overview of
 UI elements. Also, check out the documentation’s
 <a href="https://github.com/Mitranim/stylific/tree/master/docs-src" target="_blank">source</a> to see how
 it imports and extends the library.</p>
@@ -85,7 +86,7 @@ font size.</p>
 <p>These issues are so fundamental that you have to write styles and UI components
 from scratch to avoid them. stylific provides at least <em>some</em> basis.</p>
 <h1 id="what-s-different">What’s Different</h1>
-<p>The <a href="/patterns/">Patterns</a> section also explains the thinking behind this.</p>
+<p>The <a href="patterns/">Patterns</a> section also explains the thinking behind this.</p>
 <h2 id="no-javascript">No JavaScript</h2>
 <p>stylific has no JavaScript dependency. Its interactive components work with
 plain HTML and CSS. This means no unwanted dependencies and better baseline
@@ -96,7 +97,7 @@ adaptations of Boostrap.</p>
 components still work.</p>
 <p>No JS dependency doesn’t mean you can’t use JavaScript; quite the opposite.
 Because it only needs static markup, enhancement with JavaScript is
-<a href="/examples/active-switch.html">trivial</a>. Some stylific components provide
+<a href="examples/active-switch.html">trivial</a>. Some stylific components provide
 simple hooks for that.</p>
 <h2 id="flexible-units">Flexible Units</h2>
 <p>stylific uses <code>em</code> and <code>rem</code> units for all dimensions. Unlike pixels, they
@@ -108,7 +109,7 @@ size. This is due to typographic units and flexible positioning.</p>
 <h2 id="component-oriented">Component Oriented</h2>
 <p>Styles are scoped to custom tag names, which makes it easy to reason about
 components and subclass them, and combines very well with a component approach
-in AngularJS or Polymer. See <a href="/patterns
+in AngularJS or Polymer. See <a href="patterns
 /#component- oriented">Patterns#Component Oriented</a>.</p>
 <h2 id="minimal-markup">Minimal Markup</h2>
 <p>stylific’s components require only about half as much HTML markup as similar
@@ -133,7 +134,7 @@ set up a local build for development, then send your changes to <code>master</co
     <sf-footer>
   <sf-footer-body>
     <span>2015 © <a href="https://github.com/Mitranim">Mitranim</a></span>
-    <a href="#"><strong>⥣</strong></a>
+    <a class="pointer" onclick="scrollTo(0, 0)"><strong>⥣</strong></a>
   </sf-footer-body>
 </sf-footer>
 

@@ -7,7 +7,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
-    <link rel="stylesheet" type="text/css" href="/css/docs.css">
+    <link rel="stylesheet" type="text/css" href="/stylific/css/docs.css">
+    <base href="/stylific/">
   </head>
 
   <body>
@@ -18,18 +19,18 @@
   <input type="checkbox" id="navbar-dropdown">
   <label for="navbar-dropdown"></label>
   <!-- Links -->
-  <a  href="/">Overview</a>
-  <a class="active" href="/components/">Components</a>
-  <a  href="/color-system/">Colour System</a>
-  <a  href="/patterns/">Patterns</a>
-  <a  href="/configuration/">Configuration</a>
+  <a  href="">Overview</a>
+  <a class="active" href="components/">Components</a>
+  <a  href="color-system/">Colour System</a>
+  <a  href="patterns/">Patterns</a>
+  <a  href="configuration/">Configuration</a>
   <sf-dropdown>
     <label class="justify-center">Examples</label>
     <sf-dropdown-list class="text-left">
-      <a  href="/examples/active-switch.html">active-switch</a>
-      <a  href="/examples/navbar-demo.html">navbar demo</a>
-      <a  href="/examples/footer.html">footer</a>
-      <a  href="/examples/grid-demo.html">grid demo</a>
+      <a  href="examples/active-switch.html">active-switch</a>
+      <a  href="examples/navbar-demo.html">navbar demo</a>
+      <a  href="examples/footer.html">footer</a>
+      <a  href="examples/grid-demo.html">grid demo</a>
     </sf-dropdown-list>
   </sf-dropdown>
 </sf-navbar>
@@ -50,21 +51,21 @@
 <div style="margin: 0"><doc-toc class="info">
   <input checked id="toc-toggle" type="checkbox">
   <label for="toc-toggle"></label>
-  <a href="#overview">Overview</a>
-  <a href="#sf-article">sf-article</a>
-  <a href="#sf-collapse">sf-collapse</a>
-  <a href="#sf-dropdown">sf-dropdown</a>
-  <a href="#sf-tabset">sf-tabset</a>
-  <a href="#sf-grid">sf-grid</a>
-  <a href="#sf-grid-item">sf-grid-item</a>
-  <a href="#sf-modal">sf-modal</a>
-  <a href="#sf-navbar">sf-navbar</a>
-  <a href="#sf-navtabs">sf-navtabs</a>
-  <a href="#sf-footer">sf-footer</a>
-  <a href="#sf-tooltip">sf-tooltip</a>
-  <a href="#sf-input">sf-input</a>
-  <a href="#sf-btn">sf-btn</a>
-  <a href="#sf-jumbo">sf-jumbo</a>
+  <a href="components/#overview">Overview</a>
+  <a href="components/#sf-article">sf-article</a>
+  <a href="components/#sf-collapse">sf-collapse</a>
+  <a href="components/#sf-dropdown">sf-dropdown</a>
+  <a href="components/#sf-tabset">sf-tabset</a>
+  <a href="components/#sf-grid">sf-grid</a>
+  <a href="components/#sf-grid-item">sf-grid-item</a>
+  <a href="components/#sf-modal">sf-modal</a>
+  <a href="components/#sf-navbar">sf-navbar</a>
+  <a href="components/#sf-navtabs">sf-navtabs</a>
+  <a href="components/#sf-footer">sf-footer</a>
+  <a href="components/#sf-tooltip">sf-tooltip</a>
+  <a href="components/#sf-input">sf-input</a>
+  <a href="components/#sf-btn">sf-btn</a>
+  <a href="components/#sf-jumbo">sf-jumbo</a>
 </doc-toc></div>
 
 <h1 id="overview">Overview</h1>
@@ -75,10 +76,10 @@ typographic offsets, link styles, and convenience classes for images.</p>
 <p>Use it wherever you want typographic styling. Suited for text compiled from
 Markdown, like this documentation.</p>
 <p>This whole page is an example, but here’s a smaller one. Note the <code>info</code> colour
-class. See the notes on <a href="/patterns/#whitespace">whitespace</a> for why <code>.pad</code> is
+class. See the notes on <a href="patterns/#whitespace">whitespace</a> for why <code>.pad</code> is
 needed.</p>
 <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-article</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"pad info"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">img</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"/img/square/script.jpg"</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"right small"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">img</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"img/square/script.jpg"</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"right small"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Article header<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Cum horribilem walking dead resurgere de crazed sepulcris creaturis, zombie sicut de grave feeding iride et serpens.<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Pestilentia, shaun ofthe dead scythe animated corpses ipsa screams. Pestilentia est plague haec decaying ambulabat mortuos.<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
@@ -86,7 +87,7 @@ needed.</p>
 </code></pre>
 <div><doc-demo>
   <sf-article class="pad info">
-    <img src="/img/square/script.jpg" class="right small">
+    <img src="img/square/script.jpg" class="right small">
     <h1>Article header</h1>
     <p>Cum horribilem walking dead resurgere de crazed sepulcris creaturis, zombie sicut de grave feeding iride et serpens.</p>
     <p>Pestilentia, shaun ofthe dead scythe animated corpses ipsa screams. Pestilentia est plague haec decaying ambulabat mortuos.</p>
@@ -222,7 +223,7 @@ the <code>&lt;label&gt;</code>. This automatically disables the <code>:hover</co
 the <code>:checked</code> hack with hidden inputs.</p>
 <p><strong>Note</strong>: Safari 8 is surprisingly slow in detecting changes with the
 <code>:checked</code>-based selector used for tab body. Until this is fixed, you may want
-to supplement this by using <code>.active</code> on labels. See this <a href="/examples
+to supplement this by using <code>.active</code> on labels. See this <a href="examples
 /active-switch.html">example</a>.</p>
 <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-tabset</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"orange"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"demo-sf-tabset-1"</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"radio"</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"demo-sf-tabset"</span>&gt;</span>
@@ -282,7 +283,7 @@ than the old grid systems and solves a lot of other problems.</p>
 <p>Because specialised grid systems are no longer needed, stylific doesn’t come
 with one. But it’s convenient to have a shortcut to a media-responsive flex
 container that wraps its items on different breakpoints. <code>sf-grid</code> is a
-primitive version of that. Open this on a <a href="/examples/grid-
+primitive version of that. Open this on a <a href="examples/grid-
 demo.html">separate page</a> to resize the page more easily. The classes are cosmetic.</p>
 <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-grid</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"doc-grid-demo pad-ch"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>One<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
@@ -387,10 +388,10 @@ you need is to link to that id.</p>
 <span class="hljs-tag">&lt;/<span class="hljs-title">sf-modal</span>&gt;</span>
 </code></pre>
 <div><doc-demo>
-  <a href="#demo-sf-modal">Click me to open a modal!</a>
+  <a href="components/#demo-sf-modal">Click me to open a modal!</a>
 
   <sf-modal id="demo-sf-modal" class="info">
-    <a href="#_"></a>
+    <a href="components/#_"></a>
     <sf-modal-body>
       <h1 class="pad-v">Modal header</h1>
       <p>Check me out, I’m a modal!</p>
@@ -401,7 +402,7 @@ you need is to link to that id.</p>
 
 <p>If your website has a <code>&lt;base&gt;</code> tag (typically <code>&lt;base href=&quot;/&quot;&gt;</code>), the <code>#</code> part
 in the links needs to be preceded with the pathname of the current page.</p>
-<h1 id="sf-navbar"><a href="https://github.com/Mitranim/stylific/blob/master/less/components/sf-navbar.less" target="_blank">sf-navbar</a></h1><p>Each website needs a navigation bar. Open a <a href="/examples/navbar-
+<h1 id="sf-navbar"><a href="https://github.com/Mitranim/stylific/blob/master/less/components/sf-navbar.less" target="_blank">sf-navbar</a></h1><p>Each website needs a navigation bar. Open a <a href="examples/navbar-
 demo.html">separate demo</a> to resize the page more easily.</p>
 <p>Notice how little markup is required.</p>
 <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-navbar</span>&gt;</span>
@@ -413,10 +414,10 @@ demo.html">separate demo</a> to resize the page more easily.</p>
 </code></pre>
 <div><doc-demo>
   <sf-navbar>
-    <a href="#home">Home</a>
-    <a class="active" href="#robots">Robots</a>
-    <a href="#medical-cybernetics">Medical Cybernetics</a>
-    <a href="#partners">Partners</a>
+    <a href="components/#home">Home</a>
+    <a class="active" href="components/#robots">Robots</a>
+    <a href="components/#medical-cybernetics">Medical Cybernetics</a>
+    <a href="components/#partners">Partners</a>
   </sf-navbar>
 </doc-demo></div>
 
@@ -440,11 +441,11 @@ folding in effect.</p>
   <sf-navbar class="orange">
     <input id="demo-sf-navbar" type="checkbox">
     <label for="demo-sf-navbar"></label>
-    <a href="#home">Home</a>
-    <a class="active" href="#robots">Robots</a>
-    <a href="#medical-cybernetics">Medical Cybernetics</a>
-    <a href="#partners">Partners</a>
-    <a href="#achievements">Achievements</a>
+    <a href="components/#home">Home</a>
+    <a class="active" href="components/#robots">Robots</a>
+    <a href="components/#medical-cybernetics">Medical Cybernetics</a>
+    <a href="components/#partners">Partners</a>
+    <a href="components/#achievements">Achievements</a>
   </sf-navbar>
 </doc-demo></div>
 
@@ -464,11 +465,11 @@ fold, regardless of the viewport width.</p>
   <sf-navbar class="success" sf-fold>
     <input id="demo-sf-navbar-fold" type="checkbox">
     <label for="demo-sf-navbar-fold"></label>
-    <a href="#home">Home</a>
-    <a class="active" href="#robots">Robots</a>
-    <a href="#medical-cybernetics">Medical Cybernetics</a>
-    <a href="#partners">Partners</a>
-    <a href="#achievements">Achievements</a>
+    <a href="components/#home">Home</a>
+    <a class="active" href="components/#robots">Robots</a>
+    <a href="components/#medical-cybernetics">Medical Cybernetics</a>
+    <a href="components/#partners">Partners</a>
+    <a href="components/#achievements">Achievements</a>
   </sf-navbar>
 </doc-demo></div>
 
@@ -504,17 +505,17 @@ navtabs.less" target="_blank">source</a> to see how easy it is to subclass compo
 </code></pre>
 <div><doc-demo>
   <sf-navtabs>
-    <a href="#section-one">Section One</a>
-    <a class="active" href="#section-two">Section Two</a>
-    <a href="#section-three">Section Three</a>
-    <a href="#section-four">Section Four</a>
+    <a href="components/#section-one">Section One</a>
+    <a class="active" href="components/#section-two">Section Two</a>
+    <a href="components/#section-three">Section Three</a>
+    <a href="components/#section-four">Section Four</a>
   </sf-navtabs>
 </doc-demo></div>
 
 <h1 id="sf-footer"><a href="https://github.com/Mitranim/stylific/blob/master/less/components/sf-footer.less" target="_blank">sf-footer</a></h1><p>Each website needs a footer that pushes itself to the bottom of the viewport
 (often incorrectly called “sticky”). It’s usually difficult to implement when
 the footer height is unknown. <code>sf-footer</code> does this for you. The footer at the
-bottom of this page is a demo. Go to an <a href="/examples/footer.html">empty page</a> to
+bottom of this page is a demo. Go to an <a href="examples/footer.html">empty page</a> to
 see how it works.</p>
 <p><code>sf-footer</code> relies on the flex-column body layout, which is a global default
 defined in <a href="https://github.com/Mitranim/stylific/blob/master/
@@ -631,7 +632,7 @@ theme and respond to colour classes.</p>
 </doc-demo></div>
 
 <p>Like all other elements, <code>.sf-btn</code> supports all colours defined in the base
-colour mix. See the <a href="/color-system/">Colour System</a>.</p>
+colour mix. See the <a href="color-system/">Colour System</a>.</p>
 <p>Like other class-based elements, you can apply this styling to <em>all</em> buttons by
 default with the option <code>@sf-enable-global-element-components: true</code>. Then you
 can omit the <code>sf-btn</code> class and simply use <code>&lt;button&gt;</code>.</p>
@@ -655,13 +656,13 @@ can omit the <code>sf-btn</code> class and simply use <code>&lt;button&gt;</code
 minutes of typing the styles for positioning, underlay, etc. Like everything
 else, it’s sized in <code>em</code>, so adjusting the font size automatically changes its
 height.</p>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-jumbo</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"background-image: url(/img/aite.jpg)"</span>&gt;</span>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-jumbo</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"background-image: url(img/aite.jpg)"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Catchy slogan<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Super awesome marketing speak<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">sf-jumbo</span>&gt;</span>
 </code></pre>
 <div><doc-demo class="flex-column">
-  <sf-jumbo style="background-image: url(/img/aite.jpg)">
+  <sf-jumbo style="background-image: url(img/aite.jpg)">
     <h1>Catchy slogan</h1>
     <p>Super awesome marketing speak</p>
   </sf-jumbo>
@@ -669,13 +670,13 @@ height.</p>
 
 <p>To reposition the children, simply stick <code>.justify-start</code> or <code>.justify-center</code>
 on it. This requires <code>@sf-enable-global-classes</code> to be enabled (default).</p>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-jumbo</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"justify-start"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"background-image: url(/img/citadel-blue.jpg)"</span>&gt;</span>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-jumbo</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"justify-start"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"background-image: url(img/citadel-blue.jpg)"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>I'm Commander Shepard<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>And this is my favourite store on the Citadel<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">sf-jumbo</span>&gt;</span>
 </code></pre>
 <div><doc-demo class="flex-column">
-  <sf-jumbo class="justify-start" style="background-image: url(/img/citadel-blue.jpg)">
+  <sf-jumbo class="justify-start" style="background-image: url(img/citadel-blue.jpg)">
     <h1>I’m Commander Shepard</h1>
     <p>And this is my favourite store on the Citadel</p>
   </sf-jumbo>
@@ -689,7 +690,7 @@ on it. This requires <code>@sf-enable-global-classes</code> to be enabled (defau
     <sf-footer>
   <sf-footer-body>
     <span>2015 © <a href="https://github.com/Mitranim">Mitranim</a></span>
-    <a href="#"><strong>⥣</strong></a>
+    <a class="pointer" onclick="scrollTo(0, 0)"><strong>⥣</strong></a>
   </sf-footer-body>
 </sf-footer>
 

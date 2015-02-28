@@ -7,7 +7,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
-    <link rel="stylesheet" type="text/css" href="/css/docs.css">
+    <link rel="stylesheet" type="text/css" href="/stylific/css/docs.css">
+    <base href="/stylific/">
   </head>
 
   <body>
@@ -18,18 +19,18 @@
   <input type="checkbox" id="navbar-dropdown">
   <label for="navbar-dropdown"></label>
   <!-- Links -->
-  <a  href="/">Overview</a>
-  <a  href="/components/">Components</a>
-  <a class="active" href="/color-system/">Colour System</a>
-  <a  href="/patterns/">Patterns</a>
-  <a  href="/configuration/">Configuration</a>
+  <a  href="">Overview</a>
+  <a  href="components/">Components</a>
+  <a class="active" href="color-system/">Colour System</a>
+  <a  href="patterns/">Patterns</a>
+  <a  href="configuration/">Configuration</a>
   <sf-dropdown>
     <label class="justify-center">Examples</label>
     <sf-dropdown-list class="text-left">
-      <a  href="/examples/active-switch.html">active-switch</a>
-      <a  href="/examples/navbar-demo.html">navbar demo</a>
-      <a  href="/examples/footer.html">footer</a>
-      <a  href="/examples/grid-demo.html">grid demo</a>
+      <a  href="examples/active-switch.html">active-switch</a>
+      <a  href="examples/navbar-demo.html">navbar demo</a>
+      <a  href="examples/footer.html">footer</a>
+      <a  href="examples/grid-demo.html">grid demo</a>
     </sf-dropdown-list>
   </sf-dropdown>
 </sf-navbar>
@@ -50,14 +51,14 @@
 <div style="margin: 0"><doc-toc class="warning">
   <input checked id="toc-toggle" type="checkbox">
   <label for="toc-toggle"></label>
-  <a href="#demo">Demo</a>
-  <a href="#overview">Overview</a>
-  <a href="#straight-set">Straight Set</a>
-  <a href="#inverse-set">Inverse Set</a>
-  <a href="#static-mix">Static Mix</a>
-  <a href="#interactive-mix">Interactive Mix</a>
-  <a href="#base-colours-and-classes">Base Colours and Classes</a>
-  <a href="#adding-colours">Adding Colours</a>
+  <a href="color-system/#demo">Demo</a>
+  <a href="color-system/#overview">Overview</a>
+  <a href="color-system/#straight-set">Straight Set</a>
+  <a href="color-system/#inverse-set">Inverse Set</a>
+  <a href="color-system/#static-mix">Static Mix</a>
+  <a href="color-system/#interactive-mix">Interactive Mix</a>
+  <a href="color-system/#base-colours-and-classes">Base Colours and Classes</a>
+  <a href="color-system/#adding-colours">Adding Colours</a>
 </doc-toc></div>
 
 <h1 id="demo">Demo</h1>
@@ -112,13 +113,14 @@ colour class).</p>
 <p>stylific handles all this boilerplate so you don’t have to. It lets you
 register a colour with just a few lines of code, and it’ll be automatically
 used in internal colour mixes and exposed as a global class. Pretty nifty!</p>
-<p>We’ll get to registering custom colours <a href="#adding-colours">later</a>, but first,
-let’s see how the system is set up. We need to undestand the following concepts:</p>
+<p>We’ll get to registering custom colours <a href="color-system/#adding-colours">later</a>,
+but first, let’s see how the system is set up. We need to undestand the
+following concepts:</p>
 <ul>
-<li><a href="#straight-set">Straight colour set</a></li>
-<li><a href="#inverse-set">Inverse colour set</a></li>
-<li><a href="#static-mix">Static colour mix</a></li>
-<li><a href="#interactive-mix">Interactive colour mix</a></li>
+<li><a href="color-system/#straight-set">Straight colour set</a></li>
+<li><a href="color-system/#inverse-set">Inverse colour set</a></li>
+<li><a href="color-system/#static-mix">Static colour mix</a></li>
+<li><a href="color-system/#interactive-mix">Interactive colour mix</a></li>
 </ul>
 <h2 id="straight-set">Straight Set</h2>
 <p>A straight set takes a colour and produces two rules: <code>color</code> and
@@ -258,8 +260,8 @@ colour class be registered for all states for both static and interactive mixes.
 limited to the base set. You can register additional colours under additional
 class names, and they’ll be automatically included into <em>all</em> rules that use
 colour classes, even for default components.</p>
-<p>This was already <a href="#straight-set">shown</a> above, but let’s recap. Suppose we want
-to add a new colour.</p>
+<p>This was already <a href="color-system/#straight-set">shown</a> above, but let’s recap.
+Suppose we want to add a new colour.</p>
 <pre><code class="lang-less"><span class="hljs-variable">@color-orange:</span> orange;
 </code></pre>
 <p>We have a colour here. To register it with stylific’s system, we need to
@@ -296,7 +298,7 @@ elsewhere.</p>
     <sf-footer>
   <sf-footer-body>
     <span>2015 © <a href="https://github.com/Mitranim">Mitranim</a></span>
-    <a href="#"><strong>⥣</strong></a>
+    <a class="pointer" onclick="scrollTo(0, 0)"><strong>⥣</strong></a>
   </sf-footer-body>
 </sf-footer>
 

@@ -7,7 +7,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
-    <link rel="stylesheet" type="text/css" href="/css/docs.css">
+    <link rel="stylesheet" type="text/css" href="/stylific/css/docs.css">
+    <base href="/stylific/">
   </head>
 
   <body>
@@ -18,18 +19,18 @@
   <input type="checkbox" id="navbar-dropdown">
   <label for="navbar-dropdown"></label>
   <!-- Links -->
-  <a  href="/">Overview</a>
-  <a  href="/components/">Components</a>
-  <a  href="/color-system/">Colour System</a>
-  <a  href="/patterns/">Patterns</a>
-  <a  href="/configuration/">Configuration</a>
+  <a  href="">Overview</a>
+  <a  href="components/">Components</a>
+  <a  href="color-system/">Colour System</a>
+  <a  href="patterns/">Patterns</a>
+  <a  href="configuration/">Configuration</a>
   <sf-dropdown>
     <label class="justify-center">Examples</label>
     <sf-dropdown-list class="text-left">
-      <a  href="/examples/active-switch.html">active-switch</a>
-      <a  href="/examples/navbar-demo.html">navbar demo</a>
-      <a  href="/examples/footer.html">footer</a>
-      <a class="active" href="/examples/grid-demo.html">grid demo</a>
+      <a  href="examples/active-switch.html">active-switch</a>
+      <a  href="examples/navbar-demo.html">navbar demo</a>
+      <a  href="examples/footer.html">footer</a>
+      <a class="active" href="examples/grid-demo.html">grid demo</a>
     </sf-dropdown-list>
   </sf-dropdown>
 </sf-navbar>
@@ -49,7 +50,7 @@
 <h1 id="description">Description</h1>
 <p>Very basic flexbox grid demo. Resize your viewport to see how it responds to
 width changes. The classes are cosmetic.</p>
-<p>Back to <a href="/components/#sf-grid">Components#sf-grid</a>.</p>
+<p>Back to <a href="components/#sf-grid">Components#sf-grid</a>.</p>
 <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-grid</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"doc-grid-demo pad-ch"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>One<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Two<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
@@ -86,7 +87,7 @@ width changes. The classes are cosmetic.</p>
     <sf-footer>
   <sf-footer-body>
     <span>2015 © <a href="https://github.com/Mitranim">Mitranim</a></span>
-    <a href="#"><strong>⥣</strong></a>
+    <a class="pointer" onclick="scrollTo(0, 0)"><strong>⥣</strong></a>
   </sf-footer-body>
 </sf-footer>
 
