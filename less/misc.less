@@ -1,0 +1,54 @@
+/**
+ * Global classes and attributes for minor utility.
+ */
+
+html when (@sf-enable-global-classes) {
+
+  /**
+   * Layouts.
+   */
+  .fit-absolute {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  // IE 10
+  [hidden] {display: none}
+
+  /**
+   * Shadows and borders.
+   */
+  .shadow {.sf-shadow-weak()}
+  .border {.sf-border-weak()}
+
+  /**
+   * Whitespace.
+   */
+  .pad           {padding: @sf-common-padding}
+  .pad-05        {padding: 0.5 * @sf-common-padding}
+  .pad-v         {padding: @sf-common-padding 0}
+  .pad-v-05      {padding: 0.5 * @sf-common-padding 0}
+  .pad-ch > *    {padding: @sf-common-padding}
+  .pad-ch-05 > * {padding: 0.5 * @sf-common-padding}
+  .center-by-margins {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /**
+   * Cursors.
+   */
+  .pointer        {cursor: pointer}
+  .cursor-default {cursor: auto}
+
+  /**
+   * Typography.
+   */
+  .text-center  {text-align: center}
+  .text-justify {text-align: justify}
+  .text-left    {text-align: left}
+  .text-right   {text-align: right}
+
+}

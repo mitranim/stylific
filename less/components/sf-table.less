@@ -1,0 +1,24 @@
+/**
+ * [NYI]: underdeveloped, need more use cases.
+ *
+ * <table class="sf-table">
+ *   ...
+ * </table>
+ */
+
+// Class-based component.
+.@{sf-prefix}-table {.sf-table()}
+
+// Default element turned into a component.
+table when (@sf-enable-global-element-components) {.sf-table()}
+
+.sf-table() {
+
+  /**
+   * Layout.
+   */
+  display: table;
+  // Fixes many common issues with table layouts.
+  table-layout: fixed;
+
+}

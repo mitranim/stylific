@@ -1,0 +1,41 @@
+/**
+ * [NYI]: underdeveloped, haven't had enough use cases.
+ *
+ * <form class="sf-form">
+ *   ...
+ * </form>
+ */
+
+/**
+ * ToDo.
+ *
+ * See if we can ditch .sf-form-line.
+ * Explore how to better style labels.
+ * Make a form responsive, start stacked then move to sides.
+ */
+
+// Class-based component.
+.@{sf-prefix}-form {.sf-form()}
+
+// Default element turned into a component.
+form when (@sf-enable-global-element-components) {.sf-form()}
+
+.sf-form() {
+
+  // Inner layout.
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  // Line style.
+  .@{sf-prefix}-form-line {
+    // Layout.
+    &:not(:last-of-type) {
+      margin-bottom: -1px;
+    }
+
+    // Inner layout.
+    display: flex;
+  }
+
+}

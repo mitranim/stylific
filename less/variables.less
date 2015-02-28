@@ -1,0 +1,199 @@
+/**
+ * Global variables used in the package. Variables are grouped by names of
+ * most closely related files, but they may be referenced in more than one
+ * file.
+ */
+
+/******************************** Independent ********************************/
+
+// Prefix to use for tag, class and attribute names.
+@sf-prefix: ~'sf';
+
+// Whether to expose global class names and attributes, or stick to components
+// only.
+@sf-enable-global-classes: true;
+
+// Whether to apply class-based component styles to the elements they correspond
+// to. This means that <input> with text-based [type] values, <textarea>,
+// <button> and <input type="button">, <form>, and <table> automatically receive
+// the styling that by default requires a component class.
+@sf-enable-global-element-components: false;
+
+// Display sizes.
+@sf-screen-xs: 480px;
+@sf-screen-sm: 640px;
+@sf-screen-md: 768px;
+@sf-screen-lg: 992px;
+
+// Standard border radius.
+@sf-common-border-radius: 0.4rem;
+
+// Z-indices used for absolutely positioned elements. Grouped for easier
+// bookkeeping.
+@sf-z-index-navbar:   1000;
+@sf-z-index-dropdown: 1100;
+@sf-z-index-modal:    1200;
+@sf-z-index-tooltip:  1300;
+
+/******************************** colors.less ********************************/
+
+// Shades of gray.
+@sf-umbra:  lighten(black, 20%);
+@sf-gray:   gray;
+@sf-bright: darken(white, 1%);
+
+/**
+ * Non-grayscale colours. Each of these is included into the .sf-color-mix()
+ * in colors.less. The user can define additional colours and make their own
+ * partial definition of .sf-color-mix() with just those colours in their own
+ * LESS source. Both versions of .sf-color-mix() will take effect across all
+ * stylific components.
+ *
+ * A few colours were copied from Bootstrap; colour mixes automatically derive
+ * versions with different luminance, so we don't actually use any of them
+ * straight-on.
+ */
+@sf-color-error:   #d9534f; // Bootstrap colour
+@sf-color-info:    #5bc0de; // Bootstrap colour
+@sf-color-success: #5cb85c; // Bootstrap colour
+@sf-color-warning: darken(yellow, 10%);
+
+// Base text colour.
+@sf-base-text-color: lighten(black, 2%);
+
+// Base link colour. We want it to be 25% light with dark text and 75% light
+// with light text, keeping hue and saturation the same.
+@sf-base-link-color: hsl(
+  hue(@sf-color-info),
+  saturation(@sf-color-info),
+  75% - luma(contrast(@sf-base-text-color)) / 2
+);
+
+// Base background colour. Used for document body and positioned components. By
+// default, it's a grayscale negative of the base text colour. It automatically
+// adjusts to a good contrasting value if the base text colour is changed.
+@sf-base-background-color: darken(white, luma(@sf-base-text-color));
+
+/**
+ * Colour deltas. Determine by how much to adjust colours for given states.
+ */
+// base
+@sf-delta-base: 3%;
+// :hover
+@sf-delta-hover: 5%;
+// :focus
+@sf-delta-focus: 5%;
+// :active
+@sf-delta-active: 10%;
+// .active or analogous custom condition
+@sf-delta-activated: 15%;
+
+/******************************** layout.less ********************************/
+
+// Maximum website width. This is used exclusively for max-width, and may be set
+// to none to let the website stretch across any display.
+@sf-body-max-width: @sf-screen-lg;
+
+// Breakpoint for switching the state of the responsive layout.
+@sf-responsive-breakpoint: @sf-screen-sm;
+
+/******************************** mixins.less ********************************/
+
+// Whether to enable the built-in transitions. Takes priority over the element-
+// specific transition flags.
+@sf-enable-common-transitions: true;
+
+// Duration of common transitions.
+@sf-common-transition-time: 0.2s;
+
+// Timing function used in common transitions.
+@sf-common-transition-timing-function: ease;
+
+/****************************** typography.less ******************************/
+
+// Font families.
+@sf-font-family-sans-serif: Helvetica Neue, Verdana, sans-serif;
+@sf-font-family-serif:      Optima, Georgia, serif;
+@sf-font-family-monospace:  Menlo, Monaco, Consolas, monospace;
+
+// Font sizes.
+@sf-font-size-small:   0.6 * @sf-font-size-base;
+@sf-font-size-smaller: 0.8 * @sf-font-size-base;
+@sf-font-size-finer:   0.9 * @sf-font-size-base;
+@sf-font-size-base:    1em;
+@sf-font-size-larger:  1.2 * @sf-font-size-base;
+@sf-font-size-large:   1.5 * @sf-font-size-base;
+
+// Common padding and margin. These are used in most components. Sizing this in
+// rem is vital for lining up padding and margin between sibling elements with
+// different font sizes.
+@sf-common-padding: 1rem;
+@sf-common-margin:  1rem;
+
+/****************************** sf-footer.less *******************************/
+
+// Footer font size.
+@sf-footer-font-size: @sf-font-size-finer;
+
+// Minimum footer height. By default, it matches the navbar.
+@sf-footer-height: @sf-navbar-height;
+
+// Footer text colour.
+@sf-footer-text-color: @sf-gray;
+
+// Offset from the preceding content.
+@sf-footer-offset: 4 * @sf-common-margin;
+
+/***************************** sf-grid-item.less *****************************/
+
+// Offset around and between children.
+@sf-grid-item-padding: @sf-common-padding / 2;
+
+// Height used for preview thumbnails.
+@sf-grid-item-preview-height: 8em;
+
+/******************************* sf-jumbo.less *******************************/
+
+@sf-jumbo-height: 16em;
+@sf-jumbo-font-size-base: 1.6 * @sf-font-size-base;
+
+/******************************* sf-modal.less *******************************/
+
+// Whether to enable border radius on modals.
+@sf-enable-modal-border-radius: true;
+
+/****************************** sf-navbar.less *******************************/
+
+// Default navbar and footer height. This must be in rem so we can properly
+// offset the body when the navbar is fixed.
+@sf-navbar-height: 3.5rem;
+
+// Default navbar font size.
+@sf-navbar-font-size: @sf-font-size-larger;
+
+// Media breakpoint for auto-collapsing.
+@sf-navbar-breakpoint: @sf-responsive-breakpoint;
+
+// At which child to wrap the auto-collapsing navbar.
+@sf-navbar-nth-child: 4;
+
+/****************************** sf-tabset.less *******************************/
+
+@sf-tab-head-height: 3em;
+@sf-tab-body-min-height: 3em;
+
+/****************************** sf-tooltip.less ******************************/
+
+// The proportion of the standard dimensions to use in tooltips. Affects things
+// like font-size, padding, border-radius. Must be a unitless fractional number.
+@sf-tooltip-proportion: 0.8;
+
+// Whether to enable border radius on tooltips.
+@sf-enable-tooltip-border-radius: true;
+
+// By how much to offset the tooltip from the host. Measured relative to the
+// parent; em or rem is recommended.
+@sf-tooltip-offset: 0.5em;
+
+// Whether to enable tooltip transitions.
+@sf-enable-tooltip-transitions: true;

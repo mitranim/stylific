@@ -1,0 +1,73 @@
+/**
+ * Usage is simple:
+ *
+ *   <sf-article>
+ *     ...
+ *   </sf-article>
+ *
+ * To add default padding, use:
+ *
+ *   <sf-article class="pad">
+ *     ...
+ *   </sf-article>
+ */
+@{sf-prefix}-article {.sf-article()}
+.sf-article() {
+
+  /**
+   * Layout.
+   */
+  display: block;
+  // Narrow version (requires an explicit width on the parent). Starts wide
+  // and narrows down based on display width.
+  &.narrow {
+    .sf-media-mix-inverse(width, 100%);
+  }
+
+  // Article image styles. Using a descendant selector because the layout may
+  // have arbitrary depth.
+  img {
+    /**
+     * Layout.
+     */
+    // Margins.
+    &:not(.left)  {margin-left:  @sf-common-margin}
+    &:not(.right) {margin-right: @sf-common-margin}
+
+    // Cosmetic.
+    .sf-shadow-thin();
+
+    // Side versions.
+    &.left, &.right {
+      width: 16em;
+      height: 16em;
+    }
+    &.left   {float: left}
+    &.right  {float: right}
+
+    // Different sizes.
+    &.tiny   {width: 10em; height: 10em}
+    &.small  {width: 12em; height: 12em}
+    &.medium {width: 20em; height: 20em}
+  }
+
+  // Spacing between children.
+  > *:not(:last-child) {
+    margin-bottom: @sf-common-margin;
+  }
+
+  // Link underline. Using a descendant selector because the layout may have
+  // arbitrary depth.
+  :link {
+    border-bottom: 1px dotted;
+    border-color: inherit;
+  }
+
+  // Clear article's floating images before letting go of the flow.
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= $title || 'stylific' %></title>
+    <meta name="author" content="mitranim">
+    <meta name="description" content="stylific documentation">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <link rel="stylesheet" type="text/css" href="/css/docs.css">
+  </head>
+
+  <body>
+
+    <!-- Navbar -->
+    <%= $include('partials/navbar', $) %>
+
+    <!-- Site wrapper and content -->
+    <%= $include('partials/wrapper', $) %>
+
+    <!-- Footer -->
+    <%= $include('partials/footer', $) %>
+
+  </body>
+
+</html>

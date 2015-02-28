@@ -1,0 +1,243 @@
+/**
+ *
+ * # Modes
+ *
+ * <sf-dropdown> has two mutually exclusive modes: hover and toggled. The
+ * toggled version is enabled by adding an <input type="checkbox"> before
+ * the <label>.
+ *
+ *
+ * ## Hover
+ *
+ * The hover version must have the exact following layout:
+ *
+ *   <sf-dropdown>
+ *     <label>...</label>
+ *     <sf-dropdown-list>
+ *       ...
+ *     </sf-dropdown-list>
+ *   </sf-dropdown>
+ *
+ * It triggers when you hover over the label and stays while the label or
+ * the <sf-dropdown-list> is hovered. The label needs to contain some text or
+ * other content to be visible. The following <sf-dropdown-list> may contain
+ * arbitrary elements.
+ *
+ *
+ * ## Toggled
+ *
+ * The toggled version is enabled by adding an <input id="..." type="checkbox">
+ * before the <label for="...">. It must have the exact following layout:
+ *
+ *   <sf-dropdown>
+ *     <input id="..." type="checkbox">
+ *     <label for="...">...</label>
+ *     <sf-dropdown-list>
+ *       ...
+ *     </sf-dropdown-list>
+ *   </sf-dropdown>
+ *
+ * The [id] and [for] values must match, otherwise toggling won't work.
+ * This version is toggled on and off by clicking the label, and is toggled off
+ * when clicking outside of the dropdown.
+ *
+ *
+ * # Position
+ *
+ * The default position of the dropdown list is below the label. It can be
+ * altered with an attribute.
+ *
+ *   <sf-dropdown sf-position="top">
+ *   <sf-dropdown sf-position="right">
+ *   <sf-dropdown sf-position="left">
+ */
+
+/**
+ * ToDo.
+ *
+ * * Use different xy shadow offsets based on [sf-position].
+ */
+
+@{sf-prefix}-dropdown {.sf-dropdown()}
+.sf-dropdown() {
+
+  /**
+   * Layout.
+   */
+  display: inline-block;
+  // Position relatively to provide a reference point for the dropdown list.
+  position: relative;
+  // This fixes the problem of children being overlayed by elements with a lower
+  // z-index. The :hover state propagates from the children to the host.
+  &:hover {
+    z-index: @sf-z-index-dropdown;
+  }
+
+  // Hide the checkbox input used for dropdown state.
+  > input[type=checkbox] {display: none}
+
+  /**
+   * Base label styles.
+   */
+  > label {
+    /**
+     * Layout.
+     */
+    // Stretch across the available space.
+    flex: 1;
+    align-self: stretch;
+
+    /**
+     * Inner layout.
+     */
+    // Center the content vertically.
+    display: flex;
+    align-items: center;
+
+    /**
+     * Cosmetic.
+     */
+    cursor: pointer;
+    // Cosmetic state indicator. In the hover version, it's static; in the
+    // toggled version, its content is changed when the state is toggled.
+    &::after {
+      content: '▽';
+      opacity: 0.5;
+      font-size: 50%;
+    }
+    // If there's some text inside, offset the indicator.
+    &:not(:empty)::after {
+      padding-left: 0.5em;
+    }
+  }
+
+  /**
+   * Base label styles for the toggled version.
+   */
+  > input[type=checkbox] + label {
+    /**
+     * Overlay for closing the toggled dropdown.
+     */
+    &::before {
+      .sf-fixed-overlay();
+      opacity: 0;
+      cursor: default;
+      // Layer this just under the dropdown.
+      z-index: @sf-z-index-dropdown - 1;
+    }
+  }
+
+  /**
+   * Active label styles for the toggled version.
+   */
+  > input[type=checkbox]:checked + label {
+    // Make the toggle overlay interactive.
+    &::before {content: ''}
+    // Change the state indicator.
+    &::after {content: '▲'}
+  }
+
+  // Use activated colours for the toggled label. Or don't.
+  // .sf-colormix-all-classes(~' > input[type=checkbox]:checked + label', ~'', @sf-delta-activated);
+
+  /**
+   * Base dropdown list styles.
+   */
+  > @{sf-prefix}-dropdown-list {
+    /**
+     * Layout.
+     */
+    // Positioned absolutely in respect to the parent dropdown host.
+    position: absolute;
+    z-index: @sf-z-index-dropdown;
+    // Hidden unless active. Both opacity and visibility are required to animate
+    // the visibility change.
+    opacity: 0;
+    visibility: hidden;
+    // Animate visibility changes.
+    .sf-common-transition-all();
+
+    /**
+     * Inner layout.
+     */
+    display: flex;
+    flex-direction: column;
+
+    /**
+     * Cosmetic.
+     */
+    .sf-shadow-medium();
+    background-color: @sf-base-background-color;
+
+    // Cosmetic styling for immediate children.
+    > * {
+      padding: @sf-common-padding;
+    }
+  }
+  // Use static colours for the dropdown list itself.
+  .sf-colormix-all-states(~' > sf-dropdown-list', false);
+  // Use interactive colours for the immediate dropdown list children.
+  .sf-colormix-all-states(~' > sf-dropdown-list > *', true);
+
+  /**
+   * Position-dependent indicators.
+   */
+  // Top.
+  &[sf-position=top] {
+    // Reverse the indicators.
+    > label::after {content: '△'}
+    > input[type=checkbox]:checked + label::after {
+      content: '▼';
+    }
+  }
+
+  /**
+   * Active dropdown list styles.
+   */
+  // Hover version.
+  > label:first-child:hover + @{sf-prefix}-dropdown-list,
+  // Hover version -> dropdown list; we try to limit this to the hover version
+  // to avoid flickering in the dropdown version when animations are enabled.
+  > label:first-child + @{sf-prefix}-dropdown-list:hover,
+  // Toggled version.
+  > input[type=checkbox]:checked + label + @{sf-prefix}-dropdown-list {
+    // Display. Both opacity and visibility are required to animate the
+    // visibility change.
+    opacity: inherit;
+    visibility: inherit;
+  }
+
+  /**
+   * Dropdown list positioning.
+   */
+  // Top.
+  &[sf-position=top] {
+    // Dropdown position.
+    > @{sf-prefix}-dropdown-list {
+      bottom: 100%;
+      left: 0;
+    }
+  }
+  // Right.
+  &[sf-position=right] {
+    > @{sf-prefix}-dropdown-list {
+      top: 0;
+      left: 100%;
+    }
+  }
+  // Bottom (default).
+  &:not([sf-position]), &[sf-position=bottom] {
+    > @{sf-prefix}-dropdown-list {
+      top: 100%;
+      left: 0;
+    }
+  }
+  // Left.
+  &[sf-position=left] {
+    > @{sf-prefix}-dropdown-list {
+      top: 0;
+      right: 100%;
+    }
+  }
+
+}

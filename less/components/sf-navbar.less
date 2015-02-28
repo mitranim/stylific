@@ -1,0 +1,220 @@
+/**
+ * Navigation bar. Has static and fixed versions, and can auto-collapse into
+ * a dropdown when the screen is narrow.
+ *
+ *   <body>
+ *     <sf-navbar>
+ *       <a href=...>...</a>
+ *       ...
+ *     </sf-navbar>
+ *     ...
+ *   </body>
+ */
+
+/**
+ * ToDo.
+ *
+ * Document the expected structure and the collapsing dropdown feature.
+ *
+ * Port the brand styles.
+ */
+
+@{sf-prefix}-navbar {.sf-navbar()}
+.sf-navbar() {
+
+  /**
+   * Layout.
+   */
+  // Take up all available width.
+  width: 100%;
+  // Set a fixed height, so we can offset the next element accordingly when the
+  // navbar is fixed. This is also required for percentage-based rules on
+  // children.
+  min-height: @sf-navbar-height;
+  // Changing position to relative positions the navbar shadow above any static
+  // siblings following the navbar.
+  position: relative;
+  // Fixed version.
+  &.navbar-fixed {
+    /**
+     * Layout.
+     */
+    position: fixed;
+    top: 0;
+    // Set a proper z-index.
+    z-index: @sf-z-index-navbar;
+    // Use the body's maximum width and center horizontally.
+    .sf-fixed-center-with-margins();
+    max-width: @sf-body-max-width;
+
+    // Offset the next element by the same margin. The next element must be in
+    // the document flow (i.e. not fixed or absolute or float).
+    & + * {
+      margin-top: @sf-navbar-height;
+    }
+  }
+
+  /**
+   * Inner layout.
+   */
+  display: flex;
+  flex-wrap: wrap;
+
+  // Typography.
+  font-size: @sf-navbar-font-size;
+  text-align: center;
+
+  // Cosmetic.
+  background-color: @sf-base-background-color;
+  box-shadow: 0 3px 6px -3px fade(@sf-base-text-color, 40%);
+
+  // Immediate child styles.
+  > * {
+    /**
+     * Layout.
+     */
+    // Stretch across the container.
+    flex: 1;
+    // This is required for stretching vertically if min-height is set on the
+    // parent.
+    min-height: inherit;
+
+    /**
+     * Inner layout.
+     */
+    .sf-flex-host-center();
+
+    // Add some minimum whitespace.
+    padding: @sf-common-padding / 2;
+  }
+
+  // Use interactive colours for immediate children.
+  .sf-colormix-all-states(~' > *', true);
+
+  /*------------------------------ Collapsing -------------------------------*/
+
+  /**
+   * These styles define the auto-collapsing feature. It allows the navbar to
+   * automatically collapse past a certain nth child, turning the remaining
+   * elements into a dropdown toggled with a button. Collapsing only happens
+   * before a certain media breakpoint controlled by a variable. By default,
+   * it matches the breakpoint used for other responsive layouts.
+   *
+   * To enable collapsing, the user must include two elements:
+   * <input type="checkbox"> and <label>, which must be placed before the navbar
+   * children that will be collapsed. The structure must be as follows:
+   *
+   *   <sf-navbar>
+   *     <input id="my-navbar-toggle-id" type="checkbox">
+   *     <label for="my-navbar-toggle-id"> ... [optional content] </label>
+   *     ... [non-collapsing elements]
+   *     ... [auto-collapsing elements]
+   *   </sf-navbar>
+   *
+   * Where non-collapsing and collapsing elements are divided with the
+   * `@sf-navbar-nth-child` variable, which specifies at which ordinal position
+   * the children should be wrapped.
+   *
+   * The [id] and [for] attributes must match. The input is hidden and is used
+   * for tracking and controlling the toggled state. The label is clickable and
+   * controls the input. It's hidden when the navbar is not collapsed.
+   */
+
+  // Hide the checkbox input used for toggling collapsed state.
+  > input[type=checkbox] {display: none}
+
+  /**
+   * Base label styles.
+   */
+  > input[type=checkbox] + label {
+    /**
+     * Layout.
+     */
+    // Stay inflexible, stretch only to accommodate the content.
+    flex: none;
+    // Reserve some space even when used without content.
+    min-width: 10%;
+    // Hidden by default.
+    display: none;
+    // Order after the pre-breakpoint navbar children.
+    order: 1;
+
+    // Cosmetic.
+    cursor: pointer;
+
+    // Overlay for closing the toggled dropdown.
+    &::before {
+      .sf-fixed-overlay();
+      opacity: 0;
+    }
+
+    // Indicators.
+    &::after {
+      content: '▽';
+    }
+    // If there's some text inside, offset the indicator.
+    &:not(:empty)::after {
+      padding-left: 0.5em;
+    }
+  }
+
+  /**
+   * Active label styles.
+   */
+  > input[type=checkbox]:checked + label {
+    // Make the toggle overlay interactive.
+    &::before {content: ''}
+    // Modify the indicator symbol.
+    &::after {content: '▲'}
+  }
+
+  /**
+   * Styles for post-label children that only apply before the media breakpoint.
+   */
+  @media (max-width: @sf-navbar-breakpoint) {.collapse-rules()}
+  @attr-fold: ~'@{sf-prefix}-fold';
+  &[@{attr-fold}] {.collapse-rules()}
+  .collapse-rules() {
+    // Add 2 to the nth-child count to mask the <input> and <label> count.
+    @n: @sf-navbar-nth-child + 2;
+    /**
+     * Base styles.
+     */
+    // Display the toggle label.
+    > input[type=checkbox] + label {display: inherit}
+    // Styling for collapsed children.
+    > input[type=checkbox] + label ~ *:nth-child(n+@{n}) {
+      /**
+       * Layout.
+       */
+      // Try to take up the entire line. With {flex-wrap: wrap} enabled on the
+      // parent, this wraps every child to its own line.
+      flex: 100%;
+      // Put after the collapse toggle.
+      order: 2;
+
+      // Hidden unless active.
+      height: 0;
+      min-height: 0;
+      padding: 0;
+      transform: scaleY(0);
+
+      // Animate expected style changes.
+      .sf-common-transition-all();
+    }
+
+    // Use activated colours for the toggle label.
+    .sf-colormix-all-classes(~' > input[type=checkbox]:checked + label', ~'', @sf-delta-activated);
+
+    /**
+     * Active styles.
+     */
+    > input[type=checkbox]:checked + label ~ *:nth-child(n+@{n}) {
+      // Make visible.
+      height: auto;
+      padding: @sf-common-padding;
+      transform: scaleY(1);
+    }
+  }
+
+}

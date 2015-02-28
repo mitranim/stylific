@@ -1,0 +1,24 @@
+// Extra styles for sf-article to accommodate the documentation.
+.sf-article() {
+
+  // Avoid the floating doc-toc.
+  pre {
+    display: flex;
+  }
+
+  // Counterbalance the default link styling in sf-article.
+  sf-navbar, sf-navtabs, sf-footer, doc-toc {
+    :link {
+      border: none;
+    }
+  }
+
+  // Indicate _blank links.
+  :link[target*=_blank]::after {
+    content: '⇒';
+    opacity: 0.3;
+    font-size: 0.8em;
+    padding-left: 0.3em;
+  }
+
+}

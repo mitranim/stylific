@@ -1,0 +1,88 @@
+/**
+ * [NYI]: not tested with anything but Font-Awesome. Needs SVG fill support.
+ *
+ * <sf-icon>...</sf-icon>
+ */
+
+/**
+ * ToDo.
+ *
+ * Make respond to colour classes, support SVG fill.
+ * Document usage with font-awesome.
+ * Document usage with svg.
+ */
+
+@{sf-prefix}-icon {.sf-icon()}
+.sf-icon() {
+
+  // Layout.
+  display: inline-block;
+
+  /**
+   * Inner layout.
+   */
+  .sf-flex-host-center();
+
+  // Default size: same as host element.
+  font-size: @sf-font-size-base;
+
+  // Alternate sizes.
+  &.minor  {font-size: 1.5 * @sf-font-size-base}
+  &.medium {font-size: 2   * @sf-font-size-base}
+  &.large  {font-size: 3   * @sf-font-size-base}
+  &.huge   {font-size: 4   * @sf-font-size-base}
+
+  // If not a last child, pad to the right.
+  &:not(:last-child) {
+    padding-right: 0.3 * @sf-common-padding;
+  }
+
+  // If not a first child, pad to the left.
+  &:not(:first-child) {
+    padding-left: 0.3 * @sf-common-padding;
+  }
+
+  // First in form input line.
+  .@{sf-prefix}-form-line &:first-child {
+    .sf-border-weak();
+    &:not(:last-child) {
+      margin-right: -1px;
+    }
+    padding: 0.2em;
+    // Center the icon.
+    display: flex;
+    align-items: center;
+    // Extra size.
+    font-size: 1.4 * @sf-font-size-base;
+  }
+
+  // SVG icons.
+  &.svg {
+    // Default dimensions.
+    width: @sf-font-size-base;
+    height: @sf-font-size-base;
+
+    // Background image style.
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    // Bigger dimensions.
+    &.minor {
+      width: 1.5 * @sf-font-size-base;
+      height: 1.5 * @sf-font-size-base;
+    }
+    &.medium {
+      width: 2 * @sf-font-size-base;
+      height: 2 * @sf-font-size-base;
+    }
+    &.large {
+      width: 3 * @sf-font-size-base;
+      height: 3 * @sf-font-size-base;
+    }
+    &.huge {
+      width: 4 * @sf-font-size-base;
+      height: 4 * @sf-font-size-base;
+    }
+  }
+
+}

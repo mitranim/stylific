@@ -1,0 +1,15 @@
+/**
+ * Extensions to stylific's colour mixes.
+ */
+
+// Add user-defined colours to the global mix.
+.sf-colormix-all-classes(@prefix, @affix, @perc) {
+  &.brown@{prefix}@{affix}         {.sf-colormix-base(@color-brown, @perc)}
+  &.brown-inverse@{prefix}@{affix} {.sf-colormix-base-inverse(@color-brown, @perc)}
+
+  &.orange@{prefix}@{affix}         {.sf-colormix-base(@color-orange, @perc)}
+  &.orange-inverse@{prefix}@{affix} {.sf-colormix-base-inverse(@color-orange, @perc)}
+
+  &.red@{prefix}@{affix}         {.sf-colormix-base(@color-red, @perc)}
+  &.red-inverse@{prefix}@{affix} {.sf-colormix-base-inverse(@color-red, @perc)}
+}
