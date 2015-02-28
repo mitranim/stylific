@@ -212,7 +212,7 @@ inverse colour set for each of them.</p>
 <li><code>background-color</code> shifted in lightness by <code>@sf-delta-active</code> (default 10%)</li>
 </ul>
 </li>
-<li>.active — same as in static mix</li>
+<li><code>.active</code> — same as in static mix</li>
 </ul>
 <p>Interactive mixes are automatically used for interactive elements like buttons,
 inputs, contenteditable elements. You can apply them to your elements
@@ -242,8 +242,9 @@ programmatically with the <code>.sf-colormix-all-classes()</code> mixin (see bel
 master/less/color-mixes.less#L159" target="_blank"><code>.sf-colormix-all-classes()</code></a> mixin. It includes two lines for each colour:
 one for straight mix and one for inverse mix. It’s called by other mixins and
 sometimes manually in order to determine which <em>selectors</em> correspond to which
-<em>state</em> for a particular element. Including a colour in this mixin makes its
-colour class be registered for all states for both static and interactive mixes.</p>
+<em>state</em> for a particular element. Including a colour in this mixin causes its
+colour class to be registered for all states for both static and interactive
+mixes.</p>
 <p>By default, the following colour classes are defined:</p>
 <pre><code class="lang-less"><span class="hljs-class">.inverse</span>
 <span class="hljs-class">.error</span>
