@@ -179,7 +179,7 @@ inverse colour set for each of them.
   * `background-color` shifted in lightness by `@sf-delta-focus` (default 5%)
 * `:active`
   * `background-color` shifted in lightness by `@sf-delta-active` (default 10%)
-* .active — same as in static mix
+* `.active` — same as in static mix
 
 Interactive mixes are automatically used for interactive elements like buttons,
 inputs, contenteditable elements. You can apply them to your elements
@@ -218,8 +218,9 @@ The central hub for registering colours is the
 master/less/color-mixes.less#L159) mixin. It includes two lines for each colour:
 one for straight mix and one for inverse mix. It's called by other mixins and
 sometimes manually in order to determine which _selectors_ correspond to which
-_state_ for a particular element. Including a colour in this mixin makes its
-colour class be registered for all states for both static and interactive mixes.
+_state_ for a particular element. Including a colour in this mixin causes its
+colour class to be registered for all states for both static and interactive
+mixes.
 
 By default, the following colour classes are defined:
 

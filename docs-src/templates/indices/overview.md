@@ -99,8 +99,7 @@ To contribute to the library, send a
 [pull request](https://github.com/Mitranim/stylific) or open a new
 [issue](https://github.com/Mitranim/stylific/issues).
 
-You can contribute to this documentation, too! It's generated with
-[statil](https://github.com/Mitranim/statil) from
+You can contribute to this documentation, too! It's generated from
 [`docs-src`](https://github.com/Mitranim/stylific/tree/master/docs-src) in the
 `master` branch and served as `gh-pages`. Follow
 [these instructions](https://github.com/Mitranim/stylific/tree/gh-pages) to
