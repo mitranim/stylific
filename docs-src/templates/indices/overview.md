@@ -10,9 +10,9 @@
 
 # Overview
 
-[`stylific`](https://github.com/Mitranim/stylific) is a CSS library written
-with [LESS](http://lesscss.org). It can serve as a website's foundation, and
-provides common UI components as building blocks.
+`stylific` ([source](https://github.com/Mitranim/stylific)) is a CSS library
+written with [LESS](http://lesscss.org). It can serve as a website's foundation,
+and provides common UI components as building blocks.
 
 There are plenty of UI libraries out there:
 [Bootstrap](http://getbootstrap.com), [Foundation](http://foundation.zurb.com),

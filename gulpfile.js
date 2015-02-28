@@ -11,7 +11,7 @@ var $      = require('gulp-load-plugins')()
 var bsync  = require('browser-sync')
 var gulp   = require('gulp')
 var hjs    = require('highlight.js')
-var marked = require('marked')
+var marked = require('gulp-marked/node_modules/marked')
 
 /********************************** Globals **********************************/
 
@@ -38,13 +38,6 @@ var dest = {
 }
 
 /********************************** Config ***********************************/
-
-/**
- * This marked reconfiguration relies on require() giving us the same instance
- * of marked as what gulp-marked receives. Meaning, we need to keep our marked
- * dependency in sync with what gulp-marked uses, to avoid divergence of
- * instances.
- */
 
 /**
  * Change how marked compiles headers to add links to our source files.
