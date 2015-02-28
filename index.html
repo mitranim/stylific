@@ -25,7 +25,8 @@
   <a  href="patterns/">Patterns</a>
   <a  href="configuration/">Configuration</a>
   <sf-dropdown>
-    <label class="justify-center">Examples</label>
+    <input id="navbar-sub-dropdown" type="checkbox">
+    <label for="navbar-sub-dropdown" class="justify-center">Examples</label>
     <sf-dropdown-list class="text-left">
       <a  href="examples/active-switch.html">active-switch</a>
       <a  href="examples/navbar-demo.html">navbar demo</a>
@@ -110,7 +111,7 @@ size. This is due to typographic units and flexible positioning.</p>
 <p>Styles are scoped to custom tag names, which makes it easy to reason about
 components and subclass them, and combines very well with a component approach
 in AngularJS or Polymer. See <a href="patterns
-/#component- oriented">Patterns#Component Oriented</a>.</p>
+/#component-oriented">Patterns#Component Oriented</a>.</p>
 <h2 id="minimal-markup">Minimal Markup</h2>
 <p>stylific’s components require only about half as much HTML markup as similar
 Bootstrap components. Compare this across the demos. Most components need only
@@ -134,7 +135,7 @@ set up a local build for development, then send your changes to <code>master</co
     <sf-footer>
   <sf-footer-body>
     <span>2015 © <a href="https://github.com/Mitranim">Mitranim</a></span>
-    <a class="pointer" onclick="scrollTo(0, 0)"><strong>⥣</strong></a>
+    <a class="pointer" onclick="scrollTo(0, 0)">⇑</a>
   </sf-footer-body>
 </sf-footer>
 
