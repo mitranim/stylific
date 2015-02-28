@@ -2,21 +2,21 @@
 <div style="margin: 0"><doc-toc class="info">
   <input checked id="toc-toggle" type="checkbox">
   <label for="toc-toggle"></label>
-  [Overview](#overview)
-  [sf-article](#sf-article)
-  [sf-collapse](#sf-collapse)
-  [sf-dropdown](#sf-dropdown)
-  [sf-tabset](#sf-tabset)
-  [sf-grid](#sf-grid)
-  [sf-grid-item](#sf-grid-item)
-  [sf-modal](#sf-modal)
-  [sf-navbar](#sf-navbar)
-  [sf-navtabs](#sf-navtabs)
-  [sf-footer](#sf-footer)
-  [sf-tooltip](#sf-tooltip)
-  [sf-input](#sf-input)
-  [sf-btn](#sf-btn)
-  [sf-jumbo](#sf-jumbo)
+  [Overview](components/#overview)
+  [sf-article](components/#sf-article)
+  [sf-collapse](components/#sf-collapse)
+  [sf-dropdown](components/#sf-dropdown)
+  [sf-tabset](components/#sf-tabset)
+  [sf-grid](components/#sf-grid)
+  [sf-grid-item](components/#sf-grid-item)
+  [sf-modal](components/#sf-modal)
+  [sf-navbar](components/#sf-navbar)
+  [sf-navtabs](components/#sf-navtabs)
+  [sf-footer](components/#sf-footer)
+  [sf-tooltip](components/#sf-tooltip)
+  [sf-input](components/#sf-input)
+  [sf-btn](components/#sf-btn)
+  [sf-jumbo](components/#sf-jumbo)
 </doc-toc></div>
 
 # Overview
@@ -33,12 +33,12 @@ Use it wherever you want typographic styling. Suited for text compiled from
 Markdown, like this documentation.
 
 This whole page is an example, but here's a smaller one. Note the `info` colour
-class. See the notes on [whitespace](/patterns/#whitespace) for why `.pad` is
+class. See the notes on [whitespace](patterns/#whitespace) for why `.pad` is
 needed.
 
 ```html
 <sf-article class="pad info">
-  <img src="/img/square/script.jpg" class="right small">
+  <img src="img/square/script.jpg" class="right small">
   <h1>Article header</h1>
   <p>Cum horribilem walking dead resurgere de crazed sepulcris creaturis, zombie sicut de grave feeding iride et serpens.</p>
   <p>Pestilentia, shaun ofthe dead scythe animated corpses ipsa screams. Pestilentia est plague haec decaying ambulabat mortuos.</p>
@@ -47,7 +47,7 @@ needed.
 
 <div><doc-demo>
   <sf-article class="pad info">
-    <img src="/img/square/script.jpg" class="right small">
+    <img src="img/square/script.jpg" class="right small">
     <h1>Article header</h1>
     <p>Cum horribilem walking dead resurgere de crazed sepulcris creaturis, zombie sicut de grave feeding iride et serpens.</p>
     <p>Pestilentia, shaun ofthe dead scythe animated corpses ipsa screams. Pestilentia est plague haec decaying ambulabat mortuos.</p>
@@ -210,7 +210,7 @@ the `:checked` hack with hidden inputs.
 
 **Note**: Safari 8 is surprisingly slow in detecting changes with the
 `:checked`-based selector used for tab body. Until this is fixed, you may want
-to supplement this by using `.active` on labels. See this [example](/examples
+to supplement this by using `.active` on labels. See this [example](examples
 /active-switch.html).
 
 ```html
@@ -276,7 +276,7 @@ than the old grid systems and solves a lot of other problems.
 Because specialised grid systems are no longer needed, stylific doesn't come
 with one. But it's convenient to have a shortcut to a media-responsive flex
 container that wraps its items on different breakpoints. `sf-grid` is a
-primitive version of that. Open this on a [separate page](/examples/grid-
+primitive version of that. Open this on a [separate page](examples/grid-
 demo.html) to resize the page more easily. The classes are cosmetic.
 
 ```html
@@ -394,10 +394,10 @@ you need is to link to that id.
 ```
 
 <div><doc-demo>
-  <a href="#demo-sf-modal">Click me to open a modal!</a>
+  <a href="components/#demo-sf-modal">Click me to open a modal!</a>
 
   <sf-modal id="demo-sf-modal" class="info">
-    <a href="#_"></a>
+    <a href="components/#_"></a>
     <sf-modal-body>
       <h1 class="pad-v">Modal header</h1>
       <p>Check me out, I'm a modal!</p>
@@ -411,7 +411,7 @@ in the links needs to be preceded with the pathname of the current page.
 
 # sf-navbar
 
-Each website needs a navigation bar. Open a [separate demo](/examples/navbar-
+Each website needs a navigation bar. Open a [separate demo](examples/navbar-
 demo.html) to resize the page more easily.
 
 Notice how little markup is required.
@@ -427,10 +427,10 @@ Notice how little markup is required.
 
 <div><doc-demo>
   <sf-navbar>
-    <a href="#home">Home</a>
-    <a class="active" href="#robots">Robots</a>
-    <a href="#medical-cybernetics">Medical Cybernetics</a>
-    <a href="#partners">Partners</a>
+    <a href="components/#home">Home</a>
+    <a class="active" href="components/#robots">Robots</a>
+    <a href="components/#medical-cybernetics">Medical Cybernetics</a>
+    <a href="components/#partners">Partners</a>
   </sf-navbar>
 </doc-demo></div>
 
@@ -459,11 +459,11 @@ folding in effect.
   <sf-navbar class="orange">
     <input id="demo-sf-navbar" type="checkbox">
     <label for="demo-sf-navbar"></label>
-    <a href="#home">Home</a>
-    <a class="active" href="#robots">Robots</a>
-    <a href="#medical-cybernetics">Medical Cybernetics</a>
-    <a href="#partners">Partners</a>
-    <a href="#achievements">Achievements</a>
+    <a href="components/#home">Home</a>
+    <a class="active" href="components/#robots">Robots</a>
+    <a href="components/#medical-cybernetics">Medical Cybernetics</a>
+    <a href="components/#partners">Partners</a>
+    <a href="components/#achievements">Achievements</a>
   </sf-navbar>
 </doc-demo></div>
 
@@ -487,11 +487,11 @@ fold, regardless of the viewport width.
   <sf-navbar class="success" sf-fold>
     <input id="demo-sf-navbar-fold" type="checkbox">
     <label for="demo-sf-navbar-fold"></label>
-    <a href="#home">Home</a>
-    <a class="active" href="#robots">Robots</a>
-    <a href="#medical-cybernetics">Medical Cybernetics</a>
-    <a href="#partners">Partners</a>
-    <a href="#achievements">Achievements</a>
+    <a href="components/#home">Home</a>
+    <a class="active" href="components/#robots">Robots</a>
+    <a href="components/#medical-cybernetics">Medical Cybernetics</a>
+    <a href="components/#partners">Partners</a>
+    <a href="components/#achievements">Achievements</a>
   </sf-navbar>
 </doc-demo></div>
 
@@ -538,10 +538,10 @@ navtabs.less) to see how easy it is to subclass components.
 
 <div><doc-demo>
   <sf-navtabs>
-    <a href="#section-one">Section One</a>
-    <a class="active" href="#section-two">Section Two</a>
-    <a href="#section-three">Section Three</a>
-    <a href="#section-four">Section Four</a>
+    <a href="components/#section-one">Section One</a>
+    <a class="active" href="components/#section-two">Section Two</a>
+    <a href="components/#section-three">Section Three</a>
+    <a href="components/#section-four">Section Four</a>
   </sf-navtabs>
 </doc-demo></div>
 
@@ -550,7 +550,7 @@ navtabs.less) to see how easy it is to subclass components.
 Each website needs a footer that pushes itself to the bottom of the viewport
 (often incorrectly called "sticky"). It's usually difficult to implement when
 the footer height is unknown. `sf-footer` does this for you. The footer at the
-bottom of this page is a demo. Go to an [empty page](/examples/footer.html) to
+bottom of this page is a demo. Go to an [empty page](examples/footer.html) to
 see how it works.
 
 `sf-footer` relies on the flex-column body layout, which is a global default
@@ -694,7 +694,7 @@ theme and respond to colour classes.
 </doc-demo></div>
 
 Like all other elements, `.sf-btn` supports all colours defined in the base
-colour mix. See the [Colour System](/color-system/).
+colour mix. See the [Colour System](color-system/).
 
 Like other class-based elements, you can apply this styling to _all_ buttons by
 default with the option `@sf-enable-global-element-components: true`. Then you
@@ -728,14 +728,14 @@ else, it's sized in `em`, so adjusting the font size automatically changes its
 height.
 
 ```html
-<sf-jumbo style="background-image: url(/img/aite.jpg)">
+<sf-jumbo style="background-image: url(img/aite.jpg)">
   <h1>Catchy slogan</h1>
   <p>Super awesome marketing speak</p>
 </sf-jumbo>
 ```
 
 <div><doc-demo class="flex-column">
-  <sf-jumbo style="background-image: url(/img/aite.jpg)">
+  <sf-jumbo style="background-image: url(img/aite.jpg)">
     <h1>Catchy slogan</h1>
     <p>Super awesome marketing speak</p>
   </sf-jumbo>
@@ -745,14 +745,14 @@ To reposition the children, simply stick `.justify-start` or `.justify-center`
 on it. This requires `@sf-enable-global-classes` to be enabled (default).
 
 ```html
-<sf-jumbo class="justify-start" style="background-image: url(/img/citadel-blue.jpg)">
+<sf-jumbo class="justify-start" style="background-image: url(img/citadel-blue.jpg)">
   <h1>I'm Commander Shepard</h1>
   <p>And this is my favourite store on the Citadel</p>
 </sf-jumbo>
 ```
 
 <div><doc-demo class="flex-column">
-  <sf-jumbo class="justify-start" style="background-image: url(/img/citadel-blue.jpg)">
+  <sf-jumbo class="justify-start" style="background-image: url(img/citadel-blue.jpg)">
     <h1>I'm Commander Shepard</h1>
     <p>And this is my favourite store on the Citadel</p>
   </sf-jumbo>

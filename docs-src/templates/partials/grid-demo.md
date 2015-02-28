@@ -3,7 +3,7 @@
 Very basic flexbox grid demo. Resize your viewport to see how it responds to
 width changes. The classes are cosmetic.
 
-Back to [Components#sf-grid](/components/#sf-grid).
+Back to [Components#sf-grid](components/#sf-grid).
 
 ```html
 <sf-grid class="doc-grid-demo pad-ch">

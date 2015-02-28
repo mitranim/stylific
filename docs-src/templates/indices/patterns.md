@@ -2,12 +2,12 @@
 <div style="margin: 0"><doc-toc class="success">
   <input checked id="toc-toggle" type="checkbox">
   <label for="toc-toggle"></label>
-  [Overview](#overview)
-  [Component Oriented](#component-oriented)
-  [CSS Hacks > JS](#css-hacks-js)
-  [Flexbox Positioning](#flexbox-positioning)
-  [Flexible Units](#flexible-units)
-  [Whitespace](#whitespace)
+  [Overview](patterns/#overview)
+  [Component Oriented](patterns/#component-oriented)
+  [CSS Hacks > JS](patterns/#css-hacks-js)
+  [Flexbox Positioning](patterns/#flexbox-positioning)
+  [Flexible Units](patterns/#flexible-units)
+  [Whitespace](patterns/#whitespace)
 </doc-toc></div>
 
 # Overview
@@ -31,8 +31,8 @@ styles in place. You can begin by styling your website statically, then
 effortlessly convert individual elements into web components.
 
 The library also defines each component's styles as a single LESS mixin, making
-it trivial to [subclass](/configuration/#subclassing-components) and
-[extend](/configuration/#extending-components) them.
+it trivial to [subclass](configuration/#subclassing-components) and
+[extend](configuration/#extending-components) them.
 
 # CSS Hacks > JS
 
@@ -44,7 +44,7 @@ everyone, and enables the UI for security-minded people who disallow JS.
 CSS2-CSS3 features like transitions, `:checked`, `:target`, sibling selectors,
 `:not`, pseudo-elements, media queries, flexbox, and others obviate the need for
 JavaScript for many elements that used to be impossible to implement without it.
-See [Components](/components/) for basic examples.
+See [Components](components/) for basic examples.
 
 Choose the right tool for your use case, don't bang the JS hammer on everything.
 

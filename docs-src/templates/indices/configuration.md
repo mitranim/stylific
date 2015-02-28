@@ -2,10 +2,10 @@
 <div style="margin: 0"><doc-toc class="brown">
   <input checked id="toc-toggle" type="checkbox">
   <label for="toc-toggle"></label>
-  [Overview](#overview)
-  [Variables](#variables)
-  [Subclassing Components](#subclassing-components)
-  [Extending Components](#extending-components)
+  [Overview](configuration/#overview)
+  [Variables](configuration/#variables)
+  [Subclassing Components](configuration/#subclassing-components)
+  [Extending Components](configuration/#extending-components)
 </doc-toc></div>
 
 # Overview
@@ -30,7 +30,7 @@ Change the prefix of all tag and class names from `sf-` to something else:
 ```
 
 Apply component styling to some common HTML elements like `<input>` (see
-[example](/components/#sf-input)):
+[example](components/#sf-input)):
 
 ```less
 @sf-enable-global-element-components: false;

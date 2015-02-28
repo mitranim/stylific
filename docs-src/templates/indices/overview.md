@@ -28,7 +28,7 @@ showcase the advantages of exploiting modern CSS standards.
 
 ## A Demo Please?
 
-This website is a live demo. See [Components](/components/) for an overview of
+This website is a live demo. See [Components](components/) for an overview of
 UI elements. Also, check out the documentation's
 [source](https://github.com/Mitranim/stylific/tree/master/docs-src) to see how
 it imports and extends the library.
@@ -50,7 +50,7 @@ from scratch to avoid them. stylific provides at least _some_ basis.
 
 # What's Different
 
-The [Patterns](/patterns/) section also explains the thinking behind this.
+The [Patterns](patterns/) section also explains the thinking behind this.
 
 ## No JavaScript
 
@@ -65,7 +65,7 @@ components still work.
 
 No JS dependency doesn't mean you can't use JavaScript; quite the opposite.
 Because it only needs static markup, enhancement with JavaScript is
-[trivial](/examples/active-switch.html). Some stylific components provide
+[trivial](examples/active-switch.html). Some stylific components provide
 simple hooks for that.
 
 ## Flexible Units
@@ -82,8 +82,8 @@ size. This is due to typographic units and flexible positioning.
 
 Styles are scoped to custom tag names, which makes it easy to reason about
 components and subclass them, and combines very well with a component approach
-in AngularJS or Polymer. See [Patterns#Component Oriented](/patterns
-/#component- oriented).
+in AngularJS or Polymer. See [Patterns#Component Oriented](patterns
+/#component-oriented).
 
 ## Minimal Markup
 

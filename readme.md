@@ -4,7 +4,7 @@
 [Bootstrap](http://getbootstrap.com), with a focus on modern CSS features, a
 more modest scope, and no JavaScript dependency.
 
-See the [documentation/demo site](https://mitranim.github.io/stylific).
+See the [documentation/demo site](http://mitranim.com/stylific/).
 
 What sets it apart:
 * Layouts are based on flexbox and don't use floats.

@@ -224,8 +224,13 @@ gulp.task('templates', gulp.series('templates:clear', 'templates:compile'))
 
 gulp.task('bsync', function() {
   return bsync({
+    startPath: '/stylific/',
     server: {
-      baseDir: destBase
+      baseDir: destBase,
+      middleware: function(req, res, next) {
+        req.url = req.url.replace(/^\/stylific/, '/')
+        next()
+      }
     },
     port: 13933,
     online: false,

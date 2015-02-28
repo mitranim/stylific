@@ -2,14 +2,14 @@
 <div style="margin: 0"><doc-toc class="warning">
   <input checked id="toc-toggle" type="checkbox">
   <label for="toc-toggle"></label>
-  [Demo](#demo)
-  [Overview](#overview)
-  [Straight Set](#straight-set)
-  [Inverse Set](#inverse-set)
-  [Static Mix](#static-mix)
-  [Interactive Mix](#interactive-mix)
-  [Base Colours and Classes](#base-colours-and-classes)
-  [Adding Colours](#adding-colours)
+  [Demo](color-system/#demo)
+  [Overview](color-system/#overview)
+  [Straight Set](color-system/#straight-set)
+  [Inverse Set](color-system/#inverse-set)
+  [Static Mix](color-system/#static-mix)
+  [Interactive Mix](color-system/#interactive-mix)
+  [Base Colours and Classes](color-system/#base-colours-and-classes)
+  [Adding Colours](color-system/#adding-colours)
 </doc-toc></div>
 
 # Demo
@@ -70,12 +70,13 @@ stylific handles all this boilerplate so you don't have to. It lets you
 register a colour with just a few lines of code, and it'll be automatically
 used in internal colour mixes and exposed as a global class. Pretty nifty!
 
-We'll get to registering custom colours [later](#adding-colours), but first,
-let's see how the system is set up. We need to undestand the following concepts:
-* [Straight colour set](#straight-set)
-* [Inverse colour set](#inverse-set)
-* [Static colour mix](#static-mix)
-* [Interactive colour mix](#interactive-mix)
+We'll get to registering custom colours [later](color-system/#adding-colours),
+but first, let's see how the system is set up. We need to undestand the
+following concepts:
+* [Straight colour set](color-system/#straight-set)
+* [Inverse colour set](color-system/#inverse-set)
+* [Static colour mix](color-system/#static-mix)
+* [Interactive colour mix](color-system/#interactive-mix)
 
 ## Straight Set
 
@@ -242,8 +243,8 @@ limited to the base set. You can register additional colours under additional
 class names, and they'll be automatically included into _all_ rules that use
 colour classes, even for default components.
 
-This was already [shown](#straight-set) above, but let's recap. Suppose we want
-to add a new colour.
+This was already [shown](color-system/#straight-set) above, but let's recap.
+Suppose we want to add a new colour.
 
 ```less
 @color-orange: orange;

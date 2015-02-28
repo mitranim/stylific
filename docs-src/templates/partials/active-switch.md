@@ -3,7 +3,7 @@
 Demonstrates how to enhance components with JS. This is an AngularJS directive
 for switching `sf-tabset` tabs by applying `.active` to tab labels.
 
-Back to [Components#sf-tabset](/components/#sf-tabset).
+Back to [Components#sf-tabset](components/#sf-tabset).
 
 # Usage
 
