@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>stylific</title>
+    <meta name="author" content="mitranim">
+    <meta name="description" content="stylific documentation">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <link rel="stylesheet" type="text/css" href="/css/docs.css">
+  </head>
+
+  <body>
+
+    <!-- Navbar -->
+    <sf-navbar>
+  <!-- Enable collapsing -->
+  <input type="checkbox" id="navbar-dropdown">
+  <label for="navbar-dropdown"></label>
+  <!-- Links -->
+  <a class="active" href="/">Overview</a>
+  <a  href="/components/">Components</a>
+  <a  href="/color-system/">Colour System</a>
+  <a  href="/patterns/">Patterns</a>
+  <a  href="/configuration/">Configuration</a>
+  <sf-dropdown>
+    <label class="justify-center">Examples</label>
+    <sf-dropdown-list class="text-left">
+      <a  href="/examples/active-switch.html">active-switch</a>
+      <a  href="/examples/navbar-demo.html">navbar demo</a>
+      <a  href="/examples/footer.html">footer</a>
+      <a  href="/examples/grid-demo.html">grid demo</a>
+    </sf-dropdown-list>
+  </sf-dropdown>
+</sf-navbar>
+
+
+    <!-- Site wrapper and content -->
+    <!-- Presentation jumbotron -->
+<sf-jumbo style="height: auto">
+  <h1>stylific</h1>
+  <p>Pure-CSS UI library</p>
+</sf-jumbo>
+
+<!-- Site content -->
+<sf-article class="pad">
+  <!-- TOC -->
+<div style="margin: 0"><doc-toc class="orange">
+  <input checked id="toc-toggle" type="checkbox">
+  <label for="toc-toggle"></label>
+  <a href="#overview">Overview</a>
+  <a href="#motivation">Motivation</a>
+  <a href="#what-s-different">What’s Different</a>
+  <a href="#contributing">Contributing</a>
+</doc-toc></div>
+
+<h1 id="overview">Overview</h1>
+<p><a href="https://github.com/Mitranim/stylific" target="_blank"><code>stylific</code></a> is a CSS library written
+with <a href="http://lesscss.org" target="_blank">LESS</a>. It can serve as a website’s foundation, and
+provides common UI components as building blocks.</p>
+<p>There are plenty of UI libraries out there:
+<a href="http://getbootstrap.com" target="_blank">Bootstrap</a>, <a href="http://foundation.zurb.com" target="_blank">Foundation</a>,
+Polymer’s
+<a href="https://www.polymer-project.org/docs/start/usingelements.html" target="_blank">Paper Elements</a>,
+<a href="https://material.angularjs.org" target="_blank">Angular Material</a>, and so on. What’s different
+about this one? Read on!</p>
+<p>This project is nowhere near as ambitious as the other libraries I’ve mentioned.
+In fact, it’s much more modest in scope than the styles of any moderately sized
+website. It exists to provide a good starting point for new projects, and
+showcase the advantages of exploiting modern CSS standards.</p>
+<h2 id="a-demo-please-">A Demo Please?</h2>
+<p>This website is a live demo. See <a href="/components/">Components</a> for an overview of
+UI elements. Also, check out the documentation’s
+<a href="https://github.com/Mitranim/stylific/tree/master/docs-src" target="_blank">source</a> to see how
+it imports and extends the library.</p>
+<h1 id="motivation">Motivation</h1>
+<p>I’m sick of UI frameworks relying on unnecessary, often incompatible JavaScript
+for the basest functionality. People have had to rewrite the entire Bootstrap JS
+as “native Angular directives” or “native React components” just to un-break
+basic UI elements. This has got to stop.</p>
+<p>It also irks me when people size things in pixels instead of typographic units
+(em and rem) and use fixed dimensions instead of flexible positioning. This
+makes a website difficult to scale and unfriendly to visitors who adjust the
+font size.</p>
+<p>These issues are so fundamental that you have to write styles and UI components
+from scratch to avoid them. stylific provides at least <em>some</em> basis.</p>
+<h1 id="what-s-different">What’s Different</h1>
+<p>The <a href="/patterns/">Patterns</a> section also explains the thinking behind this.</p>
+<h2 id="no-javascript">No JavaScript</h2>
+<p>stylific has no JavaScript dependency. Its interactive components work with
+plain HTML and CSS. This means no unwanted dependencies and better baseline
+functionality. This also means your basic UI is equally compatible with all JS
+frameworks, which should cheer up anyone who had switched between different
+adaptations of Boostrap.</p>
+<p>This documentation has no JavaScript on any page (check the source). All demoed
+components still work.</p>
+<p>No JS dependency doesn’t mean you can’t use JavaScript; quite the opposite.
+Because it only needs static markup, enhancement with JavaScript is
+<a href="/examples/active-switch.html">trivial</a>. Some stylific components provide
+simple hooks for that.</p>
+<h2 id="flexible-units">Flexible Units</h2>
+<p>stylific uses <code>em</code> and <code>rem</code> units for all dimensions. Unlike pixels, they
+scale with font size, and automatically cascade changes to the base size across
+the entire layout. Scaling the website becomes trivial, and you never have to
+deal with broken layouts.</p>
+<p>Try adjusting the font in your browser to see how well this site scales to any
+size. This is due to typographic units and flexible positioning.</p>
+<h2 id="component-oriented">Component Oriented</h2>
+<p>Styles are scoped to custom tag names, which makes it easy to reason about
+components and subclass them, and combines very well with a component approach
+in AngularJS or Polymer. See <a href="/patterns
+/#component- oriented">Patterns#Component Oriented</a>.</p>
+<h2 id="minimal-markup">Minimal Markup</h2>
+<p>stylific’s components require only about half as much HTML markup as similar
+Bootstrap components. Compare this across the demos. Most components need only
+an irreducible minimum of markup.</p>
+<h1 id="contributing">Contributing</h1>
+<p>I’d love you to get involved!</p>
+<p>To contribute to the library, send a
+<a href="https://github.com/Mitranim/stylific" target="_blank">pull request</a> or open a new
+<a href="https://github.com/Mitranim/stylific/issues" target="_blank">issue</a>.</p>
+<p>You can contribute to this documentation, too! It’s generated with
+<a href="https://github.com/Mitranim/statil" target="_blank">statil</a> from
+<a href="https://github.com/Mitranim/stylific/tree/master/docs-src" target="_blank"><code>docs-src</code></a> in the
+<code>master</code> branch and served as <code>gh-pages</code>. Follow
+<a href="https://github.com/Mitranim/stylific/tree/gh-pages" target="_blank">these instructions</a> to
+set up a local build for development, then send your changes to <code>master</code>.</p>
+
+</sf-article>
+
+
+    <!-- Footer -->
+    <sf-footer>
+  <sf-footer-body>
+    <span>2015 © <a href="https://github.com/Mitranim">Mitranim</a></span>
+    <a href="#"><strong>⥣</strong></a>
+  </sf-footer-body>
+</sf-footer>
+
+
+  </body>
+
+</html>

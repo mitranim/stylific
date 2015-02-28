@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>configuration</title>
+    <meta name="author" content="mitranim">
+    <meta name="description" content="stylific documentation">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <link rel="stylesheet" type="text/css" href="/css/docs.css">
+  </head>
+
+  <body>
+
+    <!-- Navbar -->
+    <sf-navbar>
+  <!-- Enable collapsing -->
+  <input type="checkbox" id="navbar-dropdown">
+  <label for="navbar-dropdown"></label>
+  <!-- Links -->
+  <a  href="/">Overview</a>
+  <a  href="/components/">Components</a>
+  <a  href="/color-system/">Colour System</a>
+  <a  href="/patterns/">Patterns</a>
+  <a class="active" href="/configuration/">Configuration</a>
+  <sf-dropdown>
+    <label class="justify-center">Examples</label>
+    <sf-dropdown-list class="text-left">
+      <a  href="/examples/active-switch.html">active-switch</a>
+      <a  href="/examples/navbar-demo.html">navbar demo</a>
+      <a  href="/examples/footer.html">footer</a>
+      <a  href="/examples/grid-demo.html">grid demo</a>
+    </sf-dropdown-list>
+  </sf-dropdown>
+</sf-navbar>
+
+
+    <!-- Site wrapper and content -->
+    <!-- Presentation jumbotron -->
+<sf-jumbo style="height: auto">
+  <h1>stylific</h1>
+  <p>Pure-CSS UI library</p>
+</sf-jumbo>
+
+<!-- Site content -->
+<sf-article class="pad">
+  
+
+<!-- TOC -->
+<div style="margin: 0"><doc-toc class="brown">
+  <input checked id="toc-toggle" type="checkbox">
+  <label for="toc-toggle"></label>
+  <a href="#overview">Overview</a>
+  <a href="#variables">Variables</a>
+  <a href="#subclassing-components">Subclassing Components</a>
+  <a href="#extending-components">Extending Components</a>
+</doc-toc></div>
+
+<h1 id="overview">Overview</h1>
+<p>Isolating components as tags and writing each as a LESS mixin makes subclassing
+and extending a breeze.</p>
+<p>If you’re unfamiliar with the idea, a mixin in a CSS preprocessor is basically a
+named collection of CSS rules. It may or may not take arguments as input.</p>
+<h1 id="variables">Variables</h1>
+<p>The library is configurable: many styles are tied to preprocessor variables. See
+<a href="https://github.com/Mitranim/stylific/blob/master/
+less/variables.less" target="_blank"><code>variables.less</code></a> for a complete list, but here’s a few examples.</p>
+<p>Change the prefix of all tag and class names from <code>sf-</code> to something else:</p>
+<pre><code class="lang-less"><span class="hljs-variable">@sf-prefix:</span> <span class="hljs-string">~'app'</span>;
+<span class="hljs-comment">// Now components will be called `app-dropdown`, etc.</span>
+</code></pre>
+<p>Apply component styling to some common HTML elements like <code>&lt;input&gt;</code> (see
+<a href="/components/#sf-input">example</a>):</p>
+<pre><code class="lang-less"><span class="hljs-variable">@sf-enable-global-element-components:</span> false;
+</code></pre>
+<p>Change the base font size, scaling the entire site up or down. This metric must
+be in <code>em</code> or <code>rem</code>:</p>
+<pre><code class="lang-less"><span class="hljs-variable">@sf-font-size-base:</span> <span class="hljs-number">0.9em</span>;
+</code></pre>
+<p>Change the base text colour. Other colours will automatically adjust to better
+match the text. Using a light text colour will invert the luminance of most
+other colours:</p>
+<pre><code class="lang-less"><span class="hljs-variable">@sf-base-text-color:</span> yellow;
+</code></pre>
+<p>Redefine some other colours:</p>
+<pre><code class="lang-less"><span class="hljs-variable">@sf-color-error:</span> red;
+<span class="hljs-variable">@sf-color-info:</span>  lightblue;
+</code></pre>
+<p>Change the timing of common transitions or disable them altogether:</p>
+<pre><code class="lang-less"><span class="hljs-comment">// Defaults</span>
+<span class="hljs-variable">@sf-enable-common-transitions:</span> true;
+<span class="hljs-variable">@sf-common-transition-time:</span> <span class="hljs-number">0.2s</span>;
+<span class="hljs-variable">@sf-common-transition-timing-function:</span> ease;
+</code></pre>
+<p>Adjust common typographic offsets:</p>
+<pre><code class="lang-less"><span class="hljs-variable">@sf-common-padding:</span> <span class="hljs-number">1rem</span>;
+<span class="hljs-variable">@sf-common-margin:</span>  <span class="hljs-number">1rem</span>;
+</code></pre>
+<p>And so on. See the full
+<a href="https://github.com/Mitranim/stylific/blob/master/
+less/variables.less" target="_blank">reference</a>.</p>
+<h1 id="subclassing-components">Subclassing Components</h1>
+<p>Borrowing an example from this documentation’s source, suppose you want to
+subclass <code>sf-collapse</code> to make a TOC element. In your LESS source, define a tag
+that inherits all of sf-collapse styling:</p>
+<pre><code class="lang-less"><span class="hljs-tag">doc-toc</span> {
+  <span class="hljs-comment">// Subclass sf-collapse.</span>
+  <span class="hljs-class">.sf-collapse</span>();
+}
+</code></pre>
+<p>Then add custom styling to enhance or override sf-collapse defaults:</p>
+<pre><code class="lang-less"><span class="hljs-tag">doc-toc</span> {
+
+  <span class="hljs-comment">// Subclass sf-collapse.</span>
+  <span class="hljs-class">.sf-collapse</span>();
+
+  <span class="hljs-comment">/**
+   * Layout.
+   */</span>
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">10em</span>;
+  <span class="hljs-comment">// Float to right.</span>
+  <span class="hljs-attribute">float</span>: right;
+  <span class="hljs-comment">// Offset from left.</span>
+  <span class="hljs-attribute">margin-left</span>: <span class="hljs-variable">@sf-common-margin</span>;
+
+  <span class="hljs-comment">/**
+   * Cosmetic.
+   */</span>
+  <span class="hljs-class">.sf-shadow-weak</span>();
+  <span class="hljs-comment">// Default padding for children.</span>
+  <span class="hljs-keyword">&amp;</span> &gt; * {
+    <span class="hljs-attribute">padding</span>: <span class="hljs-variable">@sf-common-padding</span> / <span class="hljs-number">2</span>;
+  }
+  <span class="hljs-comment">// Use interactive colours for immediate children.</span>
+  <span class="hljs-class">.sf-colormix-all-states</span>(<span class="hljs-string">~' &gt; *'</span>, true);
+
+}
+</code></pre>
+<p>That was easy! In just a few lines of code, we made an extended version of
+<a href="https://github.com/Mitranim/stylific/blob/master/less/components/sf-collapse.less" target="_blank"><code>sf-collapse</code></a>
+without altering the original. The original component’s styles have remained
+unchanged, and you can subclass it again for something different.</p>
+<h1 id="extending-components">Extending Components</h1>
+<p>Suppose you want to alter the <em>original</em> component. You can just write rules
+under its tag, but this won’t affect components that subclass it through its
+mixin. LESS helps us here: it <em>merges</em> mixins with the same name in the same
+scope. Meaning, you can just write your own version of the component mixin,
+and it will extend the original.</p>
+<p>Borrowing an example from this documentation’s source, suppose you want to add
+special styles to links in <code>sf-article</code>.</p>
+<pre><code class="lang-less"><span class="hljs-comment">// Using exactly the same name as the original sf-article mixin</span>
+<span class="hljs-comment">// causes LESS to merge them.</span>
+<span class="hljs-class">.sf-article</span>() {
+
+  <span class="hljs-comment">// Indicate _blank links.</span>
+  <span class="hljs-pseudo">:link</span><span class="hljs-attr_selector">[target*=_blank]</span><span class="hljs-pseudo">::after</span> {
+    <span class="hljs-attribute">content</span>: <span class="hljs-string">'⇒'</span>;
+    <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0.3</span>;
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">0.8em</span>;
+    <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">0.3em</span>;
+  }
+
+}
+</code></pre>
+<p>Now sf-article has these styles in <em>addition</em> to what it had. Any component
+subclassing it will inherit them.</p>
+
+
+</sf-article>
+
+
+    <!-- Footer -->
+    <sf-footer>
+  <sf-footer-body>
+    <span>2015 © <a href="https://github.com/Mitranim">Mitranim</a></span>
+    <a href="#"><strong>⥣</strong></a>
+  </sf-footer-body>
+</sf-footer>
+
+
+  </body>
+
+</html>

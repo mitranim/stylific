@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>active-switch</title>
+    <meta name="author" content="mitranim">
+    <meta name="description" content="stylific documentation">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <link rel="stylesheet" type="text/css" href="/css/docs.css">
+  </head>
+
+  <body>
+
+    <!-- Navbar -->
+    <sf-navbar>
+  <!-- Enable collapsing -->
+  <input type="checkbox" id="navbar-dropdown">
+  <label for="navbar-dropdown"></label>
+  <!-- Links -->
+  <a  href="/">Overview</a>
+  <a  href="/components/">Components</a>
+  <a  href="/color-system/">Colour System</a>
+  <a  href="/patterns/">Patterns</a>
+  <a  href="/configuration/">Configuration</a>
+  <sf-dropdown>
+    <label class="justify-center">Examples</label>
+    <sf-dropdown-list class="text-left">
+      <a class="active" href="/examples/active-switch.html">active-switch</a>
+      <a  href="/examples/navbar-demo.html">navbar demo</a>
+      <a  href="/examples/footer.html">footer</a>
+      <a  href="/examples/grid-demo.html">grid demo</a>
+    </sf-dropdown-list>
+  </sf-dropdown>
+</sf-navbar>
+
+
+    <!-- Site wrapper and content -->
+    <!-- Presentation jumbotron -->
+<sf-jumbo style="height: auto">
+  <h1>stylific</h1>
+  <p>Pure-CSS UI library</p>
+</sf-jumbo>
+
+<!-- Site content -->
+<sf-article class="pad">
+  
+
+<h1 id="description">Description</h1>
+<p>Demonstrates how to enhance components with JS. This is an AngularJS directive
+for switching <code>sf-tabset</code> tabs by applying <code>.active</code> to tab labels.</p>
+<p>Back to <a href="/components/#sf-tabset">Components#sf-tabset</a>.</p>
+<h1 id="usage">Usage</h1>
+<p>In a tabset (no need for <code>&lt;input&gt;</code> this time):</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-tabset</span>&gt;</span>
+  ...
+  <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">active-switch</span>&gt;</span>Tab N<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">sf-tab</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Tab Body<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">sf-tab</span>&gt;</span>
+  ...
+<span class="hljs-tag">&lt;/<span class="hljs-title">sf-tabset</span>&gt;</span>
+</code></pre>
+<p>JS code:</p>
+<pre><code class="lang-javascript">angular.module(<span class="hljs-string">'attributes.activeSwitch'</span>, [])
+.directive(<span class="hljs-string">'activeSwitch'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+
+  <span class="hljs-keyword">return</span> {
+    restrict: <span class="hljs-string">'A'</span>,
+    scope: <span class="hljs-literal">false</span>,
+    link: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(scope, elem)</span> </span>{
+      <span class="hljs-comment">// Use the native DOM element.</span>
+      elem = elem[<span class="hljs-number">0</span>]
+
+      <span class="hljs-comment">// Register a listener to remove the .active class from self.</span>
+      scope.$on(<span class="hljs-string">'$active-switch'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+        elem.classList.remove(<span class="hljs-string">'active'</span>)
+      })
+
+      <span class="hljs-comment">// Register an onclick listener to remove the .active class from self and</span>
+      <span class="hljs-comment">// all siblings, them add this class to self.</span>
+      elem.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+        scope.$parent.$broadcast(<span class="hljs-string">'$active-switch'</span>)
+        elem.classList.add(<span class="hljs-string">'active'</span>)
+        scope.$digest()
+      }
+
+      <span class="hljs-comment">// If this is a first sibling in a repeater, activate by default.</span>
+      <span class="hljs-keyword">if</span> (scope.$index === <span class="hljs-number">0</span>) elem.classList.add(<span class="hljs-string">'active'</span>)
+    }
+  }
+
+})
+</code></pre>
+
+
+</sf-article>
+
+
+    <!-- Footer -->
+    <sf-footer>
+  <sf-footer-body>
+    <span>2015 © <a href="https://github.com/Mitranim">Mitranim</a></span>
+    <a href="#"><strong>⥣</strong></a>
+  </sf-footer-body>
+</sf-footer>
+
+
+  </body>
+
+</html>

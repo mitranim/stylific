@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>grid demo</title>
+    <meta name="author" content="mitranim">
+    <meta name="description" content="stylific documentation">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <link rel="stylesheet" type="text/css" href="/css/docs.css">
+  </head>
+
+  <body>
+
+    <!-- Navbar -->
+    <sf-navbar>
+  <!-- Enable collapsing -->
+  <input type="checkbox" id="navbar-dropdown">
+  <label for="navbar-dropdown"></label>
+  <!-- Links -->
+  <a  href="/">Overview</a>
+  <a  href="/components/">Components</a>
+  <a  href="/color-system/">Colour System</a>
+  <a  href="/patterns/">Patterns</a>
+  <a  href="/configuration/">Configuration</a>
+  <sf-dropdown>
+    <label class="justify-center">Examples</label>
+    <sf-dropdown-list class="text-left">
+      <a  href="/examples/active-switch.html">active-switch</a>
+      <a  href="/examples/navbar-demo.html">navbar demo</a>
+      <a  href="/examples/footer.html">footer</a>
+      <a class="active" href="/examples/grid-demo.html">grid demo</a>
+    </sf-dropdown-list>
+  </sf-dropdown>
+</sf-navbar>
+
+
+    <!-- Site wrapper and content -->
+    <!-- Presentation jumbotron -->
+<sf-jumbo style="height: auto">
+  <h1>stylific</h1>
+  <p>Pure-CSS UI library</p>
+</sf-jumbo>
+
+<!-- Site content -->
+<sf-article class="pad">
+  
+
+<h1 id="description">Description</h1>
+<p>Very basic flexbox grid demo. Resize your viewport to see how it responds to
+width changes. The classes are cosmetic.</p>
+<p>Back to <a href="/components/#sf-grid">Components#sf-grid</a>.</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-grid</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"doc-grid-demo pad-ch"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>One<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Two<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Three<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Four<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Five<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Six<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Seven<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Eight<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Nine<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Ten<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">sf-grid</span>&gt;</span>
+</code></pre>
+<div><doc-demo style="display: block">
+  <sf-grid class="doc-grid-demo pad-ch">
+    <p>One</p>
+    <p>Two</p>
+    <p>Three</p>
+    <p>Four</p>
+    <p>Five</p>
+    <p>Six</p>
+    <p>Seven</p>
+    <p>Eight</p>
+    <p>Nine</p>
+    <p>Ten</p>
+  </sf-grid>
+</doc-demo></div>
+
+
+</sf-article>
+
+
+    <!-- Footer -->
+    <sf-footer>
+  <sf-footer-body>
+    <span>2015 © <a href="https://github.com/Mitranim">Mitranim</a></span>
+    <a href="#"><strong>⥣</strong></a>
+  </sf-footer-body>
+</sf-footer>
+
+
+  </body>
+
+</html>

@@ -27,6 +27,3 @@ nbproject
 # Folders to ignore
 node_modules
 bower_components
-
-# Ignore gh-pages symlink
-stylific-gh-pages

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>navbar demo</title>
+    <meta name="author" content="mitranim">
+    <meta name="description" content="stylific documentation">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <link rel="stylesheet" type="text/css" href="/css/docs.css">
+  </head>
+
+  <body>
+
+    <!-- Navbar -->
+    <sf-navbar>
+  <!-- Enable collapsing -->
+  <input type="checkbox" id="navbar-dropdown">
+  <label for="navbar-dropdown"></label>
+  <!-- Links -->
+  <a  href="/">Overview</a>
+  <a  href="/components/">Components</a>
+  <a  href="/color-system/">Colour System</a>
+  <a  href="/patterns/">Patterns</a>
+  <a  href="/configuration/">Configuration</a>
+  <sf-dropdown>
+    <label class="justify-center">Examples</label>
+    <sf-dropdown-list class="text-left">
+      <a  href="/examples/active-switch.html">active-switch</a>
+      <a class="active" href="/examples/navbar-demo.html">navbar demo</a>
+      <a  href="/examples/footer.html">footer</a>
+      <a  href="/examples/grid-demo.html">grid demo</a>
+    </sf-dropdown-list>
+  </sf-dropdown>
+</sf-navbar>
+
+
+    <!-- Site wrapper and content -->
+    <!-- Presentation jumbotron -->
+<sf-jumbo style="height: auto">
+  <h1>stylific</h1>
+  <p>Pure-CSS UI library</p>
+</sf-jumbo>
+
+<!-- Site content -->
+<sf-article class="pad">
+  
+
+<h1 id="description">Description</h1>
+<p>Demonstrates folding and folded <code>sf-navbar</code>.</p>
+<p>Back to <a href="/components/#sf-navbar">Components#sf-navbar</a>.</p>
+<h1 id="automatic-folding">Automatic Folding</h1>
+<p><code>sf-navbar</code> can automatically fold on narrow displays, grouping extra elements
+into a sliding dropdown. The media breakpoint is configurable, and so is the
+ordinal number of the child at which to fold.</p>
+<p>To enable folding, add a pair of <code>&lt;input type=&quot;checkbox&quot;&gt;</code> and <code>&lt;label&gt;</code> with
+matching ids to the beginning of the navbar. Resize your viewport to see the
+folding in effect.</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-navbar</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"orange"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"demo-sf-navbar"</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"checkbox"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"demo-sf-navbar"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/"</span>&gt;</span>Home<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"active"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/robots"</span>&gt;</span>Robots<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/medical-cybernetics"</span>&gt;</span>Medical Cybernetics<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/partners"</span>&gt;</span>Partners<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">sf-navbar</span>&gt;</span>
+</code></pre>
+<div><doc-demo>
+  <sf-navbar class="orange">
+    <input id="demo-sf-navbar" type="checkbox">
+    <label for="demo-sf-navbar"></label>
+    <a href="#home">Home</a>
+    <a class="active" href="#robots">Robots</a>
+    <a href="#medical-cybernetics">Medical Cybernetics</a>
+    <a href="#partners">Partners</a>
+    <a href="#achievements">Achievements</a>
+  </sf-navbar>
+</doc-demo></div>
+
+<h1 id="static-folding">Static Folding</h1>
+<p>With a folding navbar, use the <code>[sf-fold]</code> attribute to tell it to <em>always</em>
+fold, regardless of the viewport width.</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-navbar</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"success"</span> <span class="hljs-attribute">sf-fold</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"demo-sf-navbar-fold"</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"checkbox"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"demo-sf-navbar-fold"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/"</span>&gt;</span>Home<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"active"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/robots"</span>&gt;</span>Robots<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/medical-cybernetics"</span>&gt;</span>Medical Cybernetics<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/partners"</span>&gt;</span>Partners<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">sf-navbar</span>&gt;</span>
+</code></pre>
+<div><doc-demo>
+  <sf-navbar class="success" sf-fold>
+    <input id="demo-sf-navbar-fold" type="checkbox">
+    <label for="demo-sf-navbar-fold"></label>
+    <a href="#home">Home</a>
+    <a class="active" href="#robots">Robots</a>
+    <a href="#medical-cybernetics">Medical Cybernetics</a>
+    <a href="#partners">Partners</a>
+    <a href="#achievements">Achievements</a>
+  </sf-navbar>
+</doc-demo></div>
+
+
+</sf-article>
+
+
+    <!-- Footer -->
+    <sf-footer>
+  <sf-footer-body>
+    <span>2015 © <a href="https://github.com/Mitranim">Mitranim</a></span>
+    <a href="#"><strong>⥣</strong></a>
+  </sf-footer-body>
+</sf-footer>
+
+
+  </body>
+
+</html>
