@@ -36,9 +36,10 @@
     "gulp-minify-css": "^0.4.6",
     "gulp-plumber": "^0.6.6",
     "gulp-rimraf": "^0.1.1",
+    "gulp-statil": "latest",
     "gulp-watch": "^4.1.1",
     "highlight.js": "^8.4.0",
     "lodash": "^3.3.1",
-    "gulp-statil": "latest"
+    "marked": "~0.3.2"
   }
 }

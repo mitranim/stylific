@@ -238,13 +238,13 @@ By default, the following colour classes are defined:
 
 # Adding Colours
 
-The coolest part about stylific's colour system is that it you're _not_
-limited to the base set. You can register additional colours under additional
-class names, and they'll be automatically included into _all_ rules that use
-colour classes, even for default components.
+The coolest part about stylific's colour system is that you're _not limited_ to
+the base set. You can register additional colours under additional class names,
+and they'll be automatically included into _all_ rules that use colour classes,
+even for default components.
 
-This was already [shown](color-system/#straight-set) above, but let's recap.
-Suppose we want to add a new colour.
+This has already been [shown](color-system/#straight-set) above, but let's
+recap. Suppose we want to add a new colour.
 
 ```less
 @color-orange: orange;

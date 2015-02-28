@@ -41,11 +41,9 @@ var dest = {
 
 /**
  * This marked reconfiguration relies on require() giving us the same instance
- * of marked as what gulp-marked receives. Which means, because CommonJS
- * doesn't guarantee modules to be unique, we need to keep marked out of our
- * package.json. If we do include it, for whatever reason, then our version
- * may diverge with what gulp-marked uses, and then we'll have to fiddle with
- * require.cache to get the right instance.
+ * of marked as what gulp-marked receives. Meaning, we need to keep our marked
+ * dependency in sync with what gulp-marked uses, to avoid divergence of
+ * instances.
  */
 
 /**

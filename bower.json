@@ -24,6 +24,8 @@
     "bower_components",
     "test",
     "tests",
-    "docs-src"
+    "docs-src",
+    "gulpfile.js",
+    "roadmap.md"
   ]
 }
