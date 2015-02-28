@@ -566,7 +566,7 @@ Example footer:
 <sf-footer>
   <sf-footer-body>
     <span>2020—2030 © slowpoke</span>
-    <span>⥣</span>
+    <span>⇑</span>
   </sf-footer-body>
 </sf-footer>
 ```
@@ -575,7 +575,7 @@ Example footer:
   <sf-footer>
     <sf-footer-body style="margin-top: 0">
       <span>2020—2030 © slowpoke</span>
-      <span>⥣</span>
+      <span>⇑</span>
     </sf-footer-body>
   </sf-footer>
 </doc-demo></div>
