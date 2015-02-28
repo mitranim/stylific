@@ -22,7 +22,7 @@ This library organises styles around
 [tags](https://github.com/Mitranim/stylific/tree/master/less/components). Most
 styles are scoped to customisable tagnames, like `sf-tabset`. Some components
 are class-based (like `.sf-input`), but there's an option to apply them to the
-correponding global elements by default.
+corresponding global elements by default.
 
 This makes it easier to remember component names, and keeps your markup very
 semantic. It also makes it far easier to convert your elements into web

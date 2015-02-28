@@ -1,6 +1,6 @@
 {
   "name": "stylific",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "start": "gulp server",
     "build": "gulp build",
@@ -11,7 +11,7 @@
     "Mitranim <me@mitranim.com>"
   ],
   "description": "Component-oriented, flexbox-based CSS framework, written in LESS.",
-  "main": "less/sf.less",
+  "main": "less/stylific.less",
   "keywords": [
     "css",
     "style",

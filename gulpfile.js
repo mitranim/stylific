@@ -162,7 +162,7 @@ gulp.task('images:square', function() {
       crop: true,
       width: 640,
       height: 640,
-      upscale: true
+      upscale: false
     }))
     .pipe(gulp.dest(dest.img + 'square'))
 })

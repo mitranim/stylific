@@ -33,7 +33,7 @@ bower i --save stylific
 In your LESS source (adjust the relative path to match yours):
 
 ```less
-@import (less) './bower_components/stylific/less/sf';
+@import (less) './bower_components/stylific/less/stylific';
 ```
 
 After importing, you can adjust variables exposed by the package, such as the
