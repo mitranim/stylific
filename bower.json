@@ -14,6 +14,10 @@
     "flexbox"
   ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mitranim/stylific.git"
+  },
   "ignore": [
     "**/.*",
     "node_modules",
