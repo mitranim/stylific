@@ -104,7 +104,9 @@ gulp.task('styles:less', function() {
     .pipe($.less())
     .pipe($.autoprefixer())
     .pipe($.minifyCss({
-      keepSpecialComments: 0
+      keepSpecialComments: 0,
+      aggressiveMerging: false,
+      advanced: false
     }))
     .pipe(gulp.dest(dest.css))
     .pipe(bsync.reload({stream: true}))
