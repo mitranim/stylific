@@ -106,7 +106,7 @@ gulp.task('styles:less', function() {
     .pipe($.minifyCss({
       keepSpecialComments: 0,
       aggressiveMerging: false,
-      advanced: false
+      advanced: false,
     }))
     .pipe(gulp.dest(dest.css))
     .pipe(bsync.reload({stream: true}))

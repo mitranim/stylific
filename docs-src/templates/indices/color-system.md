@@ -98,6 +98,9 @@ color: hsl(hue(red), saturation(red), 25%);
 background-color: hsl(hue(red), saturation(red), 75%);
 ```
 
+In this example, `hsl()` is a [LESS function](http://lesscss.org/functions
+/#color-definition-hsl). The last argument is the colour's desired lightness.
+
 If you register this in the global colour mix as `.red`, the result will look
 like this:
 
@@ -123,9 +126,6 @@ but inverted. Example:
 color: hsl(hue(red), saturation(red), 75%);
 background-color: hsl(hue(red), saturation(red), 25%);
 ```
-
-In this example, `hsl()` is a [LESS function](http://lesscss.org/functions
-/#color-definition-hsl). The last argument is the colour's desired lightness.
 
 If you register this in the global colour mix as `.red-inverse`, the result will
 look like this:

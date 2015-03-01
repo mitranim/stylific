@@ -1,8 +1,11 @@
 /**
+ * sf-tabset is your typical tabbed panel. It has two modes with slightly
+ * different markup requirements but near-identical behaviour.
  *
- * # Standard version
+ * # :checked version
  *
- * A tabset must have the exact following layout:
+ * One way to use a tabset is with hidden radio inputs. It must have the exact
+ * following layout:
  *
  *   <sf-tabset>
  *     ...
@@ -32,13 +35,11 @@
  *
  * Each <sf-tab> must immediately follow its <input> and <label>.
  *
- *
- * # JS-oriented version
+ * # .active version
  *
  * You can skip <input>s entirely if you switch tabs by assigning `.active` to
- * the <label>s with JavaScript. This may be desirable if using the inputs feels
- * unsemantical, or to work around browser bugs, or to avoid using [id]
- * attributes, which this version doesn't need.
+ * the <label>s with JavaScript. This may be desirable to work around browser
+ * bugs, or to avoid using [id] attributes, which this version doesn't need.
  *
  * Layout:
  *
@@ -131,16 +132,17 @@
   /**
    * Active label highlighting.
    */
-  // Standard version (activated state for the JS-oriented version is implicitly
-  // defined above).
+  // :checked version.
   .sf-colormix-all-classes(~' > input[type=radio]:checked + label', ~'', @sf-delta-activated);
+  // Activated state for the .active version is implicitly defined in the
+  // all-states colour mix above.
 
   /**
    * Active body styles.
    */
-  // Standard version.
+  // :checked version.
   > input[type=radio]:checked + label,
-  // JS-oriented version.
+  // .active version.
   > label.active {
     & + @{sf-prefix}-tab {
       display: block;

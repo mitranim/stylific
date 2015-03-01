@@ -635,22 +635,23 @@ don't propagate.
 
 `.sf-input` is a class-based component for text fields like `<input
 type="text">` and `<textarea>`. It's purely cosmetic. Makes the element look
-consistent with the overall theme and adjusts its dimensions.
+consistent with the overall theme and adjusts its dimensions. Also makes its
+text and placeholder colour respond to stylific [colour classes](color-system/).
 
 ```html
-<input class="sf-input" placeholder="I'm a basic input.">
-<input class="sf-input orange" placeholder="I'm orange coloured.">
-<input class="sf-input success-inverse" placeholder="I'm succes-inverse coloured.">
-<textarea class="sf-input" style="width: 100%" placeholder="I'm a basic textarea."></textarea>
-<textarea class="sf-input info" style="width: 100%" placeholder="I'm an info textarea."></textarea>
+<input class="sf-input" placeholder="I'm a basic input." value="I'm a basic input.">
+<input class="sf-input orange" placeholder="I'm orange coloured." value="I'm orange coloured.">
+<input class="sf-input success-inverse" placeholder="I'm succes-inverse coloured." value="I'm succes-inverse coloured.">
+<textarea class="sf-input" style="width: 100%" placeholder="I'm a basic textarea.">I'm a basic textarea.</textarea>
+<textarea class="sf-input info" style="width: 100%" placeholder="I'm an info textarea.">I'm an info textarea.</textarea>
 ```
 
 <div><doc-demo>
-  <input class="sf-input" placeholder="I'm a basic input.">
-  <input class="sf-input orange" placeholder="I'm orange coloured.">
-  <input class="sf-input success-inverse" placeholder="I'm succes-inverse coloured.">
-  <textarea class="sf-input" style="width: 100%" placeholder="I'm a basic textarea."></textarea>
-  <textarea class="sf-input info" style="width: 100%" placeholder="I'm an info textarea."></textarea>
+  <input class="sf-input" placeholder="I'm a basic input." value="I'm a basic input.">
+  <input class="sf-input orange" placeholder="I'm orange coloured." value="I'm orange coloured.">
+  <input class="sf-input success-inverse" placeholder="I'm succes-inverse coloured." value="I'm succes-inverse coloured.">
+  <textarea class="sf-input" style="width: 100%" placeholder="I'm a basic textarea.">I'm a basic textarea.</textarea>
+  <textarea class="sf-input info" style="width: 100%" placeholder="I'm an info textarea.">I'm an info textarea.</textarea>
 </doc-demo></div>
 
 Like with other class-based components, if you set
@@ -664,13 +665,13 @@ text inputs by default.
 
 ```html
 <!-- No need for .sf-input declarations now -->
-<input class="success" placeholder="I'm success coloured.">
-<input class="orange-inverse" placeholder="I'm orange-inverse coloured.">
+<input class="success" placeholder="I'm success coloured." value="I'm success coloured.">
+<input class="orange-inverse" placeholder="I'm orange-inverse coloured." value="I'm orange-inverse coloured.">
 ```
 
 <div><doc-demo>
-  <input class="success" placeholder="I'm success coloured.">
-  <input class="orange-inverse" placeholder="I'm orange-inverse coloured.">
+  <input class="success" placeholder="I'm success coloured." value="I'm success coloured.">
+  <input class="orange-inverse" placeholder="I'm orange-inverse coloured." value="I'm orange-inverse coloured.">
 </doc-demo></div>
 
 # sf-btn

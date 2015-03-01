@@ -56,13 +56,20 @@
  */
 
 @sf-tooltip-attr: ~'@{sf-prefix}-tooltip';
-[@{sf-tooltip-attr}]:not([@{sf-tooltip-attr}='']) {.sf-tooltip()}
+[@{sf-tooltip-attr}] {.sf-tooltip()}
 .sf-tooltip() {
 
   /**
    * Layout.
    */
   position: relative;
+
+  // Workaround for a bug in the clean-css minifier used for the documentation.
+  // Adding :not([@{sf-tooltip-attr}='']) to the main selector (the one we apply
+  // the component mixin to) causes the minifier to add an extra space before
+  // attribute selectors for position and trigger. Moving it here as an extra
+  // rule patches the problem.
+  &[@{sf-tooltip-attr}='']::after {content: none}
 
   &::after {
     content: attr(@sf-tooltip-attr);
