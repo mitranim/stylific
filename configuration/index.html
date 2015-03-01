@@ -59,8 +59,10 @@
 </doc-toc></div>
 
 <h1 id="overview">Overview</h1>
-<p>Isolating components as tags and writing each as a LESS mixin makes subclassing
-and extending a breeze.</p>
+<p>After importing stylific into your LESS source, you can reconfigure its
+variables or alter its component mixins.</p>
+<p>Because each component is isolated as a tag and written as a LESS mixin,
+subclassing and extending is a breeze.</p>
 <p>If you’re unfamiliar with the idea, a mixin in a CSS preprocessor is basically a
 named collection of CSS rules. It may or may not take arguments as input.</p>
 <h1 id="variables">Variables</h1>
@@ -91,7 +93,7 @@ other colours:</p>
 <p>Change the timing of common transitions or disable them altogether:</p>
 <pre><code class="lang-less"><span class="hljs-comment">// Defaults</span>
 <span class="hljs-variable">@sf-enable-common-transitions:</span> true;
-<span class="hljs-variable">@sf-common-transition-time:</span> <span class="hljs-number">0.2s</span>;
+<span class="hljs-variable">@sf-common-transition-duration:</span> <span class="hljs-number">0.2s</span>;
 <span class="hljs-variable">@sf-common-transition-timing-function:</span> ease;
 </code></pre>
 <p>Adjust common typographic offsets:</p>
@@ -148,8 +150,8 @@ under its tag, but this won’t affect components that subclass it through its
 mixin. LESS helps us here: it <em>merges</em> mixins with the same name in the same
 scope. Meaning, you can just write your own version of the component mixin,
 and it will extend the original.</p>
-<p>Borrowing an example from this documentation’s source, suppose you want to add
-special styles to links in <code>sf-article</code>.</p>
+<p>Borrowing an example from an earlier version of this documentation’s source,
+suppose you want to add special styles to links in <code>sf-article</code>.</p>
 <pre><code class="lang-less"><span class="hljs-comment">// Using exactly the same name as the original sf-article mixin</span>
 <span class="hljs-comment">// causes LESS to merge them.</span>
 <span class="hljs-class">.sf-article</span>() {
@@ -174,7 +176,9 @@ subclassing it will inherit them.</p>
     <!-- Footer -->
     <sf-footer>
   <sf-footer-body>
-    <span>2015 © <a href="https://github.com/Mitranim">Mitranim</a></span>
+    <span>
+      2015
+      © <a href="https://github.com/Mitranim" target="_blank">Mitranim</a></span>
     <a class="pointer" onclick="scrollTo(0, 0)">⇑</a>
   </sf-footer-body>
 </sf-footer>
