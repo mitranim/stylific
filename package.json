@@ -1,6 +1,6 @@
 {
   "name": "stylific",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "scripts": {
     "start": "gulp server",
     "build": "gulp build",
