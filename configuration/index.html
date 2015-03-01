@@ -23,7 +23,7 @@
   <a  href="components/">Components</a>
   <a  href="color-system/">Colour System</a>
   <a  href="patterns/">Patterns</a>
-  <a class="active" href="configuration/">Configuration</a>
+  <a class="active" href="configuration/">Config</a>
   <sf-dropdown>
     <input id="navbar-sub-dropdown" type="checkbox">
     <label for="navbar-sub-dropdown" class="justify-center">Examples</label>
@@ -34,6 +34,9 @@
       <a  href="examples/grid-demo.html">grid demo</a>
     </sf-dropdown-list>
   </sf-dropdown>
+  <a class="flex-05" href="https://github.com/Mitranim/stylific" target="_blank">
+    <sf-icon class="github pop" style="font-size: 2em"></sf-icon>
+  </a>
 </sf-navbar>
 
 
@@ -60,9 +63,9 @@
 
 <h1 id="overview">Overview</h1>
 <p>After importing stylific into your LESS source, you can reconfigure its
-variables or alter its component mixins.</p>
-<p>Because each component is isolated as a tag and written as a LESS mixin,
-subclassing and extending is a breeze.</p>
+variables or alter its component mixins. Also, because each component is
+isolated as a tag and written as a LESS mixin, subclassing and extending is a
+breeze.</p>
 <p>If you’re unfamiliar with the idea, a mixin in a CSS preprocessor is basically a
 named collection of CSS rules. It may or may not take arguments as input.</p>
 <h1 id="variables">Variables</h1>
@@ -176,10 +179,18 @@ subclassing it will inherit them.</p>
     <!-- Footer -->
     <sf-footer>
   <sf-footer-body>
+    <!-- © -->
     <span>
       2015
-      © <a href="https://github.com/Mitranim" target="_blank">Mitranim</a></span>
-    <a class="pointer" onclick="scrollTo(0, 0)">⇑</a>
+      © <a href="http://mitranim.com" target="_blank">Mitranim</a>
+    </span>
+    <!-- Source link -->
+    <a class="flex items-center" href="https://github.com/Mitranim/stylific" target="_blank">
+      <sf-icon class="github" style="font-size: 2em"></sf-icon>
+      Source at GitHub
+    </a>
+    <!-- Scroll to top -->
+    <sf-icon class="arrow-up pointer fade" onclick="scrollTo(0, 0)"></sf-icon>
   </sf-footer-body>
 </sf-footer>
 

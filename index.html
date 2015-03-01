@@ -23,7 +23,7 @@
   <a  href="components/">Components</a>
   <a  href="color-system/">Colour System</a>
   <a  href="patterns/">Patterns</a>
-  <a  href="configuration/">Configuration</a>
+  <a  href="configuration/">Config</a>
   <sf-dropdown>
     <input id="navbar-sub-dropdown" type="checkbox">
     <label for="navbar-sub-dropdown" class="justify-center">Examples</label>
@@ -34,6 +34,9 @@
       <a  href="examples/grid-demo.html">grid demo</a>
     </sf-dropdown-list>
   </sf-dropdown>
+  <a class="flex-05" href="https://github.com/Mitranim/stylific" target="_blank">
+    <sf-icon class="github pop" style="font-size: 2em"></sf-icon>
+  </a>
 </sf-navbar>
 
 
@@ -53,6 +56,7 @@
   <a href="#overview">Overview</a>
   <a href="#motivation">Motivation</a>
   <a href="#what-s-different">What’s Different</a>
+  <a href="#installation-and-usage">Installation and Usage</a>
   <a href="#contributing">Contributing</a>
 </doc-toc></div>
 
@@ -113,6 +117,23 @@ in AngularJS or Polymer. See <a href="patterns
 <p>stylific’s components require only about half as much HTML markup as similar
 Bootstrap components. Compare this across the demos. Most components need only
 an irreducible minimum of markup.</p>
+<h1 id="installation-and-usage">Installation and Usage</h1>
+<p>To fully benefit from stylific, you’ll need the <a href="http://lesscss.org" target="_blank">LESS</a>
+preprocessor and a build system to compile it. If you’re not familiar with
+preprocessors, head over to the repository and check
+<a href="https://github.com/Mitranim/stylific/blob/master/gulpfile.js" target="_blank"><code>gulpfile.js</code></a>
+for an example build system. It uses <a href="http://gulpjs.com" target="_blank">gulp</a> as the task
+runner. Look for the style tasks.</p>
+<p>You’ll also need <a href="http://bower.io" target="_blank">bower</a> or <a href="https://www.npmjs.com" target="_blank">npm</a> as
+your package manager (get both). The install stylific using either of them.
+Let’s use bower as an example. <code>cd</code> to your project’s root and run:</p>
+<pre><code class="lang-sh">bower i --save-dev stylific
+</code></pre>
+<p>After installing, import it in your LESS source (adjust the path if needed):</p>
+<pre><code class="lang-less"><span class="hljs-at_rule">@import</span> (less) <span class="hljs-string">'./bower_components/stylific/less/stylific'</span>;
+</code></pre>
+<p>This allows you to <a href="configuration/">configure</a> the library with variables,
+subclass and extend built-in components, and so on.</p>
 <h1 id="contributing">Contributing</h1>
 <p>I’d love you to get involved!</p>
 <p>To contribute to the library, send a
@@ -130,10 +151,18 @@ set up a local build for development, then send your changes to <code>master</co
     <!-- Footer -->
     <sf-footer>
   <sf-footer-body>
+    <!-- © -->
     <span>
       2015
-      © <a href="https://github.com/Mitranim" target="_blank">Mitranim</a></span>
-    <a class="pointer" onclick="scrollTo(0, 0)">⇑</a>
+      © <a href="http://mitranim.com" target="_blank">Mitranim</a>
+    </span>
+    <!-- Source link -->
+    <a class="flex items-center" href="https://github.com/Mitranim/stylific" target="_blank">
+      <sf-icon class="github" style="font-size: 2em"></sf-icon>
+      Source at GitHub
+    </a>
+    <!-- Scroll to top -->
+    <sf-icon class="arrow-up pointer fade" onclick="scrollTo(0, 0)"></sf-icon>
   </sf-footer-body>
 </sf-footer>
 
