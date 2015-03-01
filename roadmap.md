@@ -56,11 +56,9 @@ colours, but we can probably do it with a pre-defined set.
 * ~~Input and form styling~~ (done)
   * Add an option for spacing out form inputs
 * ~~Button styling~~ (done)
-  * Consider merging some sf-icon styling into sf-button
   * ~~Include a custom :focus style and disable the Webkit outline~~ (done)
 * Tooltips
   * ~~Basic implementation~~ (done)
-    * The pseudoelement implementation doesn't work for text inputs
     * Needs options for left and right positioning (tricky with horizontally
       stretched blocks)
 * TOC navigation

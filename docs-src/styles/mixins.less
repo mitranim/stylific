@@ -1,0 +1,20 @@
+/**
+ * Produces a background-image rule with a data-encoded black svg with
+ * the given name for a class with the same name.
+ * @param   String
+ * @returns .<classname> {background-color}
+ */
+.svg-black(@name) {
+  &.@{name} {.bg-svg-black(@name)}
+}
+
+/**
+ * Produces a background-image rule with a data-encoded black svg with the
+ * given name.
+ * @param   String
+ * @returns {background-color}
+ */
+.bg-svg-black(@name) {
+  @path: ~'@{svg-black}@{name}.svg';
+  background-image: data-uri(@path)
+}

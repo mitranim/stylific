@@ -27,5 +27,8 @@
     "docs-src",
     "gulpfile.js",
     "roadmap.md"
-  ]
+  ],
+  "devDependencies": {
+    "font-awesome-svg-png": "~1.1.2"
+  }
 }

@@ -208,10 +208,10 @@ The dropdown position may be changed to `top`, `right` or `left`:
 `sf-tabset` is a tabbed panel. Like most other stateful components, it relies on
 the `:checked` hack with hidden inputs.
 
-**Note**: Safari 8 is surprisingly slow in detecting changes with the
-`:checked`-based selector used for tab body. Until this is fixed, you may want
-to supplement this by using `.active` on labels. See this [example](examples
-/active-switch.html).
+**Note**: Safari 8 appears to be bugged about the `:checked`-based selector used
+for tab body: it fails to fully detect the state change until a tab is clicked
+twice. Until this is fixed, you may want to supplement this by using `.active`
+on labels. See this [example](examples /active-switch.html).
 
 ```html
 <sf-tabset class="orange">

@@ -81,10 +81,10 @@
 
 /******************************** Typography *********************************/
 
-// Applies the given rule to all headers.
-.sf-h(@rule; @value) {
+// Applies the given rules to all headers.
+.sf-h(@rules) {
   h1, h2, h3, h4, h5, h6 {
-    @{rule}: @value;
+    @rules();
   }
 }
 
@@ -118,6 +118,15 @@
   outline: 1px solid fade(@sf-base-text-color, 20%);
 }
 
+/********************************** Images ***********************************/
+
+// Typical group of rules for a cover background image.
+.sf-background-cover() {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 /******************************** Animations *********************************/
 
 /**
@@ -127,7 +136,7 @@
  */
 .sf-common-transition(@rule) {
   & when (@sf-enable-common-transitions) {
-    transition: @rule @sf-common-transition-time @sf-common-transition-timing-function;
+    transition: @rule @sf-common-transition-duration @sf-common-transition-timing-function;
   }
 }
 
@@ -138,12 +147,12 @@
 .sf-common-transitions(@properties) {
   & when (@sf-enable-common-transitions) {
     transition-property: @properties;
-    transition-duration: @sf-common-transition-time;
+    transition-duration: @sf-common-transition-duration;
     transition-timing-function: @sf-common-transition-timing-function;
   }
 }
 
 // Applies all transitions with the common settings.
-.sf-common-transition-all() {
+.sf-common-transitions-all() {
   .sf-common-transition(all);
 }

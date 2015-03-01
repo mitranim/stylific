@@ -184,7 +184,7 @@ img {
     .sf-colormix-all-classes(@prefix, ~':active:not(.active)', @sf-delta-active);
 
     // Animate colour transitions.
-    &@{prefix} {.sf-common-transition-all()}
+    &@{prefix} {.sf-common-transitions-all()}
   }
 }
 
@@ -203,7 +203,7 @@ img {
     .sf-shift-color(color, @sf-base-link-color, @sf-delta-activated);
   }
   // Animate any changes.
-  .sf-common-transition-all();
+  .sf-common-transitions-all();
 }
 
 // Default backdrop for images and some other elements.

@@ -14,12 +14,9 @@
 written with [LESS](http://lesscss.org). It can serve as a website's foundation,
 and provides common UI components as building blocks.
 
-There are plenty of UI libraries out there:
-[Bootstrap](http://getbootstrap.com), [Foundation](http://foundation.zurb.com),
-Polymer's
-[Paper Elements](https://www.polymer-project.org/docs/start/usingelements.html),
-[Angular Material](https://material.angularjs.org), and so on. What's different
-about this one? Read on!
+There are plenty of UI libraries out there: Bootstrap, Foundation, Polymer's
+Paper Elements, Angular Material, and so on. What's different about this one?
+Read on!
 
 This project is nowhere near as ambitious as the other libraries I've mentioned.
 In fact, it's much more modest in scope than the styles of any moderately sized

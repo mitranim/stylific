@@ -10,8 +10,11 @@
 
 # Overview
 
-Isolating components as tags and writing each as a LESS mixin makes subclassing
-and extending a breeze.
+After importing stylific into your LESS source, you can reconfigure its
+variables or alter its component mixins.
+
+Because each component is isolated as a tag and written as a LESS mixin,
+subclassing and extending is a breeze.
 
 If you're unfamiliar with the idea, a mixin in a CSS preprocessor is basically a
 named collection of CSS rules. It may or may not take arguments as input.
@@ -63,7 +66,7 @@ Change the timing of common transitions or disable them altogether:
 ```less
 // Defaults
 @sf-enable-common-transitions: true;
-@sf-common-transition-time: 0.2s;
+@sf-common-transition-duration: 0.2s;
 @sf-common-transition-timing-function: ease;
 ```
 
@@ -135,8 +138,8 @@ mixin. LESS helps us here: it _merges_ mixins with the same name in the same
 scope. Meaning, you can just write your own version of the component mixin,
 and it will extend the original.
 
-Borrowing an example from this documentation's source, suppose you want to add
-special styles to links in `sf-article`.
+Borrowing an example from an earlier version of this documentation's source,
+suppose you want to add special styles to links in `sf-article`.
 
 ```less
 // Using exactly the same name as the original sf-article mixin
