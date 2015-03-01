@@ -1,3 +1,30 @@
+/********************************** Styles ***********************************/
+
+/**
+ * Global default styling that doesn't fall into other categories.
+ */
+
+// Make the contenteditable focus styling more consistent across browsers.
+[contenteditable]:focus {
+  .sf-outline-weak();
+}
+
+/**
+ * Default styling for monospace tags.
+ */
+tt, code, kbd, pre, samp {
+  font-family: @sf-font-family-monospace;
+  .sf-shift-color(background-color, @sf-base-background-color, 5%);
+  border-radius: @sf-common-border-radius / 2;
+}
+// Sensible defaults for <pre> tags.
+pre {
+  padding: @sf-common-padding;
+  white-space: pre-wrap;
+}
+
+/********************************** Globals **********************************/
+
 /**
  * Global classes and attributes for minor utility.
  */

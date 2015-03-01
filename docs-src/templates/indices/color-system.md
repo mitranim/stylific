@@ -266,19 +266,19 @@ elsewhere.
 That's it! And now it's available in HTML under the class names we gave it:
 
 ```html
-<p class="pad orange" contenteditable style="min-height: 3em">
+<p class="pad orange flex-1" contenteditable style="min-height: 3em">
   Paragraph in orange (interactive mix; hover me, click me).
 </p>
-<p class="pad orange-inverse" contenteditable style="min-height: 3em">
+<p class="pad orange-inverse flex-1" contenteditable style="min-height: 3em">
   Paragraph in orange-inverse (interactive mix; hover me, click me).
 </p>
 ```
 
 <div><doc-demo>
-  <p class="pad orange" contenteditable style="min-height: 3em">
+  <p class="pad orange flex-1" contenteditable style="min-height: 3em">
     Paragraph in orange (interactive mix; hover me, click me).
   </p>
-  <p class="pad orange-inverse" contenteditable style="min-height: 3em">
+  <p class="pad orange-inverse flex-1" contenteditable style="min-height: 3em">
     Paragraph in orange-inverse (interactive mix; hover me, click me).
   </p>
 </doc-demo></div>

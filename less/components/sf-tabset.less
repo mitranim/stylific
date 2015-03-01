@@ -1,5 +1,5 @@
 /**
- * sf-tabset is your typical tabbed panel. It has two modes with slightly
+ * sf-tabset is your typical tabbed panel. It has several modes with slightly
  * different markup requirements but near-identical behaviour.
  *
  * # :checked version
@@ -52,6 +52,26 @@
  *     <sf-tab>...</sf-tab>
  *     ...
  *   </sf-tabset>
+ *
+ * # :target version
+ *
+ * This version uses <a id="..." href="#..."> tags instead of labels, and relies
+ * on the :target selector for active state. Each anchor must have a unique [id]
+ * and a [href] linking to that id.
+ *
+ * This messes around with the URL AND with the window scroll position. You
+ * should only use this if you want to actually link to tabs from other places.
+ *
+ * Layout:
+ *
+ *   <sf-tabset>
+ *     ...
+ *     <a id="..." href="#...">...</a>
+ *     <sf-tab>...</sf-tab>
+ *     ...
+ *   </sf-tabset>
+ *
+ * Each [id] must be unique and the [href] must match it.
  */
 
 @{sf-prefix}-tabset {.sf-tabset()}
@@ -71,9 +91,9 @@
   > input[type=radio] {display: none}
 
   /**
-   * Base label styles.
+   * Base tab styles.
    */
-  > label {
+  > label, > a[href*="#"] {
     /**
      * Layout.
      */
@@ -100,10 +120,11 @@
     // Use default padding.
     padding: @sf-common-padding;
   }
-  // Use interactive colour sets for labels. This also implicitly applies active
-  // styling to labels with a class "active", which is also a special case for
+  // Use interactive colour sets for tabs. This also implicitly applies active
+  // styling to tabs with the class "active", which is also a special case for
   // displaying content (see below).
   .sf-colormix-all-states(~' > label', true);
+  .sf-colormix-all-states(~' > a[href*="#"]', true);
 
   /**
    * Base body styles.
@@ -130,12 +151,15 @@
   }
 
   /**
-   * Active label highlighting.
+   * Active tab highlighting.
    */
   // :checked version.
   .sf-colormix-all-classes(~' > input[type=radio]:checked + label', ~'', @sf-delta-activated);
   // Activated state for the .active version is implicitly defined in the
   // all-states colour mix above.
+  // :target version.
+  .sf-colormix-all-classes(~' > a[href*="#"]:target', ~'', @sf-delta-activated);
+  .sf-colormix-all-classes(~' > a[href*="#"]:target:focus', ~'', @sf-delta-activated);
 
   /**
    * Active body styles.
@@ -143,7 +167,9 @@
   // :checked version.
   > input[type=radio]:checked + label,
   // .active version.
-  > label.active {
+  > label.active,
+  // :target version.
+  > a[href*="#"]:target {
     & + @{sf-prefix}-tab {
       display: block;
     }
