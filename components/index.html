@@ -587,19 +587,20 @@ propagate naturally to the parent. Unfortunately other states, like <code>:focus
 don’t propagate.</p>
 <h1 id="sf-input"><a href="https://github.com/Mitranim/stylific/blob/master/less/components/sf-input.less" target="_blank">sf-input</a></h1><p><code>.sf-input</code> is a class-based component for text fields like <code>&lt;input
 type=&quot;text&quot;&gt;</code> and <code>&lt;textarea&gt;</code>. It’s purely cosmetic. Makes the element look
-consistent with the overall theme and adjusts its dimensions.</p>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-input"</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">"I'm a basic input."</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-input orange"</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">"I'm orange coloured."</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-input success-inverse"</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">"I'm succes-inverse coloured."</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">textarea</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-input"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"width: 100%"</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">"I'm a basic textarea."</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">textarea</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">textarea</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-input info"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"width: 100%"</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">"I'm an info textarea."</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">textarea</span>&gt;</span>
+consistent with the overall theme and adjusts its dimensions. Also makes its
+text and placeholder colour respond to stylific <a href="color-system/">colour classes</a>.</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-input"</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">"I'm a basic input."</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"I'm a basic input."</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-input orange"</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">"I'm orange coloured."</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"I'm orange coloured."</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-input success-inverse"</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">"I'm succes-inverse coloured."</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"I'm succes-inverse coloured."</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">textarea</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-input"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"width: 100%"</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">"I'm a basic textarea."</span>&gt;</span>I'm a basic textarea.<span class="hljs-tag">&lt;/<span class="hljs-title">textarea</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">textarea</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-input info"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"width: 100%"</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">"I'm an info textarea."</span>&gt;</span>I'm an info textarea.<span class="hljs-tag">&lt;/<span class="hljs-title">textarea</span>&gt;</span>
 </code></pre>
 <div><doc-demo>
-  <input class="sf-input" placeholder="I'm a basic input.">
-  <input class="sf-input orange" placeholder="I'm orange coloured.">
-  <input class="sf-input success-inverse" placeholder="I'm succes-inverse coloured.">
-  <textarea class="sf-input" style="width: 100%" placeholder="I'm a basic textarea."></textarea>
-  <textarea class="sf-input info" style="width: 100%" placeholder="I'm an info textarea."></textarea>
+  <input class="sf-input" placeholder="I'm a basic input." value="I'm a basic input.">
+  <input class="sf-input orange" placeholder="I'm orange coloured." value="I'm orange coloured.">
+  <input class="sf-input success-inverse" placeholder="I'm succes-inverse coloured." value="I'm succes-inverse coloured.">
+  <textarea class="sf-input" style="width: 100%" placeholder="I'm a basic textarea.">I’m a basic textarea.</textarea>
+  <textarea class="sf-input info" style="width: 100%" placeholder="I'm an info textarea.">I’m an info textarea.</textarea>
 </doc-demo></div>
 
 <p>Like with other class-based components, if you set
@@ -609,12 +610,12 @@ text inputs by default.</p>
 <span class="hljs-variable">@sf-enable-global-element-components:</span> true;
 </code></pre>
 <pre><code class="lang-html"><span class="hljs-comment">&lt;!-- No need for .sf-input declarations now --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"success"</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">"I'm success coloured."</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"orange-inverse"</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">"I'm orange-inverse coloured."</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"success"</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">"I'm success coloured."</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"I'm success coloured."</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"orange-inverse"</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">"I'm orange-inverse coloured."</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"I'm orange-inverse coloured."</span>&gt;</span>
 </code></pre>
 <div><doc-demo>
-  <input class="success" placeholder="I'm success coloured.">
-  <input class="orange-inverse" placeholder="I'm orange-inverse coloured.">
+  <input class="success" placeholder="I'm success coloured." value="I'm success coloured.">
+  <input class="orange-inverse" placeholder="I'm orange-inverse coloured." value="I'm orange-inverse coloured.">
 </doc-demo></div>
 
 <h1 id="sf-btn"><a href="https://github.com/Mitranim/stylific/blob/master/less/components/sf-btn.less" target="_blank">sf-btn</a></h1><p><code>.sf-btn</code> is a class-based component for <code>&lt;button&gt;</code> and <code>&lt;input type=&quot;button&quot;&gt;</code>.

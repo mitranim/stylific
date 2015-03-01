@@ -138,6 +138,8 @@ lightness to 75%, to make sure the hue is recognisable.</p>
 <span class="hljs-attribute">color</span>: <span class="hljs-function">hsl</span>(<span class="hljs-function">hue</span>(red), <span class="hljs-function">saturation</span>(red), <span class="hljs-number">25%</span>);
 <span class="hljs-attribute">background-color</span>: <span class="hljs-function">hsl</span>(<span class="hljs-function">hue</span>(red), <span class="hljs-function">saturation</span>(red), <span class="hljs-number">75%</span>);
 </code></pre>
+<p>In this example, <code>hsl()</code> is a <a href="http://lesscss.org/functions
+/#color-definition-hsl" target="_blank">LESS function</a>. The last argument is the colour’s desired lightness.</p>
 <p>If you register this in the global colour mix as <code>.red</code>, the result will look
 like this:</p>
 <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">p</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"pad red"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"min-height: 3em"</span>&gt;</span>Paragraph in red.<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
@@ -157,8 +159,6 @@ but inverted. Example:</p>
 <span class="hljs-attribute">color</span>: <span class="hljs-function">hsl</span>(<span class="hljs-function">hue</span>(red), <span class="hljs-function">saturation</span>(red), <span class="hljs-number">75%</span>);
 <span class="hljs-attribute">background-color</span>: <span class="hljs-function">hsl</span>(<span class="hljs-function">hue</span>(red), <span class="hljs-function">saturation</span>(red), <span class="hljs-number">25%</span>);
 </code></pre>
-<p>In this example, <code>hsl()</code> is a <a href="http://lesscss.org/functions
-/#color-definition-hsl" target="_blank">LESS function</a>. The last argument is the colour’s desired lightness.</p>
 <p>If you register this in the global colour mix as <code>.red-inverse</code>, the result will
 look like this:</p>
 <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">p</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"pad red-inverse"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"min-height: 3em"</span>&gt;</span>Paragraph in red-inverse.<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
