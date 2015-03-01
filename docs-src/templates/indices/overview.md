@@ -5,6 +5,7 @@
   [Overview](#overview)
   [Motivation](#motivation)
   [What's Different](#what-s-different)
+  [Installation and Usage](#installation-and-usage)
   [Contributing](#contributing)
 </doc-toc></div>
 
@@ -87,6 +88,32 @@ in AngularJS or Polymer. See [Patterns#Component Oriented](patterns
 stylific's components require only about half as much HTML markup as similar
 Bootstrap components. Compare this across the demos. Most components need only
 an irreducible minimum of markup.
+
+# Installation and Usage
+
+To fully benefit from stylific, you'll need the [LESS](http://lesscss.org)
+preprocessor and a build system to compile it. If you're not familiar with
+preprocessors, head over to the repository and check
+[`gulpfile.js`](https://github.com/Mitranim/stylific/blob/master/gulpfile.js)
+for an example build system. It uses [gulp](http://gulpjs.com) as the task
+runner. Look for the style tasks.
+
+You'll also need [bower](http://bower.io) or [npm](https://www.npmjs.com) as
+your package manager (get both). The install stylific using either of them.
+Let's use bower as an example. `cd` to your project's root and run:
+
+```sh
+bower i --save-dev stylific
+```
+
+After installing, import it in your LESS source (adjust the path if needed):
+
+```less
+@import (less) './bower_components/stylific/less/stylific';
+```
+
+This allows you to [configure](configuration/) the library with variables,
+subclass and extend built-in components, and so on.
 
 # Contributing
 

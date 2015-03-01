@@ -30,7 +30,8 @@
  * Document usage.
  */
 
-@{sf-prefix}-icon {
+@{sf-prefix}-icon {.sf-icon()}
+.sf-icon() {
 
   /**
    * Layout.
@@ -54,14 +55,26 @@
   background-repeat: no-repeat;
 
   /**
-   * Version that loses its hue and darkens until hovered or otherwise
-   * activated.
+   * Version that loses its hue and lightens or darkens until hovered or
+   * otherwise activated.
    */
   &.dark {
     // Animate all property transitions.
     .sf-common-transitions-all();
     &:not(:hover):not(:focus):not(:active):not(.active) {
       filter: grayscale(1) brightness(0.2);
+    }
+  }
+
+  /**
+   * Version that loses its hue and lightens until hovered or otherwise
+   * activated.
+   */
+  &.light {
+    // Animate all property transitions.
+    .sf-common-transitions-all();
+    &:not(:hover):not(:focus):not(:active):not(.active) {
+      filter: grayscale(1) brightness(1.2);
     }
   }
 

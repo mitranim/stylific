@@ -11,10 +11,9 @@
 # Overview
 
 After importing stylific into your LESS source, you can reconfigure its
-variables or alter its component mixins.
-
-Because each component is isolated as a tag and written as a LESS mixin,
-subclassing and extending is a breeze.
+variables or alter its component mixins. Also, because each component is
+isolated as a tag and written as a LESS mixin, subclassing and extending is a
+breeze.
 
 If you're unfamiliar with the idea, a mixin in a CSS preprocessor is basically a
 named collection of CSS rules. It may or may not take arguments as input.
