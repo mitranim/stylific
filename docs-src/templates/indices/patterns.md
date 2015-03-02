@@ -73,6 +73,11 @@ positioning, makes a website's layout extremely stable and scalable. Changes to
 the base font size cascade across the entire layout. The user is free to adjust
 the font size without breaking the site.
 
+In combination with flexbox layouts, this makes you mobile-friendly practically
+for free. You can get away with just adjusting the `html` font size for
+different displays. In fact, stylific does that by default, so you get a
+scalable site without effort.
+
 # Whitespace
 
 stylific is very conservative about whitespace. Most elements have zero

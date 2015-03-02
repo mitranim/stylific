@@ -623,8 +623,9 @@ inverses of the base text and background colours.
 </doc-demo></div>
 
 The `trigger` attribute supports the following values: `hover`, `focus`,
-`disabled`, `target`, `active`. They correspond to their namesake
-pseudoclass selectors and may be combined.
+`disabled`, `target`, `active`. They correspond to their namesake pseudoclass
+selectors and may be combined. You can also include `true` to make the tooltip
+visible at all times.
 
 **Note**: since tooltips are implemented with pseudoelements, they can't be used
 directly on elements that aren't allowed to have children, such as `<input

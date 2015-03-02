@@ -25,7 +25,9 @@
  *   <p sf-tooltip="tooltip text" contenteditable
  *      sf-trigger="hover focus">hover or focus me</p>
  *
- * The following triggers are supported: :active, :disabled, :focus, :hover, :target.
+ * The following triggers are supported: :active, :disabled, :focus, :hover,
+ * :target. You can also include 'true' to make the tooltip visible at all
+ * times.
  *
  *
  * # Limitations
@@ -150,8 +152,8 @@
   &[@{attr-trigger}*=disabled]:disabled,
   &[@{attr-trigger}*=focus]:focus,
   &[@{attr-trigger}*=hover]:hover,
-  &[@{attr-trigger}*=target]:target {
-    // cursor: help;
+  &[@{attr-trigger}*=target]:target,
+  &[@{attr-trigger}*=true] {
     &::after {
       opacity: inherit;
       visibility: inherit;

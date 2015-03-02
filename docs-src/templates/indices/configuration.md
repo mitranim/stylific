@@ -127,11 +127,11 @@ doc-toc {
 ```
 
 That was easy! In just a few lines of code, we made an extended version of
-[`sf-collapse`](https://github.com/Mitranim/stylific/blob/master/less/components/sf-collapse.less)
-without altering the original. The original component's styles have remained
-unchanged, and you can subclass it again for something different.
+[`sf-collapse`](https://github.com/Mitranim/stylific/blob/master/less/components/sf-collapse.less).
+The original component's styles have remained unchanged, and you can subclass
+it again for something different.
 
-And if want `doc-toc` to be subclassable, we write it as a mixin too:
+And if you want `doc-toc` to be subclassable, just write it as a mixin too:
 
 ```less
 doc-toc {.doc-toc()}
