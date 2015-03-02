@@ -183,6 +183,13 @@ img {
     .sf-colormix-all-classes(@prefix, ~':focus:not(.active)', @sf-delta-focus);
     .sf-colormix-all-classes(@prefix, ~':active:not(.active)', @sf-delta-active);
 
+    // For [disabled], we compound it with other states to keep its specificity
+    // higher. It needs to take priority.
+    .sf-colormix-all-classes(@prefix, ~'[disabled]', @sf-delta-disabled);
+    .sf-colormix-all-classes(@prefix, ~'[disabled]:focus', @sf-delta-disabled);
+    .sf-colormix-all-classes(@prefix, ~'[disabled]:hover', @sf-delta-disabled);
+    .sf-colormix-all-classes(@prefix, ~'[disabled]:active', @sf-delta-disabled);
+
     // Animate colour transitions.
     &@{prefix} {.sf-common-transitions-all()}
   }
@@ -199,7 +206,7 @@ img {
 .sf-link-color() {
   text-decoration: none;
   color: @sf-base-link-color;
-  &:hover:not(.active), &:focus:not(.active) {
+  &:hover:not(.active):not([disabled]), &:focus:not(.active):not([disabled]) {
     .sf-shift-color(color, @sf-base-link-color, @sf-delta-activated);
   }
   // Animate any changes.

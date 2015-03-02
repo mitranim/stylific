@@ -153,7 +153,7 @@ gulp.task('images:square', function() {
   return gulp.src(src.img)
     .pipe($.imageResize({
       quality: 1,
-      gravity: 'Center',  // crop relative to the center
+      gravity: 'Center',  // crop relative to center
       crop: true,
       width: 640,
       height: 640,
@@ -181,7 +181,7 @@ gulp.task('templates:compile', function() {
 
   return gulp.src(src.templates + '**/*')
     .pipe($.plumber())
-    // Pre-process the markdown files.
+    // Pre-process markdown files.
     .pipe(filterMd)
     .pipe($.marked({
       gfm:         true,
@@ -196,17 +196,17 @@ gulp.task('templates:compile', function() {
         return hjs.highlightAuto(code).value
       }
     }))
-    // Return the other files.
+    // Return other files.
     .pipe(filterMd.restore())
-    // Render all the templates.
+    // Render all templates.
     .pipe($.statil({
       relativeDir: src.templates
     }))
-    // Remove the partials.
+    // Remove partials.
     .pipe($.filter(['**/*.html', '!**/partials/**/*', '!**/indices/**/*']))
     // Write to disk.
     .pipe(gulp.dest(dest.html))
-    // Reload the browser.
+    // Reload browser.
     .pipe(bsync.reload({stream: true}))
 })
 

@@ -9,6 +9,16 @@
 }
 
 /**
+ * Produces a background-image rule with a data-encoded white svg with
+ * the given name for a class with the same name.
+ * @param   String
+ * @returns .<classname>-white {background-color}
+ */
+.svg-white(@name) {
+  &.@{name}-white {.bg-svg-white(@name)}
+}
+
+/**
  * Produces a background-image rule with a data-encoded coloured svg with
  * the given name for a class with the same name.
  * @param   String
@@ -26,6 +36,17 @@
  */
 .bg-svg-black(@name) {
   @path: ~'@{svg-black}@{name}.svg';
+  background-image: data-uri(@path)
+}
+
+/**
+ * Produces a background-image rule with a data-encoded white svg with the
+ * given name.
+ * @param   String
+ * @returns {background-color}
+ */
+.bg-svg-white(@name) {
+  @path: ~'@{svg-white}@{name}.svg';
   background-image: data-uri(@path)
 }
 

@@ -115,6 +115,10 @@ After installing, import it in your LESS source (adjust the path if needed):
 This allows you to [configure](configuration/) the library with variables,
 subclass and extend built-in components, and so on.
 
+**Caution**: neither LESS nor stylific account for vendor prefixes. You
+must compensate by combining it with
+[`autoprefixer`](https://github.com/postcss/autoprefixer) in your build system.
+
 # Contributing
 
 I'd love you to get involved!

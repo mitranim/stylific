@@ -82,9 +82,11 @@ less/variables.less).
 
 # Subclassing Components
 
-Borrowing an example from this documentation's source, suppose you want to
-subclass `sf-collapse` to make a TOC element. In your LESS source, define a tag
-that inherits all of sf-collapse styling:
+Borrowing an
+[example](https://github.com/Mitranim/stylific/blob/master/docs-src/styles/components/doc-toc.less)
+from this documentation's source, suppose you want to subclass
+[`sf-collapse`](components/#sf-collapse) to make a TOC element. In your LESS
+source, define a tag that inherits all of sf-collapse styling:
 
 ```less
 doc-toc {
@@ -128,6 +130,15 @@ That was easy! In just a few lines of code, we made an extended version of
 [`sf-collapse`](https://github.com/Mitranim/stylific/blob/master/less/components/sf-collapse.less)
 without altering the original. The original component's styles have remained
 unchanged, and you can subclass it again for something different.
+
+And if want `doc-toc` to be subclassable, we write it as a mixin too:
+
+```less
+doc-toc {.doc-toc()}
+.doc-toc() {
+  // ... Same styles as above.
+}
+```
 
 # Extending Components
 

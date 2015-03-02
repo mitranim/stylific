@@ -30,9 +30,14 @@ components or angular directives, because you will already have the tags and
 styles in place. You can begin by styling your website statically, then
 effortlessly convert individual elements into web components.
 
-The library also defines each component's styles as a single LESS mixin, making
-it trivial to [subclass](configuration/#subclassing-components) and
-[extend](configuration/#extending-components) them.
+An unexpected benefit is that because each component is defined as a single LESS
+mixin, they're trivial to [subclass](configuration/#subclassing-components) and
+[extend](configuration/#extending-components).
+
+It also turns out to be a great strategy for CSS specificity. Isolating styles
+to custom tags and their immediate children keeps CSS specificity low and
+prevents it from compounding, making it easy to override when needed. It might
+be the solution to specificity you've been looking for!
 
 # CSS Hacks > JS
 
@@ -41,10 +46,10 @@ complex program to enable the basic UI is just ridiculous. If something can be
 done with plain HTML and CSS, it should be. This improves performance for
 everyone, and enables the UI for security-minded people who disallow JS.
 
-CSS2-CSS3 features like transitions, `:checked`, `:target`, sibling selectors,
-`:not`, pseudo-elements, media queries, flexbox, and others obviate the need for
-JavaScript for many elements that used to be impossible to implement without it.
-See [Components](components/) for basic examples.
+CSS2-CSS3 features like `:checked`, `:target`, sibling selectors, `:not`,
+pseudo-elements, media queries, flexbox, transitions, and others obviate the
+need for JavaScript for many elements that used to be impossible to implement
+without it. See [Components](components/) for basic examples.
 
 Choose the right tool for your use case, don't bang the JS hammer on everything.
 

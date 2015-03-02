@@ -117,8 +117,8 @@
     // Normalise the shadow widths.
     margin-bottom: 1px;
     &:not(:last-of-type) {margin-right: 1px}
-    // Use default padding.
-    padding: @sf-common-padding;
+    // Use default padding. We provide an option to disable this rule.
+    & when (@sf-enable-tabset-default-padding) {padding: @sf-common-padding}
   }
   // Use interactive colour sets for tabs. This also implicitly applies active
   // styling to tabs with the class "active", which is also a special case for
@@ -133,8 +133,6 @@
     /**
      * Layout.
      */
-    // Hidden unless active.
-    display: none;
     // In combination with {flex-wrap: wrap} on the parent, this folds the line,
     // putting the body below the headers.
     width: 100%;
@@ -143,20 +141,33 @@
     // Make sure it doesn't collapse due to lack of content.
     min-height: @sf-tab-body-min-height;
 
-    // Cosmetic.
+    // Hide tabs by default. This rule would work fine as-is, but we
+    // artificially raise its specificity above that of global layout classes
+    // (see layout.less) to prevent the user from inadvertently breaking tab
+    // visibility by applying one of those classes, like .flex (which wouldn't
+    // work anyway, because its specificity is still lower than that of active
+    // tab display rules).
+    &:not(:root) {display: none}
+
+    /**
+     * Cosmetic.
+     */
     .sf-shadow-weak();
     // Default padding. Normally we avoid it for containers, but it seems to
-    // make sense for tabs.
-    padding: @sf-common-padding;
+    // make sense for tabs. We provide an option to disable this rule.
+    & when (@sf-enable-tabset-default-padding) {padding: @sf-common-padding}
   }
 
   /**
    * Active tab highlighting.
    */
+
   // :checked version.
   .sf-colormix-all-classes(~' > input[type=radio]:checked + label', ~'', @sf-delta-activated);
+
   // Activated state for the .active version is implicitly defined in the
   // all-states colour mix above.
+
   // :target version.
   .sf-colormix-all-classes(~' > a[href*="#"]:target', ~'', @sf-delta-activated);
   .sf-colormix-all-classes(~' > a[href*="#"]:target:focus', ~'', @sf-delta-activated);
@@ -167,11 +178,17 @@
   // :checked version.
   > input[type=radio]:checked + label,
   // .active version.
-  > label.active,
+  > .active,
   // :target version.
   > a[href*="#"]:target {
     & + @{sf-prefix}-tab {
       display: block;
+      // Special exception for the .flex layout class to allow the user to use
+      // it for a tab's inner layout. This exception is necessary because this
+      // rule block's specificity needs to be higher than the specificity of the
+      // base tab rules with {display: none}, which, in turn, needs to be higher
+      // than the specificity of the global layout classes.
+      &.flex {display: flex}
     }
   }
 

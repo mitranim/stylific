@@ -22,6 +22,7 @@
 # Overview
 
 The library includes pre-defined UI components. Some of them are interactive.
+None of them use JavaScript.
 
 # sf-article
 
@@ -211,7 +212,7 @@ the `:checked` hack with hidden inputs.
 **Note**: Safari 8 appears to be bugged about the `:checked`-based selector used
 for tab body: it fails to fully detect the state change until a tab is clicked
 twice. Until this is fixed, you may want to supplement this by using `.active`
-on labels. See this [example](examples /active-switch.html).
+on labels. See this [example](examples/active-switch.html).
 
 ```html
 <sf-tabset class="orange">

@@ -61,7 +61,7 @@ Colours are a common stumbling block. Standard scenario:
 Preprocessors solve (2) and help with (3), but it requires a lot of boilerplate.
 Different elements need different selectors for states (example: [special
 selector](https://github.com/Mitranim/stylific/blob/master/less/components/sf-
-tabset.less#L136) for active label in sf-tabset). Sometimes you want child
+tabset.less#L157) for active label in sf-tabset). Sometimes you want child
 elements to have interactive states that respond to colour classes of parent
 elements (same example; active label's colour is defined by its parent tabset's
 colour class).
@@ -169,15 +169,17 @@ Continuing the `red` examples above:
 ## Interactive Mix
 
 An interactive mix is a superset of a static mix. It's also either straight or
-inverse. It takes a colour, defines five states, and produces a straight or
+inverse. It takes a colour, defines six states, and produces a straight or
 inverse colour set for each of them.
 
 * Normal — same as in static mix
-* `:hover` with one rule:
+* `[disabled]` state with one rule:
+  * `background-color` shifted in lightness by `@sf-delta-disabled` (default 3%)
+* `:hover` state with one rule:
   * `background-color` shifted in lightness by `@sf-delta-hover` (default 5%)
-* `:focus`
+* `:focus` state with one rule:
   * `background-color` shifted in lightness by `@sf-delta-focus` (default 5%)
-* `:active`
+* `:active` state with one rule:
   * `background-color` shifted in lightness by `@sf-delta-active` (default 10%)
 * `.active` — same as in static mix
 

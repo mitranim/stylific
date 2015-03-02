@@ -79,10 +79,12 @@
  */
 // base
 @sf-delta-base: 3%;
+// [disabled]
+@sf-delta-disabled: @sf-delta-base;
 // :hover
 @sf-delta-hover: 5%;
 // :focus
-@sf-delta-focus: 5%;
+@sf-delta-focus: @sf-delta-hover;
 // :active
 @sf-delta-active: 10%;
 // .active or analogous custom condition
@@ -181,6 +183,9 @@
 
 @sf-tab-head-height: 3em;
 @sf-tab-body-min-height: 3em;
+
+// Whether or not to add default padding to labels and tabs.
+@sf-enable-tabset-default-padding: true;
 
 /****************************** sf-tooltip.less ******************************/
 
