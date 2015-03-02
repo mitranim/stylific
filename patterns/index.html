@@ -80,13 +80,14 @@ semantic. It also makes it far easier to convert your elements into web
 components or angular directives, because you will already have the tags and
 styles in place. You can begin by styling your website statically, then
 effortlessly convert individual elements into web components.</p>
-<p>An unexpected benefit is that because each component is defined as a single LESS
-mixin, they’re trivial to <a href="configuration/#subclassing-components">subclass</a> and
+<p>An unexpected benefit of this approach is that we can define each component as a
+single LESS mixin, making them trivial to
+<a href="configuration/#subclassing-components">subclass</a> and
 <a href="configuration/#extending-components">extend</a>.</p>
 <p>It also turns out to be a great strategy for CSS specificity. Isolating styles
 to custom tags and their immediate children keeps CSS specificity low and
-prevents it from compounding, making it easy to override when needed. It might
-be the solution to specificity you’ve been looking for!</p>
+prevents it from compounding, making base styles easy to override. It might be
+the solution to specificity you’ve been looking for!</p>
 <h1 id="css-hacks-js">CSS Hacks &gt; JS</h1>
 <p>I love JavaScript as much as everybody else, but requiring the visitor to run a
 complex program to enable the basic UI is just ridiculous. If something can be
@@ -116,12 +117,14 @@ the font size without breaking the site.</p>
 default margin and padding. This makes layouts very predictable and
 controllable. You’re expected to manually add whitespace where needed,
 preferably with pre-defined whitespace classes:</p>
-<pre><code>.pad        -- pads <span class="hljs-keyword">by</span> the <span class="hljs-reserved">default</span> interval
-.pad-<span class="hljs-number">05</span>     -- pads <span class="hljs-keyword">by</span> half <span class="hljs-keyword">of</span> the <span class="hljs-reserved">default</span> interval
-.pad-v      -- pads vertically <span class="hljs-keyword">by</span> the <span class="hljs-reserved">default</span> interval
-.pad-v-<span class="hljs-number">05</span>   -- pads vertically <span class="hljs-keyword">by</span> half <span class="hljs-keyword">of</span> the <span class="hljs-reserved">default</span> interval
-.pad-ch     -- pads children <span class="hljs-keyword">by</span> the <span class="hljs-reserved">default</span> interval
-.pad-ch-<span class="hljs-number">05</span>  -- pads children <span class="hljs-keyword">by</span> half <span class="hljs-keyword">of</span> the <span class="hljs-reserved">default</span> interval
+<pre><code>.pad          -- pads <span class="hljs-keyword">by</span> the <span class="hljs-reserved">default</span> interval
+.pad-<span class="hljs-number">05</span>       -- pads <span class="hljs-keyword">by</span> half <span class="hljs-keyword">of</span> the <span class="hljs-reserved">default</span> interval
+.pad-v        -- pads vertically <span class="hljs-keyword">by</span> the <span class="hljs-reserved">default</span> interval
+.pad-v-<span class="hljs-number">05</span>     -- pads vertically <span class="hljs-keyword">by</span> half <span class="hljs-keyword">of</span> the <span class="hljs-reserved">default</span> interval
+.pad-ch       -- pads children <span class="hljs-keyword">by</span> the <span class="hljs-reserved">default</span> interval
+.pad-ch-<span class="hljs-number">05</span>    -- pads children <span class="hljs-keyword">by</span> half <span class="hljs-keyword">of</span> the <span class="hljs-reserved">default</span> interval
+.pad-ch-v     -- pads children vertically <span class="hljs-keyword">by</span> the <span class="hljs-reserved">default</span> interval
+.pad-ch-v-<span class="hljs-number">05</span>  -- pads children vertically <span class="hljs-keyword">by</span> half <span class="hljs-keyword">of</span> the <span class="hljs-reserved">default</span> interval
 </code></pre><p>The benefit of this approach is that whitespace never goes out of control and
 never compounds, you can tell on a glance where it came from, and the
 intervals are always the same, keeping the looks more consistent.</p>
