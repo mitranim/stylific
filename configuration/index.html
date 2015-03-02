@@ -148,10 +148,10 @@ source, define a tag that inherits all of sf-collapse styling:</p>
 }
 </code></pre>
 <p>That was easy! In just a few lines of code, we made an extended version of
-<a href="https://github.com/Mitranim/stylific/blob/master/less/components/sf-collapse.less" target="_blank"><code>sf-collapse</code></a>
-without altering the original. The original component’s styles have remained
-unchanged, and you can subclass it again for something different.</p>
-<p>And if want <code>doc-toc</code> to be subclassable, we write it as a mixin too:</p>
+<a href="https://github.com/Mitranim/stylific/blob/master/less/components/sf-collapse.less" target="_blank"><code>sf-collapse</code></a>.
+The original component’s styles have remained unchanged, and you can subclass
+it again for something different.</p>
+<p>And if you want <code>doc-toc</code> to be subclassable, just write it as a mixin too:</p>
 <pre><code class="lang-less"><span class="hljs-tag">doc-toc</span> {<span class="hljs-class">.doc-toc</span>()}
 <span class="hljs-class">.doc-toc</span>() {
   <span class="hljs-comment">// ... Same styles as above.</span>
