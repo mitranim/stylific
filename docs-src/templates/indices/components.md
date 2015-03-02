@@ -21,8 +21,10 @@
 
 # Overview
 
-The library includes pre-defined UI components. Some of them are interactive.
-None of them use JavaScript.
+The library comes with some pre-defined UI components. They work with plain
+HTML and CSS, even the interactive ones. You can easily
+[subclass](configuration/#subclassing-components) and
+[extend](configuration/#extending-components) them with LESS.
 
 # sf-article
 

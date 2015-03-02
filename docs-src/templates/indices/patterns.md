@@ -30,14 +30,15 @@ components or angular directives, because you will already have the tags and
 styles in place. You can begin by styling your website statically, then
 effortlessly convert individual elements into web components.
 
-An unexpected benefit is that because each component is defined as a single LESS
-mixin, they're trivial to [subclass](configuration/#subclassing-components) and
+An unexpected benefit of this approach is that we can define each component as a
+single LESS mixin, making them trivial to
+[subclass](configuration/#subclassing-components) and
 [extend](configuration/#extending-components).
 
 It also turns out to be a great strategy for CSS specificity. Isolating styles
 to custom tags and their immediate children keeps CSS specificity low and
-prevents it from compounding, making it easy to override when needed. It might
-be the solution to specificity you've been looking for!
+prevents it from compounding, making base styles easy to override. It might be
+the solution to specificity you've been looking for!
 
 # CSS Hacks > JS
 
@@ -80,12 +81,14 @@ controllable. You're expected to manually add whitespace where needed,
 preferably with pre-defined whitespace classes:
 
 ```
-.pad        -- pads by the default interval
-.pad-05     -- pads by half of the default interval
-.pad-v      -- pads vertically by the default interval
-.pad-v-05   -- pads vertically by half of the default interval
-.pad-ch     -- pads children by the default interval
-.pad-ch-05  -- pads children by half of the default interval
+.pad          -- pads by the default interval
+.pad-05       -- pads by half of the default interval
+.pad-v        -- pads vertically by the default interval
+.pad-v-05     -- pads vertically by half of the default interval
+.pad-ch       -- pads children by the default interval
+.pad-ch-05    -- pads children by half of the default interval
+.pad-ch-v     -- pads children vertically by the default interval
+.pad-ch-v-05  -- pads children vertically by half of the default interval
 ```
 
 The benefit of this approach is that whitespace never goes out of control and
