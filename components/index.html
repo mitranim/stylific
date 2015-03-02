@@ -584,8 +584,9 @@ inverses of the base text and background colours.</p>
 </doc-demo></div>
 
 <p>The <code>trigger</code> attribute supports the following values: <code>hover</code>, <code>focus</code>,
-<code>disabled</code>, <code>target</code>, <code>active</code>. They correspond to their namesake
-pseudoclass selectors and may be combined.</p>
+<code>disabled</code>, <code>target</code>, <code>active</code>. They correspond to their namesake pseudoclass
+selectors and may be combined. You can also include <code>true</code> to make the tooltip
+visible at all times.</p>
 <p><strong>Note</strong>: since tooltips are implemented with pseudoelements, they can’t be used
 directly on elements that aren’t allowed to have children, such as <code>&lt;input
 type=&quot;text&quot;&gt;</code> and <code>&lt;textarea&gt;</code>. The example above demonstrates a workaround:
