@@ -40,7 +40,12 @@
     <!-- Site wrapper and content -->
     <!-- Presentation jumbotron -->
 <sf-jumbo style="height: auto">
-  <h1>stylific</h1>
+  <h1 class="flex justify-between">
+    stylific
+    <a href="https://github.com/Mitranim/stylific" target="_blank">
+      <sf-icon class="github-light pop"></sf-icon>
+    </a>
+  </h1>
   <p>Pure-CSS UI library</p>
 </sf-jumbo>
 
@@ -106,7 +111,7 @@ wherever colour classes are used.</li>
 </ol>
 <p>Preprocessors solve (2) and help with (3), but it requires a lot of boilerplate.
 Different elements need different selectors for states (example: <a href="https://github.com/Mitranim/stylific/blob/master/less/components/sf-
-tabset.less#L136" target="_blank">special
+tabset.less#L157" target="_blank">special
 selector</a> for active label in sf-tabset). Sometimes you want child
 elements to have interactive states that respond to colour classes of parent
 elements (same example; active label’s colour is defined by its parent tabset’s
@@ -196,19 +201,23 @@ less/color-mixes.less#L193" target="_blank"><code>.sf-shift-color()</code></a> m
 
 <h2 id="interactive-mix">Interactive Mix</h2>
 <p>An interactive mix is a superset of a static mix. It’s also either straight or
-inverse. It takes a colour, defines five states, and produces a straight or
+inverse. It takes a colour, defines six states, and produces a straight or
 inverse colour set for each of them.</p>
 <ul>
 <li>Normal — same as in static mix</li>
-<li><code>:hover</code> with one rule:<ul>
+<li><code>[disabled]</code> state with one rule:<ul>
+<li><code>background-color</code> shifted in lightness by <code>@sf-delta-disabled</code> (default 3%)</li>
+</ul>
+</li>
+<li><code>:hover</code> state with one rule:<ul>
 <li><code>background-color</code> shifted in lightness by <code>@sf-delta-hover</code> (default 5%)</li>
 </ul>
 </li>
-<li><code>:focus</code><ul>
+<li><code>:focus</code> state with one rule:<ul>
 <li><code>background-color</code> shifted in lightness by <code>@sf-delta-focus</code> (default 5%)</li>
 </ul>
 </li>
-<li><code>:active</code><ul>
+<li><code>:active</code> state with one rule:<ul>
 <li><code>background-color</code> shifted in lightness by <code>@sf-delta-active</code> (default 10%)</li>
 </ul>
 </li>

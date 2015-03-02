@@ -40,7 +40,12 @@
     <!-- Site wrapper and content -->
     <!-- Presentation jumbotron -->
 <sf-jumbo style="height: auto">
-  <h1>stylific</h1>
+  <h1 class="flex justify-between">
+    stylific
+    <a href="https://github.com/Mitranim/stylific" target="_blank">
+      <sf-icon class="github-light pop"></sf-icon>
+    </a>
+  </h1>
   <p>Pure-CSS UI library</p>
 </sf-jumbo>
 
@@ -104,9 +109,11 @@ other colours:</p>
 <a href="https://github.com/Mitranim/stylific/blob/master/
 less/variables.less" target="_blank">reference</a>.</p>
 <h1 id="subclassing-components">Subclassing Components</h1>
-<p>Borrowing an example from this documentation’s source, suppose you want to
-subclass <code>sf-collapse</code> to make a TOC element. In your LESS source, define a tag
-that inherits all of sf-collapse styling:</p>
+<p>Borrowing an
+<a href="https://github.com/Mitranim/stylific/blob/master/docs-src/styles/components/doc-toc.less" target="_blank">example</a>
+from this documentation’s source, suppose you want to subclass
+<a href="components/#sf-collapse"><code>sf-collapse</code></a> to make a TOC element. In your LESS
+source, define a tag that inherits all of sf-collapse styling:</p>
 <pre><code class="lang-less"><span class="hljs-tag">doc-toc</span> {
   <span class="hljs-comment">// Subclass sf-collapse.</span>
   <span class="hljs-class">.sf-collapse</span>();
@@ -144,6 +151,12 @@ that inherits all of sf-collapse styling:</p>
 <a href="https://github.com/Mitranim/stylific/blob/master/less/components/sf-collapse.less" target="_blank"><code>sf-collapse</code></a>
 without altering the original. The original component’s styles have remained
 unchanged, and you can subclass it again for something different.</p>
+<p>And if want <code>doc-toc</code> to be subclassable, we write it as a mixin too:</p>
+<pre><code class="lang-less"><span class="hljs-tag">doc-toc</span> {<span class="hljs-class">.doc-toc</span>()}
+<span class="hljs-class">.doc-toc</span>() {
+  <span class="hljs-comment">// ... Same styles as above.</span>
+}
+</code></pre>
 <h1 id="extending-components">Extending Components</h1>
 <p>Suppose you want to alter the <em>original</em> component. You can just write rules
 under its tag, but this won’t affect components that subclass it through its

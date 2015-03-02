@@ -40,7 +40,12 @@
     <!-- Site wrapper and content -->
     <!-- Presentation jumbotron -->
 <sf-jumbo style="height: auto">
-  <h1>stylific</h1>
+  <h1 class="flex justify-between">
+    stylific
+    <a href="https://github.com/Mitranim/stylific" target="_blank">
+      <sf-icon class="github-light pop"></sf-icon>
+    </a>
+  </h1>
   <p>Pure-CSS UI library</p>
 </sf-jumbo>
 
@@ -131,6 +136,9 @@ Let’s use bower as an example. <code>cd</code> to your project’s root and ru
 </code></pre>
 <p>This allows you to <a href="configuration/">configure</a> the library with variables,
 subclass and extend built-in components, and so on.</p>
+<p><strong>Caution</strong>: neither LESS nor stylific account for vendor prefixes. You
+must compensate by combining it with
+<a href="https://github.com/postcss/autoprefixer" target="_blank"><code>autoprefixer</code></a> in your build system.</p>
 <h1 id="contributing">Contributing</h1>
 <p>I’d love you to get involved!</p>
 <p>To contribute to the library, send a
