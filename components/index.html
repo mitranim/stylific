@@ -28,10 +28,10 @@
     <input id="navbar-sub-dropdown" type="checkbox">
     <label for="navbar-sub-dropdown" class="justify-center">Examples</label>
     <sf-dropdown-list class="text-left">
-      <a  href="examples/active-switch.html">active-switch</a>
-      <a  href="examples/navbar-demo.html">navbar demo</a>
-      <a  href="examples/footer.html">footer</a>
-      <a  href="examples/grid-demo.html">grid demo</a>
+      <a  href="examples/active-switch/">active-switch</a>
+      <a  href="examples/navbar-demo/">navbar demo</a>
+      <a  href="examples/footer/">footer</a>
+      <a  href="examples/grid-demo/">grid demo</a>
     </sf-dropdown-list>
   </sf-dropdown>
 </sf-navbar>
@@ -233,7 +233,7 @@ the <code>:checked</code> hack with hidden inputs.</p>
 <p><strong>Note</strong>: Safari 8 appears to be bugged about the <code>:checked</code>-based selector used
 for tab body: it fails to fully detect the state change until a tab is clicked
 twice. Until this is fixed, you may want to supplement this by using <code>.active</code>
-on labels. See this <a href="examples/active-switch.html">example</a>.</p>
+on labels. See this <a href="examples/active-switch/">example</a>.</p>
 <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-tabset</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"orange"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"demo-sf-tabset-1"</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"radio"</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"demo-sf-tabset"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"demo-sf-tabset-1"</span>&gt;</span>First tab<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
@@ -292,8 +292,8 @@ than the old grid systems and solves a lot of other problems.</p>
 <p>Because specialised grid systems are no longer needed, stylific doesn’t come
 with one. But it’s convenient to have a shortcut to a media-responsive flex
 container that wraps its items on different breakpoints. <code>sf-grid</code> is a
-primitive version of that. Open this on a <a href="examples/grid-
-demo.html">separate page</a> to resize the page more easily. The classes are cosmetic.</p>
+primitive version of that. Open this on a <a href="examples/grid-demo/">separate page</a>
+to resize the page more easily. The classes are cosmetic.</p>
 <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-grid</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"doc-grid-demo pad-ch"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>One<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Two<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
@@ -412,7 +412,7 @@ you need is to link to that id.</p>
 <p>If your website has a <code>&lt;base&gt;</code> tag (typically <code>&lt;base href=&quot;/&quot;&gt;</code>), the <code>#</code> part
 in the links needs to be preceded with the pathname of the current page.</p>
 <h1 id="sf-navbar"><a href="https://github.com/Mitranim/stylific/blob/master/less/components/sf-navbar.less" target="_blank">sf-navbar</a></h1><p>Each website needs a navigation bar. Open a <a href="examples/navbar-
-demo.html">separate demo</a> to resize the page more easily.</p>
+demo/">separate demo</a> to resize the page more easily.</p>
 <p>Notice how little markup is required.</p>
 <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-navbar</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/"</span>&gt;</span>Home<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
@@ -524,7 +524,7 @@ navtabs.less" target="_blank">source</a> to see how easy it is to subclass compo
 <h1 id="sf-footer"><a href="https://github.com/Mitranim/stylific/blob/master/less/components/sf-footer.less" target="_blank">sf-footer</a></h1><p>Each website needs a footer that pushes itself to the bottom of the viewport
 (often incorrectly called “sticky”). It’s usually difficult to implement when
 the footer height is unknown. <code>sf-footer</code> does this for you. The footer at the
-bottom of this page is a demo. Go to an <a href="examples/footer.html">empty page</a> to
+bottom of this page is a demo. Go to an <a href="examples/footer/">empty page</a> to
 see how it works.</p>
 <p><code>sf-footer</code> relies on the flex-column body layout, which is a global default
 defined in <a href="https://github.com/Mitranim/stylific/blob/master/
