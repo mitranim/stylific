@@ -202,8 +202,6 @@ gulp.task('templates:compile', function() {
     .pipe($.statil({
       relativeDir: src.templates
     }))
-    // Remove partials.
-    .pipe($.filter(['**/*.html', '!**/partials/**/*', '!**/indices/**/*']))
     // Write to disk.
     .pipe(gulp.dest(dest.html))
     // Reload browser.

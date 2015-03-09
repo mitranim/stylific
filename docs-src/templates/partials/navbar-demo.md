@@ -29,11 +29,11 @@ folding in effect.
   <sf-navbar class="orange">
     <input id="demo-sf-navbar" type="checkbox">
     <label for="demo-sf-navbar"></label>
-    <a href="examples/navbar-demo.html#home">Home</a>
-    <a class="active" href="examples/navbar-demo.html#robots">Robots</a>
-    <a href="examples/navbar-demo.html#medical-cybernetics">Medical Cybernetics</a>
-    <a href="examples/navbar-demo.html#partners">Partners</a>
-    <a href="examples/navbar-demo.html#achievements">Achievements</a>
+    <a href="examples/navbar-demo/#home">Home</a>
+    <a class="active" href="examples/navbar-demo/#robots">Robots</a>
+    <a href="examples/navbar-demo/#medical-cybernetics">Medical Cybernetics</a>
+    <a href="examples/navbar-demo/#partners">Partners</a>
+    <a href="examples/navbar-demo/#achievements">Achievements</a>
   </sf-navbar>
 </doc-demo></div>
 
@@ -57,10 +57,10 @@ fold, regardless of the viewport width.
   <sf-navbar class="success" sf-fold>
     <input id="demo-sf-navbar-fold" type="checkbox">
     <label for="demo-sf-navbar-fold"></label>
-    <a href="examples/navbar-demo.html#home">Home</a>
-    <a class="active" href="examples/navbar-demo.html#robots">Robots</a>
-    <a href="examples/navbar-demo.html#medical-cybernetics">Medical Cybernetics</a>
-    <a href="examples/navbar-demo.html#partners">Partners</a>
-    <a href="examples/navbar-demo.html#achievements">Achievements</a>
+    <a href="examples/navbar-demo/#home">Home</a>
+    <a class="active" href="examples/navbar-demo/#robots">Robots</a>
+    <a href="examples/navbar-demo/#medical-cybernetics">Medical Cybernetics</a>
+    <a href="examples/navbar-demo/#partners">Partners</a>
+    <a href="examples/navbar-demo/#achievements">Achievements</a>
   </sf-navbar>
 </doc-demo></div>

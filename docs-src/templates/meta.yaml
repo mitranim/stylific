@@ -1,0 +1,13 @@
+files:
+- name: color-system
+  echo:
+  - name: color-system/index
+- name: components
+  echo:
+  - name: components/index
+- name: configuration
+  echo:
+  - name: configuration/index
+- name: patterns
+  echo:
+  - name: patterns/index

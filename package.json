@@ -27,7 +27,7 @@
   "devDependencies": {
     "browser-sync": "^2.2.1",
     "gulp": "git://github.com/gulpjs/gulp#4.0",
-    "gulp-autoprefixer": "^2.1.0",
+    "gulp-autoprefixer": "latest",
     "gulp-filter": "^2.0.2",
     "gulp-image-resize": "^0.6.0",
     "gulp-less": "^3.0.0",
@@ -36,7 +36,7 @@
     "gulp-minify-css": "^0.4.6",
     "gulp-plumber": "^0.6.6",
     "gulp-rimraf": "^0.1.1",
-    "gulp-statil": "latest",
+    "gulp-statil": "^0.0.2",
     "gulp-watch": "^4.1.1",
     "highlight.js": "^8.4.0",
     "lodash": "^3.3.1"

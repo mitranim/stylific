@@ -214,7 +214,7 @@ the `:checked` hack with hidden inputs.
 **Note**: Safari 8 appears to be bugged about the `:checked`-based selector used
 for tab body: it fails to fully detect the state change until a tab is clicked
 twice. Until this is fixed, you may want to supplement this by using `.active`
-on labels. See this [example](examples/active-switch.html).
+on labels. See this [example](examples/active-switch/).
 
 ```html
 <sf-tabset class="orange">
@@ -279,8 +279,8 @@ than the old grid systems and solves a lot of other problems.
 Because specialised grid systems are no longer needed, stylific doesn't come
 with one. But it's convenient to have a shortcut to a media-responsive flex
 container that wraps its items on different breakpoints. `sf-grid` is a
-primitive version of that. Open this on a [separate page](examples/grid-
-demo.html) to resize the page more easily. The classes are cosmetic.
+primitive version of that. Open this on a [separate page](examples/grid-demo/)
+to resize the page more easily. The classes are cosmetic.
 
 ```html
 <sf-grid class="doc-grid-demo pad-ch">
@@ -415,7 +415,7 @@ in the links needs to be preceded with the pathname of the current page.
 # sf-navbar
 
 Each website needs a navigation bar. Open a [separate demo](examples/navbar-
-demo.html) to resize the page more easily.
+demo/) to resize the page more easily.
 
 Notice how little markup is required.
 
@@ -553,7 +553,7 @@ navtabs.less) to see how easy it is to subclass components.
 Each website needs a footer that pushes itself to the bottom of the viewport
 (often incorrectly called "sticky"). It's usually difficult to implement when
 the footer height is unknown. `sf-footer` does this for you. The footer at the
-bottom of this page is a demo. Go to an [empty page](examples/footer.html) to
+bottom of this page is a demo. Go to an [empty page](examples/footer/) to
 see how it works.
 
 `sf-footer` relies on the flex-column body layout, which is a global default

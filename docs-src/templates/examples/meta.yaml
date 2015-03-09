@@ -1,0 +1,13 @@
+files:
+- name: active-switch
+  echo:
+  - name: active-switch/index
+- name: footer
+  echo:
+  - name: footer/index
+- name: grid-demo
+  echo:
+  - name: grid-demo/index
+- name: navbar-demo
+  echo:
+  - name: navbar-demo/index

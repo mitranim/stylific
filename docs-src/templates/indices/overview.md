@@ -63,7 +63,7 @@ components still work.
 
 No JS dependency doesn't mean you can't use JavaScript; quite the opposite.
 Because it only needs static markup, enhancement with JavaScript is
-[trivial](examples/active-switch.html). Some stylific components provide
+[trivial](examples/active-switch/). Some stylific components provide
 simple hooks for that.
 
 ## Flexible Units
