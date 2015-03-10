@@ -1,13 +1,21 @@
 files:
-- name: active-switch
+
+- name:  active-switch
+  title: active-switch
   echo:
   - name: active-switch/index
-- name: footer
+
+- name:  footer
+  title: empty page (footer demo)
   echo:
   - name: footer/index
-- name: grid-demo
+
+- name:  grid-demo
+  title: grid demo
   echo:
   - name: grid-demo/index
-- name: navbar-demo
+
+- name:  navbar-demo
+  title: navbar demo
   echo:
   - name: navbar-demo/index
