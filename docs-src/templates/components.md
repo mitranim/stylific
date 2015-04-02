@@ -379,7 +379,9 @@ you need is to link to that id.
 
 ```html
 <!-- Clicking this link summons the modal -->
-<a href="#demo-sf-modal">Click me to open the modal!</a>
+<a href="#demo-sf-modal">
+  <button class="orange">Click me to open the modal!</button>
+</a>
 
 <!-- The modal, hidden until targeted -->
 <sf-modal id="demo-sf-modal" class="info">
@@ -388,24 +390,29 @@ you need is to link to that id.
   <a href="#_"></a>
 
   <!-- The modal body, visible when targeted -->
-  <sf-modal-body>
-    <h1 class="pad-v">Modal header</h1>
+  <sf-modal-body class="pad-ch-v-05">
+    <h1>Modal header</h1>
     <p>Check me out, I'm a modal!</p>
     <p>Click the overlay or the top-right button to close me.</p>
+    <p>...</p>
   </sf-modal-body>
 </sf-modal>
 ```
 
 <div><doc-demo>
-  <a href="components/#demo-sf-modal">Click me to open a modal!</a>
+  <a href="components/#demo-sf-modal">
+    <button class="orange">Click me to open a modal!</button>
+  </a>
 
   <sf-modal id="demo-sf-modal" class="info">
     <a href="components/#_"></a>
-    <sf-modal-body>
-      <h1 class="pad-v">Modal header</h1>
+    <sf-modal-body class="pad-ch-v-05">
+      <h1>Modal header</h1>
       <p>Check me out, I'm a modal!</p>
       <p>Click the overlay or the top-right button to close me.</p>
-    </sf-modal-body>
+      <p>Lucio fulci tremor est dark vivos magna. Expansis creepy arm yof darkness ulnis witchcraft missing carnem armis Kirkman Moore and Adlard caeruleum in locis. Romero morbo Congress amarus in auras. Nihil horum sagittis tincidunt, zombie slack-jawed gelida survival portenta. The unleashed virus est, et iam zombie mortui ambulabunt super terram. Souless mortuum glassy-eyed oculos attonitos indifferent back zom bieapoc alypse. An hoc dead snow braaaiiiins sociopathic incipere Clairvius Narcisse, an ante? Is bello mundi z?</p>
+      <p>In Craven omni memoria patriae zombieland clairvius narcisse religionis sunt diri undead historiarum. Golums, zombies unrelenting et Raimi fascinati beheading. Maleficia! Vel cemetery man a modern bursting eyeballs perhsaps morbi. A terrenti flesh contagium. Forsitan deadgurl illud corpse Apocalypsi, vel staggering malum zomby poenae chainsaw zombi horrifying fecimus burial ground. Indeflexus shotgun coup de poudre monstra per plateas currere. Fit de decay nostra carne undead. Poenitentiam violent zom biehig hway agite RE:dead pœnitentiam! Vivens mortua sunt apud nos night of the living dead.</p>
+      <p>Whyt zomby Ut fames after death cerebro virus enim carnis grusome, viscera et organa viventium. Sicut spargit virus ad impetum, qui supersumus flesh eating. Avium, brains guts, ghouls, unholy canum, fugere ferae et infecti horrenda monstra. Videmus twenty-eight deformis pale, horrenda daemonum. Panduntur brains portae rotting inferi. Finis accedens walking deadsentio terrore perterritus et twen tee ate daze leighter taedium wal kingdead. The horror, monstra epidemic significant finem. Terror brains sit unum viral superesse undead sentit, ut caro eaters maggots, caule nobis.</p>
   </sf-modal>
 </doc-demo></div>
 
