@@ -27,20 +27,19 @@
   // Article image styles. Using a descendant selector because the layout may
   // have arbitrary depth.
   img {
-    /**
-     * Layout.
-     */
-    // Margins.
-    &:not(.left)  {margin-left:  @sf-common-margin}
-    &:not(.right) {margin-right: @sf-common-margin}
-
     // Cosmetic.
     .sf-shadow-thin();
 
     // Side versions.
     &.left, &.right {height: 16em}
-    &.left   {float: left}
-    &.right  {float: right}
+    &.left   {
+      float: left;
+      margin-right: @sf-common-margin;
+    }
+    &.right  {
+      float: right;
+      margin-left: @sf-common-margin;
+    }
 
     // Different sizes.
     &.tiny   {height: 10em}
