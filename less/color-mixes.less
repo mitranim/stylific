@@ -1,5 +1,5 @@
 @import (less) './variables';
-@import (less) './mixins'; // circular dependency
+@import (less) './mixins';
 
 /**
  * Default global colours, colour-related classes and mixins.
@@ -7,34 +7,32 @@
 
 /********************************** Styles ***********************************/
 
+// Default background colour for the html element.
 html {
-
-  // Default background colour specifically for the html element.
   .sf-shift-color(background-color, @sf-base-background-color, 5%);
-
-  // Use default static colours starting with the body element.
-  body {
-    color: @sf-base-text-color;
-    background-color: @sf-base-background-color;
-  }
-
-  // Enable static colour classes on children.
-  * {
-    .sf-colormix-all-states(~'', false);
-  }
-
-  // Enable interactive colour behaviour on editable elements.
-  input, textarea, [contenteditable] {
-    background-color: @sf-base-background-color;
-    .sf-colormix-all-states(~'', true);
-  }
-
-  // Utility classes to enable interactive colour behaviour on a given element
-  // or its immediate children.
-  .interactive              {.sf-colormix-all-states(~'', true)}
-  .interactive-children > * {.sf-colormix-all-states(~'', true)}
-
 }
+
+// Use default static colours starting with the body element.
+body {
+  color: @sf-base-text-color;
+  background-color: @sf-base-background-color;
+}
+
+// Enable static colour classes on all elements.
+* {
+  .sf-colormix-all-states(~'', false);
+}
+
+// Enable interactive colour behaviour on editable elements.
+input, textarea, [contenteditable] {
+  background-color: @sf-base-background-color;
+  .sf-colormix-all-states(~'', true);
+}
+
+// Utility classes to enable interactive colour behaviour on a given element
+// or its immediate children.
+.interactive              {.sf-colormix-all-states(~'', true)}
+.interactive-children > * {.sf-colormix-all-states(~'', true)}
 
 // Default link styling.
 a, :link {.sf-link-color()}

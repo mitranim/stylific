@@ -4,22 +4,21 @@
  * Default global text styles.
  */
 
+// Base font family and size.
 html {
-
-  // Base font family and size.
   font-family: @sf-font-family-sans-serif;
   .sf-media-mix(font-size, @sf-font-size-base);
+}
 
-  // No <a> decorations.
-  a, a:hover {
-    text-decoration: none;
-  }
+// No <a> decorations.
+a, a:hover {
+  text-decoration: none;
+}
 
-  // Normalise header font weight.
-  .sf-h({font-weight: normal});
+// Normalise header font weight.
+.sf-h({font-weight: normal});
 
-  // Fix font-family inheritance for inputs.
-  input, textarea, button {
-    font-family: inherit;
-  }
+// Fix font-family inheritance for inputs.
+input, textarea, button {
+  font-family: inherit;
 }

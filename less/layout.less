@@ -6,67 +6,66 @@
 
 /******************************* Global Styles *******************************/
 
+/**
+ * Layout.
+ */
+// Explicit width and height on html are required for using % on the body.
 html {
+  width: 100%;
+  height: 100%;
+}
 
+// Normalise elements to make layouts predictable.
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   /**
    * Layout.
    */
-  // Explicit width and height on html are required for using % on the body.
-  width: 100%;
-  height: 100%;
+  // Limit the body width and center it horizontally.
+  max-width: @sf-body-max-width;
+  margin-left: auto;
+  margin-right: auto;
+  // Stretch vertically to fill the viewport.
+  min-height: 100%;
 
-  // Normalise elements to make layouts predictable.
-  &, * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  /**
+   * Inner layout.
+   */
+  // Setting the body up as a flex container allows us to push the footer
+  // to the bottom of the screen with an automatic margin.
+  display: flex;
+  flex-direction: column;
+  // These vital attributes are implicit, but we duplicate them to avoid
+  // accidental overrides by the user.
+  align-items: stretch;
+  justify-content: flex-start;
+}
 
-  body {
-    /**
-     * Layout.
-     */
-    // Limit the body width and center it horizontally.
-    max-width: @sf-body-max-width;
-    margin-left: auto;
-    margin-right: auto;
-    // Stretch vertically to fill the viewport.
-    min-height: 100%;
+// Globally limit image width.
+img {
+  max-width: 100%;
+}
 
-    /**
-     * Inner layout.
-     */
-    // Setting the body up as a flex container allows us to push the footer
-    // to the bottom of the screen with an automatic margin.
-    display: flex;
-    flex-direction: column;
-    // These vital attributes are implicit, but we duplicate them to avoid
-    // accidental overrides by the user.
-    align-items: stretch;
-    justify-content: flex-start;
-  }
+// Normalise <ul> and <ol> bullet position.
+ul, ol {
+  list-style-position: inside;
+}
 
-  // Globally limit image width.
-  img {
-    max-width: 100%;
-  }
-
-  // Normalise <ul> and <ol> bullet position.
+// Shift nested lists further to the right.
+ul, ol {
   ul, ol {
-    list-style-position: inside;
+    margin-left: @sf-common-margin;
   }
-
-  // Shift nested lists further to the right.
-  ul, ol {
-    ul, ol {
-      margin-left: @sf-common-margin;
-    }
-  }
-
 }
 
 /**************************** Flex Layout Classes ****************************/
 
+// Layout classes. We prefix them with {html} to raise specificity.
 html when (@sf-enable-global-classes) {
 
   /**
