@@ -130,8 +130,9 @@ following concepts:</p>
 <code>background-color</code>. Both have the same hue as the source colour, and the
 background colour’s lightness is the opposite of text’s.</p>
 <p>For the base text colour, text lightness is unchanged. For other colours (which
-are assumed to be non-grayscale), text lightness is set to 25% and background
-lightness to 75%, to make sure the hue is recognisable.</p>
+are assumed to be non-grayscale), text lightness is set to
+<code>@sf-color-breakpoint-low</code> (default 25%) and background lightness to
+<code>@sf-color-breakpoint-high</code> (default 75%), to make sure the hue is recognisable.</p>
 <pre><code class="lang-less"><span class="hljs-comment">// Suppose we have defined a new colour.</span>
 <span class="hljs-variable">@color-red:</span> red;
 <span class="hljs-class">.sf-colormix-base</span>(<span class="hljs-variable">@color-red</span>, <span class="hljs-number">0%</span>);
