@@ -1,5 +1,5 @@
-@import (less) './variables';
-@import (less) './mixins';
+@import (reference) './variables';
+@import (reference) './mixins';
 
 /**
  * Default global colours, colour-related classes and mixins.
@@ -55,27 +55,27 @@ img {
  * include {color} and/or {background-color}.
  *
  * If @color matches the default text colour, no {color} rule is output; the
- * text should inherit the color from its parent, and ultimately from <body>,
- * on which we define the default text colour rule (see the block at the
- * beginning of this file). If @color is not the default text colour, and no
- * percentage is given, it's adjusted to 25% or 75% luminance, whichever is
- * closest to the luminance of the default text colour. If a percentage is
- * given, @color is output as a background-color overlay with the opacity
- * matching the given percentage.
+ * text should inherit the color from its parent, and ultimately from <body>, on
+ * which we define the default text colour rule (see the block at the beginning
+ * of this file). If @color is not the default text colour, and no percentage is
+ * given, it's adjusted to @sf-color-breakpoint-low% or
+ * @sf-color-breakpoint-high% luminance, whichever is closest to the luminance
+ * of the default text colour. If a percentage is given, @color is output as a
+ * background-color overlay with the opacity matching the given percentage.
  *
- * By the new rules for the straight colour mix, the background colour is
- * always defined, and it's modified by the given percentage. If the given
- * colour matches the base text colour, the starting background colour is the
- * base background colour. If the given colour is different from the base text
+ * By the new rules for the straight colour mix, the background colour is always
+ * defined, and it's modified by the given percentage. If the given colour
+ * matches the base text colour, the starting background colour is the base
+ * background colour. If the given colour is different from the base text
  * colour, the starting background colour is derived from it, adjusting the
- * luminance to match the luminance of the default background colour. Then
- * it's shifted by the given percentage. If no percentage is given and a
- * non-default colour is used, it's shifted by the base percentage.
+ * luminance to match the luminance of the default background colour. Then it's
+ * shifted by the given percentage. If no percentage is given and a non-default
+ * colour is used, it's shifted by the base percentage.
  */
 .sf-colormix-base(@color, @perc) {
   // Determine the text colour.
   & when (@perc = 0%) and not (@color = @sf-base-text-color) {
-    color: hsl(hue(@color), saturation(@color), 75% - luma(contrast(@sf-base-text-color)) / 2);
+    color: hsl(hue(@color), saturation(@color), @sf-color-breakpoint-high - luma(contrast(@sf-base-text-color)) / 2);
   }
 
   // If the given text is the default text colour and a percentage is given, use
@@ -110,35 +110,39 @@ img {
  * colours. If @color matches the default text colour and no percentage is
  * given, the output is an inverse combination of the default colours. If it
  * doesn't match the default and no percentage is given, both output rules use
- * the @color, but they're adjusted to have the luminance of 25% and 75%,
- * where the lighter/darker proportion is inverse to the defaults. If a
- * percentage is given, no {color} is output; the background colour is based
- * on @color, with the luminance adjusted to match the default background
- * colour (if @color matches the default text colour) or to be at 25% or 75%,
- * whichever is closer to the luminance of the default text colour.
+ * the @color, but they're adjusted to have the luminance of
+ * @sf-color-breakpoint-low% and @sf-color-breakpoint-high%, where the
+ * lighter/darker proportion is inverse to the defaults. If a percentage is
+ * given, no {color} is output; the background colour is based on @color, with
+ * the luminance adjusted to match the default background colour (if @color
+ * matches the default text colour) or to be at @sf-color-breakpoint-low% or
+ * @sf-color-breakpoint-high%, whichever is closer to the luminance of the
+ * default text colour.
  */
 .sf-colormix-base-inverse(@color, @perc) {
   & when (@perc = 0%) {
     // Derive the text colour from the given colour, adjusting the luminance. If
     // the base text colour is given, use the luminance of the base background
-    // colour. Otherwise adjust it to be 25% or 75%, whichever is closest to the
-    // base text colour luminance.
+    // colour. Otherwise adjust it to be @sf-color-breakpoint-low% or
+    // @sf-color-breakpoint-high%, whichever is closest to the base text colour
+    // luminance.
     & when (@color = @sf-base-text-color) {
       color: hsl(hue(@color), saturation(@color), luma(@sf-base-background-color));
     }
     & when not (@color = @sf-base-text-color) {
-      color: hsl(hue(@color), saturation(@color), 75% - luma(contrast(contrast(@sf-base-text-color))) / 2);
+      color: hsl(hue(@color), saturation(@color), @sf-color-breakpoint-high - luma(contrast(contrast(@sf-base-text-color))) / 2);
     }
 
     // Derive the background colour from the given colour, adjusting the
     // luminance. If the base text colour is given, simply use it as background.
-    // If another colour is given, adjust its luminance to 75% or 25%, whichever
-    // is more in contrast with the base text colour.
+    // If another colour is given, adjust its luminance to
+    // @sf-color-breakpoint-high% or @sf-color-breakpoint-low%, whichever is
+    // more in contrast with the base text colour.
     & when (@color = @sf-base-text-color) {
       background-color: @color;
     }
     & when not (@color = @sf-base-text-color) {
-      background-color: hsl(hue(@color), saturation(@color), 75% - luma(contrast(@sf-base-text-color)) / 2);
+      background-color: hsl(hue(@color), saturation(@color), @sf-color-breakpoint-high - luma(contrast(@sf-base-text-color)) / 2);
     }
   }
 
@@ -147,7 +151,7 @@ img {
       .sf-shift-color(background-color, @sf-base-text-color, @perc);
     }
     & when not (@color = @sf-base-text-color) {
-      @bg: hsl(hue(@color), saturation(@color), 75% - luma(contrast(@sf-base-text-color)) / 2);
+      @bg: hsl(hue(@color), saturation(@color), @sf-color-breakpoint-high - luma(contrast(@sf-base-text-color)) / 2);
       .sf-shift-color(background-color, @bg, @perc);
     }
   }
@@ -185,7 +189,7 @@ img {
     .sf-colormix-all-classes(@prefix, ~':active:not(.active)', @sf-delta-active);
 
     // For [disabled], we compound it with other states to keep its specificity
-    // higher. It needs to take priority.
+    // higher. We give it a higher priority.
     .sf-colormix-all-classes(@prefix, ~'[disabled]', @sf-delta-disabled);
     .sf-colormix-all-classes(@prefix, ~'[disabled]:focus', @sf-delta-disabled);
     .sf-colormix-all-classes(@prefix, ~'[disabled]:hover', @sf-delta-disabled);
@@ -194,6 +198,54 @@ img {
     // Animate colour transitions.
     &@{prefix} {.sf-common-transitions-all()}
   }
+}
+
+/**
+ * Takes a colour, an inverse flag, an interactive flag, and outputs a set
+ * of rules identical to a corresponding .@{color} or .@{color}-inverse class
+ * applied to the element in HTML, with optional interactive adjustments.
+ */
+.sf-color(@color, @inverse, @interactive) {
+  // Straight colour mix.
+  & when not (@inverse) {
+    // Static colours.
+    .sf-colormix-base(@color, 0%);
+    &.active {.sf-colormix-base(@color, @sf-delta-activated)}
+
+    // Interactive colours.
+    & when (@interactive) {
+      &:hover:not(.active) {.sf-colormix-base(@color, @sf-delta-hover)}
+      &:focus:not(.active) {.sf-colormix-base(@color, @sf-delta-focus)}
+      &:active:not(.active) {.sf-colormix-base(@color, @sf-delta-active)}
+
+      // For [disabled], we compound it with other states to keep its specificity
+      // higher. We give it a higher priority.
+      &[disabled], &[disabled]:hover, &[disabled]:focus, &[disabled]:active {
+        .sf-colormix-base(@color, @sf-delta-disabled);
+      }
+    }
+  }
+
+  // Inverse colour mix.
+  & when (@inverse) {
+    // Static colours.
+    .sf-colormix-base-inverse(@color, 0%);
+    &.active {.sf-colormix-base-inverse(@color, @sf-delta-activated)}
+
+    // Interactive colours.
+    &:hover:not(.active) {.sf-colormix-base-inverse(@color, @sf-delta-hover)}
+    &:focus:not(.active) {.sf-colormix-base-inverse(@color, @sf-delta-focus)}
+    &:active:not(.active) {.sf-colormix-base-inverse(@color, @sf-delta-active)}
+
+    // For [disabled], we compound it with other states to keep its specificity
+    // higher. We give it a higher priority.
+    &[disabled], &[disabled]:hover, &[disabled]:focus, &[disabled]:active {
+      .sf-colormix-base-inverse(@color, @sf-delta-disabled);
+    }
+  }
+
+  // Animate colour transitions.
+  .sf-common-transitions-all();
 }
 
 // Lightens or darkens the given colour by the given percentage based on its

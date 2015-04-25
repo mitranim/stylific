@@ -2,6 +2,8 @@
 
 ### Documentation
 
+Document `.sf-color()`, importing as reference, and incremental compilation.
+
 Add blockquote styles. Use blockquotes for notes and tips.
 
 Consider including a section on why sf-grid is so primitive and how flexbox
@@ -15,11 +17,6 @@ Review the grid item active styles. Consider making them respond to colour
 classes in an inverse way. This might also be useful for other components.
 
 Adapt icons to the colour system; include 'fill' into the colour mixes for SVG icons.
-
-Look if there's a way to enable the user to "subclass" a component from a
-colour. That is, apply that colour as a mixin, passing a selector, just like the
-all-colours and all-states mixins. This may not be possible for user-defined
-colours, but we can probably do it with a pre-defined set.
 
 ## Components
 
@@ -102,8 +99,8 @@ Defined by the following parts:
 Consider reimplementing an option to disable default global styling; if done,
 isolate normalisation into a mixin and use it separately for each component.
 
-~~Add :active styles to inputs, buttons and toggles. Colours should be distributed
-linearly: normal ⟷ :hover ⟷ :active ⟷ .active~~ (done)
+~~Add :active styles to inputs, buttons and toggles. Colours should be
+distributed linearly: normal ⟷ :hover ⟷ :active ⟷ .active~~ (done)
 
 ~~Consider adding decorations to non-nav links~~ (done in sf-article)
 

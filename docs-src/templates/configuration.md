@@ -89,6 +89,10 @@ from this documentation's source, suppose you want to subclass
 source, define a tag that inherits all of sf-collapse styling:
 
 ```less
+// Importing as (reference) means the original styles won't be duplicated
+// without need.
+@import (reference) '<stylific path>/components/sf-collapse';
+
 doc-toc {
   // Subclass sf-collapse.
   .sf-collapse();
@@ -98,6 +102,8 @@ doc-toc {
 Then add custom styling to enhance or override sf-collapse defaults:
 
 ```less
+@import (reference) '<stylific path>/components/sf-collapse';
+
 doc-toc {
 
   // Subclass sf-collapse.
@@ -152,6 +158,9 @@ Borrowing an example from an earlier version of this documentation's source,
 suppose you want to add special styles to links in `sf-article`.
 
 ```less
+// Importing as (less) lets us extend the original mixin.
+@import (less) '<stylific path>/components/sf-article';
+
 // Using exactly the same name as the original sf-article mixin
 // causes LESS to merge them.
 .sf-article() {

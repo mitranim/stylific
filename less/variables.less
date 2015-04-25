@@ -61,12 +61,13 @@
 // Base text colour.
 @sf-base-text-color: lighten(black, 2%);
 
-// Base link colour. We want it to be 25% light with dark text and 75% light
-// with light text, keeping hue and saturation the same.
+// Base link colour. We want it to be @sf-color-breakpoint-low% light with dark
+// text and @sf-color-breakpoint-high% light with light text, keeping hue and
+// saturation the same.
 @sf-base-link-color: hsl(
   hue(@sf-color-info),
   saturation(@sf-color-info),
-  75% - luma(contrast(@sf-base-text-color)) / 2
+  @sf-color-breakpoint-high - luma(contrast(@sf-base-text-color)) / 2
 );
 
 // Base background colour. Used for document body and positioned components. By
@@ -89,6 +90,12 @@
 @sf-delta-active: 10%;
 // .active or analogous custom condition
 @sf-delta-activated: 15%;
+
+/**
+ * Luminance breakpoints for text and background colours derived via mixins.
+ */
+@sf-color-breakpoint-low: 25%;
+@sf-color-breakpoint-high: 100% - @sf-color-breakpoint-low;
 
 /******************************** layout.less ********************************/
 

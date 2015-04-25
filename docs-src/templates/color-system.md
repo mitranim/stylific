@@ -85,8 +85,9 @@ A straight set takes a colour and produces two rules: `color` and
 background colour's lightness is the opposite of text's.
 
 For the base text colour, text lightness is unchanged. For other colours (which
-are assumed to be non-grayscale), text lightness is set to 25% and background
-lightness to 75%, to make sure the hue is recognisable.
+are assumed to be non-grayscale), text lightness is set to
+`@sf-color-breakpoint-low` (default 25%) and background lightness to
+`@sf-color-breakpoint-high` (default 75%), to make sure the hue is recognisable.
 
 ```less
 // Suppose we have defined a new colour.
