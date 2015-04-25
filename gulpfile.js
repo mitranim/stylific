@@ -20,7 +20,7 @@ var srcBase = './docs-src/'
 
 // Source paths with masks per type
 var src = {
-  lessCore:  srcBase + 'styles/docs.less',
+  // lessCore:  srcBase + 'styles/docs.less',
   less:      srcBase + 'styles/**/*.less',
   img:       srcBase + 'img/**/*',
   templates: srcBase + 'templates/',
@@ -99,8 +99,9 @@ gulp.task('styles:clear', function() {
 })
 
 gulp.task('styles:less', function() {
-  return gulp.src(src.lessCore)
+  return gulp.src(src.less)
     .pipe($.plumber())
+    .pipe($.cached('styles'))
     .pipe($.less())
     .pipe($.autoprefixer())
     .pipe($.minifyCss({
@@ -108,6 +109,8 @@ gulp.task('styles:less', function() {
       aggressiveMerging: false,
       advanced: false,
     }))
+    .pipe($.remember('styles'))
+    .pipe($.concat('docs.css'))
     .pipe(gulp.dest(dest.css))
     .pipe(bsync.reload({stream: true}))
 })
@@ -240,12 +243,24 @@ gulp.task('bsync', function() {
 
 // Watch
 gulp.task('watch', function() {
-  // Watch the documentation's .less files
+  // Watch the documentation's .less files.
   $.watch(src.less, gulp.series('styles'))
-  // Watch the library's .less files
+  // Watch the library's .less files.
   $.watch('./less/**/*.less', gulp.series('styles'))
-  // Watch the templates
+  // Watch the templates.
   $.watch(src.templates + '**/*', gulp.series('templates'))
+
+  // On file change, delete from caches.
+  var watchStyles = gulp.watch(src.less)
+  watchStyles.on('change', function(event) {
+    // If a file is deleted, forget about it.
+    if (event.type === 'deleted') {
+      if ($.cached.caches.styles) {
+        delete $.cached.caches.styles[event.path]
+      }
+      $.remember.forget('styles', event.path)
+    }
+  })
 })
 
 // Build
