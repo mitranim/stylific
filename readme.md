@@ -28,12 +28,18 @@ In a shell:
 
 ```shell
 bower i --save stylific
+# or
+npm i --save-dev stylific
 ```
 
 In your LESS source (adjust the relative path to match yours):
 
 ```less
+// Include styles, variables, and mixins.
 @import (less) './bower_components/stylific/less/stylific';
+// OR
+// Import variables and mixins but don't output default CSS.
+@import (reference) './bower_components/stylific/less/stylific';
 ```
 
 After importing, you can adjust variables exposed by the package, such as the
