@@ -51,7 +51,7 @@
   // Anchor element with overlay. Must have [href="#<id>"], where <id> is
   // nonexistent, as in, doesn't occur in the document. Using an existing id or
   // an empty id causes scroll jumping.
-  > a[href*="#"] {
+  > a {
     // Overlay.
     &::before {
       content: '';
@@ -96,6 +96,7 @@
       }
       opacity: 0.5;
       padding: 0.2 * @sf-common-padding;
+      cursor: pointer;
     }
 
     // Add interactive colour styles for interaction feedback.
@@ -151,7 +152,7 @@
   }
 
   // Default anchor and body visibility.
-  > a[href*="#"], > @{sf-prefix}-modal-body {
+  > a, > @{sf-prefix}-modal-body {
     // Hidden unless active. Both opacity and visibility are required to animate
     // the visibility change.
     opacity: 0;
@@ -161,8 +162,8 @@
   }
 
   // Active anchor and body visibility.
-  &:target {
-    > a[href*="#"], > @{sf-prefix}-modal-body {
+  &:target, &.active {
+    > a, > @{sf-prefix}-modal-body {
       // Display. Both opacity and visibility are required to animate the
       // visibility change.
       opacity: inherit;

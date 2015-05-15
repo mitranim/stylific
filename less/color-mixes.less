@@ -23,19 +23,29 @@ body {
   .sf-colormix-all-states(~'', false);
 }
 
+// Utility classes to enable interactive colour behaviour on a given element
+// or its immediate children.
+.interactive when (@sf-enable-global-classes) {
+  .sf-colormix-all-states(~'', true);
+  &:not([disabled]) {cursor: pointer}
+}
+.interactive-children > * when (@sf-enable-global-classes) {
+  .sf-colormix-all-states(~'', true);
+  cursor: pointer;
+}
+
 // Enable interactive colour behaviour on editable elements.
 input, textarea, [contenteditable] {
-  background-color: @sf-base-background-color;
+  background-color: inherit;
   .sf-colormix-all-states(~'', true);
 }
 
-// Utility classes to enable interactive colour behaviour on a given element
-// or its immediate children.
-.interactive              {.sf-colormix-all-states(~'', true)}
-.interactive-children > * {.sf-colormix-all-states(~'', true)}
-
-// Default link styling.
-a, :link {.sf-link-color()}
+// Default link styling (includes interactive mode). When setting the variable
+// to false, it's advisable to set {color: inherit} to override browser
+// defaults, which usually don't mesh well with the site theme.
+a, :link {
+  & when (@sf-enable-base-link-style) {.sf-link-color()}
+}
 
 // Default image backgrop.
 img {
@@ -63,14 +73,14 @@ img {
  * of the default text colour. If a percentage is given, @color is output as a
  * background-color overlay with the opacity matching the given percentage.
  *
- * By the new rules for the straight colour mix, the background colour is always
- * defined, and it's modified by the given percentage. If the given colour
- * matches the base text colour, the starting background colour is the base
- * background colour. If the given colour is different from the base text
- * colour, the starting background colour is derived from it, adjusting the
- * luminance to match the luminance of the default background colour. Then it's
- * shifted by the given percentage. If no percentage is given and a non-default
- * colour is used, it's shifted by the base percentage.
+ * The background colour is determined using the following algorithm. If the
+ * given colour matches the base text colour, the background colour is its
+ * grayscale version, converted to rgba with opacity matching the given
+ * percentage. If the given colour is different from the base text colour, the
+ * starting background colour is derived from it, adjusting the luminance to
+ * match the luminance of the default background colour. Then it's shifted by
+ * the given percentage. If no percentage is given and a non-default colour is
+ * used, it's shifted by the base percentage.
  */
 .sf-colormix-base(@color, @perc) {
   // Determine the text colour.
@@ -79,10 +89,12 @@ img {
   }
 
   // If the given text is the default text colour and a percentage is given, use
-  // the default background colour, shifted by the given percentage.
+  // a transparent grayscale colour with the luminance of the default text colour
+  // and opacity equaling the given percentage.
   & when (@color = @sf-base-text-color) and not (@perc = 0%) {
-    // Adjust the background colour by the given percentage.
-    .sf-shift-color(background-color, @sf-base-background-color, @perc);
+    // Derive a grayscale colour from the text colour, using the given
+    // percentage for opacity.
+    background-color: fade(greyscale(@sf-base-text-color), @perc);
   }
   // Otherwise derive it from the given colour, adjusting the luminance to match
   // the luminance of the default background colour.
@@ -264,6 +276,8 @@ img {
   }
   // Animate any changes.
   .sf-common-transitions-all();
+  // Use interactive colour styling.
+  .sf-colormix-all-states(~'', true);
 }
 
 // Default backdrop for images and some other elements.
