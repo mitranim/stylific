@@ -1,11 +1,12 @@
 {
   "name": "stylific",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "scripts": {
     "start": "gulp server",
     "build": "gulp build",
     "gulp": "gulp",
-    "img": "gulp images"
+    "img": "gulp images",
+    "prepublish": "gulp dist:build"
   },
   "authors": [
     "Mitranim <me@mitranim.com>"

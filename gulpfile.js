@@ -92,6 +92,14 @@ marked.Renderer.prototype.link = function(href, title, text) {
 
 /*********************************** Tasks ***********************************/
 
+/*------------------------------- Dist Build --------------------------------*/
+
+gulp.task('dist:build', function() {
+  return gulp.src('less/stylific.less')
+    .pipe($.less())
+    .pipe(gulp.dest('css'))
+})
+
 /*--------------------------------- Styles ----------------------------------*/
 
 gulp.task('styles:clear', function() {

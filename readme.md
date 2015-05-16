@@ -20,7 +20,7 @@ and add additional rules.
 
 This is written with [LESS](http://lesscss.org). If enough people get invested,
 it will be trivial to port to [SASS](http://sass-lang.com) and maintain both
-versions. Doesn't come with a compiled version yet.
+versions.
 
 ## Installation
 
