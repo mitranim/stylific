@@ -57,11 +57,11 @@
   color: @text-color;
 
   /**
-   * Immediate children styling.
+   * Immediate child styling.
    */
   > * {
     // Underlay.
-    background: fade(difference(white, @text-color), 40%);
+    background-color: fade(difference(white, @text-color), 40%);
 
     // Whitespace.
     padding-left:  @sf-common-padding;
@@ -69,5 +69,4 @@
     &:first-child {padding-top:    @sf-common-padding}
     &:last-child  {padding-bottom: @sf-common-padding}
   }
-
 }

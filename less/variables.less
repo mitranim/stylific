@@ -136,6 +136,15 @@
 @sf-font-size-larger:  1.2 * @sf-font-size-base;
 @sf-font-size-large:   1.5 * @sf-font-size-base;
 
+/**
+ * rem sizing for the <html> element. The common baseline is 12pt = 16px =
+ * 1em. We need to declare rem in pixels or points in order to have consistent
+ * font scaling between various native elements.
+ */
+@sf-rem-small: 10pt;
+@sf-rem-smaller: 11pt;
+@sf-rem-base: 12pt;
+
 // Common padding and margin. These are used in most components. Sizing this in
 // rem is vital for lining up padding and margin between sibling elements with
 // different font sizes.

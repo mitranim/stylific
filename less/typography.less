@@ -8,7 +8,10 @@
 // Base font family and size.
 html {
   font-family: @sf-font-family-sans-serif;
-  .sf-media-mix(font-size, @sf-font-size-base);
+  .sf-xs({font-size: @sf-rem-small});
+  .sf-sm({font-size: @sf-rem-smaller});
+  .sf-md({font-size: @sf-rem-base});
+  .sf-lg({font-size: @sf-rem-base});
 }
 
 // No <a> decorations.
@@ -22,4 +25,14 @@ a, a:hover {
 // Fix font-family inheritance for inputs.
 input, textarea, button {
   font-family: inherit;
+}
+
+tt, code, kbd, pre, samp {
+  font-family: @sf-font-family-monospace;
+  // Normalise monospace font size.
+  font-size: 14/16em;
+  // Prevent further reduction.
+  & & {
+    font-size: 1em;
+  }
 }

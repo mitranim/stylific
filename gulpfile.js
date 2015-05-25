@@ -97,13 +97,14 @@ marked.Renderer.prototype.link = function(href, title, text) {
 gulp.task('dist:build', function() {
   return gulp.src('less/stylific.less')
     .pipe($.less())
+    .pipe($.autoprefixer())
     .pipe(gulp.dest('css'))
 })
 
 /*--------------------------------- Styles ----------------------------------*/
 
 gulp.task('styles:clear', function() {
-  return gulp.src(dest.css, {read: false}).pipe($.rimraf())
+  return gulp.src(dest.css, {read: false, allowEmpty: true}).pipe($.rimraf())
 })
 
 gulp.task('styles:less', function() {
@@ -129,7 +130,7 @@ gulp.task('styles', gulp.series('styles:clear', 'styles:less'))
 
 // Clear images
 gulp.task('images:clear', function() {
-  return gulp.src(dest.img, {read: false}).pipe($.rimraf())
+  return gulp.src(dest.img, {read: false, allowEmpty: true}).pipe($.rimraf())
 })
 
 // Resize and copy images
@@ -183,7 +184,7 @@ gulp.task('images',
 
 // Clear templates
 gulp.task('templates:clear', function() {
-  return gulp.src(dest.html + '**/*.html', {read: false}).pipe($.rimraf())
+  return gulp.src(dest.html + '**/*.html', {read: false, allowEmpty: true}).pipe($.rimraf())
 })
 
 // Compile templates
@@ -272,7 +273,7 @@ gulp.task('watch', function() {
 })
 
 // Build
-gulp.task('build', gulp.parallel('styles', 'templates'))
+gulp.task('build', gulp.parallel('styles', 'templates', 'dist:build'))
 
 // Default
 gulp.task('default', gulp.series('build', 'watch'))

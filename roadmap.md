@@ -11,12 +11,20 @@ obviates the "missing" grid features.
 
 ### Lib
 
-Consider including :link colours into the overall mix; they need automatic adjustment too.
+Consider:
+* including :link colours into the overall mix; they need automatic adjustment too
+* changing -05 suffixes into -half
+* removing all default padding
+* ways of making space-out recursive
 
 Review the grid item active styles. Consider making them respond to colour
 classes in an inverse way. This might also be useful for other components.
 
-Adapt icons to the colour system; include 'fill' into the colour mixes for SVG icons.
+Adapt icons to the colour system; include 'fill' into the colour mixes for SVG
+icons.
+
+Reduce the (currently exceedingly high) specificity of activated selectors in
+colour mixes.
 
 ## Components
 
@@ -56,8 +64,9 @@ Adapt icons to the colour system; include 'fill' into the colour mixes for SVG i
   * ~~Include a custom :focus style and disable the Webkit outline~~ (done)
 * Tooltips
   * ~~Basic implementation~~ (done)
-    * Needs options for left and right positioning (tricky with horizontally
+    * Need options for left and right positioning (tricky with horizontally
       stretched blocks)
+    * Need little triangle tails
 * TOC navigation
 * `<code>` and `<pre>` styling
   * ~~Basic styling~~ (done)

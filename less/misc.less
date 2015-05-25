@@ -16,7 +16,6 @@
  * Default styling for monospace tags.
  */
 tt, code, kbd, pre, samp {
-  font-family: @sf-font-family-monospace;
   .sf-shift-color(background-color, @sf-base-background-color, 5%);
   border-radius: @sf-common-border-radius / 2;
 }
@@ -56,17 +55,39 @@ pre {
   /**
    * Whitespace.
    */
-  &.pad             {padding: @sf-common-padding}
-  &.pad-05          {padding: 0.5 * @sf-common-padding}
-  &.pad-v           {padding: @sf-common-padding 0}
-  &.pad-v-05        {padding: 0.5 * @sf-common-padding 0}
-  &.pad-ch > *      {padding: @sf-common-padding}
-  &.pad-ch-05 > *   {padding: 0.5 * @sf-common-padding}
-  &.pad-ch-v > *    {padding: @sf-common-padding 0}
-  &.pad-ch-v-05 > * {padding: 0.5 * @sf-common-padding 0}
+  &.pad    {padding: @sf-common-padding}
+  &.pad-05 {padding: 0.5 * @sf-common-padding}
+  &.pad-v {
+    padding-top: @sf-common-padding;
+    padding-bottom: @sf-common-padding;
+  }
+  &.pad-v-05 {
+    padding-top: 0.5 * @sf-common-padding;
+    padding-bottom: 0.5 * @sf-common-padding;
+  }
+  &.pad-ch > *    {padding: @sf-common-padding}
+  &.pad-ch-05 > * {padding: 0.5 * @sf-common-padding}
+  &.pad-ch-v > * {
+    padding-top: @sf-common-padding;
+    padding-bottom: @sf-common-padding;
+  }
+  &.pad-ch-v-05 > * {
+    padding-top: 0.5 * @sf-common-padding;
+    padding-bottom: 0.5 * @sf-common-padding;
+  }
   &.center-by-margins {
     margin-left: auto;
     margin-right: auto;
+  }
+  .space-out-v {
+    > *:not(:last-child) {
+      margin-bottom: @sf-common-margin;
+    }
+  }
+  .space-out-v-05 {
+    > *:not(:last-child) {
+      margin-bottom: @sf-common-margin / 2;
+    }
   }
 
   /**
