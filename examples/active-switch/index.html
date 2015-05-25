@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>active-switch</title>
+    <title>stylific</title>
     <meta name="author" content="mitranim">
     <meta name="description" content="stylific documentation">
     <meta charset="utf-8">
@@ -45,7 +45,7 @@
           <sf-icon class="github-light pop"></sf-icon>
         </a>
       </h1>
-      <p>active-switch</p>
+      <p>Pure-CSS UI library</p>
     </sf-jumbo>
 
     <!-- Site content -->
@@ -67,23 +67,23 @@ for switching <code>sf-tabset</code> tabs by applying <code>.active</code> to ta
 </code></pre>
 <p>JS code:</p>
 <pre><code class="lang-javascript">angular.module(<span class="hljs-string">'attributes.activeSwitch'</span>, [])
-.directive(<span class="hljs-string">'activeSwitch'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+.directive(<span class="hljs-string">'activeSwitch'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
 
   <span class="hljs-keyword">return</span> {
     restrict: <span class="hljs-string">'A'</span>,
     scope: <span class="hljs-literal">false</span>,
-    link: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(scope, elem)</span> </span>{
+    link: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">scope, elem</span>) </span>{
       <span class="hljs-comment">// Use the native DOM element.</span>
       elem = elem[<span class="hljs-number">0</span>]
 
       <span class="hljs-comment">// Register a listener to remove the .active class from self.</span>
-      scope.$on(<span class="hljs-string">'$active-switch'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+      scope.$on(<span class="hljs-string">'$active-switch'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
         elem.classList.remove(<span class="hljs-string">'active'</span>)
       })
 
       <span class="hljs-comment">// Register an onclick listener to remove the .active class from self and</span>
       <span class="hljs-comment">// all siblings, them add this class to self.</span>
-      elem.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+      elem.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
         scope.$parent.$broadcast(<span class="hljs-string">'$active-switch'</span>)
         elem.classList.add(<span class="hljs-string">'active'</span>)
         scope.$digest()

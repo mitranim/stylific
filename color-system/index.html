@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>colour system</title>
+    <title>stylific</title>
     <meta name="author" content="mitranim">
     <meta name="description" content="stylific documentation">
     <meta charset="utf-8">
@@ -45,7 +45,7 @@
           <sf-icon class="github-light pop"></sf-icon>
         </a>
       </h1>
-      <p>colour system</p>
+      <p>Pure-CSS UI library</p>
     </sf-jumbo>
 
     <!-- Site content -->
@@ -108,7 +108,7 @@ wherever colour classes are used.</li>
 </ol>
 <p>Preprocessors solve (2) and help with (3), but it requires a lot of boilerplate.
 Different elements need different selectors for states (example: <a href="https://github.com/Mitranim/stylific/blob/master/less/components/sf-
-tabset.less#L157" target="_blank">special
+tabset.less#L170" target="_blank">special
 selector</a> for active label in sf-tabset). Sometimes you want child
 elements to have interactive states that respond to colour classes of parent
 elements (same example; active label’s colour is defined by its parent tabset’s
@@ -187,7 +187,7 @@ and produces a straight or inverse colour set for each of them.</p>
 <p>When a colour is shifted in lightness for a state, it’s always shifted towards
 the opposite. Light colours become darker, and dark colours become lighter. See
 the <a href="https://github.com/Mitranim/stylific/blob/master/
-less/color-mixes.less#L193" target="_blank"><code>.sf-shift-color()</code></a> mixin.</p>
+less/color-mixes.less#L265" target="_blank"><code>.sf-shift-color()</code></a> mixin.</p>
 <p>Continuing the <code>red</code> examples above:</p>
 <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">p</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"pad red"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"min-height: 3em"</span>&gt;</span>Paragraph in red (static mix, normal state).<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-title">p</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"pad red active"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"min-height: 3em"</span>&gt;</span>Paragraph in red (static mix, .active state).<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
@@ -246,7 +246,7 @@ programmatically with the <code>.sf-colormix-all-classes()</code> mixin (see bel
 <p>Redefining any of these variables affects all classes and states referencing it.</p>
 <p>The central hub for registering colours is the
 <a href="https://github.com/Mitranim/stylific/blob/
-master/less/color-mixes.less#L159" target="_blank"><code>.sf-colormix-all-classes()</code></a> mixin. It includes two lines for each colour:
+master/less/color-mixes.less#L176" target="_blank"><code>.sf-colormix-all-classes()</code></a> mixin. It includes two lines for each colour:
 one for straight mix and one for inverse mix. It’s called by other mixins and
 sometimes manually in order to determine which <em>selectors</em> correspond to which
 <em>state</em> for a particular element. Including a colour in this mixin causes its
@@ -278,8 +278,8 @@ partially duplicate stylific’s definition of <code>.sf-colormix-all-classes()<
 LESS will merge this definition with the original <em>before</em> it’s invoked
 elsewhere.</p>
 <pre><code class="lang-less"><span class="hljs-class">.sf-colormix-all-classes</span>(<span class="hljs-variable">@prefix</span>, <span class="hljs-variable">@affix</span>, <span class="hljs-variable">@perc</span>) {
-  <span class="hljs-keyword">&amp;</span><span class="hljs-class">.orange@{prefix}@{affix}</span>         {<span class="hljs-class">.sf-colormix-base</span>(<span class="hljs-variable">@color-orange</span>, <span class="hljs-variable">@perc</span>)}
-  <span class="hljs-keyword">&amp;</span><span class="hljs-class">.orange-inverse@{prefix}@{affix}</span> {<span class="hljs-class">.sf-colormix-base-inverse</span>(<span class="hljs-variable">@color-orange</span>, <span class="hljs-variable">@perc</span>)}
+  <span class="hljs-keyword">&amp;</span><span class="hljs-class">.orange</span><span class="hljs-variable">@{prefix}</span><span class="hljs-variable">@{affix}</span>         {<span class="hljs-class">.sf-colormix-base</span>(<span class="hljs-variable">@color-orange</span>, <span class="hljs-variable">@perc</span>)}
+  <span class="hljs-keyword">&amp;</span><span class="hljs-class">.orange-inverse</span><span class="hljs-variable">@{prefix}</span><span class="hljs-variable">@{affix}</span> {<span class="hljs-class">.sf-colormix-base-inverse</span>(<span class="hljs-variable">@color-orange</span>, <span class="hljs-variable">@perc</span>)}
 }
 </code></pre>
 <p>That’s it! And now it’s available in HTML under the class names we gave it:</p>
