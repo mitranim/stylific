@@ -19,10 +19,6 @@ input[type=search], input[type=text],  input[type=url], textarea {
 }
 
 .sf-input() {
-  @color: fade(@sf-base-text-color, 10%);
-  @shadow-normal: ~'0 0 0 1px @{color}';
-  @shadow-inset: ~'inset 0 0 3px -1px @{sf-color-info}';
-
   /**
    * Layout.
    */
@@ -31,16 +27,19 @@ input[type=search], input[type=text],  input[type=url], textarea {
 
   // Border styles.
   border: none;
-  box-shadow: ~'@{shadow-normal}';
+  .sf-outline-weak();
 
   // Normalise font size.
   font-size: inherit;
 
   // Focused styles.
   &:focus {
-    box-shadow: ~'@{shadow-normal}', ~'@{shadow-inset}';
-    // Remove the browser outlines.
-    outline: none;
+    box-shadow: inset 0 0 3px -1px @sf-color-info;
+    // Browser-consistent outline when focused.
+    &:focus {
+      outline-offset: 0;
+      .sf-outline-weak();
+    }
   }
 
   // Disabled style.

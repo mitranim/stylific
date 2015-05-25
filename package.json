@@ -1,12 +1,13 @@
 {
   "name": "stylific",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "scripts": {
     "start": "gulp server",
     "build": "gulp build",
     "gulp": "gulp",
     "img": "gulp images",
-    "prepublish": "gulp dist:build"
+    "prepublish": "gulp dist:build",
+    "push": "(cd stylific-gh-pages && git add -A . && git commit -a -m autocommit && git push origin gh-pages)"
   },
   "authors": [
     "Mitranim <me@mitranim.com>"

@@ -92,7 +92,7 @@ sf-article::after {
   cursor: pointer;
   border: none;
   border-radius: 0;
-  box-shadow: 0 0 0 1px rgba(5, 5, 5, 0.1);
+  outline: 1px solid rgba(5, 5, 5, 0.1);
   -webkit-transition: all 0.2s ease;
           transition: all 0.2s ease;
 }
@@ -380,7 +380,7 @@ sf-article::after {
   cursor: not-allowed;
 }
 .sf-btn:focus {
-  outline: 1px solid rgba(5, 5, 5, 0.2);
+  outline: 1px solid rgba(5, 5, 5, 0.1);
 }
 /**
  * <sf-collapse> is a vertically collapsing element with a toggle.
@@ -1551,7 +1551,7 @@ sf-footer sf-footer-body {
   color: gray;
   padding: 1rem;
   background-color: inherit;
-  box-shadow: 0 0 0 1px rgba(5, 5, 5, 0.1);
+  outline: 1px solid rgba(5, 5, 5, 0.1);
 }
 /**
  * [NYI]: underdeveloped, haven't had enough use cases.
@@ -1829,14 +1829,17 @@ sf-icon.pop.active {
   display: inline-block;
   padding: 0.5rem;
   border: none;
-  box-shadow: 0 0 0 1px rgba(5, 5, 5, 0.1);
+  outline: 1px solid rgba(5, 5, 5, 0.1);
   font-size: inherit;
   -webkit-transition: all 0.2s ease;
           transition: all 0.2s ease;
 }
 .sf-input:focus {
-  box-shadow: 0 0 0 1px rgba(5, 5, 5, 0.1), inset 0 0 3px -1px #5bc0de;
-  outline: none;
+  box-shadow: inset 0 0 3px -1px #5bc0de;
+}
+.sf-input:focus:focus {
+  outline-offset: 0;
+  outline: 1px solid rgba(5, 5, 5, 0.1);
 }
 .sf-input[disabled] {
   color: #858585;
@@ -4494,7 +4497,8 @@ sf-tabset > a[href*="#"]:target + sf-tab.flex {
  *
  *   <p sf-tooltip="tooltip text" sf-position="bottom">hover me</p>
  *
- * The following positions are supported: top, top-right, bottom, bottom-right.
+ * The following positions are supported: top, top-right, right-top, left-top,
+ * bottom, bottom-right.
  *
  *
  * ## Trigger
@@ -4580,6 +4584,14 @@ sf-tabset > a[href*="#"]:target + sf-tab.flex {
 [sf-tooltip][sf-position=top-right]::after {
   bottom: calc(100% + 0.5em);
   right: 0;
+}
+[sf-tooltip][sf-position=right-top]::after {
+  top: 0;
+  left: calc(100% + 0.5em);
+}
+[sf-tooltip][sf-position=left-top]::after {
+  top: 0;
+  right: calc(100% + 0.5em);
 }
 [sf-tooltip][sf-position=bottom]::after {
   top: calc(100% + 0.5em);
@@ -6640,7 +6652,7 @@ samp samp {
  * Global default styling that doesn't fall into other categories.
  */
 [contenteditable]:focus {
-  outline: 1px solid rgba(5, 5, 5, 0.2);
+  outline: 1px solid rgba(5, 5, 5, 0.1);
 }
 /**
  * Default styling for monospace tags.
@@ -6666,7 +6678,7 @@ pre {
    * Layouts.
    */
   /**
-   * Shadows and borders.
+   * "Borders".
    */
   /**
    * Whitespace.
@@ -6693,6 +6705,9 @@ pre {
 }
 *.border {
   border: 1px solid rgba(5, 5, 5, 0.2);
+}
+*.outline {
+  outline: 1px solid rgba(5, 5, 5, 0.1);
 }
 *.pad {
   padding: 1rem;

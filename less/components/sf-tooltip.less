@@ -17,7 +17,8 @@
  *
  *   <p sf-tooltip="tooltip text" sf-position="bottom">hover me</p>
  *
- * The following positions are supported: top, top-right, bottom, bottom-right.
+ * The following positions are supported: top, top-right, right-top, left-top,
+ * bottom, bottom-right.
  *
  *
  * ## Trigger
@@ -129,6 +130,16 @@
   &[@{attr-position}=top-right]::after {
     bottom: @offset;
     right: 0;
+  }
+  // Right-top.
+  &[@{attr-position}=right-top]::after {
+    top: 0;
+    left: @offset;
+  }
+  // Left-top.
+  &[@{attr-position}=left-top]::after {
+    top: 0;
+    right: @offset;
   }
   // Bottom.
   &[@{attr-position}=bottom]::after {

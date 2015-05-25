@@ -61,7 +61,7 @@ Colours are a common stumbling block. Standard scenario:
 Preprocessors solve (2) and help with (3), but it requires a lot of boilerplate.
 Different elements need different selectors for states (example: [special
 selector](https://github.com/Mitranim/stylific/blob/master/less/components/sf-
-tabset.less#L157) for active label in sf-tabset). Sometimes you want child
+tabset.less#L170) for active label in sf-tabset). Sometimes you want child
 elements to have interactive states that respond to colour classes of parent
 elements (same example; active label's colour is defined by its parent tabset's
 colour class).
@@ -153,7 +153,7 @@ and produces a straight or inverse colour set for each of them.
 When a colour is shifted in lightness for a state, it's always shifted towards
 the opposite. Light colours become darker, and dark colours become lighter. See
 the [`.sf-shift-color()`](https://github.com/Mitranim/stylific/blob/master/
-less/color-mixes.less#L193) mixin.
+less/color-mixes.less#L265) mixin.
 
 Continuing the `red` examples above:
 
@@ -218,7 +218,7 @@ Redefining any of these variables affects all classes and states referencing it.
 
 The central hub for registering colours is the
 [`.sf-colormix-all-classes()`](https://github.com/Mitranim/stylific/blob/
-master/less/color-mixes.less#L159) mixin. It includes two lines for each colour:
+master/less/color-mixes.less#L176) mixin. It includes two lines for each colour:
 one for straight mix and one for inverse mix. It's called by other mixins and
 sometimes manually in order to determine which _selectors_ correspond to which
 _state_ for a particular element. Including a colour in this mixin causes its

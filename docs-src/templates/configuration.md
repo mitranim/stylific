@@ -121,7 +121,7 @@ doc-toc {
   /**
    * Cosmetic.
    */
-  .sf-shadow-weak();
+  .sf-outline-weak();
   // Default padding for children.
   & > * {
     padding: @sf-common-padding / 2;
