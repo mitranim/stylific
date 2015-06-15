@@ -65,12 +65,8 @@ sf-article img.medium {
 sf-article > *:not(:last-child) {
   margin-bottom: 1rem;
 }
-sf-article > :link,
-sf-article p > :link,
-sf-article span > :link,
-sf-article div > :link,
-sf-article li > :link,
-sf-article td > :link {
+sf-article p a,
+sf-article p :link {
   border-bottom: 1px dotted;
   border-color: inherit;
 }
@@ -6611,6 +6607,13 @@ input,
 textarea,
 button {
   font-family: inherit;
+  font-weight: inherit;
+}
+form,
+input,
+textarea,
+button {
+  text-decoration: inherit;
 }
 tt,
 code,
