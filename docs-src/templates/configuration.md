@@ -38,11 +38,12 @@ Apply component styling to some common HTML elements like `<input>` (see
 @sf-enable-global-element-components: false;
 ```
 
-Change the base font size, scaling the entire site up or down. This metric must
-be in `em` or `rem`:
+Change the base font size, scaling the entire site up or down. Unlike other font
+size declarations, this particular metric should be in fixed units like `pt` or
+`px`:
 
 ```less
-@sf-font-size-base: 0.9em;
+@sf-rem-base: 12pt;
 ```
 
 Change the base text colour. Other colours will automatically adjust to better

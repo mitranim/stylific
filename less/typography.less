@@ -22,9 +22,15 @@ a, a:hover {
 // Normalise header font weight.
 .sf-h({font-weight: normal});
 
-// Fix font-family inheritance for inputs.
+// Fix font style inheritance for inputs.
 input, textarea, button {
   font-family: inherit;
+  font-weight: inherit;
+}
+
+// Fix text decoration inheritance for forms and inputs in FF.
+form, input, textarea, button {
+  text-decoration: inherit;
 }
 
 tt, code, kbd, pre, samp {

@@ -13,8 +13,8 @@
 .@{sf-prefix}-input {.sf-input()}
 
 // Default elements turned into a component.
-input:not([type]),  input[type=email], input[type=password],
-input[type=search], input[type=text],  input[type=url], textarea {
+input:not([type]),  input[type=email], input[type=password], input[type=search],
+input[type=text],  input[type=url], input[type=number], textarea {
   & when (@sf-enable-global-element-components) {.sf-input()}
 }
 

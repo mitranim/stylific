@@ -57,10 +57,8 @@
 
   // Link decorations. We're trying to target links in text without affecting
   // other elements.
-  &, p, span, div, li, td {
-    & > :link {
-      .sf-common-link-decorations();
-    }
+  p a, p :link {
+    .sf-common-link-decorations();
   }
 
   // Clear article's floating images before letting go of the flow.
