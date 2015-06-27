@@ -7,12 +7,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
-    <link rel="stylesheet" type="text/css" href="/stylific/css/docs.css">
+    <link rel="stylesheet" type="text/css" href="/stylific/styles/docs.css">
     <base href="/stylific/">
+    <link rel="icon" href="data:;base64,=">
   </head>
 
   <body>
-
     <!-- Navbar -->
     <sf-navbar>
   <!-- Enable collapsing -->
@@ -21,12 +21,12 @@
   <!-- Links -->
   <a  href="">Overview</a>
   <a  href="components/">Components</a>
-  <a  href="color-system/">Colour System</a>
-  <a  href="patterns/">Patterns</a>
+  <a  href="layout/">Layout</a>
+  <a  href="themes/">Themes</a>
   <a  href="configuration/">Config</a>
   <sf-dropdown>
     <input id="navbar-sub-dropdown" type="checkbox">
-    <label for="navbar-sub-dropdown" class="justify-center">Examples</label>
+    <label for="navbar-sub-dropdown" layout="center">Examples</label>
     <sf-dropdown-list class="text-left">
       <a  href="examples/active-switch/">active-switch</a>
       <a  href="examples/navbar-demo/">navbar demo</a>
@@ -39,22 +39,24 @@
 
     <!-- Presentation jumbo -->
     <sf-jumbo style="height: auto">
-      <h1 class="flex justify-between">
+      <h1 layout="space-between">
         stylific
         <a href="https://github.com/Mitranim/stylific" target="_blank">
-          <sf-icon class="github-light pop"></sf-icon>
+          <sf-icon class="github-light pop">
+            <svg width="2048" height="2048" viewBox="0 0 2048 2048" xmlns="http://www.w3.org/2000/svg"><path d="M1792 1024q0 251-146.5 451.5t-378.5 277.5q-27 5-39.5-7t-12.5-30v-211q0-97-52-142 57-6 102.5-18t94-39 81-66.5 53-105 20.5-150.5q0-121-79-206 37-91-8-204-28-9-81 11t-92 44l-38 24q-93-26-192-26t-192 26q-16-11-42.5-27t-83.5-38.5-86-13.5q-44 113-7 204-79 85-79 206 0 85 20.5 150t52.5 105 80.5 67 94 39 102.5 18q-40 36-49 103-21 10-45 15t-57 5-65.5-21.5-55.5-62.5q-19-32-48.5-52t-49.5-24l-20-3q-21 0-29 4.5t-5 11.5 9 14 13 12l7 5q22 10 43.5 38t31.5 51l10 23q13 38 44 61.5t67 30 69.5 7 55.5-3.5l23-4q0 38 .5 89t.5 54q0 18-13 30t-40 7q-232-77-378.5-277.5t-146.5-451.5q0-209 103-385.5t279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"/></svg>
+          </sf-icon>
         </a>
       </h1>
-      <p>Pure-CSS UI library</p>
+      <p>CSS UI library</p>
     </sf-jumbo>
 
     <!-- Site content -->
-    <sf-article class="pad">
+    <sf-article>
       <h1 id="description">Description</h1>
 <p>Very basic flexbox grid demo. Resize your viewport to see how it responds to
 width changes. The classes are cosmetic.</p>
 <p>Back to <a href="components/#sf-grid">Components#sf-grid</a>.</p>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-grid</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"doc-grid-demo pad-ch"</span>&gt;</span>
+<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-grid</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"doc-grid-demo"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>One<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Two<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Three<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
@@ -68,7 +70,7 @@ width changes. The classes are cosmetic.</p>
 <span class="hljs-tag">&lt;/<span class="hljs-title">sf-grid</span>&gt;</span>
 </code></pre>
 <div><doc-demo style="display: block">
-  <sf-grid class="doc-grid-demo pad-ch">
+  <sf-grid class="doc-grid-demo">
     <p>One</p>
     <p>Two</p>
     <p>Three</p>
@@ -87,22 +89,26 @@ width changes. The classes are cosmetic.</p>
     <!-- Footer -->
     <sf-footer>
   <sf-footer-body>
-    <!-- © -->
-    <span>
-      2015
-      © <a href="http://mitranim.com" target="_blank">Mitranim</a>
-    </span>
-    <!-- Source link -->
-    <a class="flex items-center" href="https://github.com/Mitranim/stylific" target="_blank">
-      <sf-icon class="github" style="font-size: 2em"></sf-icon>
-      Source at GitHub
-    </a>
-    <!-- Scroll to top -->
-    <sf-icon class="arrow-up pointer fade" onclick="scrollTo(0, 0)"></sf-icon>
+    <div flex="1" layout="column cross-start">
+      <span>
+        2015
+        <a href="http://mitranim.com" target="_blank">Mitranim</a>
+      </span>
+    </div>
+    <div flex="1" layout="column cross-center">
+      <a layout="cross-center" href="https://github.com/Mitranim/stylific" target="_blank">
+        <sf-icon class="inline github" style="font-size: 2em">
+          <svg width="2048" height="2048" viewBox="0 0 2048 2048" xmlns="http://www.w3.org/2000/svg"><path d="M1792 1024q0 251-146.5 451.5t-378.5 277.5q-27 5-39.5-7t-12.5-30v-211q0-97-52-142 57-6 102.5-18t94-39 81-66.5 53-105 20.5-150.5q0-121-79-206 37-91-8-204-28-9-81 11t-92 44l-38 24q-93-26-192-26t-192 26q-16-11-42.5-27t-83.5-38.5-86-13.5q-44 113-7 204-79 85-79 206 0 85 20.5 150t52.5 105 80.5 67 94 39 102.5 18q-40 36-49 103-21 10-45 15t-57 5-65.5-21.5-55.5-62.5q-19-32-48.5-52t-49.5-24l-20-3q-21 0-29 4.5t-5 11.5 9 14 13 12l7 5q22 10 43.5 38t31.5 51l10 23q13 38 44 61.5t67 30 69.5 7 55.5-3.5l23-4q0 38 .5 89t.5 54q0 18-13 30t-40 7q-232-77-378.5-277.5t-146.5-451.5q0-209 103-385.5t279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"/></svg>
+        </sf-icon>
+        Source at GitHub
+      </a>
+    </div>
+    <div flex="1" layout="column cross-end">
+      <sf-icon class="arrow-up interactive" style="opacity: 0.5" onclick="scrollTo(0, 0)"></sf-icon>
+    </div>
   </sf-footer-body>
 </sf-footer>
 
 
   </body>
-
 </html>

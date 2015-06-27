@@ -7,12 +7,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
-    <link rel="stylesheet" type="text/css" href="/stylific/css/docs.css">
+    <link rel="stylesheet" type="text/css" href="/stylific/styles/docs.css">
     <base href="/stylific/">
+    <link rel="icon" href="data:;base64,=">
   </head>
 
   <body>
-
     <!-- Navbar -->
     <sf-navbar>
   <!-- Enable collapsing -->
@@ -21,12 +21,12 @@
   <!-- Links -->
   <a  href="">Overview</a>
   <a  href="components/">Components</a>
-  <a  href="color-system/">Colour System</a>
-  <a  href="patterns/">Patterns</a>
+  <a  href="layout/">Layout</a>
+  <a  href="themes/">Themes</a>
   <a class="active" href="configuration/">Config</a>
   <sf-dropdown>
     <input id="navbar-sub-dropdown" type="checkbox">
-    <label for="navbar-sub-dropdown" class="justify-center">Examples</label>
+    <label for="navbar-sub-dropdown" layout="center">Examples</label>
     <sf-dropdown-list class="text-left">
       <a  href="examples/active-switch/">active-switch</a>
       <a  href="examples/navbar-demo/">navbar demo</a>
@@ -39,176 +39,135 @@
 
     <!-- Presentation jumbo -->
     <sf-jumbo style="height: auto">
-      <h1 class="flex justify-between">
+      <h1 layout="space-between">
         stylific
         <a href="https://github.com/Mitranim/stylific" target="_blank">
-          <sf-icon class="github-light pop"></sf-icon>
+          <sf-icon class="github-light pop">
+            <svg width="2048" height="2048" viewBox="0 0 2048 2048" xmlns="http://www.w3.org/2000/svg"><path d="M1792 1024q0 251-146.5 451.5t-378.5 277.5q-27 5-39.5-7t-12.5-30v-211q0-97-52-142 57-6 102.5-18t94-39 81-66.5 53-105 20.5-150.5q0-121-79-206 37-91-8-204-28-9-81 11t-92 44l-38 24q-93-26-192-26t-192 26q-16-11-42.5-27t-83.5-38.5-86-13.5q-44 113-7 204-79 85-79 206 0 85 20.5 150t52.5 105 80.5 67 94 39 102.5 18q-40 36-49 103-21 10-45 15t-57 5-65.5-21.5-55.5-62.5q-19-32-48.5-52t-49.5-24l-20-3q-21 0-29 4.5t-5 11.5 9 14 13 12l7 5q22 10 43.5 38t31.5 51l10 23q13 38 44 61.5t67 30 69.5 7 55.5-3.5l23-4q0 38 .5 89t.5 54q0 18-13 30t-40 7q-232-77-378.5-277.5t-146.5-451.5q0-209 103-385.5t279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"/></svg>
+          </sf-icon>
         </a>
       </h1>
-      <p>Pure-CSS UI library</p>
+      <p>CSS UI library</p>
     </sf-jumbo>
 
     <!-- Site content -->
-    <sf-article class="pad">
+    <sf-article>
       <!-- TOC -->
-<div style="margin: 0"><doc-toc class="brown">
-  <input checked id="toc-toggle" type="checkbox">
-  <label for="toc-toggle"></label>
-  <a href="configuration/#overview">Overview</a>
+<div><doc-toc theme="text-accent">
+  <input checked id="uniq-id-11" type="checkbox">
+  <label for="uniq-id-11" theme="accent"></label>
   <a href="configuration/#variables">Variables</a>
-  <a href="configuration/#subclassing-components">Subclassing Components</a>
-  <a href="configuration/#extending-components">Extending Components</a>
+  <a href="configuration/#subclassing">Subclassing</a>
 </doc-toc></div>
 
-<h1 id="overview">Overview</h1>
-<p>After importing stylific into your LESS source, you can reconfigure its
-variables or alter its component mixins. Also, because each component is
-isolated as a tag and written as a LESS mixin, subclassing and extending is a
-breeze.</p>
-<p>If you’re unfamiliar with the idea, a mixin in a CSS preprocessor is basically a
-named collection of CSS rules. It may or may not take arguments as input.</p>
 <h1 id="variables">Variables</h1>
 <p>The library is configurable: many styles are tied to preprocessor variables. See
-<a href="https://github.com/Mitranim/stylific/blob/master/
-less/variables.less" target="_blank"><code>variables.less</code></a> for a complete list, but here’s a few examples.</p>
+<a href="https://github.com/Mitranim/stylific/blob/master/scss/_variables.scss" target="_blank"><code>_variables.scss</code></a>
+for a complete list, but here&#39;s a few examples.</p>
 <p>Change the prefix of all tag and class names from <code>sf-</code> to something else:</p>
-<pre><code class="lang-less"><span class="hljs-variable">@sf-prefix:</span> <span class="hljs-string">~'app'</span>;
+<pre><code class="hljs lang-scss"><span class="hljs-variable">$sf-prefix</span><span class="hljs-value">: ~<span class="hljs-string">'app'</span>;</span>
 <span class="hljs-comment">// Now components will be called `app-dropdown`, etc.</span>
 </code></pre>
-<p>Apply component styling to some common HTML elements like <code>&lt;input&gt;</code> (see
-<a href="components/#sf-input">example</a>):</p>
-<pre><code class="lang-less"><span class="hljs-variable">@sf-enable-global-element-components:</span> false;
+<p>Change the base font size, scaling the entire site up or down. Unlike other font
+size declarations, this particular metric should be in fixed units like <code>pt</code> or
+<code>px</code>:</p>
+<pre><code class="hljs lang-scss"><span class="hljs-variable">$sf-rem</span><span class="hljs-value">: <span class="hljs-number">14pt</span>;</span>
 </code></pre>
-<p>Change the base font size, scaling the entire site up or down. This metric must
-be in <code>em</code> or <code>rem</code>:</p>
-<pre><code class="lang-less"><span class="hljs-variable">@sf-font-size-base:</span> <span class="hljs-number">0.9em</span>;
-</code></pre>
-<p>Change the base text colour. Other colours will automatically adjust to better
-match the text. Using a light text colour will invert the luminance of most
-other colours:</p>
-<pre><code class="lang-less"><span class="hljs-variable">@sf-base-text-color:</span> yellow;
+<p>Change the base text and background colour.</p>
+<pre><code class="hljs lang-scss"><span class="hljs-variable">$sf-color-text</span><span class="hljs-value">: white;</span>
+<span class="hljs-variable">$sf-color-background</span><span class="hljs-value">: black;</span>
 </code></pre>
 <p>Redefine some other colours:</p>
-<pre><code class="lang-less"><span class="hljs-variable">@sf-color-error:</span> red;
-<span class="hljs-variable">@sf-color-info:</span>  lightblue;
+<pre><code class="hljs lang-scss"><span class="hljs-variable">$sf-color-map-primary</span><span class="hljs-value">: (
+  name: <span class="hljs-string">'primary'</span>,
+  default: smoke,
+  active: <span class="hljs-function">lighten</span>(smoke, <span class="hljs-number">10%</span>),
+  selected: <span class="hljs-function">lighten</span>(smoke, <span class="hljs-number">20%</span>)
+);</span>
 </code></pre>
 <p>Change the timing of common transitions or disable them altogether:</p>
-<pre><code class="lang-less"><span class="hljs-comment">// Defaults</span>
-<span class="hljs-variable">@sf-enable-common-transitions:</span> true;
-<span class="hljs-variable">@sf-common-transition-duration:</span> <span class="hljs-number">0.2s</span>;
-<span class="hljs-variable">@sf-common-transition-timing-function:</span> ease;
+<pre><code class="hljs lang-scss"><span class="hljs-variable">$sf-transition-duration</span><span class="hljs-value">: <span class="hljs-number">0.4s</span>;</span>
+<span class="hljs-variable">$sf-transition-timing-function</span><span class="hljs-value">: linear;</span>
 </code></pre>
-<p>Adjust common typographic offsets:</p>
-<pre><code class="lang-less"><span class="hljs-variable">@sf-common-padding:</span> <span class="hljs-number">1rem</span>;
-<span class="hljs-variable">@sf-common-margin:</span>  <span class="hljs-number">1rem</span>;
+<p>Adjust common whitespace interval:</p>
+<pre><code class="hljs lang-scss"><span class="hljs-variable">$sf-space</span><span class="hljs-value">: <span class="hljs-number">0.5rem</span>;</span>
 </code></pre>
 <p>And so on. See the full
-<a href="https://github.com/Mitranim/stylific/blob/master/
-less/variables.less" target="_blank">reference</a>.</p>
-<h1 id="subclassing-components">Subclassing Components</h1>
+<a href="https://github.com/Mitranim/stylific/blob/master/scss/_variables.scss" target="_blank">reference</a>.</p>
+<h1 id="subclassing">Subclassing</h1>
 <p>Borrowing an
-<a href="https://github.com/Mitranim/stylific/blob/master/docs-src/styles/components/doc-toc.less" target="_blank">example</a>
-from this documentation’s source, suppose you want to subclass
-<a href="components/#sf-collapse"><code>sf-collapse</code></a> to make a TOC element. In your LESS
+<a href="https://github.com/Mitranim/stylific/blob/master/src-docs/styles/components/doc-toc.scss" target="_blank">example</a>
+from this documentation&#39;s source, suppose you want to subclass
+<a href="components/#sf-collapse"><code>sf-collapse</code></a> to make a TOC element. In your Sass
 source, define a tag that inherits all of sf-collapse styling:</p>
-<pre><code class="lang-less"><span class="hljs-comment">// Importing as (reference) means the original styles won't be duplicated</span>
-<span class="hljs-comment">// without need.</span>
-<span class="hljs-at_rule">@import</span> (reference) <span class="hljs-string">'&lt;stylific path&gt;/components/sf-collapse'</span>;
-
-<span class="hljs-tag">doc-toc</span> {
-  <span class="hljs-comment">// Subclass sf-collapse.</span>
-  <span class="hljs-class">.sf-collapse</span>();
+<pre><code class="hljs lang-scss">doc-toc {
+  <span class="hljs-at_rule">@<span class="hljs-keyword">extend</span><span class="hljs-preprocessor"> sf-collapse</span>;</span>
 }
 </code></pre>
 <p>Then add custom styling to enhance or override sf-collapse defaults:</p>
-<pre><code class="lang-less"><span class="hljs-at_rule">@import</span> (reference) <span class="hljs-string">'&lt;stylific path&gt;/components/sf-collapse'</span>;
-
-<span class="hljs-tag">doc-toc</span> {
+<pre><code class="hljs lang-scss">doc-toc {
 
   <span class="hljs-comment">// Subclass sf-collapse.</span>
-  <span class="hljs-class">.sf-collapse</span>();
+  <span class="hljs-at_rule">@<span class="hljs-keyword">extend</span><span class="hljs-preprocessor"> sf-collapse</span>;</span>
 
   <span class="hljs-comment">/**
    * Layout.
    */</span>
-  <span class="hljs-attribute">width</span>: <span class="hljs-number">10em</span>;
-  <span class="hljs-comment">// Float to right.</span>
-  <span class="hljs-attribute">float</span>: right;
-  <span class="hljs-comment">// Offset from left.</span>
-  <span class="hljs-attribute">margin-left</span>: <span class="hljs-variable">@sf-common-margin</span>;
+  <span class="hljs-attribute">width</span><span class="hljs-value">: <span class="hljs-number">10em</span>;</span>
+  <span class="hljs-attribute">float</span><span class="hljs-value">: right;</span>
+  <span class="hljs-attribute">margin-left</span><span class="hljs-value">: <span class="hljs-variable">$sf-space</span>;</span>
+
+  <span class="hljs-comment">// Default labeling.</span>
+  &gt; <span class="hljs-tag">label</span><span class="hljs-pseudo">:empty</span> {
+    &amp;<span class="hljs-pseudo">::before</span> {
+      <span class="hljs-attribute">content</span><span class="hljs-value">: <span class="hljs-string">'Contents'</span>;</span>
+    }
+    &amp;<span class="hljs-pseudo">::after</span> {
+      <span class="hljs-attribute">padding-left</span><span class="hljs-value">: <span class="hljs-number">0.5em</span>;</span>
+    }
+  }
 
   <span class="hljs-comment">/**
    * Cosmetic.
    */</span>
-  <span class="hljs-class">.sf-outline-weak</span>();
+  <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> sf-outline-weak</span>;</span>
   <span class="hljs-comment">// Default padding for children.</span>
-  <span class="hljs-keyword">&amp;</span> &gt; * {
-    <span class="hljs-attribute">padding</span>: <span class="hljs-variable">@sf-common-padding</span> / <span class="hljs-number">2</span>;
+  &gt; * {
+    <span class="hljs-attribute">padding</span><span class="hljs-value">: <span class="hljs-variable">$sf-space</span> / <span class="hljs-number">2</span>;</span>
   }
-  <span class="hljs-comment">// Use interactive colours for immediate children.</span>
-  <span class="hljs-class">.sf-colormix-all-states</span>(<span class="hljs-string">~' &gt; *'</span>, true);
-
 }
 </code></pre>
 <p>That was easy! In just a few lines of code, we made an extended version of
-<a href="https://github.com/Mitranim/stylific/blob/master/less/components/sf-collapse.less" target="_blank"><code>sf-collapse</code></a>.
-The original component’s styles have remained unchanged, and you can subclass
-it again for something different.</p>
-<p>And if you want <code>doc-toc</code> to be subclassable, just write it as a mixin too:</p>
-<pre><code class="lang-less"><span class="hljs-tag">doc-toc</span> {<span class="hljs-class">.doc-toc</span>()}
-<span class="hljs-class">.doc-toc</span>() {
-  <span class="hljs-comment">// ... Same styles as above.</span>
-}
-</code></pre>
-<h1 id="extending-components">Extending Components</h1>
-<p>Suppose you want to alter the <em>original</em> component. You can just write rules
-under its tag, but this won’t affect components that subclass it through its
-mixin. LESS helps us here: it <em>merges</em> mixins with the same name in the same
-scope. Meaning, you can just write your own version of the component mixin,
-and it will extend the original.</p>
-<p>Borrowing an example from an earlier version of this documentation’s source,
-suppose you want to add special styles to links in <code>sf-article</code>.</p>
-<pre><code class="lang-less"><span class="hljs-comment">// Importing as (less) lets us extend the original mixin.</span>
-<span class="hljs-at_rule">@import</span> (less) <span class="hljs-string">'&lt;stylific path&gt;/components/sf-article'</span>;
-
-<span class="hljs-comment">// Using exactly the same name as the original sf-article mixin</span>
-<span class="hljs-comment">// causes LESS to merge them.</span>
-<span class="hljs-class">.sf-article</span>() {
-
-  <span class="hljs-comment">// Indicate _blank links.</span>
-  <span class="hljs-pseudo">:link</span><span class="hljs-attr_selector">[target*=_blank]</span><span class="hljs-pseudo">::after</span> {
-    <span class="hljs-attribute">content</span>: <span class="hljs-string">'⇒'</span>;
-    <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0.3</span>;
-    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">0.8em</span>;
-    <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">0.3em</span>;
-  }
-
-}
-</code></pre>
-<p>Now sf-article has these styles in <em>addition</em> to what it had. Any component
-subclassing it will inherit them.</p>
+<a href="https://github.com/Mitranim/stylific/blob/master/less/components/sf-collapse.scss" target="_blank"><code>sf-collapse</code></a>.
+The original component&#39;s styles have remained unchanged, and you can subclass
+it again for something different. And you can <code>@extend</code> the new component, as
+well!</p>
 
     </sf-article>
 
     <!-- Footer -->
     <sf-footer>
   <sf-footer-body>
-    <!-- © -->
-    <span>
-      2015
-      © <a href="http://mitranim.com" target="_blank">Mitranim</a>
-    </span>
-    <!-- Source link -->
-    <a class="flex items-center" href="https://github.com/Mitranim/stylific" target="_blank">
-      <sf-icon class="github" style="font-size: 2em"></sf-icon>
-      Source at GitHub
-    </a>
-    <!-- Scroll to top -->
-    <sf-icon class="arrow-up pointer fade" onclick="scrollTo(0, 0)"></sf-icon>
+    <div flex="1" layout="column cross-start">
+      <span>
+        2015
+        <a href="http://mitranim.com" target="_blank">Mitranim</a>
+      </span>
+    </div>
+    <div flex="1" layout="column cross-center">
+      <a layout="cross-center" href="https://github.com/Mitranim/stylific" target="_blank">
+        <sf-icon class="inline github" style="font-size: 2em">
+          <svg width="2048" height="2048" viewBox="0 0 2048 2048" xmlns="http://www.w3.org/2000/svg"><path d="M1792 1024q0 251-146.5 451.5t-378.5 277.5q-27 5-39.5-7t-12.5-30v-211q0-97-52-142 57-6 102.5-18t94-39 81-66.5 53-105 20.5-150.5q0-121-79-206 37-91-8-204-28-9-81 11t-92 44l-38 24q-93-26-192-26t-192 26q-16-11-42.5-27t-83.5-38.5-86-13.5q-44 113-7 204-79 85-79 206 0 85 20.5 150t52.5 105 80.5 67 94 39 102.5 18q-40 36-49 103-21 10-45 15t-57 5-65.5-21.5-55.5-62.5q-19-32-48.5-52t-49.5-24l-20-3q-21 0-29 4.5t-5 11.5 9 14 13 12l7 5q22 10 43.5 38t31.5 51l10 23q13 38 44 61.5t67 30 69.5 7 55.5-3.5l23-4q0 38 .5 89t.5 54q0 18-13 30t-40 7q-232-77-378.5-277.5t-146.5-451.5q0-209 103-385.5t279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"/></svg>
+        </sf-icon>
+        Source at GitHub
+      </a>
+    </div>
+    <div flex="1" layout="column cross-end">
+      <sf-icon class="arrow-up interactive" style="opacity: 0.5" onclick="scrollTo(0, 0)"></sf-icon>
+    </div>
   </sf-footer-body>
 </sf-footer>
 
 
   </body>
-
 </html>

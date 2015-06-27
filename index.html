@@ -7,12 +7,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
-    <link rel="stylesheet" type="text/css" href="/stylific/css/docs.css">
+    <link rel="stylesheet" type="text/css" href="/stylific/styles/docs.css">
     <base href="/stylific/">
+    <link rel="icon" href="data:;base64,=">
   </head>
 
   <body>
-
     <!-- Navbar -->
     <sf-navbar>
   <!-- Enable collapsing -->
@@ -21,12 +21,12 @@
   <!-- Links -->
   <a class="active" href="">Overview</a>
   <a  href="components/">Components</a>
-  <a  href="color-system/">Colour System</a>
-  <a  href="patterns/">Patterns</a>
+  <a  href="layout/">Layout</a>
+  <a  href="themes/">Themes</a>
   <a  href="configuration/">Config</a>
   <sf-dropdown>
     <input id="navbar-sub-dropdown" type="checkbox">
-    <label for="navbar-sub-dropdown" class="justify-center">Examples</label>
+    <label for="navbar-sub-dropdown" layout="center">Examples</label>
     <sf-dropdown-list class="text-left">
       <a  href="examples/active-switch/">active-switch</a>
       <a  href="examples/navbar-demo/">navbar demo</a>
@@ -39,48 +39,51 @@
 
     <!-- Presentation jumbo -->
     <sf-jumbo style="height: auto">
-      <h1 class="flex justify-between">
+      <h1 layout="space-between">
         stylific
         <a href="https://github.com/Mitranim/stylific" target="_blank">
-          <sf-icon class="github-light pop"></sf-icon>
+          <sf-icon class="github-light pop">
+            <svg width="2048" height="2048" viewBox="0 0 2048 2048" xmlns="http://www.w3.org/2000/svg"><path d="M1792 1024q0 251-146.5 451.5t-378.5 277.5q-27 5-39.5-7t-12.5-30v-211q0-97-52-142 57-6 102.5-18t94-39 81-66.5 53-105 20.5-150.5q0-121-79-206 37-91-8-204-28-9-81 11t-92 44l-38 24q-93-26-192-26t-192 26q-16-11-42.5-27t-83.5-38.5-86-13.5q-44 113-7 204-79 85-79 206 0 85 20.5 150t52.5 105 80.5 67 94 39 102.5 18q-40 36-49 103-21 10-45 15t-57 5-65.5-21.5-55.5-62.5q-19-32-48.5-52t-49.5-24l-20-3q-21 0-29 4.5t-5 11.5 9 14 13 12l7 5q22 10 43.5 38t31.5 51l10 23q13 38 44 61.5t67 30 69.5 7 55.5-3.5l23-4q0 38 .5 89t.5 54q0 18-13 30t-40 7q-232-77-378.5-277.5t-146.5-451.5q0-209 103-385.5t279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"/></svg>
+          </sf-icon>
         </a>
       </h1>
-      <p>Pure-CSS UI library</p>
+      <p>CSS UI library</p>
     </sf-jumbo>
 
     <!-- Site content -->
-    <sf-article class="pad">
+    <sf-article>
       <!-- TOC -->
-<div style="margin: 0"><doc-toc class="orange">
-  <input checked id="toc-toggle" type="checkbox">
-  <label for="toc-toggle"></label>
+<div><doc-toc theme="text-accent">
+  <input checked id="uniq-id-12" type="checkbox">
+  <label for="uniq-id-12" theme="accent"></label>
   <a href="#overview">Overview</a>
   <a href="#motivation">Motivation</a>
-  <a href="#what-s-different">What’s Different</a>
+  <a href="#what-s-different">What&#39;s Different</a>
   <a href="#installation-and-usage">Installation and Usage</a>
   <a href="#contributing">Contributing</a>
 </doc-toc></div>
 
 <h1 id="overview">Overview</h1>
 <p><code>stylific</code> (<a href="https://github.com/Mitranim/stylific" target="_blank">source</a>) is a CSS library
-written with <a href="http://lesscss.org" target="_blank">LESS</a>. It can serve as a website’s foundation,
-and provides common UI components as building blocks.</p>
-<p>There are plenty of UI libraries out there: Bootstrap, Foundation, Polymer’s
-Paper Elements, Angular Material, and so on. What’s different about this one?
+written with <a href="http://sass-lang.com" target="_blank">Sass</a> (previously with LESS). It&#39;s designed
+to serve as a flexible foundation for website styling, and provides common UI
+components as building blocks.</p>
+<p>There are plenty of UI libraries out there: Bootstrap, Foundation, Polymer&#39;s
+Paper Elements, Angular Material, and so on. What&#39;s different about this one?
 Read on!</p>
-<p>This project is nowhere near as ambitious as the other libraries I’ve mentioned.
-In fact, it’s much more modest in scope than the styles of any moderately sized
+<p>This project is nowhere near as ambitious as the other libraries I&#39;ve mentioned.
+In fact, it&#39;s much more modest in scope than the styles of any moderately sized
 website. It exists to provide a good starting point for new projects, and
 showcase the advantages of exploiting modern CSS standards.</p>
 <h2 id="a-demo-please-">A Demo Please?</h2>
 <p>This website is a live demo. See <a href="components/">Components</a> for an overview of
-UI elements. Also, check out the documentation’s
-<a href="https://github.com/Mitranim/stylific/tree/master/docs-src" target="_blank">source</a> to see how
+UI elements. Also, check out the documentation&#39;s
+<a href="https://github.com/Mitranim/stylific/tree/master/src-docs" target="_blank">source</a> to see how
 it imports and extends the library.</p>
 <h1 id="motivation">Motivation</h1>
-<p>I’m sick of UI frameworks relying on unnecessary, often incompatible JavaScript
+<p>I&#39;m sick of UI frameworks relying on unnecessary, often incompatible JavaScript
 for the basest functionality. People have had to rewrite the entire Bootstrap JS
-as “native Angular directives” or “native React components” just to un-break
+as &quot;native Angular directives&quot; or &quot;native React components&quot; just to un-break
 basic UI elements. This has got to stop.</p>
 <p>It also irks me when people size things in pixels instead of typographic units
 (em and rem) and use fixed dimensions instead of flexible positioning. This
@@ -88,63 +91,86 @@ makes a website difficult to scale and unfriendly to visitors who adjust the
 font size.</p>
 <p>These issues are so fundamental that you have to write styles and UI components
 from scratch to avoid them. stylific provides at least <em>some</em> basis.</p>
-<h1 id="what-s-different">What’s Different</h1>
-<p>The <a href="patterns/">Patterns</a> section also explains the thinking behind this.</p>
+<h1 id="what-s-different">What&#39;s Different</h1>
 <h2 id="no-javascript">No JavaScript</h2>
 <p>stylific has no JavaScript dependency. Its interactive components work with
-plain HTML and CSS. This means no unwanted dependencies and better baseline
-functionality. This also means your basic UI is equally compatible with all JS
-frameworks, which should cheer up anyone who had switched between different
-adaptations of Boostrap.</p>
-<p>This documentation has no JavaScript on any page (check the source). All demoed
-components still work.</p>
-<p>No JS dependency doesn’t mean you can’t use JavaScript; quite the opposite.
-Because it only needs static markup, enhancement with JavaScript is
-<a href="examples/active-switch/">trivial</a>. Some stylific components provide
-simple hooks for that.</p>
-<h2 id="flexible-units">Flexible Units</h2>
-<p>stylific uses <code>em</code> and <code>rem</code> units for all dimensions. Unlike pixels, they
-scale with font size, and automatically cascade changes to the base size across
-the entire layout. Scaling the website becomes trivial, and you never have to
-deal with broken layouts.</p>
-<p>Try adjusting the font in your browser to see how well this site scales to any
-size. This is due to typographic units and flexible positioning.</p>
+plain HTML and CSS. Benefits:</p>
+<ul>
+<li>No unwanted third party dependencies.</li>
+<li>Better baseline functionality for visitors without JS.</li>
+<li>Equally compatible with all JS frameworks.</li>
+</ul>
+<p>CSS2-CSS3 features like <code>:checked</code>, <code>:target</code>, sibling selectors, <code>:not</code>,
+pseudo-elements, media queries, flexbox, transitions, and others obviate the
+need for JavaScript for many elements that used to be impossible to implement
+without it. See <a href="components/">Components</a> for basic examples.</p>
+<p>This doesn&#39;t mean you can&#39;t use JavaScript; quite the opposite.
+Because stylific only needs static markup, enhancement with JavaScript is
+<a href="examples/active-switch/">trivial</a>. Some stylific components provide simple
+hooks in the form of <code>.active</code> classes.</p>
 <h2 id="component-oriented">Component Oriented</h2>
-<p>Styles are scoped to custom tag names, which makes it easy to reason about
-components and subclass them, and combines very well with a component approach
-in AngularJS or Polymer. See <a href="patterns
-/#component-oriented">Patterns#Component Oriented</a>.</p>
-<h2 id="minimal-markup">Minimal Markup</h2>
-<p>stylific’s components require only about half as much HTML markup as similar
-Bootstrap components. Compare this across the demos. Most components need only
-an irreducible minimum of markup.</p>
+<p>This library organises styles around
+<a href="https://github.com/Mitranim/stylific/tree/master/scss/components" target="_blank">tags</a>. Most
+styles are scoped to customisable tagnames, like <code>sf-tabset</code>. Some
+styles are applied by default to native inputs, but also exposed as classes
+(like <code>.sf-input</code>). Each component is purposely ignorant of others.</p>
+<p>This approach makes it easier to remember component names, and keeps your markup
+semantic. It also makes it far easier to convert your elements into web
+components (custom elements) with a library like Polymer or
+<a href="http://mitranim.com/atril/" target="_blank">atril</a>, because you will already have the tags
+and styles in place. You can begin by styling your website statically, then
+effortlessly enhance selected elements with JavaScript.</p>
+<p>Another benefit of this approach is that because each component&#39;s styles are
+scoped under a single tag or class name, they&#39;re easy to
+<a href="configuration/#subclassing">subclass</a> using Sass&#39;s <code>@extend</code>
+directive.</p>
+<p>It also turns out to be a great strategy for CSS specificity. Isolating styles
+to custom tags and their immediate children keeps CSS specificity low and
+prevents it from compounding, making base styles easy to override. It might be
+the solution to specificity you&#39;ve been looking for!</p>
+<h2 id="flexible-units">Flexible Units</h2>
+<p>stylific uses <code>em</code> and <code>rem</code> units for most dimensions. Unlike pixels, they
+scale with font size, and automatically cascade changes to the base size across
+the entire layout. This makes your website easily scalable, and keeps dimensions
+extremely stable between different screen and font sizes.</p>
+<p>In combination with flexbox layouts, this makes you mobile-friendly practically
+for free. You can get away with just adjusting the <code>html</code> font size for
+different displays. In fact, stylific does that by default.</p>
+<h2 id="flexbox">Flexbox</h2>
+<p>The flexbox specification solves problems that used to demand convoluted
+workarounds, obviates the need for specialised grid systems, and lets you create
+intelligent, self-scaling layouts without fixed dimensions. Browser support is
+finally good enough, if you factor in  <a href="https://github.com/postcss/autoprefixer" target="_blank">vendor
+prefixes</a>.</p>
+<p>See <a href="layout/">Layout</a> for details.</p>
 <h1 id="installation-and-usage">Installation and Usage</h1>
-<p>To fully benefit from stylific, you’ll need the <a href="http://lesscss.org" target="_blank">LESS</a>
-preprocessor and a build system to compile it. If you’re not familiar with
+<p>To fully benefit from stylific, you&#39;ll need the <a href="http://sass-lang.com" target="_blank">Sass</a>
+preprocessor and a build system to compile it. If you&#39;re not familiar with
 preprocessors, head over to the repository and check
 <a href="https://github.com/Mitranim/stylific/blob/master/gulpfile.js" target="_blank"><code>gulpfile.js</code></a>
 for an example build system. It uses <a href="http://gulpjs.com" target="_blank">gulp</a> as the task
 runner. Look for the style tasks.</p>
-<p>You’ll also need <a href="http://bower.io" target="_blank">bower</a> or <a href="https://www.npmjs.com" target="_blank">npm</a> as
-your package manager (get both). The install stylific using either of them.
-Let’s use bower as an example. <code>cd</code> to your project’s root and run:</p>
-<pre><code class="lang-sh">bower i --save-dev stylific
+<p>You&#39;ll also need a package manager to install stylific. It&#39;s available on
+<a href="https://www.npmjs.com" target="_blank"><code>npm</code></a>, <a href="http://jspm.io" target="_blank"><code>jspm</code></a>, and
+<a href="http://bower.io" target="_blank"><code>bower</code></a>. Let&#39;s use <code>npm</code> as an example. <code>cd</code> to your
+project&#39;s root and run:</p>
+<pre><code class="hljs lang-sh">npm i --save-dev stylific
 </code></pre>
-<p>After installing, import it in your LESS source (adjust the path if needed):</p>
-<pre><code class="lang-less"><span class="hljs-at_rule">@import</span> (less) <span class="hljs-string">'./bower_components/stylific/less/stylific'</span>;
+<p>After installing, import it in your Sass source (adjust the path if needed):</p>
+<pre><code class="hljs lang-scss"><span class="hljs-at_rule">@<span class="hljs-keyword">import</span> <span class="hljs-string">'./node_modules/stylific/scss/stylific'</span>;</span>
 </code></pre>
 <p>This allows you to <a href="configuration/">configure</a> the library with variables,
-subclass and extend built-in components, and so on.</p>
-<p><strong>Caution</strong>: neither LESS nor stylific account for vendor prefixes. You
+subclass built-in components, and so on.</p>
+<p><strong>Caution</strong>: neither Sass nor stylific account for missing vendor prefixes. You
 must compensate by combining it with
 <a href="https://github.com/postcss/autoprefixer" target="_blank"><code>autoprefixer</code></a> in your build system.</p>
 <h1 id="contributing">Contributing</h1>
-<p>I’d love you to get involved!</p>
+<p>I&#39;d love you to get involved!</p>
 <p>To contribute to the library, send a
 <a href="https://github.com/Mitranim/stylific" target="_blank">pull request</a> or open a new
 <a href="https://github.com/Mitranim/stylific/issues" target="_blank">issue</a>.</p>
-<p>You can contribute to this documentation, too! It’s generated from
-<a href="https://github.com/Mitranim/stylific/tree/master/docs-src" target="_blank"><code>docs-src</code></a> in the
+<p>You can contribute to this documentation, too! It&#39;s generated from
+<a href="https://github.com/Mitranim/stylific/tree/master/src-docs" target="_blank"><code>src-docs</code></a> in the
 <code>master</code> branch and served as <code>gh-pages</code>. Follow
 <a href="https://github.com/Mitranim/stylific/tree/gh-pages" target="_blank">these instructions</a> to
 set up a local build for development, then send your changes to <code>master</code>.</p>
@@ -154,22 +180,26 @@ set up a local build for development, then send your changes to <code>master</co
     <!-- Footer -->
     <sf-footer>
   <sf-footer-body>
-    <!-- © -->
-    <span>
-      2015
-      © <a href="http://mitranim.com" target="_blank">Mitranim</a>
-    </span>
-    <!-- Source link -->
-    <a class="flex items-center" href="https://github.com/Mitranim/stylific" target="_blank">
-      <sf-icon class="github" style="font-size: 2em"></sf-icon>
-      Source at GitHub
-    </a>
-    <!-- Scroll to top -->
-    <sf-icon class="arrow-up pointer fade" onclick="scrollTo(0, 0)"></sf-icon>
+    <div flex="1" layout="column cross-start">
+      <span>
+        2015
+        <a href="http://mitranim.com" target="_blank">Mitranim</a>
+      </span>
+    </div>
+    <div flex="1" layout="column cross-center">
+      <a layout="cross-center" href="https://github.com/Mitranim/stylific" target="_blank">
+        <sf-icon class="inline github" style="font-size: 2em">
+          <svg width="2048" height="2048" viewBox="0 0 2048 2048" xmlns="http://www.w3.org/2000/svg"><path d="M1792 1024q0 251-146.5 451.5t-378.5 277.5q-27 5-39.5-7t-12.5-30v-211q0-97-52-142 57-6 102.5-18t94-39 81-66.5 53-105 20.5-150.5q0-121-79-206 37-91-8-204-28-9-81 11t-92 44l-38 24q-93-26-192-26t-192 26q-16-11-42.5-27t-83.5-38.5-86-13.5q-44 113-7 204-79 85-79 206 0 85 20.5 150t52.5 105 80.5 67 94 39 102.5 18q-40 36-49 103-21 10-45 15t-57 5-65.5-21.5-55.5-62.5q-19-32-48.5-52t-49.5-24l-20-3q-21 0-29 4.5t-5 11.5 9 14 13 12l7 5q22 10 43.5 38t31.5 51l10 23q13 38 44 61.5t67 30 69.5 7 55.5-3.5l23-4q0 38 .5 89t.5 54q0 18-13 30t-40 7q-232-77-378.5-277.5t-146.5-451.5q0-209 103-385.5t279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"/></svg>
+        </sf-icon>
+        Source at GitHub
+      </a>
+    </div>
+    <div flex="1" layout="column cross-end">
+      <sf-icon class="arrow-up interactive" style="opacity: 0.5" onclick="scrollTo(0, 0)"></sf-icon>
+    </div>
   </sf-footer-body>
 </sf-footer>
 
 
   </body>
-
 </html>
