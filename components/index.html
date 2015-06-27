@@ -203,7 +203,7 @@ the <code>&lt;label&gt;</code>. This automatically disables the <code>:hover</co
 </doc-demo></div>
 
 <p>The dropdown position may be changed to <code>top</code>, <code>right</code> or <code>left</code>:</p>
-<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-dropdown</span> <span class="hljs-attribute">sf-position</span>=<span class="hljs-value">"top"</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"info-inverse"</span>&gt;</span>
+<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-dropdown</span> <span class="hljs-attribute">sf-position</span>=<span class="hljs-value">"top"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"pad"</span>&gt;</span>this dropdown goes upwards<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">sf-dropdown-list</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">span</span>&gt;</span>I'm the first item<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
@@ -213,7 +213,7 @@ the <code>&lt;label&gt;</code>. This automatically disables the <code>:hover</co
 <span class="hljs-tag">&lt;/<span class="hljs-title">sf-dropdown</span>&gt;</span>
 </code></pre>
 <div><doc-demo>
-  <sf-dropdown sf-position="top" class="info-inverse">
+  <sf-dropdown sf-position="top">
     <label class="pad">this dropdown goes upwards</label>
     <sf-dropdown-list>
       <span>I&#39;m the first item</span>
@@ -324,11 +324,11 @@ the URL fragment. It appears when the URL hash is targeting the modal&#39;s id. 
 you need is to link to that id.</p>
 <pre><code class="hljs lang-html"><span class="hljs-comment">&lt;!-- Clicking this link summons the modal --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#demo-sf-modal"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"orange"</span>&gt;</span>Click me to open the modal!<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">button</span>&gt;</span>Click me to open a modal!<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
 
 <span class="hljs-comment">&lt;!-- The modal, hidden until targeted --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">sf-modal</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"demo-sf-modal"</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"info"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">sf-modal</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"demo-sf-modal"</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"text-primary"</span>&gt;</span>
 
   <span class="hljs-comment">&lt;!-- This hidden link closes the modal --&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#_"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
@@ -344,10 +344,10 @@ you need is to link to that id.</p>
 </code></pre>
 <div><doc-demo>
   <a href="components/#demo-sf-modal">
-    <button class="orange">Click me to open a modal!</button>
+    <button>Click me to open a modal!</button>
   </a>
 
-  <sf-modal id="demo-sf-modal" class="info">
+  <sf-modal id="demo-sf-modal" theme="text-primary">
     <a href="components/#_"></a>
     <sf-modal-body>
       <h1>Modal header</h1>
