@@ -1,0 +1,16 @@
+files:
+
+- name:  index
+  title: ''
+
+- name:  layout
+  title: layout
+
+- name:  themes
+  title: themes
+
+- name:  components
+  title: components
+
+- name:  configuration
+  title: configuration

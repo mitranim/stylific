@@ -1,0 +1,5 @@
+pre code {width: 100%}
+
+.block-children {
+  > *:not(:root) {display: block}
+}

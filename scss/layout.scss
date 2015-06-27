@@ -1,0 +1,151 @@
+/********************************** Global ***********************************/
+
+// Required for using % dimensions on children.
+html {
+  width: 100%;
+  height: 100%;
+}
+
+// Normalise whitespace.
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /**
+   * Layout.
+   */
+  // Limit the body width and center it horizontally.
+  max-width: $sf-body-max-width;
+  margin-left: auto;
+  margin-right: auto;
+  // Stretch vertically to fill the viewport.
+  min-height: 100%;
+
+  /**
+   * Inner layout.
+   */
+  // Setting the body up as a flex container allows us to push the footer
+  // to the bottom of the screen with an automatic margin.
+  display: flex;
+  flex-direction: column;
+  // These vital properties are implicit, but we duplicate them to avoid
+  // accidental overrides by the user.
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+/********************************** Layout ***********************************/
+
+/**
+ * Credit:
+ * https://raw.githubusercontent.com/angular/material/v0.10.0/src/core/style/layout.scss
+ */
+
+/**
+ * Container.
+ */
+
+@mixin sf-layout-for-name($postfix: '') {
+  $name: if($postfix == '', layout, layout-#{$postfix});
+
+  [#{$name}]         {display: flex}
+  [#{$name}~=row]    {flex-direction: row}
+  [#{$name}~=column] {flex-direction: column}
+
+  // Wrap.
+  [#{$name}~=wrap]         {flex-wrap: wrap}
+  [#{$name}~=wrap-reverse] {flex-wrap: wrap-reverse}
+  [#{$name}~=nowrap]       {flex-wrap: nowrap}
+
+  // Whitespace on main axis.
+  [#{$name}~=center]        {justify-content: center}
+  [#{$name}~=end]           {justify-content: flex-end}
+  [#{$name}~=start]         {justify-content: flex-start}
+  [#{$name}~=space-around]  {justify-content: space-around}
+  [#{$name}~=space-between] {justify-content: space-between}
+
+  // Individual items on cross axis.
+  [#{$name}~=cross-center]  {align-items: center}
+  [#{$name}~=cross-end]     {align-items: flex-end}
+  [#{$name}~=cross-start]   {align-items: flex-start}
+  [#{$name}~=cross-stretch] {align-items: stretch}
+
+  // Lines on cross axis.
+  [#{$name}~=lines-center]        {align-content: center}
+  [#{$name}~=lines-end]           {align-content: flex-end}
+  [#{$name}~=lines-start]         {align-content: flex-start}
+  [#{$name}~=lines-space-around]  {align-content: space-around}
+  [#{$name}~=lines-space-between] {align-content: space-between}
+  [#{$name}~=lines-stretch]       {align-content: stretch}
+
+  // Whitespace.
+  [#{$name}~=space-out]:not([#{$name}~=column]),
+  [#{$name}~=column][#{$name}~=space-out-cross] {
+    @include sf-space-out-horizontally;
+  }
+  [#{$name}~=column][#{$name}~=space-out],
+  [#{$name}~=space-out-cross]:not([#{$name}~=column]) {
+    @include sf-space-out-vertically;
+  }
+}
+
+// Angular Material's version. Overengineered.
+// @include sf-layout-for-name();
+// @include sf-sm    {@include sf-layout-for-name(sm);}
+// @include sf-gt-sm {@include sf-layout-for-name(gt-sm);}
+// @include sf-md    {@include sf-layout-for-name(md);}
+// @include sf-gt-md {@include sf-layout-for-name(gt-md);}
+// @include sf-lg    {@include sf-layout-for-name(lg);}
+// @include sf-gt-lg {@include sf-layout-for-name(gt-lg);}
+
+// Simplified version.
+@include sf-layout-for-name();
+@include sf-sm    {@include sf-layout-for-name(sm);}
+@include sf-gt-sm {@include sf-layout-for-name(md);}
+@include sf-gt-md {@include sf-layout-for-name(lg);}
+
+/**
+ * Children.
+ */
+
+@mixin sf-child-layout-for-name($postfix: '') {
+  $name: if($postfix == '', flex, flex-#{$postfix});
+
+  [#{$name}~=none]    {flex: none}
+  [#{$name}~=center]  {align-self: center}
+  [#{$name}~=end]     {align-self: flex-end}
+  [#{$name}~=start]   {align-self: flex-start}
+  [#{$name}~=stretch] {align-self: stretch}
+
+  // [flex~=N] {flex: N} where 1 <= N <= 12
+  $i: 1;
+  @while $i <= 12 {
+    [#{$name}~='#{$i}'] {flex: $i}
+    $i: $i + 1;
+  }
+
+  // [flex~=orderN] {order: N} where -1 <= N <= 12
+  $i: -1;
+  @while $i <= 12 {
+    [#{$name}~=order-#{$i}] {order: $i}
+    $i: $i + 1;
+  }
+}
+
+// Angular Material's version. Overengineered.
+// @include sf-child-layout-for-name();
+// @include sf-sm    {@include sf-child-layout-for-name(sm);}
+// @include sf-gt-sm {@include sf-child-layout-for-name(gt-sm);}
+// @include sf-md    {@include sf-child-layout-for-name(md);}
+// @include sf-gt-md {@include sf-child-layout-for-name(gt-md);}
+// @include sf-lg    {@include sf-child-layout-for-name(lg);}
+// @include sf-gt-lg {@include sf-child-layout-for-name(gt-lg);}
+
+// Simplified version.
+@include sf-child-layout-for-name();
+@include sf-sm    {@include sf-child-layout-for-name(sm);}
+@include sf-gt-sm {@include sf-child-layout-for-name(md);}
+@include sf-gt-md {@include sf-child-layout-for-name(lg);}

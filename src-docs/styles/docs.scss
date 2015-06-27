@@ -1,0 +1,15 @@
+@import './_variables';
+@import './_mixins';
+
+// Core stylific styles.
+@import 'scss/stylific';
+
+@import './misc';
+@import './components/doc-demo';
+@import './components/doc-grid-demo';
+@import './components/doc-toc';
+@import './components/sf-article';
+@import './components/sf-icon';
+
+// Styles used by highlight.js tags generated as a part of markdown compilation.
+@import './node_modules/highlight.js/styles/ir_black';

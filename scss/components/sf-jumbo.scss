@@ -1,0 +1,71 @@
+/**
+ * Big-ass panel to display a greeting image. Text content is underlayed for
+ * easier reading.
+ *
+ *   <sf-jumbo style="background-image: url(...)">
+ *     ...
+ *   </sf-jumbo>
+ *
+ * By default, jumbo content is pushed to the bottom. This can be changed by
+ * adjusting its justify-content property:
+ *
+ *   <sf-jumbo style="background-image: url(...)" layout="justify-start">
+ *     ...
+ *   </sf-jumbo>
+ *
+ * In this example, children will be at the top.
+ */
+
+#{$sf-prefix}-jumbo {
+
+  /**
+   * Layout.
+   */
+  // By default, height is measured in em units. Adjusting the jumbo font-size
+  // adjusts its height. If the user sets $sf-jumbo-height to a different unit
+  // (e.g. rem), they'll need to adjust jumbo height manually.
+  height: $sf-jumbo-height;
+  font-size: $sf-jumbo-font-size;
+  // .sf-media-mix(font-size, $sf-jumbo-font-size-base);
+
+  /**
+   * Inner layout.
+   */
+  display: flex;
+  flex-direction: column;
+  // Push children to bottom.
+  justify-content: flex-end;
+
+  // Background image styles.
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  /**
+   * Colours. Unlike with many other elements, we don't derive jumbo colours
+   * from base variables. Instead, we hardcode it to always have a dark
+   * background and a light text with a dark underlay. The reason is that a
+   * jumbo is used as a banner for images, and images don't load instantly.
+   * The default background is displayed first. A light background creates a
+   * more noticeable flicker effect, regardless of the overall theme of the
+   * site. So a jumbo must remain dark.
+   */
+  $text-color: darken(white, 1%);
+  $bg-color: $sf-color-umbra;
+  background-color: $bg-color;
+  color: $text-color;
+
+  /**
+   * Immediate child styling.
+   */
+  > * {
+    // Underlay.
+    background-color: rgba(sf-contrasting-color($text-color), 0.4);
+
+    // Whitespace.
+    padding-left:  $sf-space;
+    padding-right: $sf-space;
+    &:first-child {padding-top:    $sf-space}
+    &:last-child  {padding-bottom: $sf-space}
+  }
+}

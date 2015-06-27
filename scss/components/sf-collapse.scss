@@ -1,0 +1,127 @@
+/**
+ * <sf-collapse> is a vertically collapsing element with a toggle.
+ *
+ *
+ * # Basic usage
+ *
+ * Must have the exact following layout:
+ *
+ *   <sf-collapse>
+ *     <input id="..." type="checkbox">
+ *     <label for="...">...</label>
+ *     ...
+ *   </sf-collapse>
+ *
+ * The <input> is hidden and serves as a state vector. The [id] and [for]
+ * attributes must match. The <label> may have arbitrary content. The collapsing
+ * part is everything following the label.
+ *
+ * Mark the <input> as [checked] to uncollapse the element by default:
+ *
+ *   <sf-collapse>
+ *     <input checked id="..." type="checkbox">
+ *     <label for="...">...</label>
+ *     ...
+ *   </sf-collapse>
+ *
+ *
+ * # Options
+ *
+ * Has an option to enable an overlay that collapses the element when clicking
+ * anywhere outside.
+ *
+ *   <sf-collapse sf-overlay>
+ *     ...
+ *   </sf-collapse>
+ */
+
+#{$sf-prefix}-collapse {
+
+  // Local variables.
+  $overlay-attr: '#{$sf-prefix}-overlay';
+
+  /**
+   * Layout.
+   */
+  display: flex;
+  flex-direction: column;
+
+  // Whitespace.
+  > * {padding: $sf-space / 2}
+
+  // Hide the checkbox input used for toggling collapsed state.
+  > input[type=checkbox] {display: none}
+
+  /**
+   * Base label styles.
+   */
+  > input[type=checkbox] + label {
+    /**
+     * Layout.
+     */
+    display: block;
+
+    // Cosmetic.
+    cursor: pointer;
+
+    // Toggle indicator.
+    &::after {
+      content: '▽';
+      display: inline-block;
+      vertical-align: middle;
+      opacity: 0.5;
+    }
+    // If there's some text inside, offset the indicator.
+    &:not(:empty)::after {
+      padding-left: 0.5em;
+    }
+  }
+
+  /**
+   * Active label styles.
+   */
+  > input[type=checkbox]:checked + label {
+    // Modify the indicator symbol.
+    &::after {content: '▲'}
+    // Treat as .active.
+    @include sf-register-selected-state;
+  }
+
+  /**
+   * Base overlay styles.
+   */
+  &[#{$overlay-attr}] > input[type=checkbox] + label::before {
+    @include sf-fixed-overlay;
+    opacity: 0;
+  }
+
+  /**
+   * Active overlay styles.
+   */
+  // If the overlay option is enabled, make the toggle overlay interactive.
+  &[#{$overlay-attr}] > input[type=checkbox]:checked + label {
+    &::before {content: ''}
+  }
+
+  /**
+   * Styles for collapsable children.
+   */
+  // Collapsed styles.
+  > input[type=checkbox]:not(:checked) + label ~ * {
+    padding: 0;
+    max-height: 0;
+    transform: scaleY(0);
+  }
+  // Active styles.
+  > input[type=checkbox]:checked + label ~ * {
+    transform: scaleY(1);
+  }
+
+  // Disable article link style.
+  #{$sf-prefix}-article & {
+    a {border: none}
+  }
+
+  // Animate visibility changes and other transitions on all children.
+  > * {@include sf-transitions(all);}
+}

@@ -1,0 +1,68 @@
+/**
+ * Text input styles.
+ *
+ *   <input class="sf-input" type="text">
+ *   <input type="text">
+ *   <textarea class="sf-input"></textarea>
+ *   <textarea></textarea>
+ */
+
+// Class based.
+.#{$sf-prefix}-input,
+// Native inputs.
+input:not([type]), input[type=email], input[type=password], input[type=search],
+input[type=text], input[type=url], input[type=number], textarea {
+  /**
+   * Layout.
+   */
+  display: inline-block;
+  padding: $sf-space / 2;
+
+  // Border styles.
+  border: none;
+
+  // Normalise outlines.
+  &, &:focus, &:active {
+    outline-offset: 0;
+    @include sf-outline-weak;
+  }
+  @include sf-themed-outline;
+
+  // Normalise placeholder colour.
+  &::placeholder {
+    color: rgba($sf-color-text, 0.5);
+  }
+
+  // Normalise background colour. (Webkit has default {background-color: white}).
+  &:not(:hover):not(:focus):not(:active):not(.active), &[disabled] {
+    &:not([theme]), &[theme^=text] {
+      background-color: inherit;
+    }
+  }
+
+  // Themed verisons.
+  @each $color-map in $sf-color-maps {
+    $name: map-get($color-map, name);
+    $default: map-get($color-map, default);
+
+    &[theme=text-#{$name}] {
+      &::placeholder {
+        color: rgba($default, 0.5);
+      }
+    }
+
+    &[theme=#{$name}] {
+      &::placeholder {
+        color: rgba(sf-contrasting-color($default), 0.5);
+      }
+    }
+  }
+
+  // Disabled style.
+  &[disabled] {
+    cursor: not-allowed;
+  }
+
+  // Animate style changes.
+  @include sf-transitions(all);
+}

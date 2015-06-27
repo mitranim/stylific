@@ -1,0 +1,199 @@
+/*********************************** Media ***********************************/
+
+@mixin sf-sm {
+  @media (max-width: $sf-layout-breakpoint-sm - 1) {
+    @content;
+  }
+}
+
+@mixin sf-gt-sm {
+  @media (min-width: $sf-layout-breakpoint-sm) {
+    @content;
+  }
+}
+
+@mixin sf-md {
+  @media (min-width: $sf-layout-breakpoint-sm) and (max-width: $sf-layout-breakpoint-md - 1) {
+    @content;
+  }
+}
+
+@mixin sf-gt-md {
+  @media (min-width: $sf-layout-breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin sf-lg {
+  @media (min-width: $sf-layout-breakpoint-md) and (max-width: $sf-layout-breakpoint-lg - 1) {
+    @content;
+  }
+}
+
+@mixin sf-gt-lg {
+  @media (min-width: $sf-layout-breakpoint-lg) {
+    @content;
+  }
+}
+
+/********************************** Colors ***********************************/
+
+/**
+ * See notes in colors.scss.
+ */
+
+@mixin sf-register-selected-state {
+  // Grayscale theme.
+  background-color: rgba($sf-color-text, 0.1);
+
+  // Colour themes.
+  @each $color-map in $sf-color-maps {
+    $name: map-get($color-map, name);
+    $selected: map-get($color-map, selected);
+
+    // Text theme.
+    &[theme=text-#{$name}] {
+      color: sf-sensible-text-color($selected);
+    }
+
+    // Full theme.
+    &[theme=#{$name}] {
+      background-color: $selected;
+      color: sf-contrasting-color($selected);
+    }
+  }
+}
+
+@mixin sf-register-interactive-selector {
+  &:not([disabled]) {
+    // Grayscale theme.
+    &:hover, &:focus, &:active {
+      background-color: rgba($sf-color-text, 0.05);
+    }
+    &.active {
+      background-color: rgba($sf-color-text, 0.1);
+    }
+
+    // Colour themes.
+    @each $color-map in $sf-color-maps {
+      $name: map-get($color-map, name);
+      $active: map-get($color-map, active);
+      $selected: map-get($color-map, selected);
+
+      // Text theme.
+      &[theme=text-#{$name}] {
+        &:hover, &:focus, &:active {
+          color: sf-sensible-text-color($active);
+        }
+        &.active {
+          color: sf-sensible-text-color($selected);
+        }
+      }
+
+      // Full theme.
+      &[theme=#{$name}] {
+        &:hover, &:focus, &:active {
+          background-color: $active;
+          color: sf-contrasting-color($active);
+        }
+        &.active {
+          background-color: $selected;
+          color: sf-contrasting-color($selected);
+        }
+      }
+    }
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+}
+
+/*********************************** Misc ************************************/
+
+@mixin sf-shadow-weak {
+  box-shadow: 0 0 0 1px rgba($sf-color-text, 0.1);
+}
+
+@mixin sf-shadow-thin {
+  box-shadow: 0 0 4px -1px rgba($sf-color-text, 0.5);
+}
+
+@mixin sf-shadow-medium {
+  box-shadow: 0 0.2rem 1.5rem -0.2rem rgba($sf-color-text, 0.5);
+}
+
+@mixin sf-border-weak {
+  border: 1px solid rgba($sf-color-text, 0.2);
+}
+
+@mixin sf-outline-weak {
+  outline: 1px solid rgba($sf-color-text, 0.1);
+}
+
+@mixin sf-transitions($properties...) {
+  transition-property: $properties;
+  transition-duration: $sf-transition-duration;
+  transition-timing-function: $sf-transition-timing-function;
+}
+
+// Shortcut to a fixed-position overlay covering the whole screen.
+@mixin sf-fixed-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+@mixin sf-space-out-vertically($space: $sf-space) {
+  > *:not(:last-child) {margin-bottom: $space / 2}
+  > *:not(:first-child) {margin-top: $space / 2}
+}
+
+@mixin sf-space-out-horizontally($space: $sf-space) {
+  > *:not(:last-child) {margin-right: $space / 2}
+  > *:not(:first-child) {margin-left: $space / 2}
+}
+
+// Shortcut to defining an element as a flex layout host and centering its
+// children both horizontally and vertically.
+@mixin sf-flex-host-center {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+@mixin sf-themed-outline {
+  &:active, &:focus {
+    outline: 1px solid rgba($sf-color-text, 0.2);
+  }
+
+  @each $color-map in $sf-color-maps {
+    $name: map-get($color-map, name);
+    $default: map-get($color-map, default);
+
+    &[theme=text-#{$name}] {
+      &:active, &:focus {
+        outline: 1px solid $default;
+      }
+    }
+
+    &[theme=#{$name}] {
+      &:active, &:focus {
+        outline: 1px solid $default;
+      }
+    }
+  }
+}
+
+@mixin sf-link-decorations {
+  border-bottom: 1px dotted;
+  border-color: inherit;
+  background-color: rgba($sf-color-text, 0.03);
+  color: map-get($sf-color-map-primary, default);
+  &:visited {
+    color: map-get($sf-color-map-primary, active);
+  }
+}

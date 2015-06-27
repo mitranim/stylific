@@ -1,0 +1,21 @@
+<sf-footer>
+  <sf-footer-body>
+    <div flex="1" layout="column cross-start">
+      <span>
+        <%= (new Date()).getFullYear() > 2015 ? '2015—' + (new Date()).getFullYear() : '2015' %>
+        <a href="http://mitranim.com" target="_blank">Mitranim</a>
+      </span>
+    </div>
+    <div flex="1" layout="column cross-center">
+      <a layout="cross-center" href="https://github.com/Mitranim/stylific" target="_blank">
+        <sf-icon class="inline github" style="font-size: 2em">
+          <%= $include('svg/github', $) %>
+        </sf-icon>
+        Source at GitHub
+      </a>
+    </div>
+    <div flex="1" layout="column cross-end">
+      <sf-icon class="arrow-up interactive" style="opacity: 0.5" onclick="scrollTo(0, 0)"></sf-icon>
+    </div>
+  </sf-footer-body>
+</sf-footer>

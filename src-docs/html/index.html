@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title || 'stylific' %></title>
+    <meta name="author" content="mitranim">
+    <meta name="description" content="stylific documentation">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <link rel="stylesheet" type="text/css" href="/stylific/styles/docs.css">
+    <base href="/stylific/">
+    <link rel="icon" href="data:;base64,=">
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <%= $include('partials/navbar', $) %>
+
+    <!-- Presentation jumbo -->
+    <sf-jumbo style="height: auto">
+      <h1 layout="space-between">
+        stylific
+        <a href="https://github.com/Mitranim/stylific" target="_blank">
+          <sf-icon class="github-light pop">
+            <%= $include('svg/github', $) %>
+          </sf-icon>
+        </a>
+      </h1>
+      <p><%= title || 'CSS UI library' %></p>
+    </sf-jumbo>
+
+    <!-- Site content -->
+    <sf-article>
+      <%= $content || $include('partials/index', $) %>
+    </sf-article>
+
+    <!-- Footer -->
+    <%= $include('partials/footer', $) %>
+
+  </body>
+</html>

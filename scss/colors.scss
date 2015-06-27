@@ -1,0 +1,75 @@
+/**
+ * Using ideas from:
+ * https://material.angularjs.org/latest/#/Theming/01_introduction
+ *
+ * A site chooses three colours for its palette, representing intentions:
+ *   primary
+ *   accent
+ *   warn
+ *
+ * Each colour is defined as a map with a string name and three hues:
+ *   name          <string>
+ *   default
+ *   active        :hover, :active, :focus
+ *   selected      .active
+ *
+ * Given a colour with the name C, we expose two global attributes:
+ *   [theme=C]        {background-color} and {color}
+ *   [theme=text-C]   just {color}
+ *
+ * We also create an interactive version of each colour theme, available for
+ * certain selectors. The interactive version has slightly different hues for
+ * the 'active' and 'selected' states.
+ */
+
+@each $color-map in $sf-color-maps {
+  $name: map-get($color-map, name);
+  $default: map-get($color-map, default);
+
+  // Text theme.
+  [theme=text-#{$name}] {
+    color: sf-sensible-text-color($default);
+  }
+
+  // Full theme.
+  [theme=#{$name}] {
+    background-color: $default;
+    color: sf-contrasting-color($default);
+  }
+}
+
+// Caveat: when an <input> in an <input>+<label> pair becomes [disabled], the
+// <label> must be [disabled] too.
+.interactive, a[href], button, input, textarea, [contenteditable], input[id] + label[for] {
+  @include sf-register-interactive-selector;
+}
+
+.interactive, a[href], button, input[id] + label[for] {
+  cursor: pointer;
+}
+
+html {
+  background-color: darken($sf-color-background, 5%);
+  color: $sf-color-text;
+}
+
+body {
+  background-color: $sf-color-background;
+}
+
+// Normalise link colours.
+a {
+  color: map-get($sf-color-map-primary, default);
+}
+
+@each $color-map in $sf-color-maps {
+  $name: map-get($color-map, name);
+  a[theme=text-#{$name}], a[theme=#{$name}], [theme=text-#{$name}] a, [theme=#{$name}] a {
+    color: inherit;
+  }
+}
+
+// Default monospace background.
+tt, code, kbd, pre, samp {
+  background-color: rgba(0, 0, 0, 0.03);
+}

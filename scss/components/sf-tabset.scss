@@ -1,0 +1,187 @@
+/**
+ * sf-tabset is your typical tabbed panel. It has several modes with slightly
+ * different markup requirements but near-identical behaviour.
+ *
+ * # :checked version
+ *
+ * One way to use a tabset is with hidden radio inputs. It must have the exact
+ * following layout:
+ *
+ *   <sf-tabset>
+ *     ...
+ *     <input id=... type="radio" name=...>
+ *     <label for=...>...</label>
+ *     <sf-tab>...</sf-tab>
+ *     ...
+ *   </sf-tabset>
+ *
+ * The three elements: <input>, <label> and <sf-tab>, in this exact order,
+ * must be the only children in an <sf-tabset>, repeating indefinitely.
+ *
+ * Each <input> must have the following attributes:
+ *   <input id="..." name="..." type="radio">
+ *
+ *   [type="radio"] enables tab switching.
+ *   [name="..."]   links the radio inputs together; inputs in one tabset must
+ *                  share the same name.
+ *   [id="..."]     lets us link a label with the given input, so that clicking
+ *                  the label toggles the input.
+ *   [checked]      optional; preselects a tab.
+ *
+ * Each <label> must have the following attribute:
+ *   <label for="...">
+ *
+ *   [for="..."] the value must match the id of the preceding <input>.
+ *
+ * Each <sf-tab> must immediately follow its <input> and <label>.
+ *
+ * # .active version
+ *
+ * You can skip <input>s entirely if you switch tabs by assigning `.active` to
+ * the <label>s with JavaScript. This may be desirable to work around browser
+ * bugs, or to avoid using [id] attributes, which this version doesn't need.
+ *
+ * Layout:
+ *
+ *   <sf-tabset>
+ *     ...
+ *     <label>...</label>
+ *     <sf-tab>...</sf-tab>
+ *     ...
+ *     <label class="active">...</label>
+ *     <sf-tab>...</sf-tab>
+ *     ...
+ *   </sf-tabset>
+ *
+ * # :target version
+ *
+ * This version uses <a id="..." href="#..."> tags instead of labels, and relies
+ * on the :target selector for active state. Each anchor must have a unique [id]
+ * and a [href] linking to that id.
+ *
+ * This messes around with the URL AND with the window scroll position. You
+ * should only use this if you want to actually link to tabs from other places.
+ *
+ * Layout:
+ *
+ *   <sf-tabset>
+ *     ...
+ *     <a id="..." href="#...">...</a>
+ *     <sf-tab>...</sf-tab>
+ *     ...
+ *   </sf-tabset>
+ *
+ * Each [id] must be unique and the [href] must match it.
+ */
+
+#{$sf-prefix}-tabset {
+
+  /**
+   * Inner layout.
+   */
+  display: flex;
+  // This allows us to fold the children, putting the body below all headers.
+  flex-wrap: wrap;
+
+  // Cosmetic.
+  @include sf-shadow-thin;
+
+  // Hide the radio inputs used for tab state.
+  > input[type=radio] {display: none}
+
+  /**
+   * Base tab styles.
+   */
+  > label, > a[href*='#'] {
+    /**
+     * Layout.
+     */
+    // Stretch across the available space.
+    flex: 1;
+    // Reorder the flow, moving the header behind all bodies.
+    order: -1;
+    height: $sf-tabset-head-height;
+
+    /**
+     * Inner layout.
+     */
+    @include sf-flex-host-center;
+
+    /**
+     * Cosmetic.
+     */
+    cursor: pointer;
+    @include sf-outline-weak;
+    // // Normalise the shadow widths.
+    // margin-bottom: 1px;
+    // &:not(:last-of-type) {margin-right: 1px}
+    // Whitespace.
+    padding: $sf-space;
+  }
+
+  /**
+   * Base body styles.
+   */
+  > #{$sf-prefix}-tab {
+    /**
+     * Layout.
+     */
+    // In combination with {flex-wrap: wrap} on the parent, this folds the line,
+    // putting the body below the headers.
+    width: 100%;
+    // Reorder the flow, moving the body after all headers.
+    order: 1;
+    // Make sure it doesn't collapse due to lack of content.
+    min-height: $sf-tabset-body-min-height;
+
+    // Hide tabs by default. This rule would work fine as-is, but we
+    // artificially raise its specificity above that of global layout classes
+    // (see layout.scss) to prevent the user from inadvertently breaking tab
+    // visibility by applying one of those classes, like .flex (which wouldn't
+    // work anyway, because its specificity is still lower than that of active
+    // tab display rules).
+    &:not(:root) {display: none}
+
+    /**
+     * Cosmetic.
+     */
+    @include sf-outline-weak;
+    // Whitespace.
+    padding: $sf-space;
+    @include sf-space-out-vertically;
+  }
+
+  /**
+   * Active tab highlighting.
+   */
+
+  // :checked version.
+  > input[type=radio]:checked + label {
+    @include sf-register-selected-state;
+  }
+  // Activated state for the .active version is defined implicitly.
+  // :target version.
+  > a[href*='#']:target {
+    @include sf-register-selected-state;
+  }
+
+  /**
+   * Active body styles.
+   */
+  // :checked version.
+  > input[type=radio]:checked + label,
+  // .active version.
+  > .active,
+  // :target version.
+  > a[href*='#']:target {
+    & + #{$sf-prefix}-tab {
+      display: block;
+      // Special exception for the .flex layout class to allow the user to use
+      // it for a tab's inner layout. This exception is necessary because this
+      // rule block's specificity needs to be higher than the specificity of the
+      // base tab rules with {display: none}, which, in turn, need to be higher
+      // than the specificity of the global layout classes.
+      &.flex {display: flex}
+    }
+  }
+}

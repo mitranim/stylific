@@ -1,0 +1,13 @@
+files:
+
+- name:  active-switch
+  title: active-switch
+
+- name:  footer
+  title: empty page (footer demo)
+
+- name:  grid-demo
+  title: grid demo
+
+- name:  navbar-demo
+  title: navbar demo

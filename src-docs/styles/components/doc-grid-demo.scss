@@ -1,0 +1,14 @@
+.doc-grid-demo {
+
+  > * {padding: $sf-space}
+
+  > *:nth-child(3n+1) {
+    background-color: rgba(map-get($sf-color-map-primary, default), 0.2);
+  }
+  > *:nth-child(3n+2) {
+    background-color: rgba(map-get($sf-color-map-accent, default), 0.2);
+  }
+  > *:nth-child(3n+3) {
+    background-color: rgba(map-get($sf-color-map-warn, default), 0.2);
+  }
+}

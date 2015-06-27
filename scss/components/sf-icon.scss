@@ -1,0 +1,95 @@
+/**
+ * sf-icon is a container for icons with background images, such as data-encoded
+ * SVG. To use it, add a background-image property through CSS, an inline style
+ * attribute, or an inner `<svg>` tag.
+ *
+ * Example usage.
+ *
+ * In your stylesheet:
+ *
+ *   sf-icon.skype {
+ *     background-image: url(path-to-skype-icon.svg);
+ *   }
+ *
+ * In your HTML:
+ *
+ *   <sf-icon class="skype"></sf-icon>
+ *
+ * sf-icon is sized as 1em by default, which means it'll be the same size as
+ * surrounding text. To scale it separately, use a bigger font-size:
+ *
+ *   <sf-icon style="font-size: 1.2em"></sf-icon>
+ */
+
+#{$sf-prefix}-icon  {
+
+  /**
+   * Layout.
+   */
+  display: inline-block;
+  // Expect a square icon. Size in 1em to scale with the surrounding font.
+  width: 1em;
+  height: 1em;
+
+  /**
+   * Background styling.
+   */
+  // Stretch the icon to fill the available space.
+  background-size: contain;
+  // Center the icon both horizontally and vertically.
+  background-position: 50% 50%;
+  // Make sure it doesn't repeat.
+  background-repeat: no-repeat;
+
+  // Inline version for use in text.
+  &.inline {
+    vertical-align: middle;
+    position: relative;
+    top: -0.08em;
+    &:not(:first-child) {
+      margin-left: $sf-space / 5;
+    }
+    &:not(:last-child) {
+      margin-right: $sf-space / 5;
+    }
+  }
+
+  // Nested SVG.
+  > svg {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+  }
+
+  /**
+   * Version that loses its hue and lightens or darkens until hovered or
+   * otherwise activated.
+   */
+  &.dark {
+    &:not(:hover):not(:focus):not(:active):not(.active) {
+      filter: unquote('grayscale(1) brightness(0.2)');
+    }
+  }
+
+  /**
+   * Version that loses its hue and lightens until hovered or otherwise
+   * activated.
+   */
+  &.light {
+    &:not(:hover):not(:focus):not(:active):not(.active) {
+      filter: unquote('grayscale(1) brightness(2)');
+    }
+  }
+
+  /**
+   * Version that pops on activation.
+   */
+  &.pop {
+    &:hover, &:focus, &:active, &.active {
+      transform: scale(1.5);
+    }
+  }
+
+  // Animate all transitions.
+  @include sf-transitions(all);
+}

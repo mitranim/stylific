@@ -1,0 +1,74 @@
+/********************************** Styles ***********************************/
+
+/**
+ * Global default styling that doesn't fall into other categories.
+ */
+
+// Make the contenteditable focus styling more consistent across browsers.
+[contenteditable]:focus {
+  @include sf-outline-weak;
+}
+
+[tabindex='-1']:focus {
+  outline: none;
+}
+
+/**
+ * Default styling for monospace tags.
+ */
+tt, code, kbd, pre, samp {
+  border-radius: $sf-border-radius / 2;
+}
+pre {
+  white-space: pre-wrap;
+}
+
+// Normalise link styles, overriding user agent defaults.
+a, a:hover {
+  text-decoration: none;
+}
+
+// Globally limit image width.
+img {
+  max-width: 100%;
+}
+
+// Normalise <ul> and <ol> bullet position.
+ul, ol {
+  list-style-position: inside;
+}
+
+// Shift nested lists further to the right.
+ul, ol {
+  ul, ol {
+    margin-left: $sf-space;
+  }
+}
+
+/********************************** Globals **********************************/
+
+// IE 10 fix.
+[hidden] {display: none}
+
+/**
+ * Whitespace.
+ */
+.pad {padding: $sf-space}
+.pad-v {
+  padding-top: $sf-space;
+  padding-bottom: $sf-space;
+}
+.space-out {
+  @include sf-space-out-vertically;
+}
+.space-out-horizontal {
+  @include sf-space-out-horizontally;
+}
+
+/**
+ * Typography.
+ */
+.text-center  {text-align: center}
+.text-justify {text-align: justify}
+.text-left    {text-align: left}
+.text-right   {text-align: right}

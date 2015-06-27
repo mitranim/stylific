@@ -1,0 +1,126 @@
+/********************************** General **********************************/
+
+// Prefix to use for tag, class and attribute names.
+$sf-prefix: 'sf' !default;
+
+/**
+ * Credit:
+ * https://github.com/angular/material/blob/v0.10.0/src/core/style/variables.scss
+ */
+$sf-layout-breakpoint-sm: 600px !default;
+$sf-layout-breakpoint-md: 960px !default;
+$sf-layout-breakpoint-lg: 1200px !default;
+
+// Standard border radius.
+$sf-border-radius: 0.2rem !default;
+
+// Z-indices used for absolutely positioned elements. Grouped for easier
+// bookkeeping.
+$sf-z-index-navbar:   1000 !default;
+$sf-z-index-dropdown: 1100 !default;
+$sf-z-index-modal:    1200 !default;
+$sf-z-index-tooltip:  1300 !default;
+
+/******************************** colors.scss ********************************/
+
+/**
+ * Theme colours.
+ */
+
+$sf-color-map-primary: (
+  name: 'primary',
+  default: #4646a0,
+  active: lighten(#4646a0, 8%),
+  selected: lighten(#4646a0, 14%)
+) !default;
+
+$sf-color-map-accent: (
+  name: 'accent',
+  default: rgb(219, 239, 47),
+  active: darken(rgb(219, 239, 47), 5%),
+  selected: darken(rgb(219, 239, 47), 10%)
+) !default;
+
+$sf-color-map-warn: (
+  name: 'warn',
+  default: #d82727,
+  active: darken(#d82727, 5%),
+  selected: #b32c2c
+) !default;
+
+$sf-color-maps: $sf-color-map-primary, $sf-color-map-accent, $sf-color-map-warn !default;
+
+/**
+ * Static colours.
+ */
+$sf-color-text: lighten(black, 2%) !default;
+$sf-color-background: darken(white, 2%) !default;
+$sf-color-umbra: lighten(black, 20%) !default;
+
+/******************************** layout.scss ********************************/
+
+// Maximum website width. This is used exclusively for max-width, and may be set
+// to none to let the website stretch across any display.
+$sf-body-max-width: $sf-layout-breakpoint-md !default;
+
+/******************************** mixins.scss ********************************/
+
+$sf-transition-duration: 0.2s !default;
+$sf-transition-timing-function: ease !default;
+
+/****************************** typography.scss ******************************/
+
+// Font families.
+$sf-font-family-sans-serif: Helvetica Neue, Verdana, sans-serif !default;
+$sf-font-family-serif:      Optima, Georgia, serif !default;
+$sf-font-family-monospace:  Menlo, Andale Mono, Monaco, Consolas, monospace !default;
+
+/**
+ * rem sizing for the <html> element. The common baseline is 12pt = 16px =
+ * 1em. We need to declare rem in pixels or points in order to have consistent
+ * font scaling between various native elements.
+ */
+$sf-rem: 12pt !default;
+
+// Font sizes.
+$sf-font-size: 1em !default;
+
+// Common whitespace size. Must be a non-em unit.
+$sf-space: 1rem !default;
+
+/****************************** sf-navbar.scss *******************************/
+
+// Default navbar and footer height. This must be in non-em units, so we can
+// properly offset the body when the navbar is fixed.
+$sf-navbar-height: 3.5rem !default;
+
+// At which child to wrap the auto-collapsing navbar.
+$sf-navbar-nth-child: 4 !default;
+
+/****************************** sf-footer.scss *******************************/
+
+// Minimum footer height. By default, it matches the navbar.
+$sf-footer-height: $sf-navbar-height !default;
+
+// Offset from the preceding content.
+$sf-footer-offset: 4 * $sf-space !default;
+
+/******************************* sf-jumbo.scss *******************************/
+
+$sf-jumbo-height: 16em !default;
+$sf-jumbo-font-size: 1.6 * $sf-font-size !default;
+
+/****************************** sf-tabset.scss *******************************/
+
+$sf-tabset-head-height: 3em !default;
+$sf-tabset-body-min-height: 3em !default;
+
+/****************************** sf-tooltip.scss ******************************/
+
+// The proportion of the standard dimensions to use in tooltips. Affects things
+// like font-size, padding, border-radius. Must be a unitless fractional number.
+$sf-tooltip-proportion: 0.8 !default;
+
+// By how much to offset the tooltip from the host. Measured relative to the
+// parent; em or rem is recommended.
+$sf-tooltip-offset: 0.5em !default;

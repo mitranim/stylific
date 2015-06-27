@@ -1,0 +1,36 @@
+/**
+ * Grid placeholder.
+ *
+ *   <sf-grid>
+ *     ...
+ *   </sf-grid>
+ */
+
+/**
+ * ToDo.
+ *
+ * Review if we need a better system. Pilfer ideas from angular-material's grid.
+ */
+
+#{$sf-prefix}-grid {
+
+  /**
+   * Inner layout.
+   */
+  display: flex;
+  flex-wrap: wrap;
+
+  /**
+   * Immediate children.
+   */
+  > * {
+    // Prevent children from unexpectedly stretching or shrinking.
+    flex-grow: 0;
+    flex-shrink: 0;
+
+    // Wrap at a different number of items on different display sizes.
+    @include sf-sm {flex-basis: 50%}
+    @include sf-md {flex-basis: 25%}
+    @include sf-gt-md {flex-basis: 25%}
+  }
+}

@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 /**
  * Requires gulp 4.0:
@@ -7,35 +7,56 @@
 
 /******************************* Dependencies ********************************/
 
-var $      = require('gulp-load-plugins')()
-var bsync  = require('browser-sync')
-var gulp   = require('gulp')
-var hjs    = require('highlight.js')
-var marked = require('gulp-marked/node_modules/marked')
+var $      = require('gulp-load-plugins')();
+var bsync  = require('browser-sync').create();
+var gulp   = require('gulp');
+var hjs    = require('highlight.js');
+var marked = require('gulp-marked/node_modules/marked');
+var flags  = require('yargs').argv;
+var pt     = require('path');
 
 /********************************** Globals **********************************/
 
-// Base source directory.
-var srcBase = './docs-src/'
-
-// Source paths with masks per type
 var src = {
-  // lessCore:  srcBase + 'styles/docs.less',
-  less:      srcBase + 'styles/**/*.less',
-  img:       srcBase + 'img/**/*',
-  templates: srcBase + 'templates/',
-}
+  lib:        'scss/**/*.scss',
+  libCore:    'scss/stylific.scss',
+  stylesCore: 'src-docs/styles/docs.scss',
+  styles:     'src-docs/styles/**/*.scss',
+  html: [
+    'src-docs/html/**/*',
+    'bower_components/font-awesome-svg-png/black/svg/**/*'
+  ],
+  images:     'src-docs/images/**/*'
+};
 
-// Base destination directory. Expected to be symlinked as another branch's
-// directory.
-var destBase = './stylific-gh-pages/'
+var destBase = 'stylific-gh-pages';
 
-// Destination paths per type
 var dest = {
-  css:   destBase + 'css/',
-  img:   destBase + 'img/',
-  html:  destBase
+  lib:    'lib',
+  styles: destBase + '/styles',
+  images: destBase + '/images',
+  html:   destBase
+};
+
+function prod() {
+  return flags.prod === true || flags.prod === 'true';
 }
+
+function reload(done) {
+  bsync.reload();
+  done();
+}
+
+/***************************** Template Imports ******************************/
+
+/**
+ * Utility methods for templates.
+ */
+var imports = {
+  lastId: 0,
+  uniqId: function() {return 'uniq-id-' + ++imports.lastId},
+  lastUniqId: function() {return 'uniq-id-' + imports.lastId}
+};
 
 /********************************** Config ***********************************/
 
@@ -43,26 +64,26 @@ var dest = {
  * Change how marked compiles headers to add links to our source files.
  */
 
-var regComponent = /^sf-[a-z-]+$/
-var repoComponentDir = 'https://github.com/Mitranim/stylific/blob/master/less/components/'
+var regComponent = /^sf-[a-z-]+$/;
+var repoComponentDir = 'https://github.com/Mitranim/stylific/blob/master/scss/components/';
 
 // Default heading renderer func.
-var headingDef = marked.Renderer.prototype.heading
+var headingDef = marked.Renderer.prototype.heading;
 
 // Custom heading renderer func that adds a link to the component source.
 marked.Renderer.prototype.heading = function(text, level) {
   if (regComponent.test(text)) {
-    return '<h' + level + ' id="' + text + '"><a href="' + repoComponentDir + text + '.less" target="_blank">' + text + '</a></h' + level + '>'
+    return '<h' + level + ' id="' + text + '"><a href="' + repoComponentDir + text + '.scss" target="_blank">' + text + '</a></h' + level + '>';
   }
-  return headingDef.apply(this, arguments)
-}
+  return headingDef.apply(this, arguments);
+};
 
 /**
  * Change how marked compiles links to add target="_blank" to links to other sites.
  */
 
 // Default link renderer func.
-var linkDef = marked.Renderer.prototype.link
+var linkDef = marked.Renderer.prototype.link;
 
 // Custom link renderer func that adds target="_blank" to links to other sites.
 // Mostly copied from the marked source.
@@ -71,71 +92,156 @@ marked.Renderer.prototype.link = function(href, title, text) {
     try {
       var prot = decodeURIComponent(unescape(href))
         .replace(/[^\w:]/g, '')
-        .toLowerCase()
+        .toLowerCase();
     } catch (e) {
-      return ''
+      return '';
     }
     if (prot.indexOf('javascript:') === 0 || prot.indexOf('vbscript:') === 0) {
-      return ''
+      return '';
     }
   }
-  var out = '<a href="' + href + '"'
+  var out = '<a href="' + href + '"';
   if (title) {
-    out += ' title="' + title + '"'
+    out += ' title="' + title + '"';
   }
   if (/^[a-z]+:\/\//.test(href)) {
-    out += ' target="_blank"'
+    out += ' target="_blank"';
   }
-  out += '>' + text + '</a>'
-  return out
-}
+  out += '>' + text + '</a>';
+  return out;
+};
 
 /*********************************** Tasks ***********************************/
 
-/*------------------------------- Dist Build --------------------------------*/
+/*----------------------------------- Lib -----------------------------------*/
 
-gulp.task('dist:build', function() {
-  return gulp.src('less/stylific.less')
-    .pipe($.less())
+gulp.task('lib:clear', function() {
+  return gulp.src(dest.lib, {read: false, allowEmpty: true})
+    .pipe($.plumber())
+    .pipe($.rimraf());
+});
+
+gulp.task('lib:compile', function() {
+  return gulp.src(src.libCore)
+    .pipe($.plumber())
+    .pipe($.sass())
     .pipe($.autoprefixer())
-    .pipe(gulp.dest('css'))
-})
+    .pipe($.if(prod(), $.minifyCss({
+      keepSpecialComments: 0,
+      aggressiveMerging: false,
+      advanced: false
+    })))
+    .pipe(gulp.dest(dest.lib));
+});
+
+gulp.task('lib:build', gulp.series('lib:clear', 'lib:compile'));
+
+gulp.task('lib:watch', function() {
+  $.watch(src.lib, gulp.series('lib:build'));
+});
+
+/*---------------------------------- HTML -----------------------------------*/
+
+gulp.task('docs:html:clear', function() {
+  return gulp.src(dest.html + '/**/*.html', {read: false, allowEmpty: true})
+    .pipe($.plumber())
+    .pipe($.rimraf());
+});
+
+gulp.task('docs:html:compile', function() {
+  var filterMd = $.filter('**/*.md')
+
+  return gulp.src(src.html)
+    .pipe($.plumber())
+    // Pre-process the markdown files.
+    .pipe(filterMd)
+    .pipe($.marked({
+      gfm:         true,
+      tables:      true,
+      breaks:      false,
+      sanitize:    false,
+      smartypants: false,
+      pedantic:    false,
+      // Code highlighter.
+      highlight: function(code, lang) {
+        var result = lang ? hjs.highlight(lang, code) : hjs.highlightAuto(code);
+        return result.value;
+      }
+    }))
+    // Add the hljs code class.
+    .pipe($.replace(/<pre><code class="(.*)">|<pre><code>/g,
+                    '<pre><code class="hljs $1">'))
+    // Return the other files.
+    .pipe(filterMd.restore())
+    // Unpack commented HTML parts.
+    .pipe($.replace(/<!--\s*:((?:[^:]|:(?!\s*-->))*):\s*-->/g, '$1'))
+    // Render all html.
+    .pipe($.statil({
+      stripPrefix: {
+        'src-docs/html': 'src-docs/html',
+        'bower_components/font-awesome-svg-png/black/svg': 'bower_components/font-awesome-svg-png/black'
+      },
+      imports: imports
+    }))
+    // Change each `<filename>` into `<filename>/index.html`.
+    .pipe($.rename(function(path) {
+      switch (path.basename + path.extname) {
+        case 'index.html': case '404.html': return;
+      }
+      path.dirname = pt.join(path.dirname, path.basename);
+      path.basename = 'index';
+    }))
+    // Write to disk.
+    .pipe(gulp.dest(dest.html));
+});
+
+gulp.task('docs:html:build', gulp.series('docs:html:clear', 'docs:html:compile'));
+
+gulp.task('docs:html:watch', function() {
+  $.watch(src.html, gulp.series('docs:html:build', reload));
+});
 
 /*--------------------------------- Styles ----------------------------------*/
 
-gulp.task('styles:clear', function() {
-  return gulp.src(dest.css, {read: false, allowEmpty: true}).pipe($.rimraf())
-})
-
-gulp.task('styles:less', function() {
-  return gulp.src(src.less)
+gulp.task('docs:styles:clear', function() {
+  return gulp.src(dest.styles, {read: false, allowEmpty: true})
     .pipe($.plumber())
-    .pipe($.cached('styles'))
-    .pipe($.less())
+    .pipe($.rimraf());
+});
+
+gulp.task('docs:styles:compile', function() {
+  return gulp.src(src.stylesCore)
+    .pipe($.plumber())
+    .pipe($.sass())
     .pipe($.autoprefixer())
-    .pipe($.minifyCss({
+    .pipe($.base64({
+      baseDir: '.',
+      extensions: ['svg']
+    }))
+    .pipe($.if(prod(), $.minifyCss({
       keepSpecialComments: 0,
       aggressiveMerging: false,
-      advanced: false,
-    }))
-    .pipe($.remember('styles'))
-    .pipe($.concat('docs.css'))
-    .pipe(gulp.dest(dest.css))
-    .pipe(bsync.reload({stream: true}))
-})
+      advanced: false
+    })))
+    .pipe(gulp.dest(dest.styles))
+    .pipe(bsync.reload({stream: true}));
+});
 
-gulp.task('styles', gulp.series('styles:clear', 'styles:less'))
+gulp.task('docs:styles:build', gulp.series('docs:styles:clear', 'docs:styles:compile'));
+
+gulp.task('docs:styles:watch', function() {
+  $.watch(src.styles, gulp.series('docs:styles:build'));
+});
 
 /*--------------------------------- Images ----------------------------------*/
 
-// Clear images
-gulp.task('images:clear', function() {
-  return gulp.src(dest.img, {read: false, allowEmpty: true}).pipe($.rimraf())
-})
+gulp.task('docs:images:clear', function() {
+  return gulp.src(dest.images, {read: false, allowEmpty: true}).pipe($.rimraf());
+});
 
 // Resize and copy images
 gulp.task('images:normal', function() {
-  return gulp.src(src.img)
+  return gulp.src(src.images)
     /**
     * Experience so far.
     * {quality: 1} -> reduces size by ≈66% with no resolution change and no visible quality change
@@ -146,23 +252,23 @@ gulp.task('images:normal', function() {
       width: 1920,    // max width
       upscale: false
     }))
-    .pipe(gulp.dest(dest.img))
-})
+    .pipe(gulp.dest(dest.images));
+});
 
 // Minify and copy images.
 gulp.task('images:small', function() {
-  return gulp.src(src.img)
+  return gulp.src(src.images)
     .pipe($.imageResize({
       quality: 1,
       width: 640,    // max width
       upscale: false
     }))
-    .pipe(gulp.dest(dest.img + 'small'))
-})
+    .pipe(gulp.dest(dest.images + '/small'));
+});
 
 // Crop images to small squares
 gulp.task('images:square', function() {
-  return gulp.src(src.img)
+  return gulp.src(src.images)
     .pipe($.imageResize({
       quality: 1,
       gravity: 'Center',  // crop relative to center
@@ -171,112 +277,46 @@ gulp.task('images:square', function() {
       height: 640,
       upscale: false
     }))
-    .pipe(gulp.dest(dest.img + 'square'))
-})
+    .pipe(gulp.dest(dest.images + '/square'));
+});
 
-// All image tasks.
-gulp.task('images',
-  gulp.series(
-    'images:clear',
-    gulp.parallel('images:normal', 'images:small', 'images:square')))
+gulp.task('docs:images:build',
+  gulp.series('docs:images:clear',
+              gulp.parallel('images:normal', 'images:small', 'images:square')));
 
-/*-------------------------------- Templates --------------------------------*/
-
-// Clear templates
-gulp.task('templates:clear', function() {
-  return gulp.src(dest.html + '**/*.html', {read: false, allowEmpty: true}).pipe($.rimraf())
-})
-
-// Compile templates
-gulp.task('templates:compile', function() {
-  var filterMd = $.filter('**/*.md')
-
-  return gulp.src(src.templates + '**/*')
-    .pipe($.plumber())
-    // Pre-process markdown files.
-    .pipe(filterMd)
-    .pipe($.marked({
-      gfm:         true,
-      tables:      true,
-      breaks:      false,
-      sanitize:    false,
-      smartypants: true,
-      pedantic:    false,
-      // Code highlighter.
-      highlight: function(code, lang) {
-        if (lang) return hjs.highlight(lang, code).value
-        return hjs.highlightAuto(code).value
-      }
-    }))
-    // Return other files.
-    .pipe(filterMd.restore())
-    // Render all templates.
-    .pipe($.statil({
-      relativeDir: src.templates
-    }))
-    // Write to disk.
-    .pipe(gulp.dest(dest.html))
-    // Reload browser.
-    .pipe(bsync.reload({stream: true}))
-})
-
-// All template tasks
-gulp.task('templates', gulp.series('templates:clear', 'templates:compile'))
+gulp.task('docs:images:watch', function() {
+  $.watch(src.images, gulp.series('docs:images:build', reload));
+});
 
 /*--------------------------------- Server ----------------------------------*/
 
-gulp.task('bsync', function() {
-  return bsync({
+gulp.task('server', function() {
+  return bsync.init({
     startPath: '/stylific/',
     server: {
-      baseDir: destBase,
+      baseDir: dest.html,
       middleware: function(req, res, next) {
-        req.url = req.url.replace(/^\/stylific/, '/')
-        next()
+        req.url = req.url.replace(/^\/stylific/, '/');
+        next();
       }
     },
     port: 13933,
     online: false,
-    // Don't enable the UI.
     ui: false,
-    // Don't watch files (default false, just making sure)
     files: false,
-    // Don't sync anything across devices.
     ghostMode: false,
-    // Don't show the notification.
-    // notify: false
-  })
-})
+    notify: true
+  });
+});
 
-/*--------------------------------- Config ----------------------------------*/
+/*--------------------------------- Default ---------------------------------*/
 
-// Watch
-gulp.task('watch', function() {
-  // Watch the documentation's .less files.
-  $.watch(src.less, gulp.series('styles'))
-  // Watch the library's .less files.
-  $.watch('./less/**/*.less', gulp.series('styles'))
-  // Watch the templates.
-  $.watch(src.templates + '**/*', gulp.series('templates'))
+gulp.task('build', gulp.parallel(
+  'lib:build', 'docs:html:build', 'docs:styles:build', 'docs:images:build'
+));
 
-  // On file change, delete from caches.
-  var watchStyles = gulp.watch(src.less)
-  watchStyles.on('change', function(event) {
-    // If a file is deleted, forget about it.
-    if (event.type === 'deleted') {
-      if ($.cached.caches.styles) {
-        delete $.cached.caches.styles[event.path]
-      }
-      $.remember.forget('styles', event.path)
-    }
-  })
-})
+gulp.task('watch', gulp.parallel(
+  'lib:watch', 'docs:html:watch', 'docs:styles:watch'
+));
 
-// Build
-gulp.task('build', gulp.parallel('styles', 'templates', 'dist:build'))
-
-// Default
-gulp.task('default', gulp.series('build', 'watch'))
-
-// Serve files
-gulp.task('server', gulp.series('build', gulp.parallel('watch', 'bsync')))
+gulp.task('default', gulp.series('build', gulp.parallel('watch', 'server')));

@@ -1,0 +1,41 @@
+/**
+ * Produces a background-image rule with a data-encoded black svg with
+ * the given name for a class with the same name.
+ * @param   String
+ * @returns .<classname> {background-color}
+ */
+@mixin svg-black($name) {
+  &.#{$name} {@include bg-svg-black($name);}
+}
+
+/**
+ * Produces a background-image rule with a data-encoded white svg with
+ * the given name for a class with the same name.
+ * @param   String
+ * @returns .<classname>-white {background-color}
+ */
+@mixin svg-white($name) {
+  &.#{$name}-white {@include bg-svg-white($name);}
+}
+
+/**
+ * Produces a background-image rule with a data-encoded black svg with the
+ * given name.
+ * @param   String
+ * @returns {background-color}
+ */
+@mixin bg-svg-black($name) {
+  $path: '#{$svg-black}#{$name}.svg';
+  background-image: url($path);
+}
+
+/**
+ * Produces a background-image rule with a data-encoded white svg with the
+ * given name.
+ * @param   String
+ * @returns {background-color}
+ */
+@mixin bg-svg-white($name) {
+  $path: '#{$svg-white}#{$name}.svg';
+  background-image: url($path);
+}

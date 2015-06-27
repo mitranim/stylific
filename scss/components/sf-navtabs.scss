@@ -1,0 +1,22 @@
+/**
+ * Navigation tabs for use anywhere on the website. Usage is identical to the
+ * navbar; see the `sf-navbar.scss` docs.
+ *
+ *   <sf-navtabs>
+ *     <a href=...>...</a>
+ *     ...
+ *   </sf-navtabs>
+ */
+#{$sf-prefix}-navtabs {
+
+  // Subclass navbar.
+  @extend #{$sf-prefix}-navbar;
+
+  // Don't use a z-index by default. This has no effect with the default
+  // configuration, but becomes useful if the user globally applies a z-index to
+  // the navbar.
+  &:not(.navbar-fixed) {z-index: auto}
+
+  // Use a weaker shadow.
+  @include sf-shadow-thin;
+}

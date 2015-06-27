@@ -3,13 +3,12 @@
   "authors": [
     "Mitranim <me@mitranim.com>"
   ],
-  "description": "Component-oriented, flexbox-based CSS framework, written in LESS.",
-  "main": "less/stylific.less",
+  "description": "Component-oriented, flexbox-based CSS framework, written in Sass.",
+  "main": "scss/stylific.scss",
   "keywords": [
     "css",
     "style",
-    "framework",
-    "less",
+    "scss",
     "flexbox"
   ],
   "license": "MIT",
@@ -21,11 +20,8 @@
     "**/.*",
     "node_modules",
     "bower_components",
-    "test",
-    "tests",
-    "docs-src",
-    "gulpfile.js",
-    "roadmap.md"
+    "src-docs",
+    "gulpfile.js"
   ],
   "devDependencies": {
     "font-awesome-svg-png": "~1.1.2"

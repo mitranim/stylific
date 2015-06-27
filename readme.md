@@ -18,44 +18,32 @@ The component-based approach makes the library easy to customise and extend. To
 use a modified version of a built-in component, just reuse its styles as a mixin
 and add additional rules.
 
-This is written with [LESS](http://lesscss.org). If enough people get invested,
-it will be trivial to port to [SASS](http://sass-lang.com) and maintain both
-versions.
+This is written with [Sass](http://sass-lang.com). Sass is required to take
+full advantage of the library by using variables, extends, and other features.
 
 ## Installation
 
 In a shell:
 
 ```shell
+npm i --save-dev stylific
+# or
 bower i --save stylific
 # or
-npm i --save-dev stylific
+jspm install stylific
 ```
 
-In your LESS source (adjust the relative path to match yours):
+In your Sass source (adjust the relative path to match yours):
 
-```less
-// Include styles, variables, and mixins.
-@import (less) './bower_components/stylific/less/stylific';
-// OR
-// Import variables and mixins but don't output default CSS.
-@import (reference) './bower_components/stylific/less/stylific';
+```scss
+@import './node_modules/stylific/scss/stylific';
 ```
 
-After importing, you can adjust variables exposed by the package, such as the
-tagname prefix, colours, whitespace, media breakpoints, animations, fonts, and
-whether to expose global class/attribute names. See
-[`less/variables.less`](less/variables.less) for the full option reference.
+Before importing, you can adjust variables exposed by the package, such as the
+tagname prefix, colours, media breakpoints, fonts, and other. See
+[`scss/_variables.scss`](scss/_variables.scss) for the full option reference.
 
-```less
-// Components will have names like `app-modal` instead of `sf-modal`.
-@sf-prefix: ~'app';
-
-// Disable default helper classes.
-@sf-enable-global-classes: false;
-```
-
-**Caution**: neither LESS nor stylific account for vendor prefixes. You
+**Caution**: neither Sass nor stylific account for missing vendor prefixes. You
 must compensate by combining it with
 [`autoprefixer`](https://github.com/postcss/autoprefixer) in your build system.
 

@@ -1,0 +1,16 @@
+sf-icon {
+  /**
+   * Register SVG icons.
+   */
+  @include svg-black(arrow-up);
+
+  /**
+   * Icon colours.
+   */
+  &.github svg {
+    fill: #4183c4;
+  }
+  &.github-light svg {
+    fill: #fcfcfc;
+  }
+}

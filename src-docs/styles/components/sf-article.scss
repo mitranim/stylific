@@ -1,0 +1,34 @@
+sf-article, .sf-article {
+
+  // Avoid the floating doc-toc.
+  pre {
+    display: flex;
+  }
+
+  // Indicate _blank links.
+  a[target~=_blank]::after {
+    content: '';
+    /**
+     * Layout.
+     */
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 0.8em;
+    min-height: 1em;
+    min-width: 1em;
+
+    /**
+     * Background icon: image and styling.
+     */
+    @include bg-svg-black(external-link);
+    background-position: 100% 50%;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    /**
+     * Cosmetic.
+     */
+    margin-left: 0.3em;
+    opacity: 0.5;
+  }
+}

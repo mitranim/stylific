@@ -1,0 +1,41 @@
+/**
+ * <button>...</button>
+ * <input type="button">
+ * <sf-button>...</sf-button>
+ * <div class="sf-button">...</div>
+ */
+
+// Tag-based.
+#{$sf-prefix}-button,
+// Class-based.
+.#{$sf-prefix}-button,
+// Native inputs.
+button, input[type=button] {
+
+  /**
+   * Layout.
+   */
+  display: inline-block;
+  padding: $sf-space / 2;
+
+  // Normalise font size (browser defaults may be unpredictable).
+  font-size: inherit;
+
+  // Use the base background colour by default.
+  background-color: inherit;
+
+  // Border styles.
+  border: none;
+  border-radius: $sf-border-radius;
+  outline: none;
+  &:focus {outline: none}
+
+  box-shadow: 0 0.1rem 0.3rem -1px rgba(5, 5, 5, 0.5);
+  &:active {
+    @include sf-shadow-thin;
+  }
+  &.sf-flat, &[disabled] {box-shadow: none}
+
+  // Animate style changes.
+  @include sf-transitions(all);
+}
