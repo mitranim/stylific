@@ -1,12 +1,12 @@
 <!-- TOC -->
-<div><doc-toc theme="text-accent">
+<div class="doc-toc" theme="text-accent">
   <input checked id="<%= uniqId() %>" type="checkbox">
   <label for="<%= lastUniqId() %>" theme="accent"></label>
   [Overview](themes/#overview)
   [Text Themes](themes/#text-themes)
   [Full Themes](themes/#full-themes)
   [Custom Configuration](themes/#custom-configuration)
-</doc-toc></div>
+</div>
 
 # Overview
 

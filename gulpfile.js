@@ -231,6 +231,7 @@ gulp.task('docs:styles:build', gulp.series('docs:styles:clear', 'docs:styles:com
 
 gulp.task('docs:styles:watch', function() {
   $.watch(src.styles, gulp.series('docs:styles:build'));
+  $.watch(src.lib, gulp.series('docs:styles:build'));
 });
 
 /*--------------------------------- Images ----------------------------------*/

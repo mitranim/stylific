@@ -1,5 +1,5 @@
 <!-- TOC -->
-<div><doc-toc theme="text-accent">
+<div class="doc-toc" theme="text-accent">
   <input checked id="<%= uniqId() %>" type="checkbox">
   <label for="<%= lastUniqId() %>" theme="accent"></label>
   [Overview](components/#overview)
@@ -16,7 +16,7 @@
   [sf-input](components/#sf-input)
   [sf-button](components/#sf-button)
   [sf-jumbo](components/#sf-jumbo)
-</doc-toc></div>
+</div>
 
 # Overview
 
@@ -55,7 +55,7 @@ This whole page is an example, but here's a smaller one.
 
 # sf-collapse
 
-`sf-collapse` can be toggled to show or hide its contents. The `<doc-toc>`
+`sf-collapse` can be toggled to show or hide its contents. The `.doc-toc`
 element at the top of this page is an
 [example](https://github.com/Mitranim/stylific/blob/master/src-docs/styles/components/doc-toc.scss)
 of subclassing `sf-collapse` to produce a custom collapsing element.

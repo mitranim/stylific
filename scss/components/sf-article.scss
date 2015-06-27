@@ -40,7 +40,7 @@
 
   // Whitespace.
   padding: $sf-space;
-  @include sf-space-out-vertically($sf-space * 2);
+  @include sf-space-out-vertically;
 
   // Link decorations. We're trying to target links in text without affecting
   // other elements.

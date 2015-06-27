@@ -1,5 +1,5 @@
 <!-- TOC -->
-<div><doc-toc theme="text-accent">
+<div class="doc-toc" theme="text-accent">
   <input checked id="<%= uniqId() %>" type="checkbox">
   <label for="<%= lastUniqId() %>" theme="accent"></label>
   [Overview](#overview)
@@ -7,7 +7,7 @@
   [What's Different](#what-s-different)
   [Installation and Usage](#installation-and-usage)
   [Contributing](#contributing)
-</doc-toc></div>
+</div>
 
 # Overview
 

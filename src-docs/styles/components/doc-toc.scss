@@ -1,4 +1,4 @@
-doc-toc {
+doc-toc, .doc-toc {
 
   // Subclass sf-collapse.
   @extend sf-collapse;
@@ -9,6 +9,9 @@ doc-toc {
   width: 10em;
   float: right;
   margin-left: $sf-space;
+
+  // Don't offset the next element.
+  margin-bottom: 0;
 
   // Default labeling.
   > label:empty {

@@ -1,10 +1,10 @@
 <!-- TOC -->
-<div><doc-toc theme="text-accent">
+<div class="doc-toc" theme="text-accent">
   <input checked id="<%= uniqId() %>" type="checkbox">
   <label for="<%= lastUniqId() %>" theme="accent"></label>
   [Variables](configuration/#variables)
   [Subclassing](configuration/#subclassing)
-</doc-toc></div>
+</div>
 
 # Variables
 
@@ -70,7 +70,7 @@ from this documentation's source, suppose you want to subclass
 source, define a tag that inherits all of sf-collapse styling:
 
 ```scss
-doc-toc {
+doc-toc, .doc-toc {
   @extend sf-collapse;
 }
 ```
@@ -78,7 +78,7 @@ doc-toc {
 Then add custom styling to enhance or override sf-collapse defaults:
 
 ```scss
-doc-toc {
+doc-toc, .doc-toc {
 
   // Subclass sf-collapse.
   @extend sf-collapse;
@@ -89,6 +89,9 @@ doc-toc {
   width: 10em;
   float: right;
   margin-left: $sf-space;
+
+  // Don't offset the next element.
+  margin-bottom: 0;
 
   // Default labeling.
   > label:empty {
@@ -104,11 +107,11 @@ doc-toc {
    * Cosmetic.
    */
   @include sf-outline-weak;
-  // Default padding for children.
   > * {
     padding: $sf-space / 2;
   }
 }
+
 ```
 
 That was easy! In just a few lines of code, we made an extended version of

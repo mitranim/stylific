@@ -29,12 +29,14 @@
   // Text theme.
   [theme=text-#{$name}] {
     color: sf-sensible-text-color($default);
+    svg {fill: $default}
   }
 
   // Full theme.
   [theme=#{$name}] {
     background-color: $default;
     color: sf-contrasting-color($default);
+    svg {fill: sf-contrasting-color($default)}
   }
 }
 
@@ -64,7 +66,7 @@ a {
 
 @each $color-map in $sf-color-maps {
   $name: map-get($color-map, name);
-  a[theme=text-#{$name}], a[theme=#{$name}], [theme=text-#{$name}] a, [theme=#{$name}] a {
+  [theme=text-#{$name}] a, [theme=#{$name}] a {
     color: inherit;
   }
 }

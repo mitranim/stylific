@@ -112,9 +112,9 @@
      */
     cursor: pointer;
     @include sf-outline-weak;
-    // // Normalise the shadow widths.
-    // margin-bottom: 1px;
-    // &:not(:last-of-type) {margin-right: 1px}
+    // Normalise the outline widths.
+    margin-bottom: 1px;
+    &:not(:last-of-type) {margin-right: 1px}
     // Whitespace.
     padding: $sf-space;
   }
