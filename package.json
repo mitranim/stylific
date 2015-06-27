@@ -41,7 +41,7 @@
     "gulp-replace": "^0.5.3",
     "gulp-rimraf": "^0.1.1",
     "gulp-sass": "^2.0.1",
-    "gulp-statil": "0.0.2",
+    "gulp-statil": "0.0.3",
     "gulp-watch": "^4.2.4",
     "highlight.js": "^8.6.0",
     "lodash": "^3.9.3",
