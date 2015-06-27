@@ -5,8 +5,8 @@
     "start": "gulp",
     "gulp": "gulp",
     "prepublish": "gulp lib:build --prod",
-    "push": "gulp build && gulp push origin $(git symbolic-ref --short HEAD)",
-    "push-docs": "gulp build && (cd stylific-gh-pages && git add -A . && git commit -a -m autocommit && git push origin gh-pages)"
+    "push": "gulp build --prod && git push origin $(git symbolic-ref --short HEAD)",
+    "push-docs": "gulp build --prod && (cd stylific-gh-pages && git add -A . && git commit -a -m autocommit && git push origin gh-pages)"
   },
   "authors": [
     "Mitranim <me@mitranim.com>"
