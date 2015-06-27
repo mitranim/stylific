@@ -182,7 +182,7 @@ the `<label>`. This automatically disables the `:hover` effect.
 The dropdown position may be changed to `top`, `right` or `left`:
 
 ```html
-<sf-dropdown sf-position="top" class="info-inverse">
+<sf-dropdown sf-position="top">
   <label class="pad">this dropdown goes upwards</label>
   <sf-dropdown-list>
     <span>I'm the first item</span>
@@ -193,7 +193,7 @@ The dropdown position may be changed to `top`, `right` or `left`:
 ```
 
 <div><doc-demo>
-  <sf-dropdown sf-position="top" class="info-inverse">
+  <sf-dropdown sf-position="top">
     <label class="pad">this dropdown goes upwards</label>
     <sf-dropdown-list>
       <span>I'm the first item</span>
@@ -321,11 +321,11 @@ you need is to link to that id.
 ```html
 <!-- Clicking this link summons the modal -->
 <a href="#demo-sf-modal">
-  <button class="orange">Click me to open the modal!</button>
+  <button>Click me to open a modal!</button>
 </a>
 
 <!-- The modal, hidden until targeted -->
-<sf-modal id="demo-sf-modal" class="info">
+<sf-modal id="demo-sf-modal" theme="text-primary">
 
   <!-- This hidden link closes the modal -->
   <a href="#_"></a>
@@ -342,10 +342,10 @@ you need is to link to that id.
 
 <div><doc-demo>
   <a href="components/#demo-sf-modal">
-    <button class="orange">Click me to open a modal!</button>
+    <button>Click me to open a modal!</button>
   </a>
 
-  <sf-modal id="demo-sf-modal" class="info">
+  <sf-modal id="demo-sf-modal" theme="text-primary">
     <a href="components/#_"></a>
     <sf-modal-body>
       <h1>Modal header</h1>
