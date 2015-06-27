@@ -53,12 +53,12 @@
     <!-- Site content -->
     <sf-article>
       <!-- TOC -->
-<div><doc-toc theme="text-accent">
+<div class="doc-toc" theme="text-accent">
   <input checked id="uniq-id-11" type="checkbox">
   <label for="uniq-id-11" theme="accent"></label>
   <a href="configuration/#variables">Variables</a>
   <a href="configuration/#subclassing">Subclassing</a>
-</doc-toc></div>
+</div>
 
 <h1 id="variables">Variables</h1>
 <p>The library is configurable: many styles are tied to preprocessor variables. See
@@ -100,12 +100,12 @@ size declarations, this particular metric should be in fixed units like <code>pt
 from this documentation&#39;s source, suppose you want to subclass
 <a href="components/#sf-collapse"><code>sf-collapse</code></a> to make a TOC element. In your Sass
 source, define a tag that inherits all of sf-collapse styling:</p>
-<pre><code class="hljs lang-scss">doc-toc {
+<pre><code class="hljs lang-scss">doc-toc, <span class="hljs-class">.doc-toc</span> {
   <span class="hljs-at_rule">@<span class="hljs-keyword">extend</span><span class="hljs-preprocessor"> sf-collapse</span>;</span>
 }
 </code></pre>
 <p>Then add custom styling to enhance or override sf-collapse defaults:</p>
-<pre><code class="hljs lang-scss">doc-toc {
+<pre><code class="hljs lang-scss">doc-toc, <span class="hljs-class">.doc-toc</span> {
 
   <span class="hljs-comment">// Subclass sf-collapse.</span>
   <span class="hljs-at_rule">@<span class="hljs-keyword">extend</span><span class="hljs-preprocessor"> sf-collapse</span>;</span>
@@ -116,6 +116,9 @@ source, define a tag that inherits all of sf-collapse styling:</p>
   <span class="hljs-attribute">width</span><span class="hljs-value">: <span class="hljs-number">10em</span>;</span>
   <span class="hljs-attribute">float</span><span class="hljs-value">: right;</span>
   <span class="hljs-attribute">margin-left</span><span class="hljs-value">: <span class="hljs-variable">$sf-space</span>;</span>
+
+  <span class="hljs-comment">// Don't offset the next element.</span>
+  <span class="hljs-attribute">margin-bottom</span><span class="hljs-value">: <span class="hljs-number">0</span>;</span>
 
   <span class="hljs-comment">// Default labeling.</span>
   &gt; <span class="hljs-tag">label</span><span class="hljs-pseudo">:empty</span> {
@@ -131,7 +134,6 @@ source, define a tag that inherits all of sf-collapse styling:</p>
    * Cosmetic.
    */</span>
   <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> sf-outline-weak</span>;</span>
-  <span class="hljs-comment">// Default padding for children.</span>
   &gt; * {
     <span class="hljs-attribute">padding</span><span class="hljs-value">: <span class="hljs-variable">$sf-space</span> / <span class="hljs-number">2</span>;</span>
   }
