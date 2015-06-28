@@ -53,7 +53,7 @@
     <!-- Site content -->
     <sf-article>
       <!-- TOC -->
-<div class="doc-toc" theme="text-accent">
+<div doc-toc theme="text-accent">
   <input checked id="uniq-id-1" type="checkbox">
   <label for="uniq-id-1" theme="accent"></label>
   <a href="components/#overview">Overview</a>
@@ -64,11 +64,12 @@
   <a href="components/#sf-grid">sf-grid</a>
   <a href="components/#sf-modal">sf-modal</a>
   <a href="components/#sf-navbar">sf-navbar</a>
-  <a href="components/#sf-navtabs">sf-navtabs</a>
   <a href="components/#sf-footer">sf-footer</a>
   <a href="components/#sf-tooltip">sf-tooltip</a>
   <a href="components/#sf-input">sf-input</a>
   <a href="components/#sf-button">sf-button</a>
+  <a href="components/#sf-label">sf-label</a>
+  <a href="components/#sf-embed">sf-embed</a>
   <a href="components/#sf-jumbo">sf-jumbo</a>
 </div>
 
@@ -89,14 +90,14 @@ Markdown, like this documentation.</p>
   <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Pestilentia, shaun ofthe dead scythe animated corpses ipsa screams. Pestilentia est plague haec decaying ambulabat mortuos.<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">sf-article</span>&gt;</span>
 </code></pre>
-<div><doc-demo layout="column">
+<div doc-demo layout="column">
   <sf-article style="padding: 0">
     <img src="images/square/script.jpg" class="right small">
     <h1>Article header</h1>
     <p>Cum horribilem walking dead resurgere de crazed sepulcris creaturis, zombie sicut de grave feeding iride et serpens.</p>
     <p>Pestilentia, shaun ofthe dead scythe animated corpses ipsa screams. Pestilentia est plague haec decaying ambulabat mortuos.</p>
   </sf-article>
-</doc-demo></div>
+</div>
 
 <h1 id="sf-collapse"><a href="https://github.com/Mitranim/stylific/blob/master/scss/components/sf-collapse.scss" target="_blank">sf-collapse</a></h1><p><code>sf-collapse</code> can be toggled to show or hide its contents. The <code>.doc-toc</code>
 element at the top of this page is an
@@ -107,19 +108,19 @@ needs an <code>&lt;input type=&quot;checkbox&quot;&gt;</code> and a <code>&lt;la
 <p>Like all other components, it responds to stylific&#39;s <a href="themes/">themes</a>.</p>
 <pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-collapse</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"text-primary"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"..."</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"checkbox"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"..."</span>&gt;</span>Click me to toggle collapse<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"..."</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"text-primary"</span>&gt;</span>Click me to toggle collapse<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">h3</span>&gt;</span>Header for the collapsed element<span class="hljs-tag">&lt;/<span class="hljs-title">h3</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Paragraph in the collapsed element<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">sf-collapse</span>&gt;</span>
 </code></pre>
-<div><doc-demo>
+<div doc-demo>
   <sf-collapse theme="text-primary">
     <input id="uniq-id-2" type="checkbox">
     <label for="uniq-id-2" theme="text-primary">Click me to toggle collapse</label>
     <h3>Header for the collapsed element</h3>
     <p>Paragraph in the collapsed element</p>
   </sf-collapse>
-</doc-demo></div>
+</div>
 
 <h2 id="options">Options</h2>
 <p>To uncollapse the component by default, use <code>&lt;input checked&gt;</code>.</p>
@@ -130,32 +131,32 @@ needs an <code>&lt;input type=&quot;checkbox&quot;&gt;</code> and a <code>&lt;la
   <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is my paragraph<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">sf-collapse</span>&gt;</span>
 </code></pre>
-<div><doc-demo>
+<div doc-demo>
   <sf-collapse theme="text-accent">
     <input checked id="uniq-id-3" type="checkbox">
     <label for="uniq-id-3">Click me to toggle collapse</label>
     <h3>I&#39;m uncollapsed by default!</h3>
     <p>This is my paragraph</p>
   </sf-collapse>
-</doc-demo></div>
+</div>
 
-<p>You can also enable an overlay that collapses the element when clicking anywhere
-outside of it by adding the <code>[sf-overlay]</code> attribute:</p>
-<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-collapse</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"warn"</span> <span class="hljs-attribute">sf-overlay</span>&gt;</span>
+<p>You can also enable an invisible overlay that collapses the element when
+clicking anywhere outside of it by adding the <code>[sf-collapse~=overlay]</code> option:</p>
+<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-collapse</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"warn"</span> <span class="hljs-attribute">sf-collapse</span>=<span class="hljs-value">"overlay"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"..."</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"checkbox"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"..."</span>&gt;</span>Click me to toggle collapse<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">h3</span>&gt;</span>Click anywhere outside to close me!<span class="hljs-tag">&lt;/<span class="hljs-title">h3</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is my paragraph<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">sf-collapse</span>&gt;</span>
 </code></pre>
-<div><doc-demo>
-  <sf-collapse theme="warn" sf-overlay>
+<div doc-demo>
+  <sf-collapse theme="warn" sf-collapse="overlay">
     <input id="uniq-id-4" type="checkbox">
     <label for="uniq-id-4">Click me to toggle collapse</label>
     <h3>Click anywhere outside to close me!</h3>
     <p>This is my paragraph</p>
   </sf-collapse>
-</doc-demo></div>
+</div>
 
 <h1 id="sf-dropdown"><a href="https://github.com/Mitranim/stylific/blob/master/scss/components/sf-dropdown.scss" target="_blank">sf-dropdown</a></h1><p><code>sf-dropdown</code> is a basic dropdown list. By default, it appears on <code>:hover</code>:</p>
 <pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-dropdown</span>&gt;</span>
@@ -167,7 +168,7 @@ outside of it by adding the <code>[sf-overlay]</code> attribute:</p>
   <span class="hljs-tag">&lt;/<span class="hljs-title">sf-dropdown-list</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">sf-dropdown</span>&gt;</span>
 </code></pre>
-<div><doc-demo>
+<div doc-demo>
   <sf-dropdown>
     <label>hover me to see a dropdown</label>
     <sf-dropdown-list>
@@ -176,7 +177,7 @@ outside of it by adding the <code>[sf-overlay]</code> attribute:</p>
       <span>I&#39;m the third item</span>
     </sf-dropdown-list>
   </sf-dropdown>
-</doc-demo></div>
+</div>
 
 <p>You can also make it toggle-able by adding an <code>&lt;input type=&quot;checkbox&quot;&gt;</code> before
 the <code>&lt;label&gt;</code>. This automatically disables the <code>:hover</code> effect.</p>
@@ -190,7 +191,7 @@ the <code>&lt;label&gt;</code>. This automatically disables the <code>:hover</co
   <span class="hljs-tag">&lt;/<span class="hljs-title">sf-dropdown-list</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">sf-dropdown</span>&gt;</span>
 </code></pre>
-<div><doc-demo>
+<div doc-demo>
   <sf-dropdown theme="primary">
     <input id="uniq-id-5" type="checkbox">
     <label for="uniq-id-5" class="pad">click me to toggle a dropdown</label>
@@ -200,10 +201,10 @@ the <code>&lt;label&gt;</code>. This automatically disables the <code>:hover</co
       <span>I&#39;m the third item</span>
     </sf-dropdown-list>
   </sf-dropdown>
-</doc-demo></div>
+</div>
 
 <p>The dropdown position may be changed to <code>top</code>, <code>right</code> or <code>left</code>:</p>
-<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-dropdown</span> <span class="hljs-attribute">sf-position</span>=<span class="hljs-value">"top"</span>&gt;</span>
+<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-dropdown</span> <span class="hljs-attribute">sf-dropdown</span>=<span class="hljs-value">"top"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"pad"</span>&gt;</span>this dropdown goes upwards<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">sf-dropdown-list</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">span</span>&gt;</span>I'm the first item<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
@@ -212,8 +213,8 @@ the <code>&lt;label&gt;</code>. This automatically disables the <code>:hover</co
   <span class="hljs-tag">&lt;/<span class="hljs-title">sf-dropdown-list</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">sf-dropdown</span>&gt;</span>
 </code></pre>
-<div><doc-demo>
-  <sf-dropdown sf-position="top">
+<div doc-demo>
+  <sf-dropdown sf-dropdown="top">
     <label class="pad">this dropdown goes upwards</label>
     <sf-dropdown-list>
       <span>I&#39;m the first item</span>
@@ -221,7 +222,7 @@ the <code>&lt;label&gt;</code>. This automatically disables the <code>:hover</co
       <span>I&#39;m the third item</span>
     </sf-dropdown-list>
   </sf-dropdown>
-</doc-demo></div>
+</div>
 
 <h1 id="sf-tabset"><a href="https://github.com/Mitranim/stylific/blob/master/scss/components/sf-tabset.scss" target="_blank">sf-tabset</a></h1><p><code>sf-tabset</code> is a tabbed panel. Like most other stateful components, it relies on
 the <code>:checked</code> hack with hidden inputs.</p>
@@ -252,7 +253,7 @@ using <code>.active</code> on labels. See this <a href="examples/active-switch/"
   <span class="hljs-tag">&lt;/<span class="hljs-title">sf-tab</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">sf-tabset</span>&gt;</span>
 </code></pre>
-<div><doc-demo>
+<div doc-demo>
   <sf-tabset theme="text-accent">
     <input checked id="uniq-id-6" type="radio" name="demo-sf-tabset">
     <label for="uniq-id-6" theme="accent">First tab (preselected)</label>
@@ -275,7 +276,7 @@ using <code>.active</code> on labels. See this <a href="examples/active-switch/"
       <p>Lucio fulci tremor est dark vivos magna. Expansis creepy arm yof darkness ulnis witchcraft missing carnem armis Kirkman Moore and Adlard caeruleum in locis. Romero morbo Congress amarus in auras. Nihil horum sagittis tincidunt, zombie slack-jawed gelida survival portenta. The unleashed virus est, et iam zombie mortui ambulabunt super terram. Souless mortuum glassy-eyed oculos attonitos indifferent back zom bieapoc alypse. An hoc dead snow braaaiiiins sociopathic incipere Clairvius Narcisse, an ante? Is bello mundi z?</p>
     </sf-tab>
   </sf-tabset>
-</doc-demo></div>
+</div>
 
 <h1 id="sf-grid"><a href="https://github.com/Mitranim/stylific/blob/master/scss/components/sf-grid.scss" target="_blank">sf-grid</a></h1><p>One of the most important parts of any UI framework is a responsive grid system.
 In the past, they needed to be implemented using JavaScript, floats, and other
@@ -304,7 +305,7 @@ to resize the page more easily.</p>
   <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Ten<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">sf-grid</span>&gt;</span>
 </code></pre>
-<div><doc-demo style="display: block">
+<div doc-demo style="display: block">
   <sf-grid class="doc-grid-demo">
     <p>One</p>
     <p>Two</p>
@@ -317,7 +318,7 @@ to resize the page more easily.</p>
     <p>Nine</p>
     <p>Ten</p>
   </sf-grid>
-</doc-demo></div>
+</div>
 
 <h1 id="sf-modal"><a href="https://github.com/Mitranim/stylific/blob/master/scss/components/sf-modal.scss" target="_blank">sf-modal</a></h1><p><code>sf-modal</code> is a fixed popup dialog. It exploits the <code>:target</code> selector to match
 the URL fragment. It appears when the URL hash is targeting the modal&#39;s id. All
@@ -342,7 +343,7 @@ you need is to link to that id.</p>
   <span class="hljs-tag">&lt;/<span class="hljs-title">sf-modal-body</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">sf-modal</span>&gt;</span>
 </code></pre>
-<div><doc-demo>
+<div doc-demo>
   <a href="components/#demo-sf-modal">
     <button>Click me to open a modal!</button>
   </a>
@@ -357,7 +358,7 @@ you need is to link to that id.</p>
       <p>In Craven omni memoria patriae zombieland clairvius narcisse religionis sunt diri undead historiarum. Golums, zombies unrelenting et Raimi fascinati beheading. Maleficia! Vel cemetery man a modern bursting eyeballs perhsaps morbi. A terrenti flesh contagium. Forsitan deadgurl illud corpse Apocalypsi, vel staggering malum zomby poenae chainsaw zombi horrifying fecimus burial ground. Indeflexus shotgun coup de poudre monstra per plateas currere. Fit de decay nostra carne undead. Poenitentiam violent zom biehig hway agite RE:dead pœnitentiam! Vivens mortua sunt apud nos night of the living dead.</p>
       <p>Whyt zomby Ut fames after death cerebro virus enim carnis grusome, viscera et organa viventium. Sicut spargit virus ad impetum, qui supersumus flesh eating. Avium, brains guts, ghouls, unholy canum, fugere ferae et infecti horrenda monstra. Videmus twenty-eight deformis pale, horrenda daemonum. Panduntur brains portae rotting inferi. Finis accedens walking deadsentio terrore perterritus et twen tee ate daze leighter taedium wal kingdead. The horror, monstra epidemic significant finem. Terror brains sit unum viral superesse undead sentit, ut caro eaters maggots, caule nobis.</p>
   </sf-modal>
-</doc-demo></div>
+</div>
 
 <p>If your website has a <code>&lt;base&gt;</code> tag (typically <code>&lt;base href=&quot;/&quot;&gt;</code>), the <code>#</code> part
 in the links needs to be prefixed with the pathname of the current page.</p>
@@ -371,14 +372,14 @@ demo/">separate demo</a> to resize the page more easily.</p>
   <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/partners"</span>&gt;</span>Partners<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">sf-navbar</span>&gt;</span>
 </code></pre>
-<div><doc-demo>
+<div doc-demo>
   <sf-navbar>
     <a href="components/#home">Home</a>
     <a class="active" href="components/#robots">Robots</a>
     <a href="components/#medical-cybernetics">Medical Cybernetics</a>
     <a href="components/#partners">Partners</a>
   </sf-navbar>
-</doc-demo></div>
+</div>
 
 <h2 id="folding-navbar">Folding navbar</h2>
 <p><code>sf-navbar</code> can automatically fold on narrow displays, grouping extra elements
@@ -396,7 +397,7 @@ folding in effect or view the <a href="examples/navbar-demo/#static-folding">dem
   <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/partners"</span>&gt;</span>Partners<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">sf-navbar</span>&gt;</span>
 </code></pre>
-<div><doc-demo>
+<div doc-demo>
   <sf-navbar>
     <input id="uniq-id-9" type="checkbox">
     <label for="uniq-id-9"></label>
@@ -406,12 +407,12 @@ folding in effect or view the <a href="examples/navbar-demo/#static-folding">dem
     <a href="components/#partners">Partners</a>
     <a href="components/#achievements">Achievements</a>
   </sf-navbar>
-</doc-demo></div>
+</div>
 
-<h2 id="-sf-fold-"><code>[sf-fold]</code></h2>
-<p>With a folding navbar, use the <code>[sf-fold]</code> attribute to tell it to <em>always</em>
-fold, regardless of the viewport width.</p>
-<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-navbar</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"primary"</span> <span class="hljs-attribute">sf-fold</span>&gt;</span>
+<h2 id="-sf-navbar-fold-"><code>[sf-navbar=&quot;fold&quot;]</code></h2>
+<p>With a folding navbar, use the <code>fold</code> option to tell it to <em>always</em> fold,
+regardless of the viewport width.</p>
+<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-navbar</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"primary"</span> <span class="hljs-attribute">sf-navbar</span>=<span class="hljs-value">"fold"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"..."</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"checkbox"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"..."</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/"</span>&gt;</span>Home<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
@@ -420,8 +421,8 @@ fold, regardless of the viewport width.</p>
   <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/partners"</span>&gt;</span>Partners<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">sf-navbar</span>&gt;</span>
 </code></pre>
-<div><doc-demo>
-  <sf-navbar theme="primary" sf-fold>
+<div doc-demo>
+  <sf-navbar theme="primary" sf-navbar="fold">
     <input id="uniq-id-10" type="checkbox">
     <label for="uniq-id-10"></label>
     <a href="components/#home">Home</a>
@@ -430,11 +431,11 @@ fold, regardless of the viewport width.</p>
     <a href="components/#partners">Partners</a>
     <a href="components/#achievements">Achievements</a>
   </sf-navbar>
-</doc-demo></div>
+</div>
 
-<h2 id="-navbar-fixed-"><code>.navbar-fixed</code></h2>
-<p>Add the class <code>navbar-fixed</code> to fix the navbar to the top of the viewport:</p>
-<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-navbar</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"navbar-fixed"</span>&gt;</span>
+<h2 id="-sf-navbar-fixed-"><code>[sf-navbar=&quot;fixed&quot;]</code></h2>
+<p>Add the <code>fixed</code> option to glue the navbar to the top of the viewport:</p>
+<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-navbar</span> <span class="hljs-attribute">sf-navbar</span>=<span class="hljs-value">"fixed"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/"</span>&gt;</span>Home<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"active"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/robots"</span>&gt;</span>Robots<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/medical-cybernetics"</span>&gt;</span>Medical Cybernetics<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
@@ -444,28 +445,24 @@ fold, regardless of the viewport width.</p>
 <p>The next element in the document flow (in this example, the implied site
 content) will be automatically offset by the navbar height. It must not be
 absolutely positioned or floating.</p>
-<h1 id="sf-navtabs"><a href="https://github.com/Mitranim/stylific/blob/master/scss/components/sf-navtabs.scss" target="_blank">sf-navtabs</a></h1><p><code>sf-navtabs</code> is a version of <code>sf-navbar</code> for use inside the document. By
-default, the only difference is the shadow, but it&#39;s fashioned as a separate tag
-for easier semantic styling. It has the exact same behaviour  and accepts all
-the same options.</p>
-<p>Check out the
-<a href="https://github.com/Mitranim/stylific/blob/master/less/components/sf-
-navtabs.scss" target="_blank">source</a> to see how easy it is to subclass components.</p>
-<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-navtabs</span>&gt;</span>
+<h2 id="-sf-navbar-tabs-"><code>[sf-navbar=&quot;tabs&quot;]</code></h2>
+<p>This is a version of <code>sf-navbar</code> for use inside the document. Has a lighter
+shadow and doesn&#39;t have a default z-index.</p>
+<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-navbar</span> <span class="hljs-attribute">sf-navbar</span>=<span class="hljs-value">"tabs"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#section-one"</span>&gt;</span>Section One<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"active"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#section-two"</span>&gt;</span>Section Two<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#section-three"</span>&gt;</span>Section Three<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#section-four"</span>&gt;</span>Section Four<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-title">sf-navtabs</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">sf-navbar</span>&gt;</span>
 </code></pre>
-<div><doc-demo>
-  <sf-navtabs>
+<div doc-demo>
+  <sf-navbar sf-navbar="tabs">
     <a href="components/#section-one">Section One</a>
     <a class="active" href="components/#section-two">Section Two</a>
     <a href="components/#section-three">Section Three</a>
     <a href="components/#section-four">Section Four</a>
-  </sf-navtabs>
-</doc-demo></div>
+  </sf-navbar>
+</div>
 
 <h1 id="sf-footer"><a href="https://github.com/Mitranim/stylific/blob/master/scss/components/sf-footer.scss" target="_blank">sf-footer</a></h1><p>Each website needs a footer that pushes itself to the bottom of the viewport
 (often incorrectly called &quot;sticky&quot;). It&#39;s usually difficult to implement when
@@ -473,11 +470,8 @@ the footer height is unknown. <code>sf-footer</code> does this for you. The foot
 bottom of this page is a demo. Go to an <a href="examples/footer/">empty page</a> to
 see how it works.</p>
 <p><code>sf-footer</code> relies on the flex-column body layout, which is a global default
-defined in <a href="https://github.com/Mitranim/stylific/blob/master/
-less/layout.scss" target="_blank"><code>layout.scss</code></a>. If you&#39;re importing stylific as
-<a href="http://lesscss.org/features/#import-options-reference" target="_blank">reference</a>, the global
-styles will be omitted, and you&#39;ll need to copy the body layout rules to your
-own source.</p>
+defined in
+<a href="https://github.com/Mitranim/stylific/blob/master/scss/layout.scss" target="_blank"><code>layout.scss</code></a>.</p>
 <p>Example footer:</p>
 <pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-footer</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">sf-footer-body</span>&gt;</span>
@@ -486,46 +480,44 @@ own source.</p>
   <span class="hljs-tag">&lt;/<span class="hljs-title">sf-footer-body</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">sf-footer</span>&gt;</span>
 </code></pre>
-<div><doc-demo>
+<div doc-demo>
   <sf-footer>
     <sf-footer-body style="margin-top: 0; padding: 0">
       <span>2020—2030 © slowpoke</span>
       <span>⇑</span>
     </sf-footer-body>
   </sf-footer>
-</doc-demo></div>
+</div>
 
 <h1 id="sf-tooltip"><a href="https://github.com/Mitranim/stylific/blob/master/scss/components/sf-tooltip.scss" target="_blank">sf-tooltip</a></h1><p><code>[sf-tooltip]</code> is an attribute-based tooltip implementation that uses
 pseudoelements. Its colours are automatically adjusted to be the grayscale
 inverses of the base text and background colours.</p>
-<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">layout</span>=<span class="hljs-value">"column"</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"space-out"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">sf-tooltip</span>=<span class="hljs-value">"I'm a default positioned tooltip!"</span>&gt;</span>Hover me to see a top tooltip.<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">sf-tooltip</span>=<span class="hljs-value">"I'm a default positioned tooltip!"</span>&gt;</span>Hover me to see a top tooltip.<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
 
-  <span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">sf-tooltip</span>=<span class="hljs-value">"I'm a top-right positioned tooltip!"</span>
-        <span class="hljs-attribute">sf-position</span>=<span class="hljs-value">"top-right"</span>&gt;</span>Hover me to see a top-right tooltip.<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">sf-tooltip</span>=<span class="hljs-value">"I'm a top-right positioned tooltip!"</span>
+      <span class="hljs-attribute">sf-position</span>=<span class="hljs-value">"top-right"</span>&gt;</span>Hover me to see a top-right tooltip.<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
 
-  <span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">sf-tooltip</span>=<span class="hljs-value">"I'm a bottom positioned tooltip!"</span>
-        <span class="hljs-attribute">sf-position</span>=<span class="hljs-value">"bottom"</span>&gt;</span>Hover me to see a bottom tooltip.<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">sf-tooltip</span>=<span class="hljs-value">"I'm a bottom positioned tooltip!"</span>
+      <span class="hljs-attribute">sf-position</span>=<span class="hljs-value">"bottom"</span>&gt;</span>Hover me to see a bottom tooltip.<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
 
-  <span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">sf-tooltip</span>=<span class="hljs-value">"I'm a bottom-right positioned tooltip!"</span>
-        <span class="hljs-attribute">sf-position</span>=<span class="hljs-value">"bottom-right"</span>&gt;</span>Hover me to see a bottom-right tooltip.<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">sf-tooltip</span>=<span class="hljs-value">"I'm a bottom-right positioned tooltip!"</span>
+      <span class="hljs-attribute">sf-position</span>=<span class="hljs-value">"bottom-right"</span>&gt;</span>Hover me to see a bottom-right tooltip.<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
 
-  <span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">sf-tooltip</span>=<span class="hljs-value">"I appear on focus! Click outside to toggle me off."</span>
-        <span class="hljs-attribute">sf-trigger</span>=<span class="hljs-value">"focus"</span> <span class="hljs-attribute">contenteditable</span>&gt;</span>Focus me to see a tooltip.<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">sf-tooltip</span>=<span class="hljs-value">"I appear on focus! Click outside to toggle me off."</span>
+      <span class="hljs-attribute">sf-trigger</span>=<span class="hljs-value">"focus"</span> <span class="hljs-attribute">contenteditable</span>&gt;</span>Focus me to see a tooltip.<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
 
-  <span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">sf-tooltip</span>=<span class="hljs-value">"I'm an input tooltip that appears on hover!"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">"Hover me to see a tooltip."</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">sf-tooltip</span>=<span class="hljs-value">"I'm an input tooltip that appears on hover!"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">"Hover me to see a tooltip."</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 </code></pre>
-<div><doc-demo layout="column" class="space-out">
-  <span sf-tooltip="I'm a default positioned tooltip!">Hover me to see a top tooltip.</span>
-  <span sf-tooltip="I'm a top-right positioned tooltip!" sf-position="top-right">Hover me to see a top-right tooltip.</span>
-  <span sf-tooltip="I'm a bottom positioned tooltip!" sf-position="bottom">Hover me to see a bottom tooltip.</span>
-  <span sf-tooltip="I'm a bottom-right positioned tooltip!" sf-position="bottom-right">Hover me to see a bottom-right tooltip.</span>
-  <span sf-tooltip="I appear on focus! Click outside to toggle me off." sf-trigger="focus" contenteditable>Focus me to see a tooltip.</span>
-  <span sf-tooltip="I'm an input tooltip that appears on hover!"><input placeholder="Hover me to see a tooltip."></span>
-</doc-demo></div>
+<div doc-demo layout="column" class="space-out">
+  <div><span sf-tooltip="I'm a default positioned tooltip!">Hover me to see a top tooltip.</span></div>
+  <div><span sf-tooltip="I'm a top-right positioned tooltip!" sf-position="top-right">Hover me to see a top-right tooltip.</span></div>
+  <div><span sf-tooltip="I'm a bottom positioned tooltip!" sf-position="bottom">Hover me to see a bottom tooltip.</span></div>
+  <div><span sf-tooltip="I'm a bottom-right positioned tooltip!" sf-position="bottom-right">Hover me to see a bottom-right tooltip.</span></div>
+  <div><span sf-tooltip="I appear on focus! Click outside to toggle me off." sf-trigger="focus" contenteditable>Focus me to see a tooltip.</span></div>
+  <div sf-tooltip="I'm an input tooltip that appears on hover!"><input placeholder="Hover me to see a tooltip."></div>
+</div>
 
 <p>The <code>trigger</code> attribute supports the following values: <code>hover</code>, <code>focus</code>,
 <code>disabled</code>, <code>target</code>, <code>active</code>. They correspond to their namesake pseudoclass
@@ -538,7 +530,7 @@ another element and use the tooltip attributes on its parent. This works for the
 <code>:hover</code> and <code>:active</code> versions because these states propagate naturally to the
 parent. Unfortunately other states, like <code>:focus</code>, don&#39;t propagate.</p>
 <h1 id="sf-input"><a href="https://github.com/Mitranim/stylific/blob/master/scss/components/sf-input.scss" target="_blank">sf-input</a></h1><p>This style is applied by default to <code>&lt;input&gt;</code> and <code>&lt;textarea&gt;</code> elements, and is
-also exposed as the <code>.sf-input</code> class. It&#39;s purely cosmetic. Normalises
+also exposed as the <code>[sf-input]</code> attribute. It&#39;s purely cosmetic. Normalises
 user agent styles and adds some nice defaults.</p>
 <pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">"I'm a basic input."</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"I'm a basic input."</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"text-primary"</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">"I use the text-primary theme."</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"I use the text-primary theme."</span>&gt;</span>
@@ -548,7 +540,7 @@ user agent styles and adds some nice defaults.</p>
 <span class="hljs-tag">&lt;<span class="hljs-title">textarea</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"width: 100%"</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">"I'm a basic textarea."</span>&gt;</span>I'm a basic textarea.<span class="hljs-tag">&lt;/<span class="hljs-title">textarea</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-title">textarea</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"primary"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"width: 100%"</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">"I use the primary theme."</span>&gt;</span>I use the primary theme.<span class="hljs-tag">&lt;/<span class="hljs-title">textarea</span>&gt;</span>
 </code></pre>
-<div><doc-demo class="block-children space-out" style="display: block">
+<div doc-demo class="block-children space-out" style="display: block">
   <input placeholder="I'm a basic input." value="I'm a basic input.">
   <input theme="text-primary" placeholder="I use the text-primary theme." value="I use the text-primary theme.">
   <input theme="accent" placeholder="I use the accent theme." value="I use the accent theme.">
@@ -556,27 +548,67 @@ user agent styles and adds some nice defaults.</p>
   <input disabled value="I'm disabled">
   <textarea style="width: 100%" placeholder="I'm a basic textarea.">I&#39;m a basic textarea.</textarea>
   <textarea theme="primary" style="width: 100%" placeholder="I use the primary theme.">I use the primary theme.</textarea>
-</doc-demo></div>
+</div>
 
 <h1 id="sf-button"><a href="https://github.com/Mitranim/stylific/blob/master/scss/components/sf-button.scss" target="_blank">sf-button</a></h1><p>This style is applied by default to <code>&lt;button&gt;</code> and <code>&lt;input type=&quot;button&quot;&gt;</code>, and
-is also exposed as the <code>.sf-button</code> class. Normalises user agent styles and adds
-some nice defaults.</p>
+is also exposed as the <code>[sf-button]</code> attribute. Normalises user agent styles and
+adds some nice defaults.</p>
 <pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">layout</span>=<span class="hljs-value">"space-out"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">button</span>&gt;</span>default button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">sf-button</span>=<span class="hljs-value">"flat"</span>&gt;</span>flat button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"text-primary"</span>&gt;</span>text-primary themed button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"primary"</span>&gt;</span>primary themed button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"text-accent"</span>&gt;</span>text-accent themed button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">disabled</span>&gt;</span>disabled button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 </code></pre>
-<div><doc-demo layout="space-out">
+<div doc-demo layout="space-out">
   <button>default button</button>
+  <button sf-button="flat">flat button</button>
   <button theme="text-primary">text-primary themed button</button>
   <button theme="primary">primary themed button</button>
   <button theme="text-accent">text-accent themed button</button>
   <button disabled>disabled button</button>
-</doc-demo></div>
+</div>
 
+<h1 id="sf-label"><a href="https://github.com/Mitranim/stylific/blob/master/scss/components/sf-label.scss" target="_blank">sf-label</a></h1><p>Very primitive default styling for form input groups. Has two versions:</p>
+<ul>
+<li>vertical: <code>sf-label</code>, <code>[sf-label]</code>, <code>[sf-label=column]</code></li>
+<li>horizontal: <code>[sf-label=row]</code></li>
+</ul>
+<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">sf-label</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"text-primary"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">span</span>&gt;</span>Name<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">"type name..."</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">sf-label</span>=<span class="hljs-value">"row"</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"accent"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">span</span>&gt;</span>Email<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"email"</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">"type email..."</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+</code></pre>
+<div doc-demo style="display: block" class="space-out">
+  <label sf-label theme="text-primary">
+    <span>Name</span>
+    <input placeholder="type name...">
+  </label>
+  <label sf-label="row" theme="text-accent">
+    <span>Email</span>
+    <input type="email" placeholder="type email...">
+  </label>
+</div>
+
+<h1 id="sf-embed"><a href="https://github.com/Mitranim/stylific/blob/master/scss/components/sf-embed.scss" target="_blank">sf-embed</a></h1><p>Responsive embed, pilfered from
+<a href="https://github.com/twbs/bootstrap/blob/v3.3.5/less/responsive-embed.less" target="_blank">Bootstrap</a>.</p>
+<p>Has two aspect ratio options:</p>
+<ul>
+<li>16:9 (default): <code>sf-embed</code>, <code>[sf-embed=ratio-16-to-9]</code></li>
+<li>4:3: <code>[sf-embed=ratio-4-to-3]</code></li>
+</ul>
+<p>See the <a href="https://github.com/Mitranim/stylific/blob/master/scss/components/sf-embed.scss" target="_blank">source</a>
+for which children are automatically adjusted.</p>
+<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-embed</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">iframe</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"..."</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">sf-embed</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">sf-embed</span>=<span class="hljs-value">"ratio-4-to-3"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">iframe</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"..."</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">iframe</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">sf-embed</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-embed-item"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">sf-embed</span>&gt;</span>
+</code></pre>
 <h1 id="sf-jumbo"><a href="https://github.com/Mitranim/stylific/blob/master/scss/components/sf-jumbo.scss" target="_blank">sf-jumbo</a></h1><p><code>sf-jumbo</code> is a big-ass banner to stick at the top of a page. Saves you a few
 minutes of typing the styles for positioning, underlay, etc. Like everything
 else, it&#39;s sized in <code>em</code>, so adjusting the font size automatically changes its
@@ -586,26 +618,25 @@ height.</p>
   <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Super awesome marketing speak<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">sf-jumbo</span>&gt;</span>
 </code></pre>
-<div><doc-demo layout="column">
+<div doc-demo layout="column">
   <sf-jumbo style="background-image: url(images/aite.jpg)">
     <h1>Catchy slogan</h1>
     <p>Super awesome marketing speak</p>
   </sf-jumbo>
-</doc-demo></div>
+</div>
 
-<p>To reposition the children, simply stick <code>.justify-start</code> or <code>.justify-center</code>
-on it. This requires <code>@sf-enable-global-classes</code> to be enabled (default).</p>
-<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-jumbo</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"justify-start"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"background-image: url(images/citadel-blue.jpg)"</span>&gt;</span>
+<p>To reposition the children, simply add <code>layout=&quot;start&quot;</code> or <code>layout=&quot;center&quot;</code>.</p>
+<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-jumbo</span> <span class="hljs-attribute">layout</span>=<span class="hljs-value">"start"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"background-image: url(images/citadel-blue.jpg)"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>I'm Commander Shepard<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>And this is my favourite store on the Citadel<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">sf-jumbo</span>&gt;</span>
 </code></pre>
-<div><doc-demo layout="column">
-  <sf-jumbo class="justify-start" style="background-image: url(images/citadel-blue.jpg)">
+<div doc-demo layout="column">
+  <sf-jumbo layout="start" style="background-image: url(images/citadel-blue.jpg)">
     <h1>I&#39;m Commander Shepard</h1>
     <p>And this is my favourite store on the Citadel</p>
   </sf-jumbo>
-</doc-demo></div>
+</div>
 
     </sf-article>
 

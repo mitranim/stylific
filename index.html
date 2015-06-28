@@ -53,7 +53,7 @@
     <!-- Site content -->
     <sf-article>
       <!-- TOC -->
-<div class="doc-toc" theme="text-accent">
+<div doc-toc theme="text-accent">
   <input checked id="uniq-id-12" type="checkbox">
   <label for="uniq-id-12" theme="accent"></label>
   <a href="#overview">Overview</a>
@@ -109,11 +109,13 @@ Because stylific only needs static markup, enhancement with JavaScript is
 <a href="examples/active-switch/">trivial</a>. Some stylific components provide simple
 hooks in the form of <code>.active</code> classes.</p>
 <h2 id="component-oriented">Component Oriented</h2>
-<p>This library organises styles around
-<a href="https://github.com/Mitranim/stylific/tree/master/scss/components" target="_blank">tags</a>. Most
-styles are scoped to customisable tagnames, like <code>sf-tabset</code>. Some
-styles are applied by default to native inputs, but also exposed as classes
-(like <code>.sf-input</code>). Each component is purposely ignorant of others.</p>
+<p>This library organises styles around <a href="https://github.com/Mitranim/stylific/tree/master/scss/components" target="_blank">tags and
+attributes</a>.
+Most styles are scoped to a customisable name, like <code>sf-tabset</code>, and available
+in the form of a custom tag or a custom attribute. Some styles are applied by
+default to native inputs, but also exposed as attributes (like <code>[sf-input]</code>).
+Each component is purposely ignorant of others. Many components accept
+configuration flags as part of their attribute&#39;s value.</p>
 <p>This approach makes it easier to remember component names, and keeps your markup
 semantic. It also makes it far easier to convert your elements into web
 components (custom elements) with a library like Polymer or
@@ -121,7 +123,7 @@ components (custom elements) with a library like Polymer or
 and styles in place. You can begin by styling your website statically, then
 effortlessly enhance selected elements with JavaScript.</p>
 <p>Another benefit of this approach is that because each component&#39;s styles are
-scoped under a single tag or class name, they&#39;re easy to
+scoped under a single tag or attribute name, they&#39;re easy to
 <a href="configuration/#subclassing">subclass</a> using Sass&#39;s <code>@extend</code>
 directive.</p>
 <p>It also turns out to be a great strategy for CSS specificity. Isolating styles
@@ -140,8 +142,8 @@ different displays. In fact, stylific does that by default.</p>
 <p>The flexbox specification solves problems that used to demand convoluted
 workarounds, obviates the need for specialised grid systems, and lets you create
 intelligent, self-scaling layouts without fixed dimensions. Browser support is
-finally good enough, if you factor in  <a href="https://github.com/postcss/autoprefixer" target="_blank">vendor
-prefixes</a>.</p>
+already good enough, if you factor in vendor prefixes. The wonderful
+<a href="https://github.com/postcss/autoprefixer" target="_blank">autoprefixer</a> can do it automatically.</p>
 <p>See <a href="layout/">Layout</a> for details.</p>
 <h1 id="installation-and-usage">Installation and Usage</h1>
 <p>To fully benefit from stylific, you&#39;ll need the <a href="http://sass-lang.com" target="_blank">Sass</a>
