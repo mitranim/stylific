@@ -43,25 +43,32 @@
  */
 
 @mixin sf-register-selected-state {
-  // Grayscale theme.
-  background-color: rgba($sf-color-text, 0.1);
+  // Match the states and specificity of the base interactive selectors.
+  &:not([disabled]):not([disabled]) {
+    // Grayscale theme.
+    background-color: rgba($sf-color-text, 0.1);
 
-  // Colour themes.
-  @each $color-map in $sf-color-maps {
-    $name: map-get($color-map, name);
-    $selected: map-get($color-map, selected);
+    // Colour themes.
+    @each $color-map in $sf-color-maps {
+      $name: map-get($color-map, name);
+      $selected: map-get($color-map, selected);
 
-    // Text theme.
-    &[theme=text-#{$name}] {
-      color: sf-sensible-text-color($selected);
-      svg {fill: $selected}
-    }
+      // Text theme.
+      &[theme=text-#{$name}] {
+        // These selectors are required to match the states and specificity of
+        // the base interactive selectors.
+        color: sf-sensible-text-color($selected);
+        svg {fill: $selected}
+      }
 
-    // Full theme.
-    &[theme=#{$name}] {
-      background-color: $selected;
-      color: sf-contrasting-color($selected);
-      svg {fill: sf-contrasting-color($selected)}
+      // Full theme.
+      &[theme=#{$name}] {
+        // These selectors are required to match the states and specificity of
+        // the base interactive selectors.
+        background-color: $selected;
+        color: sf-contrasting-color($selected);
+        svg {fill: sf-contrasting-color($selected)}
+      }
     }
   }
 }
@@ -166,6 +173,8 @@
 }
 
 @mixin sf-themed-outline {
+  outline-offset: 0;
+
   &:active, &:focus {
     outline: 1px solid rgba($sf-color-text, 0.2);
   }
@@ -182,7 +191,7 @@
 
     &[theme=#{$name}] {
       &:active, &:focus {
-        outline: 1px solid $default;
+        outline: 1px solid sf-contrasting-color($default);
       }
     }
   }

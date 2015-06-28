@@ -25,11 +25,14 @@ The library comes with some pre-defined UI components. They work with plain HTML
 and CSS. You can also [subclass](configuration/#subclassing) them
 in Sass.
 
+Most components are available as tags, like `sf-collapse`, and every component
+is available as an attribute, like `sf-button`. Some can even be combined like
+so: `<button sf-button sf-icon></button>`.
+
 # sf-article
 
-`sf-article` symbolises a block of readable text. Unlike other elements, it has
-no special layout properties. Its purpose is default cosmetic styling, like
-typographic offsets, link styles, and convenience classes for images.
+`sf-article` symbolises a block of readable text. It provides default cosmetic
+styling, like whitespace, link decorations, and convenience classes for images.
 
 Use it wherever you want typographic styling. Suited for text compiled from
 Markdown, like this documentation.
@@ -643,6 +646,56 @@ Very primitive default styling for form input groups. Has two versions:
   <label sf-label="row" theme="text-accent">
     <span>Email</span>
     <input type="email" placeholder="type email...">
+  </label>
+</div>
+
+Can be used directly on a form:
+
+```html
+<form sf-label theme="text-primary">
+  <span>Name</span>
+  <input placeholder="type name...">
+</form>
+<form sf-label="row" theme="text-accent">
+  <span>Email</span>
+  <input type="email" placeholder="type email...">
+</form>
+```
+
+<div doc-demo style="display: block" class="space-out">
+  <form sf-label theme="text-primary">
+    <span>Name</span>
+    <input placeholder="type name...">
+  </form>
+  <form sf-label="row" theme="text-accent">
+    <span>Email</span>
+    <input type="email" placeholder="type email...">
+  </form>
+</div>
+
+## `[sf-label="dense"]`
+
+Condensed version for inlining buttons with inputs.
+
+```html
+<label sf-label="row dense">
+  <input flex="6" theme="text-primary" placeholder="take the blue pill...">
+  <button flex="1" theme="primary" layout="center">go</button>
+</label>
+<label sf-label="row dense">
+  <button flex="1" theme="warn" layout="center">go</button>
+  <input flex="6" theme="text-warn" placeholder="or the red pill...">
+</label>
+```
+
+<div doc-demo style="display: block" class="space-out">
+  <label sf-label="row dense" style="width: 50%">
+    <input flex="6" theme="text-primary" placeholder="take the blue pill...">
+    <button flex="1" theme="primary" layout="center">go</button>
+  </label>
+  <label sf-label="row dense" style="width: 50%">
+    <button flex="1" theme="warn" layout="center">go</button>
+    <input flex="6" theme="text-warn" placeholder="or the red pill...">
   </label>
 </div>
 

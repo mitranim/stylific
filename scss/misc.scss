@@ -9,10 +9,6 @@
   @include sf-outline-weak;
 }
 
-[tabindex='-1']:focus {
-  outline: none;
-}
-
 /**
  * Default styling for monospace tags.
  */
@@ -43,6 +39,11 @@ ul, ol {
   ul, ol {
     margin-left: $sf-space;
   }
+}
+
+// Normalise default outlines.
+*:focus {
+  @include sf-outline-weak;
 }
 
 /********************************** Globals **********************************/

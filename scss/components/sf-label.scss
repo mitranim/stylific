@@ -20,10 +20,10 @@
  * dynamically. Need to review.
  */
 
-sf-label, [sf-label] {
+#{$sf-prefix}-label, [#{$sf-prefix}-label] {
 
   // Default version: vertical.
-  &, &[sf-label~=column] {
+  &, &[#{$sf-prefix}-label~=column] {
     // Layout.
     display: flex;
     flex-direction: column;
@@ -34,7 +34,7 @@ sf-label, [sf-label] {
   }
 
   // Row version: horizontal.
-  &[sf-label~=row] {
+  &[#{$sf-prefix}-label~=row] {
     // Layout.
     flex-direction: row;
     align-items: stretch;
@@ -52,6 +52,34 @@ sf-label, [sf-label] {
       // Override the space from the vertical version.
       margin-top: 0;
       margin-bottom: 0;
+    }
+  }
+
+  // Dense version for tightly grouped inputs and buttons. Offsets the default
+  // outlines by 1px and negates adjacent border radii. Best used with flat
+  // buttons: <button sf-button="flat">.
+  &[#{$sf-prefix}-label~=dense] {
+    &[#{$sf-prefix}-label~=row] {
+      > *:not(:last-child) {
+        margin-right: 1px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+      > *:not(:first-child) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+    &:not([#{$sf-prefix}-label~=row]) {
+      > *:not(:last-child) {
+        margin-bottom: 1px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+      > *:not(:first-child) {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
     }
   }
 }

@@ -38,15 +38,33 @@ button, input[type=button] {
   // Border styles.
   border: none;
   border-radius: $sf-border-radius;
-  outline: none;
-  &:focus {outline: none}
 
+  // Normalise outlines.
+  @include sf-themed-outline;
+  // Hide the outline when the button is depressed.
+  &, &[theme] {
+    &:active {outline-color: transparent}
+  }
+
+  // A bit of skeuomorphism.
   box-shadow: 0 0.1rem 0.3rem -1px rgba(5, 5, 5, 0.5);
   &:active {
     @include sf-shadow-thin;
   }
   &[#{$sf-prefix}-button~=flat], &[disabled] {box-shadow: none}
 
+  // Restore the normal dimensions when used as an icon.
+  &[#{$sf-prefix}-icon] {
+    width: auto;
+    height: auto;
+  }
+
   // Animate style changes.
   @include sf-transitions(all);
+}
+
+// Treat the attribute version as interactive too.
+[#{$sf-prefix}-button] {
+  @include sf-register-interactive-selector;
+  cursor: pointer;
 }

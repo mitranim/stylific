@@ -36,8 +36,11 @@
   /**
    * Background styling.
    */
-  // Stretch the icon to fill the available space.
-  background-size: contain;
+  // Match the default container size. We purposely don't use
+  // {background-size: contain}, because there's a scenario when the container
+  // becomes stretched. We want the icon to always have the default size and
+  // scale along with the font size.
+  background-size: 1em;
   // Center the icon both horizontally and vertically.
   background-position: 50% 50%;
   // Make sure it doesn't repeat.
@@ -58,7 +61,11 @@
 
   // Nested SVG.
   > svg {
+    // Center horizontally.
     display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    // Dimensions.
     width: 1em;
     height: 1em;
   }
