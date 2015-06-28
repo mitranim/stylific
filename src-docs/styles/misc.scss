@@ -3,3 +3,7 @@ pre code {width: 100%}
 .block-children {
   > *:not(:root) {display: block}
 }
+
+body {
+  @include sf-shadow-weak;
+}

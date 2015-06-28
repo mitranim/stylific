@@ -1,6 +1,6 @@
 /*********************************** Media ***********************************/
 
-@mixin sf-sm {
+@mixin sf-eq-sm {
   @media (max-width: $sf-layout-breakpoint-sm - 1) {
     @content;
   }
@@ -12,7 +12,7 @@
   }
 }
 
-@mixin sf-md {
+@mixin sf-eq-md {
   @media (min-width: $sf-layout-breakpoint-sm) and (max-width: $sf-layout-breakpoint-md - 1) {
     @content;
   }
@@ -24,7 +24,7 @@
   }
 }
 
-@mixin sf-lg {
+@mixin sf-eq-lg {
   @media (min-width: $sf-layout-breakpoint-md) and (max-width: $sf-layout-breakpoint-lg - 1) {
     @content;
   }
@@ -149,11 +149,11 @@
   left: 0;
 }
 
-@mixin sf-space-out-vertically($space: $sf-space) {
+@mixin sf-space-out-vertical($space: $sf-space) {
   > *:not(:last-child) {margin-bottom: $space}
 }
 
-@mixin sf-space-out-horizontally($space: $sf-space) {
+@mixin sf-space-out-horizontal($space: $sf-space) {
   > *:not(:last-child) {margin-right: $space}
 }
 

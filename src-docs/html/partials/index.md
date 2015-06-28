@@ -1,5 +1,5 @@
 <!-- TOC -->
-<div class="doc-toc" theme="text-accent">
+<div doc-toc theme="text-accent">
   <input checked id="<%= uniqId() %>" type="checkbox">
   <label for="<%= lastUniqId() %>" theme="accent"></label>
   [Overview](#overview)
@@ -69,11 +69,13 @@ hooks in the form of `.active` classes.
 
 ## Component Oriented
 
-This library organises styles around
-[tags](https://github.com/Mitranim/stylific/tree/master/scss/components). Most
-styles are scoped to customisable tagnames, like `sf-tabset`. Some
-styles are applied by default to native inputs, but also exposed as classes
-(like `.sf-input`). Each component is purposely ignorant of others.
+This library organises styles around [tags and
+attributes](https://github.com/Mitranim/stylific/tree/master/scss/components).
+Most styles are scoped to a customisable name, like `sf-tabset`, and available
+in the form of a custom tag or a custom attribute. Some styles are applied by
+default to native inputs, but also exposed as attributes (like `[sf-input]`).
+Each component is purposely ignorant of others. Many components accept
+configuration flags as part of their attribute's value.
 
 This approach makes it easier to remember component names, and keeps your markup
 semantic. It also makes it far easier to convert your elements into web
@@ -83,7 +85,7 @@ and styles in place. You can begin by styling your website statically, then
 effortlessly enhance selected elements with JavaScript.
 
 Another benefit of this approach is that because each component's styles are
-scoped under a single tag or class name, they're easy to
+scoped under a single tag or attribute name, they're easy to
 [subclass](configuration/#subclassing) using Sass's `@extend`
 directive.
 
@@ -108,8 +110,8 @@ different displays. In fact, stylific does that by default.
 The flexbox specification solves problems that used to demand convoluted
 workarounds, obviates the need for specialised grid systems, and lets you create
 intelligent, self-scaling layouts without fixed dimensions. Browser support is
-finally good enough, if you factor in  [vendor
-prefixes](https://github.com/postcss/autoprefixer).
+already good enough, if you factor in vendor prefixes. The wonderful
+[autoprefixer](https://github.com/postcss/autoprefixer) can do it automatically.
 
 See [Layout](layout/) for details.
 

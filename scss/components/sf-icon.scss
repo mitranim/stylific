@@ -7,13 +7,14 @@
  *
  * In your stylesheet:
  *
- *   sf-icon.skype {
+ *   [sf-icon=skype] {
  *     background-image: url(path-to-skype-icon.svg);
  *   }
  *
  * In your HTML:
  *
- *   <sf-icon class="skype"></sf-icon>
+ *   <sf-icon sf-icon="skype"></sf-icon>
+ *   <span sf-icon="skype"></span>
  *
  * sf-icon is sized as 1em by default, which means it'll be the same size as
  * surrounding text. To scale it separately, use a bigger font-size:
@@ -21,7 +22,8 @@
  *   <sf-icon style="font-size: 1.2em"></sf-icon>
  */
 
-#{$sf-prefix}-icon  {
+#{$sf-prefix}-icon,
+[#{$sf-prefix}-icon] {
 
   /**
    * Layout.
@@ -87,6 +89,9 @@
   &.pop {
     &:hover, &:focus, &:active, &.active {
       transform: scale(1.5);
+      &:not([theme]), &[theme^=text-] {
+        background-color: transparent;
+      }
     }
   }
 

@@ -30,15 +30,13 @@
  * Has an option to enable an overlay that collapses the element when clicking
  * anywhere outside.
  *
- *   <sf-collapse sf-overlay>
+ *   <sf-collapse sf-collapse="overlay">
  *     ...
  *   </sf-collapse>
  */
 
-#{$sf-prefix}-collapse {
-
-  // Local variables.
-  $overlay-attr: '#{$sf-prefix}-overlay';
+#{$sf-prefix}-collapse,
+[#{$sf-prefix}-collapse] {
 
   /**
    * Layout.
@@ -90,7 +88,7 @@
   /**
    * Base overlay styles.
    */
-  &[#{$overlay-attr}] > input[type=checkbox] + label::before {
+  &[#{$sf-prefix}-collapse~=overlay] > input[type=checkbox] + label::before {
     @include sf-fixed-overlay;
     opacity: 0;
   }
@@ -99,7 +97,7 @@
    * Active overlay styles.
    */
   // If the overlay option is enabled, make the toggle overlay interactive.
-  &[#{$overlay-attr}] > input[type=checkbox]:checked + label {
+  &[#{$sf-prefix}-collapse~=overlay] > input[type=checkbox]:checked + label {
     &::before {content: ''}
   }
 
@@ -115,11 +113,6 @@
   // Active styles.
   > input[type=checkbox]:checked + label ~ * {
     transform: scaleY(1);
-  }
-
-  // Disable article link style.
-  #{$sf-prefix}-article & {
-    a {border: none}
   }
 
   // Animate visibility changes and other transitions on all children.

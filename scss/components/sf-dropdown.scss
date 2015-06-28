@@ -47,18 +47,20 @@
  * The default position of the dropdown list is below the label. It can be
  * altered with an attribute.
  *
- *   <sf-dropdown sf-position="top">
- *   <sf-dropdown sf-position="right">
- *   <sf-dropdown sf-position="left">
+ *   <sf-dropdown sf-dropdown="top">
+ *   <div sf-dropdown="right">
+ *
+ * See the code below for the list of supported positions.
  */
 
 /**
  * ToDo.
  *
- * Use different xy shadow offsets based on [sf-position].
+ * Use different xy shadow offsets based on position.
  */
 
-#{$sf-prefix}-dropdown {
+#{$sf-prefix}-dropdown,
+[#{$sf-prefix}-dropdown] {
 
   /**
    * Layout.
@@ -76,7 +78,7 @@
   > input[type=checkbox] {display: none}
 
   // Base background colour for the list.
-  &:not([theme]) {
+  &:not([theme]), &[theme^=text-] {
     background-color: $sf-color-background;
   }
 
@@ -148,7 +150,8 @@
   /**
    * Base dropdown list styles.
    */
-  > #{$sf-prefix}-dropdown-list {
+  > #{$sf-prefix}-dropdown-list,
+  > [#{$sf-prefix}-dropdown-list] {
     /**
      * Layout.
      */
@@ -182,7 +185,7 @@
    * Position-dependent indicators.
    */
   // Top.
-  &[sf-position=top] {
+  &[#{$sf-prefix}-dropdown~=top] {
     // Reverse the indicators.
     > label::after {content: '△'}
     > input[type=checkbox]:checked + label::after {
@@ -209,8 +212,16 @@
   /**
    * Dropdown list positioning.
    */
+  // Bottom (default).
+  &:not([#{$sf-prefix}-dropdown]), &[#{$sf-prefix}-dropdown=''],
+  &[#{$sf-prefix}-dropdown~=bottom] {
+    > #{$sf-prefix}-dropdown-list {
+      top: 100%;
+      left: 0;
+    }
+  }
   // Top.
-  &[sf-position=top] {
+  &[#{$sf-prefix}-dropdown~=top] {
     // Dropdown position.
     > #{$sf-prefix}-dropdown-list {
       bottom: 100%;
@@ -218,21 +229,14 @@
     }
   }
   // Right.
-  &[sf-position=right] {
+  &[#{$sf-prefix}-dropdown~=right] {
     > #{$sf-prefix}-dropdown-list {
       top: 0;
       left: 100%;
     }
   }
-  // Bottom (default).
-  &:not([sf-position]), &[sf-position=bottom] {
-    > #{$sf-prefix}-dropdown-list {
-      top: 100%;
-      left: 0;
-    }
-  }
   // Left.
-  &[sf-position=left] {
+  &[#{$sf-prefix}-dropdown~=left] {
     > #{$sf-prefix}-dropdown-list {
       top: 0;
       right: 100%;

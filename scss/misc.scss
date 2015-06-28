@@ -54,15 +54,11 @@ ul, ol {
  * Whitespace.
  */
 .pad {padding: $sf-space}
-.pad-v {
-  padding-top: $sf-space;
-  padding-bottom: $sf-space;
-}
 .space-out {
-  @include sf-space-out-vertically;
+  @include sf-space-out-vertical;
 }
-.space-out-horizontal {
-  @include sf-space-out-horizontally;
+.space-out-h {
+  @include sf-space-out-horizontal;
 }
 
 /**

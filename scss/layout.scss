@@ -84,26 +84,16 @@ body {
   // Whitespace.
   [#{$name}~=space-out]:not([#{$name}~=column]),
   [#{$name}~=column][#{$name}~=space-out-cross] {
-    @include sf-space-out-horizontally;
+    @include sf-space-out-horizontal;
   }
   [#{$name}~=column][#{$name}~=space-out],
   [#{$name}~=space-out-cross]:not([#{$name}~=column]) {
-    @include sf-space-out-vertically;
+    @include sf-space-out-vertical;
   }
 }
 
-// Angular Material's version. Overengineered.
-// @include sf-layout-for-name();
-// @include sf-sm    {@include sf-layout-for-name(sm);}
-// @include sf-gt-sm {@include sf-layout-for-name(gt-sm);}
-// @include sf-md    {@include sf-layout-for-name(md);}
-// @include sf-gt-md {@include sf-layout-for-name(gt-md);}
-// @include sf-lg    {@include sf-layout-for-name(lg);}
-// @include sf-gt-lg {@include sf-layout-for-name(gt-lg);}
-
-// Simplified version.
 @include sf-layout-for-name();
-@include sf-sm    {@include sf-layout-for-name(sm);}
+@include sf-eq-sm {@include sf-layout-for-name(sm);}
 @include sf-gt-sm {@include sf-layout-for-name(md);}
 @include sf-gt-md {@include sf-layout-for-name(lg);}
 
@@ -139,17 +129,7 @@ body {
   }
 }
 
-// Angular Material's version. Overengineered.
-// @include sf-child-layout-for-name();
-// @include sf-sm    {@include sf-child-layout-for-name(sm);}
-// @include sf-gt-sm {@include sf-child-layout-for-name(gt-sm);}
-// @include sf-md    {@include sf-child-layout-for-name(md);}
-// @include sf-gt-md {@include sf-child-layout-for-name(gt-md);}
-// @include sf-lg    {@include sf-child-layout-for-name(lg);}
-// @include sf-gt-lg {@include sf-child-layout-for-name(gt-lg);}
-
-// Simplified version.
 @include sf-child-layout-for-name();
-@include sf-sm    {@include sf-child-layout-for-name(sm);}
+@include sf-eq-sm {@include sf-child-layout-for-name(sm);}
 @include sf-gt-sm {@include sf-child-layout-for-name(md);}
 @include sf-gt-md {@include sf-child-layout-for-name(lg);}

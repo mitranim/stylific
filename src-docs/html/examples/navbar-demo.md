@@ -25,7 +25,7 @@ folding in effect.
 </sf-navbar>
 ```
 
-<div><doc-demo>
+<div doc-demo>
   <sf-navbar>
     <input id="<%= uniqId() %>" type="checkbox">
     <label for="<%= lastUniqId() %>"></label>
@@ -35,15 +35,15 @@ folding in effect.
     <a href="examples/navbar-demo/#partners">Partners</a>
     <a href="examples/navbar-demo/#achievements">Achievements</a>
   </sf-navbar>
-</doc-demo></div>
+</div>
 
 # Static Folding
 
-With a folding navbar, use the `[sf-fold]` attribute to tell it to _always_
-fold, regardless of the viewport width.
+With a folding navbar, use the `fold` option to tell it to _always_ fold,
+regardless of the viewport width.
 
 ```html
-<sf-navbar theme="primary" sf-fold>
+<sf-navbar theme="primary" sf-navbar="fold">
   <input id="..." type="checkbox">
   <label for="..."></label>
   <a href="/">Home</a>
@@ -53,8 +53,8 @@ fold, regardless of the viewport width.
 </sf-navbar>
 ```
 
-<div><doc-demo>
-  <sf-navbar theme="primary" sf-fold>
+<div doc-demo>
+  <sf-navbar theme="primary" sf-navbar="fold">
     <input id="<%= uniqId() %>" type="checkbox">
     <label for="<%= lastUniqId() %>"></label>
     <a href="examples/navbar-demo/#home">Home</a>
@@ -63,4 +63,4 @@ fold, regardless of the viewport width.
     <a href="examples/navbar-demo/#partners">Partners</a>
     <a href="examples/navbar-demo/#achievements">Achievements</a>
   </sf-navbar>
-</doc-demo></div>
+</div>

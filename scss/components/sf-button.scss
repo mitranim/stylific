@@ -1,15 +1,26 @@
 /**
- * <button>...</button>
- * <input type="button">
- * <sf-button>...</sf-button>
- * <div class="sf-button">...</div>
+ * Button styling. Somewhat inspired by material design.
+ *
+ * Usage:
+ *
+ *   <button>...</button>
+ *   <input type="button">
+ *   <sf-button>...</sf-button>
+ *   <div sf-button>...</div>
  */
 
-// Tag-based.
+/**
+ * TODO.
+ *
+ * Review how to best implement a button whose dimensions stay unchanged when
+ * the content is changed dynamically. Easier in a flexible container, more
+ * difficult when surrounded by whitespace. Might make an option with some
+ * minimum width, a set height, and text ellipsis on overflow.
+ */
+
 #{$sf-prefix}-button,
-// Class-based.
-.#{$sf-prefix}-button,
-// Native inputs.
+[#{$sf-prefix}-button],
+// Override native styles too.
 button, input[type=button] {
 
   /**
@@ -34,7 +45,7 @@ button, input[type=button] {
   &:active {
     @include sf-shadow-thin;
   }
-  &.sf-flat, &[disabled] {box-shadow: none}
+  &[#{$sf-prefix}-button~=flat], &[disabled] {box-shadow: none}
 
   // Animate style changes.
   @include sf-transitions(all);

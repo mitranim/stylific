@@ -1,12 +1,18 @@
 /**
  * Responsive embed. Copied from:
- * https://github.com/twbs/bootstrap/blob/master/less/responsive-embed.less
+ * https://github.com/twbs/bootstrap/blob/v3.3.5/less/responsive-embed.less
  *
- * <sf-embed>
- *   <iframe src=...></iframe>
- * </sf-embed>
+ *   <sf-embed>
+ *     <iframe src=...></iframe>
+ *   </sf-embed>
+ *
+ *   <div sf-embed="ratio-4by3">
+ *     <iframe src=...></iframe>
+ *   </div>
  */
-#{$sf-prefix}-embed {
+
+#{$sf-prefix}-embed,
+[#{$sf-prefix}-embed] {
   // Layout.
   display: block;
   position: relative;
@@ -15,15 +21,15 @@
   overflow: hidden;
 
   // 16:9 aspect ratio (default).
-  &, &.ratio-16by9 {
+  &, &[#{$sf-prefix}-embed~=ratio-16to9] {
     padding-bottom: 56.25%;
   }
   // 4:3 aspect ratio.
-  &.ratio-4by3 {
+  &[#{$sf-prefix}-embed~=ratio-4to3] {
     padding-bottom: 75%;
   }
 
-  .embed-responsive-item,
+  .sf-embed-item,
   iframe,
   embed,
   object,

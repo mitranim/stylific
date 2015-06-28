@@ -29,7 +29,8 @@
  * the position of an arbitrary descendant, not just an immediate child.
  */
 
-#{$sf-prefix}-modal {
+#{$sf-prefix}-modal,
+[#{$sf-prefix}-modal] {
 
   /**
    * Layout.
@@ -94,7 +95,8 @@
   }
 
   // Body styling.
-  #{$sf-prefix}-modal-body {
+  #{$sf-prefix}-modal-body,
+  [#{$sf-prefix}-modal-body] {
     /**
      * Layout.
      */
@@ -116,7 +118,7 @@
 
     // Cosmetic.
     padding: $sf-space;
-    @include sf-space-out-vertically;
+    @include sf-space-out-vertical;
     border-radius: $sf-border-radius;
     @include sf-shadow-medium;
 
@@ -129,7 +131,7 @@
   }
 
   // Default anchor and body visibility.
-  > a, > #{$sf-prefix}-modal-body {
+  > a, > #{$sf-prefix}-modal-body, > [#{$sf-prefix}-modal-body] {
     // Hidden unless active. Both opacity and visibility are required to animate
     // the visibility change.
     opacity: 0;
@@ -140,7 +142,7 @@
 
   // Active anchor and body visibility.
   &:target, &.active {
-    > a, > #{$sf-prefix}-modal-body {
+    > a, > #{$sf-prefix}-modal-body, > [#{$sf-prefix}-modal-body] {
       // Display. Both opacity and visibility are required to animate the
       // visibility change.
       opacity: inherit;

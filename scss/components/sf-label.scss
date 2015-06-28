@@ -1,0 +1,57 @@
+/**
+ * Enhanced version of form labels. Intended usage:
+ *
+ *   <label sf-label>
+ *     <span>Email</span>
+ *     <input type="email">
+ *   </label>
+ *
+ *   <label sf-label="row">
+ *     <span>Name</span>
+ *     <input type="text">
+ *   </label>
+ */
+
+/**
+ * TODO.
+ *
+ * Row version with a hard-set height (still adaptive to font size). Could be
+ * useful for avoiding jumping button height when button content is changed
+ * dynamically. Need to review.
+ */
+
+sf-label, [sf-label] {
+
+  // Default version: vertical.
+  &, &[sf-label~=column] {
+    // Layout.
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    // Whitespace.
+    > * {margin-bottom: $sf-space / 2}
+    > :last-child {margin-bottom: 0}
+  }
+
+  // Row version: horizontal.
+  &[sf-label~=row] {
+    // Layout.
+    flex-direction: row;
+    align-items: stretch;
+    > * {
+      // Center text in immediate children.
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      // If the child is inline-block, center it the old way. This might handle
+      // the case where the child has fixed dimensions and can't be stretched.
+      vertical-align: middle;
+      // Whitespace.
+      margin-right: $sf-space / 2;
+      &:last-child {margin-right: 0}
+      // Override the space from the vertical version.
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+}

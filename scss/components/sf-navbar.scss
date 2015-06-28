@@ -11,12 +11,8 @@
  *   </body>
  */
 
-/**
- * ToDo.
- * Document the expected structure and the collapsing dropdown feature.
- */
-
-#{$sf-prefix}-navbar {
+#{$sf-prefix}-navbar,
+[#{$sf-prefix}-navbar] {
 
   /**
    * Layout.
@@ -31,7 +27,7 @@
   // siblings following the navbar.
   position: relative;
   // Fixed version.
-  &.navbar-fixed {
+  &[#{$sf-prefix}-navbar~=fixed] {
     /**
      * Layout.
      */
@@ -60,7 +56,7 @@
   flex-wrap: wrap;
 
   // Typography.
-  font-size: 1.2 * $sf-font-size;
+  font-size: 1.2em;
   text-align: center;
 
   // Cosmetic.
@@ -108,7 +104,7 @@
    *   </sf-navbar>
    *
    * Where non-collapsing and collapsing elements are divided with the
-   * `@sf-navbar-nth-child` variable, which specifies at which ordinal position
+   * `$sf-navbar-nth-child` variable, which specifies at which ordinal position
    * the children should be wrapped.
    *
    * The [id] and [for] attributes must match. The input is hidden and is used
@@ -209,5 +205,14 @@
     }
   }
   @media (max-width: $sf-layout-breakpoint-sm) {@include collapse-rules;}
-  &[#{$sf-prefix}-fold] {@include collapse-rules;}
+  // Version that always folds.
+  &[#{$sf-prefix}-navbar~=fold] {@include collapse-rules;}
+
+  /**
+   * "navtabs" version.
+   */
+  &[#{$sf-prefix}-navbar~=tabs] {
+    @include sf-shadow-weak;
+    &:not([#{$sf-prefix}-navbar~=fixed]) {z-index: auto}
+  }
 }

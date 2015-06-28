@@ -74,7 +74,8 @@
  * Each [id] must be unique and the [href] must match it.
  */
 
-#{$sf-prefix}-tabset {
+#{$sf-prefix}-tabset,
+[#{$sf-prefix}-tabset] {
 
   /**
    * Inner layout.
@@ -122,7 +123,8 @@
   /**
    * Base body styles.
    */
-  > #{$sf-prefix}-tab {
+  > #{$sf-prefix}-tab,
+  > [#{$sf-prefix}-tab] {
     /**
      * Layout.
      */
@@ -148,7 +150,7 @@
     @include sf-outline-weak;
     // Whitespace.
     padding: $sf-space;
-    @include sf-space-out-vertically;
+    @include sf-space-out-vertical;
   }
 
   /**
@@ -159,7 +161,10 @@
   > input[type=radio]:checked + label {
     @include sf-register-selected-state;
   }
-  // Activated state for the .active version is defined implicitly.
+  // .active version.
+  > label.active {
+    @include sf-register-selected-state;
+  }
   // :target version.
   > a[href*='#']:target {
     @include sf-register-selected-state;
@@ -174,7 +179,8 @@
   > .active,
   // :target version.
   > a[href*='#']:target {
-    & + #{$sf-prefix}-tab {
+    & + #{$sf-prefix}-tab,
+    & + [#{$sf-prefix}-tab] {
       display: block;
       // Special exception for the .flex layout class to allow the user to use
       // it for a tab's inner layout. This exception is necessary because this

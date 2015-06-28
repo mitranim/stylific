@@ -6,17 +6,18 @@
  *     ...
  *   </sf-jumbo>
  *
- * By default, jumbo content is pushed to the bottom. This can be changed by
- * adjusting its justify-content property:
+ * By default, jumbo content is pushed to the bottom. This can be changed with
+ * a layout property:
  *
- *   <sf-jumbo style="background-image: url(...)" layout="justify-start">
+ *   <sf-jumbo style="background-image: url(...)" layout="start">
  *     ...
  *   </sf-jumbo>
  *
  * In this example, children will be at the top.
  */
 
-#{$sf-prefix}-jumbo {
+#{$sf-prefix}-jumbo,
+[#{$sf-prefix}-jumbo] {
 
   /**
    * Layout.
@@ -26,7 +27,6 @@
   // (e.g. rem), they'll need to adjust jumbo height manually.
   height: $sf-jumbo-height;
   font-size: $sf-jumbo-font-size;
-  // .sf-media-mix(font-size, $sf-jumbo-font-size-base);
 
   /**
    * Inner layout.

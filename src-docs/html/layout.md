@@ -1,10 +1,11 @@
 <!-- TOC -->
-<div class="doc-toc" theme="text-accent">
+<div doc-toc theme="text-accent">
   <input checked id="<%= uniqId() %>" type="checkbox">
   <label for="<%= lastUniqId() %>" theme="accent"></label>
   [Overview](layout/#overview)
   [Container](layout/#container)
   [Child](layout/#child)
+  [Whitespace](layout/#whitespace)
 </div>
 
 # Overview
@@ -49,13 +50,13 @@ whitespace flags (`justify-content` in flexbox terms):
 </div>
 ```
 
-<div><doc-demo style="display: block">
+<div doc-demo style="display: block">
   <div layout="row space-between">
     <button>left</button>
     <button>center</button>
     <button>right</button>
   </div>
-</doc-demo></div>
+</div>
 
 To control child alignment on the cross axis (usually vertical), use one of the
 cross-alignment flags (`align-items` in flexbox terms):
@@ -72,7 +73,7 @@ cross-alignment flags (`align-items` in flexbox terms):
 </div>
 ```
 
-<div><doc-demo layout="row space-between cross-stretch">
+<div doc-demo layout="row space-between cross-stretch">
   <div layout="row cross-start" style="min-height: 6em">
     <button>top</button>
   </div>
@@ -82,7 +83,7 @@ cross-alignment flags (`align-items` in flexbox terms):
   <div layout="row cross-end" style="min-height: 6em">
     <button>bottom</button>
   </div>
-</doc-demo></div>
+</div>
 
 Other options are listed in
 [`layout.scss`](https://github.com/Mitranim/stylific/tree/master/scss/layout.scss).
@@ -113,13 +114,13 @@ ranges from 1 to 12. In flexbox terms, this corresponds to `flex: N`.
 </div>
 ```
 
-<div><doc-demo style="display: block">
+<div doc-demo style="display: block">
   <div layout="row space-out">
     <button flex="1">small</button>
     <button flex="6">huge</button>
     <button flex="1">small</button>
   </div>
-</doc-demo></div>
+</div>
 
 To control child order, use `flex="order-N"`, where N ranges from -1 to 12.
 In flexbox terms, this corresponds to `order: N`.
@@ -132,13 +133,13 @@ In flexbox terms, this corresponds to `order: N`.
 </div>
 ```
 
-<div><doc-demo style="display: block">
+<div doc-demo style="display: block">
   <div layout="row space-around">
     <button flex="order-2">third (order: 2)</button>
     <button flex="order-1">second (order: 1)</button>
     <button flex="order--1">first (order: -1)</button>
   </div>
-</doc-demo></div>
+</div>
 
 To control child self-alignment, use one of the cross-axis flags. In flexbox
 terms, this corresponds to `align-self`.
@@ -152,11 +153,29 @@ terms, this corresponds to `align-self`.
 </div>
 ```
 
-<div><doc-demo style="display: block">
+<div doc-demo style="display: block">
   <div layout="row space-between" style="min-height: 6em">
     <button flex="stretch">stretch</button>
     <button flex="start">top</button>
     <button flex="center">center</button>
     <button flex="end">bottom</button>
   </div>
-</doc-demo></div>
+</div>
+
+# Whitespace
+
+stylific defines a few global classes and attributes dedicated to whitespace.
+They cover a lot of common use cases and save you from littering stylesheets
+with haphazard margin and padding declarations.
+
+Also see the whitespace-related
+[variables](https://github.com/Mitranim/stylific/blob/master/scss/_variables.scss)
+and [mixins](https://github.com/Mitranim/stylific/blob/master/scss/_mixins.scss).
+
+```scss
+[layout="space-out"]        // interval between children on the main axis
+[layout="space-out-cross"]  // interval between children on the cross axis
+.pad                        // default padding ($sf-space == 1rem)
+.space-out                  // vertical interval between children
+.space-out-h                // horizontal interval between children
+```

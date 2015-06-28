@@ -1,5 +1,5 @@
 <!-- TOC -->
-<div class="doc-toc" theme="text-accent">
+<div doc-toc theme="text-accent">
   <input checked id="<%= uniqId() %>" type="checkbox">
   <label for="<%= lastUniqId() %>" theme="accent"></label>
   [Overview](themes/#overview)
@@ -42,7 +42,7 @@ Demo of some elements with the `text-*` themes.
 <!-- ... -->
 ```
 
-<div><doc-demo style="display: block" class="space-out">
+<div doc-demo style="display: block" class="space-out">
   <div layout="space-between cross-center">
     <button>No theme button</button>
     <p>No theme paragraph</p>
@@ -79,7 +79,7 @@ Demo of some elements with the `text-*` themes.
     <button disabled theme="text-warn">disabled `text-warn` button</button>
     <input disabled theme="text-warn" value="disabled `text-warn` input">
   </div>
-</doc-demo></div>
+</div>
 
 # Full Themes
 
@@ -93,7 +93,7 @@ Demo of some elements with the full themes.
 <!-- ... -->
 ```
 
-<div><doc-demo style="display: block" class="space-out">
+<div doc-demo style="display: block" class="space-out">
   <div layout="space-between cross-center">
     <button theme="primary">`primary` button</button>
     <p theme="primary">`primary` paragraph</p>
@@ -121,7 +121,7 @@ Demo of some elements with the full themes.
     <button disabled theme="warn">disabled `warn` button</button>
     <input disabled theme="warn" value="disabled `warn` input">
   </div>
-</doc-demo></div>
+</div>
 
 # Custom Configuration
 

@@ -12,7 +12,8 @@ What sets it apart:
   tabsets, dropdowns, collapsable navbars that require JS in other libraries.
 * No pixels. Dimensions are based on `em` and `rem`, making them easy to scale
   together.
-* Component-based approach: styles are scoped under customisable tag names.
+* Component-based approach: styles are scoped under customisable tag and
+  attribute names.
 
 The component-based approach makes the library easy to customise and extend. To
 use a modified version of a built-in component, just reuse its styles as a mixin

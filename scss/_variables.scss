@@ -77,15 +77,12 @@ $sf-font-family-monospace:  Menlo, Andale Mono, Monaco, Consolas, monospace !def
 
 /**
  * rem sizing for the <html> element. The common baseline is 12pt = 16px =
- * 1em. We need to declare rem in pixels or points in order to have consistent
- * font scaling between various native elements.
+ * 1em. Must be a non-`em` unit, in order to have consistent font scaling
+ * between various native elements.
  */
 $sf-rem: 12pt !default;
 
-// Font sizes.
-$sf-font-size: 1em !default;
-
-// Common whitespace size. Must be a non-em unit.
+// Common whitespace size. Must be a non-`em` unit.
 $sf-space: 1rem !default;
 
 /****************************** sf-navbar.scss *******************************/
@@ -108,7 +105,7 @@ $sf-footer-offset: 4 * $sf-space !default;
 /******************************* sf-jumbo.scss *******************************/
 
 $sf-jumbo-height: 16em !default;
-$sf-jumbo-font-size: 1.6 * $sf-font-size !default;
+$sf-jumbo-font-size: 1.6em !default;
 
 /****************************** sf-tabset.scss *******************************/
 

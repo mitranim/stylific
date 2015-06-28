@@ -1,7 +1,7 @@
 /**
  * http://compass-style.org/reference/compass/utilities/color/brightness/#function-brightness
  */
-@function brightness($color) {
+@function sf-brightness($color) {
   @if type-of($color) == color {
     @return (red($color) * 0.299 + green($color) * 0.587 + blue($color) * 0.114) / 255 * 100%;
   }
@@ -14,19 +14,19 @@
 // the given colour, then modifies the given colour to match that brightness,
 // and returns the result.
 @function sf-contrasting-color($color) {
-  @if brightness($sf-color-text) > 50% {
-    $contrasting: if(brightness($color) > 50%, $sf-color-background, $sf-color-text);
-    @return hsl(hue($color), saturation($color), brightness($contrasting));
+  @if sf-brightness($sf-color-text) > 50% {
+    $contrasting: if(sf-brightness($color) > 50%, $sf-color-background, $sf-color-text);
+    @return hsl(hue($color), saturation($color), sf-brightness($contrasting));
   }
-  $contrasting: if(brightness($color) > 50%, $sf-color-text, $sf-color-background);
-  @return hsl(hue($color), saturation($color), brightness($contrasting));
+  $contrasting: if(sf-brightness($color) > 50%, $sf-color-text, $sf-color-background);
+  @return hsl(hue($color), saturation($color), sf-brightness($contrasting));
 }
 
 // Adjusts the given text colour to the brightness that ensures it's readable on
-// the default background.
+// the default background. TODO better algorithm.
 @function sf-sensible-text-color($color) {
-  @if brightness($sf-color-background) > 50% {
-    @return if(brightness($color) > 25%, hsl(hue($color), saturation($color), 25%), $color);
+  @if sf-brightness($sf-color-background) > 50% {
+    @return if(sf-brightness($color) > 25%, hsl(hue($color), saturation($color), 30%), $color);
   }
-  @return if(brightness($color) < 75%, hsl(hue($color), saturation($color), 75%), $color);
+  @return if(sf-brightness($color) < 75%, hsl(hue($color), saturation($color), 70%), $color);
 }

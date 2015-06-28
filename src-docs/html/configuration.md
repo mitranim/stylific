@@ -1,5 +1,5 @@
 <!-- TOC -->
-<div class="doc-toc" theme="text-accent">
+<div doc-toc theme="text-accent">
   <input checked id="<%= uniqId() %>" type="checkbox">
   <label for="<%= lastUniqId() %>" theme="accent"></label>
   [Variables](configuration/#variables)
@@ -67,10 +67,10 @@ Borrowing an
 [example](https://github.com/Mitranim/stylific/blob/master/src-docs/styles/components/doc-toc.scss)
 from this documentation's source, suppose you want to subclass
 [`sf-collapse`](components/#sf-collapse) to make a TOC element. In your Sass
-source, define a tag that inherits all of sf-collapse styling:
+source, define a component that inherits all of sf-collapse styling:
 
 ```scss
-doc-toc, .doc-toc {
+doc-toc, [doc-toc] {
   @extend sf-collapse;
 }
 ```
@@ -78,7 +78,7 @@ doc-toc, .doc-toc {
 Then add custom styling to enhance or override sf-collapse defaults:
 
 ```scss
-doc-toc, .doc-toc {
+doc-toc, [doc-toc] {
 
   // Subclass sf-collapse.
   @extend sf-collapse;
@@ -115,7 +115,7 @@ doc-toc, .doc-toc {
 ```
 
 That was easy! In just a few lines of code, we made an extended version of
-[`sf-collapse`](https://github.com/Mitranim/stylific/blob/master/less/components/sf-collapse.scss).
+[`sf-collapse`](https://github.com/Mitranim/stylific/blob/master/scss/components/sf-collapse.scss).
 The original component's styles have remained unchanged, and you can subclass
 it again for something different. And you can `@extend` the new component, as
 well!

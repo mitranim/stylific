@@ -1,18 +1,19 @@
 /**
- * Grid placeholder.
+ * (Placeholder for a grid component.)
  *
- *   <sf-grid>
- *     ...
- *   </sf-grid>
+ *   <sf-grid>...</sf-grid>
+ *   <div sf-grid>...</div>
  */
 
 /**
  * ToDo.
  *
- * Review if we need a better system. Pilfer ideas from angular-material's grid.
+ * Add media-responsive grid classes, similar to [layout]. Pilfer ideas from
+ * angular-material's grid.
  */
 
-#{$sf-prefix}-grid {
+#{$sf-prefix}-grid,
+[#{$sf-prefix}-grid] {
 
   /**
    * Inner layout.
@@ -29,8 +30,8 @@
     flex-shrink: 0;
 
     // Wrap at a different number of items on different display sizes.
-    @include sf-sm {flex-basis: 50%}
-    @include sf-md {flex-basis: 25%}
-    @include sf-gt-md {flex-basis: 25%}
+    @include sf-eq-sm {flex-basis: 50%}
+    @include sf-gt-sm {flex-basis: 25%}
+    // @include sf-gt-md {flex-basis: 25%}
   }
 }

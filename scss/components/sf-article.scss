@@ -2,13 +2,11 @@
  * Usage:
  *
  *   <sf-article>...</sf-article>
- *   <article class="sf-article">...</article>
+ *   <article sf-article>...</article>
  */
 
-// Tag based.
 #{$sf-prefix}-article,
-// Class based.
-.#{$sf-prefix}-article {
+[#{$sf-prefix}-article] {
 
   /**
    * Layout.
@@ -40,7 +38,7 @@
 
   // Whitespace.
   padding: $sf-space;
-  @include sf-space-out-vertically;
+  @include sf-space-out-vertical;
 
   // Link decorations. We're trying to target links in text without affecting
   // other elements.

@@ -1,5 +1,5 @@
 <!-- TOC -->
-<div class="doc-toc" theme="text-accent">
+<div doc-toc theme="text-accent">
   <input checked id="<%= uniqId() %>" type="checkbox">
   <label for="<%= lastUniqId() %>" theme="accent"></label>
   [Overview](components/#overview)
@@ -10,11 +10,12 @@
   [sf-grid](components/#sf-grid)
   [sf-modal](components/#sf-modal)
   [sf-navbar](components/#sf-navbar)
-  [sf-navtabs](components/#sf-navtabs)
   [sf-footer](components/#sf-footer)
   [sf-tooltip](components/#sf-tooltip)
   [sf-input](components/#sf-input)
   [sf-button](components/#sf-button)
+  [sf-label](components/#sf-label)
+  [sf-embed](components/#sf-embed)
   [sf-jumbo](components/#sf-jumbo)
 </div>
 
@@ -44,14 +45,14 @@ This whole page is an example, but here's a smaller one.
 </sf-article>
 ```
 
-<div><doc-demo layout="column">
+<div doc-demo layout="column">
   <sf-article style="padding: 0">
     <img src="images/square/script.jpg" class="right small">
     <h1>Article header</h1>
     <p>Cum horribilem walking dead resurgere de crazed sepulcris creaturis, zombie sicut de grave feeding iride et serpens.</p>
     <p>Pestilentia, shaun ofthe dead scythe animated corpses ipsa screams. Pestilentia est plague haec decaying ambulabat mortuos.</p>
   </sf-article>
-</doc-demo></div>
+</div>
 
 # sf-collapse
 
@@ -68,20 +69,20 @@ Like all other components, it responds to stylific's [themes](themes/).
 ```html
 <sf-collapse theme="text-primary">
   <input id="..." type="checkbox">
-  <label for="...">Click me to toggle collapse</label>
+  <label for="..." theme="text-primary">Click me to toggle collapse</label>
   <h3>Header for the collapsed element</h3>
   <p>Paragraph in the collapsed element</p>
 </sf-collapse>
 ```
 
-<div><doc-demo>
+<div doc-demo>
   <sf-collapse theme="text-primary">
     <input id="<%= uniqId() %>" type="checkbox">
     <label for="<%= lastUniqId() %>" theme="text-primary">Click me to toggle collapse</label>
     <h3>Header for the collapsed element</h3>
     <p>Paragraph in the collapsed element</p>
   </sf-collapse>
-</doc-demo></div>
+</div>
 
 ## Options
 
@@ -96,20 +97,20 @@ To uncollapse the component by default, use `<input checked>`.
 </sf-collapse>
 ```
 
-<div><doc-demo>
+<div doc-demo>
   <sf-collapse theme="text-accent">
     <input checked id="<%= uniqId() %>" type="checkbox">
     <label for="<%= lastUniqId() %>">Click me to toggle collapse</label>
     <h3>I'm uncollapsed by default!</h3>
     <p>This is my paragraph</p>
   </sf-collapse>
-</doc-demo></div>
+</div>
 
-You can also enable an overlay that collapses the element when clicking anywhere
-outside of it by adding the `[sf-overlay]` attribute:
+You can also enable an invisible overlay that collapses the element when
+clicking anywhere outside of it by adding the `[sf-collapse~=overlay]` option:
 
 ```html
-<sf-collapse theme="warn" sf-overlay>
+<sf-collapse theme="warn" sf-collapse="overlay">
   <input id="..." type="checkbox">
   <label for="...">Click me to toggle collapse</label>
   <h3>Click anywhere outside to close me!</h3>
@@ -117,14 +118,14 @@ outside of it by adding the `[sf-overlay]` attribute:
 </sf-collapse>
 ```
 
-<div><doc-demo>
-  <sf-collapse theme="warn" sf-overlay>
+<div doc-demo>
+  <sf-collapse theme="warn" sf-collapse="overlay">
     <input id="<%= uniqId() %>" type="checkbox">
     <label for="<%= lastUniqId() %>">Click me to toggle collapse</label>
     <h3>Click anywhere outside to close me!</h3>
     <p>This is my paragraph</p>
   </sf-collapse>
-</doc-demo></div>
+</div>
 
 # sf-dropdown
 
@@ -141,7 +142,7 @@ outside of it by adding the `[sf-overlay]` attribute:
 </sf-dropdown>
 ```
 
-<div><doc-demo>
+<div doc-demo>
   <sf-dropdown>
     <label>hover me to see a dropdown</label>
     <sf-dropdown-list>
@@ -150,7 +151,7 @@ outside of it by adding the `[sf-overlay]` attribute:
       <span>I'm the third item</span>
     </sf-dropdown-list>
   </sf-dropdown>
-</doc-demo></div>
+</div>
 
 You can also make it toggle-able by adding an `<input type="checkbox">` before
 the `<label>`. This automatically disables the `:hover` effect.
@@ -167,7 +168,7 @@ the `<label>`. This automatically disables the `:hover` effect.
 </sf-dropdown>
 ```
 
-<div><doc-demo>
+<div doc-demo>
   <sf-dropdown theme="primary">
     <input id="<%= uniqId() %>" type="checkbox">
     <label for="<%= lastUniqId() %>" class="pad">click me to toggle a dropdown</label>
@@ -177,12 +178,12 @@ the `<label>`. This automatically disables the `:hover` effect.
       <span>I'm the third item</span>
     </sf-dropdown-list>
   </sf-dropdown>
-</doc-demo></div>
+</div>
 
 The dropdown position may be changed to `top`, `right` or `left`:
 
 ```html
-<sf-dropdown sf-position="top">
+<sf-dropdown sf-dropdown="top">
   <label class="pad">this dropdown goes upwards</label>
   <sf-dropdown-list>
     <span>I'm the first item</span>
@@ -192,8 +193,8 @@ The dropdown position may be changed to `top`, `right` or `left`:
 </sf-dropdown>
 ```
 
-<div><doc-demo>
-  <sf-dropdown sf-position="top">
+<div doc-demo>
+  <sf-dropdown sf-dropdown="top">
     <label class="pad">this dropdown goes upwards</label>
     <sf-dropdown-list>
       <span>I'm the first item</span>
@@ -201,7 +202,7 @@ The dropdown position may be changed to `top`, `right` or `left`:
       <span>I'm the third item</span>
     </sf-dropdown-list>
   </sf-dropdown>
-</doc-demo></div>
+</div>
 
 # sf-tabset
 
@@ -238,7 +239,7 @@ using `.active` on labels. See this [example](examples/active-switch/).
 </sf-tabset>
 ```
 
-<div><doc-demo>
+<div doc-demo>
   <sf-tabset theme="text-accent">
     <input checked id="<%= uniqId() %>" type="radio" name="demo-sf-tabset">
     <label for="<%= lastUniqId() %>" theme="accent">First tab (preselected)</label>
@@ -261,7 +262,7 @@ using `.active` on labels. See this [example](examples/active-switch/).
       <p>Lucio fulci tremor est dark vivos magna. Expansis creepy arm yof darkness ulnis witchcraft missing carnem armis Kirkman Moore and Adlard caeruleum in locis. Romero morbo Congress amarus in auras. Nihil horum sagittis tincidunt, zombie slack-jawed gelida survival portenta. The unleashed virus est, et iam zombie mortui ambulabunt super terram. Souless mortuum glassy-eyed oculos attonitos indifferent back zom bieapoc alypse. An hoc dead snow braaaiiiins sociopathic incipere Clairvius Narcisse, an ante? Is bello mundi z?</p>
     </sf-tab>
   </sf-tabset>
-</doc-demo></div>
+</div>
 
 # sf-grid
 
@@ -297,7 +298,7 @@ to resize the page more easily.
 </sf-grid>
 ```
 
-<div><doc-demo style="display: block">
+<div doc-demo style="display: block">
   <sf-grid class="doc-grid-demo">
     <p>One</p>
     <p>Two</p>
@@ -310,7 +311,7 @@ to resize the page more easily.
     <p>Nine</p>
     <p>Ten</p>
   </sf-grid>
-</doc-demo></div>
+</div>
 
 # sf-modal
 
@@ -340,7 +341,7 @@ you need is to link to that id.
 </sf-modal>
 ```
 
-<div><doc-demo>
+<div doc-demo>
   <a href="components/#demo-sf-modal">
     <button>Click me to open a modal!</button>
   </a>
@@ -355,7 +356,7 @@ you need is to link to that id.
       <p>In Craven omni memoria patriae zombieland clairvius narcisse religionis sunt diri undead historiarum. Golums, zombies unrelenting et Raimi fascinati beheading. Maleficia! Vel cemetery man a modern bursting eyeballs perhsaps morbi. A terrenti flesh contagium. Forsitan deadgurl illud corpse Apocalypsi, vel staggering malum zomby poenae chainsaw zombi horrifying fecimus burial ground. Indeflexus shotgun coup de poudre monstra per plateas currere. Fit de decay nostra carne undead. Poenitentiam violent zom biehig hway agite RE:dead pœnitentiam! Vivens mortua sunt apud nos night of the living dead.</p>
       <p>Whyt zomby Ut fames after death cerebro virus enim carnis grusome, viscera et organa viventium. Sicut spargit virus ad impetum, qui supersumus flesh eating. Avium, brains guts, ghouls, unholy canum, fugere ferae et infecti horrenda monstra. Videmus twenty-eight deformis pale, horrenda daemonum. Panduntur brains portae rotting inferi. Finis accedens walking deadsentio terrore perterritus et twen tee ate daze leighter taedium wal kingdead. The horror, monstra epidemic significant finem. Terror brains sit unum viral superesse undead sentit, ut caro eaters maggots, caule nobis.</p>
   </sf-modal>
-</doc-demo></div>
+</div>
 
 If your website has a `<base>` tag (typically `<base href="/">`), the `#` part
 in the links needs to be prefixed with the pathname of the current page.
@@ -376,14 +377,14 @@ Notice how little markup is required.
 </sf-navbar>
 ```
 
-<div><doc-demo>
+<div doc-demo>
   <sf-navbar>
     <a href="components/#home">Home</a>
     <a class="active" href="components/#robots">Robots</a>
     <a href="components/#medical-cybernetics">Medical Cybernetics</a>
     <a href="components/#partners">Partners</a>
   </sf-navbar>
-</doc-demo></div>
+</div>
 
 ## Folding navbar
 
@@ -406,7 +407,7 @@ folding in effect or view the [demo](examples/navbar-demo/#static-folding).
 </sf-navbar>
 ```
 
-<div><doc-demo>
+<div doc-demo>
   <sf-navbar>
     <input id="<%= uniqId() %>" type="checkbox">
     <label for="<%= lastUniqId() %>"></label>
@@ -416,15 +417,15 @@ folding in effect or view the [demo](examples/navbar-demo/#static-folding).
     <a href="components/#partners">Partners</a>
     <a href="components/#achievements">Achievements</a>
   </sf-navbar>
-</doc-demo></div>
+</div>
 
-## `[sf-fold]`
+## `[sf-navbar="fold"]`
 
-With a folding navbar, use the `[sf-fold]` attribute to tell it to _always_
-fold, regardless of the viewport width.
+With a folding navbar, use the `fold` option to tell it to _always_ fold,
+regardless of the viewport width.
 
 ```html
-<sf-navbar theme="primary" sf-fold>
+<sf-navbar theme="primary" sf-navbar="fold">
   <input id="..." type="checkbox">
   <label for="..."></label>
   <a href="/">Home</a>
@@ -434,8 +435,8 @@ fold, regardless of the viewport width.
 </sf-navbar>
 ```
 
-<div><doc-demo>
-  <sf-navbar theme="primary" sf-fold>
+<div doc-demo>
+  <sf-navbar theme="primary" sf-navbar="fold">
     <input id="<%= uniqId() %>" type="checkbox">
     <label for="<%= lastUniqId() %>"></label>
     <a href="components/#home">Home</a>
@@ -444,14 +445,14 @@ fold, regardless of the viewport width.
     <a href="components/#partners">Partners</a>
     <a href="components/#achievements">Achievements</a>
   </sf-navbar>
-</doc-demo></div>
+</div>
 
-## `.navbar-fixed`
+## `[sf-navbar="fixed"]`
 
-Add the class `navbar-fixed` to fix the navbar to the top of the viewport:
+Add the `fixed` option to glue the navbar to the top of the viewport:
 
 ```html
-<sf-navbar class="navbar-fixed">
+<sf-navbar sf-navbar="fixed">
   <a href="/">Home</a>
   <a class="active" href="/robots">Robots</a>
   <a href="/medical-cybernetics">Medical Cybernetics</a>
@@ -463,34 +464,28 @@ The next element in the document flow (in this example, the implied site
 content) will be automatically offset by the navbar height. It must not be
 absolutely positioned or floating.
 
-# sf-navtabs
+## `[sf-navbar="tabs"]`
 
-`sf-navtabs` is a version of `sf-navbar` for use inside the document. By
-default, the only difference is the shadow, but it's fashioned as a separate tag
-for easier semantic styling. It has the exact same behaviour  and accepts all
-the same options.
-
-Check out the
-[source](https://github.com/Mitranim/stylific/blob/master/less/components/sf-
-navtabs.scss) to see how easy it is to subclass components.
+This is a version of `sf-navbar` for use inside the document. Has a lighter
+shadow and doesn't have a default z-index.
 
 ```html
-<sf-navtabs>
+<sf-navbar sf-navbar="tabs">
   <a href="#section-one">Section One</a>
   <a class="active" href="#section-two">Section Two</a>
   <a href="#section-three">Section Three</a>
   <a href="#section-four">Section Four</a>
-</sf-navtabs>
+</sf-navbar>
 ```
 
-<div><doc-demo>
-  <sf-navtabs>
+<div doc-demo>
+  <sf-navbar sf-navbar="tabs">
     <a href="components/#section-one">Section One</a>
     <a class="active" href="components/#section-two">Section Two</a>
     <a href="components/#section-three">Section Three</a>
     <a href="components/#section-four">Section Four</a>
-  </sf-navtabs>
-</doc-demo></div>
+  </sf-navbar>
+</div>
 
 # sf-footer
 
@@ -501,11 +496,8 @@ bottom of this page is a demo. Go to an [empty page](examples/footer/) to
 see how it works.
 
 `sf-footer` relies on the flex-column body layout, which is a global default
-defined in [`layout.scss`](https://github.com/Mitranim/stylific/blob/master/
-less/layout.scss). If you're importing stylific as
-[reference](http://lesscss.org/features/#import-options-reference), the global
-styles will be omitted, and you'll need to copy the body layout rules to your
-own source.
+defined in
+[`layout.scss`](https://github.com/Mitranim/stylific/blob/master/scss/layout.scss).
 
 Example footer:
 
@@ -518,14 +510,14 @@ Example footer:
 </sf-footer>
 ```
 
-<div><doc-demo>
+<div doc-demo>
   <sf-footer>
     <sf-footer-body style="margin-top: 0; padding: 0">
       <span>2020—2030 © slowpoke</span>
       <span>⇑</span>
     </sf-footer-body>
   </sf-footer>
-</doc-demo></div>
+</div>
 
 # sf-tooltip
 
@@ -534,35 +526,33 @@ pseudoelements. Its colours are automatically adjusted to be the grayscale
 inverses of the base text and background colours.
 
 ```html
-<div layout="column" class="space-out">
-  <span sf-tooltip="I'm a default positioned tooltip!">Hover me to see a top tooltip.</span>
+<span sf-tooltip="I'm a default positioned tooltip!">Hover me to see a top tooltip.</span>
 
-  <span sf-tooltip="I'm a top-right positioned tooltip!"
-        sf-position="top-right">Hover me to see a top-right tooltip.</span>
+<span sf-tooltip="I'm a top-right positioned tooltip!"
+      sf-position="top-right">Hover me to see a top-right tooltip.</span>
 
-  <span sf-tooltip="I'm a bottom positioned tooltip!"
-        sf-position="bottom">Hover me to see a bottom tooltip.</span>
+<span sf-tooltip="I'm a bottom positioned tooltip!"
+      sf-position="bottom">Hover me to see a bottom tooltip.</span>
 
-  <span sf-tooltip="I'm a bottom-right positioned tooltip!"
-        sf-position="bottom-right">Hover me to see a bottom-right tooltip.</span>
+<span sf-tooltip="I'm a bottom-right positioned tooltip!"
+      sf-position="bottom-right">Hover me to see a bottom-right tooltip.</span>
 
-  <span sf-tooltip="I appear on focus! Click outside to toggle me off."
-        sf-trigger="focus" contenteditable>Focus me to see a tooltip.</span>
+<span sf-tooltip="I appear on focus! Click outside to toggle me off."
+      sf-trigger="focus" contenteditable>Focus me to see a tooltip.</span>
 
-  <span sf-tooltip="I'm an input tooltip that appears on hover!">
-    <input placeholder="Hover me to see a tooltip.">
-  </span>
+<div sf-tooltip="I'm an input tooltip that appears on hover!">
+  <input placeholder="Hover me to see a tooltip.">
 </div>
 ```
 
-<div><doc-demo layout="column" class="space-out">
-  <span sf-tooltip="I'm a default positioned tooltip!">Hover me to see a top tooltip.</span>
-  <span sf-tooltip="I'm a top-right positioned tooltip!" sf-position="top-right">Hover me to see a top-right tooltip.</span>
-  <span sf-tooltip="I'm a bottom positioned tooltip!" sf-position="bottom">Hover me to see a bottom tooltip.</span>
-  <span sf-tooltip="I'm a bottom-right positioned tooltip!" sf-position="bottom-right">Hover me to see a bottom-right tooltip.</span>
-  <span sf-tooltip="I appear on focus! Click outside to toggle me off." sf-trigger="focus" contenteditable>Focus me to see a tooltip.</span>
-  <span sf-tooltip="I'm an input tooltip that appears on hover!"><input placeholder="Hover me to see a tooltip."></span>
-</doc-demo></div>
+<div doc-demo layout="column" class="space-out">
+  <div><span sf-tooltip="I'm a default positioned tooltip!">Hover me to see a top tooltip.</span></div>
+  <div><span sf-tooltip="I'm a top-right positioned tooltip!" sf-position="top-right">Hover me to see a top-right tooltip.</span></div>
+  <div><span sf-tooltip="I'm a bottom positioned tooltip!" sf-position="bottom">Hover me to see a bottom tooltip.</span></div>
+  <div><span sf-tooltip="I'm a bottom-right positioned tooltip!" sf-position="bottom-right">Hover me to see a bottom-right tooltip.</span></div>
+  <div><span sf-tooltip="I appear on focus! Click outside to toggle me off." sf-trigger="focus" contenteditable>Focus me to see a tooltip.</span></div>
+  <div sf-tooltip="I'm an input tooltip that appears on hover!"><input placeholder="Hover me to see a tooltip."></div>
+</div>
 
 The `trigger` attribute supports the following values: `hover`, `focus`,
 `disabled`, `target`, `active`. They correspond to their namesake pseudoclass
@@ -579,7 +569,7 @@ parent. Unfortunately other states, like `:focus`, don't propagate.
 # sf-input
 
 This style is applied by default to `<input>` and `<textarea>` elements, and is
-also exposed as the `.sf-input` class. It's purely cosmetic. Normalises
+also exposed as the `[sf-input]` attribute. It's purely cosmetic. Normalises
 user agent styles and adds some nice defaults.
 
 ```html
@@ -592,7 +582,7 @@ user agent styles and adds some nice defaults.
 <textarea theme="primary" style="width: 100%" placeholder="I use the primary theme.">I use the primary theme.</textarea>
 ```
 
-<div><doc-demo class="block-children space-out" style="display: block">
+<div doc-demo class="block-children space-out" style="display: block">
   <input placeholder="I'm a basic input." value="I'm a basic input.">
   <input theme="text-primary" placeholder="I use the text-primary theme." value="I use the text-primary theme.">
   <input theme="accent" placeholder="I use the accent theme." value="I use the accent theme.">
@@ -600,17 +590,18 @@ user agent styles and adds some nice defaults.
   <input disabled value="I'm disabled">
   <textarea style="width: 100%" placeholder="I'm a basic textarea.">I'm a basic textarea.</textarea>
   <textarea theme="primary" style="width: 100%" placeholder="I use the primary theme.">I use the primary theme.</textarea>
-</doc-demo></div>
+</div>
 
 # sf-button
 
 This style is applied by default to `<button>` and `<input type="button">`, and
-is also exposed as the `.sf-button` class. Normalises user agent styles and adds
-some nice defaults.
+is also exposed as the `[sf-button]` attribute. Normalises user agent styles and
+adds some nice defaults.
 
 ```html
 <div layout="space-out">
   <button>default button</button>
+  <button sf-button="flat">flat button</button>
   <button theme="text-primary">text-primary themed button</button>
   <button theme="primary">primary themed button</button>
   <button theme="text-accent">text-accent themed button</button>
@@ -618,13 +609,60 @@ some nice defaults.
 </div>
 ```
 
-<div><doc-demo layout="space-out">
+<div doc-demo layout="space-out">
   <button>default button</button>
+  <button sf-button="flat">flat button</button>
   <button theme="text-primary">text-primary themed button</button>
   <button theme="primary">primary themed button</button>
   <button theme="text-accent">text-accent themed button</button>
   <button disabled>disabled button</button>
-</doc-demo></div>
+</div>
+
+# sf-label
+
+Very primitive default styling for form input groups. Has two versions:
+* vertical: `sf-label`, `[sf-label]`, `[sf-label=column]`
+* horizontal: `[sf-label=row]`
+
+```html
+<label sf-label theme="text-primary">
+  <span>Name</span>
+  <input placeholder="type name...">
+</label>
+<label sf-label="row" theme="accent">
+  <span>Email</span>
+  <input type="email" placeholder="type email...">
+</label>
+```
+
+<div doc-demo style="display: block" class="space-out">
+  <label sf-label theme="text-primary">
+    <span>Name</span>
+    <input placeholder="type name...">
+  </label>
+  <label sf-label="row" theme="text-accent">
+    <span>Email</span>
+    <input type="email" placeholder="type email...">
+  </label>
+</div>
+
+# sf-embed
+
+Responsive embed, pilfered from
+[Bootstrap](https://github.com/twbs/bootstrap/blob/v3.3.5/less/responsive-embed.less).
+
+Has two aspect ratio options:
+* 16:9 (default): `sf-embed`, `[sf-embed=ratio-16-to-9]`
+* 4:3: `[sf-embed=ratio-4-to-3]`
+
+See the [source](https://github.com/Mitranim/stylific/blob/master/scss/components/sf-embed.scss)
+for which children are automatically adjusted.
+
+```html
+<sf-embed><iframe src="..."></sf-embed>
+<div sf-embed="ratio-4-to-3"><iframe src="..."></iframe></div>
+<sf-embed><div class="sf-embed-item"></div></sf-embed>
+```
 
 # sf-jumbo
 
@@ -640,26 +678,25 @@ height.
 </sf-jumbo>
 ```
 
-<div><doc-demo layout="column">
+<div doc-demo layout="column">
   <sf-jumbo style="background-image: url(images/aite.jpg)">
     <h1>Catchy slogan</h1>
     <p>Super awesome marketing speak</p>
   </sf-jumbo>
-</doc-demo></div>
+</div>
 
-To reposition the children, simply stick `.justify-start` or `.justify-center`
-on it. This requires `@sf-enable-global-classes` to be enabled (default).
+To reposition the children, simply add `layout="start"` or `layout="center"`.
 
 ```html
-<sf-jumbo class="justify-start" style="background-image: url(images/citadel-blue.jpg)">
+<sf-jumbo layout="start" style="background-image: url(images/citadel-blue.jpg)">
   <h1>I'm Commander Shepard</h1>
   <p>And this is my favourite store on the Citadel</p>
 </sf-jumbo>
 ```
 
-<div><doc-demo layout="column">
-  <sf-jumbo class="justify-start" style="background-image: url(images/citadel-blue.jpg)">
+<div doc-demo layout="column">
+  <sf-jumbo layout="start" style="background-image: url(images/citadel-blue.jpg)">
     <h1>I'm Commander Shepard</h1>
     <p>And this is my favourite store on the Citadel</p>
   </sf-jumbo>
-</doc-demo></div>
+</div>

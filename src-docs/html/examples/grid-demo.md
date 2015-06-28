@@ -20,7 +20,7 @@ Back to [Components#sf-grid](components/#sf-grid).
 </sf-grid>
 ```
 
-<div><doc-demo style="display: block">
+<div doc-demo style="display: block">
   <sf-grid class="doc-grid-demo">
     <p>One</p>
     <p>Two</p>
@@ -33,4 +33,4 @@ Back to [Components#sf-grid](components/#sf-grid).
     <p>Nine</p>
     <p>Ten</p>
   </sf-grid>
-</doc-demo></div>
+</div>
