@@ -24,7 +24,7 @@
   <a  href="layout/">Layout</a>
   <a  href="themes/">Themes</a>
   <a  href="configuration/">Config</a>
-  <sf-dropdown>
+  <sf-dropdown style="padding: 0">
     <input id="navbar-sub-dropdown" type="checkbox">
     <label for="navbar-sub-dropdown" layout="center">Examples</label>
     <sf-dropdown-list class="text-left">
@@ -77,9 +77,11 @@
 <p>The library comes with some pre-defined UI components. They work with plain HTML
 and CSS. You can also <a href="configuration/#subclassing">subclass</a> them
 in Sass.</p>
-<h1 id="sf-article"><a href="https://github.com/Mitranim/stylific/blob/master/scss/components/sf-article.scss" target="_blank">sf-article</a></h1><p><code>sf-article</code> symbolises a block of readable text. Unlike other elements, it has
-no special layout properties. Its purpose is default cosmetic styling, like
-typographic offsets, link styles, and convenience classes for images.</p>
+<p>Most components are available as tags, like <code>sf-collapse</code>, and every component
+is available as an attribute, like <code>sf-button</code>. Some can even be combined like
+so: <code>&lt;button sf-button sf-icon&gt;&lt;/button&gt;</code>.</p>
+<h1 id="sf-article"><a href="https://github.com/Mitranim/stylific/blob/master/scss/components/sf-article.scss" target="_blank">sf-article</a></h1><p><code>sf-article</code> symbolises a block of readable text. It provides default cosmetic
+styling, like whitespace, link decorations, and convenience classes for images.</p>
 <p>Use it wherever you want typographic styling. Suited for text compiled from
 Markdown, like this documentation.</p>
 <p>This whole page is an example, but here&#39;s a smaller one.</p>
@@ -593,6 +595,49 @@ adds some nice defaults.</p>
   <label sf-label="row" theme="text-accent">
     <span>Email</span>
     <input type="email" placeholder="type email...">
+  </label>
+</div>
+
+<p>Can be used directly on a form:</p>
+<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">form</span> <span class="hljs-attribute">sf-label</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"text-primary"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">span</span>&gt;</span>Name<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">"type name..."</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">form</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">form</span> <span class="hljs-attribute">sf-label</span>=<span class="hljs-value">"row"</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"text-accent"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">span</span>&gt;</span>Email<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"email"</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">"type email..."</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">form</span>&gt;</span>
+</code></pre>
+<div doc-demo style="display: block" class="space-out">
+  <form sf-label theme="text-primary">
+    <span>Name</span>
+    <input placeholder="type name...">
+  </form>
+  <form sf-label="row" theme="text-accent">
+    <span>Email</span>
+    <input type="email" placeholder="type email...">
+  </form>
+</div>
+
+<h2 id="-sf-label-dense-"><code>[sf-label=&quot;dense&quot;]</code></h2>
+<p>Condensed version for inlining buttons with inputs.</p>
+<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">sf-label</span>=<span class="hljs-value">"row dense"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">flex</span>=<span class="hljs-value">"6"</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"text-primary"</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">"take the blue pill..."</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">flex</span>=<span class="hljs-value">"1"</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"primary"</span> <span class="hljs-attribute">layout</span>=<span class="hljs-value">"center"</span>&gt;</span>go<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">sf-label</span>=<span class="hljs-value">"row dense"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">flex</span>=<span class="hljs-value">"1"</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"warn"</span> <span class="hljs-attribute">layout</span>=<span class="hljs-value">"center"</span>&gt;</span>go<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">flex</span>=<span class="hljs-value">"6"</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"text-warn"</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">"or the red pill..."</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+</code></pre>
+<div doc-demo style="display: block" class="space-out">
+  <label sf-label="row dense" style="width: 50%">
+    <input flex="6" theme="text-primary" placeholder="take the blue pill...">
+    <button flex="1" theme="primary" layout="center">go</button>
+  </label>
+  <label sf-label="row dense" style="width: 50%">
+    <button flex="1" theme="warn" layout="center">go</button>
+    <input flex="6" theme="text-warn" placeholder="or the red pill...">
   </label>
 </div>
 
