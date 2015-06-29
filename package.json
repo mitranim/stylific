@@ -12,7 +12,7 @@
   "authors": [
     "Mitranim <me@mitranim.com>"
   ],
-  "description": "Component-oriented, flexbox-based CSS framework, written in Sass.",
+  "description": "Component-oriented, flexbox-based CSS library, written in Sass.",
   "main": "scss/stylific.scss",
   "keywords": [
     "css",
