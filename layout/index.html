@@ -56,10 +56,12 @@
 <div doc-toc theme="text-accent">
   <input checked id="uniq-id-13" type="checkbox">
   <label for="uniq-id-13" theme="accent"></label>
-  <a href="layout/#overview">Overview</a>
-  <a href="layout/#container">Container</a>
-  <a href="layout/#child">Child</a>
-  <a href="layout/#whitespace">Whitespace</a>
+  <sf-collapse-body>
+    <a href="layout/#overview">Overview</a>
+    <a href="layout/#container">Container</a>
+    <a href="layout/#child">Child</a>
+    <a href="layout/#whitespace">Whitespace</a>
+  </sf-collapse-body>
 </div>
 
 <h1 id="overview">Overview</h1>
@@ -219,7 +221,7 @@ and <a href="https://github.com/Mitranim/stylific/blob/master/scss/_mixins.scss"
       </a>
     </div>
     <div flex="1" layout="column cross-end">
-      <sf-icon class="arrow-up interactive" style="opacity: 0.5" onclick="scrollTo(0, 0)"></sf-icon>
+      <button sf-icon class="arrow-up pad" style="opacity: 0.5" onclick="scrollTo(0, 0)"></button>
     </div>
   </sf-footer-body>
 </sf-footer>

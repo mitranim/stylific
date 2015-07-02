@@ -56,21 +56,23 @@
 <div doc-toc theme="text-accent">
   <input checked id="uniq-id-1" type="checkbox">
   <label for="uniq-id-1" theme="accent"></label>
-  <a href="components/#overview">Overview</a>
-  <a href="components/#sf-article">sf-article</a>
-  <a href="components/#sf-collapse">sf-collapse</a>
-  <a href="components/#sf-dropdown">sf-dropdown</a>
-  <a href="components/#sf-tabset">sf-tabset</a>
-  <a href="components/#sf-grid">sf-grid</a>
-  <a href="components/#sf-modal">sf-modal</a>
-  <a href="components/#sf-navbar">sf-navbar</a>
-  <a href="components/#sf-footer">sf-footer</a>
-  <a href="components/#sf-tooltip">sf-tooltip</a>
-  <a href="components/#sf-input">sf-input</a>
-  <a href="components/#sf-button">sf-button</a>
-  <a href="components/#sf-label">sf-label</a>
-  <a href="components/#sf-embed">sf-embed</a>
-  <a href="components/#sf-jumbo">sf-jumbo</a>
+  <sf-collapse-body>
+    <a href="components/#overview">Overview</a>
+    <a href="components/#sf-article">sf-article</a>
+    <a href="components/#sf-collapse">sf-collapse</a>
+    <a href="components/#sf-dropdown">sf-dropdown</a>
+    <a href="components/#sf-tabset">sf-tabset</a>
+    <a href="components/#sf-grid">sf-grid</a>
+    <a href="components/#sf-modal">sf-modal</a>
+    <a href="components/#sf-navbar">sf-navbar</a>
+    <a href="components/#sf-footer">sf-footer</a>
+    <a href="components/#sf-tooltip">sf-tooltip</a>
+    <a href="components/#sf-input">sf-input</a>
+    <a href="components/#sf-button">sf-button</a>
+    <a href="components/#sf-label">sf-label</a>
+    <a href="components/#sf-embed">sf-embed</a>
+    <a href="components/#sf-jumbo">sf-jumbo</a>
+  </sf-collapse-body>
 </div>
 
 <h1 id="overview">Overview</h1>
@@ -109,18 +111,22 @@ of subclassing <code>sf-collapse</code> to produce a custom collapsing element.<
 needs an <code>&lt;input type=&quot;checkbox&quot;&gt;</code> and a <code>&lt;label&gt;</code> with a matching id.</p>
 <p>Like all other components, it responds to stylific&#39;s <a href="themes/">themes</a>.</p>
 <pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-collapse</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"text-primary"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"..."</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"checkbox"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"..."</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"text-primary"</span>&gt;</span>Click me to toggle collapse<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">h3</span>&gt;</span>Header for the collapsed element<span class="hljs-tag">&lt;/<span class="hljs-title">h3</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Paragraph in the collapsed element<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"&lt;%= uniqId() %&gt;"</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"checkbox"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"&lt;%= lastUniqId() %&gt;"</span>&gt;</span>Click me to toggle collapse<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">sf-collapse-body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h3</span>&gt;</span>Header for the collapsed element<span class="hljs-tag">&lt;/<span class="hljs-title">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Paragraph in the collapsed element<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">sf-collapse-body</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">sf-collapse</span>&gt;</span>
 </code></pre>
 <div doc-demo>
   <sf-collapse theme="text-primary">
     <input id="uniq-id-2" type="checkbox">
-    <label for="uniq-id-2" theme="text-primary">Click me to toggle collapse</label>
-    <h3>Header for the collapsed element</h3>
-    <p>Paragraph in the collapsed element</p>
+    <label for="uniq-id-2">Click me to toggle collapse</label>
+    <sf-collapse-body>
+      <h3>Header for the collapsed element</h3>
+      <p>Paragraph in the collapsed element</p>
+    </sf-collapse-body>
   </sf-collapse>
 </div>
 
@@ -129,16 +135,20 @@ needs an <code>&lt;input type=&quot;checkbox&quot;&gt;</code> and a <code>&lt;la
 <pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-collapse</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"text-accent"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">checked</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"..."</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"checkbox"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"..."</span>&gt;</span>Click me to toggle collapse<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">h3</span>&gt;</span>I'm uncollapsed by default!<span class="hljs-tag">&lt;/<span class="hljs-title">h3</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is my paragraph<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">sf-collapse-body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h3</span>&gt;</span>I'm uncollapsed by default!<span class="hljs-tag">&lt;/<span class="hljs-title">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is my paragraph<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">sf-collapse-body</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">sf-collapse</span>&gt;</span>
 </code></pre>
 <div doc-demo>
   <sf-collapse theme="text-accent">
     <input checked id="uniq-id-3" type="checkbox">
     <label for="uniq-id-3">Click me to toggle collapse</label>
-    <h3>I&#39;m uncollapsed by default!</h3>
-    <p>This is my paragraph</p>
+    <sf-collapse-body>
+      <h3>I&#39;m uncollapsed by default!</h3>
+      <p>This is my paragraph</p>
+    </sf-collapse-body>
   </sf-collapse>
 </div>
 
@@ -147,16 +157,20 @@ clicking anywhere outside of it by adding the <code>[sf-collapse~=overlay]</code
 <pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-collapse</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"warn"</span> <span class="hljs-attribute">sf-collapse</span>=<span class="hljs-value">"overlay"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"..."</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"checkbox"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"..."</span>&gt;</span>Click me to toggle collapse<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">h3</span>&gt;</span>Click anywhere outside to close me!<span class="hljs-tag">&lt;/<span class="hljs-title">h3</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is my paragraph<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">sf-collapse-body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h3</span>&gt;</span>Click anywhere outside to close me!<span class="hljs-tag">&lt;/<span class="hljs-title">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is my paragraph<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">sf-collapse-body</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">sf-collapse</span>&gt;</span>
 </code></pre>
 <div doc-demo>
   <sf-collapse theme="warn" sf-collapse="overlay">
     <input id="uniq-id-4" type="checkbox">
     <label for="uniq-id-4">Click me to toggle collapse</label>
-    <h3>Click anywhere outside to close me!</h3>
-    <p>This is my paragraph</p>
+    <sf-collapse-body>
+      <h3>Click anywhere outside to close me!</h3>
+      <p>This is my paragraph</p>
+    </sf-collapse-body>
   </sf-collapse>
 </div>
 
@@ -703,7 +717,7 @@ height.</p>
       </a>
     </div>
     <div flex="1" layout="column cross-end">
-      <sf-icon class="arrow-up interactive" style="opacity: 0.5" onclick="scrollTo(0, 0)"></sf-icon>
+      <button sf-icon class="arrow-up pad" style="opacity: 0.5" onclick="scrollTo(0, 0)"></button>
     </div>
   </sf-footer-body>
 </sf-footer>

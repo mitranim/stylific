@@ -56,8 +56,10 @@
 <div doc-toc theme="text-accent">
   <input checked id="uniq-id-11" type="checkbox">
   <label for="uniq-id-11" theme="accent"></label>
-  <a href="configuration/#variables">Variables</a>
-  <a href="configuration/#subclassing">Subclassing</a>
+  <sf-collapse-body>
+    <a href="configuration/#variables">Variables</a>
+    <a href="configuration/#subclassing">Subclassing</a>
+  </sf-collapse-body>
 </div>
 
 <h1 id="variables">Variables</h1>
@@ -121,9 +123,10 @@ source, define a component that inherits all of sf-collapse styling:</p>
   <span class="hljs-attribute">margin-bottom</span><span class="hljs-value">: <span class="hljs-number">0</span>;</span>
 
   <span class="hljs-comment">// Default labeling.</span>
-  &gt; <span class="hljs-tag">label</span><span class="hljs-pseudo">:empty</span> {
-    &amp;<span class="hljs-pseudo">::before</span> {
-      <span class="hljs-attribute">content</span><span class="hljs-value">: <span class="hljs-string">'Contents'</span>;</span>
+  &gt; <span class="hljs-tag">label</span> {<span class="hljs-attribute">padding</span><span class="hljs-value">: <span class="hljs-variable">$sf-space</span> / <span class="hljs-number">2</span>}
+  &gt; label:empty {
+    &amp;::before {
+      content: <span class="hljs-string">'Contents'</span>;</span>
     }
     &amp;<span class="hljs-pseudo">::after</span> {
       <span class="hljs-attribute">padding-left</span><span class="hljs-value">: <span class="hljs-number">0.5em</span>;</span>
@@ -134,12 +137,17 @@ source, define a component that inherits all of sf-collapse styling:</p>
    * Cosmetic.
    */</span>
   <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> sf-outline-weak</span>;</span>
-  &gt; * {
-    <span class="hljs-attribute">padding</span><span class="hljs-value">: <span class="hljs-variable">$sf-space</span> / <span class="hljs-number">2</span>;</span>
+  sf-<span class="hljs-value">collapse</span>-<span class="hljs-tag">body</span>, <span class="hljs-attr_selector">[sf-collapse-body]</span> {
+    <span class="hljs-comment">// Layout.</span>
+    <span class="hljs-attribute">display</span><span class="hljs-value">: flex;</span>
+    <span class="hljs-attribute">flex-direction</span><span class="hljs-value">: column;</span>
+    <span class="hljs-comment">// Whitespace.</span>
+    <span class="hljs-attribute">padding</span><span class="hljs-value">: <span class="hljs-number">0</span>;</span>
+    &gt; * {<span class="hljs-attribute">padding</span><span class="hljs-value">: <span class="hljs-variable">$sf-space</span> / <span class="hljs-number">2</span>}
   }
-}
+}</span>
 </code></pre>
-<p>That was easy! In just a few lines of code, we made an extended version of
+<p>That was easy! In a few lines of code, we made an extended version of
 <a href="https://github.com/Mitranim/stylific/blob/master/scss/components/sf-collapse.scss" target="_blank"><code>sf-collapse</code></a>.
 The original component&#39;s styles have remained unchanged, and you can subclass
 it again for something different. And you can <code>@extend</code> the new component, as
@@ -165,7 +173,7 @@ well!</p>
       </a>
     </div>
     <div flex="1" layout="column cross-end">
-      <sf-icon class="arrow-up interactive" style="opacity: 0.5" onclick="scrollTo(0, 0)"></sf-icon>
+      <button sf-icon class="arrow-up pad" style="opacity: 0.5" onclick="scrollTo(0, 0)"></button>
     </div>
   </sf-footer-body>
 </sf-footer>

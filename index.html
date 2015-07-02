@@ -56,11 +56,13 @@
 <div doc-toc theme="text-accent">
   <input checked id="uniq-id-12" type="checkbox">
   <label for="uniq-id-12" theme="accent"></label>
-  <a href="#overview">Overview</a>
-  <a href="#motivation">Motivation</a>
-  <a href="#what-s-different">What&#39;s Different</a>
-  <a href="#installation-and-usage">Installation and Usage</a>
-  <a href="#contributing">Contributing</a>
+  <sf-collapse-body>
+    <a href="#overview">Overview</a>
+    <a href="#motivation">Motivation</a>
+    <a href="#what-s-different">What&#39;s Different</a>
+    <a href="#installation-and-usage">Installation and Usage</a>
+    <a href="#contributing">Contributing</a>
+  </sf-collapse-body>
 </div>
 
 <h1 id="overview">Overview</h1>
@@ -197,7 +199,7 @@ set up a local build for development, then send your changes to <code>master</co
       </a>
     </div>
     <div flex="1" layout="column cross-end">
-      <sf-icon class="arrow-up interactive" style="opacity: 0.5" onclick="scrollTo(0, 0)"></sf-icon>
+      <button sf-icon class="arrow-up pad" style="opacity: 0.5" onclick="scrollTo(0, 0)"></button>
     </div>
   </sf-footer-body>
 </sf-footer>

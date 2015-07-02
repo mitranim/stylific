@@ -56,10 +56,12 @@
 <div doc-toc theme="text-accent">
   <input checked id="uniq-id-14" type="checkbox">
   <label for="uniq-id-14" theme="accent"></label>
-  <a href="themes/#overview">Overview</a>
-  <a href="themes/#text-themes">Text Themes</a>
-  <a href="themes/#full-themes">Full Themes</a>
-  <a href="themes/#custom-configuration">Custom Configuration</a>
+  <sf-collapse-body>
+    <a href="themes/#overview">Overview</a>
+    <a href="themes/#text-themes">Text Themes</a>
+    <a href="themes/#full-themes">Full Themes</a>
+    <a href="themes/#custom-configuration">Custom Configuration</a>
+  </sf-collapse-body>
 </div>
 
 <h1 id="overview">Overview</h1>
@@ -215,7 +217,7 @@ and want it as a new theme. Modify the <code>$sf-color-map</code> variable:</p>
       </a>
     </div>
     <div flex="1" layout="column cross-end">
-      <sf-icon class="arrow-up interactive" style="opacity: 0.5" onclick="scrollTo(0, 0)"></sf-icon>
+      <button sf-icon class="arrow-up pad" style="opacity: 0.5" onclick="scrollTo(0, 0)"></button>
     </div>
   </sf-footer-body>
 </sf-footer>
