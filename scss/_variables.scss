@@ -30,8 +30,8 @@ $sf-z-index-tooltip:  1300 !default;
 $sf-color-map-primary: (
   name: 'primary',
   default: #4646a0,
-  active: lighten(#4646a0, 8%),
-  selected: lighten(#4646a0, 14%)
+  active: lighten(#4646a0, 5%),
+  selected: lighten(#4646a0, 10%)
 ) !default;
 
 $sf-color-map-accent: (

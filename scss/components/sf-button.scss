@@ -32,7 +32,8 @@ button, input[type=button] {
   // Normalise font size (browser defaults may be unpredictable).
   font-size: inherit;
 
-  // Use the base background colour by default.
+  // Normalise text and background colour.
+  color: inherit;
   background-color: inherit;
 
   // Border styles.
@@ -40,11 +41,7 @@ button, input[type=button] {
   border-radius: $sf-border-radius;
 
   // Normalise outlines.
-  @include sf-themed-outline;
-  // Hide the outline when the button is depressed.
-  &, &[theme] {
-    &:active {outline-color: transparent}
-  }
+  @include sf-outline-interactive;
 
   // A bit of skeuomorphism.
   box-shadow: 0 0.1rem 0.3rem -1px rgba(5, 5, 5, 0.5);
@@ -61,10 +58,8 @@ button, input[type=button] {
 
   // Animate style changes.
   @include sf-transitions(all);
-}
 
-// Treat the attribute version as interactive too.
-[#{$sf-prefix}-button] {
+  // Treat as interactive too.
   @include sf-register-interactive-selector;
   cursor: pointer;
 }

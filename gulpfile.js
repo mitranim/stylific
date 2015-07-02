@@ -24,7 +24,7 @@ var src = {
   styles:     'src-docs/styles/**/*.scss',
   html: [
     'src-docs/html/**/*',
-    'bower_components/font-awesome-svg-png/black/svg/**/*'
+    'bower_components/font-awesome-svg-png/black/**/*.svg'
   ],
   images:     'src-docs/images/**/*'
 };
@@ -176,13 +176,7 @@ gulp.task('docs:html:compile', function() {
     // Unpack commented HTML parts.
     .pipe($.replace(/<!--\s*:((?:[^:]|:(?!\s*-->))*):\s*-->/g, '$1'))
     // Render all html.
-    .pipe($.statil({
-      stripPrefix: {
-        'src-docs/html': 'src-docs/html',
-        'bower_components/font-awesome-svg-png/black/svg': 'bower_components/font-awesome-svg-png/black'
-      },
-      imports: imports
-    }))
+    .pipe($.statil({imports: imports}))
     // Change each `<filename>` into `<filename>/index.html`.
     .pipe($.rename(function(path) {
       switch (path.basename + path.extname) {

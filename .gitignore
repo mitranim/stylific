@@ -28,5 +28,8 @@ nbproject
 node_modules
 bower_components
 
+# Ignore built CSS
+lib
+
 # Ignore gh-pages symlink
 stylific-gh-pages

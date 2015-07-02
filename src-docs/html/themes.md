@@ -2,10 +2,12 @@
 <div doc-toc theme="text-accent">
   <input checked id="<%= uniqId() %>" type="checkbox">
   <label for="<%= lastUniqId() %>" theme="accent"></label>
-  [Overview](themes/#overview)
-  [Text Themes](themes/#text-themes)
-  [Full Themes](themes/#full-themes)
-  [Custom Configuration](themes/#custom-configuration)
+  <sf-collapse-body>
+    [Overview](themes/#overview)
+    [Text Themes](themes/#text-themes)
+    [Full Themes](themes/#full-themes)
+    [Custom Configuration](themes/#custom-configuration)
+  </sf-collapse-body>
 </div>
 
 # Overview

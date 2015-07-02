@@ -9,6 +9,8 @@
  *     </sf-navbar>
  *     ...
  *   </body>
+ *
+ * See http://mitranim.com/stylific/components/#sf-navbar
  */
 
 #{$sf-prefix}-navbar,
@@ -212,7 +214,8 @@
    * "navtabs" version.
    */
   &[#{$sf-prefix}-navbar~=tabs] {
-    @include sf-shadow-weak;
+    box-shadow: none;
+    @include sf-border-weak;
     &:not([#{$sf-prefix}-navbar~=fixed]) {z-index: auto}
   }
 }

@@ -2,8 +2,10 @@
 <div doc-toc theme="text-accent">
   <input checked id="<%= uniqId() %>" type="checkbox">
   <label for="<%= lastUniqId() %>" theme="accent"></label>
-  [Variables](configuration/#variables)
-  [Subclassing](configuration/#subclassing)
+  <sf-collapse-body>
+    [Variables](configuration/#variables)
+    [Subclassing](configuration/#subclassing)
+  </sf-collapse-body>
 </div>
 
 # Variables
@@ -94,6 +96,7 @@ doc-toc, [doc-toc] {
   margin-bottom: 0;
 
   // Default labeling.
+  > label {padding: $sf-space / 2}
   > label:empty {
     &::before {
       content: 'Contents';
@@ -107,14 +110,18 @@ doc-toc, [doc-toc] {
    * Cosmetic.
    */
   @include sf-outline-weak;
-  > * {
-    padding: $sf-space / 2;
+  sf-collapse-body, [sf-collapse-body] {
+    // Layout.
+    display: flex;
+    flex-direction: column;
+    // Whitespace.
+    padding: 0;
+    > * {padding: $sf-space / 2}
   }
 }
-
 ```
 
-That was easy! In just a few lines of code, we made an extended version of
+That was easy! In a few lines of code, we made an extended version of
 [`sf-collapse`](https://github.com/Mitranim/stylific/blob/master/scss/components/sf-collapse.scss).
 The original component's styles have remained unchanged, and you can subclass
 it again for something different. And you can `@extend` the new component, as

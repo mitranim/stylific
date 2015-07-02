@@ -2,21 +2,23 @@
 <div doc-toc theme="text-accent">
   <input checked id="<%= uniqId() %>" type="checkbox">
   <label for="<%= lastUniqId() %>" theme="accent"></label>
-  [Overview](components/#overview)
-  [sf-article](components/#sf-article)
-  [sf-collapse](components/#sf-collapse)
-  [sf-dropdown](components/#sf-dropdown)
-  [sf-tabset](components/#sf-tabset)
-  [sf-grid](components/#sf-grid)
-  [sf-modal](components/#sf-modal)
-  [sf-navbar](components/#sf-navbar)
-  [sf-footer](components/#sf-footer)
-  [sf-tooltip](components/#sf-tooltip)
-  [sf-input](components/#sf-input)
-  [sf-button](components/#sf-button)
-  [sf-label](components/#sf-label)
-  [sf-embed](components/#sf-embed)
-  [sf-jumbo](components/#sf-jumbo)
+  <sf-collapse-body>
+    [Overview](components/#overview)
+    [sf-article](components/#sf-article)
+    [sf-collapse](components/#sf-collapse)
+    [sf-dropdown](components/#sf-dropdown)
+    [sf-tabset](components/#sf-tabset)
+    [sf-grid](components/#sf-grid)
+    [sf-modal](components/#sf-modal)
+    [sf-navbar](components/#sf-navbar)
+    [sf-footer](components/#sf-footer)
+    [sf-tooltip](components/#sf-tooltip)
+    [sf-input](components/#sf-input)
+    [sf-button](components/#sf-button)
+    [sf-label](components/#sf-label)
+    [sf-embed](components/#sf-embed)
+    [sf-jumbo](components/#sf-jumbo)
+  </sf-collapse-body>
 </div>
 
 # Overview
@@ -71,19 +73,23 @@ Like all other components, it responds to stylific's [themes](themes/).
 
 ```html
 <sf-collapse theme="text-primary">
-  <input id="..." type="checkbox">
-  <label for="..." theme="text-primary">Click me to toggle collapse</label>
-  <h3>Header for the collapsed element</h3>
-  <p>Paragraph in the collapsed element</p>
+  <input id="<%= uniqId() %>" type="checkbox">
+  <label for="<%= lastUniqId() %>">Click me to toggle collapse</label>
+  <sf-collapse-body>
+    <h3>Header for the collapsed element</h3>
+    <p>Paragraph in the collapsed element</p>
+  </sf-collapse-body>
 </sf-collapse>
 ```
 
 <div doc-demo>
   <sf-collapse theme="text-primary">
     <input id="<%= uniqId() %>" type="checkbox">
-    <label for="<%= lastUniqId() %>" theme="text-primary">Click me to toggle collapse</label>
-    <h3>Header for the collapsed element</h3>
-    <p>Paragraph in the collapsed element</p>
+    <label for="<%= lastUniqId() %>">Click me to toggle collapse</label>
+    <sf-collapse-body>
+      <h3>Header for the collapsed element</h3>
+      <p>Paragraph in the collapsed element</p>
+    </sf-collapse-body>
   </sf-collapse>
 </div>
 
@@ -95,8 +101,10 @@ To uncollapse the component by default, use `<input checked>`.
 <sf-collapse theme="text-accent">
   <input checked id="..." type="checkbox">
   <label for="...">Click me to toggle collapse</label>
-  <h3>I'm uncollapsed by default!</h3>
-  <p>This is my paragraph</p>
+  <sf-collapse-body>
+    <h3>I'm uncollapsed by default!</h3>
+    <p>This is my paragraph</p>
+  </sf-collapse-body>
 </sf-collapse>
 ```
 
@@ -104,8 +112,10 @@ To uncollapse the component by default, use `<input checked>`.
   <sf-collapse theme="text-accent">
     <input checked id="<%= uniqId() %>" type="checkbox">
     <label for="<%= lastUniqId() %>">Click me to toggle collapse</label>
-    <h3>I'm uncollapsed by default!</h3>
-    <p>This is my paragraph</p>
+    <sf-collapse-body>
+      <h3>I'm uncollapsed by default!</h3>
+      <p>This is my paragraph</p>
+    </sf-collapse-body>
   </sf-collapse>
 </div>
 
@@ -116,8 +126,10 @@ clicking anywhere outside of it by adding the `[sf-collapse~=overlay]` option:
 <sf-collapse theme="warn" sf-collapse="overlay">
   <input id="..." type="checkbox">
   <label for="...">Click me to toggle collapse</label>
-  <h3>Click anywhere outside to close me!</h3>
-  <p>This is my paragraph</p>
+  <sf-collapse-body>
+    <h3>Click anywhere outside to close me!</h3>
+    <p>This is my paragraph</p>
+  </sf-collapse-body>
 </sf-collapse>
 ```
 
@@ -125,8 +137,10 @@ clicking anywhere outside of it by adding the `[sf-collapse~=overlay]` option:
   <sf-collapse theme="warn" sf-collapse="overlay">
     <input id="<%= uniqId() %>" type="checkbox">
     <label for="<%= lastUniqId() %>">Click me to toggle collapse</label>
-    <h3>Click anywhere outside to close me!</h3>
-    <p>This is my paragraph</p>
+    <sf-collapse-body>
+      <h3>Click anywhere outside to close me!</h3>
+      <p>This is my paragraph</p>
+    </sf-collapse-body>
   </sf-collapse>
 </div>
 

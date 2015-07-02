@@ -18,16 +18,17 @@ input[type=text], input[type=url], input[type=number], textarea {
   padding: $sf-space / 2;
 
   // Border styles.
-  border: none;
+  @include sf-border-weak;
+  &:focus, &:active {
+    // Give way to the outline.
+    border-color: transparent;
+  }
 
   // Normalise outlines.
-  @include sf-outline-weak;
-  @include sf-themed-outline;
+  @include sf-outline-interactive;
 
-  // Normalise placeholder colour.
-  &::placeholder {
-    color: rgba($sf-color-text, 0.5);
-  }
+  // Normalise default colours.
+  &:not([theme]) {color: inherit}
 
   // Normalise background colour. (Webkit has default {background-color: white}).
   &:not(:hover):not(:focus):not(:active):not(.active), &[disabled] {
@@ -52,11 +53,6 @@ input[type=text], input[type=url], input[type=number], textarea {
         color: rgba(sf-contrasting-color($default), 0.5);
       }
     }
-  }
-
-  // Disabled style.
-  &[disabled] {
-    cursor: not-allowed;
   }
 
   // Animate style changes.

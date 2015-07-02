@@ -54,7 +54,7 @@
       $selected: map-get($color-map, selected);
 
       // Text theme.
-      &[theme=text-#{$name}] {
+      &[theme=text-#{$name}], [theme=text-#{$name}] & {
         // These selectors are required to match the states and specificity of
         // the base interactive selectors.
         color: sf-sensible-text-color($selected);
@@ -62,7 +62,7 @@
       }
 
       // Full theme.
-      &[theme=#{$name}] {
+      &[theme=#{$name}], [theme=#{$name}] & {
         // These selectors are required to match the states and specificity of
         // the base interactive selectors.
         background-color: $selected;
@@ -90,7 +90,7 @@
       $selected: map-get($color-map, selected);
 
       // Text theme.
-      &[theme=text-#{$name}] {
+      &[theme=text-#{$name}], [theme=text-#{$name}] & {
         &:hover, &:focus, &:active {
           color: sf-sensible-text-color($active);
         }
@@ -100,7 +100,7 @@
       }
 
       // Full theme.
-      &[theme=#{$name}] {
+      &[theme=#{$name}], [theme=#{$name}] & {
         &:hover, &:focus, &:active {
           background-color: $active;
           color: sf-contrasting-color($active);
@@ -113,16 +113,15 @@
     }
   }
 
-  &[disabled] {
-    cursor: not-allowed;
-    opacity: 0.7;
-  }
+  // Misc.
+  @include sf-outline-interactive;
+  &[disabled] {opacity: 0.7}
 }
 
 /*********************************** Misc ************************************/
 
 @mixin sf-shadow-weak {
-  box-shadow: 0 0 0 1px rgba($sf-color-text, 0.1);
+  box-shadow: 0 0 0 1px rgba($sf-color-text, 0.2);
 }
 
 @mixin sf-shadow-thin {
@@ -133,12 +132,8 @@
   box-shadow: 0 0.2rem 1.5rem -0.2rem rgba($sf-color-text, 0.5);
 }
 
-@mixin sf-border-weak {
-  border: 1px solid rgba($sf-color-text, 0.2);
-}
-
-@mixin sf-outline-weak {
-  outline: 1px solid rgba($sf-color-text, 0.1);
+@mixin sf-border-weak($color: $sf-color-text) {
+  border: 1px solid rgba($color, 0.2);
 }
 
 @mixin sf-transitions($properties...) {
@@ -172,37 +167,34 @@
   justify-content: space-around;
 }
 
-@mixin sf-themed-outline {
+// Base outline style. Basis for some other mixins.
+@mixin sf-outline-base {
   outline-offset: 0;
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color: transparent;
+}
 
-  &:active, &:focus {
-    outline: 1px solid rgba($sf-color-text, 0.2);
+@mixin sf-outline-focus {
+  @include sf-outline-base;
+  &[theme], [theme] & {
+    outline-color: rgba($sf-color-background, 0.5);
   }
-
-  @each $color-map in $sf-color-maps {
-    $name: map-get($color-map, name);
-    $default: map-get($color-map, default);
-
-    &[theme=text-#{$name}] {
-      &:active, &:focus {
-        outline: 1px solid $default;
-      }
-    }
-
-    &[theme=#{$name}] {
-      &:active, &:focus {
-        outline: 1px solid sf-contrasting-color($default);
-      }
-    }
+  &, &[theme^=text-], [theme^=text] & {
+    outline-color: rgba(map-get($sf-color-map-primary, default), 0.5);
   }
+}
+
+@mixin sf-outline-interactive {
+  @include sf-outline-base;
+  &:focus, &:active {@include sf-outline-focus;}
 }
 
 @mixin sf-link-decorations {
   border-bottom: 1px dotted;
   border-color: inherit;
-  background-color: rgba($sf-color-text, 0.03);
   color: map-get($sf-color-map-primary, default);
   &:visited {
-    color: map-get($sf-color-map-primary, active);
+    color: map-get($sf-color-map-primary, selected);
   }
 }

@@ -55,28 +55,34 @@
     }
   }
 
-  // Dense version for tightly grouped inputs and buttons. Offsets the default
-  // outlines by 1px and negates adjacent border radii. Best used with flat
-  // buttons: <button sf-button="flat">.
+  // Dense version for tightly grouped inputs and buttons. Squishes intermediate
+  // whitespace and negates adjacent borders. Best used with flat buttons:
+  // <button sf-button="flat">.
   &[#{$sf-prefix}-label~=dense] {
     &[#{$sf-prefix}-label~=row] {
       > *:not(:last-child) {
-        margin-right: 1px;
+        margin-right: 0;
+        border-right: none;
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
       }
       > *:not(:first-child) {
+        margin-left: 0;
+        border-left: none;
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
       }
     }
     &:not([#{$sf-prefix}-label~=row]) {
       > *:not(:last-child) {
-        margin-bottom: 1px;
+        margin-bottom: 0;
+        border-bottom: none;
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
       }
       > *:not(:first-child) {
+        margin-top: 0;
+        border-top: none;
         border-top-left-radius: 0;
         border-top-right-radius: 0;
       }

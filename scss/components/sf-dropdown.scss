@@ -81,6 +81,9 @@
   &:not([theme]), &[theme^=text-] {
     background-color: $sf-color-background;
   }
+  [theme] & {
+    background-color: inherit;
+  }
 
   /**
    * Base label styles.

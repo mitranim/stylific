@@ -85,7 +85,7 @@
   flex-wrap: wrap;
 
   // Cosmetic.
-  @include sf-shadow-thin;
+  @include sf-border-weak;
 
   // Hide the radio inputs used for tab state.
   > input[type=radio] {display: none}
@@ -108,14 +108,9 @@
      */
     @include sf-flex-host-center;
 
-    /**
-     * Cosmetic.
-     */
-    cursor: pointer;
-    @include sf-outline-weak;
-    // Normalise the outline widths.
-    margin-bottom: 1px;
-    &:not(:last-of-type) {margin-right: 1px}
+    // Cosmetic.
+    @include sf-register-interactive-selector;
+
     // Whitespace.
     padding: $sf-space;
   }
@@ -147,7 +142,7 @@
     /**
      * Cosmetic.
      */
-    @include sf-outline-weak;
+    border-top: 1px solid rgba($sf-color-text, 0.2);
     // Whitespace.
     padding: $sf-space;
     @include sf-space-out-vertical;

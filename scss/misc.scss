@@ -4,11 +4,6 @@
  * Global default styling that doesn't fall into other categories.
  */
 
-// Make the contenteditable focus styling more consistent across browsers.
-[contenteditable]:focus {
-  @include sf-outline-weak;
-}
-
 /**
  * Default styling for monospace tags.
  */
@@ -42,9 +37,12 @@ ul, ol {
 }
 
 // Normalise default outlines.
-*:focus {
-  @include sf-outline-weak;
+:focus {
+  @include sf-outline-focus;
 }
+
+// Global 'not allowed' cursor.
+[disabled] {cursor: not-allowed}
 
 /********************************** Globals **********************************/
 

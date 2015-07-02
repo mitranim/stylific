@@ -9,7 +9,9 @@
  *   <sf-collapse>
  *     <input id="..." type="checkbox">
  *     <label for="...">...</label>
- *     ...
+ *     <sf-collapse-body>
+ *       ...
+ *     </sf-collapse-body>
  *   </sf-collapse>
  *
  * The <input> is hidden and serves as a state vector. The [id] and [for]
@@ -21,7 +23,9 @@
  *   <sf-collapse>
  *     <input checked id="..." type="checkbox">
  *     <label for="...">...</label>
- *     ...
+ *     <sf-collapse-body>
+ *       ...
+ *     </sf-collapse-body>
  *   </sf-collapse>
  *
  *
@@ -45,7 +49,7 @@
   flex-direction: column;
 
   // Whitespace.
-  > * {padding: $sf-space / 2}
+  > label {padding: $sf-space}
 
   // Hide the checkbox input used for toggling collapsed state.
   > input[type=checkbox] {display: none}
@@ -102,19 +106,29 @@
   }
 
   /**
-   * Styles for collapsable children.
+   * Body styles.
    */
-  // Collapsed styles.
-  > input[type=checkbox]:not(:checked) + label ~ * {
-    padding: 0;
+  // Base.
+  > #{$sf-prefix}-collapse-body,
+  > [#{$sf-prefix}-collapse-body] {
+    padding: $sf-space;
+  }
+  // Collapsed.
+  > input[type=checkbox]:not(:checked) ~ #{$sf-prefix}-collapse-body,
+  > input[type=checkbox]:not(:checked) ~ [#{$sf-prefix}-collapse-body] {
+    padding-top: 0;
+    padding-bottom: 0;
     max-height: 0;
     transform: scaleY(0);
   }
-  // Active styles.
-  > input[type=checkbox]:checked + label ~ * {
+  // Active.
+  > input[type=checkbox]:checked ~ #{$sf-prefix}-collapse-body,
+  > input[type=checkbox]:checked ~ [#{$sf-prefix}-collapse-body] {
     transform: scaleY(1);
   }
 
-  // Animate visibility changes and other transitions on all children.
-  > * {@include sf-transitions(all);}
+  // Animate visibility changes on children. Also include colour animations for
+  // interactive parts. Can't afford to animate `all` because padding seriously
+  // messes up the FPS.
+  > * {@include sf-transitions(color, background-color, transform);}
 }

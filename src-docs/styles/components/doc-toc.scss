@@ -14,6 +14,7 @@ doc-toc, [doc-toc] {
   margin-bottom: 0;
 
   // Default labeling.
+  > label {padding: $sf-space / 2}
   > label:empty {
     &::before {
       content: 'Contents';
@@ -26,8 +27,13 @@ doc-toc, [doc-toc] {
   /**
    * Cosmetic.
    */
-  @include sf-outline-weak;
-  > * {
-    padding: $sf-space / 2;
+  @include sf-border-weak;
+  sf-collapse-body, [sf-collapse-body] {
+    // Layout.
+    display: flex;
+    flex-direction: column;
+    // Whitespace.
+    padding: 0;
+    > * {padding: $sf-space / 2}
   }
 }
