@@ -134,7 +134,7 @@
     order: 1;
 
     // Cosmetic.
-    cursor: pointer;
+    @include sf-cursor-interactive;
 
     // Overlay for closing the toggled dropdown.
     &::before {
@@ -175,7 +175,7 @@
      */
     // Display the toggle label.
     > input[type=checkbox] + label {display: inherit}
-    // Styling for collapsed children.
+    // Base styling for collapsable children.
     > input[type=checkbox] + label ~ *:nth-child(n+#{$n}) {
       /**
        * Layout.
@@ -186,14 +186,21 @@
       // Put after the collapse toggle.
       order: 2;
 
-      // Hidden unless active.
-      height: 0;
-      min-height: 0;
-      padding: 0;
-      transform: scaleY(0);
+      // Whitespace.
+      padding: $sf-space;
 
-      // Animate expected style changes.
-      @include sf-transitions(all);
+      // Animate visibility changes. Don't animate padding or min/max height
+      // because it's costly. Include other common transitions.
+      @include sf-transitions(transform, color, background-color, outline, shadow, border);
+    }
+
+    // Styles for collapsed children.
+    > input[type=checkbox]:not(:checked) + label ~ *:nth-child(n+#{$n}) {
+      min-height: 0;
+      max-height: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      transform: scaleY(0);
     }
 
     /**
@@ -201,8 +208,6 @@
      */
     > input[type=checkbox]:checked + label ~ *:nth-child(n+#{$n}) {
       // Make visible.
-      height: auto;
-      padding: $sf-space;
       transform: scaleY(1);
     }
   }

@@ -43,8 +43,9 @@
  */
 
 @mixin sf-register-selected-state {
-  // Match the states and specificity of the base interactive selectors.
-  &:not([disabled]):not([disabled]) {
+  // Added :not([disabled]) to match the specificity of the base interactive
+  // selectors.
+  &:not([disabled]) {
     // Grayscale theme.
     background-color: rgba($sf-color-text, 0.1);
 
@@ -74,41 +75,39 @@
 }
 
 @mixin sf-register-interactive-selector {
-  &:not([disabled]) {
-    // Grayscale theme.
-    &:hover, &:focus, &:active {
-      background-color: rgba($sf-color-text, 0.05);
-    }
-    &.active {
-      background-color: rgba($sf-color-text, 0.1);
-    }
+  // Grayscale theme.
+  &:hover, &:focus, &:active {
+    background-color: rgba($sf-color-text, 0.05);
+  }
+  &.active {
+    background-color: rgba($sf-color-text, 0.1);
+  }
 
-    // Colour themes.
-    @each $color-map in $sf-color-maps {
-      $name: map-get($color-map, name);
-      $active: map-get($color-map, active);
-      $selected: map-get($color-map, selected);
+  // Colour themes.
+  @each $color-map in $sf-color-maps {
+    $name: map-get($color-map, name);
+    $active: map-get($color-map, active);
+    $selected: map-get($color-map, selected);
 
-      // Text theme.
-      &[theme=text-#{$name}], [theme=text-#{$name}] & {
-        &:hover, &:focus, &:active {
-          color: sf-sensible-text-color($active);
-        }
-        &.active {
-          color: sf-sensible-text-color($selected);
-        }
+    // Text theme.
+    &[theme=text-#{$name}], [theme=text-#{$name}] & {
+      &:hover, &:focus, &:active {
+        color: sf-sensible-text-color($active);
       }
+      &.active {
+        color: sf-sensible-text-color($selected);
+      }
+    }
 
-      // Full theme.
-      &[theme=#{$name}], [theme=#{$name}] & {
-        &:hover, &:focus, &:active {
-          background-color: $active;
-          color: sf-contrasting-color($active);
-        }
-        &.active {
-          background-color: $selected;
-          color: sf-contrasting-color($selected);
-        }
+    // Full theme.
+    &[theme=#{$name}], [theme=#{$name}] & {
+      &:hover, &:focus, &:active {
+        background-color: $active;
+        color: sf-contrasting-color($active);
+      }
+      &.active {
+        background-color: $selected;
+        color: sf-contrasting-color($selected);
       }
     }
   }
@@ -188,6 +187,11 @@
 @mixin sf-outline-interactive {
   @include sf-outline-base;
   &:focus, &:active {@include sf-outline-focus;}
+}
+
+@mixin sf-cursor-interactive {
+  cursor: pointer;
+  &[disabled] {cursor: not-allowed}
 }
 
 @mixin sf-link-decorations {

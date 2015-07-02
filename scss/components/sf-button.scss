@@ -61,5 +61,5 @@ button, input[type=button] {
 
   // Treat as interactive too.
   @include sf-register-interactive-selector;
-  cursor: pointer;
+  @include sf-cursor-interactive;
 }

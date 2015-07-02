@@ -1,6 +1,6 @@
 {
   "name": "stylific",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "homepage": "http://mitranim.com/stylific/",
   "scripts": {
     "start": "gulp",

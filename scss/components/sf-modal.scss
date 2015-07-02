@@ -90,7 +90,7 @@
       border-top-right-radius: $sf-border-radius;
       opacity: 0.5;
       padding: $sf-space / 4;
-      cursor: pointer;
+      @include sf-cursor-interactive;
     }
   }
 

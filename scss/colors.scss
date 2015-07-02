@@ -47,7 +47,7 @@
 }
 
 .interactive, a[href], button, input[id] + label[for] {
-  cursor: pointer;
+  @include sf-cursor-interactive;
 }
 
 html {

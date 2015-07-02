@@ -110,6 +110,7 @@
 
     // Cosmetic.
     @include sf-register-interactive-selector;
+    @include sf-cursor-interactive;
 
     // Whitespace.
     padding: $sf-space;
@@ -131,13 +132,10 @@
     // Make sure it doesn't collapse due to lack of content.
     min-height: $sf-tabset-body-min-height;
 
-    // Hide tabs by default. This rule would work fine as-is, but we
-    // artificially raise its specificity above that of global layout classes
-    // (see layout.scss) to prevent the user from inadvertently breaking tab
-    // visibility by applying one of those classes, like .flex (which wouldn't
-    // work anyway, because its specificity is still lower than that of active
-    // tab display rules).
-    &:not(:root) {display: none}
+    // Hide tabs by default. This rule may be accidentally overridden by
+    // applying one of the global layout attributes to the tab, but there's
+    // not much point guarding against that.
+    display: none;
 
     /**
      * Cosmetic.
@@ -177,12 +175,6 @@
     & + #{$sf-prefix}-tab,
     & + [#{$sf-prefix}-tab] {
       display: block;
-      // Special exception for the .flex layout class to allow the user to use
-      // it for a tab's inner layout. This exception is necessary because this
-      // rule block's specificity needs to be higher than the specificity of the
-      // base tab rules with {display: none}, which, in turn, need to be higher
-      // than the specificity of the global layout classes.
-      &.flex {display: flex}
     }
   }
 }

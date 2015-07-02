@@ -64,7 +64,7 @@
     display: block;
 
     // Cosmetic.
-    cursor: pointer;
+    @include sf-cursor-interactive;
 
     // Toggle indicator.
     &::after {
@@ -129,6 +129,6 @@
 
   // Animate visibility changes on children. Also include colour animations for
   // interactive parts. Can't afford to animate `all` because padding seriously
-  // messes up the FPS.
-  > * {@include sf-transitions(color, background-color, transform);}
+  // messes up the FPS. Include other common transitions.
+  > * {@include sf-transitions(transform, color, background-color, outline, shadow, border);}
 }
