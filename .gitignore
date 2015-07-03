@@ -29,7 +29,7 @@ node_modules
 bower_components
 
 # Ignore built CSS
-lib
+lib/stylific.css
 
 # Ignore gh-pages symlink
 stylific-gh-pages

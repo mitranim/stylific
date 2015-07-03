@@ -1,7 +1,6 @@
 <!-- TOC -->
-<div doc-toc theme="text-accent">
-  <input checked id="<%= uniqId() %>" type="checkbox">
-  <label for="<%= lastUniqId() %>" theme="accent"></label>
+<div sf-collapse doc-toc theme="text-accent">
+  <label class="active" theme="accent"></label>
   <sf-collapse-body>
     [Variables](configuration/#variables)
     [Subclassing](configuration/#subclassing)
@@ -14,12 +13,6 @@ The library is configurable: many styles are tied to preprocessor variables. See
 [`_variables.scss`](https://github.com/Mitranim/stylific/blob/master/scss/_variables.scss)
 for a complete list, but here's a few examples.
 
-Change the prefix of all tag and class names from `sf-` to something else:
-
-```scss
-$sf-prefix: ~'app';
-// Now components will be called `app-dropdown`, etc.
-```
 
 Change the base font size, scaling the entire site up or down. Unlike other font
 size declarations, this particular metric should be in fixed units like `pt` or

@@ -1,7 +1,6 @@
 <!-- TOC -->
-<div doc-toc theme="text-accent">
-  <input checked id="<%= uniqId() %>" type="checkbox">
-  <label for="<%= lastUniqId() %>" theme="accent"></label>
+<div sf-collapse doc-toc theme="text-accent">
+  <label class="active" theme="accent"></label>
   <sf-collapse-body>
     [Overview](themes/#overview)
     [Text Themes](themes/#text-themes)

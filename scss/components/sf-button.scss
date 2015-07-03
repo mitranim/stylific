@@ -18,8 +18,8 @@
  * minimum width, a set height, and text ellipsis on overflow.
  */
 
-#{$sf-prefix}-button,
-[#{$sf-prefix}-button],
+sf-button,
+[sf-button],
 // Override native styles too.
 button, input[type=button] {
 
@@ -48,10 +48,10 @@ button, input[type=button] {
   &:active {
     @include sf-shadow-thin;
   }
-  &[#{$sf-prefix}-button~=flat], &[disabled] {box-shadow: none}
+  &[sf-button~=flat], &[disabled] {box-shadow: none}
 
   // Restore the normal dimensions when used as an icon.
-  &[#{$sf-prefix}-icon] {
+  &[sf-icon] {
     width: auto;
     height: auto;
   }

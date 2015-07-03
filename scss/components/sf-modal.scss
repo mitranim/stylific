@@ -1,20 +1,15 @@
 /**
- * A modal must have the exact following layout:
+ * A modal must have the following layout:
  *
- *   <sf-modal id="my-modal-id">
- *     <a href="#_"></a>
+ *   <sf-modal id="myModal">
  *     <sf-modal-body>...</sf-modal-body>
  *   </sf-modal>
  *
- * To trigger the modal, you must link to its id:
+ * To trigger the modal, you need an element with [sf-toggle-id]:
  *
- *   <a href="#my-modal-id">...</a>
+ *   <button sf-toggle-id="myModal">...</button>
  *
- * The modal is active when the browser's URL fragment (the part starting with
- * #) points to its id. Clicking the overlay created by its inner <a> element
- * changes the fragment and hides the modal. The inner [href] must point to a
- * nonexistent id (like "#_") to prevent the browser from changing the scroll
- * position.
+ * To close the modal, click the overlay or the close button.
  */
 
 /**
@@ -22,15 +17,14 @@
  *
  * Add attributes for controlling modal width.
  *
- * Consider adding JS to kill body scroll when a modal is opened and restore
- * when it's closed.
+ * Kill the body scroll while a modal is open and restore when it's closed.
  *
  * Include a variant with a fixed header; the user should be able to fix
  * the position of an arbitrary descendant, not just an immediate child.
  */
 
-#{$sf-prefix}-modal,
-[#{$sf-prefix}-modal] {
+sf-modal,
+[sf-modal] {
 
   /**
    * Layout.
@@ -44,59 +38,54 @@
   width: 0;
   height: 0;
 
-  // Anchor element with overlay. Must have [href="#<id>"], where <id> is
-  // nonexistent, as in, doesn't occur in the document. Using an existing id or
-  // an empty id causes scroll jumping.
-  > a {
-    // Overlay.
-    &::before {
-      content: '';
-      // Layout.
-      @include sf-fixed-overlay;
+  // Overlay when active.
+  &.active::before {
+    content: '';
+    // Layout.
+    @include sf-fixed-overlay;
 
-      // Backdrop. Unlike shadows, we don't derive the overlay colour from the
-      // text colour, this ends up looking ridiculous with some tints. Instead,
-      // we hardcode it to be grayscale.
-      background: rgba($sf-color-umbra, 0.4);
+    // Backdrop. Unlike shadows, we don't derive the overlay colour from the
+    // text colour, this ends up looking ridiculous with some tints. Instead,
+    // we hardcode it to be grayscale.
+    background: rgba($sf-color-umbra, 0.4);
 
-      // Standard cursor.
-      cursor: default;
-    }
+    // Standard cursor.
+    cursor: default;
+  }
 
-    // Close button.
-    &::after {
-      content: '✕';
+  // Close button when active.
+  &.active::after {
+    content: '✕';
 
-      /**
-       * Layout.
-       */
-      position: fixed;
-      // Position this element in the top right corner of the modal.
-      top: 5%;
-      right: unquote('calc((100vw - #{$sf-body-max-width}) / 2)');
-      @media (max-width: $sf-body-max-width) {right: 0}
-      width: $sf-space + $sf-space / 2;
-      height: $sf-space + $sf-space / 2;
-      // Stack just above the modal.
-      z-index: $sf-z-index-modal + 1;
+    /**
+     * Layout.
+     */
+    position: fixed;
+    // Position this element in the top right corner of the modal.
+    top: 5%;
+    right: unquote('calc((100vw - #{$sf-body-max-width}) / 2)');
+    @media (max-width: $sf-body-max-width) {right: 0}
+    width: $sf-space + $sf-space / 2;
+    height: $sf-space + $sf-space / 2;
+    // Stack just above the modal.
+    z-index: $sf-z-index-modal + 1;
 
-      /**
-       * Inner layout.
-       */
-      @include sf-flex-host-center;
+    /**
+     * Inner layout.
+     */
+    @include sf-flex-host-center;
 
-      // Cosmetic.
-      border: 1px solid;
-      border-top-right-radius: $sf-border-radius;
-      opacity: 0.5;
-      padding: $sf-space / 4;
-      @include sf-cursor-interactive;
-    }
+    // Cosmetic.
+    border: 1px solid;
+    border-top-right-radius: $sf-border-radius;
+    opacity: 0.5;
+    padding: $sf-space / 4;
+    @include sf-cursor-interactive;
   }
 
   // Body styling.
-  #{$sf-prefix}-modal-body,
-  [#{$sf-prefix}-modal-body] {
+  sf-modal-body,
+  [sf-modal-body] {
     /**
      * Layout.
      */
@@ -130,8 +119,8 @@
     overflow: scroll;
   }
 
-  // Default anchor and body visibility.
-  > a, > #{$sf-prefix}-modal-body, > [#{$sf-prefix}-modal-body] {
+  // Default body visibility.
+  > sf-modal-body, > [sf-modal-body] {
     // Hidden unless active. Both opacity and visibility are required to animate
     // the visibility change.
     opacity: 0;
@@ -140,13 +129,11 @@
     @include sf-transitions(all);
   }
 
-  // Active anchor and body visibility.
-  &:target, &.active {
-    > a, > #{$sf-prefix}-modal-body, > [#{$sf-prefix}-modal-body] {
-      // Display. Both opacity and visibility are required to animate the
-      // visibility change.
-      opacity: inherit;
-      visibility: inherit;
-    }
+  // Active body visibility.
+  &.active > sf-modal-body, &.active > [sf-modal-body] {
+    // Display. Both opacity and visibility are required to animate the
+    // visibility change.
+    opacity: inherit;
+    visibility: inherit;
   }
 }

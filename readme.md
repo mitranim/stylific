@@ -1,15 +1,12 @@
 ## Description
 
 `stylific` is a CSS library, similar to
-[Bootstrap](http://getbootstrap.com), with a focus on modern CSS features, a
-more modest scope, and no JavaScript dependency.
+[Bootstrap](http://getbootstrap.com), with a focus on modern CSS features.
 
 See the [documentation/demo site](http://mitranim.com/stylific/).
 
 What sets it apart:
 * Layouts are based on flexbox and don't use floats.
-* No JavaScript. Uses pure CSS for interactive components like modal dialogs,
-  tabsets, dropdowns, collapsable navbars that require JS in other libraries.
 * No pixels. Dimensions are based on `em` and `rem`, making them easy to scale
   together.
 * Component-based approach: styles are scoped under customisable tag and

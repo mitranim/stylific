@@ -13,10 +13,8 @@
  * See http://mitranim.com/stylific/components/#sf-navbar
  */
 
-#{$sf-prefix}-navbar,
-[#{$sf-prefix}-navbar] {
-
-  $attr: unquote('#{$sf-prefix}-navbar');
+sf-navbar,
+[sf-navbar] {
 
   /**
    * Layout.
@@ -31,7 +29,7 @@
   // siblings following the navbar.
   position: relative;
   // Fixed version.
-  &[#{$attr}~=fixed] {
+  &[sf-navbar~=fixed] {
     /**
      * Layout.
      */
@@ -96,14 +94,12 @@
    * before a certain media breakpoint controlled by a variable. By default,
    * it matches the breakpoint used for other responsive layouts.
    *
-   * To enable collapsing, the user must include two elements:
-   * <input type="checkbox"> and <label>, which must be placed before the navbar
-   * children that will be collapsed. The structure must be as follows:
+   * To enable collapsing, the user needs to include a <label> before the
+   * collapsable childre. The structure must be as follows:
    *
    *   <sf-navbar>
-   *     <input id="my-navbar-toggle-id" type="checkbox">
-   *     <label for="my-navbar-toggle-id"> ... [optional content] </label>
    *     ... [non-collapsing elements]
+   *     <label> ... [optional content] </label>
    *     ... [auto-collapsing elements]
    *   </sf-navbar>
    *
@@ -116,13 +112,10 @@
    * controls the input. It's hidden when the navbar is not collapsed.
    */
 
-  // Hide the checkbox input used for toggling collapsed state.
-  > input[type=checkbox] {display: none}
-
   /**
    * Base label styles.
    */
-  > input[type=checkbox] + label {
+  > label {
     /**
      * Layout.
      */
@@ -136,6 +129,7 @@
     order: 1;
 
     // Cosmetic.
+    @include sf-register-interactive-selector;
     @include sf-cursor-interactive;
 
     // Overlay for closing the toggled dropdown.
@@ -159,7 +153,7 @@
   /**
    * Active label styles.
    */
-  > input[type=checkbox]:checked + label {
+  > label.active {
     // Make the toggle overlay interactive.
     &::before {content: ''}
     // Modify the indicator symbol.
@@ -170,15 +164,13 @@
    * Styles for post-label children that only apply before the media breakpoint.
    */
   @mixin collapse-rules {
-    // Add 2 to the nth-child count to mask the <input> and <label> count.
-    $n: $sf-navbar-nth-child + 2;
     /**
      * Base styles.
      */
     // Display the toggle label.
-    > input[type=checkbox] + label {display: inherit}
+    > label {display: inherit}
     // Base styling for collapsable children.
-    > input[type=checkbox] + label ~ *:nth-child(n+#{$n}) {
+    > label ~ * {
       /**
        * Layout.
        */
@@ -197,7 +189,7 @@
     }
 
     // Styles for collapsed children.
-    > input[type=checkbox]:not(:checked) + label ~ *:nth-child(n+#{$n}) {
+    > label:not(.active) ~ * {
       min-height: 0;
       max-height: 0;
       padding-top: 0;
@@ -208,21 +200,21 @@
     /**
      * Active styles.
      */
-    > input[type=checkbox]:checked + label ~ *:nth-child(n+#{$n}) {
+    > label.active ~ * {
       // Make visible.
       transform: scaleY(1);
     }
   }
   @media (max-width: $sf-layout-breakpoint-sm) {@include collapse-rules;}
   // Version that always folds.
-  &[#{$attr}~=fold] {@include collapse-rules;}
+  &[sf-navbar~=fold] {@include collapse-rules;}
 
   /**
    * "navtabs" version.
    */
-  &[#{$attr}~=tabs] {
+  &[sf-navbar~=tabs] {
     box-shadow: none;
     @include sf-border-weak;
-    &:not([#{$sf-prefix}-navbar~=fixed]) {z-index: auto}
+    &:not([sf-navbar~=fixed]) {z-index: auto}
   }
 }

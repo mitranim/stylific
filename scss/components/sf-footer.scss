@@ -25,8 +25,8 @@
  * {flex-direction: column}, which is the global default defined in layout.scss.
  */
 
-#{$sf-prefix}-footer,
-[#{$sf-prefix}-footer] {
+sf-footer,
+[sf-footer] {
 
   /**
    * Layout.
@@ -42,8 +42,8 @@
   /**
    * Footer body styling.
    */
-  #{$sf-prefix}-footer-body,
-  [#{$sf-prefix}-footer-body] {
+  sf-footer-body,
+  [sf-footer-body] {
     /**
      * Layout.
      */

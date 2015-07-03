@@ -1,7 +1,6 @@
 <!-- TOC -->
-<div doc-toc theme="text-accent">
-  <input checked id="<%= uniqId() %>" type="checkbox">
-  <label for="<%= lastUniqId() %>" theme="accent"></label>
+<div sf-collapse doc-toc theme="text-accent">
+  <label class="active" theme="accent"></label>
   <sf-collapse-body>
     [Overview](#overview)
     [Motivation](#motivation)
@@ -34,40 +33,7 @@ UI elements. Also, check out the documentation's
 [source](https://github.com/Mitranim/stylific/tree/master/src-docs) to see how
 it imports and extends the library.
 
-# Motivation
-
-I'm sick of UI frameworks relying on unnecessary, often incompatible JavaScript
-for the basest functionality. People have had to rewrite the entire Bootstrap JS
-as "native Angular directives" or "native React components" just to un-break
-basic UI elements. This has got to stop.
-
-It also irks me when people size things in pixels instead of typographic units
-(em and rem) and use fixed dimensions instead of flexible positioning. This
-makes a website difficult to scale and unfriendly to visitors who adjust the
-font size.
-
-These issues are so fundamental that you have to write styles and UI components
-from scratch to avoid them. stylific provides at least _some_ basis.
-
 # What's Different
-
-## No JavaScript
-
-stylific has no JavaScript dependency. Its interactive components work with
-plain HTML and CSS. Benefits:
-* No unwanted third party dependencies.
-* Better baseline functionality for visitors without JS.
-* Equally compatible with all JS frameworks.
-
-CSS2-CSS3 features like `:checked`, `:target`, sibling selectors, `:not`,
-pseudo-elements, media queries, flexbox, transitions, and others obviate the
-need for JavaScript for many elements that used to be impossible to implement
-without it. See [Components](components/) for basic examples.
-
-This doesn't mean you can't use JavaScript; quite the opposite.
-Because stylific only needs static markup, enhancement with JavaScript is
-[trivial](examples/javascript/). Some stylific components provide simple
-hooks in the form of `.active` classes.
 
 ## Component Oriented
 

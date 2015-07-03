@@ -1,28 +1,24 @@
 /**
  * <sf-collapse> is a vertically collapsing element with a toggle.
  *
- *
  * # Basic usage
  *
  * Must have the exact following layout:
  *
  *   <sf-collapse>
- *     <input id="..." type="checkbox">
- *     <label for="...">...</label>
+ *     <label>...</label>
  *     <sf-collapse-body>
  *       ...
  *     </sf-collapse-body>
  *   </sf-collapse>
  *
- * The <input> is hidden and serves as a state vector. The [id] and [for]
- * attributes must match. The <label> may have arbitrary content. The collapsing
- * part is everything following the label.
+ * The label is visible and serves as a toggle. The collapsing part is the
+ * sf-collapse-body element.
  *
- * Mark the <input> as [checked] to uncollapse the element by default:
+ * Mark the label as .active to uncollapse by default:
  *
  *   <sf-collapse>
- *     <input checked id="..." type="checkbox">
- *     <label for="...">...</label>
+ *     <label class="active">...</label>
  *     <sf-collapse-body>
  *       ...
  *     </sf-collapse-body>
@@ -39,8 +35,8 @@
  *   </sf-collapse>
  */
 
-#{$sf-prefix}-collapse,
-[#{$sf-prefix}-collapse] {
+sf-collapse,
+[sf-collapse] {
 
   /**
    * Layout.
@@ -50,9 +46,6 @@
 
   // Whitespace.
   > label {padding: $sf-space}
-
-  // Hide the checkbox input used for toggling collapsed state.
-  > input[type=checkbox] {display: none}
 
   /**
    * Base label styles.
@@ -82,7 +75,6 @@
   /**
    * Active label styles.
    */
-  > input[type=checkbox]:checked + label,
   > label.active {
     // Modify the indicator symbol.
     &::after {content: '▲'}
@@ -93,17 +85,13 @@
   /**
    * Base overlay styles.
    */
-  &[#{$sf-prefix}-collapse~=overlay] > label::before {
+  &[sf-collapse~=overlay] > label::before {
     @include sf-fixed-overlay;
     opacity: 0;
   }
 
-  /**
-   * Active overlay styles.
-   */
   // If the overlay option is enabled, make the toggle overlay interactive.
-  &[#{$sf-prefix}-collapse~=overlay] > input[type=checkbox]:checked + label,
-  &[#{$sf-prefix}-collapse~=overlay] > label.active {
+  &[sf-collapse~=overlay] > label.active {
     &::before {content: ''}
   }
 
@@ -111,25 +99,21 @@
    * Body styles.
    */
   // Base.
-  > #{$sf-prefix}-collapse-body,
-  > [#{$sf-prefix}-collapse-body] {
+  > sf-collapse-body,
+  > [sf-collapse-body] {
     padding: $sf-space;
   }
   // Collapsed.
-  > label:first-child:not(.active) ~ #{$sf-prefix}-collapse-body,
-  > label:first-child:not(.active) ~ [#{$sf-prefix}-collapse-body],
-  > input[type=checkbox]:not(:checked) + label ~ #{$sf-prefix}-collapse-body,
-  > input[type=checkbox]:not(:checked) + label ~ [#{$sf-prefix}-collapse-body] {
+  > label:not(.active) ~ sf-collapse-body,
+  > label:not(.active) ~ [sf-collapse-body] {
     padding-top: 0;
     padding-bottom: 0;
     max-height: 0;
     transform: scaleY(0);
   }
   // Active.
-  > input[type=checkbox]:checked ~ #{$sf-prefix}-collapse-body,
-  > input[type=checkbox]:checked ~ [#{$sf-prefix}-collapse-body],
-  > label.active ~ #{$sf-prefix}-collapse-body,
-  > label.active ~ [#{$sf-prefix}-collapse-body] {
+  > label.active ~ sf-collapse-body,
+  > label.active ~ [sf-collapse-body] {
     transform: scaleY(1);
   }
 

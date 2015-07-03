@@ -20,10 +20,10 @@
  * dynamically. Need to review.
  */
 
-#{$sf-prefix}-label, [#{$sf-prefix}-label] {
+sf-label, [sf-label] {
 
   // Default version: vertical.
-  &, &[#{$sf-prefix}-label~=column] {
+  &, &[sf-label~=column] {
     // Layout.
     display: flex;
     flex-direction: column;
@@ -34,7 +34,7 @@
   }
 
   // Row version: horizontal.
-  &[#{$sf-prefix}-label~=row] {
+  &[sf-label~=row] {
     // Layout.
     flex-direction: row;
     align-items: stretch;
@@ -58,8 +58,8 @@
   // Dense version for tightly grouped inputs and buttons. Squishes intermediate
   // whitespace and negates adjacent borders. Best used with flat buttons:
   // <button sf-button="flat">.
-  &[#{$sf-prefix}-label~=dense] {
-    &[#{$sf-prefix}-label~=row] {
+  &[sf-label~=dense] {
+    &[sf-label~=row] {
       > *:not(:last-child) {
         margin-right: 0;
         border-right: none;
@@ -73,7 +73,7 @@
         border-bottom-left-radius: 0;
       }
     }
-    &:not([#{$sf-prefix}-label~=row]) {
+    &:not([sf-label~=row]) {
       > *:not(:last-child) {
         margin-bottom: 0;
         border-bottom: none;

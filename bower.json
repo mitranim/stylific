@@ -5,7 +5,10 @@
     "Mitranim <me@mitranim.com>"
   ],
   "description": "Component-oriented, flexbox-based CSS library, written in Sass.",
-  "main": "scss/stylific.scss",
+  "main": [
+    "lib/stylific.js",
+    "scss/stylific.scss"
+  ],
   "keywords": [
     "css",
     "style",

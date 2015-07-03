@@ -26,16 +26,18 @@ var src = {
     'src-docs/html/**/*',
     'bower_components/font-awesome-svg-png/black/**/*.svg'
   ],
-  images:     'src-docs/images/**/*'
+  images: 'src-docs/images/**/*',
+  scripts: 'lib/**/*.js'
 };
 
 var destBase = 'stylific-gh-pages';
 
 var dest = {
-  lib:    'lib',
-  styles: destBase + '/styles',
-  images: destBase + '/images',
-  html:   destBase
+  lib:     'lib',
+  styles:  destBase + '/styles',
+  scripts: destBase + '/scripts',
+  images:  destBase + '/images',
+  html:    destBase
 };
 
 function prod() {
@@ -116,7 +118,7 @@ marked.Renderer.prototype.link = function(href, title, text) {
 /*----------------------------------- Lib -----------------------------------*/
 
 gulp.task('lib:clear', function() {
-  return gulp.src(dest.lib, {read: false, allowEmpty: true})
+  return gulp.src(dest.lib + '/*.css', {read: false, allowEmpty: true})
     .pipe($.plumber())
     .pipe($.rimraf());
 });
@@ -283,6 +285,24 @@ gulp.task('docs:images:watch', function() {
   $.watch(src.images, gulp.series('docs:images:build', reload));
 });
 
+/*--------------------------------- Scripts ---------------------------------*/
+
+gulp.task('docs:scripts:clear', function() {
+  return gulp.src(dest.scripts, {read: false, allowEmpty: true})
+    .pipe($.plumber())
+    .pipe($.rimraf());
+});
+
+gulp.task('docs:scripts:copy', function() {
+  return gulp.src(src.scripts).pipe(gulp.dest(dest.scripts));
+});
+
+gulp.task('docs:scripts:build', gulp.series('docs:scripts:clear', 'docs:scripts:copy'));
+
+gulp.task('docs:scripts:watch', function() {
+  $.watch(src.scripts, gulp.series('docs:scripts:build', reload));
+});
+
 /*--------------------------------- Server ----------------------------------*/
 
 gulp.task('server', function() {
@@ -307,11 +327,11 @@ gulp.task('server', function() {
 /*--------------------------------- Default ---------------------------------*/
 
 gulp.task('build', gulp.parallel(
-  'lib:build', 'docs:html:build', 'docs:styles:build', 'docs:images:build'
+  'lib:build', 'docs:html:build', 'docs:styles:build', 'docs:images:build', 'docs:scripts:build'
 ));
 
 gulp.task('watch', gulp.parallel(
-  'lib:watch', 'docs:html:watch', 'docs:styles:watch'
+  'lib:watch', 'docs:html:watch', 'docs:styles:watch', 'docs:scripts:watch'
 ));
 
 gulp.task('default', gulp.series('build', gulp.parallel('watch', 'server')));

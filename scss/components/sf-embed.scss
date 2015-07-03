@@ -11,8 +11,8 @@
  *   </div>
  */
 
-#{$sf-prefix}-embed,
-[#{$sf-prefix}-embed] {
+sf-embed,
+[sf-embed] {
   // Layout.
   display: block;
   position: relative;
@@ -21,15 +21,15 @@
   overflow: hidden;
 
   // 16:9 aspect ratio (default).
-  &, &[#{$sf-prefix}-embed~=ratio-16to9] {
+  &, &[sf-embed~=ratio-16to9] {
     padding-bottom: 56.25%;
   }
   // 4:3 aspect ratio.
-  &[#{$sf-prefix}-embed~=ratio-4to3] {
+  &[sf-embed~=ratio-4to3] {
     padding-bottom: 75%;
   }
 
-  .#{$sf-prefix}-embed-item,
+  .sf-embed-item,
   iframe,
   embed,
   object,

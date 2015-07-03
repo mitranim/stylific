@@ -60,9 +60,7 @@
  * <textarea> without involving parents (siblings and attributes only).
  */
 
-[#{$sf-prefix}-tooltip] {
-
-  $attr: '#{$sf-prefix}-tooltip';
+[sf-tooltip] {
 
   /**
    * Layout.
@@ -70,14 +68,14 @@
   position: relative;
 
   // Workaround for a bug in the clean-css minifier used for the documentation.
-  // Adding :not([#{$attr}='']) to the main selector (the one we apply the
+  // Adding :not([sf-tooltip='']) to the main selector (the one we apply the
   // component mixin to) causes the minifier to add an extra space before
   // attribute selectors for position and trigger. Moving it here as an extra
   // rule patches the problem.
-  &[#{$attr}='']::after {content: none}
+  &[sf-tooltip='']::after {content: none}
 
   &::after {
-    content: attr(unquote($attr));
+    content: attr(sf-tooltip);
 
     /**
      * Layout.
@@ -111,38 +109,36 @@
   /**
    * Tooltip positioning.
    */
-  // Position attribute name.
-  $attr-position: '#{$sf-prefix}-position';
   // Calculated offset.
   $offset: unquote('calc(100% + #{$sf-tooltip-offset})');
   // Top (default).
-  &:not([#{$attr-position}])::after,
-  &[#{$attr-position}=top]::after {
+  &:not([sf-position])::after,
+  &[sf-position=top]::after {
     bottom: $offset;
     left: 0;
   }
   // Top-right.
-  &[#{$attr-position}=top-right]::after {
+  &[sf-position=top-right]::after {
     bottom: $offset;
     right: 0;
   }
   // Right-top.
-  &[#{$attr-position}=right-top]::after {
+  &[sf-position=right-top]::after {
     top: 0;
     left: $offset;
   }
   // Left-top.
-  &[#{$attr-position}=left-top]::after {
+  &[sf-position=left-top]::after {
     top: 0;
     right: $offset;
   }
   // Bottom.
-  &[#{$attr-position}=bottom]::after {
+  &[sf-position=bottom]::after {
     top: $offset;
     left: 0;
   }
   // Bottom-right.
-  &[#{$attr-position}=bottom-right]::after {
+  &[sf-position=bottom-right]::after {
     top: $offset;
     right: 0;
   }
@@ -155,14 +151,14 @@
    *   <button sf-tooltip="tooltip text"
    *           sf-trigger="hover focus">hover or focus me</button>
    */
-  &:not([#{$sf-prefix}-trigger]):hover,
-  &[#{$sf-prefix}-trigger~=active]:active,
-  &[#{$sf-prefix}-trigger~=disabled]:disabled,
-  &[#{$sf-prefix}-trigger~=focus]:focus,
-  &[#{$sf-prefix}-trigger~=hover]:hover,
-  &[#{$sf-prefix}-trigger~=target]:target,
+  &:not([sf-trigger]):hover,
+  &[sf-trigger~=active]:active,
+  &[sf-trigger~=disabled]:disabled,
+  &[sf-trigger~=focus]:focus,
+  &[sf-trigger~=hover]:hover,
+  &[sf-trigger~=target]:target,
   // Unconditional visibility; hook for JavaScript enhancement.
-  &[#{$sf-prefix}-tooltip-show] {
+  &[sf-tooltip-show] {
     &::after {
       opacity: inherit;
       visibility: inherit;

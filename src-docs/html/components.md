@@ -1,7 +1,6 @@
 <!-- TOC -->
-<div doc-toc theme="text-accent">
-  <input checked id="<%= uniqId() %>" type="checkbox">
-  <label for="<%= lastUniqId() %>" theme="accent"></label>
+<div sf-collapse doc-toc theme="text-accent">
+  <label class="active" theme="accent"></label>
   <sf-collapse-body>
     [Overview](components/#overview)
     [sf-article](components/#sf-article)
@@ -23,12 +22,13 @@
 
 # Overview
 
-The library comes with some pre-defined UI components. They work with plain HTML
-and CSS. You can also [subclass](configuration/#subclassing) them
-in Sass.
+The library comes with some pre-defined UI components. You can use them as-is,
+modify with your own CSS, or [subclass](configuration/#subclassing) them in
+Sass. Stateful components like `sf-collapse` require the tiny JavaScript file
+included with the library.
 
 Most components are available as tags, like `sf-collapse`, and every component
-is available as an attribute, like `sf-button`. Some can even be combined like
+is available as an attribute, like `[sf-button]`. Some can even be combined like
 so: `<button sf-button sf-icon></button>`.
 
 # sf-article
@@ -66,15 +66,11 @@ element at the top of this page is an
 [example](https://github.com/Mitranim/stylific/blob/master/src-docs/styles/components/doc-toc.scss)
 of subclassing `sf-collapse` to produce a custom collapsing element.
 
-Like most other interactive components, it relies on the `:checked` hack. It
-needs an `<input type="checkbox">` and a `<label>` with a matching id.
-
 Like all other components, it responds to stylific's [themes](themes/).
 
 ```html
 <sf-collapse theme="text-primary">
-  <input id="<%= uniqId() %>" type="checkbox">
-  <label for="<%= lastUniqId() %>">Click me to toggle collapse</label>
+  <label>Click me to toggle collapse</label>
   <sf-collapse-body>
     <h3>Header for the collapsed element</h3>
     <p>Paragraph in the collapsed element</p>
@@ -84,8 +80,7 @@ Like all other components, it responds to stylific's [themes](themes/).
 
 <div doc-demo>
   <sf-collapse theme="text-primary">
-    <input id="<%= uniqId() %>" type="checkbox">
-    <label for="<%= lastUniqId() %>">Click me to toggle collapse</label>
+    <label>Click me to toggle collapse</label>
     <sf-collapse-body>
       <h3>Header for the collapsed element</h3>
       <p>Paragraph in the collapsed element</p>
@@ -95,12 +90,11 @@ Like all other components, it responds to stylific's [themes](themes/).
 
 ## Options
 
-To uncollapse the component by default, use `<input checked>`.
+To uncollapse the component by default, use `.active`.
 
 ```html
 <sf-collapse theme="text-accent">
-  <input checked id="..." type="checkbox">
-  <label for="...">Click me to toggle collapse</label>
+  <label class="active">Click me to toggle collapse</label>
   <sf-collapse-body>
     <h3>I'm uncollapsed by default!</h3>
     <p>This is my paragraph</p>
@@ -110,8 +104,7 @@ To uncollapse the component by default, use `<input checked>`.
 
 <div doc-demo>
   <sf-collapse theme="text-accent">
-    <input checked id="<%= uniqId() %>" type="checkbox">
-    <label for="<%= lastUniqId() %>">Click me to toggle collapse</label>
+    <label class="active">Click me to toggle collapse</label>
     <sf-collapse-body>
       <h3>I'm uncollapsed by default!</h3>
       <p>This is my paragraph</p>
@@ -124,8 +117,7 @@ clicking anywhere outside of it by adding the `[sf-collapse~=overlay]` option:
 
 ```html
 <sf-collapse theme="warn" sf-collapse="overlay">
-  <input id="..." type="checkbox">
-  <label for="...">Click me to toggle collapse</label>
+  <label>Click me to toggle collapse</label>
   <sf-collapse-body>
     <h3>Click anywhere outside to close me!</h3>
     <p>This is my paragraph</p>
@@ -135,8 +127,7 @@ clicking anywhere outside of it by adding the `[sf-collapse~=overlay]` option:
 
 <div doc-demo>
   <sf-collapse theme="warn" sf-collapse="overlay">
-    <input id="<%= uniqId() %>" type="checkbox">
-    <label for="<%= lastUniqId() %>">Click me to toggle collapse</label>
+    <label>Click me to toggle collapse</label>
     <sf-collapse-body>
       <h3>Click anywhere outside to close me!</h3>
       <p>This is my paragraph</p>
@@ -170,13 +161,12 @@ clicking anywhere outside of it by adding the `[sf-collapse~=overlay]` option:
   </sf-dropdown>
 </div>
 
-You can also make it toggle-able by adding an `<input type="checkbox">` before
-the `<label>`. This automatically disables the `:hover` effect.
+You can also make it toggle-able by adding the `sf-toggle` option to the label.
+This automatically disables the `:hover` effect.
 
 ```html
 <sf-dropdown theme="primary">
-  <input id="..." type="checkbox">
-  <label for="..." class="pad">click me to toggle a dropdown</label>
+  <label sf-toggle class="pad">click me to toggle a dropdown</label>
   <sf-dropdown-list>
     <span class="active">Click outside to toggle off</span>
     <span>I'm the second item</span>
@@ -187,8 +177,7 @@ the `<label>`. This automatically disables the `:hover` effect.
 
 <div doc-demo>
   <sf-dropdown theme="primary">
-    <input id="<%= uniqId() %>" type="checkbox">
-    <label for="<%= lastUniqId() %>" class="pad">click me to toggle a dropdown</label>
+    <label sf-toggle class="pad">click me to toggle a dropdown</label>
     <sf-dropdown-list>
       <span class="active">Click outside to toggle off</span>
       <span>I'm the second item</span>
@@ -223,28 +212,23 @@ The dropdown position may be changed to `top`, `right` or `left`:
 
 # sf-tabset
 
-`sf-tabset` is a tabbed panel. Like most other stateful components, it relies on
-the `:checked` hack with hidden inputs. You can also
-[patch](examples/javascript/) it with JS to skip the need for inputs.
+`sf-tabset` is a tabbed panel.
 
 ```html
 <sf-tabset theme="text-accent">
-  <input checked id="..." type="radio" name="demo-sf-tabset">
-  <label for="..." theme="accent">First tab (preselected)</label>
+  <label class="active" theme="accent">First tab (preselected)</label>
   <sf-tab>
     <h3>First tab content</h3>
     <p>Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro.</p>
   </sf-tab>
 
-  <input id="..." type="radio" name="demo-sf-tabset">
-  <label for="..." theme="accent">Second tab</label>
+  <label theme="accent">Second tab</label>
   <sf-tab>
     <h3>Second tab content</h3>
     <p>Cum horribilem walking dead resurgere de crazed sepulcris creaturis, zombie sicut de grave feeding iride et serpens.</p>
   </sf-tab>
 
-  <input id="..." type="radio" name="demo-sf-tabset">
-  <label for="..." theme="accent">Third tab</label>
+  <label theme="accent">Third tab</label>
   <sf-tab>
     <h3>Third tab content</h3>
     <p>Lucio fulci tremor est dark vivos magna. Expansis creepy arm yof darkness ulnis witchcraft missing carnem armis Kirkman Moore and Adlard caeruleum in locis.</p>
@@ -254,22 +238,19 @@ the `:checked` hack with hidden inputs. You can also
 
 <div doc-demo>
   <sf-tabset theme="text-accent">
-    <input checked id="<%= uniqId() %>" type="radio" name="demo-sf-tabset">
-    <label for="<%= lastUniqId() %>" theme="accent">First tab (preselected)</label>
+    <label class="active" theme="accent">First tab (preselected)</label>
     <sf-tab>
       <h3>First tab content</h3>
       <p>Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max brucks terribilem incessu zomby. The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus. Zonbi tattered for solum oculi eorum defunctis go lum cerebro. Nescio brains an Undead zombies. Sicut malus putrid voodoo horror. Nigh tofth eliv ingdead.</p>
     </sf-tab>
 
-    <input id="<%= uniqId() %>" type="radio" name="demo-sf-tabset">
-    <label for="<%= lastUniqId() %>" theme="accent">Second tab</label>
+    <label theme="accent">Second tab</label>
     <sf-tab>
       <h3>Second tab content</h3>
       <p>Cum horribilem walking dead resurgere de crazed sepulcris creaturis, zombie sicut de grave feeding iride et serpens. Pestilentia, shaun ofthe dead scythe animated corpses ipsa screams. Pestilentia est plague haec decaying ambulabat mortuos. Sicut zeder apathetic malus voodoo. Aenean a dolor plan et terror soulless vulnerum contagium accedunt, mortui iam vivam unlife. Qui tardius moveri, brid eof reanimator sed in magna copia sint terribiles undeath legionis. Alii missing oculis aliorum sicut serpere crabs nostram. Putridi braindead odores kill and infect, aere implent left four dead.</p>
     </sf-tab>
 
-    <input id="<%= uniqId() %>" type="radio" name="demo-sf-tabset">
-    <label for="<%= lastUniqId() %>" theme="accent">Third tab</label>
+    <label theme="accent">Third tab</label>
     <sf-tab>
       <h3>Third tab content</h3>
       <p>Lucio fulci tremor est dark vivos magna. Expansis creepy arm yof darkness ulnis witchcraft missing carnem armis Kirkman Moore and Adlard caeruleum in locis. Romero morbo Congress amarus in auras. Nihil horum sagittis tincidunt, zombie slack-jawed gelida survival portenta. The unleashed virus est, et iam zombie mortui ambulabunt super terram. Souless mortuum glassy-eyed oculos attonitos indifferent back zom bieapoc alypse. An hoc dead snow braaaiiiins sociopathic incipere Clairvius Narcisse, an ante? Is bello mundi z?</p>
@@ -328,23 +309,15 @@ to resize the page more easily.
 
 # sf-modal
 
-`sf-modal` is a fixed popup dialog. It exploits the `:target` selector to match
-the URL fragment. It appears when the URL hash is targeting the modal's id. All
-you need is to link to that id.
+`sf-modal` is a fixed popup dialog. To display it, use an element with an
+`[sf-toggle-id]` attribute pointing to a modal's id.
 
 ```html
-<!-- Clicking this link summons the modal -->
-<a href="#demo-sf-modal">
-  <button>Click me to open a modal!</button>
-</a>
+<!-- Clicking this summons the modal -->
+<button sf-toggle-id="demoModal">Click me to open a modal!</button>
 
-<!-- The modal, hidden until targeted -->
-<sf-modal id="demo-sf-modal" theme="text-primary">
-
-  <!-- This hidden link closes the modal -->
-  <a href="#_"></a>
-
-  <!-- The modal body, visible when targeted -->
+<!-- Modal, hidden until activated -->
+<sf-modal id="demoModal" theme="text-primary">
   <sf-modal-body class="pad-ch-v-05">
     <h1>Modal header</h1>
     <p>Check me out, I'm a modal!</p>
@@ -355,12 +328,9 @@ you need is to link to that id.
 ```
 
 <div doc-demo>
-  <a href="components/#demo-sf-modal">
-    <button>Click me to open a modal!</button>
-  </a>
+  <button sf-toggle-id="demoModal">Click me to open a modal!</button>
 
-  <sf-modal id="demo-sf-modal" theme="text-primary">
-    <a href="components/#_"></a>
+  <sf-modal id="demoModal" theme="text-primary">
     <sf-modal-body>
       <h1>Modal header</h1>
       <p>Check me out, I'm a modal!</p>
@@ -405,28 +375,27 @@ Notice how little markup is required.
 into a sliding dropdown. You can configure the ordinal number of the child at
 which to fold by adjusting the `$sf-navbar-nth-child` variable.
 
-To enable folding, add the pair: `<input type="checkbox">` and `<label>` with
-matching `[id]`s as the navbar's first children. Resize your viewport to see the
-folding in effect or view the [demo](examples/navbar-demo/#static-folding).
+To enable folding, add a `<label>` (with optional content) at the position where
+you want the navbar to fold. Resize your viewport to see the folding in effect
+or view the [demo](examples/navbar-demo/#static-folding).
 
 ```html
 <sf-navbar>
-  <input id="..." type="checkbox">
-  <label for="..."></label>
   <a href="/">Home</a>
   <a class="active" href="/robots">Robots</a>
   <a href="/medical-cybernetics">Medical Cybernetics</a>
+  <label></label>
   <a href="/partners">Partners</a>
+  <a href="/achievements">Achievements</a>
 </sf-navbar>
 ```
 
 <div doc-demo>
   <sf-navbar>
-    <input id="<%= uniqId() %>" type="checkbox">
-    <label for="<%= lastUniqId() %>"></label>
     <a href="components/#home">Home</a>
     <a class="active" href="components/#robots">Robots</a>
     <a href="components/#medical-cybernetics">Medical Cybernetics</a>
+    <label></label>
     <a href="components/#partners">Partners</a>
     <a href="components/#achievements">Achievements</a>
   </sf-navbar>
@@ -439,22 +408,21 @@ regardless of the viewport width.
 
 ```html
 <sf-navbar theme="primary" sf-navbar="fold">
-  <input id="..." type="checkbox">
-  <label for="..."></label>
   <a href="/">Home</a>
   <a class="active" href="/robots">Robots</a>
   <a href="/medical-cybernetics">Medical Cybernetics</a>
+  <label></label>
   <a href="/partners">Partners</a>
+  <a href="/achievements">Achievements</a>
 </sf-navbar>
 ```
 
 <div doc-demo>
   <sf-navbar theme="primary" sf-navbar="fold">
-    <input id="<%= uniqId() %>" type="checkbox">
-    <label for="<%= lastUniqId() %>"></label>
     <a href="components/#home">Home</a>
     <a class="active" href="components/#robots">Robots</a>
     <a href="components/#medical-cybernetics">Medical Cybernetics</a>
+    <label></label>
     <a href="components/#partners">Partners</a>
     <a href="components/#achievements">Achievements</a>
   </sf-navbar>
@@ -470,6 +438,7 @@ Add the `fixed` option to glue the navbar to the top of the viewport:
   <a class="active" href="/robots">Robots</a>
   <a href="/medical-cybernetics">Medical Cybernetics</a>
   <a href="/partners">Partners</a>
+  <a href="/achievements">Achievements</a>
 </sf-navbar>
 ```
 
@@ -553,8 +522,8 @@ inverses of the base text and background colours.
 <span sf-tooltip="I appear on focus! Click outside to toggle me off."
       sf-trigger="focus" contenteditable>Focus me to see a tooltip.</span>
 
-<div sf-tooltip="I'm an input tooltip that appears on hover!">
-  <input placeholder="Hover me to see a tooltip.">
+<div sf-tooltip="I'm an input tooltip that appears on hover and focus!" sf-trigger="hover focus">
+  <input placeholder="Hover or focus me to see a tooltip.">
 </div>
 ```
 
@@ -564,20 +533,20 @@ inverses of the base text and background colours.
   <div><span sf-tooltip="I'm a bottom positioned tooltip!" sf-position="bottom">Hover me to see a bottom tooltip.</span></div>
   <div><span sf-tooltip="I'm a bottom-right positioned tooltip!" sf-position="bottom-right">Hover me to see a bottom-right tooltip.</span></div>
   <div><span sf-tooltip="I appear on focus! Click outside to toggle me off." sf-trigger="focus" contenteditable>Focus me to see a tooltip.</span></div>
-  <div sf-tooltip="I'm an input tooltip that appears on hover!"><input placeholder="Hover me to see a tooltip."></div>
+  <div sf-tooltip="I'm an input tooltip that appears on hover and focus!" sf-trigger="hover focus">
+    <input placeholder="Hover or focus me to see a tooltip.">
+  </div>
 </div>
 
 The `trigger` attribute supports the following values: `hover`, `focus`,
 `disabled`, `target`, `active`. They correspond to their namesake pseudoclass
-selectors and may be combined. You can also include `true` to make the tooltip
-visible at all times.
+selectors and may be combined. You can also include `[sf-tooltip-show]` to make
+the tooltip visible at all times.
 
 **Note**: since tooltips are implemented with pseudoelements, they can't be
 directly used on elements that aren't allowed to have children, such as `<input
 type="text">`. The example above demonstrates a workaround: wrap an input into
-another element and use the tooltip attributes on its parent. This works for the
-`:hover` and `:active` versions because these states propagate naturally to the
-parent. Unfortunately other states, like `:focus`, don't propagate.
+another element and use the tooltip attributes on its parent.
 
 # sf-input
 
