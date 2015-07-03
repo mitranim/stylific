@@ -63,7 +63,7 @@ sf-navbar,
 
   // Cosmetic.
   background-color: $sf-color-background;
-  box-shadow: 0 3px 6px -3px rgba($sf-color-text, 0.4);
+  @include sf-shadow-down;
 
   // Immediate child styles.
   > * {

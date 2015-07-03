@@ -28,6 +28,9 @@ sf-jumbo,
   height: $sf-jumbo-height;
   font-size: $sf-jumbo-font-size;
 
+  // Normal sized version.
+  &[sf-jumbo~=normal] {font-size: 1em}
+
   /**
    * Inner layout.
    */

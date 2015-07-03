@@ -18,16 +18,18 @@ var pt     = require('path');
 /********************************** Globals **********************************/
 
 var src = {
-  lib:        'scss/**/*.scss',
-  libCore:    'scss/stylific.scss',
-  stylesCore: 'src-docs/styles/docs.scss',
-  styles:     'src-docs/styles/**/*.scss',
+  lib:           'lib',
+  libStyles:     'scss/**/*.scss',
+  libStylesCore: 'scss/stylific.scss',
+  libScripts:    'lib/stylific.js',
+  libScriptsMin: 'lib/stylific.min.js',
+  stylesCore:    'src-docs/styles/docs.scss',
+  styles:        'src-docs/styles/**/*.scss',
   html: [
     'src-docs/html/**/*',
     'bower_components/font-awesome-svg-png/black/**/*.svg'
   ],
-  images: 'src-docs/images/**/*',
-  scripts: 'lib/**/*.js'
+  images: 'src-docs/images/**/*'
 };
 
 var destBase = 'stylific-gh-pages';
@@ -117,14 +119,14 @@ marked.Renderer.prototype.link = function(href, title, text) {
 
 /*----------------------------------- Lib -----------------------------------*/
 
-gulp.task('lib:clear', function() {
+gulp.task('lib:styles:clear', function() {
   return gulp.src(dest.lib + '/*.css', {read: false, allowEmpty: true})
     .pipe($.plumber())
     .pipe($.rimraf());
 });
 
-gulp.task('lib:compile', function() {
-  return gulp.src(src.libCore)
+gulp.task('lib:styles:compile', function() {
+  return gulp.src(src.libStylesCore)
     .pipe($.plumber())
     .pipe($.sass())
     .pipe($.autoprefixer())
@@ -136,10 +138,19 @@ gulp.task('lib:compile', function() {
     .pipe(gulp.dest(dest.lib));
 });
 
-gulp.task('lib:build', gulp.series('lib:clear', 'lib:compile'));
+gulp.task('lib:scripts:minify', function() {
+  return gulp.src(src.libScripts)
+    .pipe($.plumber())
+    .pipe($.uglify())
+    .pipe($.rename('stylific.min.js'))
+    .pipe(gulp.dest(dest.lib));
+});
+
+gulp.task('lib:build', gulp.series('lib:styles:clear', 'lib:styles:compile', 'lib:scripts:minify'));
 
 gulp.task('lib:watch', function() {
-  $.watch(src.lib, gulp.series('lib:build'));
+  $.watch(src.libStyles, gulp.series('lib:styles:clear', 'lib:styles:compile'));
+  $.watch(src.libScripts, gulp.series('lib:scripts:minify'));
 });
 
 /*---------------------------------- HTML -----------------------------------*/
@@ -227,7 +238,7 @@ gulp.task('docs:styles:build', gulp.series('docs:styles:clear', 'docs:styles:com
 
 gulp.task('docs:styles:watch', function() {
   $.watch(src.styles, gulp.series('docs:styles:build'));
-  $.watch(src.lib, gulp.series('docs:styles:build'));
+  $.watch(src.libStyles, gulp.series('docs:styles:build'));
 });
 
 /*--------------------------------- Images ----------------------------------*/
@@ -294,13 +305,13 @@ gulp.task('docs:scripts:clear', function() {
 });
 
 gulp.task('docs:scripts:copy', function() {
-  return gulp.src(src.scripts).pipe(gulp.dest(dest.scripts));
+  return gulp.src(src.libScriptsMin).pipe(gulp.dest(dest.scripts));
 });
 
 gulp.task('docs:scripts:build', gulp.series('docs:scripts:clear', 'docs:scripts:copy'));
 
 gulp.task('docs:scripts:watch', function() {
-  $.watch(src.scripts, gulp.series('docs:scripts:build', reload));
+  $.watch(src.libScriptsMin, gulp.series('docs:scripts:build', reload));
 });
 
 /*--------------------------------- Server ----------------------------------*/

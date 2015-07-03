@@ -1,99 +1,128 @@
 /**
  * sf-tabset is your typical tabbed panel.
  *
+ * # Basic usage
+ *
+ * Must have the following layout:
+ *
  *   <sf-tabset>
- *     ...
- *     <label>...</label>
- *     <sf-tab>...</sf-tab>
- *     ...
- *     <label class="active">...</label>
- *     <sf-tab>...</sf-tab>
- *     ...
+ *     <sf-tabset-head>
+ *       <label class="active">...</label>
+ *       <label>...</label>
+ *     </sf-tabset-head>
+ *
+ *     <sf-tabset-body>
+ *       <sf-tab class="active">...</sf-tab>
+ *       <sf-tab>...</sf-tab>
+ *     </sf-tabset-body>
+ *   </sf-tabset>
+ *
+ * To display a tab, apply the `.active` class to a matching label/tab pair.
+ * The stylific JS file does this automatically on clicks.
+ *
+ * # Fixed head
+ *
+ * To fixate the header, annotate the tabset with `[sf-tabset="fixed"]`, then
+ * add a height property to the body:
+ *
+ *   <sf-tabset sf-tabset="fixed">
+ *     <sf-tabset-head>
+ *       <label class="active">...</label>
+ *       <label>...</label>
+ *     </sf-tabset-head>
+ *
+ *     <sf-tabset-body style="height: 12em">
+ *       <sf-tab class="active">...</sf-tab>
+ *       <sf-tab>...</sf-tab>
+ *     </sf-tabset-body>
  *   </sf-tabset>
  */
 
 sf-tabset,
 [sf-tabset] {
 
-  /**
-   * Inner layout.
-   */
-  display: flex;
-  // This allows us to fold the children, putting the body below all headers.
-  flex-wrap: wrap;
+  // Layout.
+  display: block;
 
   // Cosmetic.
   @include sf-border-weak;
 
   /**
-   * Base tab header styles.
+   * Header styles.
    */
-  > label {
-    /**
-     * Layout.
-     */
-    // Stretch across the available space.
-    flex: 1;
-    // Reorder the flow, moving the header behind all bodies.
-    order: -1;
+  > sf-tabset-head {
+    // Layout.
+    display: flex;
+    flex-direction: row;
     height: $sf-tabset-head-height;
 
-    /**
-     * Inner layout.
-     */
-    @include sf-flex-host-center;
-
     // Cosmetic.
-    @include sf-register-interactive-selector;
-    @include sf-cursor-interactive;
+    border-bottom: 1px solid rgba($sf-color-text, 0.2);
 
-    // Whitespace.
-    padding: $sf-space;
+    // Header labels.
+    > label {
+      // Layout.
+      flex: 1;
+
+      // Inner layout.
+      @include sf-flex-host-center;
+
+      // Cosmetic.
+      @include sf-register-interactive-selector;
+      @include sf-cursor-interactive;
+
+      // Whitespace.
+      padding: $sf-space;
+    }
+
+    // Highlight when active.
+    &.active {
+      @include sf-register-selected-state;
+    }
   }
 
   /**
-   * Base body styles.
+   * Fixed header version.
    */
-  // Hide by default. This may be accidentally overridden by applying layout
-  // attributes like [layout-sm], not sure if worth guarding against.
-  > label:not(.active) + sf-tab,
-  > label:not(.active) + [sf-tab] {
-    display: none;
-  }
-  > sf-tab,
-  > [sf-tab] {
-    /**
-     * Layout.
-     */
-    // In combination with {flex-wrap: wrap} on the parent, this folds the line,
-    // putting the body below the headers.
-    width: 100%;
-    // Reorder the flow, moving the body after all headers.
-    order: 1;
-    // Make sure it doesn't collapse due to lack of content.
-    min-height: $sf-tabset-body-min-height;
+  &[sf-tabset~=fixed] {
+    // Layout.
+    position: relative;
 
-    /**
-     * Cosmetic.
-     */
-    border-top: 1px solid rgba($sf-color-text, 0.2);
-    // Whitespace.
-    padding: $sf-space;
-    @include sf-space-out-vertical;
+    // Fix header.
+    > sf-tabset-head, > [sf-tabset-head] {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+    }
+
+    // Body styles.
+    > sf-tabset-body {
+      // Offset header.
+      margin-top: $sf-tabset-head-height;
+
+      // Enable scrolling.
+      overflow: scroll;
+
+      // Inner shadow to indicate fixedness.
+      @include sf-shadow-inset-top-bottom;
+    }
   }
 
   /**
-   * Active tab highlighting.
+   * Body styles.
    */
-  > label.active {
-    @include sf-register-selected-state;
-  }
-
-  /**
-   * Active body styles.
-   */
-  > label.active + sf-tab,
-  > label.active + [sf-tab], {
+  > sf-tabset-body {
+    // Layout.
     display: block;
+    > * {
+      // Layout.
+      display: block;
+      &:not(.active) {display: none}
+
+      // Whitespace.
+      padding: $sf-space;
+      @include sf-space-out-vertical;
+    }
   }
 }
