@@ -228,46 +228,91 @@ This automatically disables the <code>:hover</code> effect.</p>
   </sf-dropdown>
 </div>
 
-<h1 id="sf-tabset"><a href="https://github.com/Mitranim/stylific/blob/master/scss/components/sf-tabset.scss" target="_blank">sf-tabset</a></h1><p><code>sf-tabset</code> is a tabbed panel.</p>
+<h1 id="sf-tabset"><a href="https://github.com/Mitranim/stylific/blob/master/scss/components/sf-tabset.scss" target="_blank">sf-tabset</a></h1><p><code>sf-tabset</code> is a tabbed panel. To select a tab, apply the class <code>.active</code> to a
+matching label/tab pair. The bundled JS file does this automatically on clicks.</p>
 <pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-tabset</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"text-accent"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"active"</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"accent"</span>&gt;</span>First tab (preselected)<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">sf-tab</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">h3</span>&gt;</span>First tab content<span class="hljs-tag">&lt;/<span class="hljs-title">h3</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro.<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-title">sf-tab</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- Header --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">sf-tabset-head</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"accent"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"active"</span>&gt;</span>First tab (preselected)<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">label</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">label</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">sf-tabset-head</span>&gt;</span>
 
-  <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"accent"</span>&gt;</span>Second tab<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">sf-tab</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">h3</span>&gt;</span>Second tab content<span class="hljs-tag">&lt;/<span class="hljs-title">h3</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Cum horribilem walking dead resurgere de crazed sepulcris creaturis, zombie sicut de grave feeding iride et serpens.<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-title">sf-tab</span>&gt;</span>
-
-  <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"accent"</span>&gt;</span>Third tab<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">sf-tab</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">h3</span>&gt;</span>Third tab content<span class="hljs-tag">&lt;/<span class="hljs-title">h3</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Lucio fulci tremor est dark vivos magna. Expansis creepy arm yof darkness ulnis witchcraft missing carnem armis Kirkman Moore and Adlard caeruleum in locis.<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-title">sf-tab</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- Body --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">sf-tabset-body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">sf-tab</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"active"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">sf-tab</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">sf-tab</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">sf-tab</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">sf-tab</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">sf-tab</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">sf-tabset-body</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">sf-tabset</span>&gt;</span>
 </code></pre>
 <div doc-demo>
   <sf-tabset theme="text-accent">
-    <label class="active" theme="accent">First tab (preselected)</label>
-    <sf-tab>
-      <h3>First tab content</h3>
-      <p>Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max brucks terribilem incessu zomby. The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus. Zonbi tattered for solum oculi eorum defunctis go lum cerebro. Nescio brains an Undead zombies. Sicut malus putrid voodoo horror. Nigh tofth eliv ingdead.</p>
-    </sf-tab>
+    <sf-tabset-head theme="accent">
+      <label class="active">First tab (preselected)</label>
+      <label>Second tab</label>
+      <label>Third tab</label>
+    </sf-tabset-head>
 
-    <label theme="accent">Second tab</label>
-    <sf-tab>
-      <h3>Second tab content</h3>
-      <p>Cum horribilem walking dead resurgere de crazed sepulcris creaturis, zombie sicut de grave feeding iride et serpens. Pestilentia, shaun ofthe dead scythe animated corpses ipsa screams. Pestilentia est plague haec decaying ambulabat mortuos. Sicut zeder apathetic malus voodoo. Aenean a dolor plan et terror soulless vulnerum contagium accedunt, mortui iam vivam unlife. Qui tardius moveri, brid eof reanimator sed in magna copia sint terribiles undeath legionis. Alii missing oculis aliorum sicut serpere crabs nostram. Putridi braindead odores kill and infect, aere implent left four dead.</p>
-    </sf-tab>
+    <sf-tabset-body>
+      <sf-tab class="active">
+        <h3>First tab content</h3>
+        <p>Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max brucks terribilem incessu zomby. The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus. Zonbi tattered for solum oculi eorum defunctis go lum cerebro. Nescio brains an Undead zombies. Sicut malus putrid voodoo horror. Nigh tofth eliv ingdead.</p>
+      </sf-tab>
+      <sf-tab>
+        <h3>Second tab content</h3>
+        <p>Cum horribilem walking dead resurgere de crazed sepulcris creaturis, zombie sicut de grave feeding iride et serpens. Pestilentia, shaun ofthe dead scythe animated corpses ipsa screams. Pestilentia est plague haec decaying ambulabat mortuos. Sicut zeder apathetic malus voodoo. Aenean a dolor plan et terror soulless vulnerum contagium accedunt, mortui iam vivam unlife. Qui tardius moveri, brid eof reanimator sed in magna copia sint terribiles undeath legionis. Alii missing oculis aliorum sicut serpere crabs nostram. Putridi braindead odores kill and infect, aere implent left four dead.</p>
+      </sf-tab>
+      <sf-tab>
+        <h3>Third tab content</h3>
+        <p>Lucio fulci tremor est dark vivos magna. Expansis creepy arm yof darkness ulnis witchcraft missing carnem armis Kirkman Moore and Adlard caeruleum in locis. Romero morbo Congress amarus in auras. Nihil horum sagittis tincidunt, zombie slack-jawed gelida survival portenta. The unleashed virus est, et iam zombie mortui ambulabunt super terram. Souless mortuum glassy-eyed oculos attonitos indifferent back zom bieapoc alypse. An hoc dead snow braaaiiiins sociopathic incipere Clairvius Narcisse, an ante? Is bello mundi z?</p>
+      </sf-tab>
+    </sf-tabset-body>
+  </sf-tabset>
+</div>
 
-    <label theme="accent">Third tab</label>
-    <sf-tab>
-      <h3>Third tab content</h3>
-      <p>Lucio fulci tremor est dark vivos magna. Expansis creepy arm yof darkness ulnis witchcraft missing carnem armis Kirkman Moore and Adlard caeruleum in locis. Romero morbo Congress amarus in auras. Nihil horum sagittis tincidunt, zombie slack-jawed gelida survival portenta. The unleashed virus est, et iam zombie mortui ambulabunt super terram. Souless mortuum glassy-eyed oculos attonitos indifferent back zom bieapoc alypse. An hoc dead snow braaaiiiins sociopathic incipere Clairvius Narcisse, an ante? Is bello mundi z?</p>
-    </sf-tab>
+<h2 id="-sf-tabset-fixed-"><code>[sf-tabset=&quot;fixed&quot;]</code></h2>
+<p>To fixate the header, annotate the tabset with <code>sf-tabset=&quot;fixed&quot;</code> and add
+a height property to the body:</p>
+<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-tabset</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"text-warn"</span> <span class="hljs-attribute">sf-tabset</span>=<span class="hljs-value">"fixed"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">sf-tabset-head</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"warn"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"active"</span>&gt;</span>First tab (preselected)<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">label</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">label</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">sf-tabset-head</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-title">sf-tabset-body</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"height: 10em"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">sf-tab</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"active"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">sf-tab</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">sf-tab</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">sf-tab</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">sf-tab</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">sf-tab</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">sf-tabset-body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">sf-tabset</span>&gt;</span>
+</code></pre>
+<div doc-demo>
+  <sf-tabset theme="text-warn" sf-tabset="fixed">
+    <sf-tabset-head theme="warn">
+      <label class="active">First tab (preselected)</label>
+      <label>Second tab</label>
+      <label>Third tab</label>
+    </sf-tabset-head>
+
+    <sf-tabset-body style="height: 10em">
+      <sf-tab class="active">
+        <h3>First tab content</h3>
+        <p>Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max brucks terribilem incessu zomby. The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus. Zonbi tattered for solum oculi eorum defunctis go lum cerebro. Nescio brains an Undead zombies. Sicut malus putrid voodoo horror. Nigh tofth eliv ingdead.</p>
+        <p>Lucio fulci tremor est dark vivos magna. Expansis creepy arm yof darkness ulnis witchcraft missing carnem armis Kirkman Moore and Adlard caeruleum in locis. Romero morbo Congress amarus in auras. Nihil horum sagittis tincidunt, zombie slack-jawed gelida survival portenta. The unleashed virus est, et iam zombie mortui ambulabunt super terram. Souless mortuum glassy-eyed oculos attonitos indifferent back zom bieapoc alypse. An hoc dead snow braaaiiiins sociopathic incipere Clairvius Narcisse, an ante? Is bello mundi z?</p>
+      </sf-tab>
+      <sf-tab>
+        <h3>Second tab content</h3>
+        <p>Cum horribilem walking dead resurgere de crazed sepulcris creaturis, zombie sicut de grave feeding iride et serpens. Pestilentia, shaun ofthe dead scythe animated corpses ipsa screams. Pestilentia est plague haec decaying ambulabat mortuos. Sicut zeder apathetic malus voodoo. Aenean a dolor plan et terror soulless vulnerum contagium accedunt, mortui iam vivam unlife. Qui tardius moveri, brid eof reanimator sed in magna copia sint terribiles undeath legionis. Alii missing oculis aliorum sicut serpere crabs nostram. Putridi braindead odores kill and infect, aere implent left four dead.</p>
+        <p>Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max brucks terribilem incessu zomby. The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus. Zonbi tattered for solum oculi eorum defunctis go lum cerebro. Nescio brains an Undead zombies. Sicut malus putrid voodoo horror. Nigh tofth eliv ingdead.</p>
+      </sf-tab>
+      <sf-tab>
+        <h3>Third tab content</h3>
+        <p>Lucio fulci tremor est dark vivos magna. Expansis creepy arm yof darkness ulnis witchcraft missing carnem armis Kirkman Moore and Adlard caeruleum in locis. Romero morbo Congress amarus in auras. Nihil horum sagittis tincidunt, zombie slack-jawed gelida survival portenta. The unleashed virus est, et iam zombie mortui ambulabunt super terram. Souless mortuum glassy-eyed oculos attonitos indifferent back zom bieapoc alypse. An hoc dead snow braaaiiiins sociopathic incipere Clairvius Narcisse, an ante? Is bello mundi z?</p>
+        <p>Cum horribilem walking dead resurgere de crazed sepulcris creaturis, zombie sicut de grave feeding iride et serpens. Pestilentia, shaun ofthe dead scythe animated corpses ipsa screams. Pestilentia est plague haec decaying ambulabat mortuos. Sicut zeder apathetic malus voodoo. Aenean a dolor plan et terror soulless vulnerum contagium accedunt, mortui iam vivam unlife. Qui tardius moveri, brid eof reanimator sed in magna copia sint terribiles undeath legionis. Alii missing oculis aliorum sicut serpere crabs nostram. Putridi braindead odores kill and infect, aere implent left four dead.</p>
+      </sf-tab>
+    </sf-tabset-body>
   </sf-tabset>
 </div>
 
@@ -689,6 +734,6 @@ height.</p>
 
 
     <!-- Scripts -->
-    <script src="scripts/stylific.js"></script>
+    <script src="scripts/stylific.min.js"></script>
   </body>
 </html>
