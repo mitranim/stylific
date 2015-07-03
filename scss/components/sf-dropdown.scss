@@ -62,6 +62,8 @@
 #{$sf-prefix}-dropdown,
 [#{$sf-prefix}-dropdown] {
 
+  $attr: unquote('#{$sf-prefix}-dropdown');
+
   /**
    * Layout.
    */
@@ -125,7 +127,10 @@
   /**
    * Base label styles for the toggled version.
    */
-  > input[type=checkbox] + label {
+  // Input variant
+  > input[type=checkbox] + label,
+  // .active variant
+  &[#{$attr}~=toggle] > label {
     /**
      * Overlay for closing the toggled dropdown.
      */
@@ -137,11 +142,18 @@
       z-index: $sf-z-index-dropdown - 1;
     }
   }
+  &[#{$attr}~=toggle] > label {
+    // Treat as interactive.
+    @include sf-register-interactive-selector;
+  }
 
   /**
    * Active label styles for the toggled version.
    */
-  > input[type=checkbox]:checked + label {
+  // Input variant
+  > input[type=checkbox]:checked + label,
+  // .active variant
+  &[#{$attr}~=toggle] > label.active {
     // Make the toggle overlay interactive.
     &::before {content: ''}
     // Change the state indicator.
@@ -188,10 +200,11 @@
    * Position-dependent indicators.
    */
   // Top.
-  &[#{$sf-prefix}-dropdown~=top] {
+  &[#{$attr}~=top] {
     // Reverse the indicators.
     > label::after {content: '△'}
-    > input[type=checkbox]:checked + label::after {
+    > input[type=checkbox]:checked + label::after,
+    &[#{$attr}~=toggle] > label.active::after {
       content: '▼';
     }
   }
@@ -200,12 +213,13 @@
    * Active dropdown list styles.
    */
   // Hover version.
-  > label:first-child:hover + #{$sf-prefix}-dropdown-list,
+  &:not([#{$attr}~=toggle]) > label:first-child:hover + #{$sf-prefix}-dropdown-list,
   // Hover version -> dropdown list; we try to limit this to the hover version
   // to avoid flickering in the dropdown version when animations are enabled.
-  > label:first-child + #{$sf-prefix}-dropdown-list:hover,
+  &:not([#{$attr}~=toggle]) > label:first-child + #{$sf-prefix}-dropdown-list:hover,
   // Toggled version.
-  > input[type=checkbox]:checked + label + #{$sf-prefix}-dropdown-list {
+  > input[type=checkbox]:checked + label + #{$sf-prefix}-dropdown-list,
+  &[#{$attr}~=toggle] > label.active + #{$sf-prefix}-dropdown-list {
     // Display. Both opacity and visibility are required to animate the
     // visibility change.
     opacity: inherit;
@@ -217,14 +231,14 @@
    */
   // Bottom (default).
   &:not([#{$sf-prefix}-dropdown]), &[#{$sf-prefix}-dropdown=''],
-  &[#{$sf-prefix}-dropdown~=bottom] {
+  &[#{$attr}~=bottom] {
     > #{$sf-prefix}-dropdown-list {
       top: 100%;
       left: 0;
     }
   }
   // Top.
-  &[#{$sf-prefix}-dropdown~=top] {
+  &[#{$attr}~=top] {
     // Dropdown position.
     > #{$sf-prefix}-dropdown-list {
       bottom: 100%;
@@ -232,14 +246,14 @@
     }
   }
   // Right.
-  &[#{$sf-prefix}-dropdown~=right] {
+  &[#{$attr}~=right] {
     > #{$sf-prefix}-dropdown-list {
       top: 0;
       left: 100%;
     }
   }
   // Left.
-  &[#{$sf-prefix}-dropdown~=left] {
+  &[#{$attr}~=left] {
     > #{$sf-prefix}-dropdown-list {
       top: 0;
       right: 100%;

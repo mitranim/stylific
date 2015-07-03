@@ -57,7 +57,7 @@
   /**
    * Base label styles.
    */
-  > input[type=checkbox] + label {
+  > label {
     /**
      * Layout.
      */
@@ -82,7 +82,8 @@
   /**
    * Active label styles.
    */
-  > input[type=checkbox]:checked + label {
+  > input[type=checkbox]:checked + label,
+  > label.active {
     // Modify the indicator symbol.
     &::after {content: '▲'}
     // Treat as .active.
@@ -92,7 +93,7 @@
   /**
    * Base overlay styles.
    */
-  &[#{$sf-prefix}-collapse~=overlay] > input[type=checkbox] + label::before {
+  &[#{$sf-prefix}-collapse~=overlay] > label::before {
     @include sf-fixed-overlay;
     opacity: 0;
   }
@@ -101,7 +102,8 @@
    * Active overlay styles.
    */
   // If the overlay option is enabled, make the toggle overlay interactive.
-  &[#{$sf-prefix}-collapse~=overlay] > input[type=checkbox]:checked + label {
+  &[#{$sf-prefix}-collapse~=overlay] > input[type=checkbox]:checked + label,
+  &[#{$sf-prefix}-collapse~=overlay] > label.active {
     &::before {content: ''}
   }
 
@@ -114,8 +116,10 @@
     padding: $sf-space;
   }
   // Collapsed.
-  > input[type=checkbox]:not(:checked) ~ #{$sf-prefix}-collapse-body,
-  > input[type=checkbox]:not(:checked) ~ [#{$sf-prefix}-collapse-body] {
+  > label:first-child:not(.active) ~ #{$sf-prefix}-collapse-body,
+  > label:first-child:not(.active) ~ [#{$sf-prefix}-collapse-body],
+  > input[type=checkbox]:not(:checked) + label ~ #{$sf-prefix}-collapse-body,
+  > input[type=checkbox]:not(:checked) + label ~ [#{$sf-prefix}-collapse-body] {
     padding-top: 0;
     padding-bottom: 0;
     max-height: 0;
@@ -123,7 +127,9 @@
   }
   // Active.
   > input[type=checkbox]:checked ~ #{$sf-prefix}-collapse-body,
-  > input[type=checkbox]:checked ~ [#{$sf-prefix}-collapse-body] {
+  > input[type=checkbox]:checked ~ [#{$sf-prefix}-collapse-body],
+  > label.active ~ #{$sf-prefix}-collapse-body,
+  > label.active ~ [#{$sf-prefix}-collapse-body] {
     transform: scaleY(1);
   }
 

@@ -7,3 +7,9 @@ pre code {width: 100%}
 body {
   @include sf-shadow-weak;
 }
+
+sf-collapse, [sf-collapse] {
+  sf-collapse-body.nopad, [sf-collapse-body].nopad {
+    padding: 0;
+  }
+}

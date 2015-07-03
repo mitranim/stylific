@@ -27,8 +27,8 @@
  *      sf-trigger="hover focus">hover or focus me</p>
  *
  * The following triggers are supported: :active, :disabled, :focus, :hover,
- * :target. You can also include 'true' to make the tooltip visible at all
- * times.
+ * :target. You can also add the attribute sf-tooltip-show to make the tooltip
+ * unconditionally visible.
  *
  *
  * # Limitations
@@ -57,8 +57,7 @@
  * Add triangles.
  *
  * Look for ways to implement tooltips that work with <input type="text"> and
- * <textarea> without involving parents (siblings and attributes only). I think
- * there's something in CSS4 that might help.
+ * <textarea> without involving parents (siblings and attributes only).
  */
 
 [#{$sf-prefix}-tooltip] {
@@ -156,14 +155,14 @@
    *   <button sf-tooltip="tooltip text"
    *           sf-trigger="hover focus">hover or focus me</button>
    */
-  $attr-trigger: '#{$sf-prefix}-trigger';
-  &:not([#{$attr-trigger}]):hover,
-  &[#{$attr-trigger}~=active]:active,
-  &[#{$attr-trigger}~=disabled]:disabled,
-  &[#{$attr-trigger}~=focus]:focus,
-  &[#{$attr-trigger}~=hover]:hover,
-  &[#{$attr-trigger}~=target]:target,
-  &[#{$attr-trigger}~=true] {
+  &:not([#{$sf-prefix}-trigger]):hover,
+  &[#{$sf-prefix}-trigger~=active]:active,
+  &[#{$sf-prefix}-trigger~=disabled]:disabled,
+  &[#{$sf-prefix}-trigger~=focus]:focus,
+  &[#{$sf-prefix}-trigger~=hover]:hover,
+  &[#{$sf-prefix}-trigger~=target]:target,
+  // Unconditional visibility; hook for JavaScript enhancement.
+  &[#{$sf-prefix}-tooltip-show] {
     &::after {
       opacity: inherit;
       visibility: inherit;

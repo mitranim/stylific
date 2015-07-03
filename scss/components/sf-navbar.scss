@@ -16,6 +16,8 @@
 #{$sf-prefix}-navbar,
 [#{$sf-prefix}-navbar] {
 
+  $attr: unquote('#{$sf-prefix}-navbar');
+
   /**
    * Layout.
    */
@@ -29,7 +31,7 @@
   // siblings following the navbar.
   position: relative;
   // Fixed version.
-  &[#{$sf-prefix}-navbar~=fixed] {
+  &[#{$attr}~=fixed] {
     /**
      * Layout.
      */
@@ -213,12 +215,12 @@
   }
   @media (max-width: $sf-layout-breakpoint-sm) {@include collapse-rules;}
   // Version that always folds.
-  &[#{$sf-prefix}-navbar~=fold] {@include collapse-rules;}
+  &[#{$attr}~=fold] {@include collapse-rules;}
 
   /**
    * "navtabs" version.
    */
-  &[#{$sf-prefix}-navbar~=tabs] {
+  &[#{$attr}~=tabs] {
     box-shadow: none;
     @include sf-border-weak;
     &:not([#{$sf-prefix}-navbar~=fixed]) {z-index: auto}

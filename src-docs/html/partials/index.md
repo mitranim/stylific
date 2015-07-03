@@ -66,7 +66,7 @@ without it. See [Components](components/) for basic examples.
 
 This doesn't mean you can't use JavaScript; quite the opposite.
 Because stylific only needs static markup, enhancement with JavaScript is
-[trivial](examples/active-switch/). Some stylific components provide simple
+[trivial](examples/javascript/). Some stylific components provide simple
 hooks in the form of `.active` classes.
 
 ## Component Oriented
