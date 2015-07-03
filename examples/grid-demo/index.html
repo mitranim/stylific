@@ -15,20 +15,18 @@
   <body>
     <!-- Navbar -->
     <sf-navbar>
-  <!-- Enable collapsing -->
-  <input type="checkbox" id="navbar-dropdown">
-  <label for="navbar-dropdown"></label>
   <!-- Links -->
   <a  href="">Overview</a>
   <a  href="components/">Components</a>
   <a  href="layout/">Layout</a>
   <a  href="themes/">Themes</a>
+  <!-- Collapse breakpoint -->
+  <label></label>
+  <!-- Collapsable children -->
   <a  href="configuration/">Config</a>
   <sf-dropdown style="padding: 0">
-    <input id="navbar-sub-dropdown" type="checkbox">
-    <label for="navbar-sub-dropdown" layout="center">Examples</label>
+    <label layout="center">Examples</label>
     <sf-dropdown-list class="text-left">
-      <a  href="examples/active-switch/">active-switch</a>
       <a  href="examples/navbar-demo/">navbar demo</a>
       <a  href="examples/footer/">footer</a>
       <a class="active" href="examples/grid-demo/">grid demo</a>
@@ -110,5 +108,7 @@ width changes. The classes are cosmetic.</p>
 </sf-footer>
 
 
+    <!-- Scripts -->
+    <script src="scripts/stylific.js"></script>
   </body>
 </html>

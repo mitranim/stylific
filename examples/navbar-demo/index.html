@@ -15,20 +15,18 @@
   <body>
     <!-- Navbar -->
     <sf-navbar>
-  <!-- Enable collapsing -->
-  <input type="checkbox" id="navbar-dropdown">
-  <label for="navbar-dropdown"></label>
   <!-- Links -->
   <a  href="">Overview</a>
   <a  href="components/">Components</a>
   <a  href="layout/">Layout</a>
   <a  href="themes/">Themes</a>
+  <!-- Collapse breakpoint -->
+  <label></label>
+  <!-- Collapsable children -->
   <a  href="configuration/">Config</a>
   <sf-dropdown style="padding: 0">
-    <input id="navbar-sub-dropdown" type="checkbox">
-    <label for="navbar-sub-dropdown" layout="center">Examples</label>
+    <label layout="center">Examples</label>
     <sf-dropdown-list class="text-left">
-      <a  href="examples/active-switch/">active-switch</a>
       <a class="active" href="examples/navbar-demo/">navbar demo</a>
       <a  href="examples/footer/">footer</a>
       <a  href="examples/grid-demo/">grid demo</a>
@@ -57,27 +55,24 @@
 <p>Back to <a href="components/#sf-navbar">Components#sf-navbar</a>.</p>
 <h1 id="automatic-folding">Automatic Folding</h1>
 <p><code>sf-navbar</code> can automatically fold on narrow displays, grouping extra elements
-into a sliding dropdown. The media breakpoint is configurable, and so is the
-ordinal number of the child at which to fold.</p>
-<p>To enable folding, add a pair of <code>&lt;input type=&quot;checkbox&quot;&gt;</code> and <code>&lt;label&gt;</code> with
-matching ids to the beginning of the navbar. Resize your viewport to see the
-folding in effect.</p>
+into a sliding dropdown. The media breakpoint is configurable.</p>
+<p>To enable folding, add a <code>&lt;label&gt;</code> between the elements where you want the
+navbar to fold. Resize your viewport to see the folding in effect.</p>
 <pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-navbar</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"..."</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"checkbox"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"..."</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/"</span>&gt;</span>Home<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"active"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/robots"</span>&gt;</span>Robots<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/medical-cybernetics"</span>&gt;</span>Medical Cybernetics<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">label</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/partners"</span>&gt;</span>Partners<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/achievements"</span>&gt;</span>Achievements<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">sf-navbar</span>&gt;</span>
 </code></pre>
 <div doc-demo>
   <sf-navbar>
-    <input id="uniq-id-15" type="checkbox">
-    <label for="uniq-id-15"></label>
     <a href="examples/navbar-demo/#home">Home</a>
     <a class="active" href="examples/navbar-demo/#robots">Robots</a>
     <a href="examples/navbar-demo/#medical-cybernetics">Medical Cybernetics</a>
+    <label></label>
     <a href="examples/navbar-demo/#partners">Partners</a>
     <a href="examples/navbar-demo/#achievements">Achievements</a>
   </sf-navbar>
@@ -87,21 +82,20 @@ folding in effect.</p>
 <p>With a folding navbar, use the <code>fold</code> option to tell it to <em>always</em> fold,
 regardless of the viewport width.</p>
 <pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">sf-navbar</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"primary"</span> <span class="hljs-attribute">sf-navbar</span>=<span class="hljs-value">"fold"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"..."</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"checkbox"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"..."</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/"</span>&gt;</span>Home<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"active"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/robots"</span>&gt;</span>Robots<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/medical-cybernetics"</span>&gt;</span>Medical Cybernetics<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">label</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/partners"</span>&gt;</span>Partners<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/achievements"</span>&gt;</span>Achievements<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">sf-navbar</span>&gt;</span>
 </code></pre>
 <div doc-demo>
   <sf-navbar theme="primary" sf-navbar="fold">
-    <input id="uniq-id-16" type="checkbox">
-    <label for="uniq-id-16"></label>
     <a href="examples/navbar-demo/#home">Home</a>
     <a class="active" href="examples/navbar-demo/#robots">Robots</a>
     <a href="examples/navbar-demo/#medical-cybernetics">Medical Cybernetics</a>
+    <label></label>
     <a href="examples/navbar-demo/#partners">Partners</a>
     <a href="examples/navbar-demo/#achievements">Achievements</a>
   </sf-navbar>
@@ -133,5 +127,7 @@ regardless of the viewport width.</p>
 </sf-footer>
 
 
+    <!-- Scripts -->
+    <script src="scripts/stylific.js"></script>
   </body>
 </html>
