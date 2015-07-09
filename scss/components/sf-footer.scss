@@ -8,24 +8,23 @@
  * visible child of the document body. The document needs to look like this:
  *
  *   <body>
- *     <sf-navbar>...</sf-navbar>
+ *     <div sf-navbar>...</div>
  *
- *     ...
+ *     <div> ... </div>
  *
- *     <sf-footer>
- *       <sf-footer-body>
+ *     <div sf-footer>
+ *       <div sf-footer-body>
  *         ...
- *       </sf-footer-body>
- *     </sf-footer>
+ *       </div>
+ *     </div>
  *   </body>
  *
- * The footer content must be inside <sf-footer-body>.
+ * The footer content must be inside [sf-footer-body].
  *
  * The footer styling relies on the body being a flex container with
  * {flex-direction: column}, which is the global default defined in layout.scss.
  */
 
-sf-footer,
 [sf-footer] {
 
   /**
@@ -42,7 +41,6 @@ sf-footer,
   /**
    * Footer body styling.
    */
-  sf-footer-body,
   [sf-footer-body] {
     /**
      * Layout.

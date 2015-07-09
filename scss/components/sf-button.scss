@@ -5,7 +5,6 @@
  *
  *   <button>...</button>
  *   <input type="button">
- *   <sf-button>...</sf-button>
  *   <div sf-button>...</div>
  */
 
@@ -18,7 +17,6 @@
  * minimum width, a set height, and text ellipsis on overflow.
  */
 
-sf-button,
 [sf-button],
 // Override native styles too.
 button, input[type=button] {
@@ -26,7 +24,6 @@ button, input[type=button] {
   /**
    * Layout.
    */
-  display: inline-block;
   padding: $sf-space / 2;
 
   // Normalise font size (browser defaults may be unpredictable).

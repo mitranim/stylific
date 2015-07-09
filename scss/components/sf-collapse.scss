@@ -1,28 +1,28 @@
 /**
- * <sf-collapse> is a vertically collapsing element with a toggle.
+ * [sf-collapse] is a vertically collapsing element with a toggle.
  *
  * # Basic usage
  *
- * Must have the exact following layout:
+ * Must have the following layout:
  *
- *   <sf-collapse>
+ *   <div sf-collapse>
  *     <label>...</label>
- *     <sf-collapse-body>
+ *     <div sf-collapse-body>
  *       ...
- *     </sf-collapse-body>
- *   </sf-collapse>
+ *     </div>
+ *   </div>
  *
  * The label is visible and serves as a toggle. The collapsing part is the
- * sf-collapse-body element.
+ * [sf-collapse-body] element.
  *
  * Mark the label as .active to uncollapse by default:
  *
- *   <sf-collapse>
+ *   <div sf-collapse>
  *     <label class="active">...</label>
- *     <sf-collapse-body>
+ *     <div sf-collapse-body>
  *       ...
- *     </sf-collapse-body>
- *   </sf-collapse>
+ *     </div>
+ *   </div>
  *
  *
  * # Options
@@ -30,12 +30,11 @@
  * Has an option to enable an overlay that collapses the element when clicking
  * anywhere outside.
  *
- *   <sf-collapse sf-collapse="overlay">
+ *   <div sf-collapse="overlay">
  *     ...
- *   </sf-collapse>
+ *   </div>
  */
 
-sf-collapse,
 [sf-collapse] {
 
   /**
@@ -51,11 +50,6 @@ sf-collapse,
    * Base label styles.
    */
   > label {
-    /**
-     * Layout.
-     */
-    display: block;
-
     // Cosmetic.
     @include sf-cursor-interactive;
 
@@ -71,16 +65,15 @@ sf-collapse,
       padding-left: 0.5em;
     }
   }
+  @include sf-register-interactive-selector(' > label');
 
   /**
    * Active label styles.
    */
   > label.active {
-    // Modify the indicator symbol.
     &::after {content: '▲'}
-    // Treat as .active.
-    @include sf-register-selected-state;
   }
+  @include sf-register-selected-state(' > label.active');
 
   /**
    * Base overlay styles.
@@ -99,12 +92,10 @@ sf-collapse,
    * Body styles.
    */
   // Base.
-  > sf-collapse-body,
   > [sf-collapse-body] {
     padding: $sf-space;
   }
   // Collapsed.
-  > label:not(.active) ~ sf-collapse-body,
   > label:not(.active) ~ [sf-collapse-body] {
     padding-top: 0;
     padding-bottom: 0;
@@ -112,7 +103,6 @@ sf-collapse,
     transform: scaleY(0);
   }
   // Active.
-  > label.active ~ sf-collapse-body,
   > label.active ~ [sf-collapse-body] {
     transform: scaleY(1);
   }

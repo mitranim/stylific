@@ -3,17 +3,16 @@
  * a dropdown when the screen is narrow.
  *
  *   <body>
- *     <sf-navbar>
+ *     <div sf-navbar>
  *       <a href=...>...</a>
  *       ...
- *     </sf-navbar>
+ *     </div>
  *     ...
  *   </body>
  *
  * See http://mitranim.com/stylific/components/#sf-navbar
  */
 
-sf-navbar,
 [sf-navbar] {
 
   /**
@@ -97,11 +96,11 @@ sf-navbar,
    * To enable collapsing, the user needs to include a <label> before the
    * collapsable childre. The structure must be as follows:
    *
-   *   <sf-navbar>
+   *   <div sf-navbar>
    *     ... [non-collapsing elements]
    *     <label> ... [optional content] </label>
    *     ... [auto-collapsing elements]
-   *   </sf-navbar>
+   *   </div>
    *
    * Where non-collapsing and collapsing elements are divided with the
    * `$sf-navbar-nth-child` variable, which specifies at which ordinal position
@@ -129,7 +128,6 @@ sf-navbar,
     order: 1;
 
     // Cosmetic.
-    @include sf-register-interactive-selector;
     @include sf-cursor-interactive;
 
     // Overlay for closing the toggled dropdown.
@@ -149,6 +147,8 @@ sf-navbar,
       padding-left: 0.5em;
     }
   }
+  // Interactive styling.
+  @include sf-register-interactive-selector(' > label');
 
   /**
    * Active label styles.

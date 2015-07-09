@@ -1,13 +1,13 @@
 <!-- TOC -->
 <div sf-collapse doc-toc theme="text-accent">
   <label class="active" theme="accent"></label>
-  <sf-collapse-body>
+  <div sf-collapse-body>
     [Overview](#overview)
     [Motivation](#motivation)
     [What's Different](#what-s-different)
     [Installation and Usage](#installation-and-usage)
     [Contributing](#contributing)
-  </sf-collapse-body>
+  </div>
 </div>
 
 # Overview
@@ -53,9 +53,8 @@ and styles in place. You can begin by styling your website statically, then
 effortlessly enhance selected elements with JavaScript.
 
 Another benefit of this approach is that because each component's styles are
-scoped under a single tag or attribute name, they're easy to
-[subclass](configuration/#subclassing) using Sass's `@extend`
-directive.
+scoped under a single tag or attribute name, they're easy to subclass using
+Sass's `@extend` directive.
 
 It also turns out to be a great strategy for CSS specificity. Isolating styles
 to custom tags and their immediate children keeps CSS specificity low and
@@ -107,8 +106,8 @@ After installing, import it in your Sass source (adjust the path if needed):
 @import './node_modules/stylific/scss/stylific';
 ```
 
-This allows you to [configure](configuration/) the library with variables,
-subclass built-in components, and so on.
+This allows you to configure the library with variables, subclass built-in
+components, and so on.
 
 **Caution**: neither Sass nor stylific account for missing vendor prefixes. You
 must compensate by combining it with

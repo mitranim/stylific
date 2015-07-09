@@ -2,16 +2,15 @@
  * Responsive embed. Copied from:
  * https://github.com/twbs/bootstrap/blob/v3.3.5/less/responsive-embed.less
  *
- *   <sf-embed>
+ *   <div sf-embed>
  *     <iframe src=...></iframe>
- *   </sf-embed>
+ *   </div>
  *
  *   <div sf-embed="ratio-4by3">
  *     <iframe src=...></iframe>
  *   </div>
  */
 
-sf-embed,
 [sf-embed] {
   // Layout.
   display: block;

@@ -1,17 +1,13 @@
 /**
  * Usage:
  *
- *   <sf-article>...</sf-article>
- *   <article sf-article>...</article>
+ *   <div sf-article>...</div>
+ *   <article>...</article>
  */
 
-sf-article,
-[sf-article] {
-
-  /**
-   * Layout.
-   */
-  display: block;
+[sf-article],
+// Extend the native tag.
+article {
 
   // Article image styles. Using a descendant selector because the layout may
   // have arbitrary depth.

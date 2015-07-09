@@ -5,17 +5,17 @@
  *
  * Must have the following layout:
  *
- *   <sf-tabset>
- *     <sf-tabset-head>
+ *   <div sf-tabset>
+ *     <div sf-tabset-head>
  *       <label class="active">...</label>
  *       <label>...</label>
- *     </sf-tabset-head>
+ *     </div>
  *
- *     <sf-tabset-body>
- *       <sf-tab class="active">...</sf-tab>
- *       <sf-tab>...</sf-tab>
- *     </sf-tabset-body>
- *   </sf-tabset>
+ *     <div sf-tabset-body>
+ *       <div sf-tab class="active">...</div>
+ *       <div sf-tab>...</div>
+ *     </div>
+ *   </div>
  *
  * To display a tab, apply the `.active` class to a matching label/tab pair.
  * The stylific JS file does this automatically on clicks.
@@ -25,20 +25,19 @@
  * To fixate the header, annotate the tabset with `[sf-tabset="fixed"]`, then
  * add a height property to the body:
  *
- *   <sf-tabset sf-tabset="fixed">
- *     <sf-tabset-head>
+ *   <div sf-tabset="fixed">
+ *     <div sf-tabset-head>
  *       <label class="active">...</label>
  *       <label>...</label>
- *     </sf-tabset-head>
+ *     </div>
  *
- *     <sf-tabset-body style="height: 12em">
- *       <sf-tab class="active">...</sf-tab>
- *       <sf-tab>...</sf-tab>
- *     </sf-tabset-body>
- *   </sf-tabset>
+ *     <div sf-tabset-body style="height: 12em">
+ *       <div sf-tab class="active">...</div>
+ *       <div sf-tab>...</div>
+ *     </div>
+ *   </div>
  */
 
-sf-tabset,
 [sf-tabset] {
 
   // Layout.
@@ -50,7 +49,7 @@ sf-tabset,
   /**
    * Header styles.
    */
-  > sf-tabset-head {
+  > [sf-tabset-head] {
     // Layout.
     display: flex;
     flex-direction: row;
@@ -67,18 +66,16 @@ sf-tabset,
       // Inner layout.
       @include sf-flex-host-center;
 
-      // Cosmetic.
-      @include sf-register-interactive-selector;
-      @include sf-cursor-interactive;
-
       // Whitespace.
       padding: $sf-space;
+
+      // Cosmetic.
+      @include sf-cursor-interactive;
     }
 
-    // Highlight when active.
-    &.active {
-      @include sf-register-selected-state;
-    }
+    // Interactive colour highlighting for the label.
+    @include sf-register-interactive-selector(' > label');
+    @include sf-register-selected-state(' > label.active');
   }
 
   /**
@@ -89,7 +86,7 @@ sf-tabset,
     position: relative;
 
     // Fix header.
-    > sf-tabset-head, > [sf-tabset-head] {
+    > [sf-tabset-head] {
       position: absolute;
       top: 0;
       right: 0;
@@ -97,7 +94,7 @@ sf-tabset,
     }
 
     // Body styles.
-    > sf-tabset-body {
+    > [sf-tabset-body] {
       // Offset header.
       margin-top: $sf-tabset-head-height;
 
@@ -112,17 +109,12 @@ sf-tabset,
   /**
    * Body styles.
    */
-  > sf-tabset-body {
-    // Layout.
-    display: block;
-    > * {
-      // Layout.
-      display: block;
-      &:not(.active) {display: none}
+  > [sf-tabset-body] > [sf-tab] {
+    // Hide unless active.
+    &:not(.active) {display: none}
 
-      // Whitespace.
-      padding: $sf-space;
-      @include sf-space-out-vertical;
-    }
+    // Whitespace.
+    padding: $sf-space;
+    @include sf-space-out-vertical;
   }
 }

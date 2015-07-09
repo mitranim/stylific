@@ -2,38 +2,38 @@
  *
  * # Modes
  *
- * <sf-dropdown> has two mutually exclusive modes: hover and toggled. The
+ * [sf-dropdown] has two mutually exclusive modes: hover and toggled. The
  * toggled version is enabled by [sf-toggle] to the <label>.
  *
  *
  * ## Hover
  *
- * The hover version must have the exact following layout:
+ * The hover version must have the following layout:
  *
- *   <sf-dropdown>
+ *   <div sf-dropdown>
  *     <label>...</label>
- *     <sf-dropdown-list>
+ *     <div sf-dropdown-list>
  *       ...
- *     </sf-dropdown-list>
- *   </sf-dropdown>
+ *     </div>
+ *   </div>
  *
  * It triggers when you hover over the label and stays while the label or
- * the <sf-dropdown-list> is hovered. The label needs to contain some text or
- * other content to be visible. The following <sf-dropdown-list> may contain
+ * the [sf-dropdown-list] is hovered. The label needs to contain some text or
+ * other content to be visible. The following [sf-dropdown-list] may contain
  * arbitrary elements.
  *
  *
  * ## Toggled
  *
- * The toggled version is enabled by adding the `sf-toggle` attribute to the
+ * The toggled version is enabled by adding the [sf-toggle] attribute to the
  * label.
  *
- *   <sf-dropdown>
+ *   <div sf-dropdown>
  *     <label sf-toggle>...</label>
- *     <sf-dropdown-list>
+ *     <div sf-dropdown-list>
  *       ...
- *     </sf-dropdown-list>
- *   </sf-dropdown>
+ *     </div>
+ *   </div>
  *
  * This version is toggled on and off by clicking the label, and is toggled off
  * when clicking outside of the dropdown.
@@ -44,7 +44,7 @@
  * The default position of the dropdown list is below the label. It can be
  * altered with an attribute.
  *
- *   <sf-dropdown sf-dropdown="top">
+ *   <div sf-dropdown="top">
  *   <div sf-dropdown="right">
  *
  * See the code below for the list of supported positions.
@@ -56,13 +56,11 @@
  * Use different xy shadow offsets based on position.
  */
 
-sf-dropdown,
 [sf-dropdown] {
 
   /**
    * Layout.
    */
-  display: inline-block;
   // Position relatively to provide a reference point for the dropdown list.
   position: relative;
   // This fixes the problem of children being overlayed by elements with a lower
@@ -145,7 +143,6 @@ sf-dropdown,
   /**
    * Base dropdown list styles.
    */
-  > sf-dropdown-list,
   > [sf-dropdown-list] {
     /**
      * Layout.
@@ -153,10 +150,13 @@ sf-dropdown,
     // Positioned absolutely in respect to the parent dropdown host.
     position: absolute;
     z-index: $sf-z-index-dropdown;
+    width: 100%;
+
     // Hidden unless active. Both opacity and visibility are required to animate
     // the visibility change.
     opacity: 0;
     visibility: hidden;
+
     // Animate visibility changes.
     @include sf-transitions(all);
 
@@ -192,12 +192,12 @@ sf-dropdown,
    * Active dropdown list styles.
    */
   // Hover version.
-  > label:not([sf-toggle]):hover + sf-dropdown-list,
+  > label:not([sf-toggle]):hover + [sf-dropdown-list],
   // Hover version -> dropdown list; we try to limit this to the hover version
   // to avoid flickering in the dropdown version when animations are enabled.
-  > label:not([sf-toggle]) + sf-dropdown-list:hover,
+  > label:not([sf-toggle]) + [sf-dropdown-list]:hover,
   // Toggled version.
-  > label[sf-toggle].active + sf-dropdown-list {
+  > label[sf-toggle].active + [sf-dropdown-list] {
     // Display. Both opacity and visibility are required to animate the
     // visibility change.
     opacity: inherit;
@@ -210,7 +210,7 @@ sf-dropdown,
   // Bottom (default).
   &:not([sf-dropdown]), &[sf-dropdown=''],
   &[sf-dropdown~=bottom] {
-    > sf-dropdown-list {
+    > [sf-dropdown-list] {
       top: 100%;
       left: 0;
     }
@@ -218,21 +218,21 @@ sf-dropdown,
   // Top.
   &[sf-dropdown~=top] {
     // Dropdown position.
-    > sf-dropdown-list {
+    > [sf-dropdown-list] {
       bottom: 100%;
       left: 0;
     }
   }
   // Right.
   &[sf-dropdown~=right] {
-    > sf-dropdown-list {
+    > [sf-dropdown-list] {
       top: 0;
       left: 100%;
     }
   }
   // Left.
   &[sf-dropdown~=left] {
-    > sf-dropdown-list {
+    > [sf-dropdown-list] {
       top: 0;
       right: 100%;
     }

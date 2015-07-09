@@ -13,25 +13,25 @@ To enable folding, add a `<label>` between the elements where you want the
 navbar to fold. Resize your viewport to see the folding in effect.
 
 ```html
-<sf-navbar>
+<div sf-navbar>
   <a href="/">Home</a>
   <a class="active" href="/robots">Robots</a>
   <a href="/medical-cybernetics">Medical Cybernetics</a>
   <label></label>
   <a href="/partners">Partners</a>
   <a href="/achievements">Achievements</a>
-</sf-navbar>
+</div>
 ```
 
 <div doc-demo>
-  <sf-navbar>
+  <div sf-navbar>
     <a href="examples/navbar-demo/#home">Home</a>
     <a class="active" href="examples/navbar-demo/#robots">Robots</a>
     <a href="examples/navbar-demo/#medical-cybernetics">Medical Cybernetics</a>
     <label></label>
     <a href="examples/navbar-demo/#partners">Partners</a>
     <a href="examples/navbar-demo/#achievements">Achievements</a>
-  </sf-navbar>
+  </div>
 </div>
 
 # Static Folding
@@ -40,23 +40,23 @@ With a folding navbar, use the `fold` option to tell it to _always_ fold,
 regardless of the viewport width.
 
 ```html
-<sf-navbar theme="primary" sf-navbar="fold">
+<div theme="primary" sf-navbar="fold">
   <a href="/">Home</a>
   <a class="active" href="/robots">Robots</a>
   <a href="/medical-cybernetics">Medical Cybernetics</a>
   <label></label>
   <a href="/partners">Partners</a>
   <a href="/achievements">Achievements</a>
-</sf-navbar>
+</div>
 ```
 
 <div doc-demo>
-  <sf-navbar theme="primary" sf-navbar="fold">
+  <div theme="primary" sf-navbar="fold">
     <a href="examples/navbar-demo/#home">Home</a>
     <a class="active" href="examples/navbar-demo/#robots">Robots</a>
     <a href="examples/navbar-demo/#medical-cybernetics">Medical Cybernetics</a>
     <label></label>
     <a href="examples/navbar-demo/#partners">Partners</a>
     <a href="examples/navbar-demo/#achievements">Achievements</a>
-  </sf-navbar>
+  </div>
 </div>

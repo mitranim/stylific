@@ -1,9 +1,12 @@
 /**
  * A modal must have the following layout:
  *
- *   <sf-modal id="myModal">
- *     <sf-modal-body>...</sf-modal-body>
- *   </sf-modal>
+ *   <div sf-modal id="myModal">
+ *     <div sf-modal-body>...</div>
+ *   </div>
+ *
+ * It becomes visible when it has an `.active` class or the `[sf-modal="show"]`
+ * option.
  *
  * To trigger the modal, you need an element with [sf-toggle-id]:
  *
@@ -19,75 +22,84 @@
  *
  * Include a variant with a fixed header; the user should be able to fix
  * the position of an arbitrary descendant, not just an immediate child.
+ *
+ * Close only the last modal when the overlay is clicked. (Maybe that's how it
+ * works already?)
+ *
+ * Close the last modal when Esc is pressed.
  */
 
-sf-modal,
 [sf-modal] {
 
   /**
    * Layout.
    */
-  display: block;
+  @include sf-flex-host-center;
   position: fixed;
   top: 0;
   left: 0;
   z-index: $sf-z-index-modal;
-  // Collapse dimensions.
+  // Collapse dimensions unless active.
   width: 0;
   height: 0;
 
-  // Overlay when active.
-  &.active::before {
-    content: '';
-    // Layout.
-    @include sf-fixed-overlay;
+  // Active styling.
+  &.active, &[sf-modal~=show] {
+    // Uncollapse dimensions.
+    width: 100%;
+    height: 100%;
 
-    // Backdrop. Unlike shadows, we don't derive the overlay colour from the
-    // text colour, this ends up looking ridiculous with some tints. Instead,
-    // we hardcode it to be grayscale.
-    background: rgba($sf-color-umbra, 0.4);
+    // Overlay.
+    &::before {
+      content: '';
+      // Layout.
+      @include sf-fixed-overlay;
 
-    // Standard cursor.
-    cursor: default;
-  }
+      // Backdrop. Unlike shadows, we don't derive the overlay colour from the
+      // text colour, this ends up looking ridiculous with some tints. Instead,
+      // we hardcode it to be grayscale.
+      background: rgba($sf-color-umbra, 0.4);
 
-  // Close button when active.
-  &.active::after {
-    content: '✕';
+      // Standard cursor.
+      cursor: default;
+    }
 
-    /**
-     * Layout.
-     */
-    position: fixed;
-    // Position this element in the top right corner of the modal.
-    top: 5%;
-    right: unquote('calc((100vw - #{$sf-body-max-width}) / 2)');
-    @media (max-width: $sf-body-max-width) {right: 0}
-    width: $sf-space + $sf-space / 2;
-    height: $sf-space + $sf-space / 2;
-    // Stack just above the modal.
-    z-index: $sf-z-index-modal + 1;
+    // Close button.
+    &::after {
+      content: '✕';
 
-    /**
-     * Inner layout.
-     */
-    @include sf-flex-host-center;
+      /**
+       * Layout.
+       */
+      position: fixed;
+      // Position this element in the top right corner of the modal.
+      top: 5%;
+      right: unquote('calc((100vw - #{$sf-body-max-width}) / 2)');
+      @media (max-width: $sf-body-max-width) {right: 0}
+      width: $sf-space + $sf-space / 2;
+      height: $sf-space + $sf-space / 2;
+      // Stack just above the modal.
+      z-index: $sf-z-index-modal + 1;
 
-    // Cosmetic.
-    border: 1px solid;
-    border-top-right-radius: $sf-border-radius;
-    opacity: 0.5;
-    padding: $sf-space / 4;
-    @include sf-cursor-interactive;
+      /**
+       * Inner layout.
+       */
+      @include sf-flex-host-center;
+
+      // Cosmetic.
+      border: 1px solid;
+      border-top-right-radius: $sf-border-radius;
+      opacity: 0.5;
+      padding: $sf-space / 4;
+      @include sf-cursor-interactive;
+    }
   }
 
   // Body styling.
-  sf-modal-body,
-  [sf-modal-body] {
+  > [sf-modal-body] {
     /**
      * Layout.
      */
-    display: block;
     position: fixed;
     top: 5%;
     bottom: 5%;
@@ -115,23 +127,39 @@ sf-modal,
 
     // Let the content scroll.
     overflow: scroll;
-  }
 
-  // Default body visibility.
-  > sf-modal-body, > [sf-modal-body] {
-    // Hidden unless active. Both opacity and visibility are required to animate
-    // the visibility change.
+    // Default body visibility. Hidden unless active. Both opacity and
+    // visibility are required to animate the visibility change.
     opacity: 0;
     visibility: hidden;
+
     // Animate visibility changes.
     @include sf-transitions(all);
   }
 
   // Active body visibility.
-  &.active > sf-modal-body, &.active > [sf-modal-body] {
+  &.active > [sf-modal-body],
+  &[sf-modal~=show] > [sf-modal-body] {
     // Display. Both opacity and visibility are required to animate the
     // visibility change.
     opacity: inherit;
     visibility: inherit;
+  }
+
+  // Shrink option: automatically adjusts body size. Doesn't have a close
+  // button.
+  &[sf-modal~=shrink] {
+    &.active::after, &[sf-modal~=show]::after {content: none}
+
+    > [sf-modal-body] {
+      position: relative;
+      // display: inline-block;
+      // width: auto;
+      // height: auto;
+      top: auto;
+      bottom: auto;
+      left: auto;
+      right: auto;
+    }
   }
 }

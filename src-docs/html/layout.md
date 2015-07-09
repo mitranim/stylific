@@ -1,12 +1,13 @@
 <!-- TOC -->
 <div sf-collapse doc-toc theme="text-accent">
   <label class="active" theme="accent"></label>
-  <sf-collapse-body>
+  <div sf-collapse-body>
     [Overview](layout/#overview)
     [Container](layout/#container)
     [Child](layout/#child)
+    [Grid](layout/#grid)
     [Whitespace](layout/#whitespace)
-  </sf-collapse-body>
+  </div>
 </div>
 
 # Overview
@@ -160,6 +161,103 @@ terms, this corresponds to `align-self`.
     <button flex="start">top</button>
     <button flex="center">center</button>
     <button flex="end">bottom</button>
+  </div>
+</div>
+
+# Grid
+
+It's convenient to have a shortcut to a media-responsive flex container that
+wraps its items on different breakpoints. `[grid]` is a primitive version of that.
+Open this on a [separate page](examples/grid-demo/) to resize the page more
+easily.
+
+```html
+<div grid class="doc-grid-demo">
+  <p>One</p>
+  <p>...</p>
+  <p>Twenty</p>
+</div>
+```
+
+<div doc-demo style="display: block">
+  <div grid class="doc-grid-demo">
+    <p>One</p>
+    <p>Two</p>
+    <p>Three</p>
+    <p>Four</p>
+    <p>Five</p>
+    <p>Six</p>
+    <p>Seven</p>
+    <p>Eight</p>
+    <p>Nine</p>
+    <p>Ten</p>
+    <p>Eleven</p>
+    <p>Twelve</p>
+    <p>Thirteen</p>
+    <p>Fourteen</p>
+    <p>Fifteen</p>
+    <p>Sixteen</p>
+    <p>Seventeen</p>
+    <p>Eighteen</p>
+    <p>Nineteen</p>
+    <p>Twenty</p>
+  </div>
+</div>
+
+It comes in several media-aware flavours:
+
+```scss
+grid     // baseline (no @media)
+grid-sm  // small displays
+grid-md  // medium displays and up
+grid-lg  // large displays and up
+```
+
+Each version of the attribute takes a numeric option `N` which specifies the
+number of children per line:
+
+```scss
+grid="1"
+grid="2"
+grid="3"
+grid="4"
+grid="5"
+grid="6"
+```
+
+Example of using these attributes together to tune the breakpoints for your
+specific needs:
+
+```html
+<div grid-sm="1" grid-md="2" grid-lg="3" class="doc-grid-demo">
+  <p>One</p>
+  <p>...</p>
+  <p>Twenty</p>
+</div>
+```
+
+<div doc-demo style="display: block">
+  <div grid-sm="1" grid-md="2" grid-lg="3" class="doc-grid-demo">
+    <p>One</p>
+    <p>Two</p>
+    <p>Three</p>
+    <p>Four</p>
+    <p>Five</p>
+    <p>Six</p>
+    <p>Seven</p>
+    <p>Eight</p>
+    <p>Nine</p>
+    <p>Ten</p>
+    <p>Eleven</p>
+    <p>Twelve</p>
+    <p>Thirteen</p>
+    <p>Fourteen</p>
+    <p>Fifteen</p>
+    <p>Sixteen</p>
+    <p>Seventeen</p>
+    <p>Eighteen</p>
+    <p>Nineteen</p>
+    <p>Twenty</p>
   </div>
 </div>
 

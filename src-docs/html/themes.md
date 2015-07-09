@@ -1,12 +1,12 @@
 <!-- TOC -->
 <div sf-collapse doc-toc theme="text-accent">
   <label class="active" theme="accent"></label>
-  <sf-collapse-body>
+  <div sf-collapse-body>
     [Overview](themes/#overview)
     [Text Themes](themes/#text-themes)
     [Full Themes](themes/#full-themes)
     [Custom Configuration](themes/#custom-configuration)
-  </sf-collapse-body>
+  </div>
 </div>
 
 # Overview

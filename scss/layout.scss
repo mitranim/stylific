@@ -133,3 +133,55 @@ body {
 @include sf-eq-sm {@include sf-child-layout-for-name(sm);}
 @include sf-gt-sm {@include sf-child-layout-for-name(md);}
 @include sf-gt-md {@include sf-child-layout-for-name(lg);}
+
+/*********************************** Grid ************************************/
+
+/**
+ * Default wrap configuration.
+ */
+
+[grid] > * {
+  // Equivalent to a combination of:
+  //   grid-sm="2"
+  //   grid-md="4"
+  //   grid-lg="6"
+  @include sf-eq-sm {flex-basis: 50%}
+  @include sf-gt-sm {flex-basis: 25%}
+  @include sf-gt-md {flex-basis: calc(1/6 * 100%)}
+}
+[grid-sm] > * {
+  @include sf-eq-sm {flex-basis: 50%}
+}
+[grid-md] > * {
+  @include sf-gt-sm {flex-basis: 25%}
+}
+[grid-lg] > * {
+  @include sf-gt-md {flex-basis: calc(1/6 * 100%)}
+}
+
+@mixin sf-grid-for-name($postfix: '') {
+  $name: if($postfix == '', grid, grid-#{$postfix});
+
+  [#{$name}] {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  [#{$name}] > * {
+    // Prevent children from unexpectedly stretching or shrinking.
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+
+  [#{$name}~='1'] > * {flex-basis: 100%}
+  [#{$name}~='2'] > * {flex-basis: 50%}
+  [#{$name}~='3'] > * {flex-basis: calc(1/3 * 100%)}
+  [#{$name}~='4'] > * {flex-basis: 25%}
+  [#{$name}~='5'] > * {flex-basis: 20%}
+  [#{$name}~='6'] > * {flex-basis: calc(1/6 * 100%)}
+}
+
+@include sf-grid-for-name();
+@include sf-eq-sm {@include sf-grid-for-name(sm);}
+@include sf-gt-sm {@include sf-grid-for-name(md);}
+@include sf-gt-md {@include sf-grid-for-name(lg);}

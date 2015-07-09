@@ -40,12 +40,16 @@
   }
 }
 
-// Caveat: when an <input> in an <input>+<label> pair becomes [disabled], the
-// <label> must be [disabled] too.
-.interactive, a[href], button, input, textarea, [contenteditable],
-[sf-toggle], [sf-toggle-siblings], [sf-toggle-id] {
-  @include sf-register-interactive-selector;
-}
+// Treat each of these elements as interactive (unless [disabled]).
+.interactive         {@include sf-register-interactive-selector;}
+a[href]              {@include sf-register-interactive-selector;}
+button               {@include sf-register-interactive-selector;}
+input                {@include sf-register-interactive-selector;}
+textarea             {@include sf-register-interactive-selector;}
+[contenteditable]    {@include sf-register-interactive-selector;}
+[sf-toggle]          {@include sf-register-interactive-selector;}
+[sf-toggle-siblings] {@include sf-register-interactive-selector;}
+[sf-toggle-id]       {@include sf-register-interactive-selector;}
 
 .interactive, a[href], button, [sf-toggle], [sf-toggle-siblings], [sf-toggle-id] {
   @include sf-cursor-interactive;

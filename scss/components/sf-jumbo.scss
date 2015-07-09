@@ -2,26 +2,28 @@
  * Big-ass panel to display a greeting image. Text content is underlayed for
  * easier reading.
  *
- *   <sf-jumbo style="background-image: url(...)">
+ *   <div sf-jumbo style="background-image: url(...)">
  *     ...
- *   </sf-jumbo>
+ *   </div>
  *
  * By default, jumbo content is pushed to the bottom. This can be changed with
  * a layout property:
  *
- *   <sf-jumbo style="background-image: url(...)" layout="start">
+ *   <div sf-jumbo style="background-image: url(...)" layout="start">
  *     ...
- *   </sf-jumbo>
+ *   </div>
  *
  * In this example, children will be at the top.
  */
 
-sf-jumbo,
 [sf-jumbo] {
 
   /**
    * Layout.
    */
+  // Required to automatically take up full space in some flex containers where
+  // child flex basis is `auto` by default.
+  width: 100%;
   // By default, height is measured in em units. Adjusting the jumbo font-size
   // adjusts its height. If the user sets $sf-jumbo-height to a different unit
   // (e.g. rem), they'll need to adjust jumbo height manually.

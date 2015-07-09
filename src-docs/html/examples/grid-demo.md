@@ -3,25 +3,18 @@
 Very basic flexbox grid demo. Resize your viewport to see how it responds to
 width changes. The classes are cosmetic.
 
-Back to [Components#sf-grid](components/#sf-grid).
+Back to [Layout#Grid](layout/#grid).
 
 ```html
-<sf-grid class="doc-grid-demo">
+<div grid class="doc-grid-demo">
   <p>One</p>
-  <p>Two</p>
-  <p>Three</p>
-  <p>Four</p>
-  <p>Five</p>
-  <p>Six</p>
-  <p>Seven</p>
-  <p>Eight</p>
-  <p>Nine</p>
-  <p>Ten</p>
-</sf-grid>
+  <p>...</p>
+  <p>Twenty</p>
+</div>
 ```
 
 <div doc-demo style="display: block">
-  <sf-grid class="doc-grid-demo">
+  <div grid class="doc-grid-demo">
     <p>One</p>
     <p>Two</p>
     <p>Three</p>
@@ -32,5 +25,15 @@ Back to [Components#sf-grid](components/#sf-grid).
     <p>Eight</p>
     <p>Nine</p>
     <p>Ten</p>
-  </sf-grid>
+    <p>Eleven</p>
+    <p>Twelve</p>
+    <p>Thirteen</p>
+    <p>Fourteen</p>
+    <p>Fifteen</p>
+    <p>Sixteen</p>
+    <p>Seventeen</p>
+    <p>Eighteen</p>
+    <p>Nineteen</p>
+    <p>Twenty</p>
+  </div>
 </div>

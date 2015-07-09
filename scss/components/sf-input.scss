@@ -9,12 +9,10 @@
 
 [sf-input],
 // Native inputs.
-input:not([type]), input[type=email], input[type=password], input[type=search],
-input[type=text], input[type=url], input[type=number], textarea {
+input, textarea {
   /**
    * Layout.
    */
-  display: inline-block;
   padding: $sf-space / 2;
 
   // Border styles.

@@ -48,6 +48,8 @@ ul, ol {
 
 // IE 10 fix.
 [hidden] {display: none}
+// IE fix.
+template {display: none !important}
 
 /**
  * Whitespace.

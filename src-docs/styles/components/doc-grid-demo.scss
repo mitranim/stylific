@@ -2,13 +2,19 @@
 
   > * {padding: $sf-space}
 
-  > *:nth-child(3n+1) {
-    background-color: rgba(map-get($sf-color-map-primary, default), 0.2);
+  > :nth-child(5n+1) {
+    background-color: rgba($color-aqua, 0.2);
   }
-  > *:nth-child(3n+2) {
-    background-color: rgba(map-get($sf-color-map-accent, default), 0.2);
+  > :nth-child(5n+2) {
+    background-color: rgba($color-teal, 0.2);
   }
-  > *:nth-child(3n+3) {
-    background-color: rgba(map-get($sf-color-map-warn, default), 0.2);
+  > :nth-child(5n+3) {
+    background-color: rgba($color-green, 0.2);
+  }
+  > :nth-child(5n+4) {
+    background-color: rgba($color-lime, 0.2);
+  }
+  > :nth-child(5n+5) {
+    background-color: rgba($color-yellow, 0.2);
   }
 }

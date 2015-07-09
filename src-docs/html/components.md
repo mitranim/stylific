@@ -1,13 +1,12 @@
 <!-- TOC -->
 <div sf-collapse doc-toc theme="text-accent">
   <label class="active" theme="accent"></label>
-  <sf-collapse-body>
+  <div sf-collapse-body>
     [Overview](components/#overview)
     [sf-article](components/#sf-article)
     [sf-collapse](components/#sf-collapse)
     [sf-dropdown](components/#sf-dropdown)
     [sf-tabset](components/#sf-tabset)
-    [sf-grid](components/#sf-grid)
     [sf-modal](components/#sf-modal)
     [sf-navbar](components/#sf-navbar)
     [sf-footer](components/#sf-footer)
@@ -17,15 +16,14 @@
     [sf-label](components/#sf-label)
     [sf-embed](components/#sf-embed)
     [sf-jumbo](components/#sf-jumbo)
-  </sf-collapse-body>
+  </div>
 </div>
 
 # Overview
 
 The library comes with some pre-defined UI components. You can use them as-is,
-modify with your own CSS, or [subclass](configuration/#subclassing) them in
-Sass. Stateful components like `sf-collapse` require the tiny JavaScript file
-included with the library.
+modify with your own CSS, or subclass them in Sass. Stateful components like
+`sf-collapse` require the tiny JavaScript file included with the library.
 
 Most components are available as tags, like `sf-collapse`, and every component
 is available as an attribute, like `[sf-button]`. Some can even be combined like
@@ -37,31 +35,32 @@ so: `<button sf-button sf-icon></button>`.
 styling, like whitespace, link decorations, and convenience classes for images.
 
 Use it wherever you want typographic styling. Suited for text compiled from
-Markdown, like this documentation.
+Markdown, like this documentation. Available as `[sf-article]` and `<article>`
+alike.
 
 This whole page is an example, but here's a smaller one.
 
 ```html
-<sf-article>
+<article>
   <img src="images/square/script.jpg" class="right small">
   <h1>Article header</h1>
   <p>Cum horribilem walking dead resurgere de crazed sepulcris creaturis, zombie sicut de grave feeding iride et serpens.</p>
   <p>Pestilentia, shaun ofthe dead scythe animated corpses ipsa screams. Pestilentia est plague haec decaying ambulabat mortuos.</p>
-</sf-article>
+</article>
 ```
 
 <div doc-demo layout="column">
-  <sf-article style="padding: 0">
+  <article style="padding: 0">
     <img src="images/square/script.jpg" class="right small">
     <h1>Article header</h1>
     <p>Cum horribilem walking dead resurgere de crazed sepulcris creaturis, zombie sicut de grave feeding iride et serpens.</p>
     <p>Pestilentia, shaun ofthe dead scythe animated corpses ipsa screams. Pestilentia est plague haec decaying ambulabat mortuos.</p>
-  </sf-article>
+  </article>
 </div>
 
 # sf-collapse
 
-`sf-collapse` can be toggled to show or hide its contents. The `.doc-toc`
+`sf-collapse` can be toggled to show or hide its contents. The `doc-toc`
 element at the top of this page is an
 [example](https://github.com/Mitranim/stylific/blob/master/src-docs/styles/components/doc-toc.scss)
 of subclassing `sf-collapse` to produce a custom collapsing element.
@@ -69,23 +68,23 @@ of subclassing `sf-collapse` to produce a custom collapsing element.
 Like all other components, it responds to stylific's [themes](themes/).
 
 ```html
-<sf-collapse theme="text-primary">
+<div sf-collapse theme="text-primary">
   <label>Click me to toggle collapse</label>
-  <sf-collapse-body>
+  <div sf-collapse-body>
     <h3>Header for the collapsed element</h3>
     <p>Paragraph in the collapsed element</p>
-  </sf-collapse-body>
-</sf-collapse>
+  </div>
+</div>
 ```
 
 <div doc-demo>
-  <sf-collapse theme="text-primary">
+  <div sf-collapse theme="text-primary">
     <label>Click me to toggle collapse</label>
-    <sf-collapse-body>
+    <div sf-collapse-body>
       <h3>Header for the collapsed element</h3>
       <p>Paragraph in the collapsed element</p>
-    </sf-collapse-body>
-  </sf-collapse>
+    </div>
+  </div>
 </div>
 
 ## Options
@@ -93,46 +92,46 @@ Like all other components, it responds to stylific's [themes](themes/).
 To uncollapse the component by default, use `.active`.
 
 ```html
-<sf-collapse theme="text-accent">
+<div sf-collapse theme="text-accent">
   <label class="active">Click me to toggle collapse</label>
-  <sf-collapse-body>
+  <div sf-collapse-body>
     <h3>I'm uncollapsed by default!</h3>
     <p>This is my paragraph</p>
-  </sf-collapse-body>
-</sf-collapse>
+  </div>
+</div>
 ```
 
 <div doc-demo>
-  <sf-collapse theme="text-accent">
+  <div sf-collapse theme="text-accent">
     <label class="active">Click me to toggle collapse</label>
-    <sf-collapse-body>
+    <div sf-collapse-body>
       <h3>I'm uncollapsed by default!</h3>
       <p>This is my paragraph</p>
-    </sf-collapse-body>
-  </sf-collapse>
+    </div>
+  </div>
 </div>
 
 You can also enable an invisible overlay that collapses the element when
 clicking anywhere outside of it by adding the `[sf-collapse~=overlay]` option:
 
 ```html
-<sf-collapse theme="warn" sf-collapse="overlay">
+<div theme="warn" sf-collapse="overlay">
   <label>Click me to toggle collapse</label>
-  <sf-collapse-body>
+  <div sf-collapse-body>
     <h3>Click anywhere outside to close me!</h3>
     <p>This is my paragraph</p>
-  </sf-collapse-body>
-</sf-collapse>
+  </div>
+</div>
 ```
 
 <div doc-demo>
-  <sf-collapse theme="warn" sf-collapse="overlay">
+  <div theme="warn" sf-collapse="overlay">
     <label>Click me to toggle collapse</label>
-    <sf-collapse-body>
+    <div sf-collapse-body>
       <h3>Click anywhere outside to close me!</h3>
       <p>This is my paragraph</p>
-    </sf-collapse-body>
-  </sf-collapse>
+    </div>
+  </div>
 </div>
 
 # sf-dropdown
@@ -140,74 +139,74 @@ clicking anywhere outside of it by adding the `[sf-collapse~=overlay]` option:
 `sf-dropdown` is a basic dropdown list. By default, it appears on `:hover`:
 
 ```html
-<sf-dropdown>
+<div sf-dropdown>
   <label>hover me to see a dropdown</label>
-  <sf-dropdown-list>
+  <div sf-dropdown-list>
     <span>I'm the first item</span>
     <span>I'm the second item</span>
     <span>I'm the third item</span>
-  </sf-dropdown-list>
-</sf-dropdown>
+  </div>
+</div>
 ```
 
 <div doc-demo>
-  <sf-dropdown>
+  <div sf-dropdown>
     <label>hover me to see a dropdown</label>
-    <sf-dropdown-list>
+    <div sf-dropdown-list>
       <span>I'm the first item</span>
       <span>I'm the second item</span>
       <span>I'm the third item</span>
-    </sf-dropdown-list>
-  </sf-dropdown>
+    </div>
+  </div>
 </div>
 
 You can also make it toggle-able by adding the `sf-toggle` option to the label.
 This automatically disables the `:hover` effect.
 
 ```html
-<sf-dropdown theme="primary">
+<div sf-dropdown theme="primary">
   <label sf-toggle class="pad">click me to toggle a dropdown</label>
-  <sf-dropdown-list>
+  <div sf-dropdown-list>
     <span class="active">Click outside to toggle off</span>
     <span>I'm the second item</span>
     <span>I'm the third item</span>
-  </sf-dropdown-list>
-</sf-dropdown>
+  </div>
+</div>
 ```
 
 <div doc-demo>
-  <sf-dropdown theme="primary">
+  <div sf-dropdown theme="primary">
     <label sf-toggle class="pad">click me to toggle a dropdown</label>
-    <sf-dropdown-list>
+    <div sf-dropdown-list>
       <span class="active">Click outside to toggle off</span>
       <span>I'm the second item</span>
       <span>I'm the third item</span>
-    </sf-dropdown-list>
-  </sf-dropdown>
+    </div>
+  </div>
 </div>
 
 The dropdown position may be changed to `top`, `right` or `left`:
 
 ```html
-<sf-dropdown sf-dropdown="top">
+<div sf-dropdown="top">
   <label class="pad">this dropdown goes upwards</label>
-  <sf-dropdown-list>
+  <div sf-dropdown-list>
     <span>I'm the first item</span>
     <span>I'm the second item</span>
     <span>I'm the third item</span>
-  </sf-dropdown-list>
-</sf-dropdown>
+  </div>
+</div>
 ```
 
 <div doc-demo>
-  <sf-dropdown sf-dropdown="top">
+  <div sf-dropdown="top">
     <label class="pad">this dropdown goes upwards</label>
-    <sf-dropdown-list>
+    <div sf-dropdown-list>
       <span>I'm the first item</span>
       <span>I'm the second item</span>
       <span>I'm the third item</span>
-    </sf-dropdown-list>
-  </sf-dropdown>
+    </div>
+  </div>
 </div>
 
 # sf-tabset
@@ -216,46 +215,45 @@ The dropdown position may be changed to `top`, `right` or `left`:
 matching label/tab pair. The bundled JS file does this automatically on clicks.
 
 ```html
-<sf-tabset theme="text-accent">
+<div sf-tabset theme="text-accent">
   <!-- Header -->
-  <sf-tabset-head theme="accent">
+  <div sf-tabset-head theme="accent">
     <label class="active">First tab (preselected)</label>
     <label>...</label>
     <label>...</label>
-  </sf-tabset-head>
+  </div>
 
   <!-- Body -->
-  <sf-tabset-body>
-    <sf-tab class="active">...</sf-tab>
-    <sf-tab>...</sf-tab>
-    <sf-tab>...</sf-tab>
-  </sf-tabset-body>
-</sf-tabset>
+  <div sf-tabset-body>
+    <div sf-tab class="active">...</div>
+    <div sf-tab>...</div>
+    <div sf-tab>...</div>
+  </div>
+</div>
 ```
 
 <div doc-demo>
-  <sf-tabset theme="text-accent">
-    <sf-tabset-head theme="accent">
+  <div sf-tabset theme="text-accent">
+    <div sf-tabset-head theme="accent">
       <label class="active">First tab (preselected)</label>
       <label>Second tab</label>
       <label>Third tab</label>
-    </sf-tabset-head>
-
-    <sf-tabset-body>
-      <sf-tab class="active">
+    </div>
+    <div sf-tabset-body>
+      <div sf-tab class="active">
         <h3>First tab content</h3>
         <p>Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max brucks terribilem incessu zomby. The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus. Zonbi tattered for solum oculi eorum defunctis go lum cerebro. Nescio brains an Undead zombies. Sicut malus putrid voodoo horror. Nigh tofth eliv ingdead.</p>
-      </sf-tab>
-      <sf-tab>
+      </div>
+      <div sf-tab>
         <h3>Second tab content</h3>
         <p>Cum horribilem walking dead resurgere de crazed sepulcris creaturis, zombie sicut de grave feeding iride et serpens. Pestilentia, shaun ofthe dead scythe animated corpses ipsa screams. Pestilentia est plague haec decaying ambulabat mortuos. Sicut zeder apathetic malus voodoo. Aenean a dolor plan et terror soulless vulnerum contagium accedunt, mortui iam vivam unlife. Qui tardius moveri, brid eof reanimator sed in magna copia sint terribiles undeath legionis. Alii missing oculis aliorum sicut serpere crabs nostram. Putridi braindead odores kill and infect, aere implent left four dead.</p>
-      </sf-tab>
-      <sf-tab>
+      </div>
+      <div sf-tab>
         <h3>Third tab content</h3>
         <p>Lucio fulci tremor est dark vivos magna. Expansis creepy arm yof darkness ulnis witchcraft missing carnem armis Kirkman Moore and Adlard caeruleum in locis. Romero morbo Congress amarus in auras. Nihil horum sagittis tincidunt, zombie slack-jawed gelida survival portenta. The unleashed virus est, et iam zombie mortui ambulabunt super terram. Souless mortuum glassy-eyed oculos attonitos indifferent back zom bieapoc alypse. An hoc dead snow braaaiiiins sociopathic incipere Clairvius Narcisse, an ante? Is bello mundi z?</p>
-      </sf-tab>
-    </sf-tabset-body>
-  </sf-tabset>
+      </div>
+    </div>
+  </div>
 </div>
 
 ## `[sf-tabset="fixed"]`
@@ -264,101 +262,51 @@ To fixate the header, annotate the tabset with `sf-tabset="fixed"` and add
 a height property to the body:
 
 ```html
-<sf-tabset theme="text-warn" sf-tabset="fixed">
-  <sf-tabset-head theme="warn">
+<div theme="text-warn" sf-tabset="fixed">
+  <div sf-tabset-head theme="warn">
     <label class="active">First tab (preselected)</label>
     <label>...</label>
     <label>...</label>
-  </sf-tabset-head>
+  </div>
 
-  <sf-tabset-body style="height: 10em">
-    <sf-tab class="active">...</sf-tab>
-    <sf-tab>...</sf-tab>
-    <sf-tab>...</sf-tab>
-  </sf-tabset-body>
-</sf-tabset>
+  <div sf-tabset-body style="height: 10em">
+    <div sf-tab class="active">...</div>
+    <div sf-tab>...</div>
+    <div sf-tab>...</div>
+  </div>
+</div>
 ```
 
 <div doc-demo>
-  <sf-tabset theme="text-warn" sf-tabset="fixed">
-    <sf-tabset-head theme="warn">
+  <div theme="text-warn" sf-tabset="fixed">
+    <div sf-tabset-head theme="warn">
       <label class="active">First tab (preselected)</label>
       <label>Second tab</label>
       <label>Third tab</label>
-    </sf-tabset-head>
-
-    <sf-tabset-body style="height: 10em">
-      <sf-tab class="active">
+    </div>
+    <div sf-tabset-body style="height: 10em">
+      <div sf-tab class="active">
         <h3>First tab content</h3>
         <p>Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max brucks terribilem incessu zomby. The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus. Zonbi tattered for solum oculi eorum defunctis go lum cerebro. Nescio brains an Undead zombies. Sicut malus putrid voodoo horror. Nigh tofth eliv ingdead.</p>
         <p>Lucio fulci tremor est dark vivos magna. Expansis creepy arm yof darkness ulnis witchcraft missing carnem armis Kirkman Moore and Adlard caeruleum in locis. Romero morbo Congress amarus in auras. Nihil horum sagittis tincidunt, zombie slack-jawed gelida survival portenta. The unleashed virus est, et iam zombie mortui ambulabunt super terram. Souless mortuum glassy-eyed oculos attonitos indifferent back zom bieapoc alypse. An hoc dead snow braaaiiiins sociopathic incipere Clairvius Narcisse, an ante? Is bello mundi z?</p>
-      </sf-tab>
-      <sf-tab>
+      </div>
+      <div sf-tab>
         <h3>Second tab content</h3>
         <p>Cum horribilem walking dead resurgere de crazed sepulcris creaturis, zombie sicut de grave feeding iride et serpens. Pestilentia, shaun ofthe dead scythe animated corpses ipsa screams. Pestilentia est plague haec decaying ambulabat mortuos. Sicut zeder apathetic malus voodoo. Aenean a dolor plan et terror soulless vulnerum contagium accedunt, mortui iam vivam unlife. Qui tardius moveri, brid eof reanimator sed in magna copia sint terribiles undeath legionis. Alii missing oculis aliorum sicut serpere crabs nostram. Putridi braindead odores kill and infect, aere implent left four dead.</p>
         <p>Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max brucks terribilem incessu zomby. The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus. Zonbi tattered for solum oculi eorum defunctis go lum cerebro. Nescio brains an Undead zombies. Sicut malus putrid voodoo horror. Nigh tofth eliv ingdead.</p>
-      </sf-tab>
-      <sf-tab>
+      </div>
+      <div sf-tab>
         <h3>Third tab content</h3>
         <p>Lucio fulci tremor est dark vivos magna. Expansis creepy arm yof darkness ulnis witchcraft missing carnem armis Kirkman Moore and Adlard caeruleum in locis. Romero morbo Congress amarus in auras. Nihil horum sagittis tincidunt, zombie slack-jawed gelida survival portenta. The unleashed virus est, et iam zombie mortui ambulabunt super terram. Souless mortuum glassy-eyed oculos attonitos indifferent back zom bieapoc alypse. An hoc dead snow braaaiiiins sociopathic incipere Clairvius Narcisse, an ante? Is bello mundi z?</p>
         <p>Cum horribilem walking dead resurgere de crazed sepulcris creaturis, zombie sicut de grave feeding iride et serpens. Pestilentia, shaun ofthe dead scythe animated corpses ipsa screams. Pestilentia est plague haec decaying ambulabat mortuos. Sicut zeder apathetic malus voodoo. Aenean a dolor plan et terror soulless vulnerum contagium accedunt, mortui iam vivam unlife. Qui tardius moveri, brid eof reanimator sed in magna copia sint terribiles undeath legionis. Alii missing oculis aliorum sicut serpere crabs nostram. Putridi braindead odores kill and infect, aere implent left four dead.</p>
-      </sf-tab>
-    </sf-tabset-body>
-  </sf-tabset>
-</div>
-
-# sf-grid
-
-One of the most important parts of any UI framework is a responsive grid system.
-In the past, they needed to be implemented using JavaScript, floats, and other
-hacks. The flexbox specification obviates the need for all that (see some
-[demonstrations](http://philipwalton.github.io/solved-by-flexbox)). With vendor
-prefixes by [`autoprefixer`](https://github.com/postcss/autoprefixer), browser
-support for flexbox is consistent enough for production use. It's more versatile
-than the old grid systems and solves a lot of other problems.
-
-Because specialised grid systems are no longer needed, stylific doesn't come
-with one. Instead, it provides a group of [layout attributes](layout/) for
-inline definitions.
-
-That said, it's convenient to have a shortcut to a media-responsive flex
-container that wraps its items on different breakpoints. `sf-grid` is a
-primitive version of that. Open this on a [separate page](examples/grid-demo/)
-to resize the page more easily.
-
-```html
-<sf-grid class="doc-grid-demo">
-  <p>One</p>
-  <p>Two</p>
-  <p>Three</p>
-  <p>Four</p>
-  <p>Five</p>
-  <p>Six</p>
-  <p>Seven</p>
-  <p>Eight</p>
-  <p>Nine</p>
-  <p>Ten</p>
-</sf-grid>
-```
-
-<div doc-demo style="display: block">
-  <sf-grid class="doc-grid-demo">
-    <p>One</p>
-    <p>Two</p>
-    <p>Three</p>
-    <p>Four</p>
-    <p>Five</p>
-    <p>Six</p>
-    <p>Seven</p>
-    <p>Eight</p>
-    <p>Nine</p>
-    <p>Ten</p>
-  </sf-grid>
+      </div>
+    </div>
+  </div>
 </div>
 
 # sf-modal
 
-`sf-modal` is a fixed popup dialog. To display it, use an element with an
+`[sf-modal]` is a fixed popup dialog. To display it, use an element with an
 `[sf-toggle-id]` attribute pointing to a modal's id.
 
 ```html
@@ -366,28 +314,29 @@ to resize the page more easily.
 <button sf-toggle-id="demoModal">Click me to open a modal!</button>
 
 <!-- Modal, hidden until activated -->
-<sf-modal id="demoModal" theme="text-primary">
-  <sf-modal-body class="pad-ch-v-05">
+<div sf-modal id="demoModal" theme="text-primary">
+  <div sf-modal-body class="pad-ch-v-05">
     <h1>Modal header</h1>
     <p>Check me out, I'm a modal!</p>
     <p>Click the overlay or the top-right button to close me.</p>
     <p>...</p>
-  </sf-modal-body>
-</sf-modal>
+  </div>
+</div>
 ```
 
 <div doc-demo>
   <button sf-toggle-id="demoModal">Click me to open a modal!</button>
 
-  <sf-modal id="demoModal" theme="text-primary">
-    <sf-modal-body>
+  <div sf-modal id="demoModal" theme="text-primary">
+    <div sf-modal-body>
       <h1>Modal header</h1>
       <p>Check me out, I'm a modal!</p>
       <p>Click the overlay or the top-right button to close me.</p>
       <p>Lucio fulci tremor est dark vivos magna. Expansis creepy arm yof darkness ulnis witchcraft missing carnem armis Kirkman Moore and Adlard caeruleum in locis. Romero morbo Congress amarus in auras. Nihil horum sagittis tincidunt, zombie slack-jawed gelida survival portenta. The unleashed virus est, et iam zombie mortui ambulabunt super terram. Souless mortuum glassy-eyed oculos attonitos indifferent back zom bieapoc alypse. An hoc dead snow braaaiiiins sociopathic incipere Clairvius Narcisse, an ante? Is bello mundi z?</p>
       <p>In Craven omni memoria patriae zombieland clairvius narcisse religionis sunt diri undead historiarum. Golums, zombies unrelenting et Raimi fascinati beheading. Maleficia! Vel cemetery man a modern bursting eyeballs perhsaps morbi. A terrenti flesh contagium. Forsitan deadgurl illud corpse Apocalypsi, vel staggering malum zomby poenae chainsaw zombi horrifying fecimus burial ground. Indeflexus shotgun coup de poudre monstra per plateas currere. Fit de decay nostra carne undead. Poenitentiam violent zom biehig hway agite RE:dead pœnitentiam! Vivens mortua sunt apud nos night of the living dead.</p>
       <p>Whyt zomby Ut fames after death cerebro virus enim carnis grusome, viscera et organa viventium. Sicut spargit virus ad impetum, qui supersumus flesh eating. Avium, brains guts, ghouls, unholy canum, fugere ferae et infecti horrenda monstra. Videmus twenty-eight deformis pale, horrenda daemonum. Panduntur brains portae rotting inferi. Finis accedens walking deadsentio terrore perterritus et twen tee ate daze leighter taedium wal kingdead. The horror, monstra epidemic significant finem. Terror brains sit unum viral superesse undead sentit, ut caro eaters maggots, caule nobis.</p>
-  </sf-modal>
+    </div>
+  </div>
 </div>
 
 If your website has a `<base>` tag (typically `<base href="/">`), the `#` part
@@ -401,21 +350,21 @@ demo/) to resize the page more easily.
 Notice how little markup is required.
 
 ```html
-<sf-navbar>
+<div sf-navbar>
   <a href="/">Home</a>
   <a class="active" href="/robots">Robots</a>
   <a href="/medical-cybernetics">Medical Cybernetics</a>
   <a href="/partners">Partners</a>
-</sf-navbar>
+</div>
 ```
 
 <div doc-demo>
-  <sf-navbar>
+  <div sf-navbar>
     <a href="components/#home">Home</a>
     <a class="active" href="components/#robots">Robots</a>
     <a href="components/#medical-cybernetics">Medical Cybernetics</a>
     <a href="components/#partners">Partners</a>
-  </sf-navbar>
+  </div>
 </div>
 
 ## Folding navbar
@@ -429,25 +378,25 @@ you want the navbar to fold. Resize your viewport to see the folding in effect
 or view the [demo](examples/navbar-demo/#static-folding).
 
 ```html
-<sf-navbar>
+<div sf-navbar>
   <a href="/">Home</a>
   <a class="active" href="/robots">Robots</a>
   <a href="/medical-cybernetics">Medical Cybernetics</a>
   <label></label>
   <a href="/partners">Partners</a>
   <a href="/achievements">Achievements</a>
-</sf-navbar>
+</div>
 ```
 
 <div doc-demo>
-  <sf-navbar>
+  <div sf-navbar>
     <a href="components/#home">Home</a>
     <a class="active" href="components/#robots">Robots</a>
     <a href="components/#medical-cybernetics">Medical Cybernetics</a>
     <label></label>
     <a href="components/#partners">Partners</a>
     <a href="components/#achievements">Achievements</a>
-  </sf-navbar>
+  </div>
 </div>
 
 ## `[sf-navbar="fold"]`
@@ -456,25 +405,25 @@ With a folding navbar, use the `fold` option to tell it to _always_ fold,
 regardless of the viewport width.
 
 ```html
-<sf-navbar theme="primary" sf-navbar="fold">
+<div theme="primary" sf-navbar="fold">
   <a href="/">Home</a>
   <a class="active" href="/robots">Robots</a>
   <a href="/medical-cybernetics">Medical Cybernetics</a>
   <label></label>
   <a href="/partners">Partners</a>
   <a href="/achievements">Achievements</a>
-</sf-navbar>
+</div>
 ```
 
 <div doc-demo>
-  <sf-navbar theme="primary" sf-navbar="fold">
+  <div theme="primary" sf-navbar="fold">
     <a href="components/#home">Home</a>
     <a class="active" href="components/#robots">Robots</a>
     <a href="components/#medical-cybernetics">Medical Cybernetics</a>
     <label></label>
     <a href="components/#partners">Partners</a>
     <a href="components/#achievements">Achievements</a>
-  </sf-navbar>
+  </div>
 </div>
 
 ## `[sf-navbar="fixed"]`
@@ -482,13 +431,13 @@ regardless of the viewport width.
 Add the `fixed` option to glue the navbar to the top of the viewport:
 
 ```html
-<sf-navbar sf-navbar="fixed">
+<div sf-navbar="fixed">
   <a href="/">Home</a>
   <a class="active" href="/robots">Robots</a>
   <a href="/medical-cybernetics">Medical Cybernetics</a>
   <a href="/partners">Partners</a>
   <a href="/achievements">Achievements</a>
-</sf-navbar>
+</div>
 ```
 
 The next element in the document flow (in this example, the implied site
@@ -501,21 +450,21 @@ This is a version of `sf-navbar` for use inside the document. Has a lighter
 shadow and doesn't have a default z-index.
 
 ```html
-<sf-navbar sf-navbar="tabs">
+<div sf-navbar="tabs">
   <a href="#section-one">Section One</a>
   <a class="active" href="#section-two">Section Two</a>
   <a href="#section-three">Section Three</a>
   <a href="#section-four">Section Four</a>
-</sf-navbar>
+</div>
 ```
 
 <div doc-demo>
-  <sf-navbar sf-navbar="tabs">
+  <div sf-navbar="tabs">
     <a href="components/#section-one">Section One</a>
     <a class="active" href="components/#section-two">Section Two</a>
     <a href="components/#section-three">Section Three</a>
     <a href="components/#section-four">Section Four</a>
-  </sf-navbar>
+  </div>
 </div>
 
 # sf-footer
@@ -533,21 +482,21 @@ defined in
 Example footer:
 
 ```html
-<sf-footer>
-  <sf-footer-body>
+<div sf-footer>
+  <div sf-footer-body>
     <span>2020—2030 © slowpoke</span>
     <span>⇑</span>
-  </sf-footer-body>
-</sf-footer>
+  </div>
+</div>
 ```
 
 <div doc-demo>
-  <sf-footer>
-    <sf-footer-body style="margin-top: 0; padding: 0">
+  <div sf-footer>
+    <div sf-footer-body style="margin-top: 0; padding: 0">
       <span>2020—2030 © slowpoke</span>
       <span>⇑</span>
-    </sf-footer-body>
-  </sf-footer>
+    </div>
+  </div>
 </div>
 
 # sf-tooltip
@@ -740,9 +689,9 @@ See the [source](https://github.com/Mitranim/stylific/blob/master/scss/component
 for which children are automatically adjusted.
 
 ```html
-<sf-embed><iframe src="..."></sf-embed>
+<div sf-embed><iframe src="..."></div>
 <div sf-embed="ratio-4-to-3"><iframe src="..."></iframe></div>
-<sf-embed><div class="sf-embed-item"></div></sf-embed>
+<div sf-embed><div class="sf-embed-item"></div></div>
 ```
 
 # sf-jumbo
@@ -753,31 +702,31 @@ else, it's sized in `em`, so adjusting the font size automatically changes its
 height.
 
 ```html
-<sf-jumbo style="background-image: url(images/aite.jpg)">
+<div sf-jumbo style="background-image: url(images/aite.jpg)">
   <h1>Catchy slogan</h1>
   <p>Super awesome marketing speak</p>
-</sf-jumbo>
+</div>
 ```
 
 <div doc-demo layout="column">
-  <sf-jumbo style="background-image: url(images/aite.jpg)">
+  <div sf-jumbo style="background-image: url(images/aite.jpg)">
     <h1>Catchy slogan</h1>
     <p>Super awesome marketing speak</p>
-  </sf-jumbo>
+  </div>
 </div>
 
 To reposition the children, simply add `layout="start"` or `layout="center"`.
 
 ```html
-<sf-jumbo layout="start" style="background-image: url(images/citadel-blue.jpg)">
+<div sf-jumbo layout="start" style="background-image: url(images/citadel-blue.jpg)">
   <h1>I'm Commander Shepard</h1>
   <p>And this is my favourite store on the Citadel</p>
-</sf-jumbo>
+</div>
 ```
 
 <div doc-demo layout="column">
-  <sf-jumbo layout="start" style="background-image: url(images/citadel-blue.jpg)">
+  <div sf-jumbo layout="start" style="background-image: url(images/citadel-blue.jpg)">
     <h1>I'm Commander Shepard</h1>
     <p>And this is my favourite store on the Citadel</p>
-  </sf-jumbo>
+  </div>
 </div>
