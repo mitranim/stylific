@@ -13,7 +13,7 @@ To enable folding, add a `<label>` between the elements where you want the
 navbar to fold. Resize your viewport to see the folding in effect.
 
 ```html
-<div sf-navbar>
+<div class="sf-navbar">
   <a href="/">Home</a>
   <a class="active" href="/robots">Robots</a>
   <a href="/medical-cybernetics">Medical Cybernetics</a>
@@ -24,7 +24,7 @@ navbar to fold. Resize your viewport to see the folding in effect.
 ```
 
 <div doc-demo>
-  <div sf-navbar>
+  <div class="sf-navbar">
     <a href="examples/navbar-demo/#home">Home</a>
     <a class="active" href="examples/navbar-demo/#robots">Robots</a>
     <a href="examples/navbar-demo/#medical-cybernetics">Medical Cybernetics</a>
@@ -40,7 +40,7 @@ With a folding navbar, use the `fold` option to tell it to _always_ fold,
 regardless of the viewport width.
 
 ```html
-<div theme="primary" sf-navbar="fold">
+<div class="sf-navbar sf-navbar-fold theme-primary">
   <a href="/">Home</a>
   <a class="active" href="/robots">Robots</a>
   <a href="/medical-cybernetics">Medical Cybernetics</a>
@@ -51,7 +51,7 @@ regardless of the viewport width.
 ```
 
 <div doc-demo>
-  <div theme="primary" sf-navbar="fold">
+  <div class="sf-navbar sf-navbar-fold theme-primary">
     <a href="examples/navbar-demo/#home">Home</a>
     <a class="active" href="examples/navbar-demo/#robots">Robots</a>
     <a href="examples/navbar-demo/#medical-cybernetics">Medical Cybernetics</a>

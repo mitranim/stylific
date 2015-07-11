@@ -1,7 +1,7 @@
 <!-- TOC -->
-<div sf-collapse doc-toc theme="text-accent">
-  <label class="active" theme="accent"></label>
-  <div sf-collapse-body>
+<div class="sf-collapse doc-toc theme-text-accent">
+  <label class="active theme-accent"></label>
+  <div class="sf-collapse-body">
     [Overview](themes/#overview)
     [Text Themes](themes/#text-themes)
     [Full Themes](themes/#full-themes)
@@ -19,8 +19,8 @@ You configure three themes: `primary`, `accent`, and `warn`. Each theme consists
 of the main colour and two additional hues for "activated" and "selected"
 states.
 
-For each given theme `X`, the library creates two attributes: `theme=X` and
-`theme=text-X`. The text theme only changes the text colour, automatically
+For each given theme `X`, the library creates two classes: `.theme-X` and
+`.theme-text-X`. The text theme only changes the text colour, automatically
 adjusting it to a luminosity comfortably contrasting the default background
 colour. The "full" theme uses the theme colour for the background, automatically
 selecting a text colour that contrasts it.
@@ -33,52 +33,52 @@ and
 
 # Text Themes
 
-Demo of some elements with the `text-*` themes.
+Demo of some elements with the `.theme-text-*` themes.
 
 ```html
 <!-- ... -->
-<button theme="text-primary">`text-primary` button</button>
-<p theme="text-primary">`text-primary` paragraph</p>
-<input theme="text-primary" value="`text-primary` input">
+<button class="theme-text-primary">`text-primary` button</button>
+<p class="theme-text-primary">`text-primary` paragraph</p>
+<input class="theme-text-primary" value="`text-primary` input">
 <!-- ... -->
 ```
 
-<div doc-demo style="display: block" class="space-out">
-  <div layout="space-between cross-center">
+<div class="doc-demo block space-out">
+  <div class="layout-space-between layout-cross-center">
     <button>No theme button</button>
     <p>No theme paragraph</p>
     <input value="No theme input">
   </div>
-  <div layout="space-between cross-center">
-    <button theme="text-primary">`text-primary` button</button>
-    <p theme="text-primary">`text-primary` paragraph</p>
-    <input theme="text-primary" value="`text-primary` input">
+  <div class="layout-space-between layout-cross-center">
+    <button class="theme-text-primary">`text-primary` button</button>
+    <p class="theme-text-primary">`text-primary` paragraph</p>
+    <input class="theme-text-primary" value="`text-primary` input">
   </div>
-  <div layout="space-between cross-center">
-    <button theme="text-accent">`text-accent` button</button>
-    <p theme="text-accent">`text-accent` paragraph</p>
-    <input theme="text-accent" value="`text-accent` input">
+  <div class="layout-space-between layout-cross-center">
+    <button class="theme-text-accent">`text-accent` button</button>
+    <p class="theme-text-accent">`text-accent` paragraph</p>
+    <input class="theme-text-accent" value="`text-accent` input">
   </div>
-  <div layout="space-between cross-center">
-    <button theme="text-warn">`text-warn` button</button>
-    <p theme="text-warn">`text-warn` paragraph</p>
-    <input theme="text-warn" value="`text-warn` input">
+  <div class="layout-space-between layout-cross-center">
+    <button class="theme-text-warn">`text-warn` button</button>
+    <p class="theme-text-warn">`text-warn` paragraph</p>
+    <input class="theme-text-warn" value="`text-warn` input">
   </div>
-  <div layout="space-between cross-center">
+  <div class="layout-space-between layout-cross-center">
     <button disabled>disabled button</button>
     <input disabled value="disabled input">
   </div>
-  <div layout="space-between cross-center">
-    <button disabled theme="text-primary">disabled `text-primary` button</button>
-    <input disabled theme="text-primary" value="disabled `text-primary` input">
+  <div class="layout-space-between layout-cross-center">
+    <button disabled class="theme-text-primary">disabled `text-primary` button</button>
+    <input disabled class="theme-text-primary" value="disabled `text-primary` input">
   </div>
-  <div layout="space-between cross-center">
-    <button disabled theme="text-accent">disabled `text-accent` button</button>
-    <input disabled theme="text-accent" value="disabled `text-accent` input">
+  <div class="layout-space-between layout-cross-center">
+    <button disabled class="theme-text-accent">disabled `text-accent` button</button>
+    <input disabled class="theme-text-accent" value="disabled `text-accent` input">
   </div>
-  <div layout="space-between cross-center">
-    <button disabled theme="text-warn">disabled `text-warn` button</button>
-    <input disabled theme="text-warn" value="disabled `text-warn` input">
+  <div class="layout-space-between layout-cross-center">
+    <button disabled class="theme-text-warn">disabled `text-warn` button</button>
+    <input disabled class="theme-text-warn" value="disabled `text-warn` input">
   </div>
 </div>
 
@@ -88,39 +88,39 @@ Demo of some elements with the full themes.
 
 ```html
 <!-- ... -->
-<button theme="primary">`primary` button</button>
-<p theme="primary">`primary` paragraph</p>
-<input theme="primary" value="`primary` input">
+<button class="theme-primary">`primary` button</button>
+<p class="theme-primary">`primary` paragraph</p>
+<input class="theme-primary" value="`primary` input">
 <!-- ... -->
 ```
 
-<div doc-demo style="display: block" class="space-out">
-  <div layout="space-between cross-center">
-    <button theme="primary">`primary` button</button>
-    <p theme="primary">`primary` paragraph</p>
-    <input theme="primary" value="`primary` input">
+<div class="doc-demo block space-out">
+  <div class="layout-space-between layout-cross-center">
+    <button class="theme-primary">`primary` button</button>
+    <p class="theme-primary">`primary` paragraph</p>
+    <input class="theme-primary" value="`primary` input">
   </div>
-  <div layout="space-between cross-center">
-    <button theme="accent">`accent` button</button>
-    <p theme="accent">`accent` paragraph</p>
-    <input theme="accent" value="`accent` input">
+  <div class="layout-space-between layout-cross-center">
+    <button class="theme-accent">`accent` button</button>
+    <p class="theme-accent">`accent` paragraph</p>
+    <input class="theme-accent" value="`accent` input">
   </div>
-  <div layout="space-between cross-center">
-    <button theme="warn">`warn` button</button>
-    <p theme="warn">`warn` paragraph</p>
-    <input theme="warn" value="`warn` input">
+  <div class="layout-space-between layout-cross-center">
+    <button class="theme-warn">`warn` button</button>
+    <p class="theme-warn">`warn` paragraph</p>
+    <input class="theme-warn" value="`warn` input">
   </div>
-  <div layout="space-between cross-center">
-    <button disabled theme="primary">disabled `primary` button</button>
-    <input disabled theme="primary" value="disabled `primary` input">
+  <div class="layout-space-between layout-cross-center">
+    <button disabled class="theme-primary">disabled `primary` button</button>
+    <input disabled class="theme-primary" value="disabled `primary` input">
   </div>
-  <div layout="space-between cross-center">
-    <button disabled theme="accent">disabled `accent` button</button>
-    <input disabled theme="accent" value="disabled `accent` input">
+  <div class="layout-space-between layout-cross-center">
+    <button disabled class="theme-accent">disabled `accent` button</button>
+    <input disabled class="theme-accent" value="disabled `accent` input">
   </div>
-  <div layout="space-between cross-center">
-    <button disabled theme="warn">disabled `warn` button</button>
-    <input disabled theme="warn" value="disabled `warn` input">
+  <div class="layout-space-between layout-cross-center">
+    <button disabled class="theme-warn">disabled `warn` button</button>
+    <input disabled class="theme-warn" value="disabled `warn` input">
   </div>
 </div>
 
@@ -154,8 +154,8 @@ $sf-color-maps: $sf-color-map-primary, $sf-color-map-accent, $sf-color-map-warn,
 Then you can use the `success` theme in your HTML:
 
 ```html
-<button theme="text-success">text theme</button>
-<button theme="success">full theme</button>
+<button class="theme-text-success">text theme</button>
+<button class="theme-success">full theme</button>
 ```
 
 You can also change the base text and background colours:

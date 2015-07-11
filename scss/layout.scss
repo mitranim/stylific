@@ -51,44 +51,26 @@ body {
 @mixin sf-layout-for-name($postfix: '') {
   $name: if($postfix == '', layout, layout-#{$postfix});
 
-  [#{$name}]         {display: flex}
-  [#{$name}~=row]    {flex-direction: row}
-  [#{$name}~=column] {flex-direction: column}
-
-  // Wrap.
-  [#{$name}~=wrap]         {flex-wrap: wrap}
-  [#{$name}~=wrap-reverse] {flex-wrap: wrap-reverse}
-  [#{$name}~=nowrap]       {flex-wrap: nowrap}
+  [class*=#{$name}] {display: flex}
+  .#{$name}-row     {flex-direction: row}
+  .#{$name}-column  {flex-direction: column}
 
   // Whitespace on main axis.
-  [#{$name}~=center]        {justify-content: center}
-  [#{$name}~=end]           {justify-content: flex-end}
-  [#{$name}~=start]         {justify-content: flex-start}
-  [#{$name}~=space-around]  {justify-content: space-around}
-  [#{$name}~=space-between] {justify-content: space-between}
+  .#{$name}-center        {justify-content: center}
+  .#{$name}-end           {justify-content: flex-end}
+  .#{$name}-start         {justify-content: flex-start}
+  .#{$name}-space-around  {justify-content: space-around}
+  .#{$name}-space-between {justify-content: space-between}
 
   // Individual items on cross axis.
-  [#{$name}~=cross-center]  {align-items: center}
-  [#{$name}~=cross-end]     {align-items: flex-end}
-  [#{$name}~=cross-start]   {align-items: flex-start}
-  [#{$name}~=cross-stretch] {align-items: stretch}
-
-  // Lines on cross axis.
-  [#{$name}~=lines-center]        {align-content: center}
-  [#{$name}~=lines-end]           {align-content: flex-end}
-  [#{$name}~=lines-start]         {align-content: flex-start}
-  [#{$name}~=lines-space-around]  {align-content: space-around}
-  [#{$name}~=lines-space-between] {align-content: space-between}
-  [#{$name}~=lines-stretch]       {align-content: stretch}
+  .#{$name}-cross-center  {align-items: center}
+  .#{$name}-cross-end     {align-items: flex-end}
+  .#{$name}-cross-start   {align-items: flex-start}
+  .#{$name}-cross-stretch {align-items: stretch}
 
   // Whitespace.
-  [#{$name}~=space-out]:not([#{$name}~=column]),
-  [#{$name}~=column][#{$name}~=space-out-cross] {
+  .#{$name}-row.space-out {
     @include sf-space-out-horizontal;
-  }
-  [#{$name}~=column][#{$name}~=space-out],
-  [#{$name}~=space-out-cross]:not([#{$name}~=column]) {
-    @include sf-space-out-vertical;
   }
 }
 
@@ -105,26 +87,25 @@ body {
   $name: if($postfix == '', flex, flex-#{$postfix});
 
   // Cross axis alignment.
-  [#{$name}~=center]  {align-self: center}
-  [#{$name}~=end]     {align-self: flex-end}
-  [#{$name}~=start]   {align-self: flex-start}
-  [#{$name}~=stretch] {align-self: stretch}
+  .#{$name}-center  {align-self: center}
+  .#{$name}-end     {align-self: flex-end}
+  .#{$name}-start   {align-self: flex-start}
+  .#{$name}-stretch {align-self: stretch}
 
   // Misc.
-  [#{$name}~=none] {flex: none}
-  [#{$name}~=noshrink] {flex-shrink: 0}
+  .#{$name}-none {flex: none}
 
-  // [flex~=N] {flex: N} where 1 <= N <= 12
+  // .flex-N {flex: N} where 1 <= N <= 12
   $i: 1;
   @while $i <= 12 {
-    [#{$name}~='#{$i}'] {flex: $i}
+    .#{$name}-#{$i} {flex: $i}
     $i: $i + 1;
   }
 
-  // [flex~=orderN] {order: N} where -1 <= N <= 12
+  // .flex-order-N {order: N} where -1 <= N <= 3
   $i: -1;
-  @while $i <= 12 {
-    [#{$name}~=order-#{$i}] {order: $i}
+  @while $i <= 3 {
+    .#{$name}-order-#{$i} {order: $i}
     $i: $i + 1;
   }
 }
@@ -140,45 +121,45 @@ body {
  * Default wrap configuration.
  */
 
-[grid] > * {
+.grid > * {
   // Equivalent to a combination of:
-  //   grid-sm="2"
-  //   grid-md="4"
-  //   grid-lg="6"
+  //   .grid-sm="2"
+  //   .grid-md="4"
+  //   .grid-lg="6"
   @include sf-eq-sm {flex-basis: 50%}
   @include sf-gt-sm {flex-basis: 25%}
   @include sf-gt-md {flex-basis: calc(1/6 * 100%)}
 }
-[grid-sm] > * {
+.grid-sm > * {
   @include sf-eq-sm {flex-basis: 50%}
 }
-[grid-md] > * {
+.grid-md > * {
   @include sf-gt-sm {flex-basis: 25%}
 }
-[grid-lg] > * {
+.grid-lg > * {
   @include sf-gt-md {flex-basis: calc(1/6 * 100%)}
 }
 
 @mixin sf-grid-for-name($postfix: '') {
   $name: if($postfix == '', grid, grid-#{$postfix});
 
-  [#{$name}] {
+  [class*=#{$name}] {
     display: flex;
     flex-wrap: wrap;
-  }
 
-  [#{$name}] > * {
     // Prevent children from unexpectedly stretching or shrinking.
-    flex-grow: 0;
-    flex-shrink: 0;
+    > * {
+      flex-grow: 0;
+      flex-shrink: 0;
+    }
   }
 
-  [#{$name}~='1'] > * {flex-basis: 100%}
-  [#{$name}~='2'] > * {flex-basis: 50%}
-  [#{$name}~='3'] > * {flex-basis: calc(1/3 * 100%)}
-  [#{$name}~='4'] > * {flex-basis: 25%}
-  [#{$name}~='5'] > * {flex-basis: 20%}
-  [#{$name}~='6'] > * {flex-basis: calc(1/6 * 100%)}
+  .#{$name}-1 > * {flex-basis: 100%}
+  .#{$name}-2 > * {flex-basis: 50%}
+  .#{$name}-3 > * {flex-basis: calc(1/3 * 100%)}
+  .#{$name}-4 > * {flex-basis: 25%}
+  .#{$name}-5 > * {flex-basis: 20%}
+  .#{$name}-6 > * {flex-basis: calc(1/6 * 100%)}
 }
 
 @include sf-grid-for-name();

@@ -57,9 +57,9 @@
       $selected: map-get($color-map, selected);
 
       // Text theme.
-      &#{$postfix}[theme=text-#{$name}],
-      [theme=text-#{$name}] &#{$postfix},
-      &[theme=text-#{$name}]#{$postfix} {
+      &#{$postfix}.theme-text-#{$name},
+      .theme-text-#{$name} &#{$postfix},
+      &.theme-text-#{$name}#{$postfix} {
         // These selectors are required to match the states and specificity of
         // the base interactive selectors.
         color: sf-sensible-text-color($selected);
@@ -67,9 +67,9 @@
       }
 
       // Full theme.
-      &#{$postfix}[theme=#{$name}],
-      [theme=#{$name}] &#{$postfix},
-      &[theme=#{$name}]#{$postfix} {
+      &#{$postfix}.theme-#{$name},
+      .theme-#{$name} &#{$postfix},
+      &.theme-#{$name}#{$postfix} {
         // These selectors are required to match the states and specificity of
         // the base interactive selectors.
         background-color: $selected;
@@ -83,7 +83,7 @@
 @mixin sf-register-interactive-selector($postfix: '') {
   &#{$postfix} {
     // Grayscale theme.
-    &:hover, &:focus, &:active {
+    &:hover, &:active {
       background-color: rgba($sf-color-text, 0.05);
     }
     &.active {
@@ -101,10 +101,10 @@
     $selected: map-get($color-map, selected);
 
     // Text theme.
-    &#{$postfix}[theme=text-#{$name}],
-    [theme=text-#{$name}] &#{$postfix},
-    &[theme=text-#{$name}]#{$postfix} {
-      &:hover, &:focus, &:active {
+    &#{$postfix}.theme-text-#{$name},
+    .theme-text-#{$name} &#{$postfix},
+    &.theme-text-#{$name}#{$postfix} {
+      &:hover, &:active {
         color: sf-sensible-text-color($active);
       }
       &.active {
@@ -113,10 +113,10 @@
     }
 
     // Full theme.
-    &#{$postfix}[theme=#{$name}],
-    [theme=#{$name}] &#{$postfix},
-    &[theme=#{$name}]#{$postfix} {
-      &:hover, &:focus, &:active {
+    &#{$postfix}.theme-#{$name},
+    .theme-#{$name} &#{$postfix},
+    &.theme-#{$name}#{$postfix} {
+      &:hover, &:active {
         background-color: $active;
         color: sf-contrasting-color($active);
       }
@@ -195,23 +195,16 @@
 }
 
 @mixin sf-outline-focus {
-  @include sf-outline-base;
-  &[theme], [theme] & {
+  &[class*=theme], [class*=theme] & {
     outline-color: rgba($sf-color-background, 0.5);
   }
-  &, &[theme^=text-], [theme^=text] & {
+  &, &[class*=theme-text-], [class*=theme-text-] & {
     outline-color: rgba(map-get($sf-color-map-primary, default), 0.5);
   }
 }
 
 @mixin sf-outline-interactive {
-  @include sf-outline-base;
-  &:focus, &:active {@include sf-outline-focus;}
-}
-
-@mixin sf-cursor-interactive {
-  cursor: pointer;
-  &[disabled] {cursor: not-allowed}
+  &:active {@include sf-outline-focus;}
 }
 
 @mixin sf-link-decorations {

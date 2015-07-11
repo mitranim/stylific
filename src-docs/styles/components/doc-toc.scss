@@ -1,8 +1,4 @@
-[doc-toc] {
-
-  // Subclass sf-collapse. (Still requires either [sf-collapse] or [sf-toggle]
-  // for label toggling.)
-  @extend [sf-collapse];
+.sf-collapse.doc-toc {
 
   /**
    * Layout.
@@ -29,7 +25,7 @@
    * Cosmetic.
    */
   @include sf-border-weak;
-  > [sf-collapse-body] {
+  > .sf-collapse-body {
     // Layout.
     display: flex;
     flex-direction: column;

@@ -10,12 +10,12 @@
  * Each colour is defined as a map with a string name and three hues:
  *   name          <string>
  *   default
- *   active        :hover, :active, :focus
+ *   active        :hover, :active
  *   selected      .active
  *
- * Given a colour with the name C, we expose two global attributes:
- *   [theme=C]        {background-color} and {color}
- *   [theme=text-C]   just {color}
+ * Given a colour with the name C, we expose two global classes:
+ *   .theme-C        {background-color} and {color}
+ *   .theme-text-C   just {color}
  *
  * We also create an interactive version of each colour theme, available for
  * certain selectors. The interactive version has slightly different hues for
@@ -25,15 +25,16 @@
 @each $color-map in $sf-color-maps {
   $name: map-get($color-map, name);
   $default: map-get($color-map, default);
+  $selected: map-get($color-map, selected);
 
   // Text theme.
-  [theme=text-#{$name}] {
+  .theme-text-#{$name} {
     color: sf-sensible-text-color($default);
     svg {fill: $default}
   }
 
   // Full theme.
-  [theme=#{$name}] {
+  .theme-#{$name} {
     background-color: $default;
     color: sf-contrasting-color($default);
     svg {fill: sf-contrasting-color($default)}
@@ -41,19 +42,14 @@
 }
 
 // Treat each of these elements as interactive (unless [disabled]).
-.interactive         {@include sf-register-interactive-selector;}
-a[href]              {@include sf-register-interactive-selector;}
-button               {@include sf-register-interactive-selector;}
-input                {@include sf-register-interactive-selector;}
-textarea             {@include sf-register-interactive-selector;}
-[contenteditable]    {@include sf-register-interactive-selector;}
-[sf-toggle]          {@include sf-register-interactive-selector;}
-[sf-toggle-siblings] {@include sf-register-interactive-selector;}
-[sf-toggle-id]       {@include sf-register-interactive-selector;}
-
-.interactive, a[href], button, [sf-toggle], [sf-toggle-siblings], [sf-toggle-id] {
-  @include sf-cursor-interactive;
-}
+.interactive              {@include sf-register-interactive-selector;}
+a[href]                   {@include sf-register-interactive-selector;}
+input                     {@include sf-register-interactive-selector;}
+textarea                  {@include sf-register-interactive-selector;}
+[contenteditable]         {@include sf-register-interactive-selector;}
+[data-sf-toggle]          {@include sf-register-interactive-selector;}
+[data-sf-toggle-siblings] {@include sf-register-interactive-selector;}
+[data-sf-toggle-id]       {@include sf-register-interactive-selector;}
 
 html {
   background-color: darken($sf-color-background, 5%);
@@ -71,7 +67,7 @@ a {
 
 @each $color-map in $sf-color-maps {
   $name: map-get($color-map, name);
-  [theme=text-#{$name}] a, [theme=#{$name}] a {
+  .theme-text-#{$name} a, .theme-#{$name} a {
     color: inherit;
   }
 }

@@ -26,8 +26,7 @@
 
 /**
  * Other global styles. Must be imported after components in order to allow
- * layout and theme attributes and classes to override defaults on attribute
- * versions of components.
+ * layout and theme classes to override the defaults.
  */
 @import './layout';
 @import './typography';

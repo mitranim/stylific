@@ -4,8 +4,7 @@
  * Usage:
  *
  *   <button>...</button>
- *   <input type="button">
- *   <div sf-button>...</div>
+ *   <span class="sf-button">...</span>
  */
 
 /**
@@ -17,9 +16,9 @@
  * minimum width, a set height, and text ellipsis on overflow.
  */
 
-[sf-button],
-// Override native styles too.
-button, input[type=button] {
+.sf-button,
+// Override native buttons too (ignore input[type=button]).
+button {
 
   /**
    * Layout.
@@ -45,10 +44,12 @@ button, input[type=button] {
   &:active {
     @include sf-shadow-thin;
   }
-  &[sf-button~=flat], &[disabled] {box-shadow: none}
+  &[disabled] {box-shadow: none}
+  // Flat version.
+  &.sf-button-flat {box-shadow: none}
 
   // Restore the normal dimensions when used as an icon.
-  &[sf-icon] {
+  &[class*=sf-icon] {
     width: auto;
     height: auto;
   }
@@ -58,5 +59,5 @@ button, input[type=button] {
 
   // Treat as interactive too.
   @include sf-register-interactive-selector;
-  @include sf-cursor-interactive;
+  cursor: pointer;
 }

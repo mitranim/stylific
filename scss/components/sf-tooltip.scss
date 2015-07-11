@@ -4,15 +4,15 @@
  *
  * A tooltip is invoked with an attribute, like so:
  *
- *   <p sf-tooltip="tooltip text">hover me</p>
+ *   <p data-sf-tooltip="tooltip text">hover me</p>
  *
  *
  * ## Position
  *
  * By default, it's positioned above the host element. It can be moved to the
- * bottom with another attribute:
+ * bottom with a position option:
  *
- *   <p sf-tooltip="tooltip text" sf-position="bottom">hover me</p>
+ *   <p data-sf-tooltip="tooltip text" class="sf-position-bottom">hover me</p>
  *
  * The following positions are supported: top, top-right, right-top, left-top,
  * bottom, bottom-right.
@@ -23,11 +23,11 @@
  * By default, the tooltip is triggered with :hover. You can specify other
  * triggers with another attribute:
  *
- *   <p sf-tooltip="tooltip text" contenteditable
- *      sf-trigger="hover focus">hover or focus me</p>
+ *   <p data-sf-tooltip="tooltip text" contenteditable
+ *      data-sf-trigger="hover focus">hover or focus me</p>
  *
  * The following triggers are supported: :active, :disabled, :focus, :hover,
- * :target. You can also add the attribute sf-tooltip-show to make the tooltip
+ * :target. You can also add the class .sf-tooltip-visible to make the tooltip
  * unconditionally visible.
  *
  *
@@ -44,7 +44,7 @@
  *
  * Example of using a tooltip with an input:
  *
- *   <p sf-tooltip="tooltip text">
+ *   <p data-sf-tooltip="tooltip text">
  *     <input>
  *   </p>
  *
@@ -60,7 +60,7 @@
  * <textarea> without involving parents (siblings and attributes only).
  */
 
-[sf-tooltip] {
+[data-sf-tooltip] {
 
   /**
    * Layout.
@@ -68,14 +68,14 @@
   position: relative;
 
   // Workaround for a bug in the clean-css minifier used for the documentation.
-  // Adding :not([sf-tooltip='']) to the main selector (the one we apply the
+  // Adding :not([data-sf-tooltip='']) to the main selector (the one we apply the
   // component mixin to) causes the minifier to add an extra space before
   // attribute selectors for position and trigger. Moving it here as an extra
   // rule patches the problem.
-  &[sf-tooltip='']::after {content: none}
+  &[data-sf-tooltip='']::after {content: none}
 
   &::after {
-    content: attr(sf-tooltip);
+    content: attr(data-sf-tooltip);
 
     /**
      * Layout.
@@ -112,33 +112,32 @@
   // Calculated offset.
   $offset: unquote('calc(100% + #{$sf-tooltip-offset})');
   // Top (default).
-  &:not([sf-position])::after,
-  &[sf-position=top]::after {
+  &:not([class*=sf-position])::after, &.sf-position-top::after {
     bottom: $offset;
     left: 0;
   }
   // Top-right.
-  &[sf-position=top-right]::after {
+  &.sf-position-top-right::after {
     bottom: $offset;
     right: 0;
   }
   // Right-top.
-  &[sf-position=right-top]::after {
+  &.sf-position-right-top::after {
     top: 0;
     left: $offset;
   }
   // Left-top.
-  &[sf-position=left-top]::after {
+  &.sf-position-left-top::after {
     top: 0;
     right: $offset;
   }
   // Bottom.
-  &[sf-position=bottom]::after {
+  &.sf-position-bottom::after {
     top: $offset;
     left: 0;
   }
   // Bottom-right.
-  &[sf-position=bottom-right]::after {
+  &.sf-position-bottom-right::after {
     top: $offset;
     right: 0;
   }
@@ -148,17 +147,17 @@
    * tooltip is triggered by hovering the host. Trigger indicators may be
    * combined like so:
    *
-   *   <button sf-tooltip="tooltip text"
-   *           sf-trigger="hover focus">hover or focus me</button>
+   *   <button data-sf-tooltip="tooltip text"
+   *           data-sf-trigger="hover focus">hover or focus me</button>
    */
-  &:not([sf-trigger]):hover,
-  &[sf-trigger~=active]:active,
-  &[sf-trigger~=disabled]:disabled,
-  &[sf-trigger~=focus]:focus,
-  &[sf-trigger~=hover]:hover,
-  &[sf-trigger~=target]:target,
+  &:not([data-sf-trigger]):hover,
+  &[data-sf-trigger~=active]:active,
+  &[data-sf-trigger~=disabled]:disabled,
+  &[data-sf-trigger~=focus]:focus,
+  &[data-sf-trigger~=hover]:hover,
+  &[data-sf-trigger~=target]:target,
   // Unconditional visibility; hook for JavaScript enhancement.
-  &[sf-tooltip-show] {
+  &.sf-tooltip-visible {
     &::after {
       opacity: inherit;
       visibility: inherit;

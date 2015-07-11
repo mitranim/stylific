@@ -5,16 +5,10 @@
 
 See the [documentation/demo site](http://mitranim.com/stylific/).
 
-What sets it apart:
-* Layouts are based on flexbox and don't use floats.
+What's good:
 * No pixels. Dimensions are based on `em` and `rem`, making them easy to scale
   together.
-* Component-based approach: styles are scoped under customisable tag and
-  attribute names.
-
-The component-based approach makes the library easy to customise and extend. To
-use a modified version of a built-in component, just reuse its styles as a mixin
-and add additional rules.
+* Layouts are based on flexbox and don't use floats.
 
 This is written with [Sass](http://sass-lang.com). Sass is required to take
 full advantage of the library by using variables, extends, and other features.

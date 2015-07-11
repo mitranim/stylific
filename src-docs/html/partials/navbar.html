@@ -1,4 +1,4 @@
-<div sf-navbar>
+<div class="sf-navbar">
   <!-- Links -->
   <a <%= $act('index', $) %> href="">Overview</a>
   <a <%= $act('components', $) %> href="components/">Components</a>
@@ -7,9 +7,9 @@
   <label></label>
   <a <%= $act('themes', $) %> href="themes/">Themes</a>
   <!-- Collapsable children -->
-  <div sf-dropdown style="padding: 0">
-    <label layout="center">Examples</label>
-    <div sf-dropdown-list class="text-left">
+  <div class="sf-dropdown" style="padding: 0">
+    <label class="layout-center">Examples</label>
+    <div class="sf-dropdown-list text-left">
       <a <%= $act('examples/navbar-demo', $) %> href="examples/navbar-demo/">navbar demo</a>
       <a <%= $act('examples/footer', $) %> href="examples/footer/">footer</a>
       <a <%= $act('examples/grid-demo', $) %> href="examples/grid-demo/">grid demo</a>

@@ -4,8 +4,8 @@ pre code {width: 100%}
   > *:not(:root) {display: block}
 }
 
-[sf-collapse] {
-  [sf-collapse-body].nopad {
+.sf-collapse {
+  .sf-collapse-body.nopad {
     padding: 0;
   }
 }

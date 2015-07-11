@@ -7,21 +7,21 @@
  *
  * In your stylesheet:
  *
- *   [sf-icon=skype] {
+ *   .sf-icon-skype {
  *     background-image: url(path-to-skype-icon.svg);
  *   }
  *
  * In your HTML:
  *
- *   <span sf-icon="skype"></span>
+ *   <span class="sf-icon-skype"></span>
  *
  * sf-icon is sized as 1em by default, which means it'll be the same size as
  * surrounding text. To scale it separately, use a bigger font-size:
  *
- *   <span sf-icon style="font-size: 1.2em"></span>
+ *   <span class="sf-icon" style="font-size: 1.2em"></span>
  */
 
-[sf-icon] {
+[class*=sf-icon] {
 
   /**
    * Layout.
@@ -57,6 +57,17 @@
     }
   }
 
+  // Nested SVG styles.
+  > svg {
+    // Center horizontally.
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    // Dimensions.
+    width: 1em !important;
+    height: 1em !important;
+  }
+
   /**
    * Version that loses its hue and lightens or darkens until hovered or
    * otherwise activated.
@@ -83,7 +94,7 @@
   &.pop {
     &:hover, &:focus, &:active, &.active {
       transform: scale(1.5);
-      &:not([theme]), &[theme^=text-] {
+      &:not([class*=theme]), &[class*=theme-text-] {
         background-color: transparent;
       }
     }
@@ -91,16 +102,4 @@
 
   // Animate all transitions.
   @include sf-transitions(all);
-}
-
-// Nested SVG styles. The namespace part in the selector is a workaround for
-// Firefox behaviour (bug? spec compliance?).
-[*|sf-icon] > svg {
-  // Center horizontally.
-  display: inline-block;
-  margin-left: auto;
-  margin-right: auto;
-  // Dimensions.
-  width: 1em !important;
-  height: 1em !important;
 }

@@ -1,13 +1,13 @@
 /**
  * Text input styles.
  *
- *   <input sf-input type="text">
- *   <input type="text">
- *   <textarea sf-input></textarea>
+ *   <input class="sf-input">
+ *   <input>
+ *   <textarea class="sf-input"></textarea>
  *   <textarea></textarea>
  */
 
-[sf-input],
+.sf-input,
 // Native inputs.
 input, textarea {
   /**
@@ -22,31 +22,20 @@ input, textarea {
     border-color: transparent;
   }
 
-  // Normalise outlines.
-  @include sf-outline-interactive;
-
   // Normalise default colours.
-  &:not([theme]) {color: inherit}
+  &:not([class*=theme]) {color: inherit}
 
   // Normalise background colour. (Webkit has default {background-color: white}).
-  &:not(:hover):not(:focus):not(:active):not(.active), &[disabled] {
-    &:not([theme]), &[theme^=text-] {
-      background-color: inherit;
-    }
+  &:not([class*=theme]), &[class*=theme-text-] {
+    background-color: inherit;
   }
 
-  // Themed verisons.
+  // Themed versions.
   @each $color-map in $sf-color-maps {
     $name: map-get($color-map, name);
     $default: map-get($color-map, default);
 
-    &[theme=text-#{$name}] {
-      &::placeholder {
-        color: rgba($default, 0.5);
-      }
-    }
-
-    &[theme=#{$name}] {
+    &.theme-#{$name} {
       &::placeholder {
         color: rgba(sf-contrasting-color($default), 0.5);
       }

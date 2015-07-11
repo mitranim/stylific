@@ -1,16 +1,16 @@
-[sf-icon] {
+[class*=sf-icon] {
   /**
    * Register SVG icons.
    */
-  @include svg-black(arrow-up);
+  @include svg-icon-black(arrow-up);
 
   /**
    * Icon colours.
    */
-  &.github svg {
+  &.sf-icon-github svg {
     fill: #4183c4;
   }
-  &.github-light svg {
+  &.sf-icon-github-light svg {
     fill: #fcfcfc;
   }
 }

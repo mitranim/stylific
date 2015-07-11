@@ -37,12 +37,22 @@ ul, ol {
 }
 
 // Normalise default outlines.
+* {@include sf-outline-base;}
 :focus {
   @include sf-outline-focus;
 }
 
-// Global 'not allowed' cursor.
-[disabled] {cursor: not-allowed}
+// Common-sense cursor styles.
+.interactive, a[href], [data-sf-toggle], [data-sf-toggle-siblings], [data-sf-toggle-id] {
+  cursor: pointer;
+}
+// Global [disabled] defaults.
+[disabled] {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.block {display: block;}
 
 /********************************** Globals **********************************/
 

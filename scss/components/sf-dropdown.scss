@@ -2,35 +2,35 @@
  *
  * # Modes
  *
- * [sf-dropdown] has two mutually exclusive modes: hover and toggled. The
- * toggled version is enabled by [sf-toggle] to the <label>.
+ * .sf-dropdown has two mutually exclusive modes: hover and toggled. The
+ * toggled version is enabled by [data-sf-toggle] to the <label>.
  *
  *
  * ## Hover
  *
  * The hover version must have the following layout:
  *
- *   <div sf-dropdown>
+ *   <div class="sf-dropdown">
  *     <label>...</label>
- *     <div sf-dropdown-list>
+ *     <div class="sf-dropdown-list">
  *       ...
  *     </div>
  *   </div>
  *
  * It triggers when you hover over the label and stays while the label or
- * the [sf-dropdown-list] is hovered. The label needs to contain some text or
- * other content to be visible. The following [sf-dropdown-list] may contain
+ * the .sf-dropdown-list is hovered. The label needs to contain some text or
+ * other content to be visible. The following .sf-dropdown-list may contain
  * arbitrary elements.
  *
  *
  * ## Toggled
  *
- * The toggled version is enabled by adding the [sf-toggle] attribute to the
+ * The toggled version is enabled by adding the [data-sf-toggle] attribute to the
  * label.
  *
- *   <div sf-dropdown>
- *     <label sf-toggle>...</label>
- *     <div sf-dropdown-list>
+ *   <div class="sf-dropdown">
+ *     <label data-sf-toggle>...</label>
+ *     <div class="sf-dropdown-list">
  *       ...
  *     </div>
  *   </div>
@@ -42,10 +42,10 @@
  * # Position
  *
  * The default position of the dropdown list is below the label. It can be
- * altered with an attribute.
+ * altered with an additional option.
  *
- *   <div sf-dropdown="top">
- *   <div sf-dropdown="right">
+ *   <div class="sf-dropdown sf-dropdown-top">
+ *   <div class="sf-dropdown sf-dropdown-right">
  *
  * See the code below for the list of supported positions.
  */
@@ -56,7 +56,7 @@
  * Use different xy shadow offsets based on position.
  */
 
-[sf-dropdown] {
+.sf-dropdown {
 
   /**
    * Layout.
@@ -70,10 +70,10 @@
   }
 
   // Base background colour for the list.
-  &:not([theme]), &[theme^=text-] {
+  &:not([class*=theme]), &[class*=theme-text-] {
     background-color: $sf-color-background;
   }
-  [theme] & {
+  [class*=theme] & {
     background-color: inherit;
   }
 
@@ -98,7 +98,7 @@
     /**
      * Cosmetic.
      */
-    @include sf-cursor-interactive;
+    cursor: pointer;
     // Cosmetic state indicator. In the hover version, it's static; in the
     // toggled version, its content is changed when the state is toggled.
     &::after {
@@ -117,7 +117,7 @@
   /**
    * Base label styles for the toggled version.
    */
-  > label[sf-toggle] {
+  > label[data-sf-toggle] {
     /**
      * Overlay for closing the toggled dropdown.
      */
@@ -133,7 +133,7 @@
   /**
    * Active label styles for the toggled version.
    */
-  > label[sf-toggle].active {
+  > label[data-sf-toggle].active {
     // Make the toggle overlay interactive.
     &::before {content: ''}
     // Change the state indicator.
@@ -143,7 +143,7 @@
   /**
    * Base dropdown list styles.
    */
-  > [sf-dropdown-list] {
+  > .sf-dropdown-list {
     /**
      * Layout.
      */
@@ -180,10 +180,10 @@
    * Position-dependent indicators.
    */
   // Top.
-  &[sf-dropdown~=top] {
+  &.sf-dropdown-top {
     // Reverse the indicators.
     > label::after {content: '△'}
-    > label[sf-toggle].active::after {
+    > label[data-sf-toggle].active::after {
       content: '▼';
     }
   }
@@ -192,12 +192,12 @@
    * Active dropdown list styles.
    */
   // Hover version.
-  > label:not([sf-toggle]):hover + [sf-dropdown-list],
+  > label:not([data-sf-toggle]):hover + .sf-dropdown-list,
   // Hover version -> dropdown list; we try to limit this to the hover version
   // to avoid flickering in the dropdown version when animations are enabled.
-  > label:not([sf-toggle]) + [sf-dropdown-list]:hover,
+  > label:not([data-sf-toggle]) + .sf-dropdown-list:hover,
   // Toggled version.
-  > label[sf-toggle].active + [sf-dropdown-list] {
+  > label[data-sf-toggle].active + .sf-dropdown-list {
     // Display. Both opacity and visibility are required to animate the
     // visibility change.
     opacity: inherit;
@@ -208,31 +208,30 @@
    * Dropdown list positioning.
    */
   // Bottom (default).
-  &:not([sf-dropdown]), &[sf-dropdown=''],
-  &[sf-dropdown~=bottom] {
-    > [sf-dropdown-list] {
+  &:not([class*=sf-dropdown-]), &.sf-dropdown-bottom {
+    > .sf-dropdown-list {
       top: 100%;
       left: 0;
     }
   }
   // Top.
-  &[sf-dropdown~=top] {
+  &.sf-dropdown-top {
     // Dropdown position.
-    > [sf-dropdown-list] {
+    > .sf-dropdown-list {
       bottom: 100%;
       left: 0;
     }
   }
   // Right.
-  &[sf-dropdown~=right] {
-    > [sf-dropdown-list] {
+  &.sf-dropdown-right {
+    > .sf-dropdown-list {
       top: 0;
       left: 100%;
     }
   }
   // Left.
-  &[sf-dropdown~=left] {
-    > [sf-dropdown-list] {
+  &.sf-dropdown-left {
+    > .sf-dropdown-list {
       top: 0;
       right: 100%;
     }

@@ -6,15 +6,15 @@ width changes. The classes are cosmetic.
 Back to [Layout#Grid](layout/#grid).
 
 ```html
-<div grid class="doc-grid-demo">
+<div class="grid doc-grid-demo">
   <p>One</p>
   <p>...</p>
   <p>Twenty</p>
 </div>
 ```
 
-<div doc-demo style="display: block">
-  <div grid class="doc-grid-demo">
+<div class="doc-demo block">
+  <div class="grid doc-grid-demo">
     <p>One</p>
     <p>Two</p>
     <p>Three</p>

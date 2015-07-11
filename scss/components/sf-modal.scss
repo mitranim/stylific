@@ -1,16 +1,15 @@
 /**
  * A modal must have the following layout:
  *
- *   <div sf-modal id="myModal">
- *     <div sf-modal-body>...</div>
+ *   <div class="sf-modal" id="myModal">
+ *     <div class="sf-modal-body">...</div>
  *   </div>
  *
- * It becomes visible when it has an `.active` class or the `[sf-modal="show"]`
- * option.
+ * It becomes visible when it has an `.active` class.
  *
- * To trigger the modal, you need an element with [sf-toggle-id]:
+ * To trigger the modal, you need an element with [data-sf-toggle-id]:
  *
- *   <button sf-toggle-id="myModal">...</button>
+ *   <button data-sf-toggle-id="myModal">...</button>
  *
  * To close the modal, click the overlay or the close button.
  */
@@ -18,7 +17,7 @@
 /**
  * ToDo.
  *
- * Add attributes for controlling modal width.
+ * Add options for controlling modal width.
  *
  * Include a variant with a fixed header; the user should be able to fix
  * the position of an arbitrary descendant, not just an immediate child.
@@ -29,7 +28,7 @@
  * Close the last modal when Esc is pressed.
  */
 
-[sf-modal] {
+.sf-modal {
 
   /**
    * Layout.
@@ -44,7 +43,7 @@
   height: 0;
 
   // Active styling.
-  &.active, &[sf-modal~=show] {
+  &.active {
     // Uncollapse dimensions.
     width: 100%;
     height: 100%;
@@ -91,12 +90,12 @@
       border-top-right-radius: $sf-border-radius;
       opacity: 0.5;
       padding: $sf-space / 4;
-      @include sf-cursor-interactive;
+      cursor: pointer;
     }
   }
 
   // Body styling.
-  > [sf-modal-body] {
+  > .sf-modal-body {
     /**
      * Layout.
      */
@@ -138,8 +137,7 @@
   }
 
   // Active body visibility.
-  &.active > [sf-modal-body],
-  &[sf-modal~=show] > [sf-modal-body] {
+  &.active > .sf-modal-body {
     // Display. Both opacity and visibility are required to animate the
     // visibility change.
     opacity: inherit;
@@ -148,14 +146,11 @@
 
   // Shrink option: automatically adjusts body size. Doesn't have a close
   // button.
-  &[sf-modal~=shrink] {
-    &.active::after, &[sf-modal~=show]::after {content: none}
+  &.sf-modal-shrink {
+    &.active::after {content: none}
 
-    > [sf-modal-body] {
+    > .sf-modal-body {
       position: relative;
-      // display: inline-block;
-      // width: auto;
-      // height: auto;
       top: auto;
       bottom: auto;
       left: auto;

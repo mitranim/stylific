@@ -2,21 +2,21 @@
  * Big-ass panel to display a greeting image. Text content is underlayed for
  * easier reading.
  *
- *   <div sf-jumbo style="background-image: url(...)">
+ *   <div class="sf-jumbo" style="background-image: url(...)">
  *     ...
  *   </div>
  *
  * By default, jumbo content is pushed to the bottom. This can be changed with
  * a layout property:
  *
- *   <div sf-jumbo style="background-image: url(...)" layout="start">
+ *   <div class="sf-jumbo layout-start" style="background-image: url(...)">
  *     ...
  *   </div>
  *
  * In this example, children will be at the top.
  */
 
-[sf-jumbo] {
+.sf-jumbo {
 
   /**
    * Layout.
@@ -31,7 +31,7 @@
   font-size: $sf-jumbo-font-size;
 
   // Normal sized version.
-  &[sf-jumbo~=normal] {font-size: 1em}
+  &.sf-jumbo-normal {font-size: 1em}
 
   /**
    * Inner layout.

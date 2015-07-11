@@ -1,10 +1,8 @@
 <!-- TOC -->
-<div sf-collapse doc-toc theme="text-accent">
-  <label class="active" theme="accent"></label>
-  <div sf-collapse-body>
+<div class="sf-collapse doc-toc theme-text-accent">
+  <label class="active theme-accent"></label>
+  <div class="sf-collapse-body">
     [Overview](#overview)
-    [Motivation](#motivation)
-    [What's Different](#what-s-different)
     [Installation and Usage](#installation-and-usage)
     [Contributing](#contributing)
   </div>
@@ -12,54 +10,17 @@
 
 # Overview
 
-`stylific` ([source](https://github.com/Mitranim/stylific)) is a CSS library
-written with [Sass](http://sass-lang.com) (previously with LESS). It's designed
-to serve as a flexible foundation for website styling, and provides common UI
-components as building blocks.
+`stylific` is a CSS library written with [Sass](http://sass-lang.com)
+(previously with LESS). It's designed to serve as a flexible foundation for
+website styling, and provides common UI components as building blocks.
 
-There are plenty of UI libraries out there: Bootstrap, Foundation, Polymer's
-Paper Elements, Angular Material, and so on. What's different about this one?
-Read on!
+In many ways this is similar to [Bootstrap](http://getbootstrap.com), with the
+difference that stylific uses typographic units (`rem` and `em`) and flexbox.
+Bootstrap 4 may or may not obviate the need for it.
 
-This project is nowhere near as ambitious as the other libraries I've mentioned.
-In fact, it's much more modest in scope than the styles of any moderately sized
-website. It exists to provide a good starting point for new projects, and
-showcase the advantages of exploiting modern CSS standards.
-
-## A Demo Please?
-
-This website is a live demo. See [Components](components/) for an overview of
-UI elements. Also, check out the documentation's
-[source](https://github.com/Mitranim/stylific/tree/master/src-docs) to see how
-it imports and extends the library.
-
-# What's Different
-
-## Component Oriented
-
-This library organises styles around [tags and
-attributes](https://github.com/Mitranim/stylific/tree/master/scss/components).
-Most styles are scoped to a customisable name, like `sf-tabset`, and available
-in the form of a custom tag or a custom attribute. Some styles are applied by
-default to native inputs, but also exposed as attributes (like `[sf-input]`).
-Each component is purposely ignorant of others. Many components accept
-configuration flags as part of their attribute's value.
-
-This approach makes it easier to remember component names, and keeps your markup
-semantic. It also makes it far easier to convert your elements into web
-components (custom elements) with a library like Polymer or
-[atril](http://mitranim.com/atril/), because you will already have the tags
-and styles in place. You can begin by styling your website statically, then
-effortlessly enhance selected elements with JavaScript.
-
-Another benefit of this approach is that because each component's styles are
-scoped under a single tag or attribute name, they're easy to subclass using
-Sass's `@extend` directive.
-
-It also turns out to be a great strategy for CSS specificity. Isolating styles
-to custom tags and their immediate children keeps CSS specificity low and
-prevents it from compounding, making base styles easy to override. It might be
-the solution to specificity you've been looking for!
+Prior to version 0.7.0, stylific used custom tag names and attributes for most
+of the styling. Starting with 0.7.0, all styles are class based for
+compatibility with React and/or strict HTML validators.
 
 ## Flexible Units
 

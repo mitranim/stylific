@@ -1,21 +1,21 @@
-<div sf-footer>
-  <div sf-footer-body>
-    <div flex="1" layout="column cross-start">
+<div class="sf-footer">
+  <div class="sf-footer-body">
+    <div class="flex-1 layout-column layout-cross-start">
       <span>
         <%= (new Date()).getFullYear() > 2015 ? '2015—' + (new Date()).getFullYear() : '2015' %>
         <a href="http://mitranim.com" target="_blank">Mitranim</a>
       </span>
     </div>
-    <div flex="1" layout="column cross-center">
-      <a layout="cross-center" href="https://github.com/Mitranim/stylific" target="_blank">
-        <div sf-icon class="github" style="font-size: 2em">
+    <div class="flex-1 layout-column layout-cross-center">
+      <a class="layout-cross-center" href="https://github.com/Mitranim/stylific" target="_blank">
+        <div class="sf-icon-github" style="font-size: 2em">
           <%= $include('svg/github', $) %>
         </div>
         Source at GitHub
       </a>
     </div>
-    <div flex="1" layout="column cross-end">
-      <button sf-icon class="arrow-up pad" style="opacity: 0.5" onclick="scrollTo(0, 0)"></button>
+    <div class="flex-1 layout-column layout-cross-end">
+      <button class="sf-icon-arrow-up pad" style="opacity: 0.5" onclick="scrollTo(0, 0)"></button>
     </div>
   </div>
 </div>

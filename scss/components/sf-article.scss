@@ -1,11 +1,11 @@
 /**
  * Usage:
  *
- *   <div sf-article>...</div>
+ *   <div class="sf-article">...</div>
  *   <article>...</article>
  */
 
-[sf-article],
+.sf-article,
 // Extend the native tag.
 article {
 
