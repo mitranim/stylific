@@ -581,7 +581,7 @@ adds some nice defaults.
 
 ```html
 <button>default button</button>
-<button sf-button="flat">flat button</button>
+<button class="sf-button-flat">flat button</button>
 <button class="theme-text-primary">text-primary themed button</button>
 <button class="theme-primary">primary themed button</button>
 <button class="theme-text-accent">text-accent themed button</button>
@@ -590,7 +590,7 @@ adds some nice defaults.
 
 <div class="doc-demo layout space-out-h">
   <button>default button</button>
-  <button sf-button="flat">flat button</button>
+  <button class="sf-button-flat">flat button</button>
   <button class="theme-text-primary">text-primary themed button</button>
   <button class="theme-primary">primary themed button</button>
   <button class="theme-text-accent">text-accent themed button</button>
