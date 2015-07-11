@@ -14,94 +14,61 @@
 
   <body>
     <!-- Navbar -->
-    <sf-navbar>
+    <div class="sf-navbar">
   <!-- Links -->
   <a class="active" href="">Overview</a>
   <a  href="components/">Components</a>
   <a  href="layout/">Layout</a>
-  <a  href="themes/">Themes</a>
   <!-- Collapse breakpoint -->
   <label></label>
+  <a  href="themes/">Themes</a>
   <!-- Collapsable children -->
-  <a  href="configuration/">Config</a>
-  <sf-dropdown style="padding: 0">
-    <label layout="center">Examples</label>
-    <sf-dropdown-list class="text-left">
+  <div class="sf-dropdown" style="padding: 0">
+    <label class="layout-center">Examples</label>
+    <div class="sf-dropdown-list text-left">
       <a  href="examples/navbar-demo/">navbar demo</a>
       <a  href="examples/footer/">footer</a>
       <a  href="examples/grid-demo/">grid demo</a>
-    </sf-dropdown-list>
-  </sf-dropdown>
-</sf-navbar>
+    </div>
+  </div>
+</div>
 
 
     <!-- Presentation jumbo -->
-    <sf-jumbo style="height: auto">
-      <h1 layout="space-between">
+    <div class="sf-jumbo" style="height: auto">
+      <h1 class="layout-space-between">
         stylific
         <a href="https://github.com/Mitranim/stylific" target="_blank">
-          <sf-icon class="github-light pop">
+          <div class="sf-icon-github-light pop">
             <svg width="2048" height="2048" viewBox="0 0 2048 2048" xmlns="http://www.w3.org/2000/svg"><path d="M1792 1024q0 251-146.5 451.5t-378.5 277.5q-27 5-39.5-7t-12.5-30v-211q0-97-52-142 57-6 102.5-18t94-39 81-66.5 53-105 20.5-150.5q0-121-79-206 37-91-8-204-28-9-81 11t-92 44l-38 24q-93-26-192-26t-192 26q-16-11-42.5-27t-83.5-38.5-86-13.5q-44 113-7 204-79 85-79 206 0 85 20.5 150t52.5 105 80.5 67 94 39 102.5 18q-40 36-49 103-21 10-45 15t-57 5-65.5-21.5-55.5-62.5q-19-32-48.5-52t-49.5-24l-20-3q-21 0-29 4.5t-5 11.5 9 14 13 12l7 5q22 10 43.5 38t31.5 51l10 23q13 38 44 61.5t67 30 69.5 7 55.5-3.5l23-4q0 38 .5 89t.5 54q0 18-13 30t-40 7q-232-77-378.5-277.5t-146.5-451.5q0-209 103-385.5t279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"/></svg>
-          </sf-icon>
+          </div>
         </a>
       </h1>
       <p>CSS UI library</p>
-    </sf-jumbo>
+    </div>
 
     <!-- Site content -->
-    <sf-article>
+    <article>
       <!-- TOC -->
-<div sf-collapse doc-toc theme="text-accent">
-  <label class="active" theme="accent"></label>
-  <sf-collapse-body>
+<div class="sf-collapse doc-toc theme-text-accent">
+  <label class="active theme-accent"></label>
+  <div class="sf-collapse-body">
     <a href="#overview">Overview</a>
-    <a href="#motivation">Motivation</a>
-    <a href="#what-s-different">What&#39;s Different</a>
     <a href="#installation-and-usage">Installation and Usage</a>
     <a href="#contributing">Contributing</a>
-  </sf-collapse-body>
+  </div>
 </div>
 
 <h1 id="overview">Overview</h1>
-<p><code>stylific</code> (<a href="https://github.com/Mitranim/stylific" target="_blank">source</a>) is a CSS library
-written with <a href="http://sass-lang.com" target="_blank">Sass</a> (previously with LESS). It&#39;s designed
-to serve as a flexible foundation for website styling, and provides common UI
-components as building blocks.</p>
-<p>There are plenty of UI libraries out there: Bootstrap, Foundation, Polymer&#39;s
-Paper Elements, Angular Material, and so on. What&#39;s different about this one?
-Read on!</p>
-<p>This project is nowhere near as ambitious as the other libraries I&#39;ve mentioned.
-In fact, it&#39;s much more modest in scope than the styles of any moderately sized
-website. It exists to provide a good starting point for new projects, and
-showcase the advantages of exploiting modern CSS standards.</p>
-<h2 id="a-demo-please-">A Demo Please?</h2>
-<p>This website is a live demo. See <a href="components/">Components</a> for an overview of
-UI elements. Also, check out the documentation&#39;s
-<a href="https://github.com/Mitranim/stylific/tree/master/src-docs" target="_blank">source</a> to see how
-it imports and extends the library.</p>
-<h1 id="what-s-different">What&#39;s Different</h1>
-<h2 id="component-oriented">Component Oriented</h2>
-<p>This library organises styles around <a href="https://github.com/Mitranim/stylific/tree/master/scss/components" target="_blank">tags and
-attributes</a>.
-Most styles are scoped to a customisable name, like <code>sf-tabset</code>, and available
-in the form of a custom tag or a custom attribute. Some styles are applied by
-default to native inputs, but also exposed as attributes (like <code>[sf-input]</code>).
-Each component is purposely ignorant of others. Many components accept
-configuration flags as part of their attribute&#39;s value.</p>
-<p>This approach makes it easier to remember component names, and keeps your markup
-semantic. It also makes it far easier to convert your elements into web
-components (custom elements) with a library like Polymer or
-<a href="http://mitranim.com/atril/" target="_blank">atril</a>, because you will already have the tags
-and styles in place. You can begin by styling your website statically, then
-effortlessly enhance selected elements with JavaScript.</p>
-<p>Another benefit of this approach is that because each component&#39;s styles are
-scoped under a single tag or attribute name, they&#39;re easy to
-<a href="configuration/#subclassing">subclass</a> using Sass&#39;s <code>@extend</code>
-directive.</p>
-<p>It also turns out to be a great strategy for CSS specificity. Isolating styles
-to custom tags and their immediate children keeps CSS specificity low and
-prevents it from compounding, making base styles easy to override. It might be
-the solution to specificity you&#39;ve been looking for!</p>
+<p><code>stylific</code> is a CSS library written with <a href="http://sass-lang.com" target="_blank">Sass</a>
+(previously with LESS). It&#39;s designed to serve as a flexible foundation for
+website styling, and provides common UI components as building blocks.</p>
+<p>In many ways this is similar to <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>, with the
+difference that stylific uses typographic units (<code>rem</code> and <code>em</code>) and flexbox.
+Bootstrap 4 may or may not obviate the need for it.</p>
+<p>Prior to version 0.7.0, stylific used custom tag names and attributes for most
+of the styling. Starting with 0.7.0, all styles are class based for
+compatibility with React and/or strict HTML validators.</p>
 <h2 id="flexible-units">Flexible Units</h2>
 <p>stylific uses <code>em</code> and <code>rem</code> units for most dimensions. Unlike pixels, they
 scale with font size, and automatically cascade changes to the base size across
@@ -133,8 +100,8 @@ project&#39;s root and run:</p>
 <p>After installing, import it in your Sass source (adjust the path if needed):</p>
 <pre><code class="hljs lang-scss"><span class="hljs-at_rule">@<span class="hljs-keyword">import</span> <span class="hljs-string">'./node_modules/stylific/scss/stylific'</span>;</span>
 </code></pre>
-<p>This allows you to <a href="configuration/">configure</a> the library with variables,
-subclass built-in components, and so on.</p>
+<p>This allows you to configure the library with variables, subclass built-in
+components, and so on.</p>
 <p><strong>Caution</strong>: neither Sass nor stylific account for missing vendor prefixes. You
 must compensate by combining it with
 <a href="https://github.com/postcss/autoprefixer" target="_blank"><code>autoprefixer</code></a> in your build system.</p>
@@ -149,30 +116,30 @@ must compensate by combining it with
 <a href="https://github.com/Mitranim/stylific/tree/gh-pages" target="_blank">these instructions</a> to
 set up a local build for development, then send your changes to <code>master</code>.</p>
 
-    </sf-article>
+    </article>
 
     <!-- Footer -->
-    <sf-footer>
-  <sf-footer-body>
-    <div flex="1" layout="column cross-start">
+    <div class="sf-footer">
+  <div class="sf-footer-body">
+    <div class="flex-1 layout-column layout-cross-start">
       <span>
         2015
         <a href="http://mitranim.com" target="_blank">Mitranim</a>
       </span>
     </div>
-    <div flex="1" layout="column cross-center">
-      <a layout="cross-center" href="https://github.com/Mitranim/stylific" target="_blank">
-        <sf-icon class="inline github" style="font-size: 2em">
+    <div class="flex-1 layout-column layout-cross-center">
+      <a class="layout-cross-center" href="https://github.com/Mitranim/stylific" target="_blank">
+        <div class="sf-icon-github" style="font-size: 2em">
           <svg width="2048" height="2048" viewBox="0 0 2048 2048" xmlns="http://www.w3.org/2000/svg"><path d="M1792 1024q0 251-146.5 451.5t-378.5 277.5q-27 5-39.5-7t-12.5-30v-211q0-97-52-142 57-6 102.5-18t94-39 81-66.5 53-105 20.5-150.5q0-121-79-206 37-91-8-204-28-9-81 11t-92 44l-38 24q-93-26-192-26t-192 26q-16-11-42.5-27t-83.5-38.5-86-13.5q-44 113-7 204-79 85-79 206 0 85 20.5 150t52.5 105 80.5 67 94 39 102.5 18q-40 36-49 103-21 10-45 15t-57 5-65.5-21.5-55.5-62.5q-19-32-48.5-52t-49.5-24l-20-3q-21 0-29 4.5t-5 11.5 9 14 13 12l7 5q22 10 43.5 38t31.5 51l10 23q13 38 44 61.5t67 30 69.5 7 55.5-3.5l23-4q0 38 .5 89t.5 54q0 18-13 30t-40 7q-232-77-378.5-277.5t-146.5-451.5q0-209 103-385.5t279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"/></svg>
-        </sf-icon>
+        </div>
         Source at GitHub
       </a>
     </div>
-    <div flex="1" layout="column cross-end">
-      <button sf-icon class="arrow-up pad" style="opacity: 0.5" onclick="scrollTo(0, 0)"></button>
+    <div class="flex-1 layout-column layout-cross-end">
+      <button class="sf-icon-arrow-up pad" style="opacity: 0.5" onclick="scrollTo(0, 0)"></button>
     </div>
-  </sf-footer-body>
-</sf-footer>
+  </div>
+</div>
 
 
     <!-- Scripts -->

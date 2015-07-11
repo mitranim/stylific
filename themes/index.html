@@ -14,51 +14,50 @@
 
   <body>
     <!-- Navbar -->
-    <sf-navbar>
+    <div class="sf-navbar">
   <!-- Links -->
   <a  href="">Overview</a>
   <a  href="components/">Components</a>
   <a  href="layout/">Layout</a>
-  <a class="active" href="themes/">Themes</a>
   <!-- Collapse breakpoint -->
   <label></label>
+  <a class="active" href="themes/">Themes</a>
   <!-- Collapsable children -->
-  <a  href="configuration/">Config</a>
-  <sf-dropdown style="padding: 0">
-    <label layout="center">Examples</label>
-    <sf-dropdown-list class="text-left">
+  <div class="sf-dropdown" style="padding: 0">
+    <label class="layout-center">Examples</label>
+    <div class="sf-dropdown-list text-left">
       <a  href="examples/navbar-demo/">navbar demo</a>
       <a  href="examples/footer/">footer</a>
       <a  href="examples/grid-demo/">grid demo</a>
-    </sf-dropdown-list>
-  </sf-dropdown>
-</sf-navbar>
+    </div>
+  </div>
+</div>
 
 
     <!-- Presentation jumbo -->
-    <sf-jumbo style="height: auto">
-      <h1 layout="space-between">
+    <div class="sf-jumbo" style="height: auto">
+      <h1 class="layout-space-between">
         stylific
         <a href="https://github.com/Mitranim/stylific" target="_blank">
-          <sf-icon class="github-light pop">
+          <div class="sf-icon-github-light pop">
             <svg width="2048" height="2048" viewBox="0 0 2048 2048" xmlns="http://www.w3.org/2000/svg"><path d="M1792 1024q0 251-146.5 451.5t-378.5 277.5q-27 5-39.5-7t-12.5-30v-211q0-97-52-142 57-6 102.5-18t94-39 81-66.5 53-105 20.5-150.5q0-121-79-206 37-91-8-204-28-9-81 11t-92 44l-38 24q-93-26-192-26t-192 26q-16-11-42.5-27t-83.5-38.5-86-13.5q-44 113-7 204-79 85-79 206 0 85 20.5 150t52.5 105 80.5 67 94 39 102.5 18q-40 36-49 103-21 10-45 15t-57 5-65.5-21.5-55.5-62.5q-19-32-48.5-52t-49.5-24l-20-3q-21 0-29 4.5t-5 11.5 9 14 13 12l7 5q22 10 43.5 38t31.5 51l10 23q13 38 44 61.5t67 30 69.5 7 55.5-3.5l23-4q0 38 .5 89t.5 54q0 18-13 30t-40 7q-232-77-378.5-277.5t-146.5-451.5q0-209 103-385.5t279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"/></svg>
-          </sf-icon>
+          </div>
         </a>
       </h1>
       <p>CSS UI library</p>
-    </sf-jumbo>
+    </div>
 
     <!-- Site content -->
-    <sf-article>
+    <article>
       <!-- TOC -->
-<div sf-collapse doc-toc theme="text-accent">
-  <label class="active" theme="accent"></label>
-  <sf-collapse-body>
+<div class="sf-collapse doc-toc theme-text-accent">
+  <label class="active theme-accent"></label>
+  <div class="sf-collapse-body">
     <a href="themes/#overview">Overview</a>
     <a href="themes/#text-themes">Text Themes</a>
     <a href="themes/#full-themes">Full Themes</a>
     <a href="themes/#custom-configuration">Custom Configuration</a>
-  </sf-collapse-body>
+  </div>
 </div>
 
 <h1 id="overview">Overview</h1>
@@ -68,8 +67,8 @@ Material</a>.</p>
 <p>You configure three themes: <code>primary</code>, <code>accent</code>, and <code>warn</code>. Each theme consists
 of the main colour and two additional hues for &quot;activated&quot; and &quot;selected&quot;
 states.</p>
-<p>For each given theme <code>X</code>, the library creates two attributes: <code>theme=X</code> and
-<code>theme=text-X</code>. The text theme only changes the text colour, automatically
+<p>For each given theme <code>X</code>, the library creates two classes: <code>.theme-X</code> and
+<code>.theme-text-X</code>. The text theme only changes the text colour, automatically
 adjusting it to a luminosity comfortably contrasting the default background
 colour. The &quot;full&quot; theme uses the theme colour for the background, automatically
 selecting a text colour that contrasts it.</p>
@@ -79,87 +78,87 @@ addition, you can adjust the text and background colour with variables. See
 and
 <a href="https://github.com/Mitranim/stylific/tree/master/scss/colors.scss" target="_blank"><code>colors.scss</code></a>.</p>
 <h1 id="text-themes">Text Themes</h1>
-<p>Demo of some elements with the <code>text-*</code> themes.</p>
+<p>Demo of some elements with the <code>.theme-text-*</code> themes.</p>
 <pre><code class="hljs lang-html"><span class="hljs-comment">&lt;!-- ... --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"text-primary"</span>&gt;</span>`text-primary` button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">p</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"text-primary"</span>&gt;</span>`text-primary` paragraph<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"text-primary"</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"`text-primary` input"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"theme-text-primary"</span>&gt;</span>`text-primary` button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">p</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"theme-text-primary"</span>&gt;</span>`text-primary` paragraph<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"theme-text-primary"</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"`text-primary` input"</span>&gt;</span>
 <span class="hljs-comment">&lt;!-- ... --&gt;</span>
 </code></pre>
-<div doc-demo style="display: block" class="space-out">
-  <div layout="space-between cross-center">
+<div class="doc-demo block space-out">
+  <div class="layout-space-between layout-cross-center">
     <button>No theme button</button>
     <p>No theme paragraph</p>
     <input value="No theme input">
   </div>
-  <div layout="space-between cross-center">
-    <button theme="text-primary"><code>text-primary</code> button</button>
-    <p theme="text-primary"><code>text-primary</code> paragraph</p>
-    <input theme="text-primary" value="`text-primary` input">
+  <div class="layout-space-between layout-cross-center">
+    <button class="theme-text-primary"><code>text-primary</code> button</button>
+    <p class="theme-text-primary"><code>text-primary</code> paragraph</p>
+    <input class="theme-text-primary" value="`text-primary` input">
   </div>
-  <div layout="space-between cross-center">
-    <button theme="text-accent"><code>text-accent</code> button</button>
-    <p theme="text-accent"><code>text-accent</code> paragraph</p>
-    <input theme="text-accent" value="`text-accent` input">
+  <div class="layout-space-between layout-cross-center">
+    <button class="theme-text-accent"><code>text-accent</code> button</button>
+    <p class="theme-text-accent"><code>text-accent</code> paragraph</p>
+    <input class="theme-text-accent" value="`text-accent` input">
   </div>
-  <div layout="space-between cross-center">
-    <button theme="text-warn"><code>text-warn</code> button</button>
-    <p theme="text-warn"><code>text-warn</code> paragraph</p>
-    <input theme="text-warn" value="`text-warn` input">
+  <div class="layout-space-between layout-cross-center">
+    <button class="theme-text-warn"><code>text-warn</code> button</button>
+    <p class="theme-text-warn"><code>text-warn</code> paragraph</p>
+    <input class="theme-text-warn" value="`text-warn` input">
   </div>
-  <div layout="space-between cross-center">
+  <div class="layout-space-between layout-cross-center">
     <button disabled>disabled button</button>
     <input disabled value="disabled input">
   </div>
-  <div layout="space-between cross-center">
-    <button disabled theme="text-primary">disabled <code>text-primary</code> button</button>
-    <input disabled theme="text-primary" value="disabled `text-primary` input">
+  <div class="layout-space-between layout-cross-center">
+    <button disabled class="theme-text-primary">disabled <code>text-primary</code> button</button>
+    <input disabled class="theme-text-primary" value="disabled `text-primary` input">
   </div>
-  <div layout="space-between cross-center">
-    <button disabled theme="text-accent">disabled <code>text-accent</code> button</button>
-    <input disabled theme="text-accent" value="disabled `text-accent` input">
+  <div class="layout-space-between layout-cross-center">
+    <button disabled class="theme-text-accent">disabled <code>text-accent</code> button</button>
+    <input disabled class="theme-text-accent" value="disabled `text-accent` input">
   </div>
-  <div layout="space-between cross-center">
-    <button disabled theme="text-warn">disabled <code>text-warn</code> button</button>
-    <input disabled theme="text-warn" value="disabled `text-warn` input">
+  <div class="layout-space-between layout-cross-center">
+    <button disabled class="theme-text-warn">disabled <code>text-warn</code> button</button>
+    <input disabled class="theme-text-warn" value="disabled `text-warn` input">
   </div>
 </div>
 
 <h1 id="full-themes">Full Themes</h1>
 <p>Demo of some elements with the full themes.</p>
 <pre><code class="hljs lang-html"><span class="hljs-comment">&lt;!-- ... --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"primary"</span>&gt;</span>`primary` button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">p</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"primary"</span>&gt;</span>`primary` paragraph<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"primary"</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"`primary` input"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"theme-primary"</span>&gt;</span>`primary` button<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">p</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"theme-primary"</span>&gt;</span>`primary` paragraph<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"theme-primary"</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"`primary` input"</span>&gt;</span>
 <span class="hljs-comment">&lt;!-- ... --&gt;</span>
 </code></pre>
-<div doc-demo style="display: block" class="space-out">
-  <div layout="space-between cross-center">
-    <button theme="primary"><code>primary</code> button</button>
-    <p theme="primary"><code>primary</code> paragraph</p>
-    <input theme="primary" value="`primary` input">
+<div class="doc-demo block space-out">
+  <div class="layout-space-between layout-cross-center">
+    <button class="theme-primary"><code>primary</code> button</button>
+    <p class="theme-primary"><code>primary</code> paragraph</p>
+    <input class="theme-primary" value="`primary` input">
   </div>
-  <div layout="space-between cross-center">
-    <button theme="accent"><code>accent</code> button</button>
-    <p theme="accent"><code>accent</code> paragraph</p>
-    <input theme="accent" value="`accent` input">
+  <div class="layout-space-between layout-cross-center">
+    <button class="theme-accent"><code>accent</code> button</button>
+    <p class="theme-accent"><code>accent</code> paragraph</p>
+    <input class="theme-accent" value="`accent` input">
   </div>
-  <div layout="space-between cross-center">
-    <button theme="warn"><code>warn</code> button</button>
-    <p theme="warn"><code>warn</code> paragraph</p>
-    <input theme="warn" value="`warn` input">
+  <div class="layout-space-between layout-cross-center">
+    <button class="theme-warn"><code>warn</code> button</button>
+    <p class="theme-warn"><code>warn</code> paragraph</p>
+    <input class="theme-warn" value="`warn` input">
   </div>
-  <div layout="space-between cross-center">
-    <button disabled theme="primary">disabled <code>primary</code> button</button>
-    <input disabled theme="primary" value="disabled `primary` input">
+  <div class="layout-space-between layout-cross-center">
+    <button disabled class="theme-primary">disabled <code>primary</code> button</button>
+    <input disabled class="theme-primary" value="disabled `primary` input">
   </div>
-  <div layout="space-between cross-center">
-    <button disabled theme="accent">disabled <code>accent</code> button</button>
-    <input disabled theme="accent" value="disabled `accent` input">
+  <div class="layout-space-between layout-cross-center">
+    <button disabled class="theme-accent">disabled <code>accent</code> button</button>
+    <input disabled class="theme-accent" value="disabled `accent` input">
   </div>
-  <div layout="space-between cross-center">
-    <button disabled theme="warn">disabled <code>warn</code> button</button>
-    <input disabled theme="warn" value="disabled `warn` input">
+  <div class="layout-space-between layout-cross-center">
+    <button disabled class="theme-warn">disabled <code>warn</code> button</button>
+    <input disabled class="theme-warn" value="disabled `warn` input">
   </div>
 </div>
 
@@ -182,8 +181,8 @@ and want it as a new theme. Modify the <code>$sf-color-map</code> variable:</p>
 <span class="hljs-variable">$sf-color-maps</span><span class="hljs-value">: <span class="hljs-variable">$sf-color-map-primary</span>, <span class="hljs-variable">$sf-color-map-accent</span>, <span class="hljs-variable">$sf-color-map-warn</span>, <span class="hljs-variable">$sf-color-map-success</span>;</span>
 </code></pre>
 <p>Then you can use the <code>success</code> theme in your HTML:</p>
-<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"text-success"</span>&gt;</span>text theme<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">theme</span>=<span class="hljs-value">"success"</span>&gt;</span>full theme<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"theme-text-success"</span>&gt;</span>text theme<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"theme-success"</span>&gt;</span>full theme<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
 </code></pre>
 <p>You can also change the base text and background colours:</p>
 <pre><code class="hljs lang-scss"><span class="hljs-variable">$sf-color-text</span><span class="hljs-value">: white;</span>
@@ -194,30 +193,30 @@ and want it as a new theme. Modify the <code>$sf-color-map</code> variable:</p>
 <pre><code class="hljs lang-scss"><span class="hljs-at_rule">@<span class="hljs-keyword">import</span> <span class="hljs-string">'./node_modules/stylific/scss/stylific'</span>;</span>
 </code></pre>
 
-    </sf-article>
+    </article>
 
     <!-- Footer -->
-    <sf-footer>
-  <sf-footer-body>
-    <div flex="1" layout="column cross-start">
+    <div class="sf-footer">
+  <div class="sf-footer-body">
+    <div class="flex-1 layout-column layout-cross-start">
       <span>
         2015
         <a href="http://mitranim.com" target="_blank">Mitranim</a>
       </span>
     </div>
-    <div flex="1" layout="column cross-center">
-      <a layout="cross-center" href="https://github.com/Mitranim/stylific" target="_blank">
-        <sf-icon class="inline github" style="font-size: 2em">
+    <div class="flex-1 layout-column layout-cross-center">
+      <a class="layout-cross-center" href="https://github.com/Mitranim/stylific" target="_blank">
+        <div class="sf-icon-github" style="font-size: 2em">
           <svg width="2048" height="2048" viewBox="0 0 2048 2048" xmlns="http://www.w3.org/2000/svg"><path d="M1792 1024q0 251-146.5 451.5t-378.5 277.5q-27 5-39.5-7t-12.5-30v-211q0-97-52-142 57-6 102.5-18t94-39 81-66.5 53-105 20.5-150.5q0-121-79-206 37-91-8-204-28-9-81 11t-92 44l-38 24q-93-26-192-26t-192 26q-16-11-42.5-27t-83.5-38.5-86-13.5q-44 113-7 204-79 85-79 206 0 85 20.5 150t52.5 105 80.5 67 94 39 102.5 18q-40 36-49 103-21 10-45 15t-57 5-65.5-21.5-55.5-62.5q-19-32-48.5-52t-49.5-24l-20-3q-21 0-29 4.5t-5 11.5 9 14 13 12l7 5q22 10 43.5 38t31.5 51l10 23q13 38 44 61.5t67 30 69.5 7 55.5-3.5l23-4q0 38 .5 89t.5 54q0 18-13 30t-40 7q-232-77-378.5-277.5t-146.5-451.5q0-209 103-385.5t279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"/></svg>
-        </sf-icon>
+        </div>
         Source at GitHub
       </a>
     </div>
-    <div flex="1" layout="column cross-end">
-      <button sf-icon class="arrow-up pad" style="opacity: 0.5" onclick="scrollTo(0, 0)"></button>
+    <div class="flex-1 layout-column layout-cross-end">
+      <button class="sf-icon-arrow-up pad" style="opacity: 0.5" onclick="scrollTo(0, 0)"></button>
     </div>
-  </sf-footer-body>
-</sf-footer>
+  </div>
+</div>
 
 
     <!-- Scripts -->

@@ -14,84 +14,82 @@
 
   <body>
     <!-- Navbar -->
-    <sf-navbar>
+    <div class="sf-navbar">
   <!-- Links -->
   <a  href="">Overview</a>
   <a  href="components/">Components</a>
   <a class="active" href="layout/">Layout</a>
-  <a  href="themes/">Themes</a>
   <!-- Collapse breakpoint -->
   <label></label>
+  <a  href="themes/">Themes</a>
   <!-- Collapsable children -->
-  <a  href="configuration/">Config</a>
-  <sf-dropdown style="padding: 0">
-    <label layout="center">Examples</label>
-    <sf-dropdown-list class="text-left">
+  <div class="sf-dropdown" style="padding: 0">
+    <label class="layout-center">Examples</label>
+    <div class="sf-dropdown-list text-left">
       <a  href="examples/navbar-demo/">navbar demo</a>
       <a  href="examples/footer/">footer</a>
       <a  href="examples/grid-demo/">grid demo</a>
-    </sf-dropdown-list>
-  </sf-dropdown>
-</sf-navbar>
+    </div>
+  </div>
+</div>
 
 
     <!-- Presentation jumbo -->
-    <sf-jumbo style="height: auto">
-      <h1 layout="space-between">
+    <div class="sf-jumbo" style="height: auto">
+      <h1 class="layout-space-between">
         stylific
         <a href="https://github.com/Mitranim/stylific" target="_blank">
-          <sf-icon class="github-light pop">
+          <div class="sf-icon-github-light pop">
             <svg width="2048" height="2048" viewBox="0 0 2048 2048" xmlns="http://www.w3.org/2000/svg"><path d="M1792 1024q0 251-146.5 451.5t-378.5 277.5q-27 5-39.5-7t-12.5-30v-211q0-97-52-142 57-6 102.5-18t94-39 81-66.5 53-105 20.5-150.5q0-121-79-206 37-91-8-204-28-9-81 11t-92 44l-38 24q-93-26-192-26t-192 26q-16-11-42.5-27t-83.5-38.5-86-13.5q-44 113-7 204-79 85-79 206 0 85 20.5 150t52.5 105 80.5 67 94 39 102.5 18q-40 36-49 103-21 10-45 15t-57 5-65.5-21.5-55.5-62.5q-19-32-48.5-52t-49.5-24l-20-3q-21 0-29 4.5t-5 11.5 9 14 13 12l7 5q22 10 43.5 38t31.5 51l10 23q13 38 44 61.5t67 30 69.5 7 55.5-3.5l23-4q0 38 .5 89t.5 54q0 18-13 30t-40 7q-232-77-378.5-277.5t-146.5-451.5q0-209 103-385.5t279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"/></svg>
-          </sf-icon>
+          </div>
         </a>
       </h1>
       <p>CSS UI library</p>
-    </sf-jumbo>
+    </div>
 
     <!-- Site content -->
-    <sf-article>
+    <article>
       <!-- TOC -->
-<div sf-collapse doc-toc theme="text-accent">
-  <label class="active" theme="accent"></label>
-  <sf-collapse-body>
+<div class="sf-collapse doc-toc theme-text-accent">
+  <label class="active theme-accent"></label>
+  <div class="sf-collapse-body">
     <a href="layout/#overview">Overview</a>
     <a href="layout/#container">Container</a>
     <a href="layout/#child">Child</a>
+    <a href="layout/#grid">Grid</a>
     <a href="layout/#whitespace">Whitespace</a>
-  </sf-collapse-body>
+  </div>
 </div>
 
 <h1 id="overview">Overview</h1>
-<p>stylific&#39;s layout system is based on flexbox. Starting with version <code>0.1.0</code>, it
-uses attributes, borrowing ideas from <a href="https://material.angularjs.org/latest/#/layout/container" target="_blank">Angular
-Material</a>.</p>
-<p>The <code>layout</code> attribite defines container properties, and the <code>flex</code> attribute
-defines child properties.</p>
+<p>stylific&#39;s layout system is based on flexbox. Prior to 0.7.0, it used
+attributes; now it uses classes.</p>
+<p>The <code>.layout-*</code> classes define container properties, and the <code>.flex-*</code> classes
+define child properties. The <code>.grid-*</code> classes define both.</p>
 <h1 id="container">Container</h1>
-<p>Container properties are defined with the <code>layout</code> attribute. It takes an
-arbitrary number of whitespace-separated flags. See the full reference in
-<a href="https://github.com/Mitranim/stylific/tree/master/scss/layout.scss" target="_blank"><code>layout.scss</code></a>.
-The flag order doesn&#39;t matter.</p>
-<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">layout</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">layout</span>=<span class="hljs-value">"row"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">layout</span>=<span class="hljs-value">"column"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<p>Container properties are defined with the <code>.layout-*</code> classes. They affect
+different aspects of the layout. See the full reference in
+<a href="https://github.com/Mitranim/stylific/tree/master/scss/layout.scss" target="_blank"><code>layout.scss</code></a>.</p>
+<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"layout"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"layout-row"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"layout-column"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 </code></pre>
-<p>Each attribute has several media-aware versions:</p>
-<pre><code class="hljs lang-scss">layout     <span class="hljs-comment">// baseline (no @media)</span>
-layout-sm  <span class="hljs-comment">// small displays</span>
-layout-md  <span class="hljs-comment">// medium displays and up</span>
-layout-lg  <span class="hljs-comment">// large displays and up</span>
+<p>Each class has several media-aware versions:</p>
+<pre><code class="hljs lang-scss"><span class="hljs-class">.layout-</span>*     <span class="hljs-comment">// baseline (no @media)</span>
+<span class="hljs-class">.layout-sm-</span>*  <span class="hljs-comment">// small displays</span>
+<span class="hljs-class">.layout-md-</span>*  <span class="hljs-comment">// medium displays and up</span>
+<span class="hljs-class">.layout-lg-</span>*  <span class="hljs-comment">// large displays and up</span>
 </code></pre>
 <p>To control child alignment on the main axis (usually horizontal), use one of the
 whitespace flags (<code>justify-content</code> in flexbox terms):</p>
-<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">layout</span>=<span class="hljs-value">"row space-between"</span>&gt;</span>
+<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"layout-space-between"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">button</span>&gt;</span>left<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">button</span>&gt;</span>center<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">button</span>&gt;</span>right<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 </code></pre>
-<div doc-demo style="display: block">
-  <div layout="row space-between">
+<div class="doc-demo block">
+  <div class="layout-space-between">
     <button>left</button>
     <button>center</button>
     <button>right</button>
@@ -100,24 +98,24 @@ whitespace flags (<code>justify-content</code> in flexbox terms):</p>
 
 <p>To control child alignment on the cross axis (usually vertical), use one of the
 cross-alignment flags (<code>align-items</code> in flexbox terms):</p>
-<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">layout</span>=<span class="hljs-value">"row cross-start"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"min-height: 6em"</span>&gt;</span>
+<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"layout-cross-start"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"min-height: 6em"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">button</span>&gt;</span>top<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">layout</span>=<span class="hljs-value">"row cross-center"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"min-height: 6em"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"layout-cross-center"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"min-height: 6em"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">button</span>&gt;</span>center<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">layout</span>=<span class="hljs-value">"row cross-end"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"min-height: 6em"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"layout-cross-end"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"min-height: 6em"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">button</span>&gt;</span>bottom<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 </code></pre>
-<div doc-demo layout="row space-between cross-stretch">
-  <div layout="row cross-start" style="min-height: 6em">
+<div class="doc-demo layout-space-between layout-cross-stretch">
+  <div class="layout-cross-start" style="min-height: 6em">
     <button>top</button>
   </div>
-  <div layout="row cross-center" style="min-height: 6em">
+  <div class="layout-cross-center" style="min-height: 6em">
     <button>center</button>
   </div>
-  <div layout="row cross-end" style="min-height: 6em">
+  <div class="layout-cross-end" style="min-height: 6em">
     <button>bottom</button>
   </div>
 </div>
@@ -125,103 +123,184 @@ cross-alignment flags (<code>align-items</code> in flexbox terms):</p>
 <p>Other options are listed in
 <a href="https://github.com/Mitranim/stylific/tree/master/scss/layout.scss" target="_blank"><code>layout.scss</code></a>.</p>
 <h1 id="child">Child</h1>
-<p>Child properties are defined with the <code>flex</code> attribute. Just like <code>layout</code>,
-it takes unordered whitespace-separated flags. See the full reference in
+<p>Child properties are defined with the <code>.flex-*</code> classes. See the full reference in
 <a href="https://github.com/Mitranim/stylific/tree/master/scss/layout.scss" target="_blank"><code>layout.scss</code></a>.</p>
-<p>Each attribute has several media-aware versions:</p>
-<pre><code class="hljs lang-scss"><span class="hljs-attribute">flex</span>     <span class="hljs-comment">// baseline (no @media)</span>
-<span class="hljs-attribute">flex</span>-sm  <span class="hljs-comment">// small displays</span>
-<span class="hljs-attribute">flex</span>-md  <span class="hljs-comment">// medium displays and up</span>
-<span class="hljs-attribute">flex</span>-lg  <span class="hljs-comment">// large displays and up</span>
+<p>Each class has several media-aware versions:</p>
+<pre><code class="hljs lang-scss"><span class="hljs-class">.flex-</span>*     <span class="hljs-comment">// baseline (no @media)</span>
+<span class="hljs-class">.flex-sm-</span>*  <span class="hljs-comment">// small displays</span>
+<span class="hljs-class">.flex-md-</span>*  <span class="hljs-comment">// medium displays and up</span>
+<span class="hljs-class">.flex-lg-</span>*  <span class="hljs-comment">// large displays and up</span>
 </code></pre>
-<p>To control child stretchiness across the main axis, use <code>flex=&quot;N&quot;</code>, where N
+<p>To control child stretchiness across the main axis, use <code>.flex-N</code>, where N
 ranges from 1 to 12. In flexbox terms, this corresponds to <code>flex: N</code>.</p>
-<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">layout</span>=<span class="hljs-value">"row space-out"</span>&gt;</span>
-   <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">flex</span>=<span class="hljs-value">"1"</span>&gt;</span>small<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
-   <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">flex</span>=<span class="hljs-value">"6"</span>&gt;</span>huge<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
-   <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">flex</span>=<span class="hljs-value">"1"</span>&gt;</span>small<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"layout space-out-h"</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"flex-1"</span>&gt;</span>small<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"flex-6"</span>&gt;</span>huge<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"flex-1"</span>&gt;</span>small<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 </code></pre>
-<div doc-demo style="display: block">
-  <div layout="row space-out">
-    <button flex="1">small</button>
-    <button flex="6">huge</button>
-    <button flex="1">small</button>
+<div class="doc-demo block">
+  <div class="layout space-out-h">
+    <button class="flex-1">small</button>
+    <button class="flex-6">huge</button>
+    <button class="flex-1">small</button>
   </div>
 </div>
 
-<p>To control child order, use <code>flex=&quot;order-N&quot;</code>, where N ranges from -1 to 12.
+<p>To control child order, use <code>.flex-order-N</code>, where N ranges from -1 to 12.
 In flexbox terms, this corresponds to <code>order: N</code>.</p>
-<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">layout</span>=<span class="hljs-value">"row space-around"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">flex</span>=<span class="hljs-value">"order-2"</span>&gt;</span>third (order: 2)<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">flex</span>=<span class="hljs-value">"order-1"</span>&gt;</span>second (order: 1)<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">flex</span>=<span class="hljs-value">"order--1"</span>&gt;</span>first (order: -1)<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"layout-space-around"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"flex-order-2"</span>&gt;</span>third (order: 2)<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"flex-order-1"</span>&gt;</span>second (order: 1)<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"flex-order--1"</span>&gt;</span>first (order: -1)<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 </code></pre>
-<div doc-demo style="display: block">
-  <div layout="row space-around">
-    <button flex="order-2">third (order: 2)</button>
-    <button flex="order-1">second (order: 1)</button>
-    <button flex="order--1">first (order: -1)</button>
+<div class="doc-demo block">
+  <div class="layout-space-around">
+    <button class="flex-order-2">third (order: 2)</button>
+    <button class="flex-order-1">second (order: 1)</button>
+    <button class="flex-order--1">first (order: -1)</button>
   </div>
 </div>
 
 <p>To control child self-alignment, use one of the cross-axis flags. In flexbox
 terms, this corresponds to <code>align-self</code>.</p>
-<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">layout</span>=<span class="hljs-value">"row space-between"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"min-height: 6em"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">flex</span>=<span class="hljs-value">"stretch"</span>&gt;</span>stretch<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">flex</span>=<span class="hljs-value">"start"</span>&gt;</span>top<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">flex</span>=<span class="hljs-value">"center"</span>&gt;</span>center<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">flex</span>=<span class="hljs-value">"end"</span>&gt;</span>bottom<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"layout-space-between"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"min-height: 6em"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"flex-stretch"</span>&gt;</span>stretch<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"flex-start"</span>&gt;</span>top<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"flex-center"</span>&gt;</span>center<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"flex-end"</span>&gt;</span>bottom<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 </code></pre>
-<div doc-demo style="display: block">
-  <div layout="row space-between" style="min-height: 6em">
-    <button flex="stretch">stretch</button>
-    <button flex="start">top</button>
-    <button flex="center">center</button>
-    <button flex="end">bottom</button>
+<div class="doc-demo block">
+  <div class="layout-space-between" style="min-height: 6em">
+    <button class="flex-stretch">stretch</button>
+    <button class="flex-start">top</button>
+    <button class="flex-center">center</button>
+    <button class="flex-end">bottom</button>
+  </div>
+</div>
+
+<h1 id="grid">Grid</h1>
+<p>It&#39;s convenient to have a shortcut to a media-responsive flex container that
+wraps its items on different breakpoints. <code>.grid</code> is a primitive version of that.
+Open this on a <a href="examples/grid-demo/">separate page</a> to resize the page more
+easily.</p>
+<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"grid doc-grid-demo"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>One<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Twenty<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<div class="doc-demo block">
+  <div class="grid doc-grid-demo">
+    <p>One</p>
+    <p>Two</p>
+    <p>Three</p>
+    <p>Four</p>
+    <p>Five</p>
+    <p>Six</p>
+    <p>Seven</p>
+    <p>Eight</p>
+    <p>Nine</p>
+    <p>Ten</p>
+    <p>Eleven</p>
+    <p>Twelve</p>
+    <p>Thirteen</p>
+    <p>Fourteen</p>
+    <p>Fifteen</p>
+    <p>Sixteen</p>
+    <p>Seventeen</p>
+    <p>Eighteen</p>
+    <p>Nineteen</p>
+    <p>Twenty</p>
+  </div>
+</div>
+
+<p>It comes in several media-aware flavours:</p>
+<pre><code class="hljs lang-scss"><span class="hljs-class">.grid-</span>*     <span class="hljs-comment">// baseline (no @media)</span>
+<span class="hljs-class">.grid-sm-</span>*  <span class="hljs-comment">// small displays</span>
+<span class="hljs-class">.grid-md-</span>*  <span class="hljs-comment">// medium displays and up</span>
+<span class="hljs-class">.grid-lg-</span>*  <span class="hljs-comment">// large displays and up</span>
+</code></pre>
+<p>Each version of the class takes a numeric option <code>N</code> which specifies the number
+of children per line:</p>
+<pre><code class="hljs lang-scss"><span class="hljs-class">.grid-1</span>
+<span class="hljs-class">.grid-2</span>
+<span class="hljs-class">.grid-3</span>
+<span class="hljs-class">.grid-4</span>
+<span class="hljs-class">.grid-5</span>
+<span class="hljs-class">.grid-6</span>
+</code></pre>
+<p>Example of using these classes together to tune the breakpoints for your
+specific needs:</p>
+<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"grid-sm-1 grid-md-2 grid-lg-3 doc-grid-demo"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>One<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Twenty<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<div class="doc-demo block">
+  <div class="grid-sm-1 grid-md-2 grid-lg-3 doc-grid-demo">
+    <p>One</p>
+    <p>Two</p>
+    <p>Three</p>
+    <p>Four</p>
+    <p>Five</p>
+    <p>Six</p>
+    <p>Seven</p>
+    <p>Eight</p>
+    <p>Nine</p>
+    <p>Ten</p>
+    <p>Eleven</p>
+    <p>Twelve</p>
+    <p>Thirteen</p>
+    <p>Fourteen</p>
+    <p>Fifteen</p>
+    <p>Sixteen</p>
+    <p>Seventeen</p>
+    <p>Eighteen</p>
+    <p>Nineteen</p>
+    <p>Twenty</p>
   </div>
 </div>
 
 <h1 id="whitespace">Whitespace</h1>
-<p>stylific defines a few global classes and attributes dedicated to whitespace.
-They cover a lot of common use cases and save you from littering stylesheets
-with haphazard margin and padding declarations.</p>
+<p>stylific defines a few global classes dedicated to whitespace. They cover a lot
+of common use cases and save you from littering stylesheets with haphazard
+margin and padding declarations.</p>
 <p>Also see the whitespace-related
 <a href="https://github.com/Mitranim/stylific/blob/master/scss/_variables.scss" target="_blank">variables</a>
 and <a href="https://github.com/Mitranim/stylific/blob/master/scss/_mixins.scss" target="_blank">mixins</a>.</p>
-<pre><code class="hljs lang-scss"><span class="hljs-attr_selector">[layout="space-out"]</span>        <span class="hljs-comment">// interval between children on the main axis</span>
-<span class="hljs-attr_selector">[layout="space-out-cross"]</span>  <span class="hljs-comment">// interval between children on the cross axis</span>
-<span class="hljs-class">.pad</span>                        <span class="hljs-comment">// default padding ($sf-space == 1rem)</span>
-<span class="hljs-class">.space-out</span>                  <span class="hljs-comment">// vertical interval between children</span>
-<span class="hljs-class">.space-out-h</span>                <span class="hljs-comment">// horizontal interval between children</span>
+<pre><code class="hljs lang-scss"><span class="hljs-class">.pad</span>          <span class="hljs-comment">// default padding ($sf-space == 1rem)</span>
+<span class="hljs-class">.space-out</span>    <span class="hljs-comment">// vertical interval between children</span>
+<span class="hljs-class">.space-out-h</span>  <span class="hljs-comment">// horizontal interval between children</span>
 </code></pre>
 
-    </sf-article>
+    </article>
 
     <!-- Footer -->
-    <sf-footer>
-  <sf-footer-body>
-    <div flex="1" layout="column cross-start">
+    <div class="sf-footer">
+  <div class="sf-footer-body">
+    <div class="flex-1 layout-column layout-cross-start">
       <span>
         2015
         <a href="http://mitranim.com" target="_blank">Mitranim</a>
       </span>
     </div>
-    <div flex="1" layout="column cross-center">
-      <a layout="cross-center" href="https://github.com/Mitranim/stylific" target="_blank">
-        <sf-icon class="inline github" style="font-size: 2em">
+    <div class="flex-1 layout-column layout-cross-center">
+      <a class="layout-cross-center" href="https://github.com/Mitranim/stylific" target="_blank">
+        <div class="sf-icon-github" style="font-size: 2em">
           <svg width="2048" height="2048" viewBox="0 0 2048 2048" xmlns="http://www.w3.org/2000/svg"><path d="M1792 1024q0 251-146.5 451.5t-378.5 277.5q-27 5-39.5-7t-12.5-30v-211q0-97-52-142 57-6 102.5-18t94-39 81-66.5 53-105 20.5-150.5q0-121-79-206 37-91-8-204-28-9-81 11t-92 44l-38 24q-93-26-192-26t-192 26q-16-11-42.5-27t-83.5-38.5-86-13.5q-44 113-7 204-79 85-79 206 0 85 20.5 150t52.5 105 80.5 67 94 39 102.5 18q-40 36-49 103-21 10-45 15t-57 5-65.5-21.5-55.5-62.5q-19-32-48.5-52t-49.5-24l-20-3q-21 0-29 4.5t-5 11.5 9 14 13 12l7 5q22 10 43.5 38t31.5 51l10 23q13 38 44 61.5t67 30 69.5 7 55.5-3.5l23-4q0 38 .5 89t.5 54q0 18-13 30t-40 7q-232-77-378.5-277.5t-146.5-451.5q0-209 103-385.5t279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"/></svg>
-        </sf-icon>
+        </div>
         Source at GitHub
       </a>
     </div>
-    <div flex="1" layout="column cross-end">
-      <button sf-icon class="arrow-up pad" style="opacity: 0.5" onclick="scrollTo(0, 0)"></button>
+    <div class="flex-1 layout-column layout-cross-end">
+      <button class="sf-icon-arrow-up pad" style="opacity: 0.5" onclick="scrollTo(0, 0)"></button>
     </div>
-  </sf-footer-body>
-</sf-footer>
+  </div>
+</div>
 
 
     <!-- Scripts -->
