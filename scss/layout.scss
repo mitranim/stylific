@@ -117,6 +117,17 @@ body {
 
 /*********************************** Grid ************************************/
 
+@mixin sf-grid-base-style {
+  display: flex;
+  flex-wrap: wrap;
+
+  // Prevent children from unexpectedly stretching or shrinking.
+  > * {
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+}
+
 /**
  * Default wrap configuration.
  */
@@ -140,18 +151,15 @@ body {
   @include sf-gt-md {flex-basis: calc(1/6 * 100%)}
 }
 
+.grid, .grid-sm, .grid-md, .grid-lg {
+  @include sf-grid-base-style;
+}
+
 @mixin sf-grid-for-name($postfix: '') {
   $name: if($postfix == '', grid, grid-#{$postfix});
 
-  [class*=#{$name}] {
-    display: flex;
-    flex-wrap: wrap;
-
-    // Prevent children from unexpectedly stretching or shrinking.
-    > * {
-      flex-grow: 0;
-      flex-shrink: 0;
-    }
+  .#{$name}-1, .#{$name}-2, .#{$name}-3, .#{$name}-4, .#{$name}-5, .#{$name}-6 {
+    @include sf-grid-base-style;
   }
 
   .#{$name}-1 > * {flex-basis: 100%}
