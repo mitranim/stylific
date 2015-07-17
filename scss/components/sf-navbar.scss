@@ -174,27 +174,17 @@
 
       // Whitespace.
       padding: $sf-space;
-
-      // Animate visibility changes. Don't animate padding or min/max height
-      // because it's costly. Include other common transitions.
-      @include sf-transitions(transform, color, background-color, outline, shadow, border);
     }
 
     // Styles for collapsed children.
     > label:not(.active) ~ * {
-      min-height: 0;
-      max-height: 0;
-      padding-top: 0;
-      padding-bottom: 0;
-      transform: scaleY(0);
+      display: none;
     }
 
-    /**
-     * Active styles.
-     */
+    // Styles for active children.
     > label.active ~ * {
-      // Make visible.
-      transform: scaleY(1);
+      // Make sure the elemens are over the label's overlay.
+      z-index: $sf-z-index-navbar + 1;
     }
   }
   @media (max-width: $sf-layout-breakpoint-sm) {@include collapse-rules;}

@@ -97,18 +97,6 @@
   }
   // Collapsed.
   > label:not(.active) ~ .sf-collapse-body {
-    padding-top: 0;
-    padding-bottom: 0;
-    max-height: 0;
-    transform: scaleY(0);
+    display: none;
   }
-  // Active.
-  > label.active ~ .sf-collapse-body {
-    transform: scaleY(1);
-  }
-
-  // Animate visibility changes on children. Also include colour animations for
-  // interactive parts. Can't afford to animate `all` because padding seriously
-  // messes up the FPS. Include other common transitions.
-  > * {@include sf-transitions(transform, color, background-color, outline, shadow, border);}
 }

@@ -9,3 +9,7 @@ pre code {width: 100%}
     padding: 0;
   }
 }
+
+html {
+  @include sf-eq-sm {font-size: $sf-rem * 0.7}
+}

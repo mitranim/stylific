@@ -54,6 +54,12 @@ ul, ol {
 
 .block {display: block;}
 
+// Automatically scroll nospill containers. (The user still needs to set the
+// height property.)
+[data-sf-no-scroll-spill] {
+  overflow: scroll;
+}
+
 /********************************** Globals **********************************/
 
 // IE 10 fix.

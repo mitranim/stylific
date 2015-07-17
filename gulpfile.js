@@ -22,7 +22,10 @@ var src = {
   libStyles:     'scss/**/*.scss',
   libStylesCore: 'scss/stylific.scss',
   libScripts:    'lib/stylific.js',
-  libScriptsMin: 'lib/stylific.min.js',
+  libScriptsMin: [
+    'lib/stylific.min.js',
+    'node_modules/simple-pjax/simple-pjax.js'
+  ],
   stylesCore:    'src-docs/styles/docs.scss',
   styles:        'src-docs/styles/**/*.scss',
   html: [
