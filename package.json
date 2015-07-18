@@ -50,7 +50,7 @@
     "gulp-watch": "^4.2.4",
     "highlight.js": "^8.6.0",
     "lodash": "^3.9.3",
-    "simple-pjax": "0.0.1",
+    "simple-pjax": "0.0.2",
     "yargs": "^3.13.0"
   }
 }
