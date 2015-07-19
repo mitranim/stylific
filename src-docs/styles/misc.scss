@@ -13,3 +13,10 @@ pre code {width: 100%}
 html {
   @include sf-eq-sm {font-size: $sf-rem * 0.7}
 }
+
+.docs-layout-spaced {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}

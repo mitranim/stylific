@@ -588,7 +588,7 @@ adds some nice defaults.
 <button disabled>disabled button</button>
 ```
 
-<div class="doc-demo layout space-out-h">
+<div class="doc-demo layout-row space-out-h">
   <button>default button</button>
   <button class="sf-button-flat">flat button</button>
   <button class="theme-text-primary">text-primary themed button</button>
@@ -656,10 +656,10 @@ Condensed version for inlining buttons with inputs.
 ```html
 <label class="sf-label-row sf-label-dense">
   <input class="flex-6 theme-text-primary" placeholder="take the blue pill...">
-  <button class="flex-1 theme-primary layout-center">go</button>
+  <button class="flex-1 theme-primary layout-row layout-center">go</button>
 </label>
 <label class="sf-label-row sf-label-dense">
-  <button class="flex-1 theme-warn layout-center">go</button>
+  <button class="flex-1 theme-warn layout-row layout-center">go</button>
   <input class="flex-6 theme-text-warn" placeholder="or the red pill...">
 </label>
 ```
@@ -667,10 +667,10 @@ Condensed version for inlining buttons with inputs.
 <div class="doc-demo layout-column space-out">
   <label class="sf-label-row sf-label-dense" style="width: 50%">
     <input class="flex-6 theme-text-primary" placeholder="take the blue pill...">
-    <button class="flex-1 theme-primary layout-center">go</button>
+    <button class="flex-1 theme-primary layout-row layout-center">go</button>
   </label>
   <label class="sf-label-row sf-label-dense" style="width: 50%">
-    <button class="flex-1 theme-warn layout-center">go</button>
+    <button class="flex-1 theme-warn layout-row layout-center">go</button>
     <input class="flex-6 theme-text-warn" placeholder="or the red pill...">
   </label>
 </div>

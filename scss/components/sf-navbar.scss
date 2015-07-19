@@ -147,7 +147,10 @@
    */
   > label.active {
     // Make the toggle overlay interactive.
-    &::before {content: ''}
+    &::before {
+      content: '';
+      z-index: $sf-z-index-navbar;
+    }
     // Modify the indicator symbol.
     &::after {content: '▲'}
   }

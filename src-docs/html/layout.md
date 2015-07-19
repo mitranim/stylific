@@ -25,7 +25,6 @@ different aspects of the layout. See the full reference in
 [`layout.scss`](https://github.com/Mitranim/stylific/tree/master/scss/layout.scss).
 
 ```html
-<div class="layout">...</div>
 <div class="layout-row">...</div>
 <div class="layout-column">...</div>
 ```
@@ -43,7 +42,7 @@ To control child alignment on the main axis (usually horizontal), use one of the
 whitespace flags (`justify-content` in flexbox terms):
 
 ```html
-<div class="layout-space-between">
+<div class="layout-row layout-space-between">
   <button>left</button>
   <button>center</button>
   <button>right</button>
@@ -51,7 +50,7 @@ whitespace flags (`justify-content` in flexbox terms):
 ```
 
 <div class="doc-demo block">
-  <div class="layout-space-between">
+  <div class="layout-row layout-space-between">
     <button>left</button>
     <button>center</button>
     <button>right</button>
@@ -62,25 +61,25 @@ To control child alignment on the cross axis (usually vertical), use one of the
 cross-alignment flags (`align-items` in flexbox terms):
 
 ```html
-<div class="layout-cross-start" style="min-height: 6em">
+<div class="layout-row layout-cross-start" style="min-height: 6em">
   <button>top</button>
 </div>
-<div class="layout-cross-center" style="min-height: 6em">
+<div class="layout-row layout-cross-center" style="min-height: 6em">
   <button>center</button>
 </div>
-<div class="layout-cross-end" style="min-height: 6em">
+<div class="layout-row layout-cross-end" style="min-height: 6em">
   <button>bottom</button>
 </div>
 ```
 
 <div class="doc-demo layout-space-between layout-cross-stretch">
-  <div class="layout-cross-start" style="min-height: 6em">
+  <div class="layout-row layout-cross-start" style="min-height: 6em">
     <button>top</button>
   </div>
-  <div class="layout-cross-center" style="min-height: 6em">
+  <div class="layout-row layout-cross-center" style="min-height: 6em">
     <button>center</button>
   </div>
-  <div class="layout-cross-end" style="min-height: 6em">
+  <div class="layout-row layout-cross-end" style="min-height: 6em">
     <button>bottom</button>
   </div>
 </div>
@@ -106,7 +105,7 @@ To control child stretchiness across the main axis, use `.flex-N`, where N
 ranges from 1 to 12. In flexbox terms, this corresponds to `flex: N`.
 
 ```html
-<div class="layout space-out-h">
+<div class="layout-row space-out-h">
    <button class="flex-1">small</button>
    <button class="flex-6">huge</button>
    <button class="flex-1">small</button>
@@ -114,7 +113,7 @@ ranges from 1 to 12. In flexbox terms, this corresponds to `flex: N`.
 ```
 
 <div class="doc-demo block">
-  <div class="layout space-out-h">
+  <div class="layout-row space-out-h">
     <button class="flex-1">small</button>
     <button class="flex-6">huge</button>
     <button class="flex-1">small</button>
@@ -125,7 +124,7 @@ To control child order, use `.flex-order-N`, where N ranges from -1 to 12.
 In flexbox terms, this corresponds to `order: N`.
 
 ```html
-<div class="layout-space-around">
+<div class="layout-row layout-space-around">
   <button class="flex-order-2">third (order: 2)</button>
   <button class="flex-order-1">second (order: 1)</button>
   <button class="flex-order--1">first (order: -1)</button>
@@ -133,7 +132,7 @@ In flexbox terms, this corresponds to `order: N`.
 ```
 
 <div class="doc-demo block">
-  <div class="layout-space-around">
+  <div class="layout-row layout-space-around">
     <button class="flex-order-2">third (order: 2)</button>
     <button class="flex-order-1">second (order: 1)</button>
     <button class="flex-order--1">first (order: -1)</button>
@@ -144,7 +143,7 @@ To control child self-alignment, use one of the cross-axis flags. In flexbox
 terms, this corresponds to `align-self`.
 
 ```html
-<div class="layout-space-between" style="min-height: 6em">
+<div class="layout-row layout-space-between" style="min-height: 6em">
   <button class="flex-stretch">stretch</button>
   <button class="flex-start">top</button>
   <button class="flex-center">center</button>
@@ -153,7 +152,7 @@ terms, this corresponds to `align-self`.
 ```
 
 <div class="doc-demo block">
-  <div class="layout-space-between" style="min-height: 6em">
+  <div class="layout-row layout-space-between" style="min-height: 6em">
     <button class="flex-stretch">stretch</button>
     <button class="flex-start">top</button>
     <button class="flex-center">center</button>

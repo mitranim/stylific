@@ -51,9 +51,14 @@ body {
 @mixin sf-layout-for-name($postfix: '') {
   $name: if($postfix == '', layout, layout-#{$postfix});
 
-  [class*=#{$name}] {display: flex}
-  .#{$name}-row     {flex-direction: row}
-  .#{$name}-column  {flex-direction: column}
+  .#{$name}-row {
+    display: flex;
+    flex-direction: row;
+  }
+  .#{$name}-column {
+    display: flex;
+    flex-direction: column;
+  }
 
   // Whitespace on main axis.
   .#{$name}-center        {justify-content: center}

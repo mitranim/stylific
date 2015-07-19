@@ -44,39 +44,39 @@ Demo of some elements with the `.theme-text-*` themes.
 ```
 
 <div class="doc-demo block space-out">
-  <div class="layout-space-between layout-cross-center">
+  <div class="docs-layout-spaced">
     <button>No theme button</button>
     <p>No theme paragraph</p>
     <input value="No theme input">
   </div>
-  <div class="layout-space-between layout-cross-center">
+  <div class="docs-layout-spaced">
     <button class="theme-text-primary">`text-primary` button</button>
     <p class="theme-text-primary">`text-primary` paragraph</p>
     <input class="theme-text-primary" value="`text-primary` input">
   </div>
-  <div class="layout-space-between layout-cross-center">
+  <div class="docs-layout-spaced">
     <button class="theme-text-accent">`text-accent` button</button>
     <p class="theme-text-accent">`text-accent` paragraph</p>
     <input class="theme-text-accent" value="`text-accent` input">
   </div>
-  <div class="layout-space-between layout-cross-center">
+  <div class="docs-layout-spaced">
     <button class="theme-text-warn">`text-warn` button</button>
     <p class="theme-text-warn">`text-warn` paragraph</p>
     <input class="theme-text-warn" value="`text-warn` input">
   </div>
-  <div class="layout-space-between layout-cross-center">
+  <div class="docs-layout-spaced">
     <button disabled>disabled button</button>
     <input disabled value="disabled input">
   </div>
-  <div class="layout-space-between layout-cross-center">
+  <div class="docs-layout-spaced">
     <button disabled class="theme-text-primary">disabled `text-primary` button</button>
     <input disabled class="theme-text-primary" value="disabled `text-primary` input">
   </div>
-  <div class="layout-space-between layout-cross-center">
+  <div class="docs-layout-spaced">
     <button disabled class="theme-text-accent">disabled `text-accent` button</button>
     <input disabled class="theme-text-accent" value="disabled `text-accent` input">
   </div>
-  <div class="layout-space-between layout-cross-center">
+  <div class="docs-layout-spaced">
     <button disabled class="theme-text-warn">disabled `text-warn` button</button>
     <input disabled class="theme-text-warn" value="disabled `text-warn` input">
   </div>
@@ -95,30 +95,30 @@ Demo of some elements with the full themes.
 ```
 
 <div class="doc-demo block space-out">
-  <div class="layout-space-between layout-cross-center">
+  <div class="docs-layout-spaced">
     <button class="theme-primary">`primary` button</button>
     <p class="theme-primary">`primary` paragraph</p>
     <input class="theme-primary" value="`primary` input">
   </div>
-  <div class="layout-space-between layout-cross-center">
+  <div class="docs-layout-spaced">
     <button class="theme-accent">`accent` button</button>
     <p class="theme-accent">`accent` paragraph</p>
     <input class="theme-accent" value="`accent` input">
   </div>
-  <div class="layout-space-between layout-cross-center">
+  <div class="docs-layout-spaced">
     <button class="theme-warn">`warn` button</button>
     <p class="theme-warn">`warn` paragraph</p>
     <input class="theme-warn" value="`warn` input">
   </div>
-  <div class="layout-space-between layout-cross-center">
+  <div class="docs-layout-spaced">
     <button disabled class="theme-primary">disabled `primary` button</button>
     <input disabled class="theme-primary" value="disabled `primary` input">
   </div>
-  <div class="layout-space-between layout-cross-center">
+  <div class="docs-layout-spaced">
     <button disabled class="theme-accent">disabled `accent` button</button>
     <input disabled class="theme-accent" value="disabled `accent` input">
   </div>
-  <div class="layout-space-between layout-cross-center">
+  <div class="docs-layout-spaced">
     <button disabled class="theme-warn">disabled `warn` button</button>
     <input disabled class="theme-warn" value="disabled `warn` input">
   </div>
