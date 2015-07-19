@@ -18,7 +18,7 @@
     $contrasting: if(sf-brightness($color) > 50%, $sf-color-background, $sf-color-text);
     @return hsl(hue($color), saturation($color), sf-brightness($contrasting));
   }
-  $contrasting: if(sf-brightness($color) > 50%, $sf-color-text, $sf-color-background);
+  $contrasting: if(sf-brightness($color) > 60%, $sf-color-text, $sf-color-background);
   @return hsl(hue($color), saturation($color), sf-brightness($contrasting));
 }
 
