@@ -24,7 +24,7 @@
   <a  href="themes/">Themes</a>
   <!-- Collapsable children -->
   <div class="sf-dropdown" style="padding: 0">
-    <label class="layout-center">Examples</label>
+    <label class="layout-row layout-center">Examples</label>
     <div class="sf-dropdown-list text-left">
       <a  href="examples/navbar-demo/">navbar demo</a>
       <a  href="examples/footer/">footer</a>
@@ -36,7 +36,7 @@
 
     <!-- Presentation jumbo -->
     <div class="sf-jumbo" style="height: auto">
-      <h1 class="layout-space-between">
+      <h1 class="layout-row layout-space-between">
         stylific
         <a href="https://github.com/Mitranim/stylific" target="_blank">
           <div class="sf-icon-github-light pop">
@@ -70,8 +70,7 @@ define child properties. The <code>.grid-*</code> classes define both.</p>
 <p>Container properties are defined with the <code>.layout-*</code> classes. They affect
 different aspects of the layout. See the full reference in
 <a href="https://github.com/Mitranim/stylific/tree/master/scss/layout.scss" target="_blank"><code>layout.scss</code></a>.</p>
-<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"layout"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"layout-row"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"layout-row"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"layout-column"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 </code></pre>
 <p>Each class has several media-aware versions:</p>
@@ -82,14 +81,14 @@ different aspects of the layout. See the full reference in
 </code></pre>
 <p>To control child alignment on the main axis (usually horizontal), use one of the
 whitespace flags (<code>justify-content</code> in flexbox terms):</p>
-<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"layout-space-between"</span>&gt;</span>
+<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"layout-row layout-space-between"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">button</span>&gt;</span>left<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">button</span>&gt;</span>center<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">button</span>&gt;</span>right<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 </code></pre>
 <div class="doc-demo block">
-  <div class="layout-space-between">
+  <div class="layout-row layout-space-between">
     <button>left</button>
     <button>center</button>
     <button>right</button>
@@ -98,24 +97,24 @@ whitespace flags (<code>justify-content</code> in flexbox terms):</p>
 
 <p>To control child alignment on the cross axis (usually vertical), use one of the
 cross-alignment flags (<code>align-items</code> in flexbox terms):</p>
-<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"layout-cross-start"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"min-height: 6em"</span>&gt;</span>
+<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"layout-row layout-cross-start"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"min-height: 6em"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">button</span>&gt;</span>top<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"layout-cross-center"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"min-height: 6em"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"layout-row layout-cross-center"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"min-height: 6em"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">button</span>&gt;</span>center<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"layout-cross-end"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"min-height: 6em"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"layout-row layout-cross-end"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"min-height: 6em"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">button</span>&gt;</span>bottom<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 </code></pre>
 <div class="doc-demo layout-space-between layout-cross-stretch">
-  <div class="layout-cross-start" style="min-height: 6em">
+  <div class="layout-row layout-cross-start" style="min-height: 6em">
     <button>top</button>
   </div>
-  <div class="layout-cross-center" style="min-height: 6em">
+  <div class="layout-row layout-cross-center" style="min-height: 6em">
     <button>center</button>
   </div>
-  <div class="layout-cross-end" style="min-height: 6em">
+  <div class="layout-row layout-cross-end" style="min-height: 6em">
     <button>bottom</button>
   </div>
 </div>
@@ -133,14 +132,14 @@ cross-alignment flags (<code>align-items</code> in flexbox terms):</p>
 </code></pre>
 <p>To control child stretchiness across the main axis, use <code>.flex-N</code>, where N
 ranges from 1 to 12. In flexbox terms, this corresponds to <code>flex: N</code>.</p>
-<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"layout space-out-h"</span>&gt;</span>
+<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"layout-row space-out-h"</span>&gt;</span>
    <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"flex-1"</span>&gt;</span>small<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
    <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"flex-6"</span>&gt;</span>huge<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
    <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"flex-1"</span>&gt;</span>small<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 </code></pre>
 <div class="doc-demo block">
-  <div class="layout space-out-h">
+  <div class="layout-row space-out-h">
     <button class="flex-1">small</button>
     <button class="flex-6">huge</button>
     <button class="flex-1">small</button>
@@ -149,14 +148,14 @@ ranges from 1 to 12. In flexbox terms, this corresponds to <code>flex: N</code>.
 
 <p>To control child order, use <code>.flex-order-N</code>, where N ranges from -1 to 12.
 In flexbox terms, this corresponds to <code>order: N</code>.</p>
-<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"layout-space-around"</span>&gt;</span>
+<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"layout-row layout-space-around"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"flex-order-2"</span>&gt;</span>third (order: 2)<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"flex-order-1"</span>&gt;</span>second (order: 1)<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"flex-order--1"</span>&gt;</span>first (order: -1)<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 </code></pre>
 <div class="doc-demo block">
-  <div class="layout-space-around">
+  <div class="layout-row layout-space-around">
     <button class="flex-order-2">third (order: 2)</button>
     <button class="flex-order-1">second (order: 1)</button>
     <button class="flex-order--1">first (order: -1)</button>
@@ -165,7 +164,7 @@ In flexbox terms, this corresponds to <code>order: N</code>.</p>
 
 <p>To control child self-alignment, use one of the cross-axis flags. In flexbox
 terms, this corresponds to <code>align-self</code>.</p>
-<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"layout-space-between"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"min-height: 6em"</span>&gt;</span>
+<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"layout-row layout-space-between"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"min-height: 6em"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"flex-stretch"</span>&gt;</span>stretch<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"flex-start"</span>&gt;</span>top<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"flex-center"</span>&gt;</span>center<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
@@ -173,7 +172,7 @@ terms, this corresponds to <code>align-self</code>.</p>
 <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 </code></pre>
 <div class="doc-demo block">
-  <div class="layout-space-between" style="min-height: 6em">
+  <div class="layout-row layout-space-between" style="min-height: 6em">
     <button class="flex-stretch">stretch</button>
     <button class="flex-start">top</button>
     <button class="flex-center">center</button>
@@ -288,8 +287,8 @@ and <a href="https://github.com/Mitranim/stylific/blob/master/scss/_mixins.scss"
         <a href="http://mitranim.com" target="_blank">Mitranim</a>
       </span>
     </div>
-    <div class="flex-1 layout-center layout-cross-center">
-      <a class="layout-center layout-cross-center" href="https://github.com/Mitranim/stylific" target="_blank">
+    <div class="flex-1 layout-row layout-center layout-cross-center">
+      <a class="layout-row layout-center layout-cross-center" href="https://github.com/Mitranim/stylific" target="_blank">
         <div class="sf-icon-github inline" style="font-size: 2em">
           <svg width="2048" height="2048" viewBox="0 0 2048 2048" xmlns="http://www.w3.org/2000/svg"><path d="M1792 1024q0 251-146.5 451.5t-378.5 277.5q-27 5-39.5-7t-12.5-30v-211q0-97-52-142 57-6 102.5-18t94-39 81-66.5 53-105 20.5-150.5q0-121-79-206 37-91-8-204-28-9-81 11t-92 44l-38 24q-93-26-192-26t-192 26q-16-11-42.5-27t-83.5-38.5-86-13.5q-44 113-7 204-79 85-79 206 0 85 20.5 150t52.5 105 80.5 67 94 39 102.5 18q-40 36-49 103-21 10-45 15t-57 5-65.5-21.5-55.5-62.5q-19-32-48.5-52t-49.5-24l-20-3q-21 0-29 4.5t-5 11.5 9 14 13 12l7 5q22 10 43.5 38t31.5 51l10 23q13 38 44 61.5t67 30 69.5 7 55.5-3.5l23-4q0 38 .5 89t.5 54q0 18-13 30t-40 7q-232-77-378.5-277.5t-146.5-451.5q0-209 103-385.5t279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"/></svg>
         </div>
