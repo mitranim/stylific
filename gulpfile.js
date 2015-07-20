@@ -18,31 +18,30 @@ var pt     = require('path');
 /********************************** Globals **********************************/
 
 var src = {
-  lib:           'lib',
   libStyles:     'scss/**/*.scss',
   libStylesCore: 'scss/stylific.scss',
-  libScripts:    'lib/stylific.js',
-  libScriptsMin: [
+  libScripts:    'ts/stylific.ts',
+  docScripts: [
     'lib/stylific.min.js',
-    'node_modules/simple-pjax/simple-pjax.js'
+    'node_modules/simple-pjax/simple-pjax.min.js'
   ],
-  stylesCore:    'src-docs/styles/docs.scss',
-  styles:        'src-docs/styles/**/*.scss',
-  html: [
+  docStylesCore:    'src-docs/styles/docs.scss',
+  docStyles:        'src-docs/styles/**/*.scss',
+  docHtml: [
     'src-docs/html/**/*',
     'bower_components/font-awesome-svg-png/black/**/*.svg'
   ],
-  images: 'src-docs/images/**/*'
+  docImages: 'src-docs/images/**/*'
 };
 
 var destBase = 'stylific-gh-pages';
 
 var dest = {
-  lib:     'lib',
-  styles:  destBase + '/styles',
-  scripts: destBase + '/scripts',
-  images:  destBase + '/images',
-  html:    destBase
+  lib:        'lib',
+  docStyles:  destBase + '/styles',
+  docScripts: destBase + '/scripts',
+  docImages:  destBase + '/images',
+  docHtml:    destBase
 };
 
 function prod() {
@@ -141,25 +140,29 @@ gulp.task('lib:styles:compile', function() {
     .pipe(gulp.dest(dest.lib));
 });
 
-gulp.task('lib:scripts:minify', function() {
+gulp.task('lib:scripts:compile', function() {
   return gulp.src(src.libScripts)
     .pipe($.plumber())
+    .pipe($.typescript({
+      typescript: require('typescript'),
+      target: 'ES5'
+    }))
     .pipe($.uglify())
     .pipe($.rename('stylific.min.js'))
     .pipe(gulp.dest(dest.lib));
 });
 
-gulp.task('lib:build', gulp.series('lib:styles:clear', 'lib:styles:compile', 'lib:scripts:minify'));
+gulp.task('lib:build', gulp.series('lib:styles:clear', 'lib:styles:compile', 'lib:scripts:compile'));
 
 gulp.task('lib:watch', function() {
   $.watch(src.libStyles, gulp.series('lib:styles:clear', 'lib:styles:compile'));
-  $.watch(src.libScripts, gulp.series('lib:scripts:minify'));
+  $.watch(src.libScripts, gulp.series('lib:scripts:compile'));
 });
 
 /*---------------------------------- HTML -----------------------------------*/
 
 gulp.task('docs:html:clear', function() {
-  return gulp.src(dest.html + '/**/*.html', {read: false, allowEmpty: true})
+  return gulp.src(dest.docHtml + '/**/*.html', {read: false, allowEmpty: true})
     .pipe($.plumber())
     .pipe($.rimraf());
 });
@@ -167,7 +170,7 @@ gulp.task('docs:html:clear', function() {
 gulp.task('docs:html:compile', function() {
   var filterMd = $.filter('**/*.md')
 
-  return gulp.src(src.html)
+  return gulp.src(src.docHtml)
     .pipe($.plumber())
     // Pre-process the markdown files.
     .pipe(filterMd)
@@ -202,25 +205,25 @@ gulp.task('docs:html:compile', function() {
       path.basename = 'index';
     }))
     // Write to disk.
-    .pipe(gulp.dest(dest.html));
+    .pipe(gulp.dest(dest.docHtml));
 });
 
 gulp.task('docs:html:build', gulp.series('docs:html:clear', 'docs:html:compile'));
 
 gulp.task('docs:html:watch', function() {
-  $.watch(src.html, gulp.series('docs:html:build', reload));
+  $.watch(src.docHtml, gulp.series('docs:html:build', reload));
 });
 
 /*--------------------------------- Styles ----------------------------------*/
 
 gulp.task('docs:styles:clear', function() {
-  return gulp.src(dest.styles, {read: false, allowEmpty: true})
+  return gulp.src(dest.docStyles, {read: false, allowEmpty: true})
     .pipe($.plumber())
     .pipe($.rimraf());
 });
 
 gulp.task('docs:styles:compile', function() {
-  return gulp.src(src.stylesCore)
+  return gulp.src(src.docStylesCore)
     .pipe($.plumber())
     .pipe($.sass())
     .pipe($.autoprefixer())
@@ -233,26 +236,26 @@ gulp.task('docs:styles:compile', function() {
       aggressiveMerging: false,
       advanced: false
     })))
-    .pipe(gulp.dest(dest.styles))
+    .pipe(gulp.dest(dest.docStyles))
     .pipe(bsync.reload({stream: true}));
 });
 
 gulp.task('docs:styles:build', gulp.series('docs:styles:clear', 'docs:styles:compile'));
 
 gulp.task('docs:styles:watch', function() {
-  $.watch(src.styles, gulp.series('docs:styles:build'));
+  $.watch(src.docStyles, gulp.series('docs:styles:build'));
   $.watch(src.libStyles, gulp.series('docs:styles:build'));
 });
 
 /*--------------------------------- Images ----------------------------------*/
 
 gulp.task('docs:images:clear', function() {
-  return gulp.src(dest.images, {read: false, allowEmpty: true}).pipe($.rimraf());
+  return gulp.src(dest.docImages, {read: false, allowEmpty: true}).pipe($.rimraf());
 });
 
 // Resize and copy images
 gulp.task('images:normal', function() {
-  return gulp.src(src.images)
+  return gulp.src(src.docImages)
     /**
     * Experience so far.
     * {quality: 1} -> reduces size by ≈66% with no resolution change and no visible quality change
@@ -263,23 +266,23 @@ gulp.task('images:normal', function() {
       width: 1920,    // max width
       upscale: false
     }))
-    .pipe(gulp.dest(dest.images));
+    .pipe(gulp.dest(dest.docImages));
 });
 
 // Minify and copy images.
 gulp.task('images:small', function() {
-  return gulp.src(src.images)
+  return gulp.src(src.docImages)
     .pipe($.imageResize({
       quality: 1,
       width: 640,    // max width
       upscale: false
     }))
-    .pipe(gulp.dest(dest.images + '/small'));
+    .pipe(gulp.dest(dest.docImages + '/small'));
 });
 
 // Crop images to small squares
 gulp.task('images:square', function() {
-  return gulp.src(src.images)
+  return gulp.src(src.docImages)
     .pipe($.imageResize({
       quality: 1,
       gravity: 'Center',  // crop relative to center
@@ -288,7 +291,7 @@ gulp.task('images:square', function() {
       height: 640,
       upscale: false
     }))
-    .pipe(gulp.dest(dest.images + '/square'));
+    .pipe(gulp.dest(dest.docImages + '/square'));
 });
 
 gulp.task('docs:images:build',
@@ -296,25 +299,25 @@ gulp.task('docs:images:build',
               gulp.parallel('images:normal', 'images:small', 'images:square')));
 
 gulp.task('docs:images:watch', function() {
-  $.watch(src.images, gulp.series('docs:images:build', reload));
+  $.watch(src.docImages, gulp.series('docs:images:build', reload));
 });
 
 /*--------------------------------- Scripts ---------------------------------*/
 
 gulp.task('docs:scripts:clear', function() {
-  return gulp.src(dest.scripts, {read: false, allowEmpty: true})
+  return gulp.src(dest.docScripts, {read: false, allowEmpty: true})
     .pipe($.plumber())
     .pipe($.rimraf());
 });
 
 gulp.task('docs:scripts:copy', function() {
-  return gulp.src(src.libScriptsMin).pipe(gulp.dest(dest.scripts));
+  return gulp.src(src.docScripts).pipe(gulp.dest(dest.docScripts));
 });
 
 gulp.task('docs:scripts:build', gulp.series('docs:scripts:clear', 'docs:scripts:copy'));
 
 gulp.task('docs:scripts:watch', function() {
-  $.watch(src.libScriptsMin, gulp.series('docs:scripts:build', reload));
+  $.watch(src.docScripts, gulp.series('docs:scripts:build', reload));
 });
 
 /*--------------------------------- Server ----------------------------------*/
@@ -323,7 +326,7 @@ gulp.task('server', function() {
   return bsync.init({
     startPath: '/stylific/',
     server: {
-      baseDir: dest.html,
+      baseDir: dest.docHtml,
       middleware: function(req, res, next) {
         req.url = req.url.replace(/^\/stylific/, '/');
         next();

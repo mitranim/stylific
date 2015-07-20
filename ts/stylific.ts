@@ -4,7 +4,7 @@
   if (typeof document !== 'object' || !document) return;
 
   document.addEventListener('click', function(event) {
-    var elem = event.target;
+    let elem = <HTMLElement>event.target;
     if (!(elem instanceof HTMLElement) || hasAttr(elem, 'disabled')) return;
 
     // data-sf-toggle hooks.
@@ -28,25 +28,25 @@
         if (!elem.parentElement) return;
       } while (elem = elem.parentElement);
 
-      var parent = elem.parentElement;
+      let parent = elem.parentElement;
 
       // Intentionally omitting .sf-dropdown (which requires [data-sf-toggle]).
       if (hasClass(parent, 'sf-collapse')) toggleElem(elem);
       else if (hasClass(parent, 'sf-navbar')) toggleElem(elem);
 
       else if (hasClass(parent, 'sf-tabset-head')) {
-        var tabset = parent.parentElement;
+        let tabset = parent.parentElement;
         if (hasClass(tabset, 'sf-tabset')) {
           toggleSiblings(elem);
           // Activate a tab on the same index.
-          var body = find(tabset.childNodes, function(node) {
+          let body = find(tabset.childNodes, node => {
             return node instanceof HTMLElement && hasClass(node, 'sf-tabset-body');
           });
           if (body) {
-            var tabs = [].filter.call(body.childNodes, function(node) {
+            let tabs = [].filter.call(body.childNodes, node => {
               return node instanceof HTMLElement && hasClass(node, 'sf-tab');
             });
-            var tab = tabs[indexByType(elem)];
+            let tab = tabs[indexByType(elem)];
             if (tab) toggleSiblings(tab);
           }
         }
@@ -54,69 +54,72 @@
     }
   });
 
-  function toggleElem(elem) {
+  function toggleElem(elem: HTMLElement): void {
     elem.classList.toggle('active');
   }
 
-  function toggleSiblings(elem) {
+  function toggleSiblings(elem: HTMLElement): void {
     if (!elem.parentElement) return;
-    [].slice.call(elem.parentElement.childNodes).forEach(function(child) {
+    [].slice.call(elem.parentElement.childNodes).forEach(child => {
       if (child instanceof HTMLElement) child.classList.remove('active');
     });
     elem.classList.add('active');
   }
 
-  function toggleId(id) {
-    var elem = document.getElementById(id);
+  function toggleId(id: string): void {
+    let elem = document.getElementById(id);
     if (elem) toggleElem(elem);
   }
 
-  function hasAttr(elem, name) {
+  function hasAttr(elem: HTMLElement, name: string): boolean {
     return elem.hasAttribute(name);
   }
 
-  function getAttr(elem, name) {
+  function getAttr(elem: HTMLElement, name: string): string {
     return elem.getAttribute(name);
   }
 
-  function hasClass(elem, name) {
+  function hasClass(elem: HTMLElement, name: string): boolean {
     return elem.classList.contains(name);
   }
 
-  function indexByType(elem) {
+  function indexByType(elem: HTMLElement): number {
     if (!elem.parentNode) return -1;
-    return [].filter.call(elem.parentNode.childNodes, function(node) {
+    return [].filter.call(elem.parentNode.childNodes, node => {
       return node instanceof Element && node.tagName === elem.tagName;
     }).indexOf(elem);
   }
 
-  function find(iterable, iterator) {
-    for (var i = 0, ii = iterable.length; i < ii; ++i) {
+  function find(iterable: {[index: number]: any; length: number;}, iterator): any {
+    for (let i = 0, ii = iterable.length; i < ii; ++i) {
       if (iterator(iterable[i], i)) return iterable[i];
     }
   }
 
   // [data-sf-tooltip][data-sf-trigger~=focus]  ->  show
   document.addEventListener('focus', function(event) {
-    var elem = event.target.parentElement;
-    if (!(elem instanceof HTMLElement)) return;
-    if (hasAttr(elem, 'data-sf-trigger') && ~getAttr(elem, 'data-sf-trigger').indexOf('focus')) {
-      elem.classList.add('sf-tooltip-visible')
+    let elem = <HTMLElement>event.target;
+    if (elem instanceof HTMLElement && ((elem = elem.parentElement) instanceof HTMLElement)) {
+      if (hasAttr(elem, 'data-sf-trigger') && ~getAttr(elem, 'data-sf-trigger').indexOf('focus')) {
+        elem.classList.add('sf-tooltip-visible')
+      }
     }
   }, true);
 
   // [data-sf-tooltip][data-sf-trigger~=focus]  ->  hide
   document.addEventListener('blur', function(event) {
-    var elem = event.target.parentElement;
-    if (!(elem instanceof HTMLElement)) return;
-    if (hasAttr(elem, 'data-sf-trigger') && ~getAttr(elem, 'data-sf-trigger').indexOf('focus')) {
-      elem.classList.remove('sf-tooltip-visible');
+    let elem = <HTMLElement>event.target;
+    if (elem instanceof HTMLElement && ((elem = elem.parentElement) instanceof HTMLElement)) {
+      if (hasAttr(elem, 'data-sf-trigger') && ~getAttr(elem, 'data-sf-trigger').indexOf('focus')) {
+        elem.classList.remove('sf-tooltip-visible');
+      }
     }
   }, true);
 
   // Prevents scroll from spilling outside certain elements.
   document.addEventListener('wheel', function(event) {
-    var elem = event.target;
+    let elem = <HTMLElement>event.target;
+    if (!(elem instanceof HTMLElement)) return;
     do {
       if (shouldPreventScrollSpill(elem, event)) {
         event.preventDefault();
@@ -130,7 +133,7 @@
   //   1) always stop for .sf-modal;
   //   2) stop [data-sf-no-scroll-spill] and .sf-tabset-body if they're not
   //      fully visible and have reached a terminus.
-  function shouldPreventScrollSpill(elem, event) {
+  function shouldPreventScrollSpill(elem: HTMLElement, event: WheelEvent): boolean {
     if (!(elem instanceof HTMLElement)) return false;
     if (hasClass(elem, 'sf-modal')) return true;
     if (hasAttr(elem, 'data-sf-no-scroll-spill') ||
@@ -139,9 +142,9 @@
     }
   }
 
-  function shouldStopWheelEvent(elem, event) {
+  function shouldStopWheelEvent(elem: HTMLElement, event: WheelEvent): boolean {
     if (elem.scrollHeight === elem.offsetHeight) return false;
-    if (event.deltaY < 0 && atTop(elem) || event.deltaY > 0 && atBottom(elem)) {
+    if (event.deltaY < 0 && reachedTop(elem) || event.deltaY > 0 && reachedBottom(elem)) {
       return true;
     }
   }
@@ -149,15 +152,15 @@
   // Checks if the element is scrolled to the top. Pixel measurements are
   // inaccurate when the browser is zoomed in or out, so we consider that we've
   // hit the top if the difference is within 3px.
-  function atTop(elem) {
+  function reachedTop(elem: HTMLElement): boolean {
     return elem.scrollTop < 3;
   }
 
   // Checks if the element is scrolled to the bottom. Pixel measurements are
   // inaccurate when the browser is zoomed in or out, so we consider that we've
   // hit the bottom if the difference is within 3px.
-  function atBottom(elem) {
-    var delta = elem.scrollHeight - elem.scrollTop - elem.offsetHeight;
+  function reachedBottom(elem: HTMLElement): boolean {
+    let delta = elem.scrollHeight - elem.scrollTop - elem.offsetHeight;
     return Math.abs(delta) < 3;
   }
 }();
