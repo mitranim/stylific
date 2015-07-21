@@ -143,12 +143,7 @@ gulp.task('lib:styles:compile', function() {
 gulp.task('lib:scripts:compile', function() {
   return gulp.src(src.libScripts)
     .pipe($.plumber())
-    .pipe($.typescript({
-      typescript: require('typescript'),
-      target: 'ES5'
-    }))
-    .pipe($.uglify())
-    .pipe($.rename('stylific.min.js'))
+    .pipe($.typescript({target: 'ES5'}))
     .pipe(gulp.dest(dest.lib));
 });
 

@@ -59,6 +59,7 @@
   $bg-color: $sf-color-umbra;
   background-color: $bg-color;
   color: $text-color;
+  * {color: inherit}
 
   /**
    * Immediate child styling.
