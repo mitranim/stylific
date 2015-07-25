@@ -28,25 +28,25 @@
         if (!elem.parentElement) return;
       } while (elem = elem.parentElement);
 
-      let parent = elem.parentElement;
+      const parent = elem.parentElement;
 
       // Intentionally omitting .sf-dropdown (which requires [data-sf-toggle]).
       if (hasClass(parent, 'sf-collapse')) toggleElem(elem);
       else if (hasClass(parent, 'sf-navbar')) toggleElem(elem);
 
       else if (hasClass(parent, 'sf-tabset-head')) {
-        let tabset = parent.parentElement;
+        const tabset = parent.parentElement;
         if (hasClass(tabset, 'sf-tabset')) {
           toggleSiblings(elem);
           // Activate a tab on the same index.
-          let body = find(tabset.childNodes, node => {
+          const body = find(tabset.childNodes, node => {
             return node instanceof HTMLElement && hasClass(node, 'sf-tabset-body');
           });
           if (body) {
-            let tabs = [].filter.call(body.childNodes, node => {
+            const tabs = [].filter.call(body.childNodes, node => {
               return node instanceof HTMLElement && hasClass(node, 'sf-tab');
             });
-            let tab = tabs[indexByType(elem)];
+            const tab = tabs[indexByType(elem)];
             if (tab) toggleSiblings(tab);
           }
         }
@@ -67,7 +67,7 @@
   }
 
   function toggleId(id: string): void {
-    let elem = document.getElementById(id);
+    const elem = document.getElementById(id);
     if (elem) toggleElem(elem);
   }
 
@@ -98,20 +98,22 @@
 
   // [data-sf-tooltip][data-sf-trigger~=focus]  ->  show
   document.addEventListener('focus', function(event) {
-    let elem = <HTMLElement>event.target;
-    if (elem instanceof HTMLElement && ((elem = elem.parentElement) instanceof HTMLElement)) {
-      if (hasAttr(elem, 'data-sf-trigger') && ~getAttr(elem, 'data-sf-trigger').indexOf('focus')) {
-        elem.classList.add('sf-tooltip-visible')
+    const elem = <HTMLElement>event.target;
+    if (elem instanceof HTMLElement) {
+      const parent = elem.parentElement;
+      if (parent && hasAttr(parent, 'data-sf-trigger') && ~getAttr(parent, 'data-sf-trigger').indexOf('focus')) {
+        parent.classList.add('sf-tooltip-visible')
       }
     }
   }, true);
 
   // [data-sf-tooltip][data-sf-trigger~=focus]  ->  hide
   document.addEventListener('blur', function(event) {
-    let elem = <HTMLElement>event.target;
-    if (elem instanceof HTMLElement && ((elem = elem.parentElement) instanceof HTMLElement)) {
-      if (hasAttr(elem, 'data-sf-trigger') && ~getAttr(elem, 'data-sf-trigger').indexOf('focus')) {
-        elem.classList.remove('sf-tooltip-visible');
+    const elem = <HTMLElement>event.target;
+    if (elem instanceof HTMLElement) {
+      const parent = elem.parentElement;
+      if (parent && hasAttr(parent, 'data-sf-trigger') && ~getAttr(parent, 'data-sf-trigger').indexOf('focus')) {
+        parent.classList.remove('sf-tooltip-visible');
       }
     }
   }, true);

@@ -70,7 +70,7 @@
       padding: $sf-space;
 
       // Cosmetic.
-      cursor: pointer;
+      &:not([disabled]) {cursor: pointer}
     }
 
     // Interactive colour highlighting for the label.

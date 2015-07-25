@@ -98,7 +98,7 @@
     /**
      * Cosmetic.
      */
-    cursor: pointer;
+    &:not([disabled]) {cursor: pointer}
     // Cosmetic state indicator. In the hover version, it's static; in the
     // toggled version, its content is changed when the state is toggled.
     &::after {

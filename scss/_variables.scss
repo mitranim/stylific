@@ -52,6 +52,7 @@ $sf-color-maps: $sf-color-map-primary, $sf-color-map-accent, $sf-color-map-warn 
  */
 $sf-color-text: lighten(black, 2%) !default;
 $sf-color-background: darken(white, 2%) !default;
+$sf-color-link: map-get($sf-color-map-primary, default) !default;
 $sf-color-umbra: lighten(black, 20%) !default;
 
 /******************************** layout.scss ********************************/

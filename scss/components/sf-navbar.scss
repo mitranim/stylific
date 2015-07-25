@@ -120,7 +120,7 @@
     order: 1;
 
     // Cosmetic.
-    cursor: pointer;
+    &:not([disabled]) {cursor: pointer}
 
     // Overlay for closing the toggled dropdown.
     &::before {

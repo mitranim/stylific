@@ -51,7 +51,7 @@
    */
   > label {
     // Cosmetic.
-    cursor: pointer;
+    &:not([disabled]) {cursor: pointer}
 
     // Toggle indicator.
     &::after {

@@ -62,7 +62,7 @@ body {
 
 // Normalise link colours.
 a {
-  color: map-get($sf-color-map-primary, default);
+  color: $sf-color-link;
 }
 
 @each $color-map in $sf-color-maps {
@@ -74,5 +74,5 @@ a {
 
 // Default monospace background.
 tt, code, kbd, pre, samp {
-  background-color: rgba(0, 0, 0, 0.03);
+  background-color: rgba(map-get($sf-color-map-primary, default), 0.05);
 }

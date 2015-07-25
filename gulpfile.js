@@ -23,7 +23,7 @@ var src = {
   libScripts:    'ts/stylific.ts',
   docScripts: [
     'lib/stylific.min.js',
-    'node_modules/simple-pjax/simple-pjax.min.js'
+    'node_modules/simple-pjax/lib/simple-pjax.min.js'
   ],
   docStylesCore:    'src-docs/styles/docs.scss',
   docStyles:        'src-docs/styles/**/*.scss',
@@ -52,17 +52,6 @@ function reload(done) {
   bsync.reload();
   done();
 }
-
-/***************************** Template Imports ******************************/
-
-/**
- * Utility methods for templates.
- */
-var imports = {
-  lastId: 0,
-  uniqId: function() {return 'uniq-id-' + ++imports.lastId},
-  lastUniqId: function() {return 'uniq-id-' + imports.lastId}
-};
 
 /********************************** Config ***********************************/
 
@@ -167,7 +156,7 @@ gulp.task('docs:html:compile', function() {
 
   return gulp.src(src.docHtml)
     .pipe($.plumber())
-    // Pre-process the markdown files.
+    // Pre-process markdown files.
     .pipe(filterMd)
     .pipe($.marked({
       gfm:         true,
@@ -182,15 +171,15 @@ gulp.task('docs:html:compile', function() {
         return result.value;
       }
     }))
-    // Add the hljs code class.
+    // Add hljs code class.
     .pipe($.replace(/<pre><code class="(.*)">|<pre><code>/g,
                     '<pre><code class="hljs $1">'))
-    // Return the other files.
+    // Return other files.
     .pipe(filterMd.restore())
     // Unpack commented HTML parts.
     .pipe($.replace(/<!--\s*:((?:[^:]|:(?!\s*-->))*):\s*-->/g, '$1'))
     // Render all html.
-    .pipe($.statil({imports: imports}))
+    .pipe($.statil())
     // Change each `<filename>` into `<filename>/index.html`.
     .pipe($.rename(function(path) {
       switch (path.basename + path.extname) {

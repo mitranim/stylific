@@ -43,12 +43,10 @@
  */
 
 @mixin sf-register-selected-state($postfix: '') {
-  // Added :not([disabled]) to match the specificity of the base interactive
-  // selectors.
   &:not([disabled]) {
     &#{$postfix} {
       // Grayscale theme.
-      background-color: rgba($sf-color-text, 0.1);
+      background-color: rgba(map-get($sf-color-map-primary, default), 0.1);
     }
 
     // Colour themes.
@@ -82,21 +80,23 @@
 
 @mixin sf-register-interactive-selector($postfix: '') {
   &#{$postfix} {
-    // Grayscale theme.
-    &:hover, &:active {
-      background-color: rgba($sf-color-text, 0.05);
+    &:not([disabled]) {
+      // Grayscale theme.
+      &:hover, &:focus, &:active {
+        background-color: rgba(map-get($sf-color-map-primary, default), 0.05);
+      }
+      &.active {
+        background-color: rgba(map-get($sf-color-map-primary, default), 0.1);
+      }
+      // Misc.
+      @include sf-outline-interactive;
     }
-    &.active {
-      background-color: rgba($sf-color-text, 0.1);
-    }
-    // Misc.
-    @include sf-outline-interactive;
-    &[disabled] {opacity: 0.7}
   }
 
   // Colour themes.
   @each $color-map in $sf-color-maps {
     $name: map-get($color-map, name);
+    $default: map-get($color-map, default);
     $active: map-get($color-map, active);
     $selected: map-get($color-map, selected);
 
@@ -104,11 +104,15 @@
     &#{$postfix}.theme-text-#{$name},
     .theme-text-#{$name} &#{$postfix},
     &.theme-text-#{$name}#{$postfix} {
-      &:hover, &:active {
-        color: sf-sensible-text-color($active);
-      }
-      &.active {
-        color: sf-sensible-text-color($selected);
+      &:not([disabled]) {
+        &:hover, &:focus, &:active {
+          color: sf-sensible-text-color($active);
+          background-color: rgba($default, 0.05);
+        }
+        &.active {
+          color: sf-sensible-text-color($selected);
+          background-color: rgba($default, 0.1);
+        }
       }
     }
 
@@ -116,13 +120,15 @@
     &#{$postfix}.theme-#{$name},
     .theme-#{$name} &#{$postfix},
     &.theme-#{$name}#{$postfix} {
-      &:hover, &:active {
-        background-color: $active;
-        color: sf-contrasting-color($active);
-      }
-      &.active {
-        background-color: $selected;
-        color: sf-contrasting-color($selected);
+      &:not([disabled]) {
+        &:hover, &:focus, &:active {
+          background-color: $active;
+          color: sf-contrasting-color($active);
+        }
+        &.active {
+          background-color: $selected;
+          color: sf-contrasting-color($selected);
+        }
       }
     }
   }
@@ -131,23 +137,23 @@
 /*********************************** Misc ************************************/
 
 @mixin sf-shadow-weak {
-  box-shadow: 0 0 0 1px rgba($sf-color-text, 0.2);
+  box-shadow: 0 0 0 1px rgba(map-get($sf-color-map-primary, default), 0.2);
 }
 
 @mixin sf-shadow-thin {
-  box-shadow: 0 0 4px -1px rgba($sf-color-text, 0.5);
+  box-shadow: 0 0 4px -1px rgba(map-get($sf-color-map-primary, default), 0.5);
 }
 
 @mixin sf-shadow-medium {
-  box-shadow: 0 0.2rem 1.5rem -0.2rem rgba($sf-color-text, 0.5);
+  box-shadow: 0 0.2rem 1.5rem -0.2rem rgba(map-get($sf-color-map-primary, default), 0.5);
 }
 
 @mixin sf-shadow-down {
-  box-shadow: 0 3px 6px -3px rgba($sf-color-text, 0.4);
+  box-shadow: 0 3px 6px -3px rgba(map-get($sf-color-map-primary, default), 0.4);
 }
 
 @mixin sf-shadow-inset-top-bottom {
-  $color: rgba($sf-color-text, 0.4);
+  $color: rgba(map-get($sf-color-map-primary, default), 0.4);
   box-shadow: inset 0 -9px 9px -9px $color, inset 0 9px 9px -9px $color;
 }
 
@@ -210,8 +216,5 @@
 @mixin sf-link-decorations {
   border-bottom: 1px dotted;
   border-color: inherit;
-  color: map-get($sf-color-map-primary, default);
-  &:visited {
-    color: map-get($sf-color-map-primary, selected);
-  }
+  color: $sf-color-link;
 }
