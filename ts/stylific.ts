@@ -5,50 +5,66 @@
 
   document.addEventListener('click', function(event) {
     let elem = <HTMLElement>event.target;
-    if (!(elem instanceof HTMLElement) || hasAttr(elem, 'disabled')) return;
 
-    // data-sf-toggle hooks.
-    if (hasAttr(elem, 'data-sf-toggle')) {
-      toggleElem(elem);
-    } else if (hasAttr(elem, 'data-sf-toggle-siblings')) {
-      toggleSiblings(elem);
-    } else if (hasAttr(elem, 'data-sf-toggle-id')) {
-      toggleId(getAttr(elem, 'data-sf-toggle-id'));
-    }
+    do {
+      if (!(elem instanceof HTMLElement) || hasAttr(elem, 'disabled')) return;
+
+      // data-sf-toggle hooks.
+      if (hasAttr(elem, 'data-sf-toggle')) {
+        toggleElem(elem);
+        return;
+      }
+      if (hasAttr(elem, 'data-sf-toggle-siblings')) {
+        toggleSiblings(elem);
+        return;
+      }
+      if (hasAttr(elem, 'data-sf-toggle-id')) {
+        toggleId(getAttr(elem, 'data-sf-toggle-id'));
+        return;
+      }
+    } while (elem = elem.parentElement);
+
+    // Return to the original target.
+    elem = <HTMLElement>event.target;
 
     // Clicking sf-modal always closes it.
-    else if (hasClass(elem, 'sf-modal')) {
+    if (hasClass(elem, 'sf-modal')) {
       elem.classList.remove('active');
+      return;
     }
 
-    else {
-      // Look for a <label> parent.
-      do {
-        if (elem.tagName === 'LABEL') break;
-        if (!elem.parentElement) return;
-      } while (elem = elem.parentElement);
+    // Look for a <label> parent.
+    do {
+      if (elem.tagName === 'LABEL') break;
+      if (!elem.parentElement) return;
+    } while (elem = elem.parentElement);
 
-      const parent = elem.parentElement;
+    const parent = elem.parentElement;
 
-      // Intentionally omitting .sf-dropdown (which requires [data-sf-toggle]).
-      if (hasClass(parent, 'sf-collapse')) toggleElem(elem);
-      else if (hasClass(parent, 'sf-navbar')) toggleElem(elem);
+    // Intentionally omitting .sf-dropdown (which requires [data-sf-toggle]).
+    if (hasClass(parent, 'sf-collapse')) {
+      toggleElem(elem);
+      return;
+    }
+    if (hasClass(parent, 'sf-navbar')) {
+      toggleElem(elem);
+      return;
+    }
 
-      else if (hasClass(parent, 'sf-tabset-head')) {
-        const tabset = parent.parentElement;
-        if (hasClass(tabset, 'sf-tabset')) {
-          toggleSiblings(elem);
-          // Activate a tab on the same index.
-          const body = find(tabset.childNodes, node => {
-            return node instanceof HTMLElement && hasClass(node, 'sf-tabset-body');
+    if (hasClass(parent, 'sf-tabset-head')) {
+      const tabset = parent.parentElement;
+      if (hasClass(tabset, 'sf-tabset')) {
+        toggleSiblings(elem);
+        // Activate a tab on the same index.
+        const body = find(tabset.childNodes, node => {
+          return node instanceof HTMLElement && hasClass(node, 'sf-tabset-body');
+        });
+        if (body) {
+          const tabs = [].filter.call(body.childNodes, node => {
+            return node instanceof HTMLElement && hasClass(node, 'sf-tab');
           });
-          if (body) {
-            const tabs = [].filter.call(body.childNodes, node => {
-              return node instanceof HTMLElement && hasClass(node, 'sf-tab');
-            });
-            const tab = tabs[indexByType(elem)];
-            if (tab) toggleSiblings(tab);
-          }
+          const tab = tabs[indexByType(elem)];
+          if (tab) toggleSiblings(tab);
         }
       }
     }

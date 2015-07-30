@@ -1,11 +1,12 @@
 {
   "name": "stylific",
-  "version": "0.8.3",
+  "version": "0.8.4",
   "homepage": "http://mitranim.com/stylific/",
   "scripts": {
     "start": "gulp",
     "gulp": "gulp",
-    "prepublish": "gulp lib:build --prod && uglifyjs lib/stylific.js > lib/stylific.min.js -m --lint",
+    "minify": "uglifyjs lib/stylific.js > lib/stylific.min.js -m --lint",
+    "prepublish": "gulp lib:build --prod && npm run minify",
     "push": "npm run prepublish && git push origin $(git symbolic-ref --short HEAD)",
     "push-docs": "gulp build --prod && (cd stylific-gh-pages && git add -A . && git commit -a -m autocommit && git push origin gh-pages)"
   },
@@ -50,7 +51,8 @@
     "gulp-watch": "^4.2.4",
     "highlight.js": "^8.6.0",
     "lodash": "^3.9.3",
-    "simple-pjax": "^0.0.8",
+    "shelljs": "^0.5.1",
+    "simple-pjax": "^0.0.12",
     "uglify-js": "^2.4.23",
     "yargs": "^3.13.0"
   }
