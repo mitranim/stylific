@@ -37,17 +37,19 @@
   position: fixed;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
   z-index: $sf-z-index-modal;
-  // Collapse dimensions unless active.
-  width: 0;
-  height: 0;
+
+  // Hide until visible.
+  &:not(.active) {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+  }
 
   // Active styling.
   &.active {
-    // Uncollapse dimensions.
-    width: 100%;
-    height: 100%;
-
     // Overlay.
     &::before {
       content: '';
