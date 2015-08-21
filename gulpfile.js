@@ -21,7 +21,7 @@ var shell  = require('shelljs');
 var src = {
   libStyles:     'scss/**/*.scss',
   libStylesCore: 'scss/stylific.scss',
-  libScripts:    'ts/stylific.ts',
+  libScripts:    'src-js/stylific.js',
   docScripts: [
     'lib/stylific.min.js',
     'node_modules/simple-pjax/lib/simple-pjax.min.js'
@@ -133,7 +133,7 @@ gulp.task('lib:styles:compile', function() {
 gulp.task('lib:scripts:compile', function() {
   return gulp.src(src.libScripts)
     .pipe($.plumber())
-    .pipe($.typescript({target: 'ES5'}))
+    .pipe($.babel({blacklist: ['strict']}))
     .pipe(gulp.dest(dest.lib));
 });
 

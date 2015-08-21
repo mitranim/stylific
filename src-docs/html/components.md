@@ -599,7 +599,7 @@ adds some nice defaults.
 
 # sf-label
 
-Very primitive default styling for form input groups. Has two versions:
+Styling for form input groups. Has two versions:
 * vertical: `.sf-label`
 * horizontal: `.sf-label-row`
 
@@ -685,7 +685,7 @@ Has two aspect ratio options:
 * 4:3: `.sf-embed-4-to-3`
 
 See the [source](https://github.com/Mitranim/stylific/blob/master/scss/components/sf-embed.scss)
-for which children are automatically adjusted.
+to find which children are adjusted automatically.
 
 ```html
 <div class="sf-embed"><iframe src="..."></div>
