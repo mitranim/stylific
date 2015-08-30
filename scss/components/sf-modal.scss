@@ -116,9 +116,10 @@
     // Limit the width in the same way as `body` in `layout.scss`.
     max-width: $sf-body-max-width;
 
+    // Whitespace.
+    @extend .container;
+
     // Cosmetic.
-    padding: $sf-space;
-    @include sf-space-out-vertical;
     border-radius: $sf-border-radius;
     @include sf-shadow-medium;
 

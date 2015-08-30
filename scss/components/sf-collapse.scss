@@ -45,6 +45,9 @@
 
   // Whitespace.
   > label {padding: $sf-space}
+  > .sf-collapse-body {
+    @extend .container;
+  }
 
   /**
    * Base label styles.
@@ -91,10 +94,6 @@
   /**
    * Body styles.
    */
-  // Base.
-  > .sf-collapse-body {
-    padding: $sf-space;
-  }
   // Collapsed.
   > label:not(.active) ~ .sf-collapse-body {
     display: none;

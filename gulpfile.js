@@ -9,6 +9,7 @@
 
 var $      = require('gulp-load-plugins')();
 var bsync  = require('browser-sync').create();
+var del    = require('del')
 var gulp   = require('gulp');
 var hjs    = require('highlight.js');
 var marked = require('gulp-marked/node_modules/marked');
@@ -111,10 +112,8 @@ marked.Renderer.prototype.link = function(href, title, text) {
 
 /*----------------------------------- Lib -----------------------------------*/
 
-gulp.task('lib:styles:clear', function() {
-  return gulp.src(dest.lib + '/*.css', {read: false, allowEmpty: true})
-    .pipe($.plumber())
-    .pipe($.rimraf());
+gulp.task('lib:styles:clear', function(done) {
+  del(dest.lib + '/*.css', function (_) {done()});
 });
 
 gulp.task('lib:styles:compile', function() {
@@ -150,10 +149,8 @@ gulp.task('lib:watch', function() {
 
 /*---------------------------------- HTML -----------------------------------*/
 
-gulp.task('docs:html:clear', function() {
-  return gulp.src(dest.docHtml + '/**/*.html', {read: false, allowEmpty: true})
-    .pipe($.plumber())
-    .pipe($.rimraf());
+gulp.task('docs:html:clear', function(done) {
+  del(dest.docHtml + '/**/*.html', function (_) {done()});
 });
 
 gulp.task('docs:html:compile', function() {
@@ -205,10 +202,8 @@ gulp.task('docs:html:watch', function() {
 
 /*--------------------------------- Styles ----------------------------------*/
 
-gulp.task('docs:styles:clear', function() {
-  return gulp.src(dest.docStyles, {read: false, allowEmpty: true})
-    .pipe($.plumber())
-    .pipe($.rimraf());
+gulp.task('docs:styles:clear', function(done) {
+  del(dest.docStyles, function (_) {done()});
 });
 
 gulp.task('docs:styles:compile', function() {
@@ -226,7 +221,7 @@ gulp.task('docs:styles:compile', function() {
       advanced: false
     })))
     .pipe(gulp.dest(dest.docStyles))
-    .pipe(bsync.reload({stream: true}));
+    .pipe(bsync.stream());
 });
 
 gulp.task('docs:styles:build', gulp.series('docs:styles:clear', 'docs:styles:compile'));
@@ -238,8 +233,8 @@ gulp.task('docs:styles:watch', function() {
 
 /*--------------------------------- Images ----------------------------------*/
 
-gulp.task('docs:images:clear', function() {
-  return gulp.src(dest.docImages, {read: false, allowEmpty: true}).pipe($.rimraf());
+gulp.task('docs:images:clear', function(done) {
+  del(dest.docImages, function (_) {done()});
 });
 
 // Resize and copy images
@@ -293,10 +288,8 @@ gulp.task('docs:images:watch', function() {
 
 /*--------------------------------- Scripts ---------------------------------*/
 
-gulp.task('docs:scripts:clear', function() {
-  return gulp.src(dest.docScripts, {read: false, allowEmpty: true})
-    .pipe($.plumber())
-    .pipe($.rimraf());
+gulp.task('docs:scripts:clear', function(done) {
+  del(dest.docScripts, function (_) {done()});
 });
 
 gulp.task('docs:scripts:copy', function() {
@@ -326,7 +319,7 @@ gulp.task('server', function() {
     ui: false,
     files: false,
     ghostMode: false,
-    notify: true
+    notify: false
   });
 });
 

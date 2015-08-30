@@ -5,10 +5,11 @@
    */
   width: 10em;
   float: right;
-  margin-left: $sf-space;
 
-  // Don't offset the next element.
-  margin-bottom: 0;
+  // Whitespace.
+  margin-left: $sf-space;
+  // Negate extra header margins.
+  &:first-child + * {margin-top: 0}
 
   // Default labeling.
   > label {padding: $sf-space / 2}
@@ -29,8 +30,12 @@
     // Layout.
     display: flex;
     flex-direction: column;
+
     // Whitespace.
     padding: 0;
-    > * {padding: $sf-space / 2}
+    > * {
+      margin: 0;
+      padding: $sf-space / 2;
+    }
   }
 }

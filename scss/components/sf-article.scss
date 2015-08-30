@@ -9,46 +9,55 @@
 // Extend the native tag.
 article {
 
+  /**
+   * Whitespace.
+   */
+  @extend .container;
+  // Larger offsets for headers. This relies on vertical margin collapse with
+  // the previous element, if any, to produce an x2 rather than an x3 interval.
+  // Vertical collapse doesn't work in flex columns, but articles are expected
+  // to be blocks.
+  > h1, > h2, > h3, > h4, > h5, > h6 {
+    margin-top: $sf-space * 2;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
   // Article image styles. Using a descendant selector because the layout may
-  // have arbitrary depth.
+  // have arbitrary depth. When writing markdown, images should be wrapped into
+  // float helpers (below).
   img {
     // Layout.
+    display: inline-block;
     width: 100%;
     height: auto;
 
     // Cosmetic.
     @include sf-shadow-thin;
-
-    // Side versions.
-    &.left {
-      float: left;
-      margin-right: $sf-space;
-    }
-    &.right {
-      float: right;
-      margin-left: $sf-space;
-    }
-
-    // Different sizes.
-    &.tiny, &.left, &.right {width: 25%}
-    &.small {width: calc(1/3 * 100%)}
-    &.medium {width: 50%}
   }
 
-  // Whitespace.
-  padding: $sf-space;
-  @include sf-space-out-vertical;
-
-  // Link decorations. We're trying to target links in text without affecting
-  // other elements.
-  p a, ul a {
-    @include sf-link-decorations;
+  // Float helpers.
+  .left, .float-left {
+    float: left;
+    margin-right: $sf-space;
+  }
+  .right, .float-right {
+    float: right;
+    margin-left: $sf-space;
+  }
+  // Negate double offsets for headers following floating elements at the
+  // beginning of an article.
+  .left, .float-left, .right, .float-right {
+    &:first-child + * {margin-top: 0}
   }
 
-  // Clear article's floating images before letting go of the flow.
-  &::after {
-    content: '';
-    display: table;
-    clear: both;
-  }
+  // Size helpers.
+  .tiny, .left, .float-left, .right, .float-right {width: 25%}
+  .small {width: calc(1/3 * 100%)}
+  .medium {width: 50%}
+
+  // Clear inner floating elements and prevent vertical outer and inner margins
+  // from collapsing.
+  @extend .clear-both;
 }

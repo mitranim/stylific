@@ -1,6 +1,6 @@
 {
   "name": "stylific",
-  "version": "0.8.6",
+  "version": "0.8.7",
   "homepage": "http://mitranim.com/stylific/",
   "scripts": {
     "start": "gulp",
@@ -27,7 +27,8 @@
     "url": "https://github.com/Mitranim/stylific.git"
   },
   "devDependencies": {
-    "browser-sync": "^2.7.12",
+    "browser-sync": "^2.8.2",
+    "del": "^1.2.1",
     "gulp": "git://github.com/gulpjs/gulp#4.0",
     "gulp-autoprefixer": "^2.3.1",
     "gulp-babel": "^5.2.1",
@@ -42,7 +43,6 @@
     "gulp-plumber": "^1.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.3",
-    "gulp-rimraf": "^0.1.1",
     "gulp-sass": "^2.0.1",
     "gulp-statil": "0.0.4",
     "gulp-watch": "^4.2.4",

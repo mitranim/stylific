@@ -69,9 +69,7 @@
     background-color: rgba(sf-contrasting-color($text-color), 0.4);
 
     // Whitespace.
-    padding-left:  $sf-space;
-    padding-right: $sf-space;
-    &:first-child {padding-top:    $sf-space}
-    &:last-child  {padding-bottom: $sf-space}
+    padding: $sf-space;
+    &:not(:first-child) {padding-top: 0}
   }
 }

@@ -12,6 +12,9 @@ html {
   margin: 0;
   padding: 0;
 }
+ul, ol, dl {
+  @include sf-space-out-vertical($sf-space / 2);
+}
 
 body {
   /**
@@ -38,6 +41,13 @@ body {
 }
 
 /********************************** Layout ***********************************/
+
+// Spaced-out container for typographically meaningful elements, like
+// paragraphs, that require surrounding whitespace.
+.container {
+  padding: $sf-space;
+  @include sf-space-out-vertical;
+}
 
 /**
  * Credit:

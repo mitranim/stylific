@@ -110,11 +110,9 @@
    * Body styles.
    */
   > .sf-tabset-body > .sf-tab {
+    // Whitespace.
+    @extend .container;
     // Hide unless active.
     &:not(.active) {display: none}
-
-    // Whitespace.
-    padding: $sf-space;
-    @include sf-space-out-vertical;
   }
 }

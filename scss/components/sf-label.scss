@@ -33,7 +33,9 @@
   > * {margin-bottom: $sf-space / 2}
   > :last-child {margin-bottom: 0}
 
-  // Row version: horizontal.
+  /**
+   * Row version: horizontal.
+   */
   &.sf-label-row {
     // Layout.
     flex-direction: row;

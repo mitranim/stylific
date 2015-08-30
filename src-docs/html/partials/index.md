@@ -10,13 +10,13 @@
 
 # Overview
 
-`stylific` is a CSS library written with [Sass](http://sass-lang.com)
-(previously with LESS). It's designed to serve as a flexible foundation for
-website styling, and provides common UI components as building blocks.
+`stylific` is a CSS library written with [Sass](http://sass-lang.com). It's
+designed to serve as a flexible website foundation, and provides some common UI
+components as building blocks.
 
 In many ways this is similar to [Bootstrap](http://getbootstrap.com), with the
 difference that stylific uses typographic units (`rem` and `em`) and flexbox.
-Bootstrap 4 may or may not obviate the need for it.
+Bootstrap 4 may or may not obviate the need for this library.
 
 Prior to version 0.7.0, stylific used custom tag names and attributes for most
 of the styling. Starting with 0.7.0, all styles are class based for
@@ -37,9 +37,10 @@ different displays. In fact, stylific does that by default.
 
 The flexbox specification solves problems that used to demand convoluted
 workarounds, obviates the need for specialised grid systems, and lets you create
-intelligent, self-scaling layouts without fixed dimensions. Browser support is
-already good enough, if you factor in vendor prefixes. The wonderful
-[autoprefixer](https://github.com/postcss/autoprefixer) can do it automatically.
+intelligent, self-scaling layouts without fixed dimensions. Browser support
+(with vendor prefixes) is already good enough. The wonderful
+[autoprefixer](https://github.com/postcss/autoprefixer) can add them
+automatically.
 
 See [Layout](layout/) for details.
 

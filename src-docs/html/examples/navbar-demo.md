@@ -23,14 +23,16 @@ navbar to fold. Resize your viewport to see the folding in effect.
 </div>
 ```
 
-<div doc-demo>
-  <div class="sf-navbar">
-    <a href="examples/navbar-demo/#home">Home</a>
-    <a class="active" href="examples/navbar-demo/#robots">Robots</a>
-    <a href="examples/navbar-demo/#medical-cybernetics">Medical Cybernetics</a>
-    <label></label>
-    <a href="examples/navbar-demo/#partners">Partners</a>
-    <a href="examples/navbar-demo/#achievements">Achievements</a>
+<div class="doc-demo">
+  <div class="doc-demo-body">
+    <div class="sf-navbar">
+      <a href="examples/navbar-demo/#home">Home</a>
+      <a class="active" href="examples/navbar-demo/#robots">Robots</a>
+      <a href="examples/navbar-demo/#medical-cybernetics">Medical Cybernetics</a>
+      <label></label>
+      <a href="examples/navbar-demo/#partners">Partners</a>
+      <a href="examples/navbar-demo/#achievements">Achievements</a>
+    </div>
   </div>
 </div>
 
@@ -50,13 +52,15 @@ regardless of the viewport width.
 </div>
 ```
 
-<div doc-demo>
-  <div class="sf-navbar sf-navbar-fold theme-primary">
-    <a href="examples/navbar-demo/#home">Home</a>
-    <a class="active" href="examples/navbar-demo/#robots">Robots</a>
-    <a href="examples/navbar-demo/#medical-cybernetics">Medical Cybernetics</a>
-    <label></label>
-    <a href="examples/navbar-demo/#partners">Partners</a>
-    <a href="examples/navbar-demo/#achievements">Achievements</a>
+<div class="doc-demo">
+  <div class="doc-demo-body">
+    <div class="sf-navbar sf-navbar-fold theme-primary">
+      <a href="examples/navbar-demo/#home">Home</a>
+      <a class="active" href="examples/navbar-demo/#robots">Robots</a>
+      <a href="examples/navbar-demo/#medical-cybernetics">Medical Cybernetics</a>
+      <label></label>
+      <a href="examples/navbar-demo/#partners">Partners</a>
+      <a href="examples/navbar-demo/#achievements">Achievements</a>
+    </div>
   </div>
 </div>

@@ -52,7 +52,7 @@ ul, ol {
   opacity: 0.7;
 }
 
-.block {display: block;}
+.block {display: block}
 
 // Automatically scroll nospill containers. (The user still needs to set the
 // height property.)
@@ -60,22 +60,59 @@ ul, ol {
   overflow: scroll;
 }
 
+// Prettier section break.
+hr {
+  margin-top: 2 * $sf-space;
+  margin-bottom: 2 * $sf-space;
+  border: none;
+  border-top: 1px solid lightgrey;
+}
+
+// Prevent textareas from breaking out of containers through horizontal
+// resize.
+textarea {
+  resize: vertical;
+}
+
+// Link decorations. We're trying to target links in text without affecting
+// other elements.
+p a, ul a, ol a, dl a, a.decorated {
+  @include sf-link-decorations;
+}
+
 /********************************** Globals **********************************/
 
+/**
+ * Layout.
+ */
 // IE 10 fix.
 [hidden] {display: none}
 // IE fix.
 template {display: none !important}
+.block {display: block}
 
 /**
  * Whitespace.
  */
-.pad {padding: $sf-space}
+.pad {
+  padding: $sf-space;
+}
+.nopad {
+  padding: 0;
+}
 .space-out {
   @include sf-space-out-vertical;
 }
 .space-out-h {
   @include sf-space-out-horizontal;
+}
+// Clears floats and prevents vertical margin collapse.
+.clear-both {
+  &::before, &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
 }
 
 /**

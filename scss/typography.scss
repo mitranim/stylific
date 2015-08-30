@@ -17,6 +17,10 @@ html {
 h1, h2, h3, h4, h5, h6 {
   font-weight: normal
 }
+// Normalise h1 size in Webkit in the <article> context.
+h1 {
+  font-size: 2em;
+}
 
 // Normalise form and input text styles.
 form, input, textarea, button {

@@ -49,11 +49,13 @@ whitespace flags (`justify-content` in flexbox terms):
 </div>
 ```
 
-<div class="doc-demo block">
-  <div class="layout-row layout-space-between">
-    <button>left</button>
-    <button>center</button>
-    <button>right</button>
+<div class="doc-demo">
+  <div class="doc-demo-body">
+    <div class="layout-row layout-space-between">
+      <button>left</button>
+      <button>center</button>
+      <button>right</button>
+    </div>
   </div>
 </div>
 
@@ -72,15 +74,17 @@ cross-alignment flags (`align-items` in flexbox terms):
 </div>
 ```
 
-<div class="doc-demo layout-space-between layout-cross-stretch">
-  <div class="layout-row layout-cross-start" style="min-height: 6em">
-    <button>top</button>
-  </div>
-  <div class="layout-row layout-cross-center" style="min-height: 6em">
-    <button>center</button>
-  </div>
-  <div class="layout-row layout-cross-end" style="min-height: 6em">
-    <button>bottom</button>
+<div class="doc-demo">
+  <div class="doc-demo-body layout-row layout-space-between">
+    <div class="layout-row layout-cross-start" style="min-height: 6em">
+      <button>top</button>
+    </div>
+    <div class="layout-row layout-cross-center" style="min-height: 6em">
+      <button>center</button>
+    </div>
+    <div class="layout-row layout-cross-end" style="min-height: 6em">
+      <button>bottom</button>
+    </div>
   </div>
 </div>
 
@@ -112,11 +116,13 @@ ranges from 1 to 12. In flexbox terms, this corresponds to `flex: N`.
 </div>
 ```
 
-<div class="doc-demo block">
-  <div class="layout-row space-out-h">
-    <button class="flex-1">small</button>
-    <button class="flex-6">huge</button>
-    <button class="flex-1">small</button>
+<div class="doc-demo">
+  <div class="doc-demo-body">
+    <div class="layout-row space-out-h">
+      <button class="flex-1">small</button>
+      <button class="flex-6">huge</button>
+      <button class="flex-1">small</button>
+    </div>
   </div>
 </div>
 
@@ -131,11 +137,13 @@ In flexbox terms, this corresponds to `order: N`.
 </div>
 ```
 
-<div class="doc-demo block">
-  <div class="layout-row layout-space-around">
-    <button class="flex-order-2">third (order: 2)</button>
-    <button class="flex-order-1">second (order: 1)</button>
-    <button class="flex-order--1">first (order: -1)</button>
+<div class="doc-demo">
+  <div class="doc-demo-body">
+    <div class="layout-row layout-space-around">
+      <button class="flex-order-2">third (order: 2)</button>
+      <button class="flex-order-1">second (order: 1)</button>
+      <button class="flex-order--1">first (order: -1)</button>
+    </div>
   </div>
 </div>
 
@@ -151,12 +159,14 @@ terms, this corresponds to `align-self`.
 </div>
 ```
 
-<div class="doc-demo block">
-  <div class="layout-row layout-space-between" style="min-height: 6em">
-    <button class="flex-stretch">stretch</button>
-    <button class="flex-start">top</button>
-    <button class="flex-center">center</button>
-    <button class="flex-end">bottom</button>
+<div class="doc-demo">
+  <div class="doc-demo-body">
+    <div class="layout-row layout-space-between" style="min-height: 6em">
+      <button class="flex-stretch">stretch</button>
+      <button class="flex-start">top</button>
+      <button class="flex-center">center</button>
+      <button class="flex-end">bottom</button>
+    </div>
   </div>
 </div>
 
@@ -169,34 +179,36 @@ easily.
 
 ```html
 <div class="grid doc-grid-demo">
-  <p>One</p>
-  <p>...</p>
-  <p>Twenty</p>
+  <div>One</div>
+  <div>...</div>
+  <div>Twenty</div>
 </div>
 ```
 
-<div class="doc-demo block">
-  <div class="grid doc-grid-demo">
-    <p>One</p>
-    <p>Two</p>
-    <p>Three</p>
-    <p>Four</p>
-    <p>Five</p>
-    <p>Six</p>
-    <p>Seven</p>
-    <p>Eight</p>
-    <p>Nine</p>
-    <p>Ten</p>
-    <p>Eleven</p>
-    <p>Twelve</p>
-    <p>Thirteen</p>
-    <p>Fourteen</p>
-    <p>Fifteen</p>
-    <p>Sixteen</p>
-    <p>Seventeen</p>
-    <p>Eighteen</p>
-    <p>Nineteen</p>
-    <p>Twenty</p>
+<div class="doc-demo">
+  <div class="doc-demo-body">
+    <div class="grid doc-grid-demo">
+      <div>One</div>
+      <div>Two</div>
+      <div>Three</div>
+      <div>Four</div>
+      <div>Five</div>
+      <div>Six</div>
+      <div>Seven</div>
+      <div>Eight</div>
+      <div>Nine</div>
+      <div>Ten</div>
+      <div>Eleven</div>
+      <div>Twelve</div>
+      <div>Thirteen</div>
+      <div>Fourteen</div>
+      <div>Fifteen</div>
+      <div>Sixteen</div>
+      <div>Seventeen</div>
+      <div>Eighteen</div>
+      <div>Nineteen</div>
+      <div>Twenty</div>
+    </div>
   </div>
 </div>
 
@@ -226,49 +238,71 @@ specific needs:
 
 ```html
 <div class="grid-sm-1 grid-md-2 grid-lg-3 doc-grid-demo">
-  <p>One</p>
-  <p>...</p>
-  <p>Twenty</p>
+  <div>One</div>
+  <div>...</div>
+  <div>Twenty</div>
 </div>
 ```
 
-<div class="doc-demo block">
-  <div class="grid-sm-1 grid-md-2 grid-lg-3 doc-grid-demo">
-    <p>One</p>
-    <p>Two</p>
-    <p>Three</p>
-    <p>Four</p>
-    <p>Five</p>
-    <p>Six</p>
-    <p>Seven</p>
-    <p>Eight</p>
-    <p>Nine</p>
-    <p>Ten</p>
-    <p>Eleven</p>
-    <p>Twelve</p>
-    <p>Thirteen</p>
-    <p>Fourteen</p>
-    <p>Fifteen</p>
-    <p>Sixteen</p>
-    <p>Seventeen</p>
-    <p>Eighteen</p>
-    <p>Nineteen</p>
-    <p>Twenty</p>
+<div class="doc-demo">
+  <div class="doc-demo-body">
+    <div class="grid-sm-1 grid-md-2 grid-lg-3 doc-grid-demo">
+      <div>One</div>
+      <div>Two</div>
+      <div>Three</div>
+      <div>Four</div>
+      <div>Five</div>
+      <div>Six</div>
+      <div>Seven</div>
+      <div>Eight</div>
+      <div>Nine</div>
+      <div>Ten</div>
+      <div>Eleven</div>
+      <div>Twelve</div>
+      <div>Thirteen</div>
+      <div>Fourteen</div>
+      <div>Fifteen</div>
+      <div>Sixteen</div>
+      <div>Seventeen</div>
+      <div>Eighteen</div>
+      <div>Nineteen</div>
+      <div>Twenty</div>
+    </div>
   </div>
 </div>
 
 # Whitespace
 
-stylific defines a few global classes dedicated to whitespace. They cover a lot
-of common use cases and save you from littering stylesheets with haphazard
-margin and padding declarations.
+stylific defines sensible whitespace defaults and a few helper classes.
+Together, they should save you from writing case-by-case whitespace rules most
+of the time.
+
+## Defaults
+
+First of all, stylific resets all margins and padding to 0 for all elements.
+Whitespace is added back in a selective fashion, using:
+
+1. Container padding.
+2. Spaced-out container children.
+
+Typographically meaningful content like headers and paragraphs needs whitespace
+all around. It's added by combining container padding with margins between
+children. By default, this is included into `sf-article` and some other stylific
+components. This combination of properties is also available as the `.container`
+class (see below).
+
+## Classes
+
+These global helper classes should be used for manual whitespace adjustment.
+
+```scss
+.pad          // default padding ($sf-space == 1rem)
+.nopad        // no padding
+.space-out    // vertical interval between children
+.space-out-h  // horizontal interval between children
+.container    // combination of .pad and .space-out
+```
 
 Also see the whitespace-related
 [variables](https://github.com/Mitranim/stylific/blob/master/scss/_variables.scss)
 and [mixins](https://github.com/Mitranim/stylific/blob/master/scss/_mixins.scss).
-
-```scss
-.pad          // default padding ($sf-space == 1rem)
-.space-out    // vertical interval between children
-.space-out-h  // horizontal interval between children
-```

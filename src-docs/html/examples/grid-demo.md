@@ -7,33 +7,35 @@ Back to [Layout#Grid](layout/#grid).
 
 ```html
 <div class="grid doc-grid-demo">
-  <p>One</p>
-  <p>...</p>
-  <p>Twenty</p>
+  <div>One</div>
+  <div>...</div>
+  <div>Twenty</div>
 </div>
 ```
 
-<div class="doc-demo block">
-  <div class="grid doc-grid-demo">
-    <p>One</p>
-    <p>Two</p>
-    <p>Three</p>
-    <p>Four</p>
-    <p>Five</p>
-    <p>Six</p>
-    <p>Seven</p>
-    <p>Eight</p>
-    <p>Nine</p>
-    <p>Ten</p>
-    <p>Eleven</p>
-    <p>Twelve</p>
-    <p>Thirteen</p>
-    <p>Fourteen</p>
-    <p>Fifteen</p>
-    <p>Sixteen</p>
-    <p>Seventeen</p>
-    <p>Eighteen</p>
-    <p>Nineteen</p>
-    <p>Twenty</p>
+<div class="doc-demo">
+  <div class="doc-demo-body">
+    <div class="grid doc-grid-demo">
+      <div>One</div>
+      <div>Two</div>
+      <div>Three</div>
+      <div>Four</div>
+      <div>Five</div>
+      <div>Six</div>
+      <div>Seven</div>
+      <div>Eight</div>
+      <div>Nine</div>
+      <div>Ten</div>
+      <div>Eleven</div>
+      <div>Twelve</div>
+      <div>Thirteen</div>
+      <div>Fourteen</div>
+      <div>Fifteen</div>
+      <div>Sixteen</div>
+      <div>Seventeen</div>
+      <div>Eighteen</div>
+      <div>Nineteen</div>
+      <div>Twenty</div>
+    </div>
   </div>
 </div>
