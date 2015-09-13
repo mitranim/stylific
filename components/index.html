@@ -514,16 +514,16 @@ defined in
 <h1 id="sf-tooltip"><a href="https://github.com/Mitranim/stylific/blob/master/scss/components/sf-tooltip.scss" target="_blank">sf-tooltip</a></h1><p><code>[data-sf-tooltip]</code> is an attribute-based tooltip implementation that uses
 pseudoelements. Its colours are automatically adjusted to be the grayscale
 inverses of the base text and background colours.</p>
-<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">data-sf-tooltip</span>=<span class="hljs-value">"I'm a default positioned tooltip!"</span>&gt;</span>Hover me to see a top tooltip.<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">data-sf-tooltip</span>=<span class="hljs-value">"I'm a top positioned tooltip!"</span>&gt;</span>Hover me to see a top tooltip.<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
 
-<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">data-sf-tooltip</span>=<span class="hljs-value">"I'm a top-right positioned tooltip!"</span>
-      <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-position-top-right"</span>&gt;</span>Hover me to see a top-right tooltip.<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">data-sf-tooltip</span>=<span class="hljs-value">"I'm a right positioned tooltip!"</span>
+      <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-position-right"</span>&gt;</span>Hover me to see a right tooltip.<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">data-sf-tooltip</span>=<span class="hljs-value">"I'm a bottom positioned tooltip!"</span>
       <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-position-bottom"</span>&gt;</span>Hover me to see a bottom tooltip.<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
 
-<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">data-sf-tooltip</span>=<span class="hljs-value">"I'm a bottom-right positioned tooltip!"</span>
-      <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-position-bottom-right"</span>&gt;</span>Hover me to see a bottom-right tooltip.<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">data-sf-tooltip</span>=<span class="hljs-value">"I'm a left positioned tooltip!"</span>
+      <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-position-left"</span>&gt;</span>Hover me to see a left tooltip.<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">data-sf-tooltip</span>=<span class="hljs-value">"I appear on focus! Click outside to toggle me off."</span>
       <span class="hljs-attribute">data-sf-trigger</span>=<span class="hljs-value">"focus"</span> <span class="hljs-attribute">contenteditable</span>&gt;</span>Focus me to see a tooltip.<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
@@ -534,10 +534,10 @@ inverses of the base text and background colours.</p>
 </code></pre>
 <div class="doc-demo">
   <div class="doc-demo-body column">
-    <span data-sf-tooltip="I'm a default positioned tooltip!">Hover me to see a top tooltip.</span>
-    <span data-sf-tooltip="I'm a top-right positioned tooltip!" class="sf-position-top-right">Hover me to see a top-right tooltip.</span>
+    <span data-sf-tooltip="I'm a top positioned tooltip!">Hover me to see a top tooltip.</span>
+    <span data-sf-tooltip="I'm a right positioned tooltip!" class="sf-position-right">Hover me to see a right tooltip.</span>
     <span data-sf-tooltip="I'm a bottom positioned tooltip!" class="sf-position-bottom">Hover me to see a bottom tooltip.</span>
-    <span data-sf-tooltip="I'm a bottom-right positioned tooltip!" class="sf-position-bottom-right">Hover me to see a bottom-right tooltip.</span>
+    <span data-sf-tooltip="I'm a left positioned tooltip!" class="sf-position-left">Hover me to see a left tooltip.</span>
     <span data-sf-tooltip="I appear on focus! Click outside to toggle me off." data-sf-trigger="focus" contenteditable>Focus me to see a tooltip.</span>
     <div data-sf-tooltip="I'm an input tooltip that appears on hover and focus!" data-sf-trigger="hover focus">
       <input placeholder="Hover or focus me to see a tooltip.">
