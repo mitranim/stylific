@@ -112,10 +112,9 @@ $sf-tabset-body-min-height: 3em !default;
 
 /****************************** sf-tooltip.scss ******************************/
 
-// The proportion of the standard dimensions to use in tooltips. Affects things
-// like font-size, padding, border-radius. Must be a unitless fractional number.
+// The proportion of the standard dimensions to use in tooltips. Must be a
+// unitless fractional number.
 $sf-tooltip-proportion: 0.8 !default;
 
-// By how much to offset the tooltip from the host. Measured relative to the
-// parent; em or rem is recommended.
+// By how much to offset the tooltip from the parent. em or rem is recommended.
 $sf-tooltip-offset: 0.5em !default;

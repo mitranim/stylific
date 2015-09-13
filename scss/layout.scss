@@ -83,6 +83,11 @@ body {
   .#{$name}-cross-start   {align-items: flex-start}
   .#{$name}-cross-stretch {align-items: stretch}
 
+  // Wrapping.
+  .#{$name}-wrap {
+    flex-wrap: wrap;
+  }
+
   // Whitespace.
   .#{$name}-row.space-out {
     @include sf-space-out-horizontal;

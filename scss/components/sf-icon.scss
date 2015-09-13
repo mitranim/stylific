@@ -8,7 +8,7 @@
  * In your stylesheet:
  *
  *   .sf-icon-skype {
- *     background-image: url(path-to-skype-icon.svg);
+ *     background–image: url(path-to-skype-icon.svg);
  *   }
  *
  * In your HTML:
@@ -46,9 +46,9 @@
 
   // Inline version for use in text.
   &.inline {
-    vertical-align: middle;
-    position: relative;
-    top: -0.08em;
+    // Slightly lower to match the vertical position of letters without
+    // descenders.
+    vertical-align: -0.1em;
     &:not(:first-child) {
       margin-left: 0.2em;
     }

@@ -544,16 +544,16 @@ pseudoelements. Its colours are automatically adjusted to be the grayscale
 inverses of the base text and background colours.
 
 ```html
-<span data-sf-tooltip="I'm a default positioned tooltip!">Hover me to see a top tooltip.</span>
+<span data-sf-tooltip="I'm a top positioned tooltip!">Hover me to see a top tooltip.</span>
 
-<span data-sf-tooltip="I'm a top-right positioned tooltip!"
-      class="sf-position-top-right">Hover me to see a top-right tooltip.</span>
+<span data-sf-tooltip="I'm a right positioned tooltip!"
+      class="sf-position-right">Hover me to see a right tooltip.</span>
 
 <span data-sf-tooltip="I'm a bottom positioned tooltip!"
       class="sf-position-bottom">Hover me to see a bottom tooltip.</span>
 
-<span data-sf-tooltip="I'm a bottom-right positioned tooltip!"
-      class="sf-position-bottom-right">Hover me to see a bottom-right tooltip.</span>
+<span data-sf-tooltip="I'm a left positioned tooltip!"
+      class="sf-position-left">Hover me to see a left tooltip.</span>
 
 <span data-sf-tooltip="I appear on focus! Click outside to toggle me off."
       data-sf-trigger="focus" contenteditable>Focus me to see a tooltip.</span>
@@ -565,10 +565,10 @@ inverses of the base text and background colours.
 
 <div class="doc-demo">
   <div class="doc-demo-body column">
-    <span data-sf-tooltip="I'm a default positioned tooltip!">Hover me to see a top tooltip.</span>
-    <span data-sf-tooltip="I'm a top-right positioned tooltip!" class="sf-position-top-right">Hover me to see a top-right tooltip.</span>
+    <span data-sf-tooltip="I'm a top positioned tooltip!">Hover me to see a top tooltip.</span>
+    <span data-sf-tooltip="I'm a right positioned tooltip!" class="sf-position-right">Hover me to see a right tooltip.</span>
     <span data-sf-tooltip="I'm a bottom positioned tooltip!" class="sf-position-bottom">Hover me to see a bottom tooltip.</span>
-    <span data-sf-tooltip="I'm a bottom-right positioned tooltip!" class="sf-position-bottom-right">Hover me to see a bottom-right tooltip.</span>
+    <span data-sf-tooltip="I'm a left positioned tooltip!" class="sf-position-left">Hover me to see a left tooltip.</span>
     <span data-sf-tooltip="I appear on focus! Click outside to toggle me off." data-sf-trigger="focus" contenteditable>Focus me to see a tooltip.</span>
     <div data-sf-tooltip="I'm an input tooltip that appears on hover and focus!" data-sf-trigger="hover focus">
       <input placeholder="Hover or focus me to see a tooltip.">

@@ -132,7 +132,7 @@
     &::after {
       content: '▽';
       display: inline-block;
-      vertical-align: middle;
+      vertical-align: -0.1em;
     }
     // If there's some text inside, offset the indicator.
     &:not(:empty)::after {

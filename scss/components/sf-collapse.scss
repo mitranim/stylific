@@ -45,7 +45,7 @@
 
   // Whitespace.
   > label {padding: $sf-space}
-  > .sf-collapse-body {
+  @at-root .sf-collapse-body {
     @extend .container;
   }
 
@@ -60,7 +60,7 @@
     &::after {
       content: '▽';
       display: inline-block;
-      vertical-align: middle;
+      vertical-align: -0.1em;
       opacity: 0.5;
     }
     // If there's some text inside, offset the indicator.

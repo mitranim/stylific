@@ -102,15 +102,17 @@
     // Cosmetic state indicator. In the hover version, it's static; in the
     // toggled version, its content is changed when the state is toggled.
     &::after {
+      // Layout.
       content: '▽';
       display: inline-block;
-      vertical-align: middle;
+      vertical-align: -0.1em;
+
+      // Cosmetic.
       opacity: 0.5;
       font-size: 50%;
-    }
-    // If there's some text inside, offset the indicator.
-    &:not(:empty)::after {
+      // Prevent the indicator from touching the sides.
       padding-left: 0.5em;
+      padding-right: 0.5em;
     }
   }
 
@@ -143,7 +145,7 @@
   /**
    * Base dropdown list styles.
    */
-  > .sf-dropdown-list {
+  @at-root .sf-dropdown-list {
     /**
      * Layout.
      */

@@ -14,8 +14,7 @@
  *
  *   <p data-sf-tooltip="tooltip text" class="sf-position-bottom">hover me</p>
  *
- * The following positions are supported: top, top-right, right-top, left-top,
- * bottom, bottom-right.
+ * The following positions are supported: top, right, bottom, left.
  *
  *
  * ## Trigger
@@ -62,6 +61,12 @@
 
 [data-sf-tooltip] {
 
+  // Use grayscale negatives of the base text and background colours. If the
+  // user adjusts the defaults, the tooltips adjust to the new theme
+  // automatically.
+  $color-bg: rgba(sf-contrasting-color($sf-color-background), 0.85);
+  $color-text: sf-contrasting-color($sf-color-text);
+
   /**
    * Layout.
    */
@@ -74,12 +79,11 @@
   // rule patches the problem.
   &[data-sf-tooltip='']::after {content: none}
 
-  &::after {
-    content: attr(data-sf-tooltip);
-
-    /**
-     * Layout.
-     */
+  /**
+   * Shared style for tooltip content and triangle.
+   */
+  &::after, &::before {
+    // Layout.
     position: absolute;
     z-index: $sf-z-index-tooltip;
 
@@ -90,56 +94,97 @@
     // Animate the transitions.
     @include sf-transitions(all);
 
-    // Use a fraction of the host's font size.
-    font-size: percentage($sf-tooltip-proportion);
+    // Use a constant small font size.
+    font-size: #{$sf-tooltip-proportion}rem;
+  }
+
+  // Version with scaling font size.
+  &.sf-tooltip-scale-size {
+    &::after, &::before {
+      font-size: #{$sf-tooltip-proportion}em;
+    }
+  }
+
+  /**
+   * Content-specific styles.
+   */
+  &::after {
+    content: attr(data-sf-tooltip);
+
+    // Prevent from shrinking to the width or height of the parent.
+    white-space: pre;
+
     // Use a fraction of the standard padding. We scale it down twice as much as
     // other dimensions.
     padding: $sf-space * $sf-tooltip-proportion / 2;
 
-    // Use grayscale negatives of the base text and background colours. If the
-    // user adjusts the defaults, the tooltips adjust to the new theme
-    // automatically.
-    background-color: sf-contrasting-color($sf-color-background);
-    color: sf-contrasting-color($sf-color-text);
-
     // Use a fraction of the standard border radius.
     border-radius: $sf-border-radius * $sf-tooltip-proportion;
+
+    // Colours.
+    background-color: $color-bg;
+    color: $color-text;
   }
 
   /**
-   * Tooltip positioning.
+   * Triangle-specific styles.
    */
-  // Calculated offset.
-  $offset: unquote('calc(100% + #{$sf-tooltip-offset})');
+  &::before {
+    content: '';
+    // Layout.
+    display: block;
+    // Cosmetic.
+    border: $sf-tooltip-offset solid transparent;
+  }
+
+  /**
+   * Tooltip content and triangle positioning.
+   */
+
+  @mixin tooltip-position($main, $cross) {
+    $translate: if($main == top or $main == bottom, translateX, translateY);
+    $border-side: map-get((
+      bottom: top,
+      top: bottom,
+      left: right,
+      right: left
+    ), $main);
+
+    &::after {
+      #{$main}: 100%;
+      margin-#{$main}: $sf-tooltip-offset * 2;
+      #{$cross}: 50%;
+      transform: #{$translate}(-50%);
+    }
+    &::before {
+      // Layout.
+      #{$main}: 100%;
+      margin-#{$main}: 1px; // Fix for a 1px interval that appears in some browsers.
+      #{$cross}: 50%;
+      margin-#{$cross}: -$sf-tooltip-offset;
+      // Border.
+      border-#{$border-side}: $sf-tooltip-offset solid $color-bg;
+    }
+  }
+
   // Top (default).
-  &:not([class*=sf-position])::after, &.sf-position-top::after {
-    bottom: $offset;
-    left: 0;
+  &:not([class*=sf-position]), &.sf-position-top {
+    @include tooltip-position(bottom, left);
   }
-  // Top-right.
-  &.sf-position-top-right::after {
-    bottom: $offset;
-    right: 0;
+
+  // Right.
+  &.sf-position-right {
+    @include tooltip-position(left, top);
   }
-  // Right-top.
-  &.sf-position-right-top::after {
-    top: 0;
-    left: $offset;
-  }
-  // Left-top.
-  &.sf-position-left-top::after {
-    top: 0;
-    right: $offset;
-  }
+
   // Bottom.
-  &.sf-position-bottom::after {
-    top: $offset;
-    left: 0;
+  &.sf-position-bottom {
+    @include tooltip-position(top, left);
   }
-  // Bottom-right.
-  &.sf-position-bottom-right::after {
-    top: $offset;
-    right: 0;
+
+  // Left.
+  &.sf-position-left {
+    @include tooltip-position(right, top);
   }
 
   /**
@@ -158,7 +203,7 @@
   &[data-sf-trigger~=target]:target,
   // Unconditional visibility; hook for JavaScript enhancement.
   &.sf-tooltip-visible {
-    &::after {
+    &::after, &::before {
       opacity: inherit;
       visibility: inherit;
     }

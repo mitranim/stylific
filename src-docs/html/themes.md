@@ -37,9 +37,9 @@ Demo of some elements with the `.theme-text-*` themes.
 
 ```html
 <!-- ... -->
-<button class="theme-text-primary">`text-primary` button</button>
-<div class="theme-text-primary">`text-primary` text</div>
-<input class="theme-text-primary" value="`text-primary` input">
+<button class="theme-text-primary">text-primary button</button>
+<div class="theme-text-primary">text-primary text</div>
+<input class="theme-text-primary" value="text-primary input">
 <!-- ... -->
 ```
 
@@ -51,35 +51,35 @@ Demo of some elements with the `.theme-text-*` themes.
       <input value="unthemed input">
     </div>
     <div class="docs-layout-spaced">
-      <button class="theme-text-primary">`text-primary` button</button>
-      <div class="theme-text-primary">`text-primary` text</div>
-      <input class="theme-text-primary" value="`text-primary` input">
+      <button class="theme-text-primary">text-primary button</button>
+      <div class="theme-text-primary">text-primary text</div>
+      <input class="theme-text-primary" value="text-primary input">
     </div>
     <div class="docs-layout-spaced">
-      <button class="theme-text-accent">`text-accent` button</button>
-      <div class="theme-text-accent">`text-accent` text</div>
-      <input class="theme-text-accent" value="`text-accent` input">
+      <button class="theme-text-accent">text-accent button</button>
+      <div class="theme-text-accent">text-accent text</div>
+      <input class="theme-text-accent" value="text-accent input">
     </div>
     <div class="docs-layout-spaced">
-      <button class="theme-text-warn">`text-warn` button</button>
-      <div class="theme-text-warn">`text-warn` text</div>
-      <input class="theme-text-warn" value="`text-warn` input">
+      <button class="theme-text-warn">text-warn button</button>
+      <div class="theme-text-warn">text-warn text</div>
+      <input class="theme-text-warn" value="text-warn input">
     </div>
     <div class="docs-layout-spaced">
       <button disabled>disabled button</button>
       <input disabled value="disabled input">
     </div>
     <div class="docs-layout-spaced">
-      <button disabled class="theme-text-primary">disabled `text-primary` button</button>
-      <input disabled class="theme-text-primary" value="disabled `text-primary` input">
+      <button disabled class="theme-text-primary">disabled text-primary button</button>
+      <input disabled class="theme-text-primary" value="disabled text-primary input">
     </div>
     <div class="docs-layout-spaced">
-      <button disabled class="theme-text-accent">disabled `text-accent` button</button>
-      <input disabled class="theme-text-accent" value="disabled `text-accent` input">
+      <button disabled class="theme-text-accent">disabled text-accent button</button>
+      <input disabled class="theme-text-accent" value="disabled text-accent input">
     </div>
     <div class="docs-layout-spaced">
-      <button disabled class="theme-text-warn">disabled `text-warn` button</button>
-      <input disabled class="theme-text-warn" value="disabled `text-warn` input">
+      <button disabled class="theme-text-warn">disabled text-warn button</button>
+      <input disabled class="theme-text-warn" value="disabled text-warn input">
     </div>
   </div>
 </div>
@@ -99,31 +99,34 @@ Demo of some elements with the full themes.
 <div class="doc-demo">
   <div class="doc-demo-body">
     <div class="docs-layout-spaced">
-      <button class="theme-primary">`primary` button</button>
-      <div class="theme-primary">`primary` text</div>
-      <input class="theme-primary" value="`primary` input">
+      <button class="theme-primary">primary button</button>
+      <div class="theme-primary">primary text</div>
+      <input class="theme-primary" value="primary input">
     </div>
     <div class="docs-layout-spaced">
-      <button class="theme-accent">`accent` button</button>
-      <div class="theme-accent">`accent` text</div>
-      <input class="theme-accent" value="`accent` input">
+      <button class="theme-accent">accent button</button>
+      <div class="theme-accent">accent text</div>
+      <input class="theme-accent" value="accent input">
     </div>
     <div class="docs-layout-spaced">
-      <button class="theme-warn">`warn` button</button>
-      <div class="theme-warn">`warn` text</div>
-      <input class="theme-warn" value="`warn` input">
+      <button class="theme-warn">warn button</button>
+      <div class="theme-warn">warn text</div>
+      <input class="theme-warn" value="warn input">
     </div>
     <div class="docs-layout-spaced">
-      <button disabled class="theme-primary">disabled `primary` button</button>
-      <input disabled class="theme-primary" value="disabled `primary` input">
+      <button disabled class="theme-primary">disabled primary button</button>
+      <div class="theme-primary pad">padded primary text</div>
+      <input disabled class="theme-primary" value="disabled primary input">
     </div>
     <div class="docs-layout-spaced">
-      <button disabled class="theme-accent">disabled `accent` button</button>
-      <input disabled class="theme-accent" value="disabled `accent` input">
+      <button disabled class="theme-accent">disabled accent button</button>
+      <div class="theme-accent pad">padded accent text</div>
+      <input disabled class="theme-accent" value="disabled accent input">
     </div>
     <div class="docs-layout-spaced">
-      <button disabled class="theme-warn">disabled `warn` button</button>
-      <input disabled class="theme-warn" value="disabled `warn` input">
+      <button disabled class="theme-warn">disabled warn button</button>
+      <div class="theme-warn pad">padded warn text</div>
+      <input disabled class="theme-warn" value="disabled warn input">
     </div>
   </div>
 </div>

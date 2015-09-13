@@ -88,8 +88,8 @@
       @include sf-flex-host-center;
 
       // Cosmetic.
-      border: 1px solid;
-      border-top-right-radius: $sf-border-radius;
+      // border: 1px solid;
+      // border-top-right-radius: $sf-border-radius;
       opacity: 0.5;
       padding: $sf-space / 4;
       cursor: pointer;
@@ -97,7 +97,7 @@
   }
 
   // Body styling.
-  > .sf-modal-body {
+  @at-root .sf-modal-body {
     /**
      * Layout.
      */

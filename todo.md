@@ -1,3 +1,4 @@
+* Document sf-icon.
 * Document JS attributes.
 * Document mixins.
 * Blockquotes.
