@@ -43,7 +43,12 @@ ul, ol {
 }
 
 // Common-sense cursor styles.
-.interactive, a[href], [data-sf-toggle], [data-sf-toggle-siblings], [data-sf-toggle-id] {
+.interactive,
+a[href],
+[data-sf-clone-modal],
+[data-sf-toggle],
+[data-sf-toggle-siblings],
+[data-sf-toggle-id] {
   cursor: pointer;
 }
 // Global [disabled] defaults.
@@ -57,7 +62,7 @@ ul, ol {
 // Automatically scroll nospill containers. (The user still needs to set the
 // height property.)
 [data-sf-no-scroll-spill] {
-  overflow: scroll;
+  @include sf-scroll-v;
 }
 
 // Prettier section break.

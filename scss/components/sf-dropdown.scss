@@ -70,10 +70,10 @@
   }
 
   // Base background colour for the list.
-  &:not([class*=theme]), &[class*=theme-text-] {
+  &:not([class*=theme-]), &[class*=theme-text-] {
     background-color: $sf-color-background;
   }
-  [class*=theme] & {
+  [class*=theme-] & {
     background-color: inherit;
   }
 
@@ -202,7 +202,7 @@
   > label[data-sf-toggle].active + .sf-dropdown-list {
     // Display. Both opacity and visibility are required to animate the
     // visibility change.
-    opacity: inherit;
+    opacity: initial;
     visibility: inherit;
   }
 

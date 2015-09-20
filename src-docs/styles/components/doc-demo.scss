@@ -1,48 +1,39 @@
-.doc-demo {
+/**
+ * Header styling.
+ */
+.doc-demo::before {
+  content: 'Demo';
 
-  /**
-   * Header styling.
-   */
-  &::before {
-    content: 'Demo';
+  // Layout.
+  display: block;
+  width: 100%;
+  clear: both;
 
-    /**
-     * Layout.
-     */
-    display: block;
-    width: 100%;
+  // Typography.
+  font-size: 1.2em;
+  padding: $sf-space / 2 $sf-space;
 
-    // Typography.
-    font-size: 1.2em;
-    padding: $sf-space / 2 $sf-space;
+  // Cosmetic.
+  $c: map-get($sf-color-map-primary, default);
+  background-color: $c;
+  background-image: linear-gradient(to right, $c 0%, lighten($c, 10%) 100%);
+  color: sf-contrasting-color($c);
+}
 
-    // Cosmetic.
-    $c: map-get($sf-color-map-primary, default);
-    background-color: $c;
-    background-image: linear-gradient(to right, $c 0%, lighten($c, 10%) 100%);
-    color: sf-contrasting-color($c);
-    border-top-left-radius: $sf-border-radius;
-    border-top-right-radius: $sf-border-radius;
+/**
+ * Body layout.
+ */
+.doc-demo-body {
+  &.column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
-  /**
-   * Body layout.
-   */
-  .doc-demo-body {
-    &.nopad {padding: 0}
+  // Whitespace.
+  @extend .container;
 
-    &.column {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    // Whitespace.
-    @extend .container;
-
-    // Cosmetic.
-    @include sf-border-weak;
-    border-bottom-left-radius: $sf-border-radius;
-    border-bottom-right-radius: $sf-border-radius;
-  }
+  // Cosmetic.
+  @include sf-border-weak;
+  margin-top: -1px;
 }

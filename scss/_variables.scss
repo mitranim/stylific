@@ -54,6 +54,7 @@ $sf-color-text: lighten(black, 2%) !default;
 $sf-color-background: darken(white, 2%) !default;
 $sf-color-link: map-get($sf-color-map-primary, default) !default;
 $sf-color-umbra: lighten(black, 20%) !default;
+$sf-color-overlay: rgba($sf-color-umbra, 0.4) !default;
 
 /******************************** layout.scss ********************************/
 
@@ -73,15 +74,23 @@ $sf-font-family-sans-serif: Helvetica Neue, Verdana, sans-serif !default;
 $sf-font-family-serif:      Optima, Georgia, serif !default;
 $sf-font-family-monospace:  Menlo, Andale Mono, Monaco, Consolas, monospace !default;
 
-/**
- * rem sizing for the <html> element. The common baseline is 12pt = 16px =
- * 1em. Must be a non-`em` unit, in order to have consistent font scaling
- * between various native elements.
- */
+// rem sizing for the <html> element. The common baseline is 12pt = 16px = 1em.
+// Must be an absolute unit like `px` or `pt`.
 $sf-rem: 12pt !default;
 
-// Common whitespace size. Must be a non-`em` unit.
+// Font size variants.
+$sf-font-size-small: 0.8rem;
+$sf-font-size-large: 1.25rem;
+
+// Relative font size variants.
+$sf-font-size-smaller: 0.8em;
+$sf-font-size-larger: 1.25em;
+
+// Common whitespace size. Must NOT be `em`, `%`, or unitless. Needs to be
+// independent of the inherited font size.
 $sf-space: 1rem !default;
+
+$sf-line-height: 1.4 !default;
 
 /****************************** sf-navbar.scss *******************************/
 

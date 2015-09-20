@@ -37,6 +37,11 @@
   // the body to be a column flex container, which is the default defined in
   // `layout.scss`.
   margin-top: auto;
+  // Prevent .space-out and analogs from adding an extra margin to the footer.
+  // It's the last visible element on the page, after all.
+  &, &:not(:last-child) {
+    margin-bottom: 0;
+  }
 
   /**
    * Footer body styling.

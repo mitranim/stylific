@@ -88,9 +88,7 @@
     // Fix header.
     > .sf-tabset-head {
       position: absolute;
-      top: 0;
-      right: 0;
-      left: 0;
+      @include sf-trbl(0, 0, auto, 0);
     }
 
     // Body styles.
@@ -99,7 +97,7 @@
       margin-top: $sf-tabset-head-height;
 
       // Enable scrolling.
-      overflow: scroll;
+      @include sf-scroll-v;
 
       // Inner shadow to indicate fixedness.
       @include sf-shadow-inset-top-bottom;

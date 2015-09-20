@@ -94,7 +94,7 @@
   &.pop {
     &:hover, &:focus, &:active, &.active {
       transform: scale(1.5);
-      &:not([class*=theme]), &[class*=theme-text-] {
+      &:not([class*=theme-]), &[class*=theme--text-] {
         background-color: transparent;
       }
     }

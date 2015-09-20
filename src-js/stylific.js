@@ -1,4 +1,4 @@
-/* global Element, HTMLElement */
+/* global Element, HTMLElement, getComputedStyle, requestAnimationFrame */
 
 /*
  * style per http://standardjs.com
@@ -9,37 +9,74 @@
 
   if (typeof document !== 'object' || !document) return
 
+  /** ***************************** Listeners ********************************/
+
+  /**
+   * Click listeners.
+   */
   document.addEventListener('click', function (event) {
     let elem = event.target
+    if (!(elem instanceof HTMLElement)) return
 
-    do {
-      if (!(elem instanceof HTMLElement) || hasAttr(elem, 'disabled')) return
-
-      // data-sf-toggle hooks.
-      if (hasAttr(elem, 'data-sf-toggle')) {
-        toggleElem(elem)
-        return
-      }
-      if (hasAttr(elem, 'data-sf-toggle-siblings')) {
-        toggleSiblings(elem)
-        return
-      }
-      if (hasAttr(elem, 'data-sf-toggle-id')) {
-        toggleId(getAttr(elem, 'data-sf-toggle-id'))
-        return
-      }
-    } while ((elem = elem.parentElement))
-
-    // Return to the original target.
-    elem = event.target
-
-    // Clicking sf-modal always closes it.
-    if (hasClass(elem, 'sf-modal')) {
-      elem.classList.remove('active')
+    // Ignore events coming from labels associated with inputs. In associated
+    // pairs, the label event must finish its lifecycle without a
+    // `preventDefault()` call; then the input event is spawned. Handling it the
+    // usual way would often trigger interactions twice on a single click. Thus
+    // we must ignore it.
+    if (elem.tagName === 'LABEL' &&
+        (hasAttr(elem, 'for') && !!document.getElementById(getAttr(elem, 'for')) ||
+         !!elem.querySelector('input,textarea,button,select'))) {
       return
     }
 
-    // Look for a <label> parent.
+    // Ignore direct clicks on inputs. This protects us from inadvertent side
+    // effects of the user focusing text inputs or toggling checkboxes in
+    // elements enclosed into large click targets that have stylific trigger
+    // behaviour associated with them.
+    if ((elem.tagName === 'INPUT' && elem.type !== 'button') ||
+        elem.tagName === 'TEXTAREA' || elem.tagName === 'SELECT') {
+      return
+    }
+
+    // Check if the element or any ancestor is associated with a toggle
+    // behaviour.
+    let cursor = elem
+    do {
+      // Stop the handler if the element or any of its ancestors is disabled.
+      if (hasAttr(cursor, 'disabled')) return
+
+      // Modal close button.
+      if (hasClass(elem, 'sf-modal-close') && hasClass(cursor, 'sf-modal')) {
+        closeModal(cursor)
+        return
+      }
+
+      // data-sf-toggle hooks.
+      if (hasAttr(cursor, 'data-sf-clone-modal')) {
+        toggleModalCloneById(getAttr(cursor, 'data-sf-clone-modal'))
+        return
+      }
+      if (hasAttr(cursor, 'data-sf-toggle')) {
+        toggleElem(cursor)
+        return
+      }
+      if (hasAttr(cursor, 'data-sf-toggle-siblings')) {
+        toggleSiblings(cursor)
+        return
+      }
+      if (hasAttr(cursor, 'data-sf-toggle-id')) {
+        toggleId(getAttr(cursor, 'data-sf-toggle-id'))
+        return
+      }
+    } while ((cursor = cursor.parentElement))
+
+    // Clicking .sf-modal always closes it.
+    if (hasClass(elem, 'sf-modal')) {
+      closeModal(elem)
+      return
+    }
+
+    // Look for a <label> ancestor.
     do {
       if (elem.tagName === 'LABEL') break
       if (!elem.parentElement) return
@@ -76,16 +113,73 @@
     }
   })
 
+  /**
+   * Key listeners.
+   */
+  document.addEventListener('keydown', function (event) {
+    // Close modals on Esc.
+    if (event.keyCode === 27) {
+      [].slice.call(document.querySelectorAll('.sf-modal')).forEach(closeModal)
+    }
+  })
+
+  /**
+   * Tooltip-related listeners.
+   */
+  // [data-sf-tooltip][data-sf-trigger~=focus]  ->  show
+  document.addEventListener('focus', function (event) {
+    const elem = event.target
+    if (elem instanceof HTMLElement) {
+      const parent = elem.parentElement
+      if (parent && hasAttr(parent, 'data-sf-trigger') && ~getAttr(parent, 'data-sf-trigger').indexOf('focus')) {
+        addClass(parent, 'sf-tooltip-visible')
+      }
+    }
+  }, true)
+
+  // [data-sf-tooltip][data-sf-trigger~=focus]  ->  hide
+  document.addEventListener('blur', function (event) {
+    const elem = event.target
+    if (elem instanceof HTMLElement) {
+      const parent = elem.parentElement
+      if (parent && hasAttr(parent, 'data-sf-trigger') && ~getAttr(parent, 'data-sf-trigger').indexOf('focus')) {
+        removeClass(parent, 'sf-tooltip-visible')
+      }
+    }
+  }, true)
+
+  /**
+   * Scroll-related listeners.
+   */
+  // Prevents scroll from spilling outside certain elements.
+  document.addEventListener('wheel', function (event) {
+    let elem = event.target
+    if (!(elem instanceof HTMLElement)) return
+    do {
+      if (shouldPreventScrollSpill(elem, event)) {
+        event.preventDefault()
+        return
+      }
+    } while ((elem = elem.parentElement))
+  })
+
+  /** ****************************** Utilities *******************************/
+
   function toggleElem (elem) {
-    elem.classList.toggle('active')
+    if (hasClass(elem, 'sf-modal')) {
+      if (hasClass(elem, 'active')) closeModal(elem)
+      else openModal(elem)
+    } else {
+      elem.classList.toggle('active')
+    }
   }
 
   function toggleSiblings (elem) {
     if (!elem.parentElement) return
     [].slice.call(elem.parentElement.childNodes).forEach(child => {
-      if (child instanceof HTMLElement) child.classList.remove('active')
+      if (child instanceof HTMLElement) removeClass(child, 'active')
     })
-    elem.classList.add('active')
+    addClass(elem, 'active')
   }
 
   function toggleId (id) {
@@ -93,16 +187,73 @@
     if (elem) toggleElem(elem)
   }
 
+  // Shortcuts for better minification.
   function hasAttr (elem, name) {
     return elem.hasAttribute(name)
   }
-
   function getAttr (elem, name) {
     return elem.getAttribute(name)
   }
-
   function hasClass (elem, name) {
     return elem.classList.contains(name)
+  }
+  function addClass (elem, name) {
+    elem.classList.add(name)
+  }
+  function removeClass (elem, name) {
+    elem.classList.remove(name)
+  }
+
+  function openModal (elem) {
+    // Add a close button if missing.
+    const body = elem.querySelector('.sf-modal-body')
+    if (body && !find(body.children, child => hasClass(child, 'sf-modal-close'))) {
+      const button = document.createElement('button')
+      addClass(button, 'sf-modal-close')
+      body.insertBefore(button, body.firstChild)
+    }
+    addClass(elem, 'active')
+  }
+
+  // Closes a modal. If it's a clone, destroys it after CSS transitions.
+  function closeModal (elem) {
+    removeClass(elem, 'active')
+    if (elem.hasAttribute('data-sf-modal-clone')) {
+      runAfterTransitions(elem, () => {elem.remove()})
+    }
+  }
+
+  function toggleModalCloneById (id) {
+    // Try to find an existing clone and remove it.
+    const clone = document.querySelector(`.sf-modal[data-sf-modal-clone="${id}"]`)
+    if (clone) {
+      closeModal(clone)
+      return
+    }
+
+    // Create a clone and display it.
+    const elem = document.getElementById(id)
+    if (elem) {
+      let original = elem
+      // The element may optionally be a <template> tag. In this case, its first
+      // child element will be cloned.
+      if (elem.tagName === 'TEMPLATE') {
+        original = (elem.content || elem).firstElementChild
+      }
+      if (!original) return
+      const clone = original.cloneNode(true)
+
+      // This attribute serves for lookup when toggling this off.
+      clone.setAttribute('data-sf-modal-clone', clone.id)
+      clone.removeAttribute('id')
+
+      elem.parentElement.insertBefore(clone, elem.nextSibling)
+      // Hook for external DOM manipulation code.
+      clone.dispatchEvent(createEvent('sf:dom:add'))
+      // Display in a different frame to give other code a chance to modify
+      // the element.
+      requestAnimationFrame(() => {openModal(clone)})
+    }
   }
 
   function indexByType (elem) {
@@ -118,56 +269,17 @@
     }
   }
 
-  // [data-sf-tooltip][data-sf-trigger~=focus]  ->  show
-  document.addEventListener('focus', function (event) {
-    const elem = event.target
-    if (elem instanceof HTMLElement) {
-      const parent = elem.parentElement
-      if (parent && hasAttr(parent, 'data-sf-trigger') && ~getAttr(parent, 'data-sf-trigger').indexOf('focus')) {
-        parent.classList.add('sf-tooltip-visible')
-      }
-    }
-  }, true)
-
-  // [data-sf-tooltip][data-sf-trigger~=focus]  ->  hide
-  document.addEventListener('blur', function (event) {
-    const elem = event.target
-    if (elem instanceof HTMLElement) {
-      const parent = elem.parentElement
-      if (parent && hasAttr(parent, 'data-sf-trigger') && ~getAttr(parent, 'data-sf-trigger').indexOf('focus')) {
-        parent.classList.remove('sf-tooltip-visible')
-      }
-    }
-  }, true)
-
-  // Prevents scroll from spilling outside certain elements.
-  document.addEventListener('wheel', function (event) {
-    let elem = event.target
-    if (!(elem instanceof HTMLElement)) return
-    do {
-      if (shouldPreventScrollSpill(elem, event)) {
-        event.preventDefault()
-        return
-      }
-    } while ((elem = elem.parentElement))
-  })
-
-  // Checks if the element satisfies our criteria for preventing vertical
-  // scroll from spilling. The conditions are:
-  //   1) always stop for .sf-modal
-  //   2) stop [data-sf-no-scroll-spill] and .sf-tabset-body if they're not
-  //      fully visible and have reached a terminus.
+  // Checks if the element is in our list of elements whose vertical scroll
+  // shouldn't "spill" into the outer DOM.
   function shouldPreventScrollSpill (elem, event) {
     if (!(elem instanceof HTMLElement)) return false
-    if (hasClass(elem, 'sf-modal')) return true
-    if (hasAttr(elem, 'data-sf-no-scroll-spill') ||
+    if (hasAttr(elem, 'data-sf-no-scroll-spill') || hasClass(elem, 'sf-modal') ||
         hasClass(elem, 'sf-tabset-body') && hasClass(elem.parentElement, 'sf-tabset-fixed')) {
-      return shouldStopWheelEvent(elem, event)
+      return reachedScrollTerminus(elem, event)
     }
   }
 
-  function shouldStopWheelEvent (elem, event) {
-    if (elem.scrollHeight === elem.offsetHeight) return false
+  function reachedScrollTerminus (elem, event) {
     if (event.deltaY < 0 && reachedTop(elem) || event.deltaY > 0 && reachedBottom(elem)) {
       return true
     }
@@ -186,5 +298,31 @@
   function reachedBottom (elem) {
     let delta = elem.scrollHeight - elem.scrollTop - elem.offsetHeight
     return Math.abs(delta) < 3
+  }
+
+  // IE compat: IE doesn't support dispatching events created with constructors,
+  // at least not for all types of nodes.
+  function createEvent (name) {
+    const event = document.createEvent('Event')
+    event.initEvent(name, true, true)
+    return event
+  }
+
+  // Runs the given callback after a period sufficient to run normal CSS
+  // transitions on the given element.
+  function runAfterTransitions (elem, callback) {
+    const {
+      transitionDuration: duration,
+      transitionProperty: properties
+    } = getComputedStyle(elem)
+
+    const n = ~duration.indexOf('s') && properties ? parseFloat(duration) : 0
+
+    if (n) {
+      setTimeout(() => {
+        requestAnimationFrame(callback)
+      }, n * 1000)
+    }
+    else requestAnimationFrame(callback)
   }
 })()

@@ -137,23 +137,23 @@
 /*********************************** Misc ************************************/
 
 @mixin sf-shadow-weak {
-  box-shadow: 0 0 0 1px rgba($sf-color-umbra, 0.2);
+  box-shadow: 0 0 0 1px rgba($sf-color-overlay, 0.2);
 }
 
 @mixin sf-shadow-thin {
-  box-shadow: 0 0 4px -1px rgba($sf-color-umbra, 0.5);
+  box-shadow: 0 0 4px -1px $sf-color-overlay;
 }
 
 @mixin sf-shadow-medium {
-  box-shadow: 0 0.2rem 1.5rem -0.2rem rgba($sf-color-umbra, 0.5);
+  box-shadow: 0 0.2rem 1.5rem -0.2rem $sf-color-overlay;
 }
 
 @mixin sf-shadow-down {
-  box-shadow: 0 3px 6px -3px rgba($sf-color-umbra, 0.4);
+  box-shadow: 0 3px 6px -3px $sf-color-overlay;
 }
 
 @mixin sf-shadow-inset-top-bottom {
-  $color: rgba($sf-color-umbra, 0.4);
+  $color: $sf-color-overlay;
   box-shadow: inset 0 -9px 9px -9px $color, inset 0 9px 9px -9px $color;
 }
 
@@ -170,10 +170,7 @@
 // Shortcut to a fixed-position overlay covering the whole screen.
 @mixin sf-fixed-overlay {
   position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  @include sf-trbl(0, 0, 0, 0);
 }
 
 @mixin sf-space-out-vertical($space: $sf-space) {
@@ -201,7 +198,7 @@
 }
 
 @mixin sf-outline-focus {
-  &[class*=theme], [class*=theme] & {
+  &[class*=theme-], [class*=theme-] & {
     outline-color: rgba($sf-color-background, 0.5);
   }
   &, &[class*=theme-text-], [class*=theme-text-] & {
@@ -217,4 +214,16 @@
   border-bottom: 1px dotted;
   border-color: inherit;
   color: $sf-color-link;
+}
+
+@mixin sf-trbl($top, $right, $bottom, $left) {
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+@mixin sf-scroll-v {
+  overflow-x: hidden;
+  overflow-y: auto;
 }

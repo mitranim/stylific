@@ -1,163 +1,195 @@
 /**
- * A modal must have the following layout:
+ * `sf-modal` is a fixed dialog popup.
+ *
+ * It must have the following layout:
  *
  *   <div class="sf-modal" id="myModal">
  *     <div class="sf-modal-body">...</div>
  *   </div>
  *
- * It becomes visible when it has an `.active` class.
+ * It becomes visible when it has an `.active` class. You can add the class
+ * programmatically, or use one of the methods listed below.
  *
- * To trigger the modal, you need an element with [data-sf-toggle-id]:
+ * To close the modal, click its overlay or the close button, or hit Esc.
+ *
+ * 1. [data-sf-toggle-id]
+ *
+ * When an element with this attribute is clicked, it will toggle a modal whose
+ * id is referenced by the attribute, if any.
+ *
+ * Example usage:
  *
  *   <button data-sf-toggle-id="myModal">...</button>
  *
- * To close the modal, click the overlay or the close button.
+ *   <div class="sf-modal" id="myModal">
+ *     <div class="sf-modal-body">...</div>
+ *   </div>
+ *
+ *
+ * 2. [data-sf-clone-modal]
+ *
+ * This special trigger will clone the modal, insert it into the DOM next to
+ * the original, and emit a DOM event `sf:dom:add` on it, which lets you mutate
+ * the new modal before it's displayed. On the next paint frame, it will add
+ * the `.active` class to display the modal.
+ *
+ * When the cloned modal is closed, it's removed from the DOM.
+ *
+ * The [data-sf-clone-modal] attribute must reference either a modal id, or
+ * the id of a <template> element that contains modal markup. The template
+ * element is useful for making sure the original modal is never displayed.
+ *
+ * Example usage:
+ *
+ *   <button data-sf-clone-modal="myModal">...</button>
+ *
+ *   <template id="myModal">
+ *     <div class="sf-modal-body">...</div>
+ *   </template>
  */
 
 /**
  * ToDo.
  *
- * Add options for controlling modal width.
- *
  * Include a variant with a fixed header; the user should be able to fix
  * the position of an arbitrary descendant, not just an immediate child.
  *
- * Close only the last modal when the overlay is clicked. (Maybe that's how it
- * works already?)
+ * Consider if we can close only the last opened modal when Esc is pressed.
  *
- * Close the last modal when Esc is pressed.
+ * Consider adding animation options.
  */
 
+// Main styles.
 .sf-modal {
-
-  /**
-   * Layout.
-   */
-  @include sf-flex-host-center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  // Layout.
+  @include sf-fixed-overlay;
   z-index: $sf-z-index-modal;
+  width: 100%;
+  width: 100vw;
+  height: auto;
+  min-height: 100%;
+  min-height: 100vh;
+  @include sf-scroll-v;
 
-  // Hide until visible.
+  // Inner layout.
+  display: block;
+  // Center the body as an inline block. We can't use a flex container for that,
+  // because it would force large modal bodies up beyond the window viewport.
+  line-height: 100vh;
+  text-align: center;
+
+  // Overlay.
+  &, &[class*=theme-] {
+    background-color: $sf-color-overlay;
+  }
+
+  // Hide unless activated and animate the transitions.
   &:not(.active) {
-    width: 0;
-    height: 0;
-    overflow: hidden;
-  }
-
-  // Active styling.
-  &.active {
-    // Overlay.
-    &::before {
-      content: '';
-      // Layout.
-      @include sf-fixed-overlay;
-
-      // Backdrop. Unlike shadows, we don't derive the overlay colour from the
-      // text colour, this ends up looking ridiculous with some tints. Instead,
-      // we hardcode it to be grayscale.
-      background: rgba($sf-color-umbra, 0.4);
-
-      // Standard cursor.
-      cursor: default;
-    }
-
-    // Close button.
-    &::after {
-      content: '✕';
-
-      /**
-       * Layout.
-       */
-      position: fixed;
-      // Position this element in the top right corner of the modal.
-      top: 5%;
-      right: unquote('calc((100vw - #{$sf-body-max-width}) / 2)');
-      @media (max-width: $sf-body-max-width) {right: 0}
-      width: $sf-space + $sf-space / 2;
-      height: $sf-space + $sf-space / 2;
-      // Stack just above the modal.
-      z-index: $sf-z-index-modal + 1;
-
-      /**
-       * Inner layout.
-       */
-      @include sf-flex-host-center;
-
-      // Cosmetic.
-      // border: 1px solid;
-      // border-top-right-radius: $sf-border-radius;
-      opacity: 0.5;
-      padding: $sf-space / 4;
-      cursor: pointer;
-    }
-  }
-
-  // Body styling.
-  @at-root .sf-modal-body {
-    /**
-     * Layout.
-     */
-    position: fixed;
-    top: 5%;
-    bottom: 5%;
-    /**
-     * Mimic the body width.
-     */
-    // Setting left and right to 0 enables automatic margins.
-    left: 0;
-    right: 0;
-    // Center horizontally.
-    margin-left: auto;
-    margin-right: auto;
-    // Limit the width in the same way as `body` in `layout.scss`.
-    max-width: $sf-body-max-width;
-
-    // Whitespace.
-    @extend .container;
-
-    // Cosmetic.
-    border-radius: $sf-border-radius;
-    @include sf-shadow-medium;
-
-    // Default background colour. This is overridden when using a colour class
-    // on the modal or on the body.
-    background-color: $sf-color-background;
-
-    // Let the content scroll.
-    overflow: scroll;
-
-    // Default body visibility. Hidden unless active. Both opacity and
-    // visibility are required to animate the visibility change.
     opacity: 0;
     visibility: hidden;
+  }
+  @include sf-transitions(all);
+}
 
-    // Animate visibility changes.
-    @include sf-transitions(all);
+// Body styles.
+.sf-modal-body {
+  /**
+   * Layout and positioning.
+   */
+  position: relative;
+  // Make sure it's not covered by the modal overlay.
+  z-index: $sf-z-index-modal + 1;
+  // Positioning.
+  display: inline-block;
+  vertical-align: middle;
+  top: -1px;
+  margin: $sf-space * 2 auto;
+  // Negate parent's centering adjustments.
+  line-height: $sf-line-height;
+  text-align: initial;
+
+  /**
+   * Dimensions.
+   */
+  height: auto;
+  // Limit the width in the same way as `body` in `layout.scss`.
+  max-width: $sf-body-max-width;
+
+  // Default width.
+  width: 50%;
+  @include sf-eq-md {width: 75%}
+  @include sf-eq-sm {width: 100%}
+
+  // Narrow option.
+  .sf-modal.sf-modal-narrow & {
+    width: 33%;
+    @include sf-eq-md {width: 50%}
+    @include sf-eq-sm {width: 75%}
   }
 
-  // Active body visibility.
-  &.active > .sf-modal-body {
-    // Display. Both opacity and visibility are required to animate the
-    // visibility change.
-    opacity: inherit;
-    visibility: inherit;
+  // Wide option.
+  .sf-modal.sf-modal-wide & {
+    width: 100%;
+    @include sf-eq-md {width: 100%}
+    @include sf-eq-sm {width: 100%}
   }
 
-  // Shrink option: automatically adjusts body size. Doesn't have a close
+  // Whitespace.
+  @extend .container;
+  // Extra padding for symmetry with the close button. Have to artificially
+  // boost the specificity to match the top whitespace caused by the close
   // button.
-  &.sf-modal-shrink {
-    &.active::after {content: none}
-
-    > .sf-modal-body {
-      position: relative;
-      top: auto;
-      bottom: auto;
-      left: auto;
-      right: auto;
-    }
+  &:not(:root) {
+    padding-bottom: $sf-space * 1.5;
   }
+
+  // Cosmetic.
+  border-radius: $sf-border-radius;
+  @include sf-shadow-medium;
+  // Default background colour.
+  background-color: $sf-color-background;
+
+  // Hide unless activated and animate the transitions.
+  .sf-modal:not(.active) > & {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.8);
+  }
+  @include sf-transitions(all);
+}
+
+// Modal close button.
+.sf-modal-close {
+  // Negate default button styles.
+  box-shadow: none;
+  padding: ($sf-space / 4) ($sf-space / 2);
+  border-radius: 0 $sf-border-radius 0 $sf-border-radius;
+
+  // Layout.
+  display: block;
+  float: right;
+
+  // Offset the container's padding and negate the margins added by its
+  // space-out rules.
+  .sf-modal-body &:not(:last-child) {
+    margin: (-$sf-space) (-$sf-space) 0 0;
+  }
+
+  // Make sure the next element doesn't collide with the button, and negate
+  // any extra whitespace caused by its presence.
+  + * {
+    clear: both;
+    margin-top: 1px;
+  }
+
+  // Cosmetic.
+  font-size: 1rem;
+  cursor: pointer;
+
+  // Default icon.
+  &:empty::after {
+    content: '␛';
+  }
+
+  @include sf-transitions(all);
 }

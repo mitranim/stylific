@@ -23,10 +23,10 @@ input, textarea {
   }
 
   // Normalise default colours.
-  &:not([class*=theme]) {color: inherit}
+  &:not([class*=theme-]) {color: inherit}
 
   // Normalise background colour. (Webkit has default {background-color: white}).
-  &:not([class*=theme]), &[class*=theme-text-] {
+  &:not([class*=theme-]), &[class*=theme--text-] {
     background-color: inherit;
   }
 

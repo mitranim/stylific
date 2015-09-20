@@ -1,6 +1,6 @@
 {
   "name": "stylific",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "homepage": "http://mitranim.com/stylific/",
   "scripts": {
     "start": "gulp",
@@ -49,7 +49,7 @@
     "highlight.js": "^8.6.0",
     "lodash": "^3.9.3",
     "shelljs": "^0.5.1",
-    "simple-pjax": "^0.0.12",
+    "simple-pjax": "^0.1.0",
     "uglify-js": "^2.4.23",
     "yargs": "^3.13.0"
   }

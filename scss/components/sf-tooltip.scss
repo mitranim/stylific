@@ -84,6 +84,7 @@
    */
   &::after, &::before {
     // Layout.
+    display: block;
     position: absolute;
     z-index: $sf-z-index-tooltip;
 
@@ -131,8 +132,6 @@
    */
   &::before {
     content: '';
-    // Layout.
-    display: block;
     // Cosmetic.
     border: $sf-tooltip-offset solid transparent;
   }
@@ -204,7 +203,7 @@
   // Unconditional visibility; hook for JavaScript enhancement.
   &.sf-tooltip-visible {
     &::after, &::before {
-      opacity: inherit;
+      opacity: initial;
       visibility: inherit;
     }
   }

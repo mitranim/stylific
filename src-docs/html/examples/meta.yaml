@@ -1,10 +1,13 @@
 files:
 
 - name:  footer
-  title: empty page (footer demo)
+  title: footer demo
 
 - name:  grid-demo
   title: grid demo
 
 - name:  navbar-demo
   title: navbar demo
+
+- name:  modal-demo
+  title: modal demo

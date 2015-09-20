@@ -1,5 +1,3 @@
-@import './_variables';
-
 /**
  * Default global text styles.
  */
@@ -8,7 +6,7 @@
 html {
   font-family: $sf-font-family-sans-serif;
   font-size: $sf-rem;
-  line-height: 1.4;
+  line-height: $sf-line-height;
   @include sf-eq-sm {font-size: $sf-rem * 0.8}
   @include sf-eq-md {font-size: $sf-rem * 0.9}
 }

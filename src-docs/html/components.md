@@ -330,52 +330,16 @@ a height property to the body:
   </div>
 </div>
 
-# sf-modal
-
-`.sf-modal` is a fixed popup dialog. To display it, use an element with an
-`[data-sf-toggle-id]` attribute pointing to a modal's id.
-
-```html
-<!-- Clicking this summons the modal -->
-<button data-sf-toggle-id="demoModal">Click me to open a modal!</button>
-
-<!-- Modal, hidden until activated -->
-<div id="demoModal" class="sf-modal theme-text-primary">
-  <div class="sf-modal-body pad-ch-v-05">
-    <h1>Modal header</h1>
-    <p>Check me out, I'm a modal!</p>
-    <p>Click the overlay or the top-right button to close me.</p>
-    <p>...</p>
-  </div>
-</div>
-```
-
-<div class="doc-demo">
-  <div class="doc-demo-body">
-    <button data-sf-toggle-id="demoModal">Click me to open a modal!</button>
-
-    <div id="demoModal" class="sf-modal theme-text-primary">
-      <div class="sf-modal-body">
-        <h1>Modal header</h1>
-        <p>Check me out, I'm a modal!</p>
-        <p>Click the overlay or the top-right button to close me.</p>
-        <p>Lucio fulci tremor est dark vivos magna. Expansis creepy arm yof darkness ulnis witchcraft missing carnem armis Kirkman Moore and Adlard caeruleum in locis. Romero morbo Congress amarus in auras. Nihil horum sagittis tincidunt, zombie slack-jawed gelida survival portenta. The unleashed virus est, et iam zombie mortui ambulabunt super terram. Souless mortuum glassy-eyed oculos attonitos indifferent back zom bieapoc alypse. An hoc dead snow braaaiiiins sociopathic incipere Clairvius Narcisse, an ante? Is bello mundi z?</p>
-        <p>In Craven omni memoria patriae zombieland clairvius narcisse religionis sunt diri undead historiarum. Golums, zombies unrelenting et Raimi fascinati beheading. Maleficia! Vel cemetery man a modern bursting eyeballs perhsaps morbi. A terrenti flesh contagium. Forsitan deadgurl illud corpse Apocalypsi, vel staggering malum zomby poenae chainsaw zombi horrifying fecimus burial ground. Indeflexus shotgun coup de poudre monstra per plateas currere. Fit de decay nostra carne undead. Poenitentiam violent zom biehig hway agite RE:dead pœnitentiam! Vivens mortua sunt apud nos night of the living dead.</p>
-        <p>Whyt zomby Ut fames after death cerebro virus enim carnis grusome, viscera et organa viventium. Sicut spargit virus ad impetum, qui supersumus flesh eating. Avium, brains guts, ghouls, unholy canum, fugere ferae et infecti horrenda monstra. Videmus twenty-eight deformis pale, horrenda daemonum. Panduntur brains portae rotting inferi. Finis accedens walking deadsentio terrore perterritus et twen tee ate daze leighter taedium wal kingdead. The horror, monstra epidemic significant finem. Terror brains sit unum viral superesse undead sentit, ut caro eaters maggots, caule nobis.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-If your website has a `<base>` tag (typically `<base href="/">`), the `#` part
-in the links needs to be prefixed with the pathname of the current page.
+<!--:
+${$include('partials/modal-demo', $)}
+:-->
 
 # sf-navbar
 
 Each website needs a navigation bar. Open a [separate demo](examples/navbar-
 demo/) to resize the page more easily.
 
-Notice how little markup is required.
+Note how little markup is required.
 
 ```html
 <div class="sf-navbar">

@@ -14,12 +14,15 @@
 designed to serve as a flexible website foundation, and provides some common UI
 components as building blocks.
 
-In many ways this is similar to [Bootstrap](http://getbootstrap.com), with the
-difference that stylific uses typographic units (`rem` and `em`) and flexbox.
-Bootstrap 4 may or may not obviate the need for this library.
+In many ways this is similar to [Bootstrap](http://getbootstrap.com), with a few
+differences:
+* typographic units (`rem` and `em`) instead of `px`
+* flexbox-based layouts
+* [themes](themes/) are universal instead of varying per-component
+* no jQuery dependency, extremely lean JavaScript
 
 Prior to version 0.7.0, stylific used custom tag names and attributes for most
-of the styling. Starting with 0.7.0, all styles are class based for
+of the styling. Starting with 0.7.0, all styles are class-based for
 compatibility with React and/or strict HTML validators.
 
 ## Flexible Units
