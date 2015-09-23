@@ -21,7 +21,7 @@ h1 {
 }
 
 // Normalise form and input text styles.
-form, input, textarea, button {
+form, input, textarea, button, select, option {
   font-family: inherit;
   font-weight: inherit;
   font-size: inherit;
@@ -36,4 +36,8 @@ tt, code, kbd, pre, samp {
   tt, code, kbd, pre, samp {
     font-size: 1em;
   }
+}
+
+sub, sup {
+  font-size: 0.5em;
 }

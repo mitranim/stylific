@@ -206,6 +206,10 @@
   }
 }
 
+// Unsure if we should keep this rule. It leads to elements that normally don't
+// receive focus, and therefore, don't keep the outline after being clicked
+// (example: <div data-sf-toggle-id="..."></div>) receiving an outline for a
+// brief moment. It can be slightly jarring.
 @mixin sf-outline-interactive {
   &:active {@include sf-outline-focus;}
 }

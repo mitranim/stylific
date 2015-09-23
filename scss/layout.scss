@@ -15,6 +15,9 @@ html {
 ul, ol, dl {
   @include sf-space-out-vertical($sf-space / 2);
 }
+dl dt:not(:first-of-type) {
+  margin-top: $sf-space;
+}
 
 body {
   /**

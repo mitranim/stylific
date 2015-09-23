@@ -41,6 +41,9 @@ ul, ol {
 :focus {
   @include sf-outline-focus;
 }
+select:focus {
+  outline: -webkit-focus-ring-color auto;
+}
 
 // Common-sense cursor styles.
 .interactive,

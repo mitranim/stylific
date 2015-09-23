@@ -72,13 +72,6 @@
    */
   position: relative;
 
-  // Workaround for a bug in the clean-css minifier used for the documentation.
-  // Adding :not([data-sf-tooltip='']) to the main selector (the one we apply the
-  // component mixin to) causes the minifier to add an extra space before
-  // attribute selectors for position and trigger. Moving it here as an extra
-  // rule patches the problem.
-  &[data-sf-tooltip='']::after {content: none}
-
   /**
    * Shared style for tooltip content and triangle.
    */
@@ -97,6 +90,10 @@
 
     // Use a constant small font size.
     font-size: #{$sf-tooltip-proportion}rem;
+
+    // Counteract inherited font styles, if any.
+    font-style: normal;
+    font-weight: normal;
   }
 
   // Version with scaling font size.
@@ -135,6 +132,10 @@
     // Cosmetic.
     border: $sf-tooltip-offset solid transparent;
   }
+
+  // Never display empty tooltips.
+  &[data-sf-tooltip='']::after {content: none}
+  &[data-sf-tooltip='']::before {content: none}
 
   /**
    * Tooltip content and triangle positioning.
