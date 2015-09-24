@@ -38,22 +38,22 @@ article {
   }
 
   // Float helpers.
-  .left, .float-left {
+  .float-left {
     float: left;
     margin-right: $sf-space;
   }
-  .right, .float-right {
+  .float-right {
     float: right;
     margin-left: $sf-space;
   }
   // Negate double offsets for headers following floating elements at the
   // beginning of an article.
-  .left, .float-left, .right, .float-right {
+  .float-left, .float-right {
     &:first-child + * {margin-top: 0}
   }
 
   // Size helpers.
-  .tiny, .left, .float-left, .right, .float-right {width: 25%}
+  .tiny, .float-left, .float-right {width: 25%}
   .small {width: calc(1/3 * 100%)}
   .medium {width: 50%}
 
