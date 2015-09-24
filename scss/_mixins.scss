@@ -88,8 +88,6 @@
       &.active {
         background-color: rgba(map-get($sf-color-map-primary, default), 0.1);
       }
-      // Misc.
-      @include sf-outline-interactive;
     }
   }
 
@@ -197,21 +195,43 @@
   outline-color: transparent;
 }
 
-@mixin sf-outline-focus {
+// Used for default :focus and :active effects.
+@mixin sf-focus-indicator($extra-shadow: '') {
   &[class*=theme-], [class*=theme-] & {
-    outline-color: rgba($sf-color-background, 0.5);
+    @if $extra-shadow == '' {
+      box-shadow: $sf-focus-indicator-inverse;
+    }
+    @if $extra-shadow != '' {
+      box-shadow: unquote('#{$sf-focus-indicator-inverse}, #{$extra-shadow}');
+    }
   }
   &, &[class*=theme-text-], [class*=theme-text-] & {
-    outline-color: rgba(map-get($sf-color-map-primary, default), 0.5);
+    @if $extra-shadow == '' {
+      box-shadow: $sf-focus-indicator;
+    }
+    @if $extra-shadow != '' {
+      box-shadow: unquote('#{$sf-focus-indicator}, #{$extra-shadow}');
+    }
   }
 }
 
-// Unsure if we should keep this rule. It leads to elements that normally don't
-// receive focus, and therefore, don't keep the outline after being clicked
-// (example: <div data-sf-toggle-id="..."></div>) receiving an outline for a
-// brief moment. It can be slightly jarring.
-@mixin sf-outline-interactive {
-  &:active {@include sf-outline-focus;}
+@mixin sf-shadow($shadow, $indicate-focus: false) {
+  box-shadow: $shadow;
+  @if $indicate-focus and $shadow == none {
+    &:focus {
+      @include sf-focus-indicator;
+    }
+  }
+  @if $indicate-focus and $shadow != none {
+    &:focus {
+      @include sf-focus-indicator($shadow);
+    }
+  }
+  @if not $indicate-focus {
+    &:focus {
+      box-shadow: $shadow;
+    }
+  }
 }
 
 @mixin sf-link-decorations {

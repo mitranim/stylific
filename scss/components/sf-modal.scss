@@ -161,7 +161,7 @@
 // Modal close button.
 .sf-modal-close {
   // Negate default button styles.
-  box-shadow: none;
+  @extend .sf-button-flat;
   padding: ($sf-space / 4) ($sf-space / 2);
   border-radius: 0 $sf-border-radius 0 $sf-border-radius;
 

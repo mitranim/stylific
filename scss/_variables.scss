@@ -67,6 +67,13 @@ $sf-body-max-width: $sf-layout-breakpoint-md !default;
 $sf-transition-duration: 0.2s !default;
 $sf-transition-timing-function: ease !default;
 
+$sf-focus-indicator-color: rgba(map-get($sf-color-map-primary, default), 0.5);
+$sf-focus-indicator-color-inverse: rgba($sf-color-background, 0.5);
+
+// Shadow styles used for :focus and :active indicators.
+$sf-focus-indicator: 0 0 0 1px $sf-focus-indicator-color;
+$sf-focus-indicator-inverse: 0 0 0 1px $sf-focus-indicator-color-inverse;
+
 /****************************** typography.scss ******************************/
 
 // Font families.

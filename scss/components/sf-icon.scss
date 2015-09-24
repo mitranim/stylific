@@ -50,10 +50,10 @@
     // descenders.
     vertical-align: -0.1em;
     &:not(:first-child) {
-      margin-left: 0.2em;
+      margin-left: 0.3em;
     }
     &:not(:last-child) {
-      margin-right: 0.2em;
+      margin-right: 0.3em;
     }
   }
 
@@ -94,7 +94,7 @@
   &.pop {
     &:hover, &:focus, &:active, &.active {
       transform: scale(1.5);
-      &:not([class*=theme-]), &[class*=theme--text-] {
+      &:not([class*=theme-]), &[class*=theme-text-] {
         background-color: transparent;
       }
     }

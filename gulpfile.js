@@ -7,25 +7,25 @@
 
 /******************************* Dependencies ********************************/
 
-var $      = require('gulp-load-plugins')();
-var bsync  = require('browser-sync').create();
-var del    = require('del')
-var gulp   = require('gulp');
-var hjs    = require('highlight.js');
-var marked = require('gulp-marked/node_modules/marked');
-var flags  = require('yargs').argv;
-var pt     = require('path');
-var shell  = require('shelljs');
+const $      = require('gulp-load-plugins')();
+const bsync  = require('browser-sync').create();
+const del    = require('del')
+const gulp   = require('gulp');
+const hjs    = require('highlight.js');
+const marked = require('gulp-marked/node_modules/marked');
+const flags  = require('yargs').argv;
+const pt     = require('path');
+const shell  = require('shelljs');
 
 /********************************** Globals **********************************/
 
-var src = {
+const src = {
   libStyles:     'scss/**/*.scss',
   libStylesCore: 'scss/stylific.scss',
   libScripts:    'src-js/stylific.js',
   docScripts: [
     'lib/stylific.min.js',
-    'node_modules/simple-pjax/lib/simple-pjax.min.js'
+    'node_modules/simple-pjax/dist/simple-pjax.min.js'
   ],
   docStylesCore:    'src-docs/styles/docs.scss',
   docStyles:        'src-docs/styles/**/*.scss',
@@ -36,9 +36,9 @@ var src = {
   docImages: 'src-docs/images/**/*'
 };
 
-var destBase = 'stylific-gh-pages';
+const destBase = 'stylific-gh-pages';
 
-var dest = {
+const dest = {
   lib:        'lib',
   docStyles:  destBase + '/styles',
   docScripts: destBase + '/scripts',
@@ -61,16 +61,16 @@ function reload(done) {
  * Change how marked compiles headers to add links to our source files.
  */
 
-var regComponent = /^sf-[a-z-]+$/;
-var repoComponentDir = 'https://github.com/Mitranim/stylific/blob/master/scss/components/';
+const regComponent = /^sf-[a-z-]+$/;
+const repoComponentDir = 'https://github.com/Mitranim/stylific/blob/master/scss/components/';
 
 // Default heading renderer func.
-var headingDef = marked.Renderer.prototype.heading;
+const headingDef = marked.Renderer.prototype.heading;
 
 // Custom heading renderer func that adds a link to the component source.
 marked.Renderer.prototype.heading = function(text, level) {
   if (regComponent.test(text)) {
-    return '<h' + level + ' id="' + text + '"><a href="' + repoComponentDir + text + '.scss" target="_blank">' + text + '</a></h' + level + '>';
+    return `<h${level} id="${text}"><a href="${repoComponentDir + text}.scss" target="_blank">${text}</a></h${level}>`;
   }
   return headingDef.apply(this, arguments);
 };
@@ -80,14 +80,14 @@ marked.Renderer.prototype.heading = function(text, level) {
  */
 
 // Default link renderer func.
-var linkDef = marked.Renderer.prototype.link;
+const linkDef = marked.Renderer.prototype.link;
 
 // Custom link renderer func that adds target="_blank" to links to other sites.
 // Mostly copied from the marked source.
 marked.Renderer.prototype.link = function(href, title, text) {
   if (this.options.sanitize) {
     try {
-      var prot = decodeURIComponent(unescape(href))
+      const prot = decodeURIComponent(unescape(href))
         .replace(/[^\w:]/g, '')
         .toLowerCase();
     } catch (e) {
@@ -97,7 +97,7 @@ marked.Renderer.prototype.link = function(href, title, text) {
       return '';
     }
   }
-  var out = '<a href="' + href + '"';
+  let out = '<a href="' + href + '"';
   if (title) {
     out += ' title="' + title + '"';
   }
@@ -113,7 +113,7 @@ marked.Renderer.prototype.link = function(href, title, text) {
 /*----------------------------------- Lib -----------------------------------*/
 
 gulp.task('lib:styles:clear', function(done) {
-  del(dest.lib + '/*.css', function (_) {done()});
+  del(dest.lib + '/*.css').then((_) => {done()});
 });
 
 gulp.task('lib:styles:compile', function() {
@@ -150,11 +150,11 @@ gulp.task('lib:watch', function() {
 /*---------------------------------- HTML -----------------------------------*/
 
 gulp.task('docs:html:clear', function(done) {
-  del(dest.docHtml + '/**/*.html', function (_) {done()});
+  del(dest.docHtml + '/**/*.html').then((_) => {done()});
 });
 
 gulp.task('docs:html:compile', function() {
-  var filterMd = $.filter('**/*.md')
+  const filterMd = $.filter('**/*.md')
 
   return gulp.src(src.docHtml)
     .pipe($.plumber())
@@ -169,7 +169,7 @@ gulp.task('docs:html:compile', function() {
       pedantic:    false,
       // Code highlighter.
       highlight: function(code, lang) {
-        var result = lang ? hjs.highlight(lang, code) : hjs.highlightAuto(code);
+        const result = lang ? hjs.highlight(lang, code) : hjs.highlightAuto(code);
         return result.value;
       }
     }))
@@ -203,7 +203,7 @@ gulp.task('docs:html:watch', function() {
 /*--------------------------------- Styles ----------------------------------*/
 
 gulp.task('docs:styles:clear', function(done) {
-  del(dest.docStyles, function (_) {done()});
+  del(dest.docStyles).then((_) => {done()});
 });
 
 gulp.task('docs:styles:compile', function() {
@@ -234,7 +234,7 @@ gulp.task('docs:styles:watch', function() {
 /*--------------------------------- Images ----------------------------------*/
 
 gulp.task('docs:images:clear', function(done) {
-  del(dest.docImages, function (_) {done()});
+  del(dest.docImages).then((_) => {done()});
 });
 
 // Resize and copy images
@@ -289,7 +289,7 @@ gulp.task('docs:images:watch', function() {
 /*--------------------------------- Scripts ---------------------------------*/
 
 gulp.task('docs:scripts:clear', function(done) {
-  del(dest.docScripts, function (_) {done()});
+  del(dest.docScripts).then((_) => {done()});
 });
 
 gulp.task('docs:scripts:copy', function() {

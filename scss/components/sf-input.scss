@@ -18,7 +18,7 @@ input, textarea {
   // Border styles.
   @include sf-border-weak;
   &:focus, &:active {
-    // Give way to the outline.
+    // Disappear in favour of the focus effect.
     border-color: transparent;
   }
 
@@ -26,7 +26,7 @@ input, textarea {
   &:not([class*=theme-]) {color: inherit}
 
   // Normalise background colour. (Webkit has default {background-color: white}).
-  &:not([class*=theme-]), &[class*=theme--text-] {
+  &:not([class*=theme-]), &[class*=theme-text-] {
     background-color: inherit;
   }
 

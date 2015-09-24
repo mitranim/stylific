@@ -36,17 +36,16 @@ button {
   border: none;
   border-radius: $sf-border-radius;
 
-  // Normalise outlines.
-  @include sf-outline-interactive;
-
   // A bit of skeuomorphism.
-  box-shadow: 0 0.1rem 0.3rem -1px rgba(5, 5, 5, 0.5);
+  @include sf-shadow(0 0.1rem 0.3rem -1px rgba(5, 5, 5, 0.5), $indicate-focus: true);
+  // Flatten when depressed.
   &:active {
-    @include sf-shadow-thin;
+    @include sf-focus-indicator;
   }
-  &[disabled] {box-shadow: none}
-  // Flat version.
-  &.sf-button-flat {box-shadow: none}
+  // Flatten when disabled.
+  &[disabled] {
+    box-shadow: none;
+  }
 
   // Restore the normal dimensions when used as an icon.
   &[class*=sf-icon] {
@@ -60,4 +59,9 @@ button {
   // Treat as interactive too.
   @include sf-register-interactive-selector;
   cursor: pointer;
+}
+
+// Flat version.
+&.sf-button-flat {
+  @include sf-shadow(none, $indicate-focus: true);
 }
