@@ -29,9 +29,15 @@
   <div class="sf-dropdown nopad">
     <label class="layout-row layout-center">Examples</label>
     <div class="sf-dropdown-list text-left">
-      <a  href="examples/navbar-demo/">navbar demo</a>
-      <a  href="examples/footer/">footer</a>
-      <a  href="examples/grid-demo/">grid demo</a>
+      
+        <a  href="examples/footer/">footer demo</a>
+      
+        <a  href="examples/grid-demo/">grid demo</a>
+      
+        <a  href="examples/navbar-demo/">navbar demo</a>
+      
+        <a  href="examples/modal-demo/">modal demo</a>
+      
     </div>
   </div>
 </div>
@@ -41,7 +47,7 @@
     <div class="sf-jumbo" style="height: auto">
       <h1 class="layout-row layout-space-between">
         components
-        <a href="https://github.com/Mitranim/stylific" target="_blank">
+        <a href="https://github.com/Mitranim/stylific" target="_blank" class="layout-row layout-cross-center">
           <div class="sf-icon-github-light pop">
             <svg width="2048" height="2048" viewBox="0 0 2048 2048" xmlns="http://www.w3.org/2000/svg"><path d="M1792 1024q0 251-146.5 451.5t-378.5 277.5q-27 5-39.5-7t-12.5-30v-211q0-97-52-142 57-6 102.5-18t94-39 81-66.5 53-105 20.5-150.5q0-121-79-206 37-91-8-204-28-9-81 11t-92 44l-38 24q-93-26-192-26t-192 26q-16-11-42.5-27t-83.5-38.5-86-13.5q-44 113-7 204-79 85-79 206 0 85 20.5 150t52.5 105 80.5 67 94 39 102.5 18q-40 36-49 103-21 10-45 15t-57 5-65.5-21.5-55.5-62.5q-19-32-48.5-52t-49.5-24l-20-3q-21 0-29 4.5t-5 11.5 9 14 13 12l7 5q22 10 43.5 38t31.5 51l10 23q13 38 44 61.5t67 30 69.5 7 55.5-3.5l23-4q0 38 .5 89t.5 54q0 18-13 30t-40 7q-232-77-378.5-277.5t-146.5-451.5q0-209 103-385.5t279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"/></svg>
           </div>
@@ -341,30 +347,54 @@ a height property to the body:</p>
   </div>
 </div>
 
-<h1 id="sf-modal"><a href="https://github.com/Mitranim/stylific/blob/master/scss/components/sf-modal.scss" target="_blank">sf-modal</a></h1><p><code>.sf-modal</code> is a fixed popup dialog. To display it, use an element with an
-<code>[data-sf-toggle-id]</code> attribute pointing to a modal&#39;s id.</p>
-<pre><code class="hljs lang-html"><span class="hljs-comment">&lt;!-- Clicking this summons the modal --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">data-sf-toggle-id</span>=<span class="hljs-value">"demoModal"</span>&gt;</span>Click me to open a modal!<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
 
-<span class="hljs-comment">&lt;!-- Modal, hidden until activated --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"demoModal"</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-modal theme-text-primary"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-modal-body pad-ch-v-05"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Modal header<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Check me out, I'm a modal!<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Click the overlay or the top-right button to close me.<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+<h1 id="sf-modal"><a href="https://github.com/Mitranim/stylific/blob/master/scss/components/sf-modal.scss" target="_blank">sf-modal</a></h1><p><code>.sf-modal</code> is a fixed popup dialog. To display it, use an element with the
+<code>[data-sf-toggle-id]</code> attribute pointing to the modal&#39;s id. It will toggle the
+modal when clicked.</p>
+<p>To close a modal, click its overlay or its close button, or hit the <kbd>Esc</kbd> key.</p>
+<p>By default, the modal body takes up up to half the screen, growing wider on
+small displays. There are two extra size options:</p>
+<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-modal sf-modal-narrow"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-modal sf-modal-wide"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<p>See the examples.</p>
+<pre><code class="hljs lang-html"><span class="hljs-comment">&lt;!-- Opens modal when clicked --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">data-sf-toggle-id</span>=<span class="hljs-value">"demo-modal-normal"</span>&gt;</span>Open normal-sized modal<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- Hidden until activated --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"demo-modal-normal"</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-modal"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-modal-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>I'm a normal-sized modal<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h2</span>&gt;</span>Click overlay or hit Esc to close me.<span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 </code></pre>
 <div class="doc-demo">
   <div class="doc-demo-body">
-    <button data-sf-toggle-id="demoModal">Click me to open a modal!</button>
-
-    <div id="demoModal" class="sf-modal theme-text-primary">
+    <button data-sf-toggle-id="demo-modal-normal">Open normal-sized modal</button>
+    <div id="demo-modal-normal" class="sf-modal">
       <div class="sf-modal-body">
-        <h1>Modal header</h1>
-        <p>Check me out, I&#39;m a modal!</p>
-        <p>Click the overlay or the top-right button to close me.</p>
+        <h1>I&#39;m a normal-sized modal</h1>
+        <h2>Click overlay or hit Esc to close me.</h2>
+        <p>Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max brucks terribilem incessu zomby. The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus. Zonbi tattered for solum oculi eorum defunctis go lum cerebro. Nescio brains an Undead zombies. Sicut malus putrid voodoo horror. Nigh tofth eliv ingdead.</p>
+        <p>Cum horribilem walking dead resurgere de crazed sepulcris creaturis, zombie sicut de grave feeding iride et serpens. Pestilentia, shaun ofthe dead scythe animated corpses ipsa screams. Pestilentia est plague haec decaying ambulabat mortuos. Sicut zeder apathetic malus voodoo. Aenean a dolor plan et terror soulless vulnerum contagium accedunt, mortui iam vivam unlife. Qui tardius moveri, brid eof reanimator sed in magna copia sint terribiles undeath legionis. Alii missing oculis aliorum sicut serpere crabs nostram. Putridi braindead odores kill and infect, aere implent left four dead.</p>
+      </div>
+    </div>
+    <button data-sf-toggle-id="demo-modal-narrow">Open narrow modal</button>
+    <div id="demo-modal-narrow" class="sf-modal sf-modal-narrow">
+      <div class="sf-modal-body">
+        <h1>I&#39;m a narrow modal</h1>
+        <h2>Click overlay or hit Esc to close me.</h2>
+      </div>
+    </div>
+    <button data-sf-toggle-id="demo-modal-wide">Open wide modal</button>
+    <div id="demo-modal-wide" class="sf-modal sf-modal-wide">
+      <div class="sf-modal-body">
+        <h1>I&#39;m a wide modal</h1>
+        <h2>Click overlay or hit Esc to close me.</h2>
+        <p>Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max brucks terribilem incessu zomby. The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus. Zonbi tattered for solum oculi eorum defunctis go lum cerebro. Nescio brains an Undead zombies. Sicut malus putrid voodoo horror. Nigh tofth eliv ingdead.</p>
+        <p>Cum horribilem walking dead resurgere de crazed sepulcris creaturis, zombie sicut de grave feeding iride et serpens. Pestilentia, shaun ofthe dead scythe animated corpses ipsa screams. Pestilentia est plague haec decaying ambulabat mortuos. Sicut zeder apathetic malus voodoo. Aenean a dolor plan et terror soulless vulnerum contagium accedunt, mortui iam vivam unlife. Qui tardius moveri, brid eof reanimator sed in magna copia sint terribiles undeath legionis. Alii missing oculis aliorum sicut serpere crabs nostram. Putridi braindead odores kill and infect, aere implent left four dead.</p>
         <p>Lucio fulci tremor est dark vivos magna. Expansis creepy arm yof darkness ulnis witchcraft missing carnem armis Kirkman Moore and Adlard caeruleum in locis. Romero morbo Congress amarus in auras. Nihil horum sagittis tincidunt, zombie slack-jawed gelida survival portenta. The unleashed virus est, et iam zombie mortui ambulabunt super terram. Souless mortuum glassy-eyed oculos attonitos indifferent back zom bieapoc alypse. An hoc dead snow braaaiiiins sociopathic incipere Clairvius Narcisse, an ante? Is bello mundi z?</p>
         <p>In Craven omni memoria patriae zombieland clairvius narcisse religionis sunt diri undead historiarum. Golums, zombies unrelenting et Raimi fascinati beheading. Maleficia! Vel cemetery man a modern bursting eyeballs perhsaps morbi. A terrenti flesh contagium. Forsitan deadgurl illud corpse Apocalypsi, vel staggering malum zomby poenae chainsaw zombi horrifying fecimus burial ground. Indeflexus shotgun coup de poudre monstra per plateas currere. Fit de decay nostra carne undead. Poenitentiam violent zom biehig hway agite RE:dead pœnitentiam! Vivens mortua sunt apud nos night of the living dead.</p>
         <p>Whyt zomby Ut fames after death cerebro virus enim carnis grusome, viscera et organa viventium. Sicut spargit virus ad impetum, qui supersumus flesh eating. Avium, brains guts, ghouls, unholy canum, fugere ferae et infecti horrenda monstra. Videmus twenty-eight deformis pale, horrenda daemonum. Panduntur brains portae rotting inferi. Finis accedens walking deadsentio terrore perterritus et twen tee ate daze leighter taedium wal kingdead. The horror, monstra epidemic significant finem. Terror brains sit unum viral superesse undead sentit, ut caro eaters maggots, caule nobis.</p>
@@ -373,11 +403,58 @@ a height property to the body:</p>
   </div>
 </div>
 
-<p>If your website has a <code>&lt;base&gt;</code> tag (typically <code>&lt;base href=&quot;/&quot;&gt;</code>), the <code>#</code> part
-in the links needs to be prefixed with the pathname of the current page.</p>
+<h2 id="-data-sf-clone-modal-"><code>[data-sf-clone-modal]</code></h2>
+<p>This trigger attribute makes a copy of the modal every time.</p>
+<p>A typical use case is embedding YouTube videos or any other media content. With
+a normal modal, playback would continue after a modal is closed. However, when
+using this trigger, the modal&#39;s <em>clone</em> is added to the DOM and removed when
+it&#39;s closed, which automatically stops any media content.</p>
+<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">data-sf-clone-modal</span>=<span class="hljs-value">"demo-modal-cloned"</span>&gt;</span>Open modal with YouTube video<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>The YT player in this modal is inert until the modal is opened.<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">template</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"demo-modal-cloned"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-modal sf-modal-wide"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-modal-body"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-embed"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">iframe</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"http://youtube.com/embed/mvH9mwkvWIU"</span> <span class="hljs-attribute">allowFullScreen</span>=<span class="hljs-value">"true"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">iframe</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>When this modal is closed, video playback stops.<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">template</span>&gt;</span>
+</code></pre>
+<div class="doc-demo">
+  <div class="doc-demo-body">
+    <button data-sf-clone-modal="demo-modal-cloned">Open modal with YouTube video</button>
+    <p>The YT player in this modal is inert until the modal is opened.</p>
+
+    <template id="demo-modal-cloned">
+      <div class="sf-modal sf-modal-wide">
+        <div class="sf-modal-body">
+          <div class="sf-embed">
+            <iframe src="http://youtube.com/embed/mvH9mwkvWIU" allowFullScreen="true"></iframe>
+          </div>
+          <p>When this modal is closed, video playback stops.</p>
+        </div>
+      </div>
+    </template>
+  </div>
+</div>
+
+<p>Note that we&#39;re putting the modal into a <code>&lt;template&gt;</code> tag. In <a href="http://caniuse.com/#feat=template" target="_blank">supporting
+browsers</a>, template contents are completely
+inert. Embedded content like YouTube videos won&#39;t activate until the modal is
+opened. This can make a huge difference for your page loading speed and
+perceived performance.</p>
+<p>When adding the cloned modal to the DOM, stylific emits the <code>sf:dom:add</code> event
+targeting it. This gives you an opportunity to mutate its contents (for example,
+activate React components or jQuery plugins) before it&#39;s displayed. When the
+clone is closed, it&#39;s removed from the DOM.</p>
+
+
 <h1 id="sf-navbar"><a href="https://github.com/Mitranim/stylific/blob/master/scss/components/sf-navbar.scss" target="_blank">sf-navbar</a></h1><p>Each website needs a navigation bar. Open a <a href="examples/navbar-
 demo/">separate demo</a> to resize the page more easily.</p>
-<p>Notice how little markup is required.</p>
+<p>Note how little markup is required.</p>
 <pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-navbar"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/"</span>&gt;</span>Home<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"active"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/robots"</span>&gt;</span>Robots<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
@@ -751,7 +828,7 @@ height.</p>
       </a>
     </div>
     <div class="flex-1 layout-column layout-cross-end">
-      <button class="sf-icon-arrow-up pad" style="opacity: 0.5" onclick="window.scrollTo(0, 0)"></button>
+      <button class="sf-icon-arrow-up pad" onclick="window.scrollTo(0, 0)"></button>
     </div>
   </div>
 </div>
