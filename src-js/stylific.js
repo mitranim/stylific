@@ -51,6 +51,12 @@
         return
       }
 
+      // Modal dismiss button.
+      if (hasAttr(elem, 'data-sf-close-modal') && hasClass(cursor, 'sf-modal')) {
+        closeModal(cursor)
+        return
+      }
+
       // data-sf-toggle hooks.
       if (hasAttr(cursor, 'data-sf-clone-modal')) {
         toggleModalCloneById(getAttr(cursor, 'data-sf-clone-modal'))
@@ -184,7 +190,15 @@
 
   function toggleId (id) {
     const elem = document.getElementById(id)
-    if (elem) toggleElem(elem)
+    if (elem) {
+      if (elem.tagName === 'TEMPLATE') {
+        const firstChild = firstElementChild(elem.content || elem)
+        if (firstChild && hasClass(firstChild, 'sf-modal')) {
+          toggleModalCloneById(id)
+        }
+      }
+      else toggleElem(elem)
+    }
   }
 
   // Shortcuts for better minification.
@@ -193,6 +207,9 @@
   }
   function getAttr (elem, name) {
     return elem.getAttribute(name)
+  }
+  function setAttr (elem, name, value) {
+    return elem.setAttribute(name, value)
   }
   function hasClass (elem, name) {
     return elem.classList.contains(name)
@@ -210,6 +227,7 @@
     if (body && !find(body.children, child => hasClass(child, 'sf-modal-close'))) {
       const button = document.createElement('button')
       addClass(button, 'sf-modal-close')
+      setAttr(button, 'data-sf-close-modal', '')
       body.insertBefore(button, body.firstChild)
     }
     addClass(elem, 'active')
@@ -238,13 +256,13 @@
       // The element may optionally be a <template> tag. In this case, its first
       // child element will be cloned.
       if (elem.tagName === 'TEMPLATE') {
-        original = (elem.content || elem).firstElementChild
+        original = firstElementChild(elem.content || elem)
       }
       if (!original) return
       const clone = original.cloneNode(true)
 
       // This attribute serves for lookup when toggling this off.
-      clone.setAttribute('data-sf-modal-clone', clone.id)
+      clone.setAttribute('data-sf-modal-clone', id)
       clone.removeAttribute('id')
 
       elem.parentElement.insertBefore(clone, elem.nextSibling)
@@ -267,6 +285,12 @@
     for (let i = 0, ii = iterable.length; i < ii; ++i) {
       if (iterator(iterable[i], i)) return iterable[i]
     }
+  }
+
+  // Workaround for the lack of `DocumentFragment#firstElementChild` support in
+  // IE.
+  function firstElementChild (node) {
+    return find(node.childNodes, child => child instanceof Element) || null
   }
 
   // Checks if the element is in our list of elements whose vertical scroll
