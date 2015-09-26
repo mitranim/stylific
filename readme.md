@@ -44,7 +44,7 @@ JavaScript file included with the library.
 
 ## Contributing
 
-If you spot a bug or have a feature suggestion, please open an [issue](/issues).
+If you spot a bug or have a feature suggestion, please open an [issue](https://github.com/Mitranim/stylific/issues).
 
 To contribute code, send a pull request.
 
