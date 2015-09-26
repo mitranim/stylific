@@ -64,4 +64,8 @@ button {
 // Flat version.
 &.sf-button-flat {
   @include sf-shadow(none, $indicate-focus: true);
+  // Remove the border radius to make the focus indicator and the background
+  // rectangular, which is more in line with the look of other "flat" elements
+  // (e.g. anchors).
+  border-radius: 0;
 }
