@@ -70,7 +70,12 @@
 <h1 id="sf-modal"><a href="https://github.com/Mitranim/stylific/blob/master/scss/components/sf-modal.scss" target="_blank">sf-modal</a></h1><p><code>.sf-modal</code> is a fixed popup dialog. To display it, use an element with the
 <code>[data-sf-toggle-id]</code> attribute pointing to the modal&#39;s id. It will toggle the
 modal when clicked.</p>
-<p>To close a modal, click its overlay or its close button, or hit the <kbd>Esc</kbd> key.</p>
+<p>To close a modal, click its overlay or its close button, or hit the
+<kbd>Esc</kbd> key. You can also add an element with the <code>data-sf-close-modal</code>
+inside the modal body. Clicking it will close the modal.</p>
+<p>The modal close button is added automatically when it&#39;s first opened. If you add
+an element with the <code>.sf-modal-close</code> class in advance, it won&#39;t be added
+automatically. Don&#39;t forget to include the <code>data-sf-close-modal</code> attribute.</p>
 <p>By default, the modal body takes up up to half the screen, growing wider on
 small displays. There are two extra size options:</p>
 <pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-modal sf-modal-narrow"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
@@ -86,6 +91,7 @@ small displays. There are two extra size options:</p>
     <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>I'm a normal-sized modal<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">h2</span>&gt;</span>Click overlay or hit Esc to close me.<span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">data-sf-close-modal</span>&gt;</span>Click to close<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 </code></pre>
@@ -98,6 +104,7 @@ small displays. There are two extra size options:</p>
         <h2>Click overlay or hit Esc to close me.</h2>
         <p>Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max brucks terribilem incessu zomby. The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus. Zonbi tattered for solum oculi eorum defunctis go lum cerebro. Nescio brains an Undead zombies. Sicut malus putrid voodoo horror. Nigh tofth eliv ingdead.</p>
         <p>Cum horribilem walking dead resurgere de crazed sepulcris creaturis, zombie sicut de grave feeding iride et serpens. Pestilentia, shaun ofthe dead scythe animated corpses ipsa screams. Pestilentia est plague haec decaying ambulabat mortuos. Sicut zeder apathetic malus voodoo. Aenean a dolor plan et terror soulless vulnerum contagium accedunt, mortui iam vivam unlife. Qui tardius moveri, brid eof reanimator sed in magna copia sint terribiles undeath legionis. Alii missing oculis aliorum sicut serpere crabs nostram. Putridi braindead odores kill and infect, aere implent left four dead.</p>
+        <p><button data-sf-close-modal>Click to close</button></p>
       </div>
     </div>
     <button data-sf-toggle-id="demo-modal-narrow">Open narrow modal</button>
@@ -105,6 +112,7 @@ small displays. There are two extra size options:</p>
       <div class="sf-modal-body">
         <h1>I&#39;m a narrow modal</h1>
         <h2>Click overlay or hit Esc to close me.</h2>
+        <p><button data-sf-close-modal>Click to close</button></p>
       </div>
     </div>
     <button data-sf-toggle-id="demo-modal-wide">Open wide modal</button>
@@ -117,6 +125,7 @@ small displays. There are two extra size options:</p>
         <p>Lucio fulci tremor est dark vivos magna. Expansis creepy arm yof darkness ulnis witchcraft missing carnem armis Kirkman Moore and Adlard caeruleum in locis. Romero morbo Congress amarus in auras. Nihil horum sagittis tincidunt, zombie slack-jawed gelida survival portenta. The unleashed virus est, et iam zombie mortui ambulabunt super terram. Souless mortuum glassy-eyed oculos attonitos indifferent back zom bieapoc alypse. An hoc dead snow braaaiiiins sociopathic incipere Clairvius Narcisse, an ante? Is bello mundi z?</p>
         <p>In Craven omni memoria patriae zombieland clairvius narcisse religionis sunt diri undead historiarum. Golums, zombies unrelenting et Raimi fascinati beheading. Maleficia! Vel cemetery man a modern bursting eyeballs perhsaps morbi. A terrenti flesh contagium. Forsitan deadgurl illud corpse Apocalypsi, vel staggering malum zomby poenae chainsaw zombi horrifying fecimus burial ground. Indeflexus shotgun coup de poudre monstra per plateas currere. Fit de decay nostra carne undead. Poenitentiam violent zom biehig hway agite RE:dead pœnitentiam! Vivens mortua sunt apud nos night of the living dead.</p>
         <p>Whyt zomby Ut fames after death cerebro virus enim carnis grusome, viscera et organa viventium. Sicut spargit virus ad impetum, qui supersumus flesh eating. Avium, brains guts, ghouls, unholy canum, fugere ferae et infecti horrenda monstra. Videmus twenty-eight deformis pale, horrenda daemonum. Panduntur brains portae rotting inferi. Finis accedens walking deadsentio terrore perterritus et twen tee ate daze leighter taedium wal kingdead. The horror, monstra epidemic significant finem. Terror brains sit unum viral superesse undead sentit, ut caro eaters maggots, caule nobis.</p>
+        <p><button data-sf-close-modal>Click to close</button></p>
       </div>
     </div>
   </div>
@@ -138,6 +147,7 @@ it&#39;s closed, which automatically stops any media content.</p>
         <span class="hljs-tag">&lt;<span class="hljs-title">iframe</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"http://youtube.com/embed/mvH9mwkvWIU"</span> <span class="hljs-attribute">allowFullScreen</span>=<span class="hljs-value">"true"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">iframe</span>&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>When this modal is closed, video playback stops.<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">data-sf-close-modal</span>&gt;</span>Click to close<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">template</span>&gt;</span>
@@ -154,7 +164,7 @@ it&#39;s closed, which automatically stops any media content.</p>
             <iframe src="http://youtube.com/embed/mvH9mwkvWIU" allowFullScreen="true"></iframe>
           </div>
           <p>When this modal is closed, video playback stops.</p>
-        </div>
+          <p><button data-sf-close-modal>Click to close</button></p>
       </div>
     </template>
   </div>
