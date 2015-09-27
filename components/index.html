@@ -21,14 +21,14 @@
   <a  href="layout/">Layout</a>
 
   <!-- Collapse breakpoint -->
-  <label></label>
+  <div class="sf-navbar-toggle"></div>
 
   <a  href="themes/">Themes</a>
 
   <!-- Collapsable children -->
   <div class="sf-dropdown nopad">
-    <label class="layout-row layout-center">Examples</label>
-    <div class="sf-dropdown-list text-left">
+    <div class="sf-dropdown-head layout-row layout-center">Examples</div>
+    <div class="sf-dropdown-body text-left">
       
         <a  href="examples/footer/">footer demo</a>
       
@@ -60,7 +60,7 @@
     <article>
       <!-- TOC -->
 <div class="sf-collapse doc-toc theme-text-accent">
-  <label class="active theme-accent"></label>
+  <div class="sf-collapse-head active theme-accent"></div>
   <div class="sf-collapse-body">
     <a href="components/#overview">Overview</a>
     <a href="components/#sf-article">sf-article</a>
@@ -85,7 +85,7 @@ modify with your own CSS, or subclass them in Sass. Stateful components like
 <code>sf-collapse</code> require the tiny JavaScript file included with the library.</p>
 <p>Most components are class-based and should be used like so:
 <code>&lt;label class=&quot;sf-label&quot;&gt;&lt;/label&gt;</code>. Some components take additional options
-like so: <code>.sf-label.sf-label-dense</code>.</p>
+like so: <code>&lt;label class=&quot;sf-label sf-label-dense&quot;&gt;&lt;/label&gt;</code>.</p>
 <h1 id="sf-article"><a href="https://github.com/Mitranim/stylific/blob/master/scss/components/sf-article.scss" target="_blank">sf-article</a></h1><p><code>sf-article</code> symbolises a block of readable text. It provides default cosmetic
 styling, like whitespace, link decorations, and convenience classes for images.
 Available as <code>.sf-article</code> and is by default applied to the native <code>article</code>
@@ -113,13 +113,17 @@ Markdown, like this documentation.</p>
   </div>
 </div>
 
-<h1 id="sf-collapse"><a href="https://github.com/Mitranim/stylific/blob/master/scss/components/sf-collapse.scss" target="_blank">sf-collapse</a></h1><p><code>sf-collapse</code> can be toggled to show or hide its contents. The <code>doc-toc</code>
-element at the top of this page is an
-<a href="https://github.com/Mitranim/stylific/blob/master/src-docs/styles/components/doc-toc.scss" target="_blank">example</a>
-of subclassing <code>sf-collapse</code> to produce a custom collapsing element.</p>
-<p>Like all other components, it responds to stylific&#39;s <a href="themes/">themes</a>.</p>
+<h1 id="sf-collapse"><a href="https://github.com/Mitranim/stylific/blob/master/scss/components/sf-collapse.scss" target="_blank">sf-collapse</a></h1><div class="theme-accent layout-row layout-cross-center">
+  <span class="sf-icon-info-circle inline" style="margin: 1rem 0 1rem 1rem"></span>
+  <p class="pad">
+    Breaking change in <code>0.12.0</code>: the toggle must have the <code>.sf-collapse-head</code>
+    class, and is no longer required to be a <code>label</code>.
+  </p>
+</div>
+
+<p><code>sf-collapse</code> can be toggled to show or hide its contents.</p>
 <pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-collapse theme-text-primary"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">label</span>&gt;</span>Click me to toggle collapse<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-collapse-head"</span>&gt;</span>Click me to toggle collapse<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-collapse-body"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">h3</span>&gt;</span>Header for the collapsed element<span class="hljs-tag">&lt;/<span class="hljs-title">h3</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Paragraph in the collapsed element<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
@@ -129,7 +133,7 @@ of subclassing <code>sf-collapse</code> to produce a custom collapsing element.<
 <div class="doc-demo">
   <div class="doc-demo-body">
     <div class="sf-collapse theme-text-primary">
-      <label>Click me to toggle collapse</label>
+      <div class="sf-collapse-head">Click me to toggle collapse</div>
       <div class="sf-collapse-body">
         <h3>Header for the collapsed element</h3>
         <p>Paragraph in the collapsed element</p>
@@ -141,7 +145,7 @@ of subclassing <code>sf-collapse</code> to produce a custom collapsing element.<
 <h2 id="options">Options</h2>
 <p>To uncollapse the component by default, use <code>.active</code>.</p>
 <pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-collapse theme-text-accent"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"active"</span>&gt;</span>Click me to toggle collapse<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-collapse-head active"</span>&gt;</span>Click me to toggle collapse<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-collapse-body"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">h3</span>&gt;</span>I'm uncollapsed by default!<span class="hljs-tag">&lt;/<span class="hljs-title">h3</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is my paragraph<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
@@ -151,7 +155,7 @@ of subclassing <code>sf-collapse</code> to produce a custom collapsing element.<
 <div class="doc-demo">
   <div class="doc-demo-body">
     <div class="sf-collapse theme-text-accent">
-      <label class="active">Click me to toggle collapse</label>
+      <div class="sf-collapse-head active">Click me to toggle collapse</div>
       <div class="sf-collapse-body">
         <h3>I&#39;m uncollapsed by default!</h3>
         <p>This is my paragraph</p>
@@ -163,7 +167,7 @@ of subclassing <code>sf-collapse</code> to produce a custom collapsing element.<
 <p>You can also enable an invisible overlay that collapses the element when
 clicking anywhere outside of it by adding the <code>.sf-collapse-overlay</code> option:</p>
 <pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-collapse sf-collapse-overlay theme-warn"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">label</span>&gt;</span>Click me to toggle collapse<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-collapse-head"</span>&gt;</span>Click me to toggle collapse<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-collapse-body"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">h3</span>&gt;</span>Click anywhere outside to close me!<span class="hljs-tag">&lt;/<span class="hljs-title">h3</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>This is my paragraph<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
@@ -173,7 +177,7 @@ clicking anywhere outside of it by adding the <code>.sf-collapse-overlay</code> 
 <div class="doc-demo">
   <div class="doc-demo-body">
     <div class="sf-collapse sf-collapse-overlay theme-warn">
-      <label>Click me to toggle collapse</label>
+      <div class="sf-collapse-head">Click me to toggle collapse</div>
       <div class="sf-collapse-body">
         <h3>Click anywhere outside to close me!</h3>
         <p>This is my paragraph</p>
@@ -182,10 +186,19 @@ clicking anywhere outside of it by adding the <code>.sf-collapse-overlay</code> 
   </div>
 </div>
 
-<h1 id="sf-dropdown"><a href="https://github.com/Mitranim/stylific/blob/master/scss/components/sf-dropdown.scss" target="_blank">sf-dropdown</a></h1><p><code>sf-dropdown</code> is a basic dropdown list. By default, it appears on <code>:hover</code>:</p>
+<h1 id="sf-dropdown"><a href="https://github.com/Mitranim/stylific/blob/master/scss/components/sf-dropdown.scss" target="_blank">sf-dropdown</a></h1><div class="theme-accent layout-row layout-cross-center">
+  <span class="sf-icon-info-circle inline" style="margin: 1rem 0 1rem 1rem"></span>
+  <p class="pad">
+    Breaking changes in <code>0.12.0</code>: the toggle must have the <code>.sf-dropdown-head</code>
+    class, and is no longer required to be a <code>label</code>; <code>.sf-dropdown-list</code> has
+    been renamed to <code>.sf-dropdown-body</code>.
+  </p>
+</div>
+
+<p><code>sf-dropdown</code> is a basic dropdown list. By default, it appears on <code>:hover</code>:</p>
 <pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-dropdown"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">label</span>&gt;</span>hover me to see a dropdown<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-dropdown-list"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-dropdown-head"</span>&gt;</span>hover me to see a dropdown<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-dropdown-body"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">span</span>&gt;</span>I'm the first item<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">span</span>&gt;</span>I'm the second item<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">span</span>&gt;</span>I'm the third item<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
@@ -195,8 +208,8 @@ clicking anywhere outside of it by adding the <code>.sf-collapse-overlay</code> 
 <div class="doc-demo">
   <div class="doc-demo-body column">
     <div class="sf-dropdown">
-      <label>hover me to see a dropdown</label>
-      <div class="sf-dropdown-list">
+      <div class="sf-dropdown-head">hover me to see a dropdown</div>
+      <div class="sf-dropdown-body">
         <span>I&#39;m the first item</span>
         <span>I&#39;m the second item</span>
         <span>I&#39;m the third item</span>
@@ -208,8 +221,8 @@ clicking anywhere outside of it by adding the <code>.sf-collapse-overlay</code> 
 <p>You can also make it toggle-able by adding the <code>data-sf-toggle</code> option to the label.
 This automatically disables the <code>:hover</code> effect.</p>
 <pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-dropdown theme-primary"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">data-sf-toggle</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"pad"</span>&gt;</span>click me to toggle a dropdown<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-dropdown-list"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-dropdown-head pad"</span> <span class="hljs-attribute">data-sf-toggle</span>&gt;</span>click me to toggle a dropdown<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-dropdown-body"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"active"</span>&gt;</span>Click outside to toggle off<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">span</span>&gt;</span>I'm the second item<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">span</span>&gt;</span>I'm the third item<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
@@ -219,8 +232,8 @@ This automatically disables the <code>:hover</code> effect.</p>
 <div class="doc-demo">
   <div class="doc-demo-body column">
     <div class="sf-dropdown theme-primary">
-      <label data-sf-toggle class="pad">click me to toggle a dropdown</label>
-      <div class="sf-dropdown-list">
+      <div class="sf-dropdown-head pad" data-sf-toggle>click me to toggle a dropdown</div>
+      <div class="sf-dropdown-body">
         <span class="active">Click outside to toggle off</span>
         <span>I&#39;m the second item</span>
         <span>I&#39;m the third item</span>
@@ -231,8 +244,8 @@ This automatically disables the <code>:hover</code> effect.</p>
 
 <p>The dropdown position may be changed to <code>top</code>, <code>right</code> or <code>left</code>:</p>
 <pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-dropdown sf-dropdown-top"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">label</span>&gt;</span>this dropdown goes upwards<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-dropdown-list"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-dropdown-head"</span>&gt;</span>this dropdown goes upwards<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-dropdown-body"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">span</span>&gt;</span>I'm the first item<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">span</span>&gt;</span>I'm the second item<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">span</span>&gt;</span>I'm the third item<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
@@ -242,8 +255,8 @@ This automatically disables the <code>:hover</code> effect.</p>
 <div class="doc-demo">
   <div class="doc-demo-body column">
     <div class="sf-dropdown sf-dropdown-top">
-      <label>this dropdown goes upwards</label>
-      <div class="sf-dropdown-list">
+      <div class="sf-dropdown-head">this dropdown goes upwards</div>
+      <div class="sf-dropdown-body">
         <span>I&#39;m the first item</span>
         <span>I&#39;m the second item</span>
         <span>I&#39;m the third item</span>
@@ -252,21 +265,30 @@ This automatically disables the <code>:hover</code> effect.</p>
   </div>
 </div>
 
-<h1 id="sf-tabset"><a href="https://github.com/Mitranim/stylific/blob/master/scss/components/sf-tabset.scss" target="_blank">sf-tabset</a></h1><p><code>sf-tabset</code> is a tabbed panel. To select a tab, apply the class <code>.active</code> to a
+<h1 id="sf-tabset"><a href="https://github.com/Mitranim/stylific/blob/master/scss/components/sf-tabset.scss" target="_blank">sf-tabset</a></h1><div class="theme-accent layout-row layout-cross-center">
+  <span class="sf-icon-info-circle inline" style="margin: 1rem 0 1rem 1rem"></span>
+  <p class="pad">
+    Breaking changes in <code>0.12.0</code>: tab toggles must have the <code>.sf-tab-head</code>
+    class, and are no longer required to be <code>label</code>s; the tab body class has
+    been renamed from <code>.sf-tab</code> to <code>.sf-tab-body</code>.
+  </p>
+</div>
+
+<p><code>sf-tabset</code> is a tabbed panel. To select a tab, apply the class <code>.active</code> to a
 matching label/tab pair. The bundled JS file does this automatically on clicks.</p>
 <pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-tabset theme-text-accent"</span>&gt;</span>
   <span class="hljs-comment">&lt;!-- Header --&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-tabset-head theme-accent"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"active"</span>&gt;</span>First tab (preselected)<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">label</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">label</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-tab-head active"</span>&gt;</span>First tab (preselected)<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-tab-head"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-tab-head"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 
   <span class="hljs-comment">&lt;!-- Body --&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-tabset-body"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-tab active"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-tab"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-tab"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-tab-body active"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-tab-body"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-tab-body"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 </code></pre>
@@ -274,20 +296,20 @@ matching label/tab pair. The bundled JS file does this automatically on clicks.<
   <div class="doc-demo-body">
     <div class="sf-tabset theme-text-accent">
       <div class="sf-tabset-head theme-accent">
-        <label class="active">First tab (preselected)</label>
-        <label>Second tab</label>
-        <label>Third tab</label>
+        <div class="sf-tab-head active">First tab (preselected)</div>
+        <div class="sf-tab-head">Second tab</div>
+        <div class="sf-tab-head">Third tab</div>
       </div>
       <div class="sf-tabset-body">
-        <div class="sf-tab active">
+        <div class="sf-tab-body active">
           <h3>First tab content</h3>
           <p>Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max brucks terribilem incessu zomby. The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus. Zonbi tattered for solum oculi eorum defunctis go lum cerebro. Nescio brains an Undead zombies. Sicut malus putrid voodoo horror. Nigh tofth eliv ingdead.</p>
         </div>
-        <div class="sf-tab">
+        <div class="sf-tab-body">
           <h3>Second tab content</h3>
           <p>Cum horribilem walking dead resurgere de crazed sepulcris creaturis, zombie sicut de grave feeding iride et serpens. Pestilentia, shaun ofthe dead scythe animated corpses ipsa screams. Pestilentia est plague haec decaying ambulabat mortuos. Sicut zeder apathetic malus voodoo. Aenean a dolor plan et terror soulless vulnerum contagium accedunt, mortui iam vivam unlife. Qui tardius moveri, brid eof reanimator sed in magna copia sint terribiles undeath legionis. Alii missing oculis aliorum sicut serpere crabs nostram. Putridi braindead odores kill and infect, aere implent left four dead.</p>
         </div>
-        <div class="sf-tab">
+        <div class="sf-tab-body">
           <h3>Third tab content</h3>
           <p>Lucio fulci tremor est dark vivos magna. Expansis creepy arm yof darkness ulnis witchcraft missing carnem armis Kirkman Moore and Adlard caeruleum in locis. Romero morbo Congress amarus in auras. Nihil horum sagittis tincidunt, zombie slack-jawed gelida survival portenta. The unleashed virus est, et iam zombie mortui ambulabunt super terram. Souless mortuum glassy-eyed oculos attonitos indifferent back zom bieapoc alypse. An hoc dead snow braaaiiiins sociopathic incipere Clairvius Narcisse, an ante? Is bello mundi z?</p>
         </div>
@@ -301,15 +323,15 @@ matching label/tab pair. The bundled JS file does this automatically on clicks.<
 a height property to the body:</p>
 <pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-tabset sf-tabset-fixed theme-text-warn"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-tabset-head theme-warn"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"active"</span>&gt;</span>First tab (preselected)<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">label</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">label</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-tab-head active"</span>&gt;</span>First tab (preselected)<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-tab-head"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-tab-head"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 
   <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-tabset-body"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"height: 10em"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-tab active"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-tab"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-tab"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-tab-body active"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-tab-body"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-tab-body"</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 </code></pre>
@@ -317,22 +339,22 @@ a height property to the body:</p>
   <div class="doc-demo-body">
     <div class="sf-tabset sf-tabset-fixed theme-text-warn">
       <div class="sf-tabset-head theme-warn">
-        <label class="active">First tab (preselected)</label>
-        <label>Second tab</label>
-        <label>Third tab</label>
+        <div class="sf-tab-head active">First tab (preselected)</div>
+        <div class="sf-tab-head">Second tab</div>
+        <div class="sf-tab-head">Third tab</div>
       </div>
       <div class="sf-tabset-body" style="height: 10em">
-        <div class="sf-tab active">
+        <div class="sf-tab-body active">
           <h3>First tab content</h3>
           <p>Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max brucks terribilem incessu zomby. The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus. Zonbi tattered for solum oculi eorum defunctis go lum cerebro. Nescio brains an Undead zombies. Sicut malus putrid voodoo horror. Nigh tofth eliv ingdead.</p>
           <p>Lucio fulci tremor est dark vivos magna. Expansis creepy arm yof darkness ulnis witchcraft missing carnem armis Kirkman Moore and Adlard caeruleum in locis. Romero morbo Congress amarus in auras. Nihil horum sagittis tincidunt, zombie slack-jawed gelida survival portenta. The unleashed virus est, et iam zombie mortui ambulabunt super terram. Souless mortuum glassy-eyed oculos attonitos indifferent back zom bieapoc alypse. An hoc dead snow braaaiiiins sociopathic incipere Clairvius Narcisse, an ante? Is bello mundi z?</p>
         </div>
-        <div class="sf-tab">
+        <div class="sf-tab-body">
           <h3>Second tab content</h3>
           <p>Cum horribilem walking dead resurgere de crazed sepulcris creaturis, zombie sicut de grave feeding iride et serpens. Pestilentia, shaun ofthe dead scythe animated corpses ipsa screams. Pestilentia est plague haec decaying ambulabat mortuos. Sicut zeder apathetic malus voodoo. Aenean a dolor plan et terror soulless vulnerum contagium accedunt, mortui iam vivam unlife. Qui tardius moveri, brid eof reanimator sed in magna copia sint terribiles undeath legionis. Alii missing oculis aliorum sicut serpere crabs nostram. Putridi braindead odores kill and infect, aere implent left four dead.</p>
           <p>Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max brucks terribilem incessu zomby. The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus. Zonbi tattered for solum oculi eorum defunctis go lum cerebro. Nescio brains an Undead zombies. Sicut malus putrid voodoo horror. Nigh tofth eliv ingdead.</p>
         </div>
-        <div class="sf-tab">
+        <div class="sf-tab-body">
           <h3>Third tab content</h3>
           <p>Lucio fulci tremor est dark vivos magna. Expansis creepy arm yof darkness ulnis witchcraft missing carnem armis Kirkman Moore and Adlard caeruleum in locis. Romero morbo Congress amarus in auras. Nihil horum sagittis tincidunt, zombie slack-jawed gelida survival portenta. The unleashed virus est, et iam zombie mortui ambulabunt super terram. Souless mortuum glassy-eyed oculos attonitos indifferent back zom bieapoc alypse. An hoc dead snow braaaiiiins sociopathic incipere Clairvius Narcisse, an ante? Is bello mundi z?</p>
           <p>Cum horribilem walking dead resurgere de crazed sepulcris creaturis, zombie sicut de grave feeding iride et serpens. Pestilentia, shaun ofthe dead scythe animated corpses ipsa screams. Pestilentia est plague haec decaying ambulabat mortuos. Sicut zeder apathetic malus voodoo. Aenean a dolor plan et terror soulless vulnerum contagium accedunt, mortui iam vivam unlife. Qui tardius moveri, brid eof reanimator sed in magna copia sint terribiles undeath legionis. Alii missing oculis aliorum sicut serpere crabs nostram. Putridi braindead odores kill and infect, aere implent left four dead.</p>
@@ -410,7 +432,7 @@ small displays. There are two extra size options:</p>
 
 <h2 id="cloning">Cloning</h2>
 <div class="theme-accent layout-row layout-cross-center">
-  <span class="sf-icon-info-circle inline" style="margin-left: 1rem"></span>
+  <span class="sf-icon-info-circle inline" style="margin: 1rem 0 1rem 1rem"></span>
   <p class="pad">
     Breaking change in <code>0.11.0</code>: removed the <code>[data-sf-clone-modal]</code>
     attribute. Modals inside <code>&lt;template&gt;</code> tags are now always cloned, and
@@ -470,7 +492,15 @@ activate React components or jQuery plugins) before it&#39;s displayed. When the
 clone is closed, it&#39;s removed from the DOM.</p>
 
 
-<h1 id="sf-navbar"><a href="https://github.com/Mitranim/stylific/blob/master/scss/components/sf-navbar.scss" target="_blank">sf-navbar</a></h1><p>Each website needs a navigation bar. Open a <a href="examples/navbar-
+<h1 id="sf-navbar"><a href="https://github.com/Mitranim/stylific/blob/master/scss/components/sf-navbar.scss" target="_blank">sf-navbar</a></h1><div class="theme-accent layout-row layout-cross-center">
+  <span class="sf-icon-info-circle inline" style="margin: 1rem 0 1rem 1rem"></span>
+  <p class="pad">
+    Breaking change in <code>0.12.0</code>: the toggle must have the <code>.sf-navbar-toggle</code>
+    class, and is no longer required to be a <code>label</code>.
+  </p>
+</div>
+
+<p>Each website needs a navigation bar. Open a <a href="examples/navbar-
 demo/">separate demo</a> to resize the page more easily.</p>
 <p>Note how little markup is required.</p>
 <pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-navbar"</span>&gt;</span>
@@ -495,14 +525,14 @@ demo/">separate demo</a> to resize the page more easily.</p>
 <p><code>sf-navbar</code> can automatically fold on narrow displays, grouping extra elements
 into a sliding dropdown. You can configure the ordinal number of the child at
 which to fold by adjusting the <code>$sf-navbar-nth-child</code> variable.</p>
-<p>To enable folding, add a <code>&lt;label&gt;</code> (with optional content) at the position where
-you want the navbar to fold. Resize your viewport to see the folding in effect
-or view the <a href="examples/navbar-demo/#static-folding">demo</a>.</p>
+<p>To enable folding, add a <code>&lt;div class=&quot;sf-navbar-toggle&quot;&gt;...&lt;/div&gt;</code> between the
+elements where you want the navbar to fold. Resize your viewport to see the
+folding in effect or view the <a href="examples/navbar-demo/#static-folding">demo</a>.</p>
 <pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-navbar"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/"</span>&gt;</span>Home<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"active"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/robots"</span>&gt;</span>Robots<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/medical-cybernetics"</span>&gt;</span>Medical Cybernetics<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">label</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-navbar-toggle"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/partners"</span>&gt;</span>Partners<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/achievements"</span>&gt;</span>Achievements<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
@@ -513,7 +543,7 @@ or view the <a href="examples/navbar-demo/#static-folding">demo</a>.</p>
       <a href="components/#home">Home</a>
       <a class="active" href="components/#robots">Robots</a>
       <a href="components/#medical-cybernetics">Medical Cybernetics</a>
-      <label></label>
+      <div class="sf-navbar-toggle"></div>
       <a href="components/#partners">Partners</a>
       <a href="components/#achievements">Achievements</a>
     </div>
@@ -527,7 +557,7 @@ regardless of the viewport width.</p>
   <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/"</span>&gt;</span>Home<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"active"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/robots"</span>&gt;</span>Robots<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/medical-cybernetics"</span>&gt;</span>Medical Cybernetics<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">label</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-navbar-toggle"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/partners"</span>&gt;</span>Partners<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/achievements"</span>&gt;</span>Achievements<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
@@ -538,7 +568,7 @@ regardless of the viewport width.</p>
       <a href="components/#home">Home</a>
       <a class="active" href="components/#robots">Robots</a>
       <a href="components/#medical-cybernetics">Medical Cybernetics</a>
-      <label></label>
+      <div class="sf-navbar-toggle"></div>
       <a href="components/#partners">Partners</a>
       <a href="components/#achievements">Achievements</a>
     </div>

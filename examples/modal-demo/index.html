@@ -21,14 +21,14 @@
   <a  href="layout/">Layout</a>
 
   <!-- Collapse breakpoint -->
-  <label></label>
+  <div class="sf-navbar-toggle"></div>
 
   <a  href="themes/">Themes</a>
 
   <!-- Collapsable children -->
   <div class="sf-dropdown nopad">
-    <label class="layout-row layout-center">Examples</label>
-    <div class="sf-dropdown-list text-left">
+    <div class="sf-dropdown-head layout-row layout-center">Examples</div>
+    <div class="sf-dropdown-body text-left">
       
         <a  href="examples/footer/">footer demo</a>
       
@@ -60,7 +60,7 @@
     <article>
       <!-- TOC -->
 <div class="sf-collapse doc-toc theme-text-accent">
-  <label class="active theme-accent"></label>
+  <div class="sf-collapse-head active theme-accent"></div>
   <div class="sf-collapse-body">
     <a href="examples/modal-demo/#sf-modal">Overview</a>
     <a href="examples/modal-demo/#cloning">Cloning</a>
@@ -134,7 +134,7 @@ small displays. There are two extra size options:</p>
 
 <h2 id="cloning">Cloning</h2>
 <div class="theme-accent layout-row layout-cross-center">
-  <span class="sf-icon-info-circle inline" style="margin-left: 1rem"></span>
+  <span class="sf-icon-info-circle inline" style="margin: 1rem 0 1rem 1rem"></span>
   <p class="pad">
     Breaking change in <code>0.11.0</code>: removed the <code>[data-sf-clone-modal]</code>
     attribute. Modals inside <code>&lt;template&gt;</code> tags are now always cloned, and
