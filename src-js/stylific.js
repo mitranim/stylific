@@ -153,6 +153,13 @@ document.addEventListener('click', function (event) {
     return
   }
 
+  // Clicking .sf-modal always closes it.
+  if (hasClass(elem, 'sf-modal')) {
+    closeModal(elem)
+    stopEvent(event)
+    return
+  }
+
   // Check if the element or any ancestor is associated with a toggle
   // behaviour.
   do {
@@ -199,13 +206,6 @@ document.addEventListener('click', function (event) {
     }
     if (hasAttr(elem, 'data-sf-toggle-id')) {
       toggleId(getAttr(elem, 'data-sf-toggle-id'))
-      stopEvent(event)
-      return
-    }
-
-    // Clicking .sf-modal always closes it.
-    if (hasClass(elem, 'sf-modal')) {
-      closeModal(elem)
       stopEvent(event)
       return
     }
