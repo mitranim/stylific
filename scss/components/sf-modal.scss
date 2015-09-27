@@ -8,11 +8,12 @@
  *   </div>
  *
  * It becomes visible when it has an `.active` class. You can add the class
- * programmatically, or use one of the methods listed below.
+ * programmatically, click an element with the [data-sf-toggle-id] attribute
+ * pointing to the modal's id, or use stylific's JavaScript APIs.
  *
  * To close the modal, click its overlay or the close button, or hit Esc.
  *
- * 1. [data-sf-toggle-id]
+ * # [data-sf-toggle-id]
  *
  * When an element with this attribute is clicked, it will toggle a modal whose
  * id is referenced by the attribute, if any.
@@ -26,25 +27,30 @@
  *   </div>
  *
  *
- * 2. [data-sf-clone-modal]
+ * # Modals inside <template> tags
  *
- * This special trigger will clone the modal, insert it into the DOM next to
- * the original, and emit a DOM event `sf:dom:add` on it, which lets you mutate
- * the new modal before it's displayed. On the next paint frame, it will add
- * the `.active` class to display the modal.
+ * A modal may optionally be enclosed into a <template> tag. The template needs
+ * an id to which you can point with [data-sf-toggle-id], and the modal
+ * doesn't need one.
+ *
+ * When this modal is toggled, stylific clones it, insert the clone into the DOM
+ * next to the original, and emit a DOM event `sf:dom:add` on it, which lets you
+ * mutate the new modal before it's displayed. On the next paint frame, the
+ * library adds the `.active` class to display the modal.
  *
  * When the cloned modal is closed, it's removed from the DOM.
  *
- * The [data-sf-clone-modal] attribute must reference either a modal id, or
- * the id of a <template> element that contains modal markup. The template
- * element is useful for making sure the original modal is never displayed.
+ * The [data-sf-toggle-id] attribute must reference the id of the template
+ * enclosing the modal.
  *
  * Example usage:
  *
- *   <button data-sf-clone-modal="myModal">...</button>
+ *   <button data-sf-toggle-id="myModal">...</button>
  *
  *   <template id="myModal">
- *     <div class="sf-modal-body">...</div>
+ *     <div class="sf-modal">
+ *       <div class="sf-modal-body">...</div>
+ *     </div>
  *   </template>
  */
 

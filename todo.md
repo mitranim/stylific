@@ -1,3 +1,5 @@
+* Document the JavaScript API.
+* Document the JavaScript triggers.
 * Document sf-icon.
 * Document mixins.
 * Consider adding blockquote styles.
@@ -8,4 +10,3 @@
 * Instead of closing all modals on Esc, consider if it's possible to track the
   order and close the last opened. The difficulty here is that modals may be
   opened non-programmatically, i.e. by adding `.active` in passive markup.
-* Document the JavaScript triggers.

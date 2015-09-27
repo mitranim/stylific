@@ -1,122 +1,124 @@
-'use strict';
+'use strict'
 
 /**
  * Requires gulp 4.0:
  *   "gulp": "git://github.com/gulpjs/gulp#4.0"
  */
 
-/******************************* Dependencies ********************************/
+/*
+ * style per http://standardjs.com
+ */
 
-const $      = require('gulp-load-plugins')();
-const bsync  = require('browser-sync').create();
-const del    = require('del')
-const gulp   = require('gulp');
-const hjs    = require('highlight.js');
-const marked = require('gulp-marked/node_modules/marked');
-const flags  = require('yargs').argv;
-const pt     = require('path');
-const shell  = require('shelljs');
+/** **************************** Dependencies ********************************/
 
-/********************************** Globals **********************************/
+const $ = require('gulp-load-plugins')()
+const bsync = require('browser-sync').create()
+const del = require('del')
+const flags = require('yargs').argv
+const gulp = require('gulp')
+const hjs = require('highlight.js')
+const marked = require('gulp-marked/node_modules/marked')
+const pt = require('path')
+
+/** ******************************* Globals **********************************/
 
 const src = {
-  libStyles:     'scss/**/*.scss',
+  libStyles: 'scss/**/*.scss',
   libStylesCore: 'scss/stylific.scss',
-  libScripts:    'src-js/stylific.js',
+  libScripts: 'src-js/stylific.js',
+  libScriptsCompiled: 'lib/stylific.js',
   docScripts: [
-    'lib/stylific.min.js',
-    'node_modules/simple-pjax/dist/simple-pjax.min.js'
+    'lib/stylific.js',
+    'node_modules/simple-pjax/dist/simple-pjax.js'
   ],
-  docStylesCore:    'src-docs/styles/docs.scss',
-  docStyles:        'src-docs/styles/**/*.scss',
+  docStylesCore: 'src-docs/styles/docs.scss',
+  docStyles: 'src-docs/styles/**/*.scss',
   docHtml: [
     'src-docs/html/**/*',
     'bower_components/font-awesome-svg-png/black/**/*.svg'
   ],
   docImages: 'src-docs/images/**/*'
-};
+}
 
-const destBase = 'stylific-gh-pages';
+const destBase = 'stylific-gh-pages'
 
 const dest = {
-  lib:        'lib',
-  docStyles:  destBase + '/styles',
+  lib: 'lib',
+  docStyles: destBase + '/styles',
   docScripts: destBase + '/scripts',
-  docImages:  destBase + '/images',
-  docHtml:    destBase
-};
-
-function prod() {
-  return flags.prod === true || flags.prod === 'true';
+  docImages: destBase + '/images',
+  docHtml: destBase
 }
 
-function reload(done) {
-  bsync.reload();
-  done();
+function prod () {
+  return flags.prod === true || flags.prod === 'true'
 }
 
-/********************************** Config ***********************************/
+function reload (done) {
+  bsync.reload()
+  done()
+}
+
+/** ******************************* Config ***********************************/
 
 /**
  * Change how marked compiles headers to add links to our source files.
  */
 
-const regComponent = /^sf-[a-z-]+$/;
-const repoComponentDir = 'https://github.com/Mitranim/stylific/blob/master/scss/components/';
+const regComponent = /^sf-[a-z-]+$/
+const repoComponentDir = 'https://github.com/Mitranim/stylific/blob/master/scss/components/'
 
 // Default heading renderer func.
-const headingDef = marked.Renderer.prototype.heading;
+const headingDef = marked.Renderer.prototype.heading
 
 // Custom heading renderer func that adds a link to the component source.
-marked.Renderer.prototype.heading = function(text, level) {
+marked.Renderer.prototype.heading = function (text, level) {
   if (regComponent.test(text)) {
-    return `<h${level} id="${text}"><a href="${repoComponentDir + text}.scss" target="_blank">${text}</a></h${level}>`;
+    return `<h${level} id="${text}"><a href="${repoComponentDir + text}.scss" target="_blank">${text}</a></h${level}>`
   }
-  return headingDef.apply(this, arguments);
-};
+  return headingDef.apply(this, arguments)
+}
 
 /**
  * Change how marked compiles links to add target="_blank" to links to other sites.
  */
 
-// Default link renderer func.
-const linkDef = marked.Renderer.prototype.link;
-
 // Custom link renderer func that adds target="_blank" to links to other sites.
 // Mostly copied from the marked source.
-marked.Renderer.prototype.link = function(href, title, text) {
+marked.Renderer.prototype.link = function (href, title, text) {
   if (this.options.sanitize) {
+    let prot = ''
     try {
-      const prot = decodeURIComponent(unescape(href))
+      prot = decodeURIComponent(unescape(href))
         .replace(/[^\w:]/g, '')
-        .toLowerCase();
+        .toLowerCase()
     } catch (e) {
-      return '';
+      return ''
     }
     if (prot.indexOf('javascript:') === 0 || prot.indexOf('vbscript:') === 0) {
-      return '';
+      return ''
     }
   }
-  let out = '<a href="' + href + '"';
+  let out = '<a href="' + href + '"'
   if (title) {
-    out += ' title="' + title + '"';
+    out += ' title="' + title + '"'
   }
   if (/^[a-z]+:\/\//.test(href)) {
-    out += ' target="_blank"';
+    out += ' target="_blank"'
   }
-  out += '>' + text + '</a>';
-  return out;
-};
+  out += '>' + text + '</a>'
+  return out
+}
 
-/*********************************** Tasks ***********************************/
+/** ******************************** Tasks ***********************************/
 
-/*----------------------------------- Lib -----------------------------------*/
+/* ------------------------------ Lib Styles --------------------------------*/
 
-gulp.task('lib:styles:clear', function(done) {
-  del(dest.lib + '/*.css').then((_) => {done()});
-});
+gulp.task('lib:styles:clear', function (done) {
+  del(dest.lib + '/*.css').then((_) => {done()})
+})
 
-gulp.task('lib:styles:compile', function() {
+gulp.task('lib:styles:compile', function () {
   return gulp.src(src.libStylesCore)
     .pipe($.plumber())
     .pipe($.sass())
@@ -126,34 +128,66 @@ gulp.task('lib:styles:compile', function() {
       aggressiveMerging: false,
       advanced: false
     })))
-    .pipe(gulp.dest(dest.lib));
-});
+    .pipe(gulp.dest(dest.lib))
+})
 
-gulp.task('lib:scripts:compile', function() {
+gulp.task('lib:styles:build', gulp.series('lib:styles:clear', 'lib:styles:compile'))
+
+gulp.task('lib:styles:watch', function () {
+  $.watch(src.libStyles, gulp.series('lib:styles:build'))
+})
+
+/* ----------------------------- Lib Scripts --------------------------------*/
+
+gulp.task('lib:scripts:clear', function (done) {
+  del(dest.lib + '/*.js').then((_) => {done()})
+})
+
+gulp.task('lib:scripts:compile', function () {
   return gulp.src(src.libScripts)
     .pipe($.plumber())
-    .pipe($.babel({blacklist: ['strict']}))
-    .pipe(gulp.dest(dest.lib));
-});
+    .pipe($.babel({
+      modules: 'ignore',
+      blacklist: ['strict']
+    }))
+    .pipe($.wrap(
+`/**
+ * Source and documentation:
+ *   https://github.com/Mitranim/stylific
+ */
 
-gulp.task('lib:scripts:minify', function(done) {
-  shell.exec('npm run minify', done);
-});
+!function () {
+'use strict';
 
-gulp.task('lib:build', gulp.series('lib:styles:clear', 'lib:styles:compile', 'lib:scripts:compile', 'lib:scripts:minify'));
+// No-op if not running in a browser.
+if (typeof window !== 'object' || !window) return;
 
-gulp.task('lib:watch', function() {
-  $.watch(src.libStyles, gulp.series('lib:styles:clear', 'lib:styles:compile'));
-  $.watch(src.libScripts, gulp.series('lib:scripts:compile', 'lib:scripts:minify'));
-});
+<%= contents %>
 
-/*---------------------------------- HTML -----------------------------------*/
+}();`))
+    .pipe(gulp.dest(dest.lib))
+})
 
-gulp.task('docs:html:clear', function(done) {
-  del(dest.docHtml + '/**/*.html').then((_) => {done()});
-});
+gulp.task('lib:scripts:minify', function () {
+  return gulp.src(src.libScriptsCompiled)
+    .pipe($.uglify({mangle: true}))
+    .pipe($.rename('stylific.min.js'))
+    .pipe(gulp.dest(dest.lib))
+})
 
-gulp.task('docs:html:compile', function() {
+gulp.task('lib:scripts:build', gulp.series('lib:scripts:clear', 'lib:scripts:compile', 'lib:scripts:minify'))
+
+gulp.task('lib:scripts:watch', function () {
+  $.watch(src.libScripts, gulp.series('lib:scripts:build'))
+})
+
+/* --------------------------------- HTML -----------------------------------*/
+
+gulp.task('docs:html:clear', function (done) {
+  del(dest.docHtml + '/**/*.html').then((_) => {done()})
+})
+
+gulp.task('docs:html:compile', function () {
   const filterMd = $.filter('**/*.md')
 
   return gulp.src(src.docHtml)
@@ -161,16 +195,16 @@ gulp.task('docs:html:compile', function() {
     // Pre-process markdown files.
     .pipe(filterMd)
     .pipe($.marked({
-      gfm:         true,
-      tables:      true,
-      breaks:      false,
-      sanitize:    false,
+      gfm: true,
+      tables: true,
+      breaks: false,
+      sanitize: false,
       smartypants: false,
-      pedantic:    false,
+      pedantic: false,
       // Code highlighter.
-      highlight: function(code, lang) {
-        const result = lang ? hjs.highlight(lang, code) : hjs.highlightAuto(code);
-        return result.value;
+      highlight: function (code, lang) {
+        const result = lang ? hjs.highlight(lang, code) : hjs.highlightAuto(code)
+        return result.value
       }
     }))
     // Add hljs code class.
@@ -183,30 +217,30 @@ gulp.task('docs:html:compile', function() {
     // Render all html.
     .pipe($.statil())
     // Change each `<filename>` into `<filename>/index.html`.
-    .pipe($.rename(function(path) {
+    .pipe($.rename(function (path) {
       switch (path.basename + path.extname) {
-        case 'index.html': case '404.html': return;
+        case 'index.html': case '404.html': return
       }
-      path.dirname = pt.join(path.dirname, path.basename);
-      path.basename = 'index';
+      path.dirname = pt.join(path.dirname, path.basename)
+      path.basename = 'index'
     }))
     // Write to disk.
-    .pipe(gulp.dest(dest.docHtml));
-});
+    .pipe(gulp.dest(dest.docHtml))
+})
 
-gulp.task('docs:html:build', gulp.series('docs:html:clear', 'docs:html:compile'));
+gulp.task('docs:html:build', gulp.series('docs:html:clear', 'docs:html:compile'))
 
-gulp.task('docs:html:watch', function() {
-  $.watch(src.docHtml, gulp.series('docs:html:build', reload));
-});
+gulp.task('docs:html:watch', function () {
+  $.watch(src.docHtml, gulp.series('docs:html:build', reload))
+})
 
-/*--------------------------------- Styles ----------------------------------*/
+/* -------------------------------- Styles ----------------------------------*/
 
-gulp.task('docs:styles:clear', function(done) {
-  del(dest.docStyles).then((_) => {done()});
-});
+gulp.task('docs:styles:clear', function (done) {
+  del(dest.docStyles).then((_) => {done()})
+})
 
-gulp.task('docs:styles:compile', function() {
+gulp.task('docs:styles:compile', function () {
   return gulp.src(src.docStylesCore)
     .pipe($.plumber())
     .pipe($.sass())
@@ -221,24 +255,24 @@ gulp.task('docs:styles:compile', function() {
       advanced: false
     })))
     .pipe(gulp.dest(dest.docStyles))
-    .pipe(bsync.stream());
-});
+    .pipe(bsync.stream())
+})
 
-gulp.task('docs:styles:build', gulp.series('docs:styles:clear', 'docs:styles:compile'));
+gulp.task('docs:styles:build', gulp.series('docs:styles:clear', 'docs:styles:compile'))
 
-gulp.task('docs:styles:watch', function() {
-  $.watch(src.docStyles, gulp.series('docs:styles:build'));
-  $.watch(src.libStyles, gulp.series('docs:styles:build'));
-});
+gulp.task('docs:styles:watch', function () {
+  $.watch(src.docStyles, gulp.series('docs:styles:build'))
+  $.watch(src.libStyles, gulp.series('docs:styles:build'))
+})
 
-/*--------------------------------- Images ----------------------------------*/
+/* -------------------------------- Images ----------------------------------*/
 
-gulp.task('docs:images:clear', function(done) {
-  del(dest.docImages).then((_) => {done()});
-});
+gulp.task('docs:images:clear', function (done) {
+  del(dest.docImages).then((_) => {done()})
+})
 
 // Resize and copy images
-gulp.task('images:normal', function() {
+gulp.task('images:normal', function () {
   return gulp.src(src.docImages)
     /**
     * Experience so far.
@@ -250,22 +284,22 @@ gulp.task('images:normal', function() {
       width: 1920,    // max width
       upscale: false
     }))
-    .pipe(gulp.dest(dest.docImages));
-});
+    .pipe(gulp.dest(dest.docImages))
+})
 
 // Minify and copy images.
-gulp.task('images:small', function() {
+gulp.task('images:small', function () {
   return gulp.src(src.docImages)
     .pipe($.imageResize({
       quality: 1,
       width: 640,    // max width
       upscale: false
     }))
-    .pipe(gulp.dest(dest.docImages + '/small'));
-});
+    .pipe(gulp.dest(dest.docImages + '/small'))
+})
 
 // Crop images to small squares
-gulp.task('images:square', function() {
+gulp.task('images:square', function () {
   return gulp.src(src.docImages)
     .pipe($.imageResize({
       quality: 1,
@@ -275,43 +309,43 @@ gulp.task('images:square', function() {
       height: 640,
       upscale: false
     }))
-    .pipe(gulp.dest(dest.docImages + '/square'));
-});
+    .pipe(gulp.dest(dest.docImages + '/square'))
+})
 
 gulp.task('docs:images:build',
   gulp.series('docs:images:clear',
-              gulp.parallel('images:normal', 'images:small', 'images:square')));
+              gulp.parallel('images:normal', 'images:small', 'images:square')))
 
-gulp.task('docs:images:watch', function() {
-  $.watch(src.docImages, gulp.series('docs:images:build', reload));
-});
+gulp.task('docs:images:watch', function () {
+  $.watch(src.docImages, gulp.series('docs:images:build', reload))
+})
 
-/*--------------------------------- Scripts ---------------------------------*/
+/* -------------------------------- Scripts ---------------------------------*/
 
-gulp.task('docs:scripts:clear', function(done) {
-  del(dest.docScripts).then((_) => {done()});
-});
+gulp.task('docs:scripts:clear', function (done) {
+  del(dest.docScripts).then((_) => {done()})
+})
 
-gulp.task('docs:scripts:copy', function() {
-  return gulp.src(src.docScripts).pipe(gulp.dest(dest.docScripts));
-});
+gulp.task('docs:scripts:copy', function () {
+  return gulp.src(src.docScripts).pipe(gulp.dest(dest.docScripts))
+})
 
-gulp.task('docs:scripts:build', gulp.series('docs:scripts:clear', 'docs:scripts:copy'));
+gulp.task('docs:scripts:build', gulp.series('docs:scripts:clear', 'docs:scripts:copy'))
 
-gulp.task('docs:scripts:watch', function() {
-  $.watch(src.docScripts, gulp.series('docs:scripts:build', reload));
-});
+gulp.task('docs:scripts:watch', function () {
+  $.watch(src.docScripts, gulp.series('docs:scripts:build', reload))
+})
 
-/*--------------------------------- Server ----------------------------------*/
+/* -------------------------------- Server ----------------------------------*/
 
-gulp.task('server', function() {
+gulp.task('server', function () {
   return bsync.init({
     startPath: '/stylific/',
     server: {
       baseDir: dest.docHtml,
-      middleware: function(req, res, next) {
-        req.url = req.url.replace(/^\/stylific/, '/');
-        next();
+      middleware: function (req, res, next) {
+        req.url = req.url.replace(/^\/stylific/, '/')
+        next()
       }
     },
     port: 13933,
@@ -320,17 +354,22 @@ gulp.task('server', function() {
     files: false,
     ghostMode: false,
     notify: false
-  });
-});
+  })
+})
 
-/*--------------------------------- Default ---------------------------------*/
+/* -------------------------------- Default ---------------------------------*/
+
+gulp.task('lib:build', gulp.parallel('lib:styles:build', 'lib:scripts:build'))
 
 gulp.task('build', gulp.parallel(
-  'lib:build', 'docs:html:build', 'docs:styles:build', 'docs:images:build', 'docs:scripts:build'
-));
+  gulp.series('lib:styles:build', 'docs:styles:build'),
+  gulp.series('lib:scripts:build', 'docs:scripts:build'),
+  'docs:html:build', 'docs:images:build'
+))
 
 gulp.task('watch', gulp.parallel(
-  'lib:watch', 'docs:html:watch', 'docs:styles:watch', 'docs:scripts:watch'
-));
+  'lib:styles:watch', 'lib:scripts:watch',
+  'docs:html:watch', 'docs:styles:watch', 'docs:scripts:watch'
+))
 
-gulp.task('default', gulp.series('build', gulp.parallel('watch', 'server')));
+gulp.task('default', gulp.series('build', gulp.parallel('watch', 'server')))

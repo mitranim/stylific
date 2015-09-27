@@ -41,11 +41,6 @@ Markdown, like this documentation.
 
 This whole page is an example, but here's a smaller one.
 
-<div class="theme-accent layout-row layout-cross-center">
-  <span class="sf-icon-info-circle inline" style="margin-left: 1rem"></span>
-  <p class="pad">Deprecation notice in 0.9.0: helper classes `.left` and `.right` are now `.float-left` and `.float-right`. The old classes will be removed in a later version.</p>
-</div>
-
 ```html
 <article>
   <img src="images/square/script.jpg" class="right small">

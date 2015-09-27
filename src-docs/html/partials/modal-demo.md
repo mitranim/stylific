@@ -75,17 +75,30 @@ See the examples.
   </div>
 </div>
 
-## `[data-sf-clone-modal]`
+## Cloning
 
-This trigger attribute makes a copy of the modal every time.
+<div class="theme-accent layout-row layout-cross-center">
+  <span class="sf-icon-info-circle inline" style="margin-left: 1rem"></span>
+  <p class="pad">
+    Breaking change in `0.11.0`: removed the `[data-sf-clone-modal]`
+    attribute. Modals inside `<template>` tags are now always cloned, and
+    modals outside templates are never cloned.
+  </p>
+</div>
+
+You may optionally enclose the `sf-modal` element into a `<template id="...">`
+tag. The template must have a valid `id`, and the modal doesn't need one.
+
+In this case, clicking an element with a `[data-sf-toggle-id]` attribute
+pointing to the template will spawn a _clone_ of the modal. The clone will be
+removed from the DOM when closed.
 
 A typical use case is embedding YouTube videos or any other media content. With
-a normal modal, playback would continue after a modal is closed. However, when
-using this trigger, the modal's _clone_ is added to the DOM and removed when
-it's closed, which automatically stops any media content.
+a normal (non-cloned) modal, playback would continue after a modal is closed.
+However, when a cloned modal is closed, any media content automatically stops.
 
 ```html
-<button data-sf-clone-modal="demo-modal-cloned">Open modal with YouTube video</button>
+<button data-sf-toggle-id="demo-modal-cloned">Open modal with YouTube video</button>
 <p>The YT player in this modal is inert until the modal is opened.</p>
 
 <template id="demo-modal-cloned">
@@ -103,7 +116,7 @@ it's closed, which automatically stops any media content.
 
 <div class="doc-demo">
   <div class="doc-demo-body">
-    <button data-sf-clone-modal="demo-modal-cloned">Open modal with YouTube video</button>
+    <button data-sf-toggle-id="demo-modal-cloned">Open modal with YouTube video</button>
     <p>The YT player in this modal is inert until the modal is opened.</p>
 
     <template id="demo-modal-cloned">
@@ -119,7 +132,7 @@ it's closed, which automatically stops any media content.
   </div>
 </div>
 
-Note that we're putting the modal into a `<template>` tag. In [supporting
+The reason for a template tag is that in [supporting
 browsers](http://caniuse.com/#feat=template), template contents are completely
 inert. Embedded content like YouTube videos won't activate until the modal is
 opened. This can make a huge difference for your page loading speed and
