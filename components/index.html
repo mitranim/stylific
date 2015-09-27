@@ -93,11 +93,6 @@ tag.</p>
 <p>Use it wherever you want typographic styling. Suited for text compiled from
 Markdown, like this documentation.</p>
 <p>This whole page is an example, but here&#39;s a smaller one.</p>
-<div class="theme-accent layout-row layout-cross-center">
-  <span class="sf-icon-info-circle inline" style="margin-left: 1rem"></span>
-  <p class="pad">Deprecation notice in 0.9.0: helper classes <code>.left</code> and <code>.right</code> are now <code>.float-left</code> and <code>.float-right</code>. The old classes will be removed in a later version.</p>
-</div>
-
 <pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">article</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">img</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"images/square/script.jpg"</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"right small"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Article header<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
@@ -413,13 +408,25 @@ small displays. There are two extra size options:</p>
   </div>
 </div>
 
-<h2 id="-data-sf-clone-modal-"><code>[data-sf-clone-modal]</code></h2>
-<p>This trigger attribute makes a copy of the modal every time.</p>
+<h2 id="cloning">Cloning</h2>
+<div class="theme-accent layout-row layout-cross-center">
+  <span class="sf-icon-info-circle inline" style="margin-left: 1rem"></span>
+  <p class="pad">
+    Breaking change in <code>0.11.0</code>: removed the <code>[data-sf-clone-modal]</code>
+    attribute. Modals inside <code>&lt;template&gt;</code> tags are now always cloned, and
+    modals outside templates are never cloned.
+  </p>
+</div>
+
+<p>You may optionally enclose the <code>sf-modal</code> element into a <code>&lt;template id=&quot;...&quot;&gt;</code>
+tag. The template must have a valid <code>id</code>, and the modal doesn&#39;t need one.</p>
+<p>In this case, clicking an element with a <code>[data-sf-toggle-id]</code> attribute
+pointing to the template will spawn a <em>clone</em> of the modal. The clone will be
+removed from the DOM when closed.</p>
 <p>A typical use case is embedding YouTube videos or any other media content. With
-a normal modal, playback would continue after a modal is closed. However, when
-using this trigger, the modal&#39;s <em>clone</em> is added to the DOM and removed when
-it&#39;s closed, which automatically stops any media content.</p>
-<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">data-sf-clone-modal</span>=<span class="hljs-value">"demo-modal-cloned"</span>&gt;</span>Open modal with YouTube video<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+a normal (non-cloned) modal, playback would continue after a modal is closed.
+However, when a cloned modal is closed, any media content automatically stops.</p>
+<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">data-sf-toggle-id</span>=<span class="hljs-value">"demo-modal-cloned"</span>&gt;</span>Open modal with YouTube video<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>The YT player in this modal is inert until the modal is opened.<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-title">template</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"demo-modal-cloned"</span>&gt;</span>
@@ -436,7 +443,7 @@ it&#39;s closed, which automatically stops any media content.</p>
 </code></pre>
 <div class="doc-demo">
   <div class="doc-demo-body">
-    <button data-sf-clone-modal="demo-modal-cloned">Open modal with YouTube video</button>
+    <button data-sf-toggle-id="demo-modal-cloned">Open modal with YouTube video</button>
     <p>The YT player in this modal is inert until the modal is opened.</p>
 
     <template id="demo-modal-cloned">
@@ -452,7 +459,7 @@ it&#39;s closed, which automatically stops any media content.</p>
   </div>
 </div>
 
-<p>Note that we&#39;re putting the modal into a <code>&lt;template&gt;</code> tag. In <a href="http://caniuse.com/#feat=template" target="_blank">supporting
+<p>The reason for a template tag is that in <a href="http://caniuse.com/#feat=template" target="_blank">supporting
 browsers</a>, template contents are completely
 inert. Embedded content like YouTube videos won&#39;t activate until the modal is
 opened. This can make a huge difference for your page loading speed and
@@ -846,7 +853,7 @@ height.</p>
 
 
     <!-- Scripts -->
-    <script src="/stylific/scripts/stylific.min.js" async></script>
-    <script src="/stylific/scripts/simple-pjax.min.js" async></script>
+    <script src="/stylific/scripts/stylific.js" async></script>
+    <script src="/stylific/scripts/simple-pjax.js" async></script>
   </body>
 </html>
