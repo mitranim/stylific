@@ -93,20 +93,21 @@
    * before a certain media breakpoint controlled by a variable. By default,
    * it matches the breakpoint used for other responsive layouts.
    *
-   * To enable collapsing, the user needs to include a <label> before the
-   * collapsable children. The structure must be as follows:
+   * To enable collapsing, the user needs to include a
+   * <div class="sf-navbar-toggle">...</div> before the collapsable children.
+   * The structure must be as follows:
    *
    *   <div class="sf-navbar">
    *     ... [non-collapsing elements]
-   *     <label> ... [optional content] </label>
+   *     <div class="sf-navbar-toggle"> ... [optional content] </div>
    *     ... [auto-collapsing elements]
    *   </div>
    */
 
   /**
-   * Base label styles.
+   * Base toggle styles.
    */
-  > label {
+  @at-root .sf-navbar-toggle {
     /**
      * Layout.
      */
@@ -138,14 +139,15 @@
     &:not(:empty)::after {
       padding-left: 0.5em;
     }
+
+    // Interactive styling.
+    @include sf-register-interactive-selector;
   }
-  // Interactive styling.
-  @include sf-register-interactive-selector(' > label');
 
   /**
-   * Active label styles.
+   * Active toggle styles.
    */
-  > label.active {
+  @at-root .sf-navbar-toggle.active {
     // Make the toggle overlay interactive.
     &::before {
       content: '';
@@ -156,16 +158,16 @@
   }
 
   /**
-   * Styles for post-label children that only apply before the media breakpoint.
+   * Styles for post-toggle children that only apply before the media breakpoint.
    */
   @mixin collapse-rules {
     /**
      * Base styles.
      */
-    // Display the toggle label.
-    > label {display: inherit}
+    // Display the toggle.
+    .sf-navbar-toggle {display: inherit}
     // Base styling for collapsable children.
-    > label ~ * {
+    .sf-navbar-toggle ~ * {
       /**
        * Layout.
        */
@@ -180,13 +182,13 @@
     }
 
     // Styles for collapsed children.
-    > label:not(.active) ~ * {
+    .sf-navbar-toggle:not(.active) ~ * {
       display: none;
     }
 
     // Styles for active children.
-    > label.active ~ * {
-      // Make sure the elemens are over the label's overlay.
+    .sf-navbar-toggle.active ~ * {
+      // Make sure the elements are higher than the toggle's overlay.
       z-index: $sf-z-index-navbar + 1;
     }
   }

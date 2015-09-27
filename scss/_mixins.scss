@@ -43,6 +43,8 @@
  */
 
 @mixin sf-register-selected-state($postfix: '') {
+  @warn 'The `sf-register-selected-state` mixin has been deprecated and may be removed in a future release.';
+
   &:not([disabled]) {
     &#{$postfix} {
       // Grayscale theme.

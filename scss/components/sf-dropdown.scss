@@ -3,7 +3,7 @@
  * # Modes
  *
  * .sf-dropdown has two mutually exclusive modes: hover and toggled. The
- * toggled version is enabled by [data-sf-toggle] to the <label>.
+ * toggled version is enabled by [data-sf-toggle] on the head.
  *
  *
  * ## Hover
@@ -11,37 +11,37 @@
  * The hover version must have the following layout:
  *
  *   <div class="sf-dropdown">
- *     <label>...</label>
- *     <div class="sf-dropdown-list">
+ *     <div class="sf-dropdown-head">...</div>
+ *     <div class="sf-dropdown-body">
  *       ...
  *     </div>
  *   </div>
  *
- * It triggers when you hover over the label and stays while the label or
- * the .sf-dropdown-list is hovered. The label needs to contain some text or
- * other content to be visible. The following .sf-dropdown-list may contain
+ * It triggers when you hover over the head and stays while the head or
+ * the .sf-dropdown-body is hovered. The head needs to contain some text or
+ * other content to be visible. The following .sf-dropdown-body may contain
  * arbitrary elements.
  *
  *
  * ## Toggled
  *
- * The toggled version is enabled by adding the [data-sf-toggle] attribute to the
- * label.
+ * The toggled version is enabled by adding the [data-sf-toggle] attribute to
+ * the head.
  *
  *   <div class="sf-dropdown">
- *     <label data-sf-toggle>...</label>
- *     <div class="sf-dropdown-list">
+ *     <div class="sf-dropdown-head" data-sf-toggle>...</div>
+ *     <div class="sf-dropdown-body">
  *       ...
  *     </div>
  *   </div>
  *
- * This version is toggled on and off by clicking the label, and is toggled off
+ * This version is toggled on and off by clicking the head, and is toggled off
  * when clicking outside of the dropdown.
  *
  *
  * # Position
  *
- * The default position of the dropdown list is below the label. It can be
+ * The default position of the dropdown list is below the head. It can be
  * altered with an additional option.
  *
  *   <div class="sf-dropdown sf-dropdown-top">
@@ -78,9 +78,9 @@
   }
 
   /**
-   * Base label styles.
+   * Base head styles.
    */
-  > label {
+  @at-root .sf-dropdown-head {
     /**
      * Layout.
      */
@@ -117,9 +117,9 @@
   }
 
   /**
-   * Base label styles for the toggled version.
+   * Base head styles for the toggled version.
    */
-  > label[data-sf-toggle] {
+  @at-root .sf-dropdown-head[data-sf-toggle] {
     /**
      * Overlay for closing the toggled dropdown.
      */
@@ -133,9 +133,9 @@
   }
 
   /**
-   * Active label styles for the toggled version.
+   * Active head styles for the toggled version.
    */
-  > label[data-sf-toggle].active {
+  @at-root .sf-dropdown-head[data-sf-toggle].active {
     // Make the toggle overlay interactive.
     &::before {content: ''}
     // Change the state indicator.
@@ -145,7 +145,7 @@
   /**
    * Base dropdown list styles.
    */
-  @at-root .sf-dropdown-list {
+  @at-root .sf-dropdown-body {
     /**
      * Layout.
      */
@@ -184,8 +184,8 @@
   // Top.
   &.sf-dropdown-top {
     // Reverse the indicators.
-    > label::after {content: '△'}
-    > label[data-sf-toggle].active::after {
+    .sf-dropdown-head::after {content: '△'}
+    .sf-dropdown-head[data-sf-toggle].active::after {
       content: '▼';
     }
   }
@@ -193,17 +193,19 @@
   /**
    * Active dropdown list styles.
    */
-  // Hover version.
-  > label:not([data-sf-toggle]):hover + .sf-dropdown-list,
-  // Hover version -> dropdown list; we try to limit this to the hover version
-  // to avoid flickering in the dropdown version when animations are enabled.
-  > label:not([data-sf-toggle]) + .sf-dropdown-list:hover,
-  // Toggled version.
-  > label[data-sf-toggle].active + .sf-dropdown-list {
-    // Display. Both opacity and visibility are required to animate the
-    // visibility change.
-    opacity: initial;
-    visibility: inherit;
+  @at-root {
+    // Hover version.
+    .sf-dropdown-head:not([data-sf-toggle]):hover + .sf-dropdown-body,
+    // Hover version -> dropdown list; we try to limit this to the hover version
+    // to avoid flickering in the dropdown version when animations are enabled.
+    .sf-dropdown-head:not([data-sf-toggle]) + .sf-dropdown-body:hover,
+    // Toggled version.
+    .sf-dropdown-head[data-sf-toggle].active + .sf-dropdown-body {
+      // Display. Both opacity and visibility are required to animate the
+      // visibility change.
+      opacity: initial;
+      visibility: inherit;
+    }
   }
 
   /**
@@ -211,7 +213,7 @@
    */
   // Bottom (default).
   &:not([class*=sf-dropdown-]), &.sf-dropdown-bottom {
-    > .sf-dropdown-list {
+    > .sf-dropdown-body {
       top: 100%;
       left: 0;
     }
@@ -219,21 +221,21 @@
   // Top.
   &.sf-dropdown-top {
     // Dropdown position.
-    > .sf-dropdown-list {
+    > .sf-dropdown-body {
       bottom: 100%;
       left: 0;
     }
   }
   // Right.
   &.sf-dropdown-right {
-    > .sf-dropdown-list {
+    > .sf-dropdown-body {
       top: 0;
       left: 100%;
     }
   }
   // Left.
   &.sf-dropdown-left {
-    > .sf-dropdown-list {
+    > .sf-dropdown-body {
       top: 0;
       right: 100%;
     }

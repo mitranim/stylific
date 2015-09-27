@@ -6,19 +6,19 @@
  * Must have the following layout:
  *
  *   <div class="sf-collapse">
- *     <label>...</label>
+ *     <div class="sf-collapse-head">...</div>
  *     <div class="sf-collapse-body">
  *       ...
  *     </div>
  *   </div>
  *
- * The label is visible and serves as a toggle. The collapsing part is the
+ * The head is visible and serves as a toggle. The collapsing part is the
  * .sf-collapse-body element.
  *
- * Mark the label as .active to uncollapse by default:
+ * Mark the head as .active to uncollapse by default:
  *
  *   <div class="sf-collapse">
- *     <label class="active">...</label>
+ *     <div class="sf-collapse-head active">...</div>
  *     <div class="sf-collapse-body">
  *       ...
  *     </div>
@@ -43,18 +43,15 @@
   display: flex;
   flex-direction: column;
 
-  // Whitespace.
-  > label {padding: $sf-space}
-  @at-root .sf-collapse-body {
-    @extend .container;
-  }
-
   /**
-   * Base label styles.
+   * Base head styles.
    */
-  > label {
+  @at-root .sf-collapse-head {
     // Cosmetic.
     &:not([disabled]) {cursor: pointer}
+
+    // Whitespace.
+    padding: $sf-space;
 
     // Toggle indicator.
     &::after {
@@ -67,35 +64,39 @@
     &:not(:empty)::after {
       padding-left: 0.5em;
     }
+    @include sf-register-interactive-selector;
   }
-  @include sf-register-interactive-selector(' > label');
 
   /**
-   * Active label styles.
+   * Active head styles.
    */
-  > label.active {
+  @at-root .sf-collapse-head.active {
     &::after {content: '▲'}
   }
-  @include sf-register-selected-state(' > label.active');
 
   /**
    * Base overlay styles.
    */
-  &.sf-collapse-overlay > label::before {
+  &.sf-collapse-overlay .sf-collapse-head::before {
     @include sf-fixed-overlay;
     opacity: 0;
   }
 
   // If the overlay option is enabled, make the toggle overlay interactive.
-  &.sf-collapse-overlay > label.active {
+  &.sf-collapse-overlay .sf-collapse-head.active {
     &::before {content: ''}
   }
 
   /**
    * Body styles.
    */
+  // Base.
+  @at-root .sf-collapse-body {
+    // Whitespace.
+    @extend .container;
+  }
   // Collapsed.
-  > label:not(.active) ~ .sf-collapse-body {
+  @at-root .sf-collapse-head:not(.active) ~ .sf-collapse-body {
     display: none;
   }
 }

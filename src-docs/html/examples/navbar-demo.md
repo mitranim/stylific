@@ -9,15 +9,16 @@ Back to [Components#sf-navbar](components/#sf-navbar).
 `sf-navbar` can automatically fold on narrow displays, grouping extra elements
 into a sliding dropdown. The media breakpoint is configurable.
 
-To enable folding, add a `<label>` between the elements where you want the
-navbar to fold. Resize your viewport to see the folding in effect.
+To enable folding, add a `<div class="sf-navbar-toggle">...</div>` between the
+elements where you want the navbar to fold. Resize your viewport to see the
+folding in effect.
 
 ```html
 <div class="sf-navbar">
   <a href="/">Home</a>
   <a class="active" href="/robots">Robots</a>
   <a href="/medical-cybernetics">Medical Cybernetics</a>
-  <label></label>
+  <div class="sf-navbar-toggle"></div>
   <a href="/partners">Partners</a>
   <a href="/achievements">Achievements</a>
 </div>
@@ -29,7 +30,7 @@ navbar to fold. Resize your viewport to see the folding in effect.
       <a href="examples/navbar-demo/#home">Home</a>
       <a class="active" href="examples/navbar-demo/#robots">Robots</a>
       <a href="examples/navbar-demo/#medical-cybernetics">Medical Cybernetics</a>
-      <label></label>
+      <div class="sf-navbar-toggle"></div>
       <a href="examples/navbar-demo/#partners">Partners</a>
       <a href="examples/navbar-demo/#achievements">Achievements</a>
     </div>
@@ -46,7 +47,7 @@ regardless of the viewport width.
   <a href="/">Home</a>
   <a class="active" href="/robots">Robots</a>
   <a href="/medical-cybernetics">Medical Cybernetics</a>
-  <label></label>
+  <div class="sf-navbar-toggle"></div>
   <a href="/partners">Partners</a>
   <a href="/achievements">Achievements</a>
 </div>
@@ -58,7 +59,7 @@ regardless of the viewport width.
       <a href="examples/navbar-demo/#home">Home</a>
       <a class="active" href="examples/navbar-demo/#robots">Robots</a>
       <a href="examples/navbar-demo/#medical-cybernetics">Medical Cybernetics</a>
-      <label></label>
+      <div class="sf-navbar-toggle"></div>
       <a href="examples/navbar-demo/#partners">Partners</a>
       <a href="examples/navbar-demo/#achievements">Achievements</a>
     </div>

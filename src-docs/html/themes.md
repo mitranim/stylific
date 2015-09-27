@@ -1,6 +1,6 @@
 <!-- TOC -->
 <div class="sf-collapse doc-toc theme-text-accent">
-  <label class="active theme-accent"></label>
+  <div class="sf-collapse-head active theme-accent"></div>
   <div class="sf-collapse-body">
     [Overview](themes/#overview)
     [Text Themes](themes/#text-themes)

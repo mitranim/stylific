@@ -7,18 +7,18 @@
  *
  *   <div class="sf-tabset">
  *     <div class="sf-tabset-head">
- *       <label class="active">...</label>
- *       <label>...</label>
+ *       <div class="sf-tab-head active">...</div>
+ *       <div class="sf-tab-head">...</div>
  *     </div>
  *
  *     <div class="sf-tabset-body">
- *       <div class="sf-tab active">...</div>
- *       <div class="sf-tab">...</div>
+ *       <div class="sf-tab-body active">...</div>
+ *       <div class="sf-tab-body">...</div>
  *     </div>
  *   </div>
  *
- * To display a tab, apply the `.active` class to a matching label/tab pair.
- * The stylific JS file does this automatically on clicks.
+ * To display a tab, apply the `.active` class to a matching tab-head/tab-body
+ * pair. The stylific JS file does this automatically on clicks.
  *
  * # Fixed head
  *
@@ -27,13 +27,13 @@
  *
  *   <div class="sf-tabset sf-tabset-fixed">
  *     <div class="sf-tabset-head">
- *       <label class="active">...</label>
- *       <label>...</label>
+ *       <div class="sf-tab-head active">...</div>
+ *       <div class="sf-tab-head">...</div>
  *     </div>
  *
  *     <div class="sf-tabset-body" style="height: 12em">
- *       <div class="sf-tab active">...</div>
- *       <div class="sf-tab">...</div>
+ *       <div class="sf-tab-body active">...</div>
+ *       <div class="sf-tab-body">...</div>
  *     </div>
  *   </div>
  */
@@ -57,25 +57,24 @@
 
     // Cosmetic.
     border-bottom: 1px solid rgba($sf-color-text, 0.2);
+  }
 
-    // Header labels.
-    > label {
-      // Layout.
-      flex: 1;
+  // Tab heads.
+  @at-root .sf-tab-head {
+    // Layout.
+    flex: 1;
 
-      // Inner layout.
-      @include sf-flex-host-center;
+    // Inner layout.
+    @include sf-flex-host-center;
 
-      // Whitespace.
-      padding: $sf-space;
+    // Whitespace.
+    padding: $sf-space;
 
-      // Cosmetic.
-      &:not([disabled]) {cursor: pointer}
-    }
+    // Cosmetic.
+    &:not([disabled]) {cursor: pointer}
 
-    // Interactive colour highlighting for the label.
-    @include sf-register-interactive-selector(' > label');
-    @include sf-register-selected-state(' > label.active');
+    // Interactive colour highlighting.
+    @include sf-register-interactive-selector;
   }
 
   /**
@@ -107,7 +106,7 @@
   /**
    * General body and tab styles.
    */
-  @at-root .sf-tab {
+  @at-root .sf-tab-body {
     // Whitespace.
     @extend .container;
     // Hide unless active.

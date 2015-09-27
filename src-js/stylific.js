@@ -155,80 +155,102 @@ document.addEventListener('click', function (event) {
 
   // Check if the element or any ancestor is associated with a toggle
   // behaviour.
-  let cursor = elem
   do {
     // Stop the handler if the element or any of its ancestors is disabled.
-    if (hasAttr(cursor, 'disabled')) return
+    if (hasAttr(elem, 'disabled')) return
 
     // Modal close button.
-    if (hasClass(elem, 'sf-modal-close') && hasClass(cursor, 'sf-modal')) {
-      closeModal(cursor)
+    if (hasAttr(elem, 'data-sf-close-modal')) {
+      // Find a modal ancestor.
+      let parent = elem.parentElement
+      do {
+        if (hasClass(parent, 'sf-modal')) {
+          closeModal(parent)
+          stopEvent(event)
+          return
+        }
+      } while ((parent = parent.parentElement))
+    }
+
+    // Collapse toggle.
+    if (hasClass(elem, 'sf-collapse-head')) {
+      toggleElem(elem)
+      stopEvent(event)
       return
     }
 
-    // Modal dismiss button.
-    if (hasAttr(elem, 'data-sf-close-modal') && hasClass(cursor, 'sf-modal')) {
-      closeModal(cursor)
+    // Navbar toggle.
+    if (hasClass(elem, 'sf-navbar-toggle')) {
+      toggleElem(elem)
+      stopEvent(event)
       return
     }
 
     // data-sf-toggle hooks.
-    if (hasAttr(cursor, 'data-sf-toggle')) {
-      toggleElem(cursor)
+    if (hasAttr(elem, 'data-sf-toggle')) {
+      toggleElem(elem)
+      stopEvent(event)
       return
     }
-    if (hasAttr(cursor, 'data-sf-toggle-siblings')) {
-      toggleSiblings(cursor)
-      return
-    }
-    if (hasAttr(cursor, 'data-sf-toggle-id')) {
-      toggleId(getAttr(cursor, 'data-sf-toggle-id'))
-      return
-    }
-  } while ((cursor = cursor.parentElement))
-
-  // Clicking .sf-modal always closes it.
-  if (hasClass(elem, 'sf-modal')) {
-    closeModal(elem)
-    return
-  }
-
-  // Look for a <label> ancestor.
-  do {
-    if (elem.tagName === 'LABEL') break
-    if (!elem.parentElement) return
-  } while ((elem = elem.parentElement))
-
-  const parent = elem.parentElement
-
-  // Toggle-enabled label classes. They don't include .sf-dropdown, which
-  // requires [data-sf-toggle] on the label.
-  if (hasClass(parent, 'sf-collapse')) {
-    toggleElem(elem)
-    return
-  }
-  if (hasClass(parent, 'sf-navbar')) {
-    toggleElem(elem)
-    return
-  }
-
-  if (hasClass(parent, 'sf-tabset-head')) {
-    const tabset = parent.parentElement
-    if (hasClass(tabset, 'sf-tabset')) {
+    if (hasAttr(elem, 'data-sf-toggle-siblings')) {
       toggleSiblings(elem)
-      // Activate a tab on the same index.
-      const body = find(tabset.childNodes, node => {
-        return node instanceof HTMLElement && hasClass(node, 'sf-tabset-body')
-      })
-      if (body) {
-        const tabs = [].filter.call(body.childNodes, node => {
-          return node instanceof HTMLElement && hasClass(node, 'sf-tab')
-        })
-        const tab = tabs[indexByType(elem)]
-        if (tab) toggleSiblings(tab)
+      stopEvent(event)
+      return
+    }
+    if (hasAttr(elem, 'data-sf-toggle-id')) {
+      toggleId(getAttr(elem, 'data-sf-toggle-id'))
+      stopEvent(event)
+      return
+    }
+
+    // Clicking .sf-modal always closes it.
+    if (hasClass(elem, 'sf-modal')) {
+      closeModal(elem)
+      stopEvent(event)
+      return
+    }
+
+    if (hasClass(elem, 'sf-tab-head')) {
+      // Find the actual tabset.
+      let tabset = elem.parentElement
+      do {
+        if (hasClass(tabset, 'sf-tabset')) break
+      } while ((tabset = tabset.parentElement))
+
+      if (tabset) {
+        toggleSiblings(elem)
+
+        // Activate a tab on the same index.
+        const body = tabset.querySelector('.sf-tabset-body')
+        if (body) {
+          const tabs = body.querySelectorAll('.sf-tab-body')
+          const tab = tabs[indexByType(elem)]
+          if (tab) toggleSiblings(tab)
+        }
+
+        stopEvent(event)
+        return
       }
     }
-  }
+
+    /**
+     * Explicit exception in our event handling: ignore the event if the
+     * element or one of its ancestors has the [data-sf-noclick] attribute.
+     */
+    if (hasAttr(elem, 'data-sf-noclick')) return
+
+    /**
+     * Implicit exception in our event handling: ignore the event if the
+     * element or one of its ancestors is a `<button>` without any
+     * stylific-specific trigger attributes.
+     *
+     * The reason is that buttons are generally used for visible actions. If
+     * stylific doesn't know what to do with a clicked button, it's very
+     * likely that a listener from other code is waiting for it. We should
+     * give way.
+     */
+    if (elem.tagName === 'BUTTON') return
+  } while ((elem = elem.parentElement))
 })
 
 /**
@@ -238,6 +260,7 @@ document.addEventListener('keydown', function (event) {
   // Close modals on Esc.
   if (event.keyCode === 27) {
     [].slice.call(document.querySelectorAll('.sf-modal.active')).forEach(elem => {
+      stopEvent(event)
       closeModal(elem)
     })
   }
@@ -306,6 +329,19 @@ function removeClass (elem, name) {
 }
 function toggleClass (elem, name) {
   elem.classList.toggle(name)
+}
+
+/**
+ * Barbaric way to completely stop an event. We use this because a user event,
+ * such as a mouse click, is generally expected to have no more than one
+ * visible effect. All stylific triggers have visible effects, and therefore,
+ * we should stop the event from reaching other listeners. The stylific
+ * listener is document-level, so the only way to do that it by using
+ * `stopImmediatePropagation`.
+ */
+function stopEvent (event) {
+  event.preventDefault()
+  event.stopImmediatePropagation()
 }
 
 function toggleElem (elem, done) {
