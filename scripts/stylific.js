@@ -3,7 +3,7 @@
  *   https://github.com/Mitranim/stylific
  */
 
-!function () {
+!function() {
 'use strict';
 
 // No-op if not running in a browser.
