@@ -28,9 +28,8 @@ nbproject
 node_modules
 bower_components
 
-# Ignore built CSS and JS
-lib/stylific.css
-lib/stylific.min.js
+# Ignore built CSS and JS (they're published to npm)
+dist
 
 # Ignore gh-pages symlink
 stylific-gh-pages

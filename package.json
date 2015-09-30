@@ -1,6 +1,6 @@
 {
   "name": "stylific",
-  "version": "0.12.2",
+  "version": "0.13.0",
   "homepage": "http://mitranim.com/stylific/",
   "scripts": {
     "start": "gulp",
@@ -13,7 +13,7 @@
     "Mitranim <me@mitranim.com>"
   ],
   "description": "Component-oriented, flexbox-based CSS library, written in Sass.",
-  "main": "lib/stylific.js",
+  "main": "dist/stylific.js",
   "keywords": [
     "css",
     "style",

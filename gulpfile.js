@@ -26,9 +26,8 @@ const src = {
   libStyles: 'scss/**/*.scss',
   libStylesCore: 'scss/stylific.scss',
   libScripts: 'src-js/stylific.js',
-  libScriptsCompiled: 'lib/stylific.js',
   docScripts: [
-    'lib/stylific.js',
+    'dist/stylific.js',
     'node_modules/simple-pjax/dist/simple-pjax.js'
   ],
   docStylesCore: 'src-docs/styles/docs.scss',
@@ -43,11 +42,16 @@ const src = {
 const destBase = 'stylific-gh-pages'
 
 const dest = {
-  lib: 'lib',
+  // Folders.
+  dist: 'dist',
   docStyles: destBase + '/styles',
   docScripts: destBase + '/scripts',
   docImages: destBase + '/images',
-  docHtml: destBase
+  docHtml: destBase,
+
+  // Compiled files.
+  compiledScript: 'dist/stylific.js',
+  compiledStyle: 'dist/stylific.css'
 }
 
 function prod () {
@@ -115,7 +119,7 @@ marked.Renderer.prototype.link = function (href, title, text) {
 /* ------------------------------ Lib Styles --------------------------------*/
 
 gulp.task('lib:styles:clear', function (done) {
-  del(dest.lib + '/*.css').then((_) => {done()})
+  del(dest.dist + '/*.css').then((_) => {done()})
 })
 
 gulp.task('lib:styles:compile', function () {
@@ -123,15 +127,21 @@ gulp.task('lib:styles:compile', function () {
     .pipe($.plumber())
     .pipe($.sass())
     .pipe($.autoprefixer())
-    .pipe($.if(prod(), $.minifyCss({
+    .pipe(gulp.dest(dest.dist))
+})
+
+gulp.task('lib:styles:minify', function () {
+  return gulp.src(dest.compiledStyle)
+    .pipe($.minifyCss({
       keepSpecialComments: 0,
       aggressiveMerging: false,
       advanced: false
-    })))
-    .pipe(gulp.dest(dest.lib))
+    }))
+    .pipe($.rename('stylific.min.css'))
+    .pipe(gulp.dest(dest.dist))
 })
 
-gulp.task('lib:styles:build', gulp.series('lib:styles:clear', 'lib:styles:compile'))
+gulp.task('lib:styles:build', gulp.series('lib:styles:clear', 'lib:styles:compile', 'lib:styles:minify'))
 
 gulp.task('lib:styles:watch', function () {
   $.watch(src.libStyles, gulp.series('lib:styles:build'))
@@ -140,7 +150,7 @@ gulp.task('lib:styles:watch', function () {
 /* ----------------------------- Lib Scripts --------------------------------*/
 
 gulp.task('lib:scripts:clear', function (done) {
-  del(dest.lib + '/*.js').then((_) => {done()})
+  del(dest.dist + '/*.js').then((_) => {done()})
 })
 
 gulp.task('lib:scripts:compile', function () {
@@ -165,14 +175,14 @@ if (typeof window !== 'object' || !window) return;
 <%= contents %>
 
 }();`))
-    .pipe(gulp.dest(dest.lib))
+    .pipe(gulp.dest(dest.dist))
 })
 
 gulp.task('lib:scripts:minify', function () {
-  return gulp.src(src.libScriptsCompiled)
+  return gulp.src(dest.compiledScript)
     .pipe($.uglify({mangle: true}))
     .pipe($.rename('stylific.min.js'))
-    .pipe(gulp.dest(dest.lib))
+    .pipe(gulp.dest(dest.dist))
 })
 
 gulp.task('lib:scripts:build', gulp.series('lib:scripts:clear', 'lib:scripts:compile', 'lib:scripts:minify'))
@@ -255,14 +265,15 @@ gulp.task('docs:styles:compile', function () {
       advanced: false
     })))
     .pipe(gulp.dest(dest.docStyles))
-    .pipe(bsync.stream())
+    // bsync stream reload is often buggy for me :(
+    // .pipe(bsync.stream())
 })
 
 gulp.task('docs:styles:build', gulp.series('docs:styles:clear', 'docs:styles:compile'))
 
 gulp.task('docs:styles:watch', function () {
-  $.watch(src.docStyles, gulp.series('docs:styles:build'))
-  $.watch(src.libStyles, gulp.series('docs:styles:build'))
+  $.watch(src.docStyles, gulp.series('docs:styles:build', reload))
+  $.watch(src.libStyles, gulp.series('docs:styles:build', reload))
 })
 
 /* -------------------------------- Images ----------------------------------*/

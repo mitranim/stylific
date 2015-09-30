@@ -6,7 +6,7 @@
   ],
   "description": "Component-oriented, flexbox-based CSS library, written in Sass.",
   "main": [
-    "lib/stylific.js",
+    "dist/stylific.js",
     "scss/stylific.scss"
   ],
   "keywords": [
