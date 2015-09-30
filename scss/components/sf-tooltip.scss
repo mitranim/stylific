@@ -209,3 +209,16 @@
     }
   }
 }
+
+// Inline elements that are likely to be used inside paragraphs should be set to
+// inline-block when used with `sf-tooltip`. Tooltip relies on element's
+// position and assumes it to be a small block. Inline elements are unique: they
+// wrap on linebreaks, distoring the tooltip's position. This gets even worse if
+// the inline element contains a blocky element. This rule fixes those issues
+// and encourages authors to keep tooltip hosts small.
+b, big, i, small, abbr, acronym, cite, code, dfn, em,
+kbd, strong, samp, var, a, bdo, q, span, sub, sup {
+  &[data-sf-tooltip] {
+    display: inline-block;
+  }
+}

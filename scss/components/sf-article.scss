@@ -46,10 +46,13 @@ article {
     float: right;
     margin-left: $sf-space;
   }
-  // Negate double offsets for headers following floating elements at the
-  // beginning of an article.
   .float-left, .float-right {
+    // Negate double offsets for headers following floating elements at the
+    // beginning of an article.
     &:first-child + * {margin-top: 0}
+    // Allowing more then on float on the same line usually leads to layout
+    // issues. Let's prevent that.
+    clear: both;
   }
 
   // Size helpers.

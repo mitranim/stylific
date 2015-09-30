@@ -23,7 +23,12 @@ input, textarea {
   }
 
   // Normalise default colours.
-  &:not([class*=theme-]) {color: inherit}
+  &:not([class*=theme-]) {
+    color: inherit;
+    &::placeholder {
+      color: rgba($sf-color-text, 0.5);
+    }
+  }
 
   // Normalise background colour. (Webkit has default {background-color: white}).
   &:not([class*=theme-]), &[class*=theme-text-] {

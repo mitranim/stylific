@@ -4,12 +4,12 @@
  * style per http://standardjs.com
  */
 
-const isCommonJs = typeof module === 'object' && module !== null &&
-                   typeof module.exports === 'object' && module.exports !== null
-
 /** ************************** Programmatic API ****************************/
 
 /**
+ * Methods exposed by stylific. Each method is equivalent to clicking an element
+ * with a particular [data-sf-*] attribute.
+ *
  * Each method accepts an optional callback, which is executed after finishing
  * all CSS transitions caused by the method. If the callback is omitted, and
  * if the global Promise constructor is available, each method returns a
@@ -69,7 +69,7 @@ const exports = {
     const modals = [].slice.call(document.querySelectorAll('.sf-modal.active'))
 
     // Too bothersome to aggregate callbacks without promises.
-    if (typeof done === 'function' || typeof Promise !== 'function') {
+    if (isFunction(done) || typeof Promise !== 'function') {
       modals.forEach(elem => {closeModal(elem)})
     } else {
       return Promise.all(modals.map(elem => {
@@ -82,8 +82,12 @@ const exports = {
 }
 
 // Export in a CommonJS environment, otherwise assign to window.
-if (isCommonJs) module.exports = exports
-else window.stylific = exports
+if (typeof module === 'object' && module !== null &&
+    typeof module.exports === 'object' && module.exports !== null) {
+  module.exports = exports
+} else {
+  window.stylific = exports
+}
 
 /**
  * API utilities.
@@ -109,13 +113,15 @@ function validateModal (elem) {
 }
 
 function validateCallback (callback) {
-  if (callback != null && typeof callback !== 'function') {
+  if (callback != null && !isFunction(callback)) {
     throw new Error(`Expected the callback argument to be a function, got: ${callback}`)
   }
 }
 
+// Wraps the given functions to use the callback API mode or the promise API
+// mode, depending on the callback and the Promise availability.
 function wrapAction (callback, action) {
-  if (typeof callback === 'function' || typeof Promise !== 'function') {
+  if (isFunction(callback) || typeof Promise !== 'function') {
     action(callback)
   } else {
     return new Promise(resolve => {
@@ -132,6 +138,10 @@ function wrapAction (callback, action) {
 document.addEventListener('click', function (event) {
   let elem = event.target
   if (!(elem instanceof HTMLElement)) return
+
+  // Explicit exception in our event handling: ignore the event if the element
+  // or one of its ancestors has the [data-sf-noclick] attribute.
+  if (hasAttr(elem, 'data-sf-noclick')) return
 
   // Ignore events coming from labels associated with inputs. In associated
   // pairs, the label event must finish its lifecycle without a
@@ -233,22 +243,13 @@ document.addEventListener('click', function (event) {
       }
     }
 
-    /**
-     * Explicit exception in our event handling: ignore the event if the
-     * element or one of its ancestors has the [data-sf-noclick] attribute.
-     */
-    if (hasAttr(elem, 'data-sf-noclick')) return
-
-    /**
-     * Implicit exception in our event handling: ignore the event if the
-     * element or one of its ancestors is a `<button>` without any
-     * stylific-specific trigger attributes.
-     *
-     * The reason is that buttons are generally used for visible actions. If
-     * stylific doesn't know what to do with a clicked button, it's very
-     * likely that a listener from other code is waiting for it. We should
-     * give way.
-     */
+    // Implicit exception in our event handling: ignore the event if the element
+    // or one of its ancestors is a `<button>` without any stylific-specific
+    // trigger attributes.
+    //
+    // The reason is that buttons are generally used for visible actions. If
+    // stylific doesn't know what to do with a clicked button, it's very likely
+    // that a listener from other code is waiting for it. We should give way.
     if (elem.tagName === 'BUTTON') return
   } while ((elem = elem.parentElement))
 })
@@ -308,7 +309,9 @@ document.addEventListener('wheel', function (event) {
 
 /** ****************************** Utilities *******************************/
 
-// Shortcuts for better minification.
+/**
+ * Shortcuts for better minification. Shave off a few hundred bytes.
+ */
 function hasAttr (elem, name) {
   return elem.hasAttribute(name)
 }
@@ -330,15 +333,15 @@ function removeClass (elem, name) {
 function toggleClass (elem, name) {
   elem.classList.toggle(name)
 }
+function isFunction(value) {
+  return typeof value === 'function'
+}
 
-/**
- * Barbaric way to completely stop an event. We use this because a user event,
- * such as a mouse click, is generally expected to have no more than one
- * visible effect. All stylific triggers have visible effects, and therefore,
- * we should stop the event from reaching other listeners. The stylific
- * listener is document-level, so the only way to do that it by using
- * `stopImmediatePropagation`.
- */
+// Barbaric way to completely stop an event. We use this because a user event,
+// such as a mouse click, is generally expected to have no more than one visible
+// effect. All stylific triggers have visible effects, and therefore, we should
+// stop events from reaching other listeners. The stylific listener is
+// document-level, so the only way is `stopImmediatePropagation`.
 function stopEvent (event) {
   event.preventDefault()
   event.stopImmediatePropagation()
@@ -350,7 +353,7 @@ function toggleElem (elem, done) {
   if (elem.tagName === 'TEMPLATE') {
     const id = hasAttr(elem, 'id') && getAttr(elem, 'id') || ''
     if (id) toggleModalCloneById(id, done)
-    else if (typeof done === 'function') done()
+    else if (isFunction(done)) done()
     return
   }
 
@@ -376,7 +379,7 @@ function toggleSiblings (elem) {
 function toggleId (id, done) {
   const elem = document.getElementById(id)
   if (elem) toggleElem(elem, done)
-  else if (typeof done === 'function') done()
+  else if (isFunction(done)) done()
 }
 
 function openModal (elem, done) {
@@ -400,7 +403,7 @@ function closeModal (elem, done) {
   const isClone = hasAttr(elem, 'data-sf-modal-clone')
   runAfterTransitions(elem, timestamp => {
     if (isClone) elem.remove()
-    if (typeof done === 'function') done(timestamp)
+    if (isFunction(done)) done(timestamp)
   })
 }
 
@@ -423,7 +426,7 @@ function toggleModalCloneById (id, done) {
     }
 
     if (!original || !hasClass(original, 'sf-modal')) {
-      if (typeof done === 'function') done()
+      if (isFunction(done)) done()
       return
     }
 
@@ -459,8 +462,7 @@ function find (iterable, iterator) {
   }
 }
 
-// Workaround for the lack of `DocumentFragment#firstElementChild` support in
-// IE.
+// Workaround for the lack of `DocumentFragment#firstElementChild` support in IE.
 function firstElementChild (node) {
   return find(node.childNodes, child => child instanceof Element) || null
 }
@@ -507,7 +509,7 @@ function createEvent (name) {
 // Runs the given callback after a period sufficient to run normal CSS
 // transitions on the given element.
 function runAfterTransitions (elem, callback) {
-  if (typeof callback !== 'function') return
+  if (!isFunction(callback)) return
 
   const {
     transitionDuration: duration,

@@ -50,6 +50,8 @@ ul, ol {
   @include sf-focus-indicator;
 }
 select:focus {
+  // Negate the indicator defined above.
+  box-shadow: none;
   outline: -webkit-focus-ring-color auto;
 }
 
