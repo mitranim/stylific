@@ -47,23 +47,27 @@
    * Base head styles.
    */
   @at-root .sf-collapse-head {
-    // Cosmetic.
-    &:not([disabled]) {cursor: pointer}
+    /**
+     * Inner layout.
+     */
+    // Center the content vertically.
+    display: flex;
+    align-items: center;
 
     // Whitespace.
     padding: $sf-space;
 
     // Toggle indicator.
     &::after {
-      content: '▽';
-      display: inline-block;
-      vertical-align: -0.1em;
+      @include sf-toggle-inactive;
       opacity: 0.5;
     }
-    // If there's some text inside, offset the indicator.
     &:not(:empty)::after {
-      padding-left: 0.5em;
+      margin-left: $sf-space / 4;
     }
+
+    // Indicate interactivity.
+    cursor: pointer;
     @include sf-register-interactive-selector;
   }
 
@@ -71,7 +75,9 @@
    * Active head styles.
    */
   @at-root .sf-collapse-head.active {
-    &::after {content: '▲'}
+    &::after {
+      @include sf-toggle-active;
+    }
   }
 
   /**

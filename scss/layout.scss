@@ -34,8 +34,7 @@ body {
   /**
    * Inner layout.
    */
-  // Setting the body up as a flex container allows us to push the footer
-  // to the bottom of the screen with an automatic margin.
+  // This allows us to push the footer downwards.
   display: flex;
   flex-direction: column;
   // These vital properties are implicit, but we duplicate them to avoid
@@ -54,147 +53,149 @@ body {
 }
 
 /**
- * Credit:
- * https://raw.githubusercontent.com/angular/material/v0.10.0/src/core/style/layout.scss
+ * Flex container rules.
  */
 
-/**
- * Container.
- */
+// Axis directions.
+$-sf-directions: row, col;
+// Main-axis variants.
+$-sf-main: start, center, end, around, between;
+// Cross-axis variants.
+$-sf-cross: start, center, end, stretch;
 
-@mixin sf-layout-for-name($postfix: '') {
-  $name: if($postfix == '', layout, layout-#{$postfix});
-
-  .#{$name}-row {
-    display: flex;
-    flex-direction: row;
-  }
-  .#{$name}-column {
-    display: flex;
-    flex-direction: column;
-  }
-
-  // Whitespace on main axis.
-  .#{$name}-center        {justify-content: center}
-  .#{$name}-end           {justify-content: flex-end}
-  .#{$name}-start         {justify-content: flex-start}
-  .#{$name}-space-around  {justify-content: space-around}
-  .#{$name}-space-between {justify-content: space-between}
-
-  // Individual items on cross axis.
-  .#{$name}-cross-center  {align-items: center}
-  .#{$name}-cross-end     {align-items: flex-end}
-  .#{$name}-cross-start   {align-items: flex-start}
-  .#{$name}-cross-stretch {align-items: stretch}
-
-  // Wrapping.
-  .#{$name}-wrap {
-    flex-wrap: wrap;
-  }
-
-  // Whitespace.
-  .#{$name}-row.space-out {
-    @include sf-space-out-horizontal;
-  }
+@function sf-container-class($prefix, $direction, $main, $cross) {
+  @return '.#{$prefix}#{$direction}-#{$main}-#{$cross}';
 }
 
-@include sf-layout-for-name();
-@include sf-eq-sm {@include sf-layout-for-name(sm);}
-@include sf-gt-sm {@include sf-layout-for-name(md);}
-@include sf-gt-md {@include sf-layout-for-name(lg);}
+@function sf-each-for-direction($direction, $prefix: '') {
+  $selector: ();
+  @each $main in $-sf-main {
+    @each $cross in $-sf-cross {
+      $class: sf-container-class($prefix, $direction, $main, $cross);
+      $selector: append($selector, $class, 'comma');
+    }
+  }
+  @return $selector;
+}
+
+@function sf-each-container($prefix: '') {
+  $selector: ();
+  @each $direction in $-sf-directions {
+    $selector: append($selector, sf-each-for-direction($direction, $prefix), 'comma');
+  }
+  @return $selector;
+}
+
+@function sf-each-for-main($main, $prefix: '') {
+  $selector: ();
+  @each $direction in $-sf-directions {
+    @each $cross in $-sf-cross {
+      $class: sf-container-class($prefix, $direction, $main, $cross);
+      $selector: append($selector, $class, 'comma');
+    }
+  }
+  @return $selector;
+}
+
+@function sf-each-for-cross($cross, $prefix: '') {
+  $selector: ();
+  @each $direction in $-sf-directions {
+    @each $main in $-sf-main {
+      $class: sf-container-class($prefix, $direction, $main, $cross);
+      $selector: append($selector, $class, 'comma');
+    }
+  }
+  @return $selector;
+}
+
+@mixin sf-container-rules($prefix: '') {
+  // Base directions.
+  #{sf-each-container($prefix)}          {display: flex}
+  #{sf-each-for-direction(row, $prefix)} {flex-direction: row}
+  #{sf-each-for-direction(col, $prefix)} {flex-direction: column}
+
+  // Main axis alignment variants.
+  #{sf-each-for-main(start, $prefix)}    {justify-content: flex-start}
+  #{sf-each-for-main(center, $prefix)}   {justify-content: center}
+  #{sf-each-for-main(end, $prefix)}      {justify-content: flex-end}
+  #{sf-each-for-main(around, $prefix)}   {justify-content: space-around}
+  #{sf-each-for-main(between, $prefix)}  {justify-content: space-between}
+
+  // Cross axis alignment variants.
+  #{sf-each-for-cross(start, $prefix)}   {align-items: flex-start}
+  #{sf-each-for-cross(center, $prefix)}  {align-items: center}
+  #{sf-each-for-cross(end, $prefix)}     {align-items: flex-end}
+  #{sf-each-for-cross(stretch, $prefix)} {align-items: stretch}
+
+  // Child wrapping.
+  .#{$prefix}wrap   {flex-wrap: wrap}
+  .#{$prefix}nowrap {flex-wrap: nowrap}
+}
+
+@include sf-container-rules;
+@include sf-eq-sm {@include sf-container-rules(sm-);}
+@include sf-gt-sm {@include sf-container-rules(md-);}
+@include sf-gt-md {@include sf-container-rules(lg-);}
 
 /**
- * Children.
+ * Flex child rules.
  */
 
-@mixin sf-child-layout-for-name($postfix: '') {
-  $name: if($postfix == '', flex, flex-#{$postfix});
+@mixin sf-child-rules($prefix: '') {
+  // Alignment.
+  .#{$prefix}self-start   {align-self: flex-start}
+  .#{$prefix}self-center  {align-self: center}
+  .#{$prefix}self-end     {align-self: flex-end}
+  .#{$prefix}self-stretch {align-self: stretch}
 
-  // Cross axis alignment.
-  .#{$name}-center  {align-self: center}
-  .#{$name}-end     {align-self: flex-end}
-  .#{$name}-start   {align-self: flex-start}
-  .#{$name}-stretch {align-self: stretch}
-
-  // Misc.
-  .#{$name}-none {flex: none}
+  // Negation.
+  .#{$prefix}flex-none {flex: none}
 
   // .flex-N {flex: N} where 1 <= N <= 12
   $i: 1;
   @while $i <= 12 {
-    .#{$name}-#{$i} {flex: $i}
+    .#{$prefix}flex-#{$i} {flex: $i}
     $i: $i + 1;
   }
 
-  // .flex-order-N {order: N} where -1 <= N <= 3
+  // .order-N {order: N} where -1 <= N <= 3
   $i: -1;
   @while $i <= 3 {
-    .#{$name}-order-#{$i} {order: $i}
+    .#{$prefix}order-#{$i} {order: $i}
     $i: $i + 1;
   }
 }
 
-@include sf-child-layout-for-name();
-@include sf-eq-sm {@include sf-child-layout-for-name(sm);}
-@include sf-gt-sm {@include sf-child-layout-for-name(md);}
-@include sf-gt-md {@include sf-child-layout-for-name(lg);}
+@include sf-child-rules;
+@include sf-eq-sm {@include sf-child-rules(sm-);}
+@include sf-gt-sm {@include sf-child-rules(md-);}
+@include sf-gt-md {@include sf-child-rules(lg-);}
 
 /*********************************** Grid ************************************/
 
-@mixin sf-grid-base-style {
-  display: flex;
-  flex-wrap: wrap;
+@mixin sf-grid-rules($prefix: '') {
+  $name: '.#{$prefix}grid';
 
-  // Prevent children from unexpectedly stretching or shrinking.
-  > * {
-    flex-grow: 0;
-    flex-shrink: 0;
-  }
-}
+  #{$name}-1, #{$name}-2, #{$name}-3, #{$name}-4, #{$name}-5, #{$name}-6 {
+    display: flex;
+    flex-wrap: wrap;
 
-/**
- * Default wrap configuration.
- */
-
-.grid > * {
-  // Equivalent to a combination of:
-  //   .grid-sm="2"
-  //   .grid-md="4"
-  //   .grid-lg="6"
-  @include sf-eq-sm {flex-basis: 50%}
-  @include sf-gt-sm {flex-basis: 25%}
-  @include sf-gt-md {flex-basis: calc(1/6 * 100%)}
-}
-.grid-sm > * {
-  @include sf-eq-sm {flex-basis: 50%}
-}
-.grid-md > * {
-  @include sf-gt-sm {flex-basis: 25%}
-}
-.grid-lg > * {
-  @include sf-gt-md {flex-basis: calc(1/6 * 100%)}
-}
-
-.grid, .grid-sm, .grid-md, .grid-lg {
-  @include sf-grid-base-style;
-}
-
-@mixin sf-grid-for-name($postfix: '') {
-  $name: if($postfix == '', grid, grid-#{$postfix});
-
-  .#{$name}-1, .#{$name}-2, .#{$name}-3, .#{$name}-4, .#{$name}-5, .#{$name}-6 {
-    @include sf-grid-base-style;
+    // Prevent children from unexpectedly stretching or shrinking.
+    > * {
+      flex-grow: 0;
+      flex-shrink: 0;
+    }
   }
 
-  .#{$name}-1 > * {flex-basis: 100%}
-  .#{$name}-2 > * {flex-basis: 50%}
-  .#{$name}-3 > * {flex-basis: calc(1/3 * 100%)}
-  .#{$name}-4 > * {flex-basis: 25%}
-  .#{$name}-5 > * {flex-basis: 20%}
-  .#{$name}-6 > * {flex-basis: calc(1/6 * 100%)}
+  #{$name}-1 > * {flex-basis: 100%}
+  #{$name}-2 > * {flex-basis: 50%}
+  #{$name}-3 > * {flex-basis: calc(1/3 * 100%)}
+  #{$name}-4 > * {flex-basis: 25%}
+  #{$name}-5 > * {flex-basis: 20%}
+  #{$name}-6 > * {flex-basis: calc(1/6 * 100%)}
 }
 
-@include sf-grid-for-name();
-@include sf-eq-sm {@include sf-grid-for-name(sm);}
-@include sf-gt-sm {@include sf-grid-for-name(md);}
-@include sf-gt-md {@include sf-grid-for-name(lg);}
+@include sf-grid-rules;
+@include sf-eq-sm {@include sf-grid-rules(sm-);}
+@include sf-gt-sm {@include sf-grid-rules(md-);}
+@include sf-gt-md {@include sf-grid-rules(lg-);}

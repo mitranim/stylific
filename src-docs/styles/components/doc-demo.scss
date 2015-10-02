@@ -1,3 +1,10 @@
+// /**
+//  * Container styling.
+//  */
+// .doc-demo {
+//   @include border-weak;
+// }
+
 /**
  * Header styling.
  */
@@ -34,6 +41,6 @@
   @extend .container;
 
   // Cosmetic.
-  @include sf-border-weak;
-  margin-top: -1px;
+  @include border-weak;
+  border-top: none;
 }

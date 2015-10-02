@@ -1,4 +1,4 @@
-<div class="sf-navbar">
+<div class="sf-navbar sf-navbar-fixed">
   <!-- Links -->
   <a ${$act('index', $)} href="">Overview</a>
   <a ${$act('components', $)} href="components/">Components</a>
@@ -7,11 +7,11 @@
   <!-- Collapse breakpoint -->
   <div class="sf-navbar-toggle"></div>
 
-  <a ${$act('themes', $)} href="themes/">Themes</a>
-
   <!-- Collapsable children -->
+  <a ${$act('themes', $)} href="themes/">Themes</a>
+  <a ${$act('javascript', $)} href="javascript/">JavaScript</a>
   <div class="sf-dropdown nopad">
-    <div class="sf-dropdown-head layout-row layout-center">Examples</div>
+    <div class="sf-dropdown-head row-center-center">Examples</div>
     <div class="sf-dropdown-body text-left">
       <% for (file of this.meta.examples.files) { %>
         <a ${$act('examples/' + file.name, $)} href="examples/${file.name}/">${file.title}</a>

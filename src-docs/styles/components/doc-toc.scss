@@ -17,15 +17,12 @@
     &::before {
       content: 'Contents';
     }
-    &::after {
-      padding-left: 0.5em;
-    }
   }
 
   /**
    * Cosmetic.
    */
-  @include sf-border-weak;
+  @include border-weak;
   .sf-collapse-body {
     // Layout.
     display: flex;

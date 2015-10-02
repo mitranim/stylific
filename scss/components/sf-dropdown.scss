@@ -63,7 +63,7 @@
    */
   // Position relatively to provide a reference point for the dropdown list.
   position: relative;
-  // This fixes the problem of children being overlayed by elements with a lower
+  // This fixes the problem of children being overlaid by elements with a lower
   // z-index. The :hover state propagates from the children to the host.
   &:hover {
     z-index: $sf-z-index-dropdown;
@@ -98,21 +98,22 @@
     /**
      * Cosmetic.
      */
-    &:not([disabled]) {cursor: pointer}
+    cursor: default;
     // Cosmetic state indicator. In the hover version, it's static; in the
     // toggled version, its content is changed when the state is toggled.
     &::after {
       // Layout.
-      content: '▽';
-      display: inline-block;
-      vertical-align: -0.1em;
-
+      @include sf-toggle-inactive;
       // Cosmetic.
       opacity: 0.5;
-      font-size: 50%;
-      // Prevent the indicator from touching the sides.
-      padding-left: 0.5em;
-      padding-right: 0.5em;
+      font-size: $sf-font-size-smaller;
+    }
+    &:not(:empty)::after {
+      margin-left: $sf-space / 4;
+    }
+    // Different indicator style for the hover version.
+    &:not([data-sf-toggle])::after {
+      content: '▽';
     }
   }
 
@@ -139,7 +140,9 @@
     // Make the toggle overlay interactive.
     &::before {content: ''}
     // Change the state indicator.
-    &::after {content: '▲'}
+    &::after {
+      @include sf-toggle-active;
+    }
   }
 
   /**

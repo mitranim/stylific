@@ -77,15 +77,6 @@ See the examples.
 
 ## Cloning
 
-<div class="theme-accent layout-row layout-cross-center">
-  <span class="sf-icon-info-circle inline" style="margin: 1rem 0 1rem 1rem"></span>
-  <p class="pad">
-    Breaking change in `0.11.0`: removed the `[data-sf-clone-modal]`
-    attribute. Modals inside `<template>` tags are now always cloned, and
-    modals outside templates are never cloned.
-  </p>
-</div>
-
 You may optionally enclose the `sf-modal` element into a `<template id="...">`
 tag. The template must have a valid `id`, and the modal doesn't need one.
 

@@ -75,9 +75,7 @@
     // parent.
     min-height: inherit;
 
-    /**
-     * Inner layout.
-     */
+    // Inner layout.
     @include sf-flex-host-center;
 
     // Whitespace.
@@ -116,12 +114,9 @@
     // Reserve some space even when used without content.
     min-width: 10%;
     // Hidden by default.
-    display: none;
+    &, .sf-navbar > & {display: none}
     // Reposition after the pre-breakpoint navbar children.
     order: 1;
-
-    // Cosmetic.
-    &:not([disabled]) {cursor: pointer}
 
     // Overlay for closing the toggled dropdown.
     &::before {
@@ -131,16 +126,14 @@
 
     // Indicators.
     &::after {
-      content: '▽';
-      display: inline-block;
-      vertical-align: -0.1em;
+      @include sf-toggle-inactive;
     }
-    // If there's some text inside, offset the indicator.
     &:not(:empty)::after {
-      padding-left: 0.5em;
+      margin-left: $sf-space / 4;
     }
 
-    // Interactive styling.
+    // Indicate interactivity.
+    cursor: pointer;
     @include sf-register-interactive-selector;
   }
 
@@ -153,8 +146,10 @@
       content: '';
       z-index: $sf-z-index-navbar;
     }
-    // Modify the indicator symbol.
-    &::after {content: '▲'}
+    // Modify the indicator.
+    &::after {
+      @include sf-toggle-active;
+    }
   }
 
   /**
@@ -174,11 +169,8 @@
       // Try to take up the entire line. With {flex-wrap: wrap} enabled on the
       // parent, this wraps every child to its own line.
       flex: 100%;
-      // Put after the collapse toggle.
+      // Reorder after the collapse toggle.
       order: 2;
-
-      // Whitespace.
-      padding: $sf-space;
     }
 
     // Styles for collapsed children.
@@ -192,7 +184,7 @@
       z-index: $sf-z-index-navbar + 1;
     }
   }
-  @media (max-width: $sf-layout-breakpoint-sm) {@include collapse-rules;}
+  @media (max-width: $sf-breakpoint-sm) {@include collapse-rules;}
   // Version that always folds.
   &.sf-navbar-fold {@include collapse-rules;}
 

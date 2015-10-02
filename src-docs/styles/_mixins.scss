@@ -15,3 +15,13 @@
   $path: '#{$svg-white}#{$name}.svg';
   background-image: url($path);
 }
+
+@mixin border-weak {
+  border: 1px solid lighten(map-get($sf-color-map-primary, default), 40%);
+  &.theme-accent, &.theme-text-accent, &.border-accent {
+    border-color: lighten(map-get($sf-color-map-accent, default), 10%);
+  }
+  &.theme-warn, &.theme-text-warn, &.border-warn {
+    border-color: lighten(map-get($sf-color-map-warn, default), 30%);
+  }
+}

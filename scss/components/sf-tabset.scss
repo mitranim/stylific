@@ -70,10 +70,8 @@
     // Whitespace.
     padding: $sf-space;
 
-    // Cosmetic.
-    &:not([disabled]) {cursor: pointer}
-
-    // Interactive colour highlighting.
+    // Indicate interactivity.
+    cursor: pointer;
     @include sf-register-interactive-selector;
   }
 

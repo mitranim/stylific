@@ -5,6 +5,7 @@
 // Base font family and size.
 html {
   font-family: $sf-font-family-sans-serif;
+  font-weight: $sf-font-weight;
   font-size: $sf-rem;
   line-height: $sf-line-height;
   @include sf-eq-sm {font-size: $sf-rem * 0.8}
@@ -13,7 +14,7 @@ html {
 
 // Normalise header font weight.
 h1, h2, h3, h4, h5, h6 {
-  font-weight: normal
+  font-weight: inherit;
 }
 // Normalise h1 size in Webkit in the <article> context.
 h1 {
@@ -50,4 +51,11 @@ small {
 // Restore default behaviour.
 big {
   font-size: $sf-font-size-larger;
+}
+
+// Normalise bold elements.
+b, strong {
+  // If the default font-weight is something like `300` or `lighter`, this
+  // should be equivalent to `normal`.
+  font-weight: bolder;
 }

@@ -26,7 +26,7 @@
     "url": "https://github.com/Mitranim/stylific.git"
   },
   "devDependencies": {
-    "browser-sync": "^2.8.2",
+    "browser-sync": "^2.9.8",
     "del": "^2.0.2",
     "gulp": "git://github.com/gulpjs/gulp#4.0",
     "gulp-autoprefixer": "^2.3.1",
@@ -49,7 +49,7 @@
     "gulp-wrap": "^0.11.0",
     "highlight.js": "^8.6.0",
     "lodash": "^3.9.3",
-    "simple-pjax": "^0.2.1",
+    "simple-pjax": "^0.2.5",
     "yargs": "^3.13.0"
   }
 }

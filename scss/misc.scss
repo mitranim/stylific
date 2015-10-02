@@ -95,6 +95,8 @@ textarea {
 // other elements.
 p a, ul a, ol a, dl a, a.decorated {
   @include sf-link-decorations;
+  // Restore the :focus effect by raising its specificity.
+  &:focus {@extend :focus;}
 }
 
 /********************************** Globals **********************************/

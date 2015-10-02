@@ -1,12 +1,12 @@
 # Description
 
 Very basic flexbox grid demo. Resize your viewport to see how it responds to
-width changes. The classes are cosmetic.
+width changes.
 
 Back to [Layout#Grid](layout/#grid).
 
 ```html
-<div class="grid doc-grid-demo">
+<div class="grid-2 md-grid-4 lg-grid-6">
   <div>One</div>
   <div>...</div>
   <div>Twenty</div>
@@ -15,7 +15,7 @@ Back to [Layout#Grid](layout/#grid).
 
 <div class="doc-demo">
   <div class="doc-demo-body">
-    <div class="grid doc-grid-demo">
+    <div class="grid-2 md-grid-4 lg-grid-6 pretty-children">
       <div>One</div>
       <div>Two</div>
       <div>Three</div>

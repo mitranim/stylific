@@ -7,9 +7,9 @@
  *   </div>
  *
  * By default, jumbo content is pushed to the bottom. This can be changed with
- * a layout property:
+ * a layout class:
  *
- *   <div class="sf-jumbo layout-start" style="background-image: url(...)">
+ *   <div class="sf-jumbo col-start-stretch" style="background-image: url(...)">
  *     ...
  *   </div>
  *

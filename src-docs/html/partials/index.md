@@ -18,7 +18,7 @@ In many ways this is similar to [Bootstrap](http://getbootstrap.com), with a few
 differences:
 * typographic units (`rem` and `em`) instead of `px`
 * flexbox-based layouts
-* [themes](themes/) are universal instead of varying per-component
+* [colour classes](themes/) are universal instead of varying per-component
 * no jQuery dependency, extremely lean JavaScript
 
 Prior to version 0.7.0, stylific used custom tag names and attributes for most

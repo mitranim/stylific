@@ -135,6 +135,7 @@ function wrapAction (callback, action) {
 /**
  * Click listeners.
  */
+
 document.addEventListener('click', function (event) {
   let elem = event.target
   if (!(elem instanceof HTMLElement)) return
@@ -257,8 +258,9 @@ document.addEventListener('click', function (event) {
 /**
  * Key listeners.
  */
+
+// Closes modals on Esc.
 document.addEventListener('keydown', function (event) {
-  // Close modals on Esc.
   if (event.keyCode === 27) {
     [].slice.call(document.querySelectorAll('.sf-modal.active')).forEach(elem => {
       stopEvent(event)
@@ -270,12 +272,14 @@ document.addEventListener('keydown', function (event) {
 /**
  * Tooltip-related listeners.
  */
+
 // [data-sf-tooltip][data-sf-trigger~=focus]  ->  show
 document.addEventListener('focus', function (event) {
   const elem = event.target
   if (elem instanceof HTMLElement) {
     const parent = elem.parentElement
-    if (parent && hasAttr(parent, 'data-sf-trigger') && ~getAttr(parent, 'data-sf-trigger').indexOf('focus')) {
+    if (parent && hasAttr(parent, 'data-sf-trigger') &&
+        ~getAttr(parent, 'data-sf-trigger').indexOf('focus')) {
       addClass(parent, 'sf-tooltip-visible')
     }
   }
@@ -286,7 +290,8 @@ document.addEventListener('blur', function (event) {
   const elem = event.target
   if (elem instanceof HTMLElement) {
     const parent = elem.parentElement
-    if (parent && hasAttr(parent, 'data-sf-trigger') && ~getAttr(parent, 'data-sf-trigger').indexOf('focus')) {
+    if (parent && hasAttr(parent, 'data-sf-trigger') &&
+        ~getAttr(parent, 'data-sf-trigger').indexOf('focus')) {
       removeClass(parent, 'sf-tooltip-visible')
     }
   }
@@ -295,6 +300,7 @@ document.addEventListener('blur', function (event) {
 /**
  * Scroll-related listeners.
  */
+
 // Prevents scroll from spilling outside certain elements.
 document.addEventListener('wheel', function (event) {
   let elem = event.target
@@ -309,9 +315,7 @@ document.addEventListener('wheel', function (event) {
 
 /** ****************************** Utilities *******************************/
 
-/**
- * Shortcuts for better minification. Shave off a few hundred bytes.
- */
+// Shortcuts for better minification. Help shave off a few hundred bytes.
 function hasAttr (elem, name) {
   return elem.hasAttribute(name)
 }
@@ -386,10 +390,8 @@ function openModal (elem, done) {
   // Add a close button if missing.
   const body = elem.querySelector('.sf-modal-body')
   if (body && !find(body.children, child => hasClass(child, 'sf-modal-close'))) {
-    const button = document.createElement('button')
-    addClass(button, 'sf-modal-close')
-    setAttr(button, 'data-sf-close-modal', '')
-    body.insertBefore(button, body.firstChild)
+    body.insertAdjacentHTML('afterBegin',
+      `<button class="sf-modal-close" data-sf-close-modal></button>`)
   }
   addClass(elem, 'active')
   runAfterTransitions(elem, done)
@@ -498,8 +500,9 @@ function reachedBottom (elem) {
   return Math.abs(delta) < 3
 }
 
-// IE compat: IE doesn't support dispatching events created with constructors,
-// at least not for all types of nodes. In case you didn't know, IE SUCKS.
+// IE compat: in order to dispatch an event on `document` (and possibly on some
+// other elements), the event has to be created with `createEvent` and not
+// through a constructor. In case you didn't know, IE SUCKS.
 function createEvent (name) {
   const event = document.createEvent('Event')
   event.initEvent(name, true, true)

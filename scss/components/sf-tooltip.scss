@@ -93,7 +93,7 @@
 
     // Counteract inherited font styles, if any.
     font-style: normal;
-    font-weight: normal;
+    font-weight: $sf-font-weight;
   }
 
   // Version with scaling font size.

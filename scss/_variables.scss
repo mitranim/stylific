@@ -1,18 +1,13 @@
 /********************************** General **********************************/
 
-/**
- * Credit:
- * https://github.com/angular/material/blob/v0.10.0/src/core/style/variables.scss
- */
-$sf-layout-breakpoint-sm: 600px !default;
-$sf-layout-breakpoint-md: 960px !default;
-$sf-layout-breakpoint-lg: 1200px !default;
+$sf-breakpoint-sm: 600px !default;
+$sf-breakpoint-md: 960px !default;
+$sf-breakpoint-lg: 1200px !default;
 
 // Standard border radius.
 $sf-border-radius: 0.2rem !default;
 
-// Z-indices used for absolutely positioned elements. Grouped for easier
-// bookkeeping.
+// Z-indices used for absolutely positioned elements. Grouped for easier bookkeeping.
 $sf-z-index-navbar:   1000 !default;
 $sf-z-index-modal:    1100 !default;
 $sf-z-index-dropdown: 1200 !default;
@@ -60,15 +55,15 @@ $sf-color-overlay: rgba($sf-color-umbra, 0.4) !default;
 
 // Maximum website width. This is used exclusively for max-width, and may be set
 // to none to let the website stretch across any display.
-$sf-body-max-width: $sf-layout-breakpoint-md !default;
+$sf-body-max-width: $sf-breakpoint-md !default;
 
 /******************************** mixins.scss ********************************/
 
 $sf-transition-duration: 0.2s !default;
 $sf-transition-timing-function: ease !default;
 
-$sf-focus-indicator-color: rgba(map-get($sf-color-map-primary, default), 0.5);
-$sf-focus-indicator-color-inverse: rgba($sf-color-background, 0.5);
+$sf-focus-indicator-color: rgba(map-get($sf-color-map-primary, default), 0.4);
+$sf-focus-indicator-color-inverse: rgba($sf-color-background, 0.4);
 
 // Shadow styles used for :focus and :active indicators.
 $sf-focus-indicator: 0 0 0 1px $sf-focus-indicator-color;
@@ -76,10 +71,15 @@ $sf-focus-indicator-inverse: 0 0 0 1px $sf-focus-indicator-color-inverse;
 
 /****************************** typography.scss ******************************/
 
-// Font families.
-$sf-font-family-sans-serif: Helvetica Neue, Verdana, sans-serif !default;
-$sf-font-family-serif:      Optima, Georgia, serif !default;
-$sf-font-family-monospace:  Menlo, Andale Mono, Monaco, Consolas, monospace !default;
+/**
+ * Font families.
+ */
+// Default OS X fonts > default Windows font > fallback.
+$sf-font-family-sans-serif: San Francisco, Helvetica Neue, Segoe UI, Verdana, sans-serif !default;
+// Fancy sans-serif > tolerable serif > fallback.
+$sf-font-family-serif: Optima, Georgia, serif !default;
+// Default OS X monospace > old OS X monospace > Windows monospace > fallback.
+$sf-font-family-monospace: Menlo, Monaco, Consolas, monospace !default;
 
 // rem sizing for the <html> element. The common baseline is 12pt = 16px = 1em.
 // Must be an absolute unit like `px` or `pt`.
@@ -97,7 +97,11 @@ $sf-font-size-larger: 1.25em;
 // independent of the inherited font size.
 $sf-space: 1rem !default;
 
+// By default, we slightly space out lines.
 $sf-line-height: 1.4 !default;
+
+// By default, we use normal font weight.
+$sf-font-weight: normal !default;
 
 /****************************** sf-navbar.scss *******************************/
 

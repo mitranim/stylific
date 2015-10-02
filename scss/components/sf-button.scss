@@ -38,8 +38,8 @@ button {
 
   // A bit of skeuomorphism.
   @include sf-shadow(0 0.1rem 0.3rem -1px rgba(5, 5, 5, 0.5), $indicate-focus: true);
-  // Flatten when depressed.
-  &:active {
+  // Flatten when depressed or permanently activated.
+  &:active, &.active {
     @include sf-focus-indicator;
   }
   // Flatten when disabled.
@@ -56,9 +56,9 @@ button {
   // Animate style changes.
   @include sf-transitions(all);
 
-  // Treat as interactive too.
-  @include sf-register-interactive-selector;
+  // Indicate interactivity.
   cursor: pointer;
+  @include sf-register-interactive-selector;
 }
 
 // Flat version.

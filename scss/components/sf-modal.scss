@@ -189,12 +189,16 @@
   }
 
   // Cosmetic.
-  font-size: 1rem;
+  font-size: $sf-font-size-small;
   cursor: pointer;
 
   // Default icon.
-  &:empty::after {
-    content: '␛';
+  &:empty {
+    padding: 0 $sf-space / 4;
+    font-size: $sf-font-size-large;
+    &::after {
+      content: '␛';
+    }
   }
 
   @include sf-transitions(all);

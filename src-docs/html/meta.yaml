@@ -2,11 +2,14 @@ files:
 
 - name:  index
 
+- name:  components
+  title: components
+
 - name:  layout
   title: layout
 
 - name:  themes
   title: themes
 
-- name:  components
-  title: components
+- name:  javascript
+  title: javascript

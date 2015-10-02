@@ -12,173 +12,461 @@
 
 # Overview
 
-stylific's layout system is based on flexbox. Prior to 0.7.0, it used
-attributes; now it uses classes.
+stylific is very flexbox-centric. It uses flexbox for built-in components and
+provides a bunch of classes that serve as shortcuts to useful combinations of
+flex properties.
 
-The `.layout-*` classes define container properties, and the `.flex-*` classes
-define child properties. The `.grid-*` classes define both.
+In case you're unfamiliar with flexbox, read this
+[wonderful introduction](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+on CSS Tricks. In short, a _flex container_ is similar to a block, but has
+extremely rich control over its inner layout. A _flex item_, or flex child (its
+immediate descendant) has rich control over its dimensions inside the flex parent.
+
+stylific has three groups of layout classes: for containers, children, and
+grids. They're defined in
+[`layout.scss`](https://github.com/Mitranim/stylific/tree/master/scss/layout.scss).
+
 
 # Container
 
-Container properties are defined with the `.layout-*` classes. They affect
-different aspects of the layout. See the full reference in
-[`layout.scss`](https://github.com/Mitranim/stylific/tree/master/scss/layout.scss).
+<div class="sf-collapse">
+  <div class="sf-collapse-head theme-accent">
+    <span class="sf-icon-info-circle inline flex-none" style="margin-right: 0.75rem"></span>
+    <p>Breaking changes in `0.13.0`. Click for migration guide.</p>
+  </div>
+  <div class="sf-collapse-body border border-accent">
+    <ul>
+      <li>
+        <span>Replace groups of `layout-*` classes with compound classes `row-*-*` or `col-*-*`. Example:</span>
+        <ul>
+          <li>
+            `class="layout-row layout-space-between layout-cross-center"` → `class="row-between-center"`
+          </li>
+        </ul>
+      </li>
+      <li>
+        <span>Replace media-aware classes `layout-<size>-*` with `<size>-row-*-*` or `<size>-col-*-*`. Example:</span>
+        <ul>
+          <li>
+            `class="layout-sm-column layout-md-row"` → `class="sm-col-start-stretch md-row-between-stretch"`
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+
+Container classes define flex container properties. Here's an example:
 
 ```html
-<div class="layout-row">...</div>
-<div class="layout-column">...</div>
-```
-
-Each class has several media-aware versions:
-
-```scss
-.layout-*     // baseline (no @media)
-.layout-sm-*  // small displays
-.layout-md-*  // medium displays and up
-.layout-lg-*  // large displays and up
-```
-
-To control child alignment on the main axis (usually horizontal), use one of the
-whitespace flags (`justify-content` in flexbox terms):
-
-```html
-<div class="layout-row layout-space-between">
-  <button>left</button>
-  <button>center</button>
-  <button>right</button>
+<div class="row-between-center" style="height: 8em">
+  <div>I'm centered on the left!</div>
+  <div>I'm centered on the right!</div>
 </div>
 ```
 
 <div class="doc-demo">
   <div class="doc-demo-body">
-    <div class="layout-row layout-space-between">
-      <button>left</button>
-      <button>center</button>
-      <button>right</button>
+    <div class="row-between-center pretty-children" style="height: 8em">
+      <div>I'm centered on the left!</div>
+      <div>I'm centered on the right!</div>
     </div>
   </div>
 </div>
 
-To control child alignment on the cross axis (usually vertical), use one of the
-cross-alignment flags (`align-items` in flexbox terms):
+There are 40 container classes:
+
+<table class="doc-table" style="width: 100%">
+  <thead>
+    <tr>
+      <th class="row-between-center" style="margin-right: -1px; margin-bottom: -1px">
+        <span>main ↓</span>
+        <span>cross →</span>
+      </th>
+      <th>`*-*-start`</th>
+      <th>`*-*-center`</th>
+      <th>`*-*-end`</th>
+      <th>`*-*-stretch`</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`row-start-*`</td>
+      <td>`.row-start-start`</td>
+      <td>`.row-start-center`</td>
+      <td>`.row-start-end`</td>
+      <td>`.row-start-stretch`</td>
+    </tr>
+    <tr>
+      <td>`row-center-*`</td>
+      <td>`.row-center-start`</td>
+      <td>`.row-center-center`</td>
+      <td>`.row-center-end`</td>
+      <td>`.row-center-stretch`</td>
+    </tr>
+    <tr>
+      <td>`row-end-*`</td>
+      <td>`.row-end-start`</td>
+      <td>`.row-end-center`</td>
+      <td>`.row-end-end`</td>
+      <td>`.row-end-stretch`</td>
+    </tr>
+    <tr>
+      <td>`row-around-*`</td>
+      <td>`.row-around-start`</td>
+      <td>`.row-around-center`</td>
+      <td>`.row-around-end`</td>
+      <td>`.row-around-stretch`</td>
+    </tr>
+    <tr>
+      <td>`row-between-*`</td>
+      <td>`.row-between-start`</td>
+      <td>`.row-between-center`</td>
+      <td>`.row-between-end`</td>
+      <td>`.row-between-stretch`</td>
+    </tr>
+    <tr>
+      <td>`col-start-*`</td>
+      <td>`.col-start-start`</td>
+      <td>`.col-start-center`</td>
+      <td>`.col-start-end`</td>
+      <td>`.col-start-stretch`</td>
+    </tr>
+    <tr>
+      <td>`col-center-*`</td>
+      <td>`.col-center-start`</td>
+      <td>`.col-center-center`</td>
+      <td>`.col-center-end`</td>
+      <td>`.col-center-stretch`</td>
+    </tr>
+    <tr>
+      <td>`col-end-*`</td>
+      <td>`.col-end-start`</td>
+      <td>`.col-end-center`</td>
+      <td>`.col-end-end`</td>
+      <td>`.col-end-stretch`</td>
+    </tr>
+    <tr>
+      <td>`col-around-*`</td>
+      <td>`.col-around-start`</td>
+      <td>`.col-around-center`</td>
+      <td>`.col-around-end`</td>
+      <td>`.col-around-stretch`</td>
+    </tr>
+    <tr>
+      <td>`col-between-*`</td>
+      <td>`.col-between-start`</td>
+      <td>`.col-between-center`</td>
+      <td>`.col-between-end`</td>
+      <td>`.col-between-stretch`</td>
+    </tr>
+  </tbody>
+</table>
+
+They're formed from combinations of three properties:
+
+```scss
+<direction>-<main>-<cross>
+```
+
+* `direction` — direction of flex container (row or column)
+* `main` — child alignment on main axis (⇄ in a row container,
+  ⇅ in a column container)
+* `cross` — child alignment on cross axis (⇅ in a row container,
+  ⇄ in a column container)
+
+Rundown of the corresponding flex rules:
+
+```scss
+// Direction
+.row-*-*     {display: flex; flex-direction: row;}
+.col-*-*     {display: flex; flex-direction: column;}
+
+// Child alignment on main axis
+.*-start-*   {justify-content: flex-start;}
+.*-center-*  {justify-content: center;}
+.*-end-*     {justify-content: flex-end;}
+.*-between-* {justify-content: space-around;}
+.*-around-*  {justify-content: space-between;}
+
+// Child alignment on cross axis
+.*-*-start   {align-items: flex-start;}
+.*-*-center  {align-items: center;}
+.*-*-end     {align-items: flex-end;}
+.*-*-stretch {align-items: stretch;}
+```
+
+## Examples
+
+To control flow direction, use the `<direction>-*-*` property. It can be `row`
+or `column`:
 
 ```html
-<div class="layout-row layout-cross-start" style="min-height: 6em">
-  <button>top</button>
+<div class="row-between-start">
+  <div>first in row</div>
+  <div>second in row</div>
+  <div>third in row</div>
 </div>
-<div class="layout-row layout-cross-center" style="min-height: 6em">
-  <button>center</button>
-</div>
-<div class="layout-row layout-cross-end" style="min-height: 6em">
-  <button>bottom</button>
+
+<div class="col-start-start">
+  <div>first in col</div>
+  <div>second in col</div>
+  <div>third in col</div>
 </div>
 ```
 
 <div class="doc-demo">
-  <div class="doc-demo-body layout-row layout-space-between">
-    <div class="layout-row layout-cross-start" style="min-height: 6em">
-      <button>top</button>
+  <div class="doc-demo-body">
+    <div class="row-between-start pretty-children">
+      <div>first in row</div>
+      <div>second in row</div>
+      <div>third in row</div>
     </div>
-    <div class="layout-row layout-cross-center" style="min-height: 6em">
-      <button>center</button>
-    </div>
-    <div class="layout-row layout-cross-end" style="min-height: 6em">
-      <button>bottom</button>
+    <div class="col-start-start pretty-children">
+      <div>first in col</div>
+      <div>second in col</div>
+      <div>third in col</div>
     </div>
   </div>
 </div>
 
-Other options are listed in
-[`layout.scss`](https://github.com/Mitranim/stylific/tree/master/scss/layout.scss).
+To control child alignment on the main axis, use the `*-<main>-*` property. Here
+it's `between`, which causes the children to be spaced out:
+
+```html
+<div class="row-between-center">
+  <div>left</div>
+  <div>center</div>
+  <div>right</div>
+</div>
+```
+
+<div class="doc-demo">
+  <div class="doc-demo-body">
+    <div class="row-between-center pretty-children">
+      <div>left</div>
+      <div>center</div>
+      <div>right</div>
+    </div>
+  </div>
+</div>
+
+To control child alignment on the cross axis, use the `*-*-<cross>` property.
+Here it's set to different values on different containers:
+
+```html
+<div class="row-center-start" style="min-height: 6em">
+  <div>top</div>
+</div>
+<div class="row-center-center" style="min-height: 6em">
+  <div>center</div>
+</div>
+<div class="row-center-end" style="min-height: 6em">
+  <div>bottom</div>
+</div>
+```
+
+<div class="doc-demo">
+  <div class="doc-demo-body row-between-stretch">
+    <div class="row-center-start pretty-children" style="min-height: 6em">
+      <div>top</div>
+    </div>
+    <div class="row-center-center pretty-children" style="min-height: 6em">
+      <div>center</div>
+    </div>
+    <div class="row-center-end pretty-children" style="min-height: 6em">
+      <div>bottom</div>
+    </div>
+  </div>
+</div>
+
+## Media-aware containers
+
+Each class has several media-aware versions:
+
+```scss
+.*-*-*     // all displays (no @media)
+.sm-*-*-*  // small displays only
+.md-*-*-*  // medium displays and up
+.lg-*-*-*  // large displays and up
+```
+
+Example:
+
+```html
+<div class="col-center-stretch md-row-center-stretch lg-row-between-stretch">
+  <div>first</div>
+  <div>second</div>
+  <div>third</div>
+</div>
+```
+
+Resize the screen to see the children rearranged.
+
+<div class="doc-demo">
+  <div class="doc-demo-body">
+    <div class="pretty-children col-center-stretch md-row-center-stretch lg-row-between-stretch">
+      <div>first</div>
+      <div>second</div>
+      <div>third</div>
+    </div>
+  </div>
+</div>
 
 # Child
 
-Child properties are defined with the `.flex-*` classes. See the full reference in
-[`layout.scss`](https://github.com/Mitranim/stylific/tree/master/scss/layout.scss).
+<div class="sf-collapse">
+  <div class="sf-collapse-head theme-accent">
+    <span class="sf-icon-info-circle inline flex-none" style="margin-right: 0.75rem"></span>
+    <p>Breaking changes in `0.13.0`. Click for migration guide.</p>
+  </div>
+  <div class="sf-collapse-body border border-accent">
+    <ul>
+      <li>
+        <span>Replace `flex-<align>` classes with `self-<align>`:</span>
+        <ul>
+          <li>`class="flex-start"` → `class="self-start"`</li>
+          <li>`class="flex-center"` → `class="self-center"`</li>
+          <li>`class="flex-end"` → `class="self-end"`</li>
+          <li>`class="flex-stretch"` → `class="self-stretch"`</li>
+        </ul>
+      </li>
+      <li>
+        <span>Replace `flex-order-N` classes with `order-N`:</span>
+        <ul>
+          <li>`class="flex-order-1"` → `class="order-1"`</li>
+        </ul>
+      </li>
+      <li>
+        <span>Replace media-aware classes `flex-<size>-*` with `<size>-flex-*`, `<size>-self-*`, or `<size>-order-N`:</span>
+        <ul>
+          <li>
+            `class="flex-sm-none flex-sm-stretch flex-sm-order-2"` → `class="sm-flex-none sm-self-stretch sm-order-2"`
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+
+Child properties are defined with the `.flex-*`, `.self-*` and `.order-*` classes.
+
+To control child stretchiness across the main axis, use `.flex-N`, where N
+ranges from 1 to 12. In flexbox terms, this corresponds to `{flex: N}`.
+You can also use `flex-none` to make the element rigid.
+
+```html
+<div class="row-between-center space-out-h">
+   <div class="flex-1">small</div>
+   <div class="flex-6">huge</div>
+   <div class="flex-1">small</div>
+</div>
+```
+
+<div class="doc-demo">
+  <div class="doc-demo-body">
+    <div class="row-between-center pretty-children space-out-h">
+      <div class="flex-1">small</div>
+      <div class="flex-6">huge</div>
+      <div class="flex-1">small</div>
+    </div>
+  </div>
+</div>
+
+To control child order, use `.order-N`, where N ranges from -1 to 12.
+In flexbox terms, this corresponds to `{order: N}`.
+
+```html
+<div class="row-around-center">
+  <div class="order-2">third (order: 2)</div>
+  <div class="order-1">second (order: 1)</div>
+  <div class="order--1">first (order: -1)</div>
+</div>
+```
+
+<div class="doc-demo">
+  <div class="doc-demo-body">
+    <div class="row-around-center pretty-children">
+      <div class="order-2">third (order: 2)</div>
+      <div class="order-1">second (order: 1)</div>
+      <div class="order--1">first (order: -1)</div>
+    </div>
+  </div>
+</div>
+
+To control child self-alignment, use one of the `.self-*` flags. In
+flexbox terms, this corresponds to `{align-self: <align>}`.
+
+```html
+<div class="row-between-center" style="min-height: 6em">
+  <div class="self-stretch">stretch</div>
+  <div class="self-start">top</div>
+  <div class="self-center">center</div>
+  <div class="self-end">bottom</div>
+</div>
+```
+
+<div class="doc-demo">
+  <div class="doc-demo-body">
+    <div class="row-between-center pretty-children" style="min-height: 6em">
+      <div class="self-stretch">stretch</div>
+      <div class="self-start">top</div>
+      <div class="self-center">center</div>
+      <div class="self-end">bottom</div>
+    </div>
+  </div>
+</div>
+
+## Media-aware children
 
 Each class has several media-aware versions:
 
 ```scss
-.flex-*     // baseline (no @media)
-.flex-sm-*  // small displays
-.flex-md-*  // medium displays and up
-.flex-lg-*  // large displays and up
+.flex-*   // all displays (no @media)
+.self-*   // all displays (no @media)
+.order-N  // all displays (no @media)
+
+.sm-*-*   // small displays only
+.md-*-*   // medium displays and up
+.lg-*-*   // large displays and up
 ```
-
-To control child stretchiness across the main axis, use `.flex-N`, where N
-ranges from 1 to 12. In flexbox terms, this corresponds to `flex: N`.
-
-```html
-<div class="layout-row space-out-h">
-   <button class="flex-1">small</button>
-   <button class="flex-6">huge</button>
-   <button class="flex-1">small</button>
-</div>
-```
-
-<div class="doc-demo">
-  <div class="doc-demo-body">
-    <div class="layout-row space-out-h">
-      <button class="flex-1">small</button>
-      <button class="flex-6">huge</button>
-      <button class="flex-1">small</button>
-    </div>
-  </div>
-</div>
-
-To control child order, use `.flex-order-N`, where N ranges from -1 to 12.
-In flexbox terms, this corresponds to `order: N`.
-
-```html
-<div class="layout-row layout-space-around">
-  <button class="flex-order-2">third (order: 2)</button>
-  <button class="flex-order-1">second (order: 1)</button>
-  <button class="flex-order--1">first (order: -1)</button>
-</div>
-```
-
-<div class="doc-demo">
-  <div class="doc-demo-body">
-    <div class="layout-row layout-space-around">
-      <button class="flex-order-2">third (order: 2)</button>
-      <button class="flex-order-1">second (order: 1)</button>
-      <button class="flex-order--1">first (order: -1)</button>
-    </div>
-  </div>
-</div>
-
-To control child self-alignment, use one of the cross-axis flags. In flexbox
-terms, this corresponds to `align-self`.
-
-```html
-<div class="layout-row layout-space-between" style="min-height: 6em">
-  <button class="flex-stretch">stretch</button>
-  <button class="flex-start">top</button>
-  <button class="flex-center">center</button>
-  <button class="flex-end">bottom</button>
-</div>
-```
-
-<div class="doc-demo">
-  <div class="doc-demo-body">
-    <div class="layout-row layout-space-between" style="min-height: 6em">
-      <button class="flex-stretch">stretch</button>
-      <button class="flex-start">top</button>
-      <button class="flex-center">center</button>
-      <button class="flex-end">bottom</button>
-    </div>
-  </div>
-</div>
 
 # Grid
 
+<div class="sf-collapse">
+  <div class="sf-collapse-head theme-accent">
+    <span class="sf-icon-info-circle inline flex-none" style="margin-right: 0.75rem"></span>
+    <p>Breaking changes in `0.13.0`. Click for migration guide.</p>
+  </div>
+  <div class="sf-collapse-body border border-accent">
+    <ul>
+      <li>
+        <span>The `grid` class with default breakpoints has been removed. Make sure to specify `grid-N` explicitly:</span>
+        <ul>
+          <li>
+            `class="grid"` → `class="grid-2 grid-md-4 grid-lg-6"`
+          </li>
+        </ul>
+      </li>
+      <li>
+        <span>Replace media-aware classes `grid-<size>-*` with `<size>-grid-*`:</span>
+        <ul>
+          <li>
+            `class="grid-sm-1"` → `class="sm-grid-1"`
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+
 It's convenient to have a shortcut to a media-responsive flex container that
-wraps its items on different breakpoints. `.grid` is a primitive version of that.
+wraps its items on different breakpoints. `.grid-*` is a primitive version of that.
 Open this on a [separate page](examples/grid-demo/) to resize the page more
 easily.
 
 ```html
-<div class="grid doc-grid-demo">
+<div class="grid-2 md-grid-4 lg-grid-6">
   <div>One</div>
   <div>...</div>
   <div>Twenty</div>
@@ -187,7 +475,7 @@ easily.
 
 <div class="doc-demo">
   <div class="doc-demo-body">
-    <div class="grid doc-grid-demo">
+    <div class="grid-2 md-grid-4 lg-grid-6 pretty-children">
       <div>One</div>
       <div>Two</div>
       <div>Three</div>
@@ -211,15 +499,6 @@ easily.
     </div>
   </div>
 </div>
-
-It comes in several media-aware flavours:
-
-```scss
-.grid-*     // baseline (no @media)
-.grid-sm-*  // small displays
-.grid-md-*  // medium displays and up
-.grid-lg-*  // large displays and up
-```
 
 Each version of the class takes a numeric option `N` which specifies the number
 of children per line:
@@ -233,11 +512,11 @@ of children per line:
 .grid-6
 ```
 
-Example of using these classes together to tune the breakpoints for your
-specific needs:
+Use these classes together with media prefixes (see below) to tune the
+breakpoints for your specific needs:
 
 ```html
-<div class="grid-sm-1 grid-md-2 grid-lg-3 doc-grid-demo">
+<div class="grid-1 md-grid-2 lg-grid-3">
   <div>One</div>
   <div>...</div>
   <div>Twenty</div>
@@ -246,7 +525,7 @@ specific needs:
 
 <div class="doc-demo">
   <div class="doc-demo-body">
-    <div class="grid-sm-1 grid-md-2 grid-lg-3 doc-grid-demo">
+    <div class="grid-1 md-grid-2 lg-grid-3 pretty-children">
       <div>One</div>
       <div>Two</div>
       <div>Three</div>
@@ -271,6 +550,17 @@ specific needs:
   </div>
 </div>
 
+## Media-aware grids
+
+Each class has several media-aware versions:
+
+```scss
+.grid-N     // all displays (no @media)
+.sm-grid-N  // small displays only
+.md-grid-N  // medium displays and up
+.lg-grid-N  // large displays and up
+```
+
 # Whitespace
 
 stylific defines sensible whitespace defaults and a few helper classes.
@@ -283,17 +573,17 @@ First of all, stylific resets all margins and padding to 0 for all elements.
 Whitespace is added back in a selective fashion, using:
 
 1. Container padding.
-2. Spaced-out container children.
+2. Margins between container's children.
 
 Typographically meaningful content like headers and paragraphs needs whitespace
-all around. It's added by combining container padding with margins between
-children. By default, this is included into `sf-article` and some other stylific
-components. This combination of properties is also available as the `.container`
-class (see below).
+all around it. It's achieved by combining container padding with margins between
+children. By default, this styling is applied to `sf-article` and some other
+stylific components. This combination of properties is also available as the
+`.container` class (see below).
 
 ## Classes
 
-These global helper classes should be used for manual whitespace adjustment.
+These global helper classes are useful for manual whitespace adjustment.
 
 ```scss
 .pad          // default padding ($sf-space == 1rem)

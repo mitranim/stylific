@@ -10,8 +10,9 @@ What's good:
   together.
 * Layouts are based on flexbox and don't use floats.
 
-This is written with [Sass](http://sass-lang.com). Sass is required to take
-full advantage of the library by using variables, extends, and other features.
+The library is written with [Sass](http://sass-lang.com). The best way to use it
+is by importing into your Sass. This lets you configure stylific with variables,
+use its mixins, derive styles with `@extend`, and so on.
 
 ## Installation
 

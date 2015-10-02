@@ -51,7 +51,7 @@ This whole page is an example, but here's a smaller one.
 ```
 
 <div class="doc-demo">
-  <div class="doc-demo-body nopad layout-column layout-cross-stretch">
+  <div class="doc-demo-body nopad">
     <article>
       <div class="float-right small">
         <img src="images/square/script.jpg">
@@ -65,9 +65,9 @@ This whole page is an example, but here's a smaller one.
 
 # sf-collapse
 
-<div class="theme-accent layout-row layout-cross-center">
-  <span class="sf-icon-info-circle inline" style="margin: 1rem 0 1rem 1rem"></span>
-  <p class="pad">
+<div class="theme-accent row-start-center pad">
+  <span class="sf-icon-info-circle inline flex-none" style="margin-right: 0.75rem"></span>
+  <p>
     Breaking change in `0.12.0`: the toggle must have the `.sf-collapse-head`
     class, and is no longer required to be a `label`.
   </p>
@@ -79,8 +79,8 @@ This whole page is an example, but here's a smaller one.
 <div class="sf-collapse theme-text-primary">
   <div class="sf-collapse-head">Click me to toggle collapse</div>
   <div class="sf-collapse-body">
-    <h3>Header for the collapsed element</h3>
-    <p>Paragraph in the collapsed element</p>
+    <h3>Collapsed header</h3>
+    <p>Collapsed paragraph</p>
   </div>
 </div>
 ```
@@ -90,8 +90,8 @@ This whole page is an example, but here's a smaller one.
     <div class="sf-collapse theme-text-primary">
       <div class="sf-collapse-head">Click me to toggle collapse</div>
       <div class="sf-collapse-body">
-        <h3>Header for the collapsed element</h3>
-        <p>Paragraph in the collapsed element</p>
+        <h3>Collapsed header</h3>
+        <p>Collapsed paragraph</p>
       </div>
     </div>
   </div>
@@ -150,9 +150,9 @@ clicking anywhere outside of it by adding the `.sf-collapse-overlay` option:
 
 # sf-dropdown
 
-<div class="theme-accent layout-row layout-cross-center">
-  <span class="sf-icon-info-circle inline" style="margin: 1rem 0 1rem 1rem"></span>
-  <p class="pad">
+<div class="theme-accent row-start-center pad">
+  <span class="sf-icon-info-circle inline flex-none" style="margin-right: 0.75rem"></span>
+  <p>
     Breaking changes in `0.12.0`: the toggle must have the `.sf-dropdown-head`
     class, and is no longer required to be a `label`; `.sf-dropdown-list` has
     been renamed to `.sf-dropdown-body`.
@@ -240,9 +240,9 @@ The dropdown position may be changed to `top`, `right` or `left`:
 
 # sf-tabset
 
-<div class="theme-accent layout-row layout-cross-center">
-  <span class="sf-icon-info-circle inline" style="margin: 1rem 0 1rem 1rem"></span>
-  <p class="pad">
+<div class="theme-accent row-start-center pad">
+  <span class="sf-icon-info-circle inline flex-none" style="margin-right: 0.75rem"></span>
+  <p>
     Breaking changes in `0.12.0`: tab toggles must have the `.sf-tab-head`
     class, and are no longer required to be `label`s; the tab body class has
     been renamed from `.sf-tab` to `.sf-tab-body`.
@@ -352,9 +352,9 @@ ${$include('partials/modal-demo', $)}
 
 # sf-navbar
 
-<div class="theme-accent layout-row layout-cross-center">
-  <span class="sf-icon-info-circle inline" style="margin: 1rem 0 1rem 1rem"></span>
-  <p class="pad">
+<div class="theme-accent row-start-center pad">
+  <span class="sf-icon-info-circle inline flex-none" style="margin-right: 0.75rem"></span>
+  <p>
     Breaking change in `0.12.0`: the toggle must have the `.sf-navbar-toggle`
     class, and is no longer required to be a `label`.
   </p>
@@ -704,11 +704,11 @@ Condensed version for inlining buttons with inputs.
 ```html
 <label class="sf-label-row sf-label-dense">
   <input class="flex-6 theme-text-primary" placeholder="take the blue pill...">
-  <button class="flex-1 theme-primary layout-row layout-center">go</button>
+  <button class="flex-1 theme-primary row-center-center">go</button>
 </label>
 
 <label class="sf-label-row sf-label-dense">
-  <button class="flex-1 theme-warn layout-row layout-center">go</button>
+  <button class="flex-1 theme-warn row-center-center">go</button>
   <input class="flex-6 theme-text-warn" placeholder="or the red pill...">
 </label>
 ```
@@ -717,10 +717,10 @@ Condensed version for inlining buttons with inputs.
   <div class="doc-demo-body">
     <label class="sf-label-row sf-label-dense" style="width: 50%">
       <input class="flex-6 theme-text-primary" placeholder="take the blue pill...">
-      <button class="flex-1 theme-primary layout-row layout-center">go</button>
+      <button class="flex-1 theme-primary row-center-center">go</button>
     </label>
     <label class="sf-label-row sf-label-dense" style="width: 50%">
-      <button class="flex-1 theme-warn layout-row layout-center">go</button>
+      <button class="flex-1 theme-warn row-center-center">go</button>
       <input class="flex-6 theme-text-warn" placeholder="or the red pill...">
     </label>
   </div>
@@ -767,10 +767,10 @@ height.
   </div>
 </div>
 
-To reposition the children, simply add `.layout-start` or `.layout-center`.
+To reposition the children, simply add `.col-start-stretch` or `.col-center-stretch` (see [Layout](layout/)).
 
 ```html
-<div class="sf-jumbo layout-start" style="background-image: url(images/citadel-blue.jpg)">
+<div class="sf-jumbo col-start-stretch" style="background-image: url(images/citadel-blue.jpg)">
   <h1>I'm Commander Shepard</h1>
   <p>And this is my favourite store on the Citadel</p>
 </div>
@@ -778,7 +778,7 @@ To reposition the children, simply add `.layout-start` or `.layout-center`.
 
 <div class="doc-demo">
   <div class="doc-demo-body">
-    <div class="sf-jumbo layout-start" style="background-image: url(images/citadel-blue.jpg)">
+    <div class="sf-jumbo col-start-stretch" style="background-image: url(images/citadel-blue.jpg)">
       <h1>I'm Commander Shepard</h1>
       <p>And this is my favourite store on the Citadel</p>
     </div>
