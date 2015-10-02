@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>javascript | stylific</title>
+    <meta name="author" content="mitranim">
+    <meta name="description" content="stylific documentation">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <link rel="stylesheet" type="text/css" href="/stylific/styles/docs.css">
+    <base href="/stylific/">
+    <link rel="icon" href="data:;base64,=">
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <div class="sf-navbar sf-navbar-fixed">
+  <!-- Links -->
+  <a  href="">Overview</a>
+  <a  href="components/">Components</a>
+  <a  href="layout/">Layout</a>
+
+  <!-- Collapse breakpoint -->
+  <div class="sf-navbar-toggle"></div>
+
+  <!-- Collapsable children -->
+  <a  href="themes/">Themes</a>
+  <a class="active" href="javascript/">JavaScript</a>
+  <div class="sf-dropdown nopad">
+    <div class="sf-dropdown-head row-center-center">Examples</div>
+    <div class="sf-dropdown-body text-left">
+      
+        <a  href="examples/footer/">footer demo</a>
+      
+        <a  href="examples/grid-demo/">grid demo</a>
+      
+        <a  href="examples/navbar-demo/">navbar demo</a>
+      
+        <a  href="examples/modal-demo/">modal demo</a>
+      
+    </div>
+  </div>
+</div>
+
+
+    <!-- Presentation jumbo -->
+    <div class="sf-jumbo" style="height: auto">
+      <h1 class="row-between-center">
+        javascript
+        <a href="https://github.com/Mitranim/stylific" target="_blank" class="row-center-center">
+          <div class="sf-icon-github-light pop">
+            <svg width="2048" height="2048" viewBox="0 0 2048 2048" xmlns="http://www.w3.org/2000/svg"><path d="M1792 1024q0 251-146.5 451.5t-378.5 277.5q-27 5-39.5-7t-12.5-30v-211q0-97-52-142 57-6 102.5-18t94-39 81-66.5 53-105 20.5-150.5q0-121-79-206 37-91-8-204-28-9-81 11t-92 44l-38 24q-93-26-192-26t-192 26q-16-11-42.5-27t-83.5-38.5-86-13.5q-44 113-7 204-79 85-79 206 0 85 20.5 150t52.5 105 80.5 67 94 39 102.5 18q-40 36-49 103-21 10-45 15t-57 5-65.5-21.5-55.5-62.5q-19-32-48.5-52t-49.5-24l-20-3q-21 0-29 4.5t-5 11.5 9 14 13 12l7 5q22 10 43.5 38t31.5 51l10 23q13 38 44 61.5t67 30 69.5 7 55.5-3.5l23-4q0 38 .5 89t.5 54q0 18-13 30t-40 7q-232-77-378.5-277.5t-146.5-451.5q0-209 103-385.5t279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"/></svg>
+          </div>
+        </a>
+      </h1>
+      
+    </div>
+
+    <!-- Site content -->
+    <article>
+      <!-- TOC -->
+<div class="sf-collapse doc-toc theme-text-accent">
+  <div class="sf-collapse-head active theme-accent"></div>
+  <div class="sf-collapse-body">
+    <a href="javascript/#overview">Overview</a>
+    <a href="javascript/#triggers">Triggers</a>
+    <a href="javascript/#programmatic-api">Programmatic API</a>
+  </div>
+</div>
+
+<h1 id="overview">Overview</h1>
+<p>Though mostly a CSS library, stylific has a tiny JavaScript file required for
+its interactive functionality. It can be controlled with trigger attributes
+<code>[data-sf-*]</code>. The library also exports a programmatic API that corresponds to
+clicking certain triggers.</p>
+<h1 id="triggers">Triggers</h1>
+<p>These triggers respond to click events. Adding the <code>[disabled]</code> attribute to the
+element stops the handler.</p>
+<h2 id="-data-sf-toggle-"><code>[data-sf-toggle]</code></h2>
+<p>Toggles <code>class=&quot;active&quot;</code> on self. Example:</p>
+<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">data-sf-toggle</span>&gt;</span>Toggles self when clicked<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+</code></pre>
+<div class="doc-demo">
+  <div class="doc-demo-body">
+    <button data-sf-toggle>Toggles self when clicked</button>
+  </div>
+</div>
+
+<p>It&#39;s used in the toggled version of <a href="components/#sf-dropdown"><code>sf-dropdown</code></a>.</p>
+<h2 id="-data-sf-toggle-siblings-"><code>[data-sf-toggle-siblings]</code></h2>
+<p>Adds <code>class=&quot;active&quot;</code> to self and removes it from all sibling elements. Useful
+for custom radio-style toggles. Example:</p>
+<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">data-sf-toggle-siblings</span>&gt;</span>first<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">data-sf-toggle-siblings</span>&gt;</span>second<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">data-sf-toggle-siblings</span>&gt;</span>third<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<div class="doc-demo">
+  <div class="doc-demo-body">
+    <button data-sf-toggle-siblings>first</button>
+    <button data-sf-toggle-siblings>second</button>
+    <button data-sf-toggle-siblings>third</button>
+  </div>
+</div>
+
+<h2 id="-data-sf-toggle-id-"><code>[data-sf-toggle-id]</code></h2>
+<p>Toggles <code>class=&quot;active&quot;</code> on the element targeted by <code>id</code>. This can be used for
+any element, but particularly useful for toggling
+<a href="components/#sf-modal"><code>sf-modal</code></a>:</p>
+<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">data-sf-toggle-id</span>=<span class="hljs-value">"demoModal"</span>&gt;</span>click to toggle modal<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"demoModal"</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-modal sf-modal-narrow"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-modal-body"</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- ... --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">data-sf-close-modal</span>&gt;</span>click to close<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<div class="doc-demo">
+  <div class="doc-demo-body">
+    <button data-sf-toggle-id="demoModal">click to toggle modal</button>
+
+    <div id="demoModal" class="sf-modal sf-modal-narrow">
+      <div class="sf-modal-body">
+        <h2>Count sheep &#39;till you drop</h2>
+        <p>🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑</p>
+        <button data-sf-close-modal>click to close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2 id="-data-sf-close-modal-"><code>[data-sf-close-modal]</code></h2>
+<p>Closes the nearest ancestor <code>.sf-modal</code>. See the example above.</p>
+<h2 id="-data-sf-no-scroll-spill-"><code>[data-sf-no-scroll-spill]</code></h2>
+<p>Don&#39;t you get annoyed when scrolling inside a small box and hitting top or
+bottom moves the viewport? You&#39;re in luck: this attribute prevents vertical
+scroll from spilling out.</p>
+<pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">data-sf-no-scroll-spill</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"height: 10em"</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- Long content to scroll through --&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<div class="doc-demo">
+  <div class="doc-demo-body">
+    <div class="space-out" data-sf-no-scroll-spill style="height: 10em">
+      <h3>Scrolling this text shouldn&#39;t move the viewport</h3>
+      <p>Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max brucks terribilem incessu zomby. The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus. Zonbi tattered for solum oculi eorum defunctis go lum cerebro. Nescio brains an Undead zombies. Sicut malus putrid voodoo horror. Nigh tofth eliv ingdead.</p>
+      <p>Cum horribilem walking dead resurgere de crazed sepulcris creaturis, zombie sicut de grave feeding iride et serpens. Pestilentia, shaun ofthe dead scythe animated corpses ipsa screams. Pestilentia est plague haec decaying ambulabat mortuos. Sicut zeder apathetic malus voodoo. Aenean a dolor plan et terror soulless vulnerum contagium accedunt, mortui iam vivam unlife. Qui tardius moveri, brid eof reanimator sed in magna copia sint terribiles undeath legionis. Alii missing oculis aliorum sicut serpere crabs nostram. Putridi braindead odores kill and infect, aere implent left four dead.</p>
+      <p>Lucio fulci tremor est dark vivos magna. Expansis creepy arm yof darkness ulnis witchcraft missing carnem armis Kirkman Moore and Adlard caeruleum in locis. Romero morbo Congress amarus in auras. Nihil horum sagittis tincidunt, zombie slack-jawed gelida survival portenta. The unleashed virus est, et iam zombie mortui ambulabunt super terram. Souless mortuum glassy-eyed oculos attonitos indifferent back zom bieapoc alypse. An hoc dead snow braaaiiiins sociopathic incipere Clairvius Narcisse, an ante? Is bello mundi z?</p>
+    </div>
+  </div>
+</div>
+
+<h2 id="-data-sf-noclick-"><code>[data-sf-noclick]</code></h2>
+<p>This is an anti-trigger. It causes stylific to ignore click events on the given
+element or its descendants. Useful if you want to put something with its own
+event handler (say, a button created with React) inside an element with a
+stylific trigger. Example:</p>
+<pre><code class="hljs lang-html"><span class="hljs-comment">&lt;!-- Large click target --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">data-sf-toggle-id</span>=<span class="hljs-value">"myModal"</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- Something smaller inside --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">data-sf-noclick</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- Something with its own listener --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">button</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<p>In this example, button clicks won&#39;t trigger the <code>[data-sf-toggle-id]</code>. Note
+that you don&#39;t need <code>[data-sf-noclick]</code> for nested stylific handlers; the
+&quot;inner&quot; handler automatically cancels the event. This is for combinations with
+non-stylific handlers.</p>
+<h1 id="programmatic-api">Programmatic API</h1>
+<p>The library exports a few methods that directly correspond to clicks on certain
+trigger attributes.</p>
+<p>If you&#39;re using modules with a CommonJS-compliant loader, import it like so:</p>
+<pre><code class="hljs lang-js"><span class="hljs-keyword">import</span> stylific <span class="hljs-keyword">from</span> <span class="hljs-string">'stylific'</span>
+stylific.closeAllModals()
+</code></pre>
+<p>If you&#39;re dumping script tags into your HTML, the library will assign the export
+to <code>window.stylific</code>:</p>
+<pre><code class="hljs lang-js"><span class="hljs-built_in">window</span>.stylific.closeAllModals()
+</code></pre>
+<p>Each method takes an optional callback argument. If you pass a function, it will
+be called when the CSS transitions caused by the method are finished. If you
+don&#39;t pass a callback, and the global <code>Promise</code> constructor is available, the
+method will return a promise that resolves when the CSS transitions are
+finished.</p>
+<p>Unlike trigger attributes, methods don&#39;t check for the <code>[disabled]</code> attribute.</p>
+<h2 id="-toggleid-"><code>toggleId()</code></h2>
+<p>TypeScript signature:</p>
+<pre><code class="hljs ">toggleId(<span class="hljs-string">id:</span> string, done?: Function): Promise|<span class="hljs-typename">void</span>
+</code></pre><p>Equivalent to clicking a <code>[data-sf-toggle-id]</code> pointing to the given id.</p>
+<h2 id="-toggleelem-"><code>toggleElem()</code></h2>
+<p>TypeScript signature:</p>
+<pre><code class="hljs ">toggleElem(<span class="hljs-string">elem:</span> HTMLElement, done?: Function): Promise|<span class="hljs-typename">void</span>
+</code></pre><p>Equivalent to clicking this element if it had the <code>[data-sf-toggle]</code> attribute.</p>
+<h2 id="-openmodal-"><code>openModal()</code></h2>
+<p>TypeScript signature:</p>
+<pre><code class="hljs ">openModal(<span class="hljs-string">elem:</span> HTMLElement, done?: Function): Promise|<span class="hljs-typename">void</span>
+</code></pre><p>Equivalent to toggling the given modal by clicking a <code>[data-sf-toggle-id]</code>
+pointing to it. Note that this doesn&#39;t check if the target is a <code>&lt;template&gt;</code>
+(see <a href="components/#cloning">why</a> you&#39;d use that). Use <code>toggleId</code> or <code>toggleElem</code>
+to target a <code>&lt;template&gt;</code> containing  a modal.</p>
+<h2 id="-closemodal-"><code>closeModal()</code></h2>
+<p>TypeScript signature:</p>
+<pre><code class="hljs ">closeModal(<span class="hljs-string">elem:</span> HTMLElement, done?: Function): Promise|<span class="hljs-typename">void</span>
+</code></pre><p>Equivalent to closing the given modal by clicking its overlay or the
+<code>[data-sf-close-modal]</code> button. If the modal is a clone, it&#39;s destroyed
+after the CSS transitions.</p>
+<h2 id="-closeallmodals-"><code>closeAllModals()</code></h2>
+<p>TypeScript signature:</p>
+<pre><code class="hljs ">closeAllModals(done?: <span class="hljs-built_in">Function</span>): <span class="hljs-built_in">Promise</span>|<span class="hljs-keyword">void</span>
+</code></pre><p>Equivalent to hitting <code>Esc</code> to close all modals. The callback, if any, will be
+executed right away, but the promise, if any, will resolve only after all modals
+have been closed.</p>
+
+    </article>
+
+    <!-- Footer -->
+    <div class="sf-footer">
+  <div class="sf-footer-body">
+    <div class="flex-1 row-start-center">
+      <span>
+        2015
+        <a href="http://mitranim.com" target="_blank" class="decorated">Mitranim</a>
+      </span>
+    </div>
+    <div class="flex-1 row-center-center">
+      <a class="row-center-center" href="https://github.com/Mitranim/stylific" target="_blank">
+        <div class="sf-icon-github inline" style="font-size: 2em">
+          <svg width="2048" height="2048" viewBox="0 0 2048 2048" xmlns="http://www.w3.org/2000/svg"><path d="M1792 1024q0 251-146.5 451.5t-378.5 277.5q-27 5-39.5-7t-12.5-30v-211q0-97-52-142 57-6 102.5-18t94-39 81-66.5 53-105 20.5-150.5q0-121-79-206 37-91-8-204-28-9-81 11t-92 44l-38 24q-93-26-192-26t-192 26q-16-11-42.5-27t-83.5-38.5-86-13.5q-44 113-7 204-79 85-79 206 0 85 20.5 150t52.5 105 80.5 67 94 39 102.5 18q-40 36-49 103-21 10-45 15t-57 5-65.5-21.5-55.5-62.5q-19-32-48.5-52t-49.5-24l-20-3q-21 0-29 4.5t-5 11.5 9 14 13 12l7 5q22 10 43.5 38t31.5 51l10 23q13 38 44 61.5t67 30 69.5 7 55.5-3.5l23-4q0 38 .5 89t.5 54q0 18-13 30t-40 7q-232-77-378.5-277.5t-146.5-451.5q0-209 103-385.5t279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"/></svg>
+        </div>
+        <span>Source at GitHub</span>
+      </a>
+    </div>
+    <div class="flex-1 row-end-center">
+      <button class="sf-icon-arrow-up pad" onclick="window.scrollTo(0, 0)"></button>
+    </div>
+  </div>
+</div>
+
+
+    <!-- Scripts -->
+    <script src="/stylific/scripts/stylific.js" async></script>
+    <script src="/stylific/scripts/simple-pjax.js" async
+            onload="simplePjax.scrollOffsetSelector = '.sf-navbar.sf-navbar-fixed';"></script>
+  </body>
+</html>

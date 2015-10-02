@@ -14,7 +14,7 @@
 
   <body>
     <!-- Navbar -->
-    <div class="sf-navbar">
+    <div class="sf-navbar sf-navbar-fixed">
   <!-- Links -->
   <a  href="">Overview</a>
   <a  href="components/">Components</a>
@@ -23,11 +23,11 @@
   <!-- Collapse breakpoint -->
   <div class="sf-navbar-toggle"></div>
 
-  <a  href="themes/">Themes</a>
-
   <!-- Collapsable children -->
+  <a  href="themes/">Themes</a>
+  <a  href="javascript/">JavaScript</a>
   <div class="sf-dropdown nopad">
-    <div class="sf-dropdown-head layout-row layout-center">Examples</div>
+    <div class="sf-dropdown-head row-center-center">Examples</div>
     <div class="sf-dropdown-body text-left">
       
         <a  href="examples/footer/">footer demo</a>
@@ -45,9 +45,9 @@
 
     <!-- Presentation jumbo -->
     <div class="sf-jumbo" style="height: auto">
-      <h1 class="layout-row layout-space-between">
+      <h1 class="row-between-center">
         navbar demo
-        <a href="https://github.com/Mitranim/stylific" target="_blank" class="layout-row layout-cross-center">
+        <a href="https://github.com/Mitranim/stylific" target="_blank" class="row-center-center">
           <div class="sf-icon-github-light pop">
             <svg width="2048" height="2048" viewBox="0 0 2048 2048" xmlns="http://www.w3.org/2000/svg"><path d="M1792 1024q0 251-146.5 451.5t-378.5 277.5q-27 5-39.5-7t-12.5-30v-211q0-97-52-142 57-6 102.5-18t94-39 81-66.5 53-105 20.5-150.5q0-121-79-206 37-91-8-204-28-9-81 11t-92 44l-38 24q-93-26-192-26t-192 26q-16-11-42.5-27t-83.5-38.5-86-13.5q-44 113-7 204-79 85-79 206 0 85 20.5 150t52.5 105 80.5 67 94 39 102.5 18q-40 36-49 103-21 10-45 15t-57 5-65.5-21.5-55.5-62.5q-19-32-48.5-52t-49.5-24l-20-3q-21 0-29 4.5t-5 11.5 9 14 13 12l7 5q22 10 43.5 38t31.5 51l10 23q13 38 44 61.5t67 30 69.5 7 55.5-3.5l23-4q0 38 .5 89t.5 54q0 18-13 30t-40 7q-232-77-378.5-277.5t-146.5-451.5q0-209 103-385.5t279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"/></svg>
           </div>
@@ -119,21 +119,21 @@ regardless of the viewport width.</p>
     <!-- Footer -->
     <div class="sf-footer">
   <div class="sf-footer-body">
-    <div class="flex-1 layout-column layout-cross-start">
+    <div class="flex-1 row-start-center">
       <span>
         2015
-        <a href="http://mitranim.com" target="_blank">Mitranim</a>
+        <a href="http://mitranim.com" target="_blank" class="decorated">Mitranim</a>
       </span>
     </div>
-    <div class="flex-1 layout-row layout-center layout-cross-center">
-      <a class="layout-row layout-center layout-cross-center" href="https://github.com/Mitranim/stylific" target="_blank">
+    <div class="flex-1 row-center-center">
+      <a class="row-center-center" href="https://github.com/Mitranim/stylific" target="_blank">
         <div class="sf-icon-github inline" style="font-size: 2em">
           <svg width="2048" height="2048" viewBox="0 0 2048 2048" xmlns="http://www.w3.org/2000/svg"><path d="M1792 1024q0 251-146.5 451.5t-378.5 277.5q-27 5-39.5-7t-12.5-30v-211q0-97-52-142 57-6 102.5-18t94-39 81-66.5 53-105 20.5-150.5q0-121-79-206 37-91-8-204-28-9-81 11t-92 44l-38 24q-93-26-192-26t-192 26q-16-11-42.5-27t-83.5-38.5-86-13.5q-44 113-7 204-79 85-79 206 0 85 20.5 150t52.5 105 80.5 67 94 39 102.5 18q-40 36-49 103-21 10-45 15t-57 5-65.5-21.5-55.5-62.5q-19-32-48.5-52t-49.5-24l-20-3q-21 0-29 4.5t-5 11.5 9 14 13 12l7 5q22 10 43.5 38t31.5 51l10 23q13 38 44 61.5t67 30 69.5 7 55.5-3.5l23-4q0 38 .5 89t.5 54q0 18-13 30t-40 7q-232-77-378.5-277.5t-146.5-451.5q0-209 103-385.5t279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"/></svg>
         </div>
         <span>Source at GitHub</span>
       </a>
     </div>
-    <div class="flex-1 layout-column layout-cross-end">
+    <div class="flex-1 row-end-center">
       <button class="sf-icon-arrow-up pad" onclick="window.scrollTo(0, 0)"></button>
     </div>
   </div>
@@ -142,6 +142,7 @@ regardless of the viewport width.</p>
 
     <!-- Scripts -->
     <script src="/stylific/scripts/stylific.js" async></script>
-    <script src="/stylific/scripts/simple-pjax.js" async></script>
+    <script src="/stylific/scripts/simple-pjax.js" async
+            onload="simplePjax.scrollOffsetSelector = '.sf-navbar.sf-navbar-fixed';"></script>
   </body>
 </html>
