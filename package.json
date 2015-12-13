@@ -1,13 +1,13 @@
 {
   "name": "stylific",
-  "version": "0.13.0",
+  "version": "0.13.1",
   "homepage": "http://mitranim.com/stylific/",
   "scripts": {
     "start": "gulp",
     "gulp": "gulp",
     "prepublish": "gulp lib:build --prod",
     "push": "npm run prepublish && git push origin $(git symbolic-ref --short HEAD)",
-    "push-docs": "gulp build --prod && (cd stylific-gh-pages && git add -A . && git commit -a -m autocommit && git push origin gh-pages)"
+    "push-docs": "gulp build --prod && (cd gh-pages && git add -A . && git commit -a -m autocommit && git push origin gh-pages)"
   },
   "authors": [
     "Mitranim <me@mitranim.com>"
@@ -42,14 +42,14 @@
     "gulp-plumber": "^1.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.3",
-    "gulp-sass": "^2.0.1",
+    "gulp-sass": "^2.1.1",
     "gulp-statil": "0.0.4",
     "gulp-uglify": "^1.4.1",
     "gulp-watch": "^4.2.4",
     "gulp-wrap": "^0.11.0",
     "highlight.js": "^8.6.0",
     "lodash": "^3.9.3",
-    "simple-pjax": "^0.2.5",
+    "simple-pjax": "^0.3.0",
     "yargs": "^3.13.0"
   }
 }

@@ -1,9 +1,5 @@
 /* global document, Element, HTMLElement, getComputedStyle, requestAnimationFrame, Promise */
 
-/*
- * style per http://standardjs.com
- */
-
 /** ************************** Programmatic API ****************************/
 
 /**

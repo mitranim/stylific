@@ -5,16 +5,12 @@
  *   "gulp": "git://github.com/gulpjs/gulp#4.0"
  */
 
-/*
- * style per http://standardjs.com
- */
-
 /** **************************** Dependencies ********************************/
 
 const $ = require('gulp-load-plugins')()
 const bsync = require('browser-sync').create()
 const del = require('del')
-const flags = require('yargs').argv
+const flags = require('yargs').boolean('prod').argv
 const gulp = require('gulp')
 const hjs = require('highlight.js')
 const marked = require('gulp-marked/node_modules/marked')
@@ -39,7 +35,7 @@ const src = {
   docImages: 'src-docs/images/**/*'
 }
 
-const destBase = 'stylific-gh-pages'
+const destBase = 'gh-pages'
 
 const dest = {
   // Folders.
@@ -52,10 +48,6 @@ const dest = {
   // Compiled files.
   compiledScript: 'dist/stylific.js',
   compiledStyle: 'dist/stylific.css'
-}
-
-function prod () {
-  return flags.prod === true || flags.prod === 'true'
 }
 
 function reload (done) {
@@ -259,7 +251,7 @@ gulp.task('docs:styles:compile', function () {
       baseDir: '.',
       extensions: ['svg']
     }))
-    .pipe($.if(prod(), $.minifyCss({
+    .pipe($.if(flags.prod, $.minifyCss({
       keepSpecialComments: 0,
       aggressiveMerging: false,
       advanced: false

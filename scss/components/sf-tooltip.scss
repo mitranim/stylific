@@ -89,7 +89,7 @@
     @include sf-transitions(all);
 
     // Use a constant small font size.
-    font-size: #{$sf-tooltip-proportion}rem;
+    font-size: unquote('#{$sf-tooltip-proportion}rem');
 
     // Counteract inherited font styles, if any.
     font-style: normal;
@@ -99,7 +99,7 @@
   // Version with scaling font size.
   &.sf-tooltip-scale-size {
     &::after, &::before {
-      font-size: #{$sf-tooltip-proportion}em;
+      font-size: unquote('#{$sf-tooltip-proportion}em');
     }
   }
 
@@ -154,7 +154,7 @@
       #{$main}: 100%;
       margin-#{$main}: $sf-tooltip-offset * 2;
       #{$cross}: 50%;
-      transform: #{$translate}(-50%);
+      transform: unquote('#{$translate}(-50%)');
     }
     &::before {
       // Layout.

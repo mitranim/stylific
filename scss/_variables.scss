@@ -74,8 +74,8 @@ $sf-focus-indicator-inverse: 0 0 0 1px $sf-focus-indicator-color-inverse;
 /**
  * Font families.
  */
-// Default OS X fonts > default Windows font > fallback.
-$sf-font-family-sans-serif: San Francisco, Helvetica Neue, Segoe UI, Verdana, sans-serif !default;
+// Try to use default system fonts on various platforms.
+$sf-font-family-sans-serif: Helvetica Neue, Roboto, Segoe UI, Verdana, sans-serif !default;
 // Fancy sans-serif > tolerable serif > fallback.
 $sf-font-family-serif: Optima, Georgia, serif !default;
 // Default OS X monospace > old OS X monospace > Windows monospace > fallback.

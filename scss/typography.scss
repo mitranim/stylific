@@ -59,3 +59,18 @@ b, strong {
   // should be equivalent to `normal`.
   font-weight: bolder;
 }
+
+/**
+ * Utility classes.
+ */
+
+.text-center  {text-align: center}
+.text-justify {text-align: justify}
+.text-left    {text-align: left}
+.text-right   {text-align: right}
+
+.text-small {font-size: $sf-font-size-small}
+.text-large {font-size: $sf-font-size-large}
+
+.text-smaller {font-size: $sf-font-size-smaller}
+.text-larger  {font-size: $sf-font-size-larger}
