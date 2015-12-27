@@ -5,7 +5,7 @@ html {
 pre code {width: 100%}
 
 .block-children {
-  > *:not(:root) {display: block}
+  > :not(:root) {display: block}
 }
 
 .sf-collapse {

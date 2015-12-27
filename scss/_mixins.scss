@@ -121,11 +121,11 @@
 }
 
 @mixin sf-space-out-vertical($space: $sf-space) {
-  > *:not(:last-child) {margin-bottom: $space}
+  > :not(:last-child) {margin-bottom: $space}
 }
 
 @mixin sf-space-out-horizontal($space: $sf-space) {
-  > *:not(:last-child) {margin-right: $space}
+  > :not(:last-child) {margin-right: $space}
 }
 
 // Shortcut to defining an element as a flex layout host and centering its
@@ -136,31 +136,13 @@
   justify-content: center;
 }
 
-// Base outline style. Basis for some other mixins.
-@mixin sf-outline-base {
-  outline-offset: 0;
-  outline-width: 1px;
-  outline-style: solid;
-  outline-color: transparent;
-}
-
 // Used for default :focus and :active effects.
 @mixin sf-focus-indicator($extra-shadow: '') {
-  &[class*=theme-], [class*=theme-] & {
-    @if $extra-shadow == '' {
-      box-shadow: $sf-focus-indicator-inverse;
-    }
-    @if $extra-shadow != '' {
-      box-shadow: unquote('#{$sf-focus-indicator-inverse}, #{$extra-shadow}');
-    }
+  @if $extra-shadow == '' {
+    box-shadow: $sf-focus-indicator;
   }
-  &, &[class*=theme-text-], [class*=theme-text-] & {
-    @if $extra-shadow == '' {
-      box-shadow: $sf-focus-indicator;
-    }
-    @if $extra-shadow != '' {
-      box-shadow: unquote('#{$sf-focus-indicator}, #{$extra-shadow}');
-    }
+  @if $extra-shadow != '' {
+    box-shadow: unquote('#{$sf-focus-indicator}, #{$extra-shadow}');
   }
 }
 

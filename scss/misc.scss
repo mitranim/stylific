@@ -36,19 +36,16 @@ ul, ol {
   }
 }
 
-// Normalise default outlines. This disables certain default outlines on focused
-// elements, and makes it easier for the user to define consistent cross-browser
-// outlines.
-* {@include sf-outline-base;}
-
 // Use a thin, solid box-shadow as a default :focus and :active effect. We're
 // using a box-shadow instead of an outline because of an FF bug. In FF, outline
 // dimensions can be expanded outwards by _absolutely positioned children_.
 // Another benefit of box-shadow is that it respects border-radius, and outline
 // doesn't.
 :focus {
+  outline: none;
   @include sf-focus-indicator;
 }
+
 select:focus {
   // Negate the indicator defined above.
   box-shadow: none;

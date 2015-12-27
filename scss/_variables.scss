@@ -63,11 +63,9 @@ $sf-transition-duration: 0.2s !default;
 $sf-transition-timing-function: ease !default;
 
 $sf-focus-indicator-color: rgba(map-get($sf-color-map-primary, default), 0.4);
-$sf-focus-indicator-color-inverse: rgba($sf-color-background, 0.4);
 
-// Shadow styles used for :focus and :active indicators.
-$sf-focus-indicator: 0 0 0 1px $sf-focus-indicator-color;
-$sf-focus-indicator-inverse: 0 0 0 1px $sf-focus-indicator-color-inverse;
+// Shadow style used for :focus and :active indicators.
+$sf-focus-indicator: 0 0 0 2px $sf-focus-indicator-color;
 
 /****************************** typography.scss ******************************/
 

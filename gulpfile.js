@@ -197,21 +197,15 @@ gulp.task('docs:html:compile', function () {
     // Pre-process markdown files.
     .pipe(filterMd)
     .pipe($.marked({
-      gfm: true,
-      tables: true,
-      breaks: false,
-      sanitize: false,
-      smartypants: false,
-      pedantic: false,
+      smartypants: true,
       // Code highlighter.
-      highlight: function (code, lang) {
+      highlight (code, lang) {
         const result = lang ? hjs.highlight(lang, code) : hjs.highlightAuto(code)
         return result.value
       }
     }))
     // Add hljs code class.
-    .pipe($.replace(/<pre><code class="(.*)">|<pre><code>/g,
-                    '<pre><code class="hljs $1">'))
+    .pipe($.replace(/<pre><code class="(.*)">|<pre><code>/g, '<pre><code class="hljs $1">'))
     // Return other files.
     .pipe(filterMd.restore())
     // Unpack commented HTML parts.
@@ -219,7 +213,7 @@ gulp.task('docs:html:compile', function () {
     // Render all html.
     .pipe($.statil())
     // Change each `<filename>` into `<filename>/index.html`.
-    .pipe($.rename(function (path) {
+    .pipe($.rename(path => {
       switch (path.basename + path.extname) {
         case 'index.html': case '404.html': return
       }
@@ -346,7 +340,7 @@ gulp.task('server', function () {
     startPath: '/stylific/',
     server: {
       baseDir: dest.docHtml,
-      middleware: function (req, res, next) {
+      middleware (req, res, next) {
         req.url = req.url.replace(/^\/stylific/, '/')
         next()
       }
