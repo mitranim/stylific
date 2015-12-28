@@ -86,7 +86,7 @@ element stops the handler.</p>
   </div>
 </div>
 
-<p>It&#39;s used in the toggled version of <a href="components/#sf-dropdown"><code>sf-dropdown</code></a>.</p>
+<p>It’s used in the toggled version of <a href="components/#sf-dropdown"><code>sf-dropdown</code></a>.</p>
 <h2 id="-data-sf-toggle-siblings-"><code>[data-sf-toggle-siblings]</code></h2>
 <p>Adds <code>class=&quot;active&quot;</code> to self and removes it from all sibling elements. Useful
 for custom radio-style toggles. Example:</p>
@@ -123,7 +123,7 @@ any element, but particularly useful for toggling
 
     <div id="demoModal" class="sf-modal sf-modal-narrow">
       <div class="sf-modal-body">
-        <h2>Count sheep &#39;till you drop</h2>
+        <h2>Count sheep ‘till you drop</h2>
         <p>🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑 🐑</p>
         <button data-sf-close-modal>click to close</button>
       </div>
@@ -134,8 +134,8 @@ any element, but particularly useful for toggling
 <h2 id="-data-sf-close-modal-"><code>[data-sf-close-modal]</code></h2>
 <p>Closes the nearest ancestor <code>.sf-modal</code>. See the example above.</p>
 <h2 id="-data-sf-no-scroll-spill-"><code>[data-sf-no-scroll-spill]</code></h2>
-<p>Don&#39;t you get annoyed when scrolling inside a small box and hitting top or
-bottom moves the viewport? You&#39;re in luck: this attribute prevents vertical
+<p>Don’t you get annoyed when scrolling inside a small box and hitting top or
+bottom moves the viewport? You’re in luck: this attribute prevents vertical
 scroll from spilling out.</p>
 <pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">data-sf-no-scroll-spill</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"height: 10em"</span>&gt;</span>
   <span class="hljs-comment">&lt;!-- Long content to scroll through --&gt;</span>
@@ -144,7 +144,7 @@ scroll from spilling out.</p>
 <div class="doc-demo">
   <div class="doc-demo-body">
     <div class="space-out" data-sf-no-scroll-spill style="height: 10em">
-      <h3>Scrolling this text shouldn&#39;t move the viewport</h3>
+      <h3>Scrolling this text shouldn’t move the viewport</h3>
       <p>Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max brucks terribilem incessu zomby. The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus. Zonbi tattered for solum oculi eorum defunctis go lum cerebro. Nescio brains an Undead zombies. Sicut malus putrid voodoo horror. Nigh tofth eliv ingdead.</p>
       <p>Cum horribilem walking dead resurgere de crazed sepulcris creaturis, zombie sicut de grave feeding iride et serpens. Pestilentia, shaun ofthe dead scythe animated corpses ipsa screams. Pestilentia est plague haec decaying ambulabat mortuos. Sicut zeder apathetic malus voodoo. Aenean a dolor plan et terror soulless vulnerum contagium accedunt, mortui iam vivam unlife. Qui tardius moveri, brid eof reanimator sed in magna copia sint terribiles undeath legionis. Alii missing oculis aliorum sicut serpere crabs nostram. Putridi braindead odores kill and infect, aere implent left four dead.</p>
       <p>Lucio fulci tremor est dark vivos magna. Expansis creepy arm yof darkness ulnis witchcraft missing carnem armis Kirkman Moore and Adlard caeruleum in locis. Romero morbo Congress amarus in auras. Nihil horum sagittis tincidunt, zombie slack-jawed gelida survival portenta. The unleashed virus est, et iam zombie mortui ambulabunt super terram. Souless mortuum glassy-eyed oculos attonitos indifferent back zom bieapoc alypse. An hoc dead snow braaaiiiins sociopathic incipere Clairvius Narcisse, an ante? Is bello mundi z?</p>
@@ -166,27 +166,27 @@ stylific trigger. Example:</p>
   <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 </code></pre>
-<p>In this example, button clicks won&#39;t trigger the <code>[data-sf-toggle-id]</code>. Note
-that you don&#39;t need <code>[data-sf-noclick]</code> for nested stylific handlers; the
-&quot;inner&quot; handler automatically cancels the event. This is for combinations with
+<p>In this example, button clicks won’t trigger the <code>[data-sf-toggle-id]</code>. Note
+that you don’t need <code>[data-sf-noclick]</code> for nested stylific handlers; the
+“inner” handler automatically cancels the event. This is for combinations with
 non-stylific handlers.</p>
 <h1 id="programmatic-api">Programmatic API</h1>
 <p>The library exports a few methods that directly correspond to clicks on certain
 trigger attributes.</p>
-<p>If you&#39;re using modules with a CommonJS-compliant loader, import it like so:</p>
+<p>If you’re using modules with a CommonJS-compliant loader, import it like so:</p>
 <pre><code class="hljs lang-js"><span class="hljs-keyword">import</span> stylific <span class="hljs-keyword">from</span> <span class="hljs-string">'stylific'</span>
 stylific.closeAllModals()
 </code></pre>
-<p>If you&#39;re dumping script tags into your HTML, the library will assign the export
+<p>If you’re dumping script tags into your HTML, the library will assign the export
 to <code>window.stylific</code>:</p>
 <pre><code class="hljs lang-js"><span class="hljs-built_in">window</span>.stylific.closeAllModals()
 </code></pre>
 <p>Each method takes an optional callback argument. If you pass a function, it will
 be called when the CSS transitions caused by the method are finished. If you
-don&#39;t pass a callback, and the global <code>Promise</code> constructor is available, the
+don’t pass a callback, and the global <code>Promise</code> constructor is available, the
 method will return a promise that resolves when the CSS transitions are
 finished.</p>
-<p>Unlike trigger attributes, methods don&#39;t check for the <code>[disabled]</code> attribute.</p>
+<p>Unlike trigger attributes, methods don’t check for the <code>[disabled]</code> attribute.</p>
 <h2 id="-toggleid-"><code>toggleId()</code></h2>
 <p>TypeScript signature:</p>
 <pre><code class="hljs ">toggleId(<span class="hljs-string">id:</span> string, done?: Function): Promise|<span class="hljs-typename">void</span>
@@ -199,14 +199,14 @@ finished.</p>
 <p>TypeScript signature:</p>
 <pre><code class="hljs ">openModal(<span class="hljs-string">elem:</span> HTMLElement, done?: Function): Promise|<span class="hljs-typename">void</span>
 </code></pre><p>Equivalent to toggling the given modal by clicking a <code>[data-sf-toggle-id]</code>
-pointing to it. Note that this doesn&#39;t check if the target is a <code>&lt;template&gt;</code>
-(see <a href="components/#cloning">why</a> you&#39;d use that). Use <code>toggleId</code> or <code>toggleElem</code>
+pointing to it. Note that this doesn’t check if the target is a <code>&lt;template&gt;</code>
+(see <a href="components/#cloning">why</a> you’d use that). Use <code>toggleId</code> or <code>toggleElem</code>
 to target a <code>&lt;template&gt;</code> containing  a modal.</p>
 <h2 id="-closemodal-"><code>closeModal()</code></h2>
 <p>TypeScript signature:</p>
 <pre><code class="hljs ">closeModal(<span class="hljs-string">elem:</span> HTMLElement, done?: Function): Promise|<span class="hljs-typename">void</span>
 </code></pre><p>Equivalent to closing the given modal by clicking its overlay or the
-<code>[data-sf-close-modal]</code> button. If the modal is a clone, it&#39;s destroyed
+<code>[data-sf-close-modal]</code> button. If the modal is a clone, it’s destroyed
 after the CSS transitions.</p>
 <h2 id="-closeallmodals-"><code>closeAllModals()</code></h2>
 <p>TypeScript signature:</p>

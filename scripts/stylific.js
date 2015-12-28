@@ -11,10 +11,6 @@ if (typeof window !== 'object' || !window) return;
 
 /* global document, Element, HTMLElement, getComputedStyle, requestAnimationFrame, Promise */
 
-/*
- * style per http://standardjs.com
- */
-
 /** ************************** Programmatic API ****************************/
 
 /**
@@ -272,6 +268,7 @@ document.addEventListener('click', function (event) {
 document.addEventListener('keydown', function (event) {
   if (event.keyCode === 27) {
     [].slice.call(document.querySelectorAll('.sf-modal.active')).forEach(function (elem) {
+      if (hasAttr(elem, 'data-sf-noclick')) return;
       stopEvent(event);
       closeModal(elem);
     });
