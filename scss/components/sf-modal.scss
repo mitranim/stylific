@@ -177,7 +177,7 @@
 
   // Offset the container's padding and negate the margins added by its
   // space-out rules.
-  .sf-modal-body &:not(:last-child) {
+  .sf-modal-body & {
     margin: (-$sf-space) (-$sf-space) 0 0;
   }
 

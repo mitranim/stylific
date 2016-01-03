@@ -66,7 +66,7 @@ const exports = {
 
     // Too bothersome to aggregate callbacks without promises.
     if (isFunction(done) || typeof Promise !== 'function') {
-      modals.forEach(elem => {closeModal(elem)})
+      modals.forEach(elem => { closeModal(elem) })
     } else {
       return Promise.all(modals.map(elem => {
         return new Promise(resolve => {
@@ -259,6 +259,7 @@ document.addEventListener('click', function (event) {
 document.addEventListener('keydown', function (event) {
   if (event.keyCode === 27) {
     [].slice.call(document.querySelectorAll('.sf-modal.active')).forEach(elem => {
+      if (hasAttr(elem, 'data-sf-noclick')) return
       stopEvent(event)
       closeModal(elem)
     })
@@ -333,7 +334,7 @@ function removeClass (elem, name) {
 function toggleClass (elem, name) {
   elem.classList.toggle(name)
 }
-function isFunction(value) {
+function isFunction (value) {
   return typeof value === 'function'
 }
 
