@@ -1,4 +1,4 @@
-<!-- {% extend('index.html', {title: 'footer'}) %} -->
+{% extend('index.html', {title: 'footer'}) %}
 
 # Description
 

@@ -1,4 +1,4 @@
-<!-- {% extend('index.html', {title: 'navbar-demo'}) %} -->
+{% extend('index.html', {title: 'navbar-demo'}) %}
 
 # Description
 

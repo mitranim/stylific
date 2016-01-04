@@ -1,4 +1,4 @@
-<!-- {% extend('index.html', {title: 'grid-demo'}) %} -->
+{% extend('index.html', {title: 'grid-demo'}) %}
 
 # Description
 

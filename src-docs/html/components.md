@@ -1,4 +1,4 @@
-<!-- {% extend('index.html', {title: 'components'}) %} -->
+{% extend('index.html', {title: 'components'}) %}
 
 <!-- TOC -->
 <div class="sf-collapse doc-toc theme-text-accent">
@@ -348,9 +348,7 @@ a height property to the body:
   </div>
 </div>
 
-<!--:
-{{include('partials/modal-demo.html')}}
-:-->
+{{include('partials/modal-demo.md')}}
 
 # sf-navbar
 

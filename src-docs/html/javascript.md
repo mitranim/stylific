@@ -1,4 +1,4 @@
-<!-- {% extend('index.html', {title: 'javascript'}) %} -->
+{% extend('index.html', {title: 'javascript'}) %}
 
 <!-- TOC -->
 <div class="sf-collapse doc-toc theme-text-accent">

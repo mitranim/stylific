@@ -1,4 +1,4 @@
-<!-- {% extend('index.html', {title: 'layout'}) %} -->
+{% extend('index.html', {title: 'layout'}) %}
 
 <!-- TOC -->
 <div class="sf-collapse doc-toc theme-text-accent">
