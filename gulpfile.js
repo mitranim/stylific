@@ -8,6 +8,7 @@
 /** **************************** Dependencies ********************************/
 
 const $ = require('gulp-load-plugins')()
+const _ = require('lodash')
 const bsync = require('browser-sync').create()
 const del = require('del')
 const flags = require('yargs').boolean('prod').argv
@@ -30,7 +31,7 @@ const src = {
   docStyles: 'src-docs/styles/**/*.scss',
   docHtml: [
     'src-docs/html/**/*',
-    'bower_components/font-awesome-svg-png/black/**/*.svg'
+    'bower_components/font-awesome-svg-png/black/svg/github.svg'
   ],
   docImages: 'src-docs/images/**/*'
 }
@@ -111,7 +112,7 @@ marked.Renderer.prototype.link = function (href, title, text) {
 /* ------------------------------ Lib Styles --------------------------------*/
 
 gulp.task('lib:styles:clear', function (done) {
-  del(dest.dist + '/*.css').then((_) => {done()})
+  del(dest.dist + '/*.css').then(() => { done() })
 })
 
 gulp.task('lib:styles:compile', function () {
@@ -142,7 +143,7 @@ gulp.task('lib:styles:watch', function () {
 /* ----------------------------- Lib Scripts --------------------------------*/
 
 gulp.task('lib:scripts:clear', function (done) {
-  del(dest.dist + '/*.js').then((_) => {done()})
+  del(dest.dist + '/*.js').then(() => { done() })
 })
 
 gulp.task('lib:scripts:compile', function () {
@@ -186,7 +187,7 @@ gulp.task('lib:scripts:watch', function () {
 /* --------------------------------- HTML -----------------------------------*/
 
 gulp.task('docs:html:clear', function (done) {
-  del(dest.docHtml + '/**/*.html').then((_) => {done()})
+  del(dest.docHtml + '/**/*.html').then(() => { done() })
 })
 
 gulp.task('docs:html:compile', function () {
@@ -198,7 +199,6 @@ gulp.task('docs:html:compile', function () {
     .pipe(filterMd)
     .pipe($.marked({
       smartypants: true,
-      // Code highlighter.
       highlight (code, lang) {
         const result = lang ? hjs.highlight(lang, code) : hjs.highlightAuto(code)
         return result.value
@@ -206,12 +206,18 @@ gulp.task('docs:html:compile', function () {
     }))
     // Add hljs code class.
     .pipe($.replace(/<pre><code class="(.*)">|<pre><code>/g, '<pre><code class="hljs $1">'))
-    // Return other files.
     .pipe(filterMd.restore())
     // Unpack commented HTML parts.
     .pipe($.replace(/<!--\s*:((?:[^:]|:(?!\s*-->))*):\s*-->/g, '$1'))
-    // Render all html.
-    .pipe($.statil())
+    .pipe($.statil({
+      ignorePaths: path => (
+        /^partials|^svg/.test(path)
+      ),
+      imports: {
+        getExamples: files => _.filter(_.keys(files), path => /^examples/.test(path)),
+        getName: path => pt.parse(path).name
+      }
+    }))
     // Change each `<filename>` into `<filename>/index.html`.
     .pipe($.rename(path => {
       switch (path.basename + path.extname) {
@@ -220,7 +226,6 @@ gulp.task('docs:html:compile', function () {
       path.dirname = pt.join(path.dirname, path.basename)
       path.basename = 'index'
     }))
-    // Write to disk.
     .pipe(gulp.dest(dest.docHtml))
 })
 
@@ -233,7 +238,7 @@ gulp.task('docs:html:watch', function () {
 /* -------------------------------- Styles ----------------------------------*/
 
 gulp.task('docs:styles:clear', function (done) {
-  del(dest.docStyles).then((_) => {done()})
+  del(dest.docStyles).then(() => { done() })
 })
 
 gulp.task('docs:styles:compile', function () {
@@ -265,7 +270,7 @@ gulp.task('docs:styles:watch', function () {
 /* -------------------------------- Images ----------------------------------*/
 
 gulp.task('docs:images:clear', function (done) {
-  del(dest.docImages).then((_) => {done()})
+  del(dest.docImages).then(() => { done() })
 })
 
 // Resize and copy images
@@ -320,7 +325,7 @@ gulp.task('docs:images:watch', function () {
 /* -------------------------------- Scripts ---------------------------------*/
 
 gulp.task('docs:scripts:clear', function (done) {
-  del(dest.docScripts).then((_) => {done()})
+  del(dest.docScripts).then(() => { done() })
 })
 
 gulp.task('docs:scripts:copy', function () {

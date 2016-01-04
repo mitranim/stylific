@@ -2,14 +2,14 @@
   <div class="sf-footer-body">
     <div class="flex-1 row-start-center">
       <span>
-        ${(new Date()).getFullYear() > 2015 ? '2015—' + (new Date()).getFullYear() : '2015'}
+        {{(new Date()).getFullYear() > 2015 ? '2015—' + (new Date()).getFullYear() : '2015'}}
         <a href="http://mitranim.com" target="_blank" class="decorated">Mitranim</a>
       </span>
     </div>
     <div class="flex-1 row-center-center">
       <a class="row-center-center" href="https://github.com/Mitranim/stylific" target="_blank">
         <div class="sf-icon-github inline" style="font-size: 2em">
-          ${$include('svg/github', $)}
+          {{files['svg/github.svg']}}
         </div>
         <span>Source at GitHub</span>
       </a>

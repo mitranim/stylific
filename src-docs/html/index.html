@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>${typeof title !== 'undefined' ? title + ' | stylific' : 'stylific'}</title>
+    <title>{{typeof title !== 'undefined' ? title + ' | stylific' : 'stylific'}}</title>
     <meta name="author" content="mitranim">
     <meta name="description" content="stylific documentation">
     <meta charset="utf-8">
@@ -14,30 +14,30 @@
 
   <body>
     <!-- Navbar -->
-    ${$include('partials/navbar', $)}
+    {{include('partials/navbar.html')}}
 
     <!-- Presentation jumbo -->
     <div class="sf-jumbo" style="height: auto">
       <h1 class="row-between-center">
-        ${typeof title !== 'undefined' ? title : 'stylific'}
+        {{typeof title !== 'undefined' ? title : 'stylific'}}
         <a href="https://github.com/Mitranim/stylific" target="_blank" class="row-center-center">
           <div class="sf-icon-github-light pop">
-            ${$include('svg/github', $)}
+            {{files['svg/github.svg']}}
           </div>
         </a>
       </h1>
-      <% if (typeof title === 'undefined') { %>
+      {% if (typeof title === 'undefined') { %}
         <p>Themable, responsive CSS library</p>
-      <% } %>
+      {% } %}
     </div>
 
     <!-- Site content -->
     <article>
-      ${$content || $include('partials/index', $)}
+      {{path === 'index.html' ? include('partials/index.html') : content}}
     </article>
 
     <!-- Footer -->
-    ${$include('partials/footer', $)}
+    {{include('partials/footer.html')}}
 
     <!-- Scripts -->
     <script src="/stylific/scripts/stylific.js" async></script>

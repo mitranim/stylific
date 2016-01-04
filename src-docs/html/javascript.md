@@ -1,3 +1,5 @@
+<!-- {% extend('index.html', {title: 'javascript'}) %} -->
+
 <!-- TOC -->
 <div class="sf-collapse doc-toc theme-text-accent">
   <div class="sf-collapse-head active theme-accent"></div>

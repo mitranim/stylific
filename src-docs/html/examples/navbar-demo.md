@@ -1,3 +1,5 @@
+<!-- {% extend('index.html', {title: 'navbar-demo'}) %} -->
+
 # Description
 
 Demonstrates folding and folded `sf-navbar`.

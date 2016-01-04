@@ -1,3 +1,5 @@
+<!-- {% extend('index.html', {title: 'grid-demo'}) %} -->
+
 # Description
 
 Very basic flexbox grid demo. Resize your viewport to see how it responds to
