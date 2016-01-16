@@ -1,47 +1,44 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>{{typeof title !== 'undefined' ? title + ' | stylific' : 'stylific'}}</title>
-    <meta name="author" content="mitranim">
-    <meta name="description" content="stylific documentation">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
-    <link rel="stylesheet" type="text/css" href="/stylific/styles/docs.css">
-    <base href="/stylific/">
-    <link rel="icon" href="data:;base64,=">
-  </head>
+<!doctype html>
 
-  <body>
-    <!-- Navbar -->
-    {{include('partials/navbar.html')}}
+<base href="/stylific/">
+<meta charset="utf-8">
+<title>{{typeof title !== 'undefined' ? title + ' | stylific' : 'stylific'}}</title>
+<meta name="author" content="mitranim">
+<meta name="description" content="stylific documentation">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+<link rel="stylesheet" type="text/css" href="styles/docs.css">
+<link rel="icon" href="data:;base64,=">
 
-    <!-- Presentation jumbo -->
-    <div class="sf-jumbo" style="height: auto">
-      <h1 class="row-between-center">
-        {{typeof title !== 'undefined' ? title : 'stylific'}}
-        <a href="https://github.com/Mitranim/stylific" target="_blank" class="row-center-center">
-          <div class="sf-icon-github-light pop">
-            {{files['svg/github.svg']}}
-          </div>
-        </a>
-      </h1>
-      {% if (typeof title === 'undefined') { %}
-        <p>Themable, responsive CSS library</p>
-      {% } %}
-    </div>
+<body></body>
 
-    <!-- Site content -->
-    <article>
-      {{path === 'index.html' ? include('partials/index.md') : content}}
-    </article>
+<!-- Navbar -->
+{{include('partials/navbar.html')}}
 
-    <!-- Footer -->
-    {{include('partials/footer.html')}}
+<!-- Presentation jumbo -->
+<div class="sf-jumbo" style="height: auto">
+  <h1 class="row-between-center">
+    {{typeof title !== 'undefined' ? title : 'stylific'}}
+    <a href="https://github.com/Mitranim/stylific" target="_blank" class="row-center-center">
+      <div class="sf-icon-github-light pop">
+        {{files['svg/github.svg']}}
+      </div>
+    </a>
+  </h1>
+  {% if (typeof title === 'undefined') { %}
+    <p>Themable, responsive CSS library</p>
+  {% } %}
+</div>
 
-    <!-- Scripts -->
-    <script src="/stylific/scripts/stylific.js" async></script>
-    <script src="/stylific/scripts/simple-pjax.js" async
-            onload="simplePjax.scrollOffsetSelector = '.sf-navbar.sf-navbar-fixed';"></script>
-  </body>
-</html>
+<!-- Site content -->
+<article>
+  {{path === 'index.html' ? include('partials/index.md') : content}}
+</article>
+
+<!-- Footer -->
+{{include('partials/footer.html')}}
+
+<!-- Scripts -->
+<script src="scripts/stylific.js" async></script>
+<script src="scripts/simple-pjax.js" async
+        onload="simplePjax.scrollOffsetSelector = '.sf-navbar.sf-navbar-fixed';"></script>
