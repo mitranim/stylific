@@ -188,8 +188,8 @@ Rundown of the corresponding flex rules:
 .*-start-*   {justify-content: flex-start;}
 .*-center-*  {justify-content: center;}
 .*-end-*     {justify-content: flex-end;}
-.*-between-* {justify-content: space-around;}
-.*-around-*  {justify-content: space-between;}
+.*-between-* {justify-content: space-between;}
+.*-around-*  {justify-content: space-around;}
 
 // Child alignment on cross axis
 .*-*-start   {align-items: flex-start;}
