@@ -73,13 +73,13 @@
 <p>stylific is very flexbox-centric. It uses flexbox for built-in components and
 provides a bunch of classes that serve as shortcuts to useful combinations of
 flex properties.</p>
-<p>In case you’re unfamiliar with flexbox, read this
+<p>In case you&#39;re unfamiliar with flexbox, read this
 <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank">wonderful introduction</a>
 on CSS Tricks. In short, a <em>flex container</em> is similar to a block, but has
 extremely rich control over its inner layout. A <em>flex item</em>, or flex child (its
 immediate descendant) has rich control over its dimensions inside the flex parent.</p>
 <p>stylific has three groups of layout classes: for containers, children, and
-grids. They’re defined in
+grids. They&#39;re defined in
 <a href="https://github.com/Mitranim/stylific/tree/master/scss/layout.scss" target="_blank"><code>layout.scss</code></a>.</p>
 <h1 id="container">Container</h1>
 <div class="sf-collapse">
@@ -109,7 +109,7 @@ grids. They’re defined in
   </div>
 </div>
 
-<p>Container classes define flex container properties. Here’s an example:</p>
+<p>Container classes define flex container properties. Here&#39;s an example:</p>
 <pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row-between-center"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"height: 8em"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>I'm centered on the left!<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>I'm centered on the right!<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
@@ -118,8 +118,8 @@ grids. They’re defined in
 <div class="doc-demo">
   <div class="doc-demo-body">
     <div class="row-between-center pretty-children" style="height: 8em">
-      <div>I’m centered on the left!</div>
-      <div>I’m centered on the right!</div>
+      <div>I&#39;m centered on the left!</div>
+      <div>I&#39;m centered on the right!</div>
     </div>
   </div>
 </div>
@@ -212,7 +212,7 @@ grids. They’re defined in
   </tbody>
 </table>
 
-<p>They’re formed from combinations of three properties:</p>
+<p>They&#39;re formed from combinations of three properties:</p>
 <pre><code class="hljs lang-scss">&lt;<span class="hljs-attribute">direction</span>&gt;-&lt;main&gt;-&lt;cross&gt;
 </code></pre>
 <ul>
@@ -231,8 +231,8 @@ grids. They’re defined in
 .*-start-*   {<span class="hljs-attribute">justify-content</span><span class="hljs-value">: flex-start;</span>}
 .*-<span class="hljs-value">center</span>-*  {<span class="hljs-attribute">justify-content</span><span class="hljs-value">: center;</span>}
 .*-end-*     {<span class="hljs-attribute">justify-content</span><span class="hljs-value">: flex-end;</span>}
-.*-between-* {<span class="hljs-attribute">justify-content</span><span class="hljs-value">: space-around;</span>}
-.*-around-*  {<span class="hljs-attribute">justify-content</span><span class="hljs-value">: space-between;</span>}
+.*-between-* {<span class="hljs-attribute">justify-content</span><span class="hljs-value">: space-between;</span>}
+.*-around-*  {<span class="hljs-attribute">justify-content</span><span class="hljs-value">: space-around;</span>}
 
 <span class="hljs-comment">// Child alignment on cross axis</span>
 .*-*-start   {<span class="hljs-attribute">align-items</span><span class="hljs-value">: flex-start;</span>}
@@ -271,7 +271,7 @@ or <code>column</code>:</p>
 </div>
 
 <p>To control child alignment on the main axis, use the <code>*-&lt;main&gt;-*</code> property. Here
-it’s <code>between</code>, which causes the children to be spaced out:</p>
+it&#39;s <code>between</code>, which causes the children to be spaced out:</p>
 <pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row-between-center"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>left<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>center<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
@@ -289,7 +289,7 @@ it’s <code>between</code>, which causes the children to be spaced out:</p>
 </div>
 
 <p>To control child alignment on the cross axis, use the <code>*-*-&lt;cross&gt;</code> property.
-Here it’s set to different values on different containers:</p>
+Here it&#39;s set to different values on different containers:</p>
 <pre><code class="hljs lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row-center-start"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"min-height: 6em"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>top<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
@@ -470,7 +470,7 @@ flexbox terms, this corresponds to <code>{align-self: &lt;align&gt;}</code>.</p>
   </div>
 </div>
 
-<p>It’s convenient to have a shortcut to a media-responsive flex container that
+<p>It&#39;s convenient to have a shortcut to a media-responsive flex container that
 wraps its items on different breakpoints. <code>.grid-*</code> is a primitive version of that.
 Open this on a <a href="examples/grid-demo/">separate page</a> to resize the page more
 easily.</p>
@@ -567,10 +567,10 @@ of the time.</p>
 Whitespace is added back in a selective fashion, using:</p>
 <ol>
 <li>Container padding.</li>
-<li>Margins between container’s children.</li>
+<li>Margins between container&#39;s children.</li>
 </ol>
 <p>Typographically meaningful content like headers and paragraphs needs whitespace
-all around it. It’s achieved by combining container padding with margins between
+all around it. It&#39;s achieved by combining container padding with margins between
 children. By default, this styling is applied to <code>sf-article</code> and some other
 stylific components. This combination of properties is also available as the
 <code>.container</code> class (see below).</p>
