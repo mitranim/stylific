@@ -21,8 +21,7 @@
  *   <span class="sf-icon" style="font-size: 1.2em"></span>
  */
 
-[class*=sf-icon] {
-
+@mixin sf-icon {
   /**
    * Layout.
    */
@@ -68,38 +67,35 @@
     height: 1em !important;
   }
 
-  /**
-   * Version that loses its hue and lightens or darkens until hovered or
-   * otherwise activated.
-   */
-  &.dark {
-    &:not(:hover):not(:focus):not(:active):not(.active) {
-      filter: unquote('grayscale(1) brightness(0.2)');
-    }
-  }
-
-  /**
-   * Version that loses its hue and lightens until hovered or otherwise
-   * activated.
-   */
-  &.light {
-    &:not(:hover):not(:focus):not(:active):not(.active) {
-      filter: unquote('grayscale(1) brightness(2)');
-    }
-  }
-
-  /**
-   * Version that pops on activation.
-   */
-  &.pop {
-    &:hover, &:focus, &:active, &.active {
-      transform: scale(1.5);
-      &:not([class*=theme-]), &[class*=theme-text-] {
-        background-color: transparent;
-      }
-    }
-  }
-
   // Animate all transitions.
   @include sf-transitions(all);
 }
+
+// Loses its hue and lightens until hovered or otherwise activated.
+@mixin sf-icon-light {
+  &:not(:hover):not(:focus):not(:active):not(.active) {
+    filter: unquote('grayscale(1) brightness(2)');
+  }
+}
+
+// Loses its hue and lightens or darkens until hovered or otherwise activated.
+@mixin sf-icon-dark {
+  &:not(:hover):not(:focus):not(:active):not(.active) {
+    filter: unquote('grayscale(1) brightness(0.2)');
+  }
+}
+
+// Pops on activation.
+@mixin sf-icon-pop {
+  &:hover, &:focus, &:active, &.active {
+    transform: scale(1.5);
+    &:not([class*=theme-]), &[class*=theme-text-] {
+      background-color: transparent;
+    }
+  }
+}
+
+[class*=sf-icon] {@include sf-icon;}
+[class*=sf-icon].light {@include sf-icon-light;}
+[class*=sf-icon].dark {@include sf-icon-dark;}
+[class*=sf-icon].pop {@include sf-icon-pop;}
