@@ -1,4 +1,4 @@
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](http://standardjs.com)
+**Deprecated**. CSS frameworks are not worth it. These days I use a much smaller CSS core without any "components". See the [repository](https://github.com/Mitranim/style-base).
 
 ## Description
 
