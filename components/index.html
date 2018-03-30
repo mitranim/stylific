@@ -457,16 +457,16 @@ However, when a cloned modal is closed, any media content automatically stops.</
     <button data-sf-toggle-id="demo-modal-cloned">Open modal with YouTube video</button>
     <p>The YT player in this modal is inert until the modal is opened.</p>
 
-<pre><code class="hljs "><span class="hljs-tag">&lt;<span class="hljs-title">template</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"demo-modal-cloned"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-modal sf-modal-wide"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-modal-body"</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sf-embed"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">iframe</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"http://youtube.com/embed/mvH9mwkvWIU"</span> <span class="hljs-attribute">allowFullScreen</span>=<span class="hljs-value">"true"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">iframe</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>When this modal is closed, video playback stops.<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">data-sf-close-modal</span>&gt;</span>Click to close<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-title">template</span>&gt;</span>
+<pre><code class="hljs ">&lt;<span class="hljs-keyword">template</span> id=<span class="hljs-string">"demo-modal-cloned"</span>&gt;
+  &lt;<span class="hljs-keyword">div</span> class=<span class="hljs-string">"sf-modal sf-modal-wide"</span>&gt;
+    &lt;<span class="hljs-keyword">div</span> class=<span class="hljs-string">"sf-modal-body"</span>&gt;
+      &lt;<span class="hljs-keyword">div</span> class=<span class="hljs-string">"sf-embed"</span>&gt;
+        &lt;iframe src=<span class="hljs-string">"http://youtube.com/embed/mvH9mwkvWIU"</span> allowFullScreen=<span class="hljs-string">"true"</span>&gt;&lt;/iframe&gt;
+      &lt;/<span class="hljs-keyword">div</span>&gt;
+      &lt;p&gt;<span class="hljs-type">When</span> this modal <span class="hljs-keyword">is</span> closed, video playback stops.&lt;/p&gt;
+      &lt;p&gt;&lt;button data-sf-close-modal&gt;<span class="hljs-type">Click</span> to close&lt;/button&gt;&lt;/p&gt;
+  &lt;/<span class="hljs-keyword">div</span>&gt;
+&lt;/<span class="hljs-keyword">template</span>&gt;
 </code></pre><p>  </div>
 </div></p>
 <p>The reason for a template tag is that in <a href="http://caniuse.com/#feat=template" target="_blank">supporting
@@ -851,7 +851,7 @@ height.</p>
   <div class="sf-footer-body">
     <div class="flex-1 row-start-center">
       <span>
-        2015—2016
+        2015—2018
         <a href="http://mitranim.com" target="_blank" class="decorated">Mitranim</a>
       </span>
     </div>
