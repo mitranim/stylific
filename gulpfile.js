@@ -1,9 +1,6 @@
 'use strict'
 
-/**
- * Requires gulp 4.0:
- *   "gulp": "git://github.com/gulpjs/gulp#4.0"
- */
+Error.stackTraceLimit = Infinity
 
 /** **************************** Dependencies ********************************/
 
@@ -12,6 +9,7 @@ const bsync = require('browser-sync').create()
 const del = require('del')
 const flags = require('yargs').boolean('prod').argv
 const gulp = require('gulp')
+const statil = require('statil')
 const statilOptions = require('./statil')
 
 /** ******************************* Globals **********************************/
@@ -28,7 +26,7 @@ const src = {
   docStyles: 'src-docs/styles/**/*.scss',
   docHtml: [
     'src-docs/html/**/*',
-    'bower_components/font-awesome-svg-png/black/svg/github.svg'
+    'node_modules/font-awesome-svg-png/black/svg/github.svg'
   ],
   docImages: 'src-docs/images/**/*'
 }
@@ -63,7 +61,6 @@ gulp.task('lib:styles:clear', function (done) {
 
 gulp.task('lib:styles:compile', function () {
   return gulp.src(src.libStylesCore)
-    .pipe($.plumber())
     .pipe($.sass())
     .pipe($.autoprefixer())
     .pipe(gulp.dest(dest.dist))
@@ -94,7 +91,6 @@ gulp.task('lib:scripts:clear', function (done) {
 
 gulp.task('lib:scripts:compile', function () {
   return gulp.src(src.libScripts)
-    .pipe($.plumber())
     .pipe($.babel({
       modules: 'ignore',
       blacklist: ['strict']
@@ -138,8 +134,7 @@ gulp.task('docs:html:clear', function (done) {
 
 gulp.task('docs:html:compile', function () {
   return gulp.src(src.docHtml)
-    .pipe($.plumber())
-    .pipe($.statil(statilOptions))
+    .pipe($.statil.withBufferedContents(templates => statil.batch(templates, statilOptions)))
     .pipe(gulp.dest(dest.docHtml))
 })
 
@@ -157,7 +152,6 @@ gulp.task('docs:styles:clear', function (done) {
 
 gulp.task('docs:styles:compile', function () {
   return gulp.src(src.docStylesCore)
-    .pipe($.plumber())
     .pipe($.sass())
     .pipe($.autoprefixer())
     .pipe($.base64({
