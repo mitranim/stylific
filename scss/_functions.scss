@@ -1,9 +1,14 @@
+@use 'sass:math';
+
 /**
  * http://compass-style.org/reference/compass/utilities/color/brightness/#function-brightness
  */
 @function sf-brightness($color) {
   @if type-of($color) == color {
-    @return (red($color) * 0.299 + green($color) * 0.587 + blue($color) * 0.114) / 255 * 100%;
+    @return math.div(
+      ((red($color) * 0.299) + (green($color) * 0.587) + (blue($color) * 0.114)),
+      255
+    ) * 100%;
   }
   @else {
     @return unquote("brightness(#{$color})");

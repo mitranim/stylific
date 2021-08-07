@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 html {
   @include sf-eq-sm {font-size: $sf-rem * 0.7}
 }
@@ -22,7 +24,7 @@ pre code {width: 100%}
 }
 
 .pad-half {
-  padding: $sf-space / 2;
+  padding: math.div($sf-space, 2);
 }
 
 .border {
@@ -35,7 +37,7 @@ table {
   border-collapse: collapse;
 
   th, td {
-    padding: $sf-space / 2;
+    padding: math.div($sf-space, 2);
     vertical-align: middle;
     @include border-weak;
   }

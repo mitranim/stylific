@@ -59,6 +59,8 @@
  * <textarea> without involving parents (siblings and attributes only).
  */
 
+@use 'sass:math';
+
 [data-sf-tooltip] {
 
   // Use grayscale negatives of the base text and background colours. If the
@@ -114,7 +116,7 @@
 
     // Use a fraction of the standard padding. We scale it down twice as much as
     // other dimensions.
-    padding: $sf-space * $sf-tooltip-proportion / 2;
+    padding: $sf-space * math.div($sf-tooltip-proportion, 2);
 
     // Use a fraction of the standard border radius.
     border-radius: $sf-border-radius * $sf-tooltip-proportion;

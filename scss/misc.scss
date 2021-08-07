@@ -4,11 +4,13 @@
  * Global default styling that doesn't fall into other categories.
  */
 
+@use 'sass:math';
+
 /**
  * Default styling for monospace tags.
  */
 tt, code, kbd, pre, samp {
-  border-radius: $sf-border-radius / 2;
+  border-radius: math.div($sf-border-radius, 2);
 }
 pre {
   white-space: pre-wrap;

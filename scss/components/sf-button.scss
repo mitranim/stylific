@@ -16,6 +16,8 @@
  * minimum width, a set height, and text ellipsis on overflow.
  */
 
+@use 'sass:math';
+
 .sf-button,
 // Override native buttons too (ignore input[type=button]).
 button {
@@ -23,7 +25,7 @@ button {
   /**
    * Layout.
    */
-  padding: $sf-space / 2;
+  padding: math.div($sf-space, 2);
 
   // Normalise font size (browser defaults may be unpredictable).
   font-size: inherit;
@@ -62,7 +64,7 @@ button {
 }
 
 // Flat version.
-&.sf-button-flat {
+.sf-button-flat {
   @include sf-shadow(none, $indicate-focus: true);
   // Remove the border radius to make the focus indicator and the background
   // rectangular, which is more in line with the look of other "flat" elements

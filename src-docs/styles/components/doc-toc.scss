@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 .sf-collapse.doc-toc {
 
   /**
@@ -12,7 +14,7 @@
   &:first-child + * {margin-top: 0}
 
   // Default labeling.
-  .sf-collapse-head {padding: $sf-space / 2}
+  .sf-collapse-head {padding: math.div($sf-space, 2)}
   .sf-collapse-head:empty {
     &::before {
       content: 'Contents';
@@ -32,7 +34,7 @@
     padding: 0;
     > * {
       margin: 0;
-      padding: $sf-space / 2;
+      padding: math.div($sf-space, 2);
     }
   }
   .sf-collapse-head:not(.active) ~ .sf-collapse-body {

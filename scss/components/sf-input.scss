@@ -7,13 +7,16 @@
  *   <textarea></textarea>
  */
 
+@use 'sass:math';
+
 .sf-input,
 // Native inputs.
 input, textarea {
+
   /**
    * Layout.
    */
-  padding: $sf-space / 2;
+  padding: math.div($sf-space, 2);
 
   // Border styles.
   @include sf-border-weak;

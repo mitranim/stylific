@@ -1,5 +1,7 @@
 /********************************** Global ***********************************/
 
+@use 'sass:math';
+
 html {
   // Required for using % dimensions on children.
   width: 100%;
@@ -13,7 +15,7 @@ html {
   padding: 0;
 }
 ul, ol, dl {
-  @include sf-space-out-vertical($sf-space / 2);
+  @include sf-space-out-vertical(math.div($sf-space, 2));
 }
 dl dt:not(:first-of-type) {
   margin-top: $sf-space;

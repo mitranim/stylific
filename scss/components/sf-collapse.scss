@@ -35,6 +35,8 @@
  *   </div>
  */
 
+@use 'sass:math';
+
 .sf-collapse {
 
   /**
@@ -63,7 +65,7 @@
       opacity: 0.5;
     }
     &:not(:empty)::after {
-      margin-left: $sf-space / 4;
+      margin-left: math.div($sf-space, 4);
     }
 
     // Indicate interactivity.

@@ -13,6 +13,8 @@
  * See http://mitranim.com/stylific/components/#sf-navbar
  */
 
+@use 'sass:math';
+
 .sf-navbar {
 
   /**
@@ -79,7 +81,7 @@
     @include sf-flex-host-center;
 
     // Whitespace.
-    padding: $sf-space / 2;
+    padding: math.div($sf-space, 2);
   }
 
   /*------------------------------ Collapsing -------------------------------*/
@@ -129,7 +131,7 @@
       @include sf-toggle-inactive;
     }
     &:not(:empty)::after {
-      margin-left: $sf-space / 4;
+      margin-left: math.div($sf-space, 4);
     }
 
     // Indicate interactivity.

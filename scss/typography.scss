@@ -2,6 +2,8 @@
  * Default global text styles.
  */
 
+@use 'sass:math';
+
 // Base font family and size.
 html {
   font-family: $sf-font-family-sans-serif;
@@ -32,7 +34,7 @@ form, input, textarea, button, select, option {
 tt, code, kbd, pre, samp {
   font-family: $sf-font-family-monospace;
   // Normalise monospace font size.
-  font-size: 14/16 * 1em;
+  font-size: math.div(14, 16) * 1em;
   // Prevent further reduction.
   tt, code, kbd, pre, samp {
     font-size: 1em;

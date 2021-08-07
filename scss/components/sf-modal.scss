@@ -65,8 +65,11 @@
  * Consider adding animation options.
  */
 
+@use 'sass:math';
+
 // Main styles.
 .sf-modal {
+
   // Layout.
   @include sf-fixed-overlay;
   z-index: $sf-z-index-modal;
@@ -168,7 +171,7 @@
 .sf-modal-close {
   // Negate default button styles.
   @extend .sf-button-flat;
-  padding: ($sf-space / 4) ($sf-space / 2);
+  padding: (math.div($sf-space, 4)) (math.div($sf-space, 2));
   border-radius: 0 $sf-border-radius 0 $sf-border-radius;
 
   // Layout.
@@ -194,7 +197,7 @@
 
   // Default icon.
   &:empty {
-    padding: 0 $sf-space / 4;
+    padding: 0 math.div($sf-space, 4);
     font-size: $sf-font-size-large;
     &::after {
       content: '␛';
